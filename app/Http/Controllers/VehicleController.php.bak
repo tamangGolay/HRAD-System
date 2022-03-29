@@ -1,0 +1,1219 @@
+<?php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Vehicles;
+use App\vehiclerequest;
+use App\vehicleapprove;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyTestMail;
+use DB;
+use Auth;
+
+class VehicleController extends Controller
+{
+
+    public function Request_vehicle(Request $request)
+    {
+        try
+        {
+
+            $Request_vehicle = new vehiclerequest;
+            $Request_vehicle->emp_id = $request->emp_id;
+            $Request_vehicle->vname = $request->name;
+            $Request_vehicle->org_unit_id = $request->org_unit_id;
+            $Request_vehicle->email = $request->email;
+            $Request_vehicle->vehicleId = $request->vehicle;
+            $Request_vehicle->start_date = $request->start_date;
+            $Request_vehicle->end_date = $request->end_date;
+            $Request_vehicle->dateOfRequisition = $request->date_of_requisition;
+            $Request_vehicle->purpose = $request->purpose;
+            $Request_vehicle->placesToVisit = $request->places_to_visit;
+
+            $Request_vehicle->save();
+
+            $org_unit_id = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+                ->select('org_unit_id', 'description')
+                ->where('status', '=', 0)
+                ->where('vehiclerequest.id', '=', $Request_vehicle->id)
+                ->first();
+
+            $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+                ->select('vehicle_name', 'vehicle_number')
+                ->where('vehiclerequest.id', '=', $Request_vehicle->id)
+                ->first();
+
+            $employee = ['title' => 'Mail From the BPC System', 'body' => 'Dear ' . $request->name . ',', 'body1' => 'Your vehicle booking for ' . $vehicle_name->vehicle_name . ' initiated on ' . $request->date_of_requisition . ' has been processed, kindly wait for the notice.', 'body2' => 'Note', 'body3' => '*If the request is rejected by supervisor, you will be notified otherwise you will receive notification from MTO only.',
+
+            ];
+
+            $supervisior = ['title' => 'Mail From the BPC System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for vehicle requisition from ' . $request->name . ' bearing employee id ' . $request->emp_id . ' of ' . $org_unit_id->description . '', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', ];
+
+            Mail::to($request->email)
+                ->send(new MyTestMail($employee));
+
+            Mail::to('bosebackup1@gmail.com')
+                ->send(new MyTestMail($supervisior));
+
+
+            //ICD GM
+            if ($org_unit_id->org_unit_id == 44 || $org_unit_id->org_unit_id == 45 || $org_unit_id->org_unit_id == 46 || $org_unit_id->org_unit_id == 61)
+
+            {
+                Mail::to('namgaywangchuk@bpc.bt')  //namgaywangchuk@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                    Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //ICD GM end
+            //TD GM
+            if ($org_unit_id->org_unit_id == 19 || $org_unit_id->org_unit_id == 20 || $org_unit_id->org_unit_id == 21
+                || $org_unit_id->org_unit_id == 22 || $org_unit_id->org_unit_id == 23 || $org_unit_id->org_unit_id == 53)
+
+            {
+
+                Mail::to('ktobgye@bpc.bt') //ktobgye@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                    Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+
+            }
+            //TD GM end
+            
+
+            //TCD GM
+            if ($org_unit_id->org_unit_id == 54)
+            {
+
+                Mail::to('shamsherpradhan@bpc.bt')  //shamsherpradhan@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                    Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            // TCD GM end
+            
+
+            //DCD GM
+            if ($org_unit_id->org_unit_id == 24 || $org_unit_id->org_unit_id == 25 || $org_unit_id->org_unit_id == 26 || $org_unit_id->org_unit_id == 27 || $org_unit_id->org_unit_id == 55)
+
+            {
+
+                Mail::to('drukchudorji@bpc.bt') //drukchudorji@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //DCD GM end
+            
+
+            //DCSD GM
+            if ($org_unit_id->org_unit_id == 28 || $org_unit_id->org_unit_id == 29 || $org_unit_id->org_unit_id == 30 || $org_unit_id->org_unit_id == 31 || $org_unit_id->org_unit_id == 32 || $org_unit_id->org_unit_id == 56)
+
+            {
+
+                Mail::to('chadorphuntsho@bpc.bt') //chadorphuntsho@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+                
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //DCSD GM end
+
+            //HRAD GM
+            if ($org_unit_id->org_unit_id == 33 || $org_unit_id->org_unit_id == 34 || $org_unit_id->org_unit_id == 35 || $org_unit_id->org_unit_id == 57)
+
+            {
+
+                Mail::to('rinchenwangdi@bpc.bt')  //rinchenwangdi@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+                
+                 Mail::to('bosebackup1@gmail.com')
+                 ->send(new MyTestMail($supervisior));
+
+            }
+
+            //HRAD GM end
+
+            // For SFSB GM
+            if ($org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 59)
+
+            {
+
+                Mail::to('chhewangrinzin@bpc.bt')   //chhewangrinzin@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            // sbsf GM end
+            
+
+            // PSD GM
+            if ($org_unit_id->org_unit_id == 37 || $org_unit_id->org_unit_id == 38 || $org_unit_id->org_unit_id == 39 || $org_unit_id->org_unit_id == 58)
+
+            {
+
+                Mail::to('nim.dorji@bpc.bt')  //nim.dorji@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            // PSD GM end
+            
+
+            //  For ERD GM
+            
+
+            if ($org_unit_id->org_unit_id == 41 || $org_unit_id->org_unit_id == 42 || $org_unit_id->org_unit_id == 43 || $org_unit_id->org_unit_id == 60)
+
+            {
+
+                Mail::to('gorabdorji@bpc.bt')  //gorabdorji@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+                   
+                Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            //ERD GM end
+            
+
+            //  For SPBD GM
+            if ($org_unit_id->org_unit_id == 47 || $org_unit_id->org_unit_id == 48 || $org_unit_id->org_unit_id == 62)
+
+            {
+
+                Mail::to('dechecholing@bpc.bt')  //dechecholing@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            //SPBD GM end
+            
+
+            //Transmission services Director
+            
+
+            if ($org_unit_id->org_unit_id == 10 || $org_unit_id->org_unit_id == 11 || $org_unit_id->org_unit_id == 63)
+
+            {
+
+                Mail::to('thinleygyeltshen@bpc.bt') //thinleygyeltshen@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+                Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            //Transmission services end
+            
+
+            //Distribution services Director
+            
+
+            if ($org_unit_id->org_unit_id == 12 || $org_unit_id->org_unit_id == 13 || $org_unit_id->org_unit_id == 64)
+
+            {
+
+                Mail::to('sandeeprai@bpc.bt')  //sandeeprai@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //Distribution services end
+            
+
+            //HRCS services Director
+            if ($org_unit_id->org_unit_id == 14 || $org_unit_id->org_unit_id == 16 || $org_unit_id->org_unit_id == 15 || $org_unit_id->org_unit_id == 65 || $org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 40)
+            {
+
+                Mail::to('sangaytenzin1@bpc.bt')  //sangaytenzin1@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                ->send(new MyTestMail($supervisior));
+            }
+            //HRCS services end
+            
+
+            //Finance and Account services Director
+            if ($org_unit_id->org_unit_id == 49 || $org_unit_id->org_unit_id == 50 || $org_unit_id->org_unit_id == 51 || $org_unit_id->org_unit_id == 66)
+
+            {
+
+                Mail::to('kinleydem04@bpc.bt') //kinleydem04@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+
+            }
+
+            //Finance and Account services end
+            
+
+            //   STS Director
+            if ($org_unit_id->org_unit_id == 47 || $org_unit_id->org_unit_id == 48 || $org_unit_id->org_unit_id == 62 || $org_unit_id->org_unit_id == 17 || $org_unit_id->org_unit_id == 9 || $org_unit_id->org_unit_id == 67)
+
+            {
+
+                Mail::to('dechendema@bpc.bt')  //dechendema@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            // STS end
+            //BPSO GM
+            if ($org_unit_id->org_unit_id == 68)
+
+            {
+
+                Mail::to('sherub@bpc.bt') // sherub@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                 ->send(new MyTestMail($supervisior));
+            }
+
+            // BPSO end
+            //INTERNAL AUDIT Chief
+            if ($org_unit_id->org_unit_id == 69)
+
+            {
+
+                Mail::to('gempojampel@bpc.bt') //gempojampel@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+             Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //INTERNAL AUDIT end
+            
+
+            //CEO
+            if ($org_unit_id->org_unit_id == 3 || $org_unit_id->org_unit_id == 4 || $org_unit_id->org_unit_id == 5 || $org_unit_id->org_unit_id == 6 || $org_unit_id->org_unit_id == 7 || $org_unit_id->org_unit_id == 8 || $org_unit_id->org_unit_id == 70 || $org_unit_id->org_unit_id == 52)
+
+            {
+
+                Mail::to('stobjey@bpc.bt') //stobjey@bpc.bt
+                    ->send(new MyTestMail($supervisior));
+
+                 Mail::to('bosebackup1@gmail.com')
+                    ->send(new MyTestMail($supervisior));
+            }
+
+            //CEO end
+            
+
+            return redirect('home')->with('page', 'Request_vehicle')
+                ->with('success', ' Requisition Successful');
+
+        } //try end
+        catch(\Illuminate\Database\QueryException $e)
+        {
+
+            return redirect('home')->with('page', 'Request_vehicle')
+                ->with('error', 'Cannot leave the fields empty');
+        }
+
+    }
+
+    //ICD Vehicle approve
+    public function vehicleapprove(Request $request)
+
+    {
+
+        //  dd($request->id);
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+            ->first();
+
+        $org_unit_id = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('org_unit_id', 'description')
+            ->where('status', '=', 0)
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+        $supervisior = Auth::id();
+        DB::update('update vehiclerequest set supervisor = ? where id = ?', [$supervisior, $id->id]);
+
+        // DB::commit();
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status', 2);
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->id)
+            ->first();
+
+        $mto = ['title' => 'Mail From the BPC System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for vehicle requisition from ' . $name->vname . ' bearing employee id ' . $emp_id->emp_id . ' of  ' . $org_unit_id->description . '', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', ];
+
+        Mail::to('jigmephuntsho@bpc.bt') //jigmephuntsho@bpc.bt
+            ->send(new MyTestMail($mto));
+
+        Mail::to('bosebackup1@gmail.com')
+            ->send(new MyTestMail($mto));
+
+        //ICD
+        if ($org_unit_id->org_unit_id == 44 || $org_unit_id->org_unit_id == 45 || $org_unit_id->org_unit_id == 46 || $org_unit_id->org_unit_id == 61)
+
+        {
+            return redirect('home')
+                ->with('page', 'ICD_Review');
+        }
+
+        //BPSO Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 68)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'BPSO_Review');
+        }
+        
+
+        //DCD Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 24 || $org_unit_id->org_unit_id == 25 || $org_unit_id->org_unit_id == 26 || $org_unit_id->org_unit_id == 27 || $org_unit_id->org_unit_id == 55)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DCD_Review');
+
+        }
+
+        //DCSD Vehicle approve
+        if ($org_unit_id->org_unit_id == 28 || $org_unit_id->org_unit_id == 29 || $org_unit_id->org_unit_id == 30 || $org_unit_id->org_unit_id == 31 || $org_unit_id->org_unit_id == 32 || $org_unit_id->org_unit_id == 56)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DCSD_Review');
+        }
+
+        //DIR Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 3 || $org_unit_id->org_unit_id == 4 || $org_unit_id->org_unit_id == 5 || $org_unit_id->org_unit_id == 6 || $org_unit_id->org_unit_id == 7 || $org_unit_id->org_unit_id == 8 || $org_unit_id->org_unit_id == 70 || $org_unit_id->org_unit_id == 52)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DIR_Review');
+        }
+
+        //DS Director Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 12 || $org_unit_id->org_unit_id == 13 || $org_unit_id->org_unit_id == 64)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DS_Review');
+        }
+
+        //ERD Vehicle approve
+        if ($org_unit_id->org_unit_id == 41 || $org_unit_id->org_unit_id == 42 || $org_unit_id->org_unit_id == 43 || $org_unit_id->org_unit_id == 60)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'ERD_Review');
+        }
+
+        //FAS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 49 || $org_unit_id->org_unit_id == 50 || $org_unit_id->org_unit_id == 51 || $org_unit_id->org_unit_id == 66)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'FAS_Review');
+        }
+
+        //HRAD Vehicle approve
+        if ($org_unit_id->org_unit_id == 33 || $org_unit_id->org_unit_id == 34 || $org_unit_id->org_unit_id == 35 || $org_unit_id->org_unit_id == 57)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'HRAD_Review');
+
+        }
+
+        //HRCS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 14 || $org_unit_id->org_unit_id == 16 || $org_unit_id->org_unit_id == 15 || $org_unit_id->org_unit_id == 65 || $org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 40)
+        {
+
+            return redirect('home')
+                ->with('page', 'HRCS_Review');
+        }
+
+        //IAD Chief Vehicle approve
+        if ($org_unit_id->org_unit_id == 69)
+        {
+
+            return redirect('home')
+                ->with('page', 'IAD_Review');
+        }
+
+        //PSD Vehicle approve
+        if ($org_unit_id->org_unit_id == 37 || $org_unit_id->org_unit_id == 38 || $org_unit_id->org_unit_id == 39 || $org_unit_id->org_unit_id == 58)
+
+        {
+            return redirect('home')
+                ->with('page', 'PSD_Review');
+        }
+
+        //SFSB Vehicle approve
+        if ($org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 59)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'SFSB_Review');
+        }
+
+        //SPBD Vehicle approve
+        if ($org_unit_id->org_unit_id == 47 || $org_unit_id->org_unit_id == 48 || $org_unit_id->org_unit_id == 62)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'SPBD_Review');
+        }
+
+        //HRCS Vehicle approve
+        if ($org_unit_id->org_unit_id == 47 || $org_unit_id->org_unit_id == 48 || $org_unit_id->org_unit_id == 62 || $org_unit_id->org_unit_id == 17 || $org_unit_id->org_unit_id == 9 || $org_unit_id->org_unit_id == 67)
+        {
+        return redirect('home')
+            ->with('page', 'STS_Review');
+        }    
+
+        //TCD Vehicle approve
+        if ($org_unit_id->org_unit_id == 54)
+        {
+
+            return redirect('home')
+                ->with('page', 'TCD_Review');
+        }
+
+        //TD Vehicle approve
+        if ($org_unit_id->org_unit_id == 19 || $org_unit_id->org_unit_id == 20 || $org_unit_id->org_unit_id == 21
+            || $org_unit_id->org_unit_id == 22 || $org_unit_id->org_unit_id == 23 || $org_unit_id->org_unit_id == 53)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'TD_Review');
+        }
+
+        //TS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 10 || $org_unit_id->org_unit_id == 11 || $org_unit_id->org_unit_id == 63)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'TS_Review');
+
+        }
+
+    }
+
+    //MTOVehicle approve
+    public function MTOapprove(Request $request)
+    {
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->idl)
+            ->first();
+
+        $mto = Auth::id();
+        DB::update('update vehiclerequest set mto = ? where id = ?', [$mto, $id->id]);
+
+        // DB::commit();
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->idl)
+            ->increment('status', 2);
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->idl)
+            ->first();
+        
+        $start_date = DB::table('vehiclerequest')->select('start_date')
+            ->where('id', $request->idl)
+            ->first();
+
+        $end_date = DB::table('vehiclerequest')->select('end_date')
+            ->where('id', $request->idl)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', $request->idl)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->idl)
+            ->first();
+        
+        $placesToVisit = DB::table('vehiclerequest')->select('placesToVisit')
+            ->where('id', $request->idl)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', $request->idl)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->idl)
+            ->first();
+
+
+        
+        $supervisior = ['title' => 'Mail From the BPC System (MTO to GM)', 'body' => 'Dear sir,', 'body1' => 'For the tour to ' . $placesToVisit->placesToVisit.', vehicle ' . $vehicle_name->vehicle_name. ' has beeen assigned to ' . $name->vname . '('.$emp_id->emp_id.' ) of '.$orgunit->description.' from '.$start_date->start_date. ' to ' .$end_date->end_date. '.', 'body2' => 'Please Kindly review and make the approval for the request.', 'body3' => ' MTO ', ];
+
+        //$mto = ['title' => 'Mail From the BPC System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for vehicle requisition from ' . $name->vname . ' bearing employee id ' . $emp_id->emp_id . ' of  ' . $org_unit_id->description . '', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', ];
+
+        
+
+        Mail::to('rinchenwangdi@bpc.bt')  //rinchenwangdi@bpc.bt
+        ->send(new MyTestMail($supervisior));
+
+        Mail::to('bosebackup1@gmail.com')
+        ->send(new MyTestMail($supervisior));
+
+
+        //$employee = ['title' => 'Mail From the BPC System(MTO)', 'body' => 'Dear ' . $name->vname . ',', 'body1' => 'Your request for vehicle ' . $vehicle_name->vehicle_name . ' initiated on Date: ' . $reqDate->dateOfRequisition . ' has been successfully approved.', 'body2' => '', 'body3' => '', ];
+
+        //Mail::to($email->email)
+          // ->send(new MyTestMail($employee));
+
+        return redirect('home')->with('page', 'MTO_Review');
+
+    }
+    //Reports Generation
+
+// MTO TO GM approve
+public function MTOGMapprove(Request $request)
+    {
+        // dd($request)
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+
+            ->first();
+
+        
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status', 2);
+
+        
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', $request->id)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->id)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', $request->id)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+     
+        $supervisior = ['title' => 'Mail From the BPC System (GM to MTO)', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for vehicle '. $vehicle_name->vehicle_name . '('.$vehicle_name->vehicle_number.') initiated on Date: ' . $reqDate->dateOfRequisition . ' has been approved.','body2' => '', 'body3' => 'Please kindly do the necessary action.', ];
+        //supervisor is MTO here
+        
+            Mail::to('jigmephuntsho@bpc.bt')
+                ->send(new MyTestMail($supervisior));//jigmephuntsho@bpc.bt
+            
+            Mail::to('bosebackup1@gmail.com')
+                ->send(new MyTestMail($supervisior));
+        
+        
+        
+
+        return redirect('home')->with('page', 'MTOGM_Review');
+
+    }
+//END OF MTO to GM
+
+
+// MTO TO GM reject
+public function MTOGMreject(Request $request)
+    {
+        // dd($request)
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+            ->first();
+
+        
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status');
+
+        $reason = $request->reason;
+        DB::update('update vehiclerequest set reason = ? where id = ?', [$reason, $id->id]);
+
+        
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', $request->id)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->id)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', $request->id)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+       
+       $supervisior = ['title' => 'Mail From the BPC System (GM to MTO)', 'body' => 'Dear sir/madam,', 'body1' => 'Sorry to inform you that your request for vehicle '. $vehicle_name->vehicle_name . '('.$vehicle_name->vehicle_number.') initiated on Date: ' . $reqDate->dateOfRequisition . ' has been not been approved.','body2' => ' Sorry for the inconvience caused!', 'body3' => ' Remarks: ' .$request->reason, ];
+       //supervisor is MTO here
+
+            Mail::to('jigmephuntsho@bpc.bt') //jigmephuntsho@bpc.bt
+                ->send(new MyTestMail($supervisior));
+
+            Mail::to('bosebackup1@gmail.com')
+                ->send(new MyTestMail($supervisior));
+            
+                
+
+        return redirect('home')->with('page', 'MTOGM_Review');
+
+    }
+
+//END OF MTO to GM reject
+
+
+// RETURnReview GM to MTO APPROVE
+public function RETURNapprove(Request $request)
+    {
+        // dd($request->id);
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+            ->first();
+
+       // $mto = Auth::id();
+        //DB::update('update vehiclerequest set mto = ? where id = ?', [$mto, $id->id]);
+
+        // DB::commit();
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status', 2);
+        
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', $request->id)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->id)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', $request->id)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+    
+      $employee = ['title' => 'Mail From the BPC System(MTO)', 'body' => 'Dear ' . $name->vname . ',', 'body1' => 'Your request for vehicle ' . $vehicle_name->vehicle_name . ' initiated on Date: ' . $reqDate->dateOfRequisition . ' has been successfully approved.', 'body2' => '', 'body3' => '', ];
+          
+        
+        Mail::to($email->email)
+            ->send(new MyTestMail($employee));
+
+        Mail::to('bosebackup1@gmail.com')
+            ->send(new MyTestMail($employee));
+    
+                
+
+        return redirect('home')->with('page', 'Return_Review');
+
+    }
+//END  RETURnReview GM to MTO approve 8
+
+
+// RETURnReview GM to MTO reject 7
+public function RETURNreject(Request $request)
+    {
+        
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+            ->first();
+
+       // $mto = Auth::id();
+        //DB::update('update vehiclerequest set mto = ? where id = ?', [$mto, $id->id]);
+
+        // DB::commit();
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status');
+
+        
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', $request->id)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', $request->id)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', $request->id)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+    $employee = ['title' => 'Mail From the BPC System(MTO)', 'body' => 'Dear ' . $name->vname . ',', 'body1' => 'Sorry, Your request for vehicle ' . $vehicle_name->vehicle_name . ' initiated on Date: ' . $reqDate->dateOfRequisition . ' has been not been approved.', 'body2' => '', 'body3' => '', ];
+
+     
+        
+        Mail::to($email->email)
+            ->send(new MyTestMail($employee));
+
+        Mail::to('bosebackup1@gmail.com')
+            ->send(new MyTestMail($employee));
+    
+        
+        return redirect('home')->with('page', 'Return_Review');
+
+    }
+//END  RETURnReview GM to MTO reject 7
+
+
+
+
+public function date_search(Request $request){
+
+
+    $fromdate= $request->input('fromdate');
+    $todate= $request->input('todate');
+    
+
+ 
+
+$org_unit_id = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+    ->select('org_unit_id', 'description')
+    ->where('status', '=', 0)
+    ->get();
+    
+
+
+ $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+    ->select('vehicle_name', 'vehicle_number')
+    ->get();
+    
+
+    $query= DB::table('vehiclerequest')->select('*')
+    ->where('start_date', '>=',$fromdate)
+    ->where('end_date', '<=',$todate)
+    ->get();
+
+    $reports = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+    //  ->join('users','users.id','=','vehiclerequest.supervisor')
+    
+        ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+        ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
+    
+        // ->where('vehiclerequest.status', 0)
+
+        ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition', 'vehicledetails.vehicle_name', 'vehiclerequest.purpose', 'vehiclerequest.status', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation')
+        ->orderBy('vehiclerequest.id', 'desc')
+        ->paginate(10000);
+
+   
+    return view('vehicle.reports',compact('reports','query','vehicle_name','org_unit_id'));
+     }
+
+
+
+
+
+
+
+    
+
+
+    //editmto
+    public function store(Request $request)
+    {
+
+        $end1 = $request->end_date;
+        $end = date("Y-m-d ", strtotime($end1));
+
+        vehiclerequest::updateOrCreate(['id' => $request->id], ['vehicleId' => $request->vehicle, 'end_date' => $end]);
+
+        return response()->json(['success' => 'Meeting Room saved successfully.']);
+    }
+
+    public function edit($id)
+    {
+
+
+        $conference = vehiclerequest::find($id);
+        return response()->json($conference);
+    }
+
+    //vehicle reject(GM)
+    public function vehiclereject(Request $request)
+    {
+
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', $request->id)
+            ->first();
+
+        $org_unit_id = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('org_unit_id', 'description')
+            ->where('status', '=', 0)
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+        $reason = $request->reason;
+        DB::update('update vehiclerequest set reason = ? where id = ?', [$reason, $id->id]);
+
+        $supervisior = Auth::id();
+        DB::update('update vehiclerequest set supervisor = ? where id = ?', [$supervisior, $id->id]);
+
+        $vehicle = DB::table('vehiclerequest')->where('id', $request->id)
+            ->increment('status');
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', $request->id)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->id)
+            ->first();
+
+        $employee = ['title' => 'Mail From the BPC System(Supervisor)', 'body' => 'Dear ' . $name->vname . ',', 'body1' => 'We are sorry to inform you that, your request for ' . $vehicle_name->vehicle_name . ' (' . $vehicle_name->vehicle_number . ') initiated on ' . $reqDate->dateOfRequisition . ' could not be approved. ', 'body2' => ' ', 'body3' => ' Remarks: ' .$request->reason,
+
+        ];
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', '=', $request->id)
+            ->first();
+
+        Mail::to($email->email)
+            ->send(new MyTestMail($employee));
+
+        Mail::to('bosebackup1@gmail.com')
+            ->send(new MyTestMail($employee));
+    
+        //ICD
+        if ($org_unit_id->org_unit_id == 44 || $org_unit_id->org_unit_id == 45 || $org_unit_id->org_unit_id == 46 || $org_unit_id->org_unit_id == 61)
+
+        {
+            return redirect('home')
+                ->with('page', 'ICD_Review');
+        }
+
+        //BPSO Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 68)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'BPSO_Review');
+        }
+
+        //DCD Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 24 || $org_unit_id->org_unit_id == 25 || $org_unit_id->org_unit_id == 26 || $org_unit_id->org_unit_id == 27 || $org_unit_id->org_unit_id == 55)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DCD_Review');
+
+        }
+
+        //DCSD Vehicle approve
+        if ($org_unit_id->org_unit_id == 28 || $org_unit_id->org_unit_id == 29 || $org_unit_id->org_unit_id == 30 || $org_unit_id->org_unit_id == 31 || $org_unit_id->org_unit_id == 32 || $org_unit_id->org_unit_id == 56)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DCSD_Review');
+        }
+
+        //DIR Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 3 || $org_unit_id->org_unit_id == 4 || $org_unit_id->org_unit_id == 5 || $org_unit_id->org_unit_id == 6 || $org_unit_id->org_unit_id == 7 || $org_unit_id->org_unit_id == 8 || $org_unit_id->org_unit_id == 70 || $org_unit_id->org_unit_id == 52)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DIR_Review');
+        }
+
+        //DS Director Vehicle approve
+        
+
+        if ($org_unit_id->org_unit_id == 12 || $org_unit_id->org_unit_id == 13 || $org_unit_id->org_unit_id == 64)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'DS_Review');
+        }
+
+        //ERD Vehicle approve
+        if ($org_unit_id->org_unit_id == 41 || $org_unit_id->org_unit_id == 42 || $org_unit_id->org_unit_id == 43 || $org_unit_id->org_unit_id == 60)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'ERD_Review');
+        }
+
+        //FAS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 49 || $org_unit_id->org_unit_id == 50 || $org_unit_id->org_unit_id == 51 || $org_unit_id->org_unit_id == 66)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'FAS_Review');
+        }
+
+        //HRAD Vehicle approve
+        if ($org_unit_id->org_unit_id == 33 || $org_unit_id->org_unit_id == 34 || $org_unit_id->org_unit_id == 35 || $org_unit_id->org_unit_id == 57)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'HRAD_Review');
+
+        }
+
+        //HRCS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 14 || $org_unit_id->org_unit_id == 16 || $org_unit_id->org_unit_id == 15 || $org_unit_id->org_unit_id == 65 || $org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 40)
+        {
+
+            return redirect('home')
+                ->with('page', 'HRCS_Review');
+        }
+
+        //IAD Chief Vehicle approve
+        if ($org_unit_id->org_unit_id == 69)
+        {
+
+            return redirect('home')
+                ->with('page', 'IAD_Review');
+        }
+
+        //PSD Vehicle approve
+        if ($org_unit_id->org_unit_id == 37 || $org_unit_id->org_unit_id == 38 || $org_unit_id->org_unit_id == 39 || $org_unit_id->org_unit_id == 58)
+
+        {
+            return redirect('home')
+                ->with('page', 'PSD_Review');
+        }
+
+        //SFSB Vehicle approve
+        if ($org_unit_id->org_unit_id == 36 || $org_unit_id->org_unit_id == 59)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'SFSB_Review');
+        }
+
+        //SPBD Vehicle approve
+        if ($org_unit_id->org_unit_id == 47 || $org_unit_id->org_unit_id == 48 || $org_unit_id->org_unit_id == 62)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'SPBD_Review');
+        }
+
+        //HRCS Vehicle approve
+        return redirect('home')
+            ->with('page', 'STS_Review');
+
+        //TCD Vehicle approve
+        if ($org_unit_id->org_unit_id == 54)
+        {
+
+            return redirect('home')
+                ->with('page', 'TCD_Review');
+        }
+
+        //TD Vehicle approve
+        if ($org_unit_id->org_unit_id == 19 || $org_unit_id->org_unit_id == 20 || $org_unit_id->org_unit_id == 21
+            || $org_unit_id->org_unit_id == 22 || $org_unit_id->org_unit_id == 23 || $org_unit_id->org_unit_id == 53)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'TD_Review');
+        }
+
+        //TS Director Vehicle approve
+        if ($org_unit_id->org_unit_id == 10 || $org_unit_id->org_unit_id == 11 || $org_unit_id->org_unit_id == 63)
+
+        {
+
+            return redirect('home')
+                ->with('page', 'TS_Review');
+
+        }
+
+    }
+    //MTO reject
+    public function MTOreject(Request $request)
+    {
+
+        $id = DB::table('vehiclerequest')->select('id')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $supervisior = Auth::id();
+        DB::update('update vehiclerequest set supervisor = ? where id = ?', [$supervisior, $id->id]);
+
+        $reason = $request->reason;
+        DB::update('update vehiclerequest set reason = ? where id = ?', [$reason, $id->id]);
+
+        // DB::commit();
+        $vehicle = DB::table('vehiclerequest')->where('id', '=', $request->idl)
+            ->increment('status');
+
+        $name = DB::table('vehiclerequest')->select('vname')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $email = DB::table('vehiclerequest')->select('email')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $emp_id = DB::table('vehiclerequest')->select('emp_id')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $orgunit = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+            ->select('description')
+            ->where('vehiclerequest.id', '=', $request->idl)
+            ->first();
+
+        $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+            ->select('vehicle_name', 'vehicle_number')
+            ->where('vehiclerequest.id', '=', $request->idl)
+            ->first();
+
+        $reqDate = DB::table('vehiclerequest')->select('dateOfRequisition')
+            ->where('id', '=', $request->idl)
+            ->first();
+
+        $employee = ['title' => 'Mail From the BPC System(MTO)', 'body' => 'Dear ' . $name->vname, 'body1' => 'We are sorry to inform you that, your request for ' . $vehicle_name->vehicle_name . ' initiated on ' . $reqDate->dateOfRequisition . ' is currently unavailable. ', 'body2' => 'Reason:', 'body3' => $request->reason, ];
+
+        Mail::to($email->email)
+            ->send(new MyTestMail($employee));
+    
+            Mail::to('bosebackup1@gmail.com')
+            ->send(new MyTestMail($employee));
+
+        return redirect('home')->with('page', 'MTO_Review');
+
+        return redirect('home')
+            ->with('page', 'MTO_Review');
+
+    }
+
+}
+

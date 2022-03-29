@@ -1,0 +1,86 @@
+
+/* 1.start firstpage */
+.box-part {
+    background: #FFF;
+    border-radius: 15px;
+    padding: 60px 10px;
+    margin: 30px 0px;
+    border: 2px solid limegreen;
+    width: 90%;
+    margin-left: 3.5%;
+    /* align:center;  */
+    height: 75%;
+}
+span {
+    color: black;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+a:hover,
+a:visited,
+a:focus {
+    text-decoration: none !important;
+}
+		
+.box-part:hover {
+		background: lightgreen;
+		transform: scale(1.01);
+}
+
+/* 1.end firstpage */
+
+
+
+/* 2.Start C_Booking */
+
+.alert{
+    text-align:center;
+  }
+
+#myTable {
+    border-collapse: collapse;
+    width: 95%;
+    margin-left:2%;
+    border: 1px solid #ddd;
+}
+
+.nSuccess{
+    color: #28a745;
+      background-color: transparent;
+      background-image: none;
+      border-color: #28a745;
+  }
+  
+  .nSuccess:hover {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .cardbody{
+    margin-right:5%;
+    margin-left:5%;
+    }
+  
+.notice{
+    text-align:center;
+    color:#0D872E;
+  }
+/* a is same as in firstpage */
+/* 2.End C_Booking */
+
+
+/* 3. start Request_vehicle  */
+ /*  notice same in 2, nSuccess same in 2 */
+ 
+ .rvheading{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+  
+}
+/* 3. end Request_vehicle  */

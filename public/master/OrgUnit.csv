@@ -1,0 +1,77 @@
+BPCL,Bhutan Power Corporation Limited,1
+CEO,Chief Executive Officer,1
+TS,Transmission Services,2
+DS,Distribution Services,2
+HRCS,HR and Corporate Services,2
+FAS,Finance and Accounts Services,2
+STS,Strategy and Technology Services,2
+BPSO,Bhutan Power System Operator,2
+ICD,Information and Communication Department,7
+TD,Transmission Department,3
+TCD,Transmission Construction Department,3
+DCD,Distribution Construction Department,4
+DCSD,Distribution and Customer Services Department,4
+HRAD,Human Resource and Administration Department,5
+SFS,Security and Fire Services Bereau,5
+PSD,Procurement Services Department,5
+ERD,Engineering and Research Department,7
+SPBD,Strategy Planning and Business Dev Department,7
+OMPD,O&M & Planning Division,10
+SUAD,System Upgradation and Augmentation Division,10
+TMD,Transmission Maintenance Divisions,10
+SMD,Substation Maintenance Divisions,10
+TCCD,Transmission Control Centre Division,10
+ED,Electrification Division,12
+CWD,Civil Works Division,12
+RED,Renewable Energy Division,12
+CMD,Central Maintenance Division,12
+OMD,Operation and Maintenance Division,13
+PD,Planning Division,13
+EMCCD,Energy Management and Customer Care Division,13
+SGD,Smart Grid Division,13
+ESD,Electricity Services Divisions,13
+PIAD,Personnel Information and Adm Division,14
+HRMD,Human Resource Management Division,14
+HRDD,Human Resource Development Division,14
+SQD,Safety and Quality Division,5
+CD,Contracts Division,16
+TD,Tendering Division,16
+RSD,Regional Stroes Divisions,16
+LRMO,Legal Office Risk Office Media Office,5
+RDD,Research and Development Division,17
+EDCD,Engineering Design and Contracts Division,17
+EGSD,Environment GIS and Survey Division,17
+ITD,IT Division,9
+SUIT,SUIT,9
+FND,Fiber and Network Division,9
+CSPD,Corporate Strategy and Planning Division,18
+BTDD,Business and Technology Development Division,18
+CAD,Corporate Accounts Division,6
+GFSD,General Financial Services Division,6
+CBTD,Corporate Budget and Treasury Division,6
+IAD,Internal Audit Division,2
+TDE,Transmission Department(E),3
+TCDE,Transmission Construction Department(E),3
+DCDE,Distribution Construction Department(E),4
+DCSDE,Distribution and Customer Services(E),4
+HRADE,Human Resources and Administration Department,5
+PSDE,Procurement Services Department(E),5
+SFSBE,Security and Fire Services Bereau(E),5
+ERDE,Engineering and Research Department(E),7
+ICDE, Information and Communication Department(E),7
+SPBDE,Strategic Planning and Business Department(E),7
+TSE,Transmission Services(E),2
+DSE,Distribution Services(E),2
+HRCSE,Human Resource and Corporate Services(E),2
+FASE,Finance and Accounts Services(E),2
+STSE,Strategy and Technology Services(E),2
+BPSO,Bhutan Power System Operater(E),2
+IADE,Internal Audit Division(E),2
+CS,Company Secretary,2
+ODE,Not HQ Employee,1
+CMDPO,Central Maintenance Division Project,7
+CMDPOE,Central Maintenance Division Project(E),7
+CEO E,CEO Office,2
+DHI/DOCs/Family,DHI/DOCs/Family/Ex-emp,1
+RGoB,RGoB,1
+Others,Others,1

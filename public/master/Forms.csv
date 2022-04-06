@@ -1,74 +1,11 @@
 userList,User Lists,Admin,yes,fa-list
 Request_vehicle,Request Vehicle,Vehicle,yes,fa-car
-Free_vehicle,Free_vehicle,Vehicle,yes,fa-car
-boardroom_review,BoardRoom Review,Conference,yes,fa-check
-booking_review,Booked Conference,Conference,yes,fa-check
-manage_conference,Manage Conference,Admin,yes,fa-list-ol
 changepassword,Change Password,Password,yes,fa-edit
 resetpassword,Reset Password,Password,yes,fa-edit
 user,Add User,Admin,yes,fas fa-user-plus
-error,error,Conference,no,fa-edit
-booking_reviewempty,Booking details,Conference,no,fa-check
 ICD_Review,ICD review,Vehicle,yes,fa-clipboard-list
-TD_Review,TD review,Vehicle,yes,fa-clipboard-list
-TCD_Review,TCD review,Vehicle,yes,fa-clipboard-list
-DCD_Review,DCD review,Vehicle,yes,fa-clipboard-list
-DCSD_Review,DCSD review,Vehicle,yes,fa-clipboard-list
-HRAD_Review,HRAD review,Vehicle,yes,fa-clipboard-list
-SFSB_Review,SFSB review,Vehicle,yes,fa-clipboard-list
-PSD_Review,PSD review,Vehicle,yes,fa-clipboard-list
-ERD_Review,ERD review,Vehicle,yes,fa-clipboard-list
-SPBD_Review,SPBD review,Vehicle,yes,fa-clipboard-list
-TS_Review,TS review,Vehicle,yes,fa-clipboard-list
-DS_Review,DS review,Vehicle,yes,fa-clipboard-list
-HRCS_Review,HRCS review,Vehicle,yes,fa-clipboard-list
-FAS_Review,FAS review,Vehicle,yes,fa-clipboard-list
-STS_Review,STS review,Vehicle,yes,fa-clipboard-list
-BPSO_Review,BPSO review,Vehicle,yes,fa-clipboard-list
-IAD_Review,IAD review,Vehicle,yes,fa-clipboard-list
-DIR_Review,DIR review,Vehicle,yes,fa-clipboard-list
+userListHR,User Lists HR,Admin HR,yes,fa-list
 MTO_Review,MTO Vehicle Review,Vehicle,yes,fa-clipboard-list
 manage_vehicle,Manage Vehicle,Admin,yes,fa-list-ol
-GuestHouseBooking,Guest House Booking(Other Employee),Transit Camp,yes,fa-home
-ghGarpang_review,Garpang Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghChumey_review,Chumey Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghPhuentsholing_review,Phuentsholing Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghDagapela_review,Dagapela Substation Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghWangtsa_review,Wangtsa Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTangmachu_review,Tangmachu shangma Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghOlathang_review,Olathang Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghPangbesa_review,Pangbesa Substation Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTMO_review,Transmission Maintenance Office Transit Camp,Transit Camp,yes,fa-clipboard-list
-ghDeothang_review,Deothang Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghDhamdum_review,Damdum Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTashichoeling_review,Tashichoeling Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghDorokha_review,Dorokha Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghJigmeling_review,Jigmeling Substation Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTransitCamp_review,Trashiyangtse Transit Camp  Review,Transit Camp,yes,fa-clipboard-list
-ghYurmoo_review,Yurmoo Substation Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghKewathang_review,Kewathang Transit Camp  Review,Transit Camp,yes,fa-clipboard-list
-ghDhajay_review,Dhajay Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghPinsa_review,Pinsa Transit Maintenance Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghESDwangdue_review,ESD Wangdue Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTingtibi_review,Tingtibi Substation Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghTMD_review,TMD Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-userListHR,User Lists HR,Admin HR,yes,fa-list
-reportsbak,Vehicle Report,Vehicle,yes,fa-clipboard-list
-cReports,Conference Report,Conference,yes,fa-clipboard-list
-MTOGM_Review,General Manager Review,Vehicle,yes,fa-clipboard-list
-Return_Review,General Manager return Review,Vehicle,yes,fa-clipboard-list
-manage_guesthouse,Manage Transit Camp,Admin,yes,fa-list-ol
-room_details,Room Details,Admin,yes,fa-list-ol
-GuestHouseBookingOutsider,Transit Camp Booking Outsider,GuestHouse,yes,fa-home
-roleAdd,Add New Role,Admin,yes,fas fa-user
-guestHouseReports,Transit Camp Reports,Transit Camp,yes,fa-clipboard-list
-addRoom,Add Room,Admin,yes,fa fa-home
-ghkilikhar_review,kilikhar Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghkanglung_review,Kanglung Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghnangkhor_review,Nangkhor Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-ghnganglam_review, Nganglam Transit Camp Review,Transit Camp,yes,fa-clipboard-list
-GuestHouseBookingSelf,Transit Camp Booking,Transit Camp,yes,fa-home
-MTO_EditReview,Duration Extension (Vehicle),Vehicle,yes,fa-clipboard-list
-CMDPO_Review,CMDPO review,Vehicle,yes,fa-clipboard-list
 uniform,Uniform,Uniform,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

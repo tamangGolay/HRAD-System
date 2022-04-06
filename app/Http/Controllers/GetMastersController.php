@@ -63,27 +63,27 @@ class GetMastersController extends Controller
 
         }
 
-//         if ($table == "C_Booking")
-//         {
+        if ($table == "userdetails")
+        {
 
-//             //check cid if already in database.
-//             if (DB::table('users')->where('users.emp_id', $value)->exists())
-//             {
-//                 $emp = DB::table('users')->where('users.emp_id', $value)->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-//                     ->select('users.grade','users.name', 'users.contact_number', 'users.org_unit_id','users.email','orgunit.description')
-//                     ->get();
+            //check cid if already in database.
+            if (DB::table('users')->where('users.emp_id', $value)->exists())
+            {
+                $emp = DB::table('users')->where('users.emp_id', $value)->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+                    ->select('users.grade','users.name', 'users.contact_number', 'users.org_unit_id','users.email','orgunit.description')
+                    ->get();
 
-//                 return response()
-//                     ->json($emp);
+                return response()
+                    ->json($emp);
 
-//             }
-//             else
-//             {
-//                 return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
 
-//             }
+            }
 
-//         }
+        }
 
 //         if ($table == "booking_review")
 //         {

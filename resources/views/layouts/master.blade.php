@@ -6,8 +6,8 @@
 		<!-- Navbar -->@include('layouts.nav')
 		<!-- /.navbar -->
 		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-dark-primary elevation-4">
-			<!-- Brand Logo -->@include('layouts.sidebar') </aside>
+	
+			<!-- Brand Logo --> </aside>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper" style="background-color:white;">
 			<!-- Content Header (Page header) -->

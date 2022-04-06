@@ -1,4 +1,5 @@
 <!-- jQuery UI 1.11.4 -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script src="{{asset('/admin-lte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>

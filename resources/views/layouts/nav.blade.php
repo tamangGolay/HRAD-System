@@ -9,9 +9,9 @@
 			<li class="nav-item"> <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> </li>
 		</ul> @else
 		<div class="collapse navbar-collapse order-3" id="navbarCollapse">
-			<ul class="navbar-nav">
+			<!-- <ul class="navbar-nav">
 				<li class="nav-item"> <a class="nav-link" data-value="none" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a> </li>
-			</ul>
+			</ul> -->
 			<div id="hshadow">
 				<h3 style="font-weight:700;color:black;">BPC Online System</h3> </div>
 			<!-- Right Side Of Navbar -->

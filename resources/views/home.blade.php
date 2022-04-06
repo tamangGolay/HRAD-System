@@ -82,7 +82,7 @@
 <div class="container-fluid mt-0 mb-0 ">
 	<div class="row mt-0 mb-0">
 		<div class="col-sm-6">
-			<h5 id="contenthead"> <a href="/home"><strong>Home</strong></a></h5> </div>
+			<h5 id="contenthead"> <a href="/home"><strong><i class="fa fa-home" aria-hidden="true">&nbsp;</i></strong></a></h5> </div>
 		<div class="col-sm-6">
 			<ol class="breadcrumb float-sm-right">
 				<li class="breadcrumb-item">
@@ -110,7 +110,10 @@
 			</a>
 		</li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@endforeach </ul>
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<script type="text/javascript">
+	
 	$(document).ready(function() {
 		$("#dialog").dialog({
 			autoOpen: false
@@ -135,6 +138,23 @@
 		});
 	}
 
+
+$(document).ready(function() {
+	$("a").on('click', function(e) {
+		//console.log(e);
+		// var id = e.target.value;
+		var id = $(this).data('value');
+		if(id != 'none') {
+			$.get('/getView?v=' + id, function(data) {
+				document.getElementById('listlink').innerHTML = ''; // FR-register and deployment link(disappear)
+				$('#contentpage').empty();
+				$('#contentpage').append(data.html);
+			});
+		}
+	});
+})
+
 	$('div.alert').delay(6500).slideUp(300);// Session message  display time
+	
 	</script> @endsection
 	<!-- changes -->

@@ -79,3 +79,10 @@ $(document).ready(function() {
 
 
 </script>
+
+<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
+		});
+		</script>

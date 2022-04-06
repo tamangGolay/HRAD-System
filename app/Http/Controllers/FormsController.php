@@ -113,57 +113,19 @@ class FormsController extends Controller
        if ($request->v == "uniform")
        {
 
-        $conference = conference::all()
-               ->where('status_c',0)		    
-               ;
-            //    $no_of_people90 = rangeofpeople::all()
-            //    ->where('status_c',0)		    
-            //    ;
+       
          
             $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
                ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
    
            
-              
-               ->where('status', 1)
-               ->where('conference_id', '1')
-   
-           //  ->where('conference_id' ,'=', '5')
-           
-               ->orwhere("conference_id", "2")
-               ->where('status', 0)
-               ->where('default',)
-   
-               ->orwhere("conference_id", "3")
-               ->where('status', 0)
-               ->where('default',)
-   
-               ->orwhere("conference_id", "4")
-               ->where('status', 0)
-               ->where('default',)
-   
-               ->orwhere('conference_id', "5")
-               ->where('status', 0)
-               ->where('default',)
-   
-               // ->orwhere("conference_id", "6")
-               // ->where('status', 0)
-               // ->where('default',)
-   
-               //  ->orwhere("conference_id", "7")
-               // ->where('status', 0)
-               // ->where('default',)
-   
-               // ->orwhere("conference_id", "8")
-               // ->where('status', 0)
-               // ->where('default',)
    
                ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'orgunit.description','conference.Conference_Name'
                        )
                ->latest('id')
                ->paginate(1000000000);
 
-               $rhtml = view('uniform.uniform')->with(['conference' => $conference,'c_book' => $c_book])->render();
+               $rhtml = view('uniform.uniform')->with(['c_book' => $c_book])->render();
                return response()
                    ->json(array(
                    'success' => true,
@@ -3148,7 +3110,7 @@ if ($request->v == "room_details")
         if ($request->v == "resetpassword")
         {
 
-            $rhtml = view('conference.resetpassword')->render();
+            $rhtml = view('auth.resetpassword')->render();
             return response()
                 ->json(array(
                 'success' => true,

@@ -41,6 +41,7 @@
 	<link rel="stylesheet" href="{{URL::asset('admin-lte/plugins/codemirror/theme/monokai.css')}}">
 	<!-- SimpleMDE -->
 	<link rel="stylesheet" href="{{URL::asset('admin-lte/plugins/simplemde/simplemde.css')}}">
+	
 	<style>
 	img {
 		border-radius: 50%;
@@ -57,4 +58,6 @@
 		justify-content: space-evenly;
 	}
 	</style>
+
+
 </head>

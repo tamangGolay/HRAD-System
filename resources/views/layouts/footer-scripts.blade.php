@@ -9,6 +9,8 @@
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap-4.3.1.min.js') }}"></script>
 <script src="https://kit.fontawesome.com/83c73830af.js"></script>
 
+
+
 <script>
 $(document).ready(function() {
 	$('#sidebarCollapse').on('click', function() {

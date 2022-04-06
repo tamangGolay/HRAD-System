@@ -16,8 +16,6 @@ use App\conferenceRequest;
 use App\OrgUnit;
 use App\conference;
 use App\Vehicles;
-use App\guesthouse;
-use App\guestHouseRoom;
 use App\roomBed;
 use App\status;
 use App\guestHouseRate;
@@ -69,9 +67,6 @@ class ImportMaster extends Command
         $this->importUserRole('roleuser',new RoleUserMappings);
         $this->importrangeofpeople('rangeofpeople',new rangeofpeople);
         $this->importvehicle('vehicleDetails',new vehicles);
-        $this->importguestHouse('guestHouseName',new guesthouse);//.csv and modelname
-        $this->importguestHouseRoom('guestHouseRoom',new guestHouseRoom);//.csv and modelname
-        $this->importrb_book('roomBed',new roomBed);//.csv and modelname
         $this->importstatus('status',new status);//.csv and modelname
         $this->importgHouseRate('guestHouseRate',new guestHouseRate);
         $this->importconStatus('conferenceStatus',new conferenceStatus);
@@ -134,6 +129,40 @@ class ImportMaster extends Command
             $this->line($i." entries successfully added in ".$filename." table");
         }
     }
+
+    //function to import ghouserate
+public function importgHouseRate($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'grade' => $data[0],
+                    'rate' => $data[1]  
+
+
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                
+           
+            
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+
 
      
     
@@ -439,120 +468,7 @@ public function importvehicle($filename,Model $model) {
     }
 }
  
-//function to import Facility list
-public function importguestHouse($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,100,',')) !== FALSE)
-        {               
 
-                $data = [                       
-                    'name' => $data[0], 
-                    'dzo_id' => $data[1]
-                                        
-                      
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                
-           
-            
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
-
-
-
-//function to import guest house room
-public function importguestHouseRoom($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
-
-                $data = [                       
-                    'room_no' => $data[0], 
-                    'bed_no' => $data[1],
-                    'guest_house_id' => $data[2],
-                    'dzo_id' => $data[3]
-
-
-      
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                
-           
-            
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
-
-
-//function to import roomBed
-public function importrb_book($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
-
-                $data = [                       
-                    'guest_house_id' => $data[0], 
-                    'org_unit_id' => $data[1],
-                    'emp_id' => $data[2],
-                    'dzongkhag' => $data[3], 
-                    'roomdetails_id' => $data[4], 
-                    'gender' => $data[5],
-                    'name' => $data[6],
-                    'check_in' => $data[7], 
-                    'check_out' => $data[8],
-                    'email' => $data[9]
-
-
-                    
-      
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                
-           
-            
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
 
 //function to import status
 public function importstatus($filename,Model $model) {
@@ -591,38 +507,7 @@ public function importstatus($filename,Model $model) {
 
 
 
-//function to import ghouserate
-public function importgHouseRate($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
 
-                $data = [                       
-                    'grade' => $data[0],
-                    'rate' => $data[1]  
-
-
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                
-           
-            
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
 
 public function importconStatus($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)

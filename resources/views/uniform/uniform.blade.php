@@ -189,7 +189,7 @@ function getEmployeeDetails(val)
 
     //pulling records using emp_id from users table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=C_Booking&info='+val+'&token='+csrftoken,function(data){              
+          $.get('/getValues?source=userdetails&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
                     document.getElementById('nameid').value = '';                      
                     document.getElementById('contact_number').value = '';
@@ -215,6 +215,13 @@ function getEmployeeDetails(val)
 }  
 $('div.alert').delay(4500).slideUp(300);// Session message  display time
 </script>
+
+<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
+		});
+		</script>
 
 
 

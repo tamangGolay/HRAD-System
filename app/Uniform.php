@@ -11,6 +11,6 @@ class Uniform extends Model
 
     protected $table = 'officeuniform';
 
-    protected $fillable = ['org_unit_id','uniform_id','S','M','L','XL','2XL','3XL','4XL','5XL','6XL'];
+    protected $fillable = ['org_unit_id','uniform_id','S','M','L','XL','2XL','3XL','4XL','5XL','6XL','dzongkhag'];
     public $timestamps = false;
 }

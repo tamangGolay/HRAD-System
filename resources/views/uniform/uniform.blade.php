@@ -126,7 +126,7 @@
 
                 <div class="form-group row"> 
                     <input type="hidden" class="form-control" value="5" name="jumboot_id">                  
-                    <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Jumboot Size:</label>
+                    <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Gumboot Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
                         <select name="jumboot" id="" class="form-control"><option >Select Jumboot Size</option>
                             <option >3</option>

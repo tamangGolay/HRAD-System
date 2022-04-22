@@ -21,7 +21,7 @@ use App\status;
 use App\guestHouseRate;
 use App\conferenceStatus;
 use App\rangeofpeople;
-
+use App\Uniform;
 
 class ImportMaster extends Command
 {
@@ -70,6 +70,7 @@ class ImportMaster extends Command
         $this->importstatus('status',new status);//.csv and modelname
         $this->importgHouseRate('guestHouseRate',new guestHouseRate);
         $this->importconStatus('conferenceStatus',new conferenceStatus);
+        $this->importuniform('uniformcount',new Uniform);
 
               }
 
@@ -286,13 +287,8 @@ public function importgHouseRate($filename,Model $model) {
                         'role_id' => $data[7],
                         'grade' => $data[8],
                         'gender' => $data[9],
-                        'dzongkhag'  => $data[10]
- 
-
- 
-                        
-                       
-            
+                        'dzongkhag'  => $data[10]             
+                                  
                        
 
                     ];
@@ -522,6 +518,49 @@ public function importconStatus($filename,Model $model) {
                     'state' => $data[1]
 
                     
+
+
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                
+           
+            
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+
+
+public function importuniform($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'org_unit_id' => $data[0],
+                    'uniform_id' => $data[1],  
+                    'S' => $data[2],                      
+                    'M' => $data[3],                      
+                    'L'=>$data[4],
+                    'XL'=>$data[5],
+                    '2XL' => $data[6],
+                    '3XL' => $data[7],
+                    '4XL' => $data[8],
+                    '5XL' => $data[9],
+                    '6XL'  => $data[10],
+                    'dzongkhag'  => $data[11]                    
 
 
                 ];

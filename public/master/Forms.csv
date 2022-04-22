@@ -8,4 +8,6 @@ userListHR,User Lists HR,Admin HR,yes,fa-list
 MTO_Review,MTO Vehicle Review,Vehicle,yes,fa-clipboard-list
 manage_vehicle,Manage Vehicle,Admin,yes,fa-list-ol
 uniform,Uniform,Uniform,yes,fa-clipboard-list
+uniformReport,Uniform Report,Uniform,yes,fa-clipboard-list
+officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

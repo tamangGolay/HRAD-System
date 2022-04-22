@@ -24,7 +24,7 @@ class UniformController extends Controller
     $uniform->shoe = $request->shoe;
     $uniform->jumboot = $request->jumboot;
     $uniform->raincoat = $request->raincoat;
-    $uniform->save();
+    $uniform->save();    
 
     //For IT Division
     //if(dzo = thimphu)
@@ -186,7 +186,7 @@ class UniformController extends Controller
             }
         }
     }
-
+     
     return redirect('/home')->with('page', 'uniform')
     ->with('success', 'Data inserted successfully!!!');
     

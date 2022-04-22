@@ -27,9 +27,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'id','dzongkhag','gender','name','emp_id','designation','org_unit_id','contact_number','password','status','conference_user','email','role_id','grade'
-    ];
+protected $fillable = [ 
+'id','dzongkhag','gender','name','emp_id','designation','org_unit_id','contact_number','password','status','conference_user','email','role_id','grade'
+ ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -53,6 +53,5 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Roles::class,'userrolemapping','user_id','role_id');
     }
-
     
 }

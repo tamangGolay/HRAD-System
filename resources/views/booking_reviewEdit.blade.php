@@ -6,6 +6,7 @@ a {
 	/* no underline */
 }
 </style>
+
 <div class="container-fluid mt-0 mb-0">
 	<div class="row mt-0 mb-0">
 		<div class="col-sm-6">

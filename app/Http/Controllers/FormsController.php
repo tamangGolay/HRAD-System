@@ -78,9 +78,7 @@ class FormsController extends Controller
                $roles = Roles::all();
                $orgunit = orgunit::all();
                $grade = Grade::all();
-               $dzongkhag = Dzongkhags::all();
-
-          
+               $dzongkhag = Dzongkhags::all();         
 
       
 
@@ -108,6 +106,7 @@ class FormsController extends Controller
        }
        //end of User List.
 
+
        //uniform view
 
        if ($request->v == "uniform")
@@ -133,11 +132,47 @@ class FormsController extends Controller
                ));
    
         }
-
-
-
-
        //end uniform view
+
+       //uniform report for individual employee
+       if ($request->v == "uniformReport") 
+       {
+
+        $data1 = DB::table('employeeuniform')
+        ->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
+                 
+           ->select('employeeuniform.id', 'employeeuniform.emp_id', 'orgunit.description','employeeuniform.name', 'employeeuniform.shirt', 'employeeuniform.pant', 'employeeuniform.jacket', 'employeeuniform.raincoat', 'employeeuniform.jumboot', 'employeeuniform.shoe')
+            ->paginate(10000);
+
+               $rhtml = view('uniform.uniformReport')->with(['data1' => $data1])->render();
+               return response()
+                   ->json(array(
+                   'success' => true,
+                   'html' => $rhtml
+               ));   
+        }
+        //end of uniform report for individual employee
+
+         //uniform report for individual employee
+       if ($request->v == "officeuniformReport")  
+       {
+
+        $data2 = DB::table('officeuniform') 
+        ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
+        ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
+        
+                 
+           ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.S','officeuniform.M','officeuniform.L', 'officeuniform.XL','officeuniform.2XL','officeuniform.3XL','officeuniform.4XL','officeuniform.5XL','officeuniform.6XL')
+            ->paginate(10000);
+
+               $rhtml = view('uniform.officeUniformReport')->with(['data2' => $data2])->render();
+               return response()
+                   ->json(array(
+                   'success' => true,
+                   'html' => $rhtml
+               ));   
+        }
+        //end of uniform report for individual employee
 
 
 

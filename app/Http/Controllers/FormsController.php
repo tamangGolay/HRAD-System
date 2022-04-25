@@ -180,6 +180,31 @@ class FormsController extends Controller
         //end of uniform report for office wise
 
 
+         //View for Total shoe sizes
+         if ($request->v == "TotalShoeSizes")  
+         {
+  
+            $data2 = DB::table('officeuniform') 
+            ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
+            ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
+            
+                     
+               ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.shoe_3','officeuniform.shoe_4','officeuniform.shoe_5', 'officeuniform.shoe_6','officeuniform.shoe_7','officeuniform.shoe_8','officeuniform.shoe_9','officeuniform.shoe_10','officeuniform.shoe_11','officeuniform.shoe_12','officeuniform.shoe_13','officeuniform.shoe_14','officeuniform.shoe_15','dzongkhag')
+               ->where('officeuniform.id',4) 
+               ->orwhere('officeuniform.id',5) 
+               ->paginate(10000);
+    
+                   $rhtml = view('uniform.totalShoes')->with(['data2' => $data2])->render();
+                   return response()
+                       ->json(array(
+                       'success' => true,
+                       'html' => $rhtml
+                   ));   
+            }
+  
+  //end for total shoe sizes;
+
+
 
          //vehicle report List.
          if ($request->v == "reportsbak")

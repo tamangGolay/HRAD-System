@@ -555,12 +555,25 @@ public function importuniform($filename,Model $model) {
                     'M' => $data[3],                      
                     'L'=>$data[4],
                     'XL'=>$data[5],
-                    '2XL' => $data[6],
-                    '3XL' => $data[7],
-                    '4XL' => $data[8],
-                    '5XL' => $data[9],
-                    '6XL'  => $data[10],
-                    'dzongkhag'  => $data[11]                    
+                    'Size_2XL' => $data[6],
+                    'Size_3XL' => $data[7],
+                    'Size_4XL' => $data[8],
+                    'Size_5XL' => $data[9],
+                    'Size_6XL'  => $data[10],
+                    'shoe_3' =>$data[11],
+                    'shoe_4' =>$data[12],
+                    'shoe_5' =>$data[13],
+                    'shoe_6' =>$data[14],
+                    'shoe_7' =>$data[15],
+                    'shoe_8' =>$data[16],
+                    'shoe_9' =>$data[17],
+                    'shoe_10' =>$data[18],
+                    'shoe_11' =>$data[19],
+                    'shoe_12' =>$data[20],
+                    'shoe_13' =>$data[21],
+                    'shoe_14' =>$data[22],
+                    'shoe_15' =>$data[23],                   
+                    'dzongkhag'  => $data[24]                    
 
 
                 ];

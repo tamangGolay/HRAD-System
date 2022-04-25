@@ -1,3 +1,4 @@
+
 <div class="row ">
 	<div class="col">
 		<div class="card ">
@@ -27,9 +28,8 @@
 								<th>5XL</th>
 								<th>6XL</th>
 								<th>Dzongkhag</th>
-
-
 							</tr>
+							
 						</thead>
 						<tbody> @foreach($data2 as $rv)
 							<tr>
@@ -40,9 +40,14 @@
 								<td> {{$rv->M}} </td>
 								<td> {{$rv->L}} </td>
                                 <td> {{$rv->XL}} </td>	
-								<td> {{$rv->"2XL"}} </td>														
+								<td> {{$rv->Size_2XL}} </td>
+								<td> {{$rv->Size_3XL}} </td>
+								<td> {{$rv->Size_4XL}} </td>
+								<td> {{$rv->Size_5XL}} </td>
+								<td> {{$rv->Size_6XL}} </td>
 
-								<td> {{$rv->Dzongkhag_Name}} </td>							
+								<td> {{$rv->Dzongkhag_Name}} </td>
+
 				</form>
 			</td>
 			</tr> @endforeach </tbody>
@@ -54,6 +59,7 @@
 			</div>
 			</div>
 		</div>
+		
 
 		
 		
@@ -88,7 +94,7 @@
 		<!-- called in bose.css -->
 
 		<script>
-	
+
 		$(function() {
 			$("#table1").DataTable({
 				"dom": 'Bfrtip',
@@ -117,7 +123,7 @@
         // Hide the actual submit button and move it to the beginning of the form
         $(this).hide();
         form.prepend($(this));
-    });
+    }); 
 	});
-
-		</script>
+	</script>
+	

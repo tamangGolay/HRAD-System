@@ -143,6 +143,7 @@ class FormsController extends Controller
                  
            ->select('employeeuniform.id', 'employeeuniform.emp_id', 'orgunit.description','employeeuniform.name', 'employeeuniform.shirt', 'employeeuniform.pant', 'employeeuniform.jacket', 'employeeuniform.raincoat', 'employeeuniform.jumboot', 'employeeuniform.shoe')
             ->paginate(10000);
+            
 
                $rhtml = view('uniform.uniformReport')->with(['data1' => $data1])->render();
                return response()
@@ -153,7 +154,7 @@ class FormsController extends Controller
         }
         //end of uniform report for individual employee
 
-         //uniform report for individual employee
+         //uniform report for offfice wise
        if ($request->v == "officeuniformReport")  
        {
 
@@ -162,8 +163,12 @@ class FormsController extends Controller
         ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
         
                  
-           ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.S','officeuniform.M','officeuniform.L', 'officeuniform.XL','officeuniform.2XL','officeuniform.3XL','officeuniform.4XL','officeuniform.5XL','officeuniform.6XL')
-            ->paginate(10000);
+           ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.S','officeuniform.M','officeuniform.L', 'officeuniform.XL','officeuniform.Size_2XL','officeuniform.Size_3XL','officeuniform.Size_4XL','officeuniform.Size_5XL','officeuniform.Size_6XL')
+           ->where('officeuniform.id',1) 
+           ->orwhere('officeuniform.id',2) 
+           ->orwhere('officeuniform.id',3) 
+           ->orwhere('officeuniform.id',6) 
+           ->paginate(10000);
 
                $rhtml = view('uniform.officeUniformReport')->with(['data2' => $data2])->render();
                return response()
@@ -172,7 +177,7 @@ class FormsController extends Controller
                    'html' => $rhtml
                ));   
         }
-        //end of uniform report for individual employee
+        //end of uniform report for office wise
 
 
 
@@ -202,8 +207,8 @@ class FormsController extends Controller
 
 //Conference Report
 if ($request->v == "cReports")
-         {
-            
+
+         {            
             $review = DB::table('conferencerequest')
     //    ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
     //    ->join('status', 'status.id', '=', 'vehiclerequest.status')
@@ -254,16 +259,13 @@ if ($request->v == "guestHouseReports")
 
        if ($request->v == "userListHR")
        {
-
-
          
                $roles = Roles::all();
                $orgunit = orgunit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
 
-
-        
+       
 
 
            $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')

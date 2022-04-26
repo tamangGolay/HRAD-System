@@ -8,7 +8,7 @@
               </h5> </div>
 			</div>
 			<!--/card-header-->
-			<form method="POST" action="/vehicleapprove" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+			<form method="POST" action="/nieuws" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 				<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 				<div class="card-body table-responsive p-0">
 					<table id="table1" class="table table-hover table-striped table-bordered">
@@ -24,6 +24,7 @@
 								<th>Shoe Size</th>
                                 <th> Gumboot Size </th>
                                 <th> Raincoat Size </th>
+								<th> Delete </th>
 							</tr>
 						</thead>
 						<tbody> @foreach($data1 as $rv)
@@ -37,18 +38,20 @@
 								<td> {{$rv->jacket}} </td>
                                 <td> {{$rv->shoe}} </td>
 								<td> {{$rv->jumboot}}  </td>
-								<td> {{$rv->raincoat}}  </td>						
+								<td> {{$rv->raincoat}}  </td>	</form>
 								
-				
-
-			</form>
-			</td>
-			</tr> @endforeach </tbody>
-			</table>
-			<!-- <div class="float-right"> {{$data1->links()}} </div> -->
+						<td>  <form method="POST" action="{{ route('nieuws', [$rv->id]) }}">
+    								{{ csrf_field() }}  {{ method_field('DELETE') }}
+   								<button type="submit">Delete</button>
+										
+									</form> 
+								</td> 		                        
+		                      	</tr> @endforeach </tbody>
+			                </table>
+			 <div class="float-right"> {{$data1->links()}} </div> 
 			<div>
 				<!--/card-body-->
-				</form>
+				
 			</div>
 			</div>
 		</div>

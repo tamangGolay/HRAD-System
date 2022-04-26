@@ -315,8 +315,15 @@ Route::resource('conferenceReport', 'conferenceReportController');//conference r
 //route for clash
 Route::get('/clash/{id}', 'GetMastersController@clashview')->name('/clash');
 
-
-
 //Uniform Routes
 
 Route::post('/uniform','UniformController@store')->name('uniform');
+
+Route::post('/delete','UniformController@delete')->name('delete');
+
+Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('destroy');
+
+// for uniform deleting
+Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
+
+// Route::post('/nieuws/{id}', 'uniformController@decrement')->name('nieuws');

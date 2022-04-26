@@ -35,7 +35,27 @@
 							<tr>
 								<td> {{$rv->id}} </td>										
                                 <td> {{$rv->description}} </td>	
-								<td> {{$rv->uniform_id}} </td>
+								<td> 
+									@if ($rv->uniform_id ==1 )
+										Pant
+									
+									@elseif($rv->uniform_id ==2 )
+										Shirt
+																			
+									@elseif ($rv->uniform_id ==3 )
+										Jacket
+									
+									@elseif($rv->uniform_id ==4 )
+										Shoe
+									
+									@elseif ($rv->uniform_id ==5 )
+										Gumboot
+									
+									@else ($rv->uniform_id ==6 )
+										Raincoat
+									@endif
+
+								</td>
                                 <td> {{$rv->S}} </td>
 								<td> {{$rv->M}} </td>
 								<td> {{$rv->L}} </td>

@@ -313,5 +313,17 @@ class UniformController extends Controller
 
     //logic for decrement 
 
-   
+    public function destroy($id)
+    {
+    $rv = UniformEmployee::findOrFail($id);
+
+    $rv->delete();
+
+    return redirect('/home')->with('page', 'uniformReport')
+    ->with('success', 'The record is deleted!! ');
+}
+    
+//end of delete conference
+
+ 
 }

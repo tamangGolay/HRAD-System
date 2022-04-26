@@ -15,8 +15,8 @@
 						<thead>
 							<tr class="text-nowrap">
 								<th>Sl.No</th>
-								<th>Org Unit</th>
-								<th>Uniform Id</th>
+								<th>Division</th>
+								<th>Uniform Name</th>
 								<th>3</th>
 								<th>4</th>
 								<th>5</th>
@@ -39,7 +39,28 @@
 							<tr>
 								<td> {{$rv->id}} </td>
 								<td> {{$rv->description}} </td>
-								<td> {{$rv->uniform_id}} </td>
+								<td> 
+								  @if ($rv->uniform_id ==1 )
+										Pant
+									
+									@elseif($rv->uniform_id ==2 )
+										Shirt
+																			
+									@elseif ($rv->uniform_id ==3 )
+										Jacket
+									
+									@elseif($rv->uniform_id ==4 )
+										Shoe
+									
+									@elseif ($rv->uniform_id ==5 )
+										Gumboot
+									
+									@else ($rv->uniform_id ==6 )
+										Raincoat
+									@endif
+
+									</td>
+
 								<td> {{$rv->shoe_3}} </td>
 								<td> {{$rv->shoe_4}} </td>
 								<td> {{$rv->shoe_5}} </td>
@@ -54,8 +75,7 @@
 								<td> {{$rv->shoe_14}} </td>
 								<td> {{$rv->shoe_15}} </td>
 								<td> {{$rv->Dzongkhag_Name}} </td>
-								
-								
+																
 													
 			</form>
 			</td>

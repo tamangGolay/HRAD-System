@@ -326,4 +326,3 @@ Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('de
 // for uniform deleting
 Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
 
-// Route::post('/nieuws/{id}', 'uniformController@decrement')->name('nieuws');

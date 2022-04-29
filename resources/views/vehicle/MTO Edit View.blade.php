@@ -53,7 +53,7 @@
 								
 													
 						<td> <button type="submit" name="idl[]" id="idl" value="{{$rv->id}}" onclick="return confirm('Vehicle is back to HQ?');" class="btn btn-outline-success text-dark text-center "> 
-						Yes</button> 	
+						      Yes</button> 	
 					
 				     	</form>	</td>
 

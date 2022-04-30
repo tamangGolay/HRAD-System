@@ -32,117 +32,119 @@ class UniformController extends Controller
         //for pant id = 1
         if($request->pant_id == '1'){
             if($request->pant == 'S'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                // dd($request);
+
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('S');
             }
             if($request->pant == 'M'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('M');
             }
             if($request->pant == 'L'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('L');
             }
             if($request->pant == 'XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('XL');
             }
             if($request->pant == '2XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('Size_2XL');
             }
             if($request->pant == '3XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('Size_3XL');
             }
             if($request->pant == '4XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('Size_4XL');
             }
             if($request->pant == '5XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('Size_5XL');
             }
             if($request->pant == '6XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
+                $rv = DB::table('officeuniform')->where('uniform_id', 1)
                 ->increment('Size_6XL');
             }
         }
         //for shirt id = 2
         if($request->shirt_id == '2'){
             if($request->shirt == 'S'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('S');
             }
             if($request->shirt == 'M'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('M');
             }
             if($request->shirt == 'L'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('L');
             }
             if($request->shirt == 'XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('XL');
             }
             if($request->shirt == '2XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('Size_2XL');
             }
             if($request->shirt == '3XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('Size_3XL');
             }
             if($request->shirt == '4XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('Size_4XL');
             }
             if($request->shirt == '5XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('Size_5XL');
             }
             if($request->shirt == '6XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->increment('Size_6XL');
             }
         }
         //for jacket id = 3
         if($request->jacket_id == '3'){
             if($request->jacket == 'S'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('S');
             }
             if($request->jacket == 'M'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('M');
             }
             if($request->jacket == 'L'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('L');
             }
             if($request->jacket == 'XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('XL');
             }
             if($request->jacket == '2XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('Size_2XL');
             }
             if($request->jacket == '3XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('Size_3XL');
             }
             if($request->jacket == '4XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('Size_4XL');
             }
             if($request->jacket == '5XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('Size_5XL');
             }
             if($request->jacket == '6XL'){
-                $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                $rv = DB::table('officeuniform')->where('uniform_id', 3)
                 ->increment('Size_6XL');
             }
         }
@@ -151,55 +153,55 @@ class UniformController extends Controller
          if($request->shoe_id == '4'){
 
             if($request->shoe == '3'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_3');
             }
             if($request->shoe == '4'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_4');
             }
             if($request->shoe == '5'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_5');
             }
             if($request->shoe == '6'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_6');
             }
             if($request->shoe == '7'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_7');
             }
             if($request->shoe == '8'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_8');
             }
             if($request->shoe == '9'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_9');
             }
             if($request->shoe == '10'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_10');
             }
             if($request->shoe == '11'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_11');
             }
             if($request->shoe == '12'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_12');            
             }
             if($request->shoe == '13'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_13');
             }
             if($request->shoe == '14'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_14');
             }
             if($request->shoe == '15'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 4)
+                $rv = DB::table('officeuniform')->where('uniform_id', 4)
                 ->increment('shoe_15');
             }
     } // end for shoe id=4
@@ -208,55 +210,55 @@ class UniformController extends Controller
     if($request->jumboot_id == '5'){
 
         if($request->jumboot == '3'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_3');
         }
         if($request->jumboot == '4'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_4');
         }
         if($request->jumboot == '5'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_5');
         }
         if($request->jumboot == '6'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_6');
         }
         if($request->jumboot == '7'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_7');
         }
         if($request->jumboot == '8'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_8');
         }
         if($request->jumboot == '9'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_9');
         }
         if($request->jumboot == '10'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_10');
         }
         if($request->jumboot == '11'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_11');
         }
         if($request->jumboot == '12'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_12');            
         }
         if($request->jumboot == '13'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_13');
         }
         if($request->jumboot == '14'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_14');
         }
         if($request->jumboot == '15'){
-            $shoe = DB::table('officeuniform')->where('uniform_id', 5)
+            $rv = DB::table('officeuniform')->where('uniform_id', 5)
             ->increment('shoe_15');
         }
 } // end for gumboot id=5
@@ -266,39 +268,39 @@ class UniformController extends Controller
         //for raincoat id = 6
         if($request->raincoat_id == '6'){
             if($request->raincoat == 'S'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('S');
             }
             if($request->raincoat == 'M'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('M');
             }
             if($request->raincoat == 'L'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('L');
             }
             if($request->raincoat == 'XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('XL');
             }
             if($request->raincoat == '2XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('Size_2XL');
             }
             if($request->raincoat == '3XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('Size_3XL');
             }
             if($request->raincoat == '4XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('Size_4XL');
             }
             if($request->raincoat == '5XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('Size_5XL');
             }
             if($request->raincoat == '6XL'){
-                $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
+                $rv = DB::table('officeuniform')->where('uniform_id', 6)
                 ->increment('Size_6XL');
             }
         }
@@ -316,318 +318,225 @@ class UniformController extends Controller
     public function destroy($id)
     {
     $rv = UniformEmployee::findOrFail($id);
+    // dd($rv);
+    $dbPant = DB::table('officeuniform')->where('uniform_id', 1);
+    $dbShirt = DB::table('officeuniform')->where('uniform_id', 2);
+    $dbJacket = DB::table('officeuniform')->where('uniform_id', 3);
+    $dbShoe = DB::table('officeuniform')->where('uniform_id', 4);
+    $dbGumboot = DB::table('officeuniform')->where('uniform_id', 5);
+    $dbRaincoat = DB::table('officeuniform')->where('uniform_id', 6);
 
-    // $id = DB::table('employeeuniform')->select('id')
-    // ->where('id', $id)
-    // ->first();
 
-    $org_unit_id = DB::table('employeeuniform')->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
-    ->select('org_unit_id', 'description')
-    ->where('employeeuniform.id', '=', $id)
-    ->first();
 
-    $pant = DB::table('employeeuniform')->select('pant')
-    ->where('id', '=', $id)
-    ->first();  
-    
-    // dd($pant->pant);
-    
-    $shirt = DB::table('employeeuniform')->select('shirt')
-    ->where('id', '=', $id)
-    ->first();   
-
-    $jacket = DB::table('employeeuniform')->select('jacket')
-    ->where('id', '=', $id)
-    ->first();   
-
-    $raincoat = DB::table('employeeuniform')->select('raincoat')
-    ->where('id', '=', $id)
-    ->first();   
-
-    $shoe = DB::table('employeeuniform')->select('shoe')
-    ->where('id', '=', $id)
-    ->first();   
-
-    $jumboot = DB::table('employeeuniform')->select('jumboot')
-    ->where('id', '=', $id)
-    ->first();   
-
-    if($org_unit_id->org_unit_id == 44){
+    if($rv->org_unit_id == 44){
         //for pant id = 1
+       
+            if($rv->pant == 'S'){
+                $dbPant->decrement('S');
+            }
+            if($rv->pant == 'M'){
+                $dbPant->decrement('M');
+            }
+            if($rv->pant == 'L'){
+                $dbPant->decrement('L');
+            }
+            if($rv->pant == 'XL'){
+                $dbPant->decrement('XL');
+            }
+            if($rv->pant == '2XL'){
+                $dbPant->decrement('Size_2XL');
+            }
+            if($rv->pant == '3XL'){
+                $dbPant->decrement('Size_3XL');
+            }
+            if($rv->pant == '4XL'){
+                $dbPant->decrement('Size_4XL');
+            }
+            if($rv->pant == '5XL'){
+                $dbPant->decrement('Size_5XL');
+            }
+            if($rv->pant == '6XL'){
+                $dbPant->decrement('Size_6XL');
+            }
+
         
-            if($pant->pant == 'S'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('S');
-            }
-            if($pant->pant == 'M'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('M');
-            }
-            if($pant->pant == 'L'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('L');
-            }
-            if($pant->pant == 'XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('XL');
-            }
-            if($pant->pant == '2XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('Size_2XL');
-            }
-            if($pant->pant == '3XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('Size_3XL');
-            }
-            if($pant->pant == '4XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('Size_4XL');
-            }
-            if($pant->pant == '5XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('Size_5XL');
-            }
-            if($pant->pant == '6XL'){
-                $pant = DB::table('officeuniform')->where('uniform_id', 1)
-                ->decrement('Size_6XL');
-            }
             
              //for shirt id = 2
         
-            if($shirt->shirt == 'S'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('S');
+            if($rv->shirt == 'S'){
+                $dbShirt->decrement('S');
             }
-            if($shirt->shirt == 'M'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('M');
+            if($rv->shirt == 'M'){
+                $dbShirt->decrement('M');
             }
-            if($shirt->shirt == 'L'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('L');
+            if($rv->shirt == 'L'){
+                $dbShirt->decrement('L');
             }
-            if($shirt->shirt == 'XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('XL');
+            if($rv->shirt == 'XL'){
+                $dbShirt->decrement('XL');
             }
-            if($shirt->shirt == '2XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('Size_2XL');
+            if($rv->shirt == '2XL'){
+                $dbShirt->decrement('Size_2XL');
             }
-            if($shirt->shirt == '3XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('Size_3XL');
+            if($rv->shirt == '3XL'){
+                $dbShirt->decrement('Size_3XL');
             }
-            if($shirt->shirt == '4XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('Size_4XL');
+            if($rv->shirt == '4XL'){
+                $dbShirt->decrement('Size_4XL');
             }
-            if($shirt->shirt == '5XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
+            if($rv->shirt == '5XL'){
+                $rv = DB::table('officeuniform')->where('uniform_id', 2)
                 ->decrement('Size_5XL');
             }
-            if($shirt->shirt == '6XL'){
-                $shirt = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('Size_6XL');
-                  }
+            if($rv->shirt == '6XL'){
+                $dbShirt->decrement('Size_6XL');
+            }
 
                   // for uniform id=3 (jacket)
 
-                if($jacket->jacket == 'S'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('S');
+                if($rv->jacket == 'S'){
+                    $dbJacket->decrement('S');
                 }
-                if($jacket->jacket == 'M'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('M');
+                if($rv->jacket == 'M'){
+                    $dbJacket->decrement('M');
                 }
-                if($jacket->jacket == 'L'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('L');
+                if($rv->jacket == 'L'){
+                    $dbJacket->decrement('L');
                 }
-                if($jacket->jacket == 'XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('XL');
+                if($rv->jacket == 'XL'){
+                    $dbJacket->decrement('XL');
                 }
-                if($jacket->jacket == '2XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('Size_2XL');
+                if($rv->jacket == '2XL'){
+                    $dbJacket->decrement('Size_2XL');
                 }
-                if($jacket->jacket == '3XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('Size_3XL');
+                if($rv->jacket == '3XL'){
+                    $dbJacket->decrement('Size_3XL');
                 }
-                if($jacket->jacket == '4XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
+                if($rv->jacket == '4XL'){
+                    $rv = DB::table('officeuniform')->where('uniform_id', 3)
                     ->decrement('Size_4XL');
                 }
-                if($jacket->jacket == '5XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('Size_5XL');
+                if($rv->jacket == '5XL'){
+                    $dbJacket->decrement('Size_5XL');
                 }
-                if($jacket->jacket == '6XL'){
-                    $jacket = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('Size_6XL');
+                if($rv->jacket == '6XL'){
+                    $dbJacket->decrement('Size_6XL');
                 }
             
     
              //for shoe id = 4
                  
-                if($shoe->shoe == '3'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_3');
+                if($rv->shoe == '3'){
+                    $dbShoe->decrement('shoe_3');
                 }
-                if($shoe->shoe == '4'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_4');
+                if($rv->shoe == '4'){
+                    $dbShoe->decrement('shoe_4');
                 }
-                if($shoe->shoe == '5'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_5');
+                if($rv->shoe == '5'){
+                    $dbShoe->decrement('shoe_5');
                 }
-                if($shoe->shoe == '6'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_6');
+                if($rv->shoe == '6'){
+                    $dbShoe->decrement('shoe_6');
                 }
-                if($shoe->shoe == '7'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_7');
+                if($rv->shoe == '7'){
+                    $dbShoe->decrement('shoe_7');
                 }
-                if($shoe->shoe == '8'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_8');
+                if($rv->shoe == '8'){
+                    $dbShoe->decrement('shoe_8');
                 }
-                if($shoe->shoe == '9'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_9');
+                if($rv->shoe == '9'){
+                    $dbShoe->decrement('shoe_9');
                 }
-                if($shoe->shoe == '10'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_10');
+                if($rv->shoe == '10'){
+                    $dbShoe->decrement('shoe_10');
                 }
-                if($shoe->shoe == '11'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_11');
+                if($rv->shoe == '11'){
+                    $dbShoe->decrement('shoe_11');
                 }
-                if($shoe->shoe == '12'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_12');            
+                if($rv->shoe == '12'){
+                    $dbShoe->decrement('shoe_12');            
                 }
-                if($shoe->shoe == '13'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_13');
+                if($rv->shoe == '13'){
+                    $dbShoe->decrement('shoe_13');
                 }
-                if($shoe->shoe == '14'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_14');
+                if($rv->shoe == '14'){
+                    $dbShoe->decrement('shoe_14');
                 }
-                if($shoe->shoe == '15'){
-                    $shoe = DB::table('officeuniform')->where('uniform_id', 4)
-                    ->decrement('shoe_15');
+                if($rv->shoe == '15'){
+                    $dbShoe->decrement('shoe_15');
                 }
-        
-    
         //for Gumboot id = 5        
     
-            if($jumboot->jumboot == '3'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_3');
+            if($rv->jumboot == '3'){
+                $dbGumboot->decrement('shoe_3');
             }
-            if($jumboot->jumboot == '4'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_4');
+            if($rv->jumboot == '4'){
+                $dbGumboot->decrement('shoe_4');
             }
-            if($jumboot->jumboot == '5'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_5');
+            if($rv->jumboot == '5'){
+                $dbGumboot->decrement('shoe_5');
             }
-            if($jumboot->jumboot == '6'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_6');
+            if($rv->jumboot == '6'){
+                $dbGumboot->decrement('shoe_6');
             }
-            if($jumboot->jumboot == '7'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_7');
+            if($rv->jumboot == '7'){
+                $dbGumboot->decrement('shoe_7');
             }
-            if($jumboot->jumboot == '8'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_8');
+            if($rv->jumboot == '8'){
+                $dbGumboot->decrement('shoe_8');
             }
-            if($jumboot->jumboot == '9'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_9');
+            if($rv->jumboot == '9'){
+                $dbGumboot->decrement('shoe_9');
             }
-            if($jumboot->jumboot == '10'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_10');
+            if($rv->jumboot == '10'){
+                $dbGumboot->decrement('shoe_10');
             }
-            if($jumboot->jumboot == '11'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_11');
+            if($rv->jumboot == '11'){
+                $dbGumboot->decrement('shoe_11');
             }
-            if($jumboot->jumboot == '12'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_12');            
+            if($rv->jumboot == '12'){
+                $dbGumboot->decrement('shoe_12');            
             }
-            if($jumboot->jumboot == '13'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_13');
+            if($rv->jumboot == '13'){
+                $dbGumboot->decrement('shoe_13');
             }
-            if($jumboot->jumboot == '14'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_14');
+            if($rv->jumboot == '14'){
+                $dbGumboot->decrement('shoe_14');
             }
-            if($jumboot->jumboot == '15'){
-                $shoe = DB::table('officeuniform')->where('uniform_id', 5)
-                ->decrement('shoe_15');
+            if($rv->jumboot == '15'){
+                $dbGumboot->decrement('shoe_15');
             }
         // end for gumboot id=5
     
-    
-    
             //for raincoat id = 6
             
-                if($raincoat->raincoat == 'S'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('S');
+                if($rv->raincoat == 'S'){
+                    $dbRaincoat->decrement('S');
                 }
-                if($raincoat->raincoat == 'M'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('M');
+                if($rv->raincoat == 'M'){
+                    $dbRaincoat->decrement('M');
                 }
-                if($raincoat->raincoat == 'L'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('L');
+                if($rv->raincoat == 'L'){
+                    $dbRaincoat->decrement('L');
                 }
-                if($raincoat->raincoat == 'XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('XL');
+                if($rv->raincoat == 'XL'){
+                    $dbRaincoat->decrement('XL');
                 }
-                if($raincoat->raincoat == '2XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('Size_2XL');
+                if($rv->raincoat == '2XL'){
+                    $dbRaincoat->decrement('Size_2XL');
                 }
-                if($raincoat->raincoat == '3XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('Size_3XL');
+                if($rv->raincoat == '3XL'){
+                    $dbRaincoat->decrement('Size_3XL');
                 }
-                if($raincoat->raincoat == '4XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('Size_4XL');
+                if($rv->raincoat == '4XL'){
+                    $dbRaincoat->decrement('Size_4XL');
                 }
-                if($raincoat->raincoat == '5XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('Size_5XL');
+                if($rv->raincoat == '5XL'){
+                    $dbRaincoat->decrement('Size_5XL');
                 }
-                if($raincoat->raincoat == '6XL'){
-                    $raincoat = DB::table('officeuniform')->where('uniform_id', 6)
-                    ->decrement('Size_6XL');
+                if($rv->raincoat == '6XL'){
+                    $dbRaincoat->decrement('Size_6XL');
                 }
-        
-
-            
-            
-                               
         }
 
     $rv->delete();

@@ -367,6 +367,31 @@ class GetMastersController extends Controller
             }
 
         }
+  
+        // user uniform record add
+        if ($table == 'useruniformadd')
+        {
+
+            //check cid if already in database.
+            if (DB::table('employeeuniform')->where('employeeuniform.emp_id', $value)->exists())
+            {
+                $emp = DB::table('employeeuniform')
+            ->select('employeeuniform.emp_id'
+            )
+                    ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
+        }
+
 
     }
 

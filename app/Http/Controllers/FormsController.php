@@ -137,6 +137,7 @@ class FormsController extends Controller
        //uniform report for individual employee
        if ($request->v == "uniformReport") 
        {
+           try{
 
         $data1 = DB::table('employeeuniform')
         ->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
@@ -150,11 +151,30 @@ class FormsController extends Controller
                    ->json(array(
                    'success' => true,
                    'html' => $rhtml
-               ));   
-        }
-        //end of uniform report for individual employee
+               ));  
+            }
+            catch(\Facade\Ignition\Exceptions\ViewException $e) {
 
+                $data1 = DB::table('employeeuniform')
+                ->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
+                         
+                   ->select('employeeuniform.id', 'employeeuniform.emp_id', 'orgunit.description','employeeuniform.name', 'employeeuniform.shirt', 'employeeuniform.pant', 'employeeuniform.jacket', 'employeeuniform.raincoat', 'employeeuniform.jumboot', 'employeeuniform.shoe')
+                    ->paginate(10000);
+                            
+                       $rhtml = view('uniform.uniformReportE')->with(['data1' => $data1])->render();
+                       return response()
+                           ->json(array(
+                           'success' => true,
+                           'html' => $rhtml
+                       ));  
+
+
+            } 
+        }
+
+        //end of uniform report for individual employee
          //uniform report for offfice wise
+
        if ($request->v == "officeuniformReport")  
        {
 
@@ -640,7 +660,8 @@ $bookedv = DB::table('vehiclerequest')
                                             }
 
                                             catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                                $wangtsaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
+                                                $wangtsaReview = DB::table('roombed')
+                                                ->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
                                                 ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
                                                 ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
                                                 ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 

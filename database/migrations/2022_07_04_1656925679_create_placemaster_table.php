@@ -10,10 +10,13 @@ class CreatePlacemasterTable extends Migration
     {
         Schema::create('placemaster', function (Blueprint $table) {
 
-		$table->integer('placeId',5);
-		$table->string('placeName',100);
-		$table->integer('villageId');
-		$table->integer('townId');
+		$table->integer('PlaceId');
+		$table->string('PlaceName');
+		$table->string('Dzongkhag');
+        $table->string('Drungkhag');
+        $table->string('Gewog');
+        $table->string('Village');
+
 
         });
     }

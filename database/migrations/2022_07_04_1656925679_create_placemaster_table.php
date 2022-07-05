@@ -10,12 +10,13 @@ class CreatePlacemasterTable extends Migration
     {
         Schema::create('placemaster', function (Blueprint $table) {
 
-		$table->integer('PlaceId');
+		$table->id();
 		$table->string('PlaceName');
-		$table->string('Dzongkhag');//fk
+		$table->foreignId('Dzongkhag')->references('id')->on('dzongkhagmaster');
         $table->string('Drungkhag');
-        $table->string('Gewog');//fk
+        $table->foreignId('Gewog')->references('id')->on('gewogmaster');
         $table->string('Village');
+
 
 
         });

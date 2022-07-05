@@ -12,9 +12,9 @@ class CreatePlacemasterTable extends Migration
 
 		$table->integer('PlaceId');
 		$table->string('PlaceName');
-		$table->string('Dzongkhag');
+		$table->string('Dzongkhag');//fk
         $table->string('Drungkhag');
-        $table->string('Gewog');
+        $table->string('Gewog');//fk
         $table->string('Village');
 
 

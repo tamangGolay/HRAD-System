@@ -12,8 +12,8 @@ class CreatetransfermasterTable extends Migration
 
 		$table->integer('personalNo');  //fk md employee master
 		$table->date('transferDate');
-        $table->string('transferFrom');
-        $table->string('transferTo');
+        $table->string('transferFrom'); //fk md officeMaster
+        $table->string('transferTo');//fk md officeMaster
         $table->date('status');
         $table->string('remarks');
 

@@ -304,8 +304,6 @@ class UniformController extends Controller
                 ->increment('Size_6XL');
             }
         }
-
-        
     }
      
     return redirect('/home')->with('page', 'uniform')
@@ -319,6 +317,7 @@ class UniformController extends Controller
     {
     $rv = UniformEmployee::findOrFail($id);
     // dd($rv);
+
     $dbPant = DB::table('officeuniform')->where('uniform_id', 1);
     $dbShirt = DB::table('officeuniform')->where('uniform_id', 2);
     $dbJacket = DB::table('officeuniform')->where('uniform_id', 3);
@@ -385,8 +384,7 @@ class UniformController extends Controller
                 $dbShirt->decrement('Size_4XL');
             }
             if($rv->shirt == '5XL'){
-                $rv = DB::table('officeuniform')->where('uniform_id', 2)
-                ->decrement('Size_5XL');
+                $dbShirt->decrement('Size_5XL');
             }
             if($rv->shirt == '6XL'){
                 $dbShirt->decrement('Size_6XL');
@@ -413,8 +411,8 @@ class UniformController extends Controller
                     $dbJacket->decrement('Size_3XL');
                 }
                 if($rv->jacket == '4XL'){
-                    $rv = DB::table('officeuniform')->where('uniform_id', 3)
-                    ->decrement('Size_4XL');
+                    
+                    $dbJacket->decrement('Size_4XL');
                 }
                 if($rv->jacket == '5XL'){
                     $dbJacket->decrement('Size_5XL');

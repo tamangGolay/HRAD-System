@@ -175,6 +175,7 @@
 </div>
 
 <script type="text/javascript">
+
 function nima()
 {
     if(document.getElementById('emp_id').value[0] == '3' ){
@@ -211,7 +212,24 @@ function getEmployeeDetails(val)
                         document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
 				    }                       
                 })
-            });
+            }); 
+
+
+	//pulling records using cid from checkin table 
+	var csrftoken = document.getElementById('tokenid').value;
+	$.get('/getValues?source=useruniformadd&info=' + val + '&token=' + csrftoken, function(data) {
+		console.log(data);
+		// document.getElementById('nameid').value =  '';
+		document.getElementById('empid').innerHTML = '';
+		$.each(data, function(index, Employee) {
+			if(Employee.emp_id != null) {                  
+				document.getElementById('empid').innerHTML = 'Record already exist for this employee!!';
+				document.getElementById('emp_id').value = '';
+			}
+		})
+	});
+
+
 }  
 $('div.alert').delay(4500).slideUp(300);// Session message  display time
 </script>

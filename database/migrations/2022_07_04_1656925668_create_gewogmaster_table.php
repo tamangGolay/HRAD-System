@@ -10,11 +10,10 @@ class CreateGewogmasterTable extends Migration
     {
         Schema::create('gewogmaster', function (Blueprint $table) {
 
-		$table->integer('gewogId');
+		$table->id();
 		$table->string('gewogName');
-		$table->integer('drungkhag');
-		$table->integer('dzongkhag');
-
+        $table->foreignId('dzongkhagId')->references('id')->on('dzongkhagmaster');
+		
         });
     }
 

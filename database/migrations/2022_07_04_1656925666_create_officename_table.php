@@ -10,7 +10,7 @@ class CreateOfficenameTable extends Migration
     {
         Schema::create('officename', function (Blueprint $table) {
 
-		$table->id('officeNameId');
+		$table->id();
 		$table->string('shortOfficeName');
 		$table->string('longOfficeName');
 

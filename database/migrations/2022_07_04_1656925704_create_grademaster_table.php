@@ -11,9 +11,8 @@ class CreateGrademasterTable extends Migration
         Schema::create('grademaster', function (Blueprint $table) {
 
             $table->id();
-
             $table->string('grade');
-		$table->char('level');
+		    $table->char('level');
 
         });
     }

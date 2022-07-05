@@ -10,13 +10,13 @@ class CreateCompanymasterTable extends Migration
     {
         Schema::create('companymaster', function (Blueprint $table) {
 
-		$table->integer('CompanyId');
-		$table->string('ComNameShort');
-		$table->string('ComNameLong');
-		$table->integer('ComReportsTo');
-		$table->integer('CreatedBy');
-		$table->timestamp('CreatedOn');
-		$table->integer('ModifiedBy');
+		$table->integer('companyId');
+		$table->string('comNameShort');
+		$table->string('comNameLong');
+		$table->integer('comReportsTo');
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
 
         });
     }

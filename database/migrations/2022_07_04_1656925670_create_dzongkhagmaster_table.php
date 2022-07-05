@@ -10,8 +10,8 @@ class CreateDzongkhagmasterTable extends Migration
     {
         Schema::create('dzongkhagmaster', function (Blueprint $table) {
 
-		$table->integer('DzongkhagId',2);
-		$table->string('DzongkhagName',50);
+		$table->integer('dzongkhagId',2);
+		$table->string('dzongkhagName',50);
 
         });
     }

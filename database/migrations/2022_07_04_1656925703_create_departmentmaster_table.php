@@ -10,16 +10,16 @@ class CreateDepartmentmasterTable extends Migration
     {
         Schema::create('departmentmaster', function (Blueprint $table) {
 
-		$table->integer('DepartmentId');
-		$table->string('DeptNameShort');
-		$table->string('DeptNameLong');
-		$table->integer('DeptHead');
-		$table->integer('DeptReportsToService');
-		$table->integer('DeptReportsToCompany');
-		$table->integer('DeptReportsToEmp');
-		$table->integer('CreatedBy');
-		$table->timestamp('CreatedOn');
-		$table->integer('ModifiedBy');
+		$table->integer('departmentId');
+		$table->string('deptNameShort');
+		$table->string('deptNameLong');
+		$table->integer('deptHead');
+		$table->integer('deptReportsToService');
+		$table->integer('deptReportsToCompany');
+		$table->integer('deptReportsToEmp');
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
 
         });
     }

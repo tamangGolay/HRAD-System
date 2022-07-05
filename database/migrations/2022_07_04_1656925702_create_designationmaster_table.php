@@ -10,10 +10,10 @@ class CreateDesignationmasterTable extends Migration
     {
         Schema::create('designationmaster', function (Blueprint $table) {
 
-		$table->integer('DesignationId');
-		$table->string('DesisNameShort');
-		$table->string('DesisNameLong');
-		$table->integer('CreatedBy');
+		$table->integer('designationId');
+		$table->string('desisNameShort');
+		$table->string('desisNameLong');
+		$table->integer('dreatedBy');
 
         });
     }

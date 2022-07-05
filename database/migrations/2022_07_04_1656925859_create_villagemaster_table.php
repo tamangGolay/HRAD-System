@@ -10,9 +10,9 @@ class CreateVillagemasterTable extends Migration
     {
         Schema::create('villagemaster', function (Blueprint $table) {
 
-		$table->integer('VillageId');
-		$table->string('VillageName');
-		$table->integer('Gewog');
+		$table->integer('villageId');
+		$table->string('villageName');
+		$table->integer('gewog');
 
         });
     }

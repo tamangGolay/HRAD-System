@@ -326,3 +326,5 @@ Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('de
 // for uniform deleting
 Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
 
+//For MasterData
+Route::post('user','MasterDataController@storeUser')->name('user');

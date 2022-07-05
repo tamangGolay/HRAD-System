@@ -3309,6 +3309,31 @@ if ($request->v == "room_details")
             ));
         }
 
+        //employeemaster
+         //user add for login
+         if ($request->v == "employeeMaster")
+         {
+ 
+             $user = Auth::user();
+             $grade = Grade::all();
+             $dzongkhag = Dzongkhags::all();
+             $orgunit = orgunit::all();
+             $roles = roles::all();
+ 
+ 
+ 
+           
+             $rhtml = view('masterData.employeeMaster')->with(['roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //endemployeemaster
+
     }
 
 }

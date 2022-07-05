@@ -10,13 +10,13 @@ class CreateOfficemasterTable extends Migration
     {
         Schema::create('officemaster', function (Blueprint $table) {
 
-		$table->id('OfficeId');
-		$table->integer('OfficeType');
-		$table->integer('OfficeLinkId');
-		$table->integer('OfficeAddress');
-		$table->integer('CreatedBy');
-		$table->timestamp('CreatedOn');
-		$table->integer('ModifiedBy');
+		$table->id('officeId');
+		$table->integer('officeType');
+		$table->integer('officeLinkId');
+		$table->integer('officeAddress');
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
 
         });
     }

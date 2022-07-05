@@ -10,27 +10,27 @@ class CreateEmployeemasterTable extends Migration
     {
         Schema::create('employeemaster', function (Blueprint $table) {
 		$table->id();
-		$table->integer('EmpId');
-		$table->string('EmpName');
-		$table->string('BloodGroup');
-		$table->bigInteger('CIDNo');
-		$table->date('DOB');
-		$table->string('Gender');
-		$table->date('AppointmentDate');
-        $table->foreignId('Grade')->references('id')->on('grademaster');
-		$table->integer('Designation');//fk md_designation N
-		$table->foreignId('Office')->references('OfficeId')->on('officemaster');
-		$table->integer('BasicPay');
-		$table->string('EmpStatus');
-		$table->date('LastDoP');
-		$table->integer('MobileNo');
-		$table->string('EmailId');
+		$table->integer('empId');
+		$table->string('empName');
+		$table->string('bloodGroup');
+		$table->bigInteger('cidNo');
+		$table->date('dob');
+		$table->string('gender');
+		$table->date('appointmentDate');
+        $table->foreignId('grade')->references('id')->on('grademaster');
+		$table->integer('designation');//fk md_designation N
+		$table->foreignId('office')->references('OfficeId')->on('officemaster');
+		$table->integer('basicPay');
+		$table->string('empStatus');
+		$table->date('lastDop');
+		$table->integer('mobileNo');
+		$table->string('emailId');
 		$table->string('placeId');//fk md_placemaster N
 		$table->string('bankName');//fk md_bankmaster N
 		$table->string('resignationType'); //fk md_resignation_Type_Master N
 		$table->date('resignationDate'); 
 		$table->string('employmentType'); //frontEnd dropdown html
-		$table->string('IncrementCycle');
+		$table->string('incrementCycle');
 
         });
     }

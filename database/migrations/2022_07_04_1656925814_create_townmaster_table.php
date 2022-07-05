@@ -10,9 +10,9 @@ class CreateTownmasterTable extends Migration
     {
         Schema::create('townmaster', function (Blueprint $table) {
 
-		$table->integer('TownId');
-		$table->string('TownName');
-		$table->integer('GewogId');
+		$table->integer('townId');
+		$table->string('townName');
+		$table->integer('gewogId');
 
         });
     }

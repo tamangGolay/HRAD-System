@@ -12,8 +12,8 @@ class CreateGrademasterTable extends Migration
 
             $table->id();
 
-            $table->string('Grade');
-		$table->char('Level');
+            $table->string('grade');
+		$table->char('level');
 
         });
     }

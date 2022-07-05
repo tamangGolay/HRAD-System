@@ -2931,11 +2931,11 @@ if ($request->v == "vehicleReport")
  if ($request->v == "manage_vehicle")
  {
 
-     $conference = vehicles::all();
-     $review = DB::table('vehicledetails')->select('*')
-         ->paginate();
+    //  $conference = vehicles::all();
+    //  $review = DB::table('vehicledetails')->select('*')
+    //      ->paginate();
 
-     $rhtml = view('vehicle.manage_vehicle')->with(['review' => $review])->render();
+     $rhtml = view('vehicle.manage_vehicle')->render();
      return response()
          ->json(array(
          'success' => true,

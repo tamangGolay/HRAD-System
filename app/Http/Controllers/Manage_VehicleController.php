@@ -49,6 +49,7 @@ class Manage_VehicleController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->id);
         Vehicles::updateOrCreate(['id' => $request->id],
                 ['vehicle_name' => $request->name, 'vehicle_number' => $request->number]);        
    

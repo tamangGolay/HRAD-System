@@ -118,6 +118,7 @@ a {
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>   -->
 <script type="text/javascript">
   
+    //Loading the contents of the Datatable from here
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
@@ -130,15 +131,19 @@ a {
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
+
+    //After Clicking the Add New button it will trigger here
     $('#manageVehicle').click(function () {
         $('#vehicleButton').val("create-room");
-        $('#vehicle_id').val('');
+        // $('#vehicle_id').val('');
         $('#Form').trigger("reset");
         $('#modelHeading').html("Add new vehicle");
         $('#ajaxModel').modal('show');
 
        
     });
+
+  //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
       var vehicle_id = $(this).data('id');
      
@@ -152,6 +157,9 @@ a {
           $('#number').val(data.vehicle_number);
       })
    });
+
+//   After clicking save changes in Add and Edit it will trigger here
+
     $('#vehicleButton').click(function (e) {
        
         e.preventDefault();
@@ -194,6 +202,8 @@ a {
       });
     });
 
+  //  After clicking delete it will trigger here
+
     $('body').on('click', '.deleteVehicle', function () {
       var vehicle_id = $(this).data('id');
      
@@ -207,6 +217,8 @@ a {
           $('#number').val(data.vehicle_number);
       })
    });
+   
+  // after clicking yes in delete
     $('#vehicleDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');

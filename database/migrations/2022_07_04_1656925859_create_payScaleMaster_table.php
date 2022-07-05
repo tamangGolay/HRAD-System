@@ -14,7 +14,10 @@ class CreatepayscalemasterTable extends Migration
 		$table->integer('low'); 
 		$table->integer('increment');    
         $table->integer('high'); 
-        
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

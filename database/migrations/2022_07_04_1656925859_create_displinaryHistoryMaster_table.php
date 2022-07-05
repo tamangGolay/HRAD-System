@@ -14,7 +14,10 @@ class CreatedisplinaryhistorymasterTable extends Migration
 		$table->date('incrementDate');
 		$table->string('case');
         $table->string('action');
-       
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

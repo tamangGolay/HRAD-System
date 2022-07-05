@@ -10,9 +10,12 @@ class CreaterelationmasterTable extends Migration
     {
         Schema::create('relationmaster', function (Blueprint $table) {
 
-		
+        $table->id();
 		$table->string('relationshipName');
-		
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

@@ -14,9 +14,10 @@ class CreateOfficemasterTable extends Migration
         $table->foreignId('officeName')->references('id')->on('officename');
         $table->foreignId('officeAddress')->references('id')->on('placemaster');
         $table->integer('officeHead');
-		$table->integer('createdBy');
+        $table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

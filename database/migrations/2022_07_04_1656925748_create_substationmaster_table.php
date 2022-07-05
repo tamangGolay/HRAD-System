@@ -22,7 +22,9 @@ class CreateSubstationmasterTable extends Migration
 		$table->integer('ssReportsToCompany');
 		$table->integer('ssReportsToEmp');
 		$table->integer('createdBy');
-		$table->timestamp('createdOn')->nullable();
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

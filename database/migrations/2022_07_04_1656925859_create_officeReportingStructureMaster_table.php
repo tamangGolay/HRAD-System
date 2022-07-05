@@ -10,11 +10,14 @@ class CreateofficereportingstructuremasterTable extends Migration
     {
         Schema::create('officereportingstructuremaster', function (Blueprint $table) {
 
-		$table->integer('officeId');   //fk office master 
-		$table->integer('reportsToOffice');  //fk office master 
+		$table->integer('officeId')->references('id')->on('officemaster');    //fk office master 
+		$table->integer('reportsToOffice'); 
         $table->date('fromDate'); 
         $table->date('endDate');
-        
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

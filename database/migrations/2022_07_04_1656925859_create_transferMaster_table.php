@@ -10,13 +10,16 @@ class CreatetransfermasterTable extends Migration
     {
         Schema::create('transfermaster', function (Blueprint $table) {
 
-		$table->integer('personalNo');  //fk md employee master
+		$table->integer('personalNo')->references('id')->on('employeemaster');   //fk md employee master
 		$table->date('transferDate');
-        $table->string('transferFrom'); //fk md officeMaster
-        $table->string('transferTo');//fk md officeMaster
+        $table->string('transferFrom')->references('id')->on('officemaster'); //fk md officeMaster
+        $table->string('transferTo');
         $table->date('status');
         $table->string('remarks');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

@@ -9,9 +9,12 @@ class CreateleavetypemasterTable extends Migration
     public function up()
     {
         Schema::create('leavetypemaster', function (Blueprint $table) {
-
+        $table->id();
 		$table->string('leaveType');  
-		
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

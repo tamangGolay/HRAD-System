@@ -14,9 +14,10 @@ class CreateCompanymasterTable extends Migration
 		$table->string('comNameShort');
 		$table->string('comNameLong');
 		$table->integer('comReportsTo');
-		$table->integer('createdBy');
+        $table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

@@ -4,14 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQualilevelmasterTable extends Migration
+class CreateEmployeequalificationmasterTable extends Migration
 {
     public function up()
     {
-        Schema::create('qualilevelmaster', function (Blueprint $table) {
+        Schema::create('employeequalificationmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('qualiLevelName');
+		$table->string('personalNo')->references('id')->on('employeemaster');;
+        $table->string('qualificationId')->references('id')->on('qualificationmaster');
 		$table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');
@@ -21,6 +22,6 @@ class CreateQualilevelmasterTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('qualilevelmaster');
+        Schema::dropIfExists('employeequalificationmaster');
     }
 }

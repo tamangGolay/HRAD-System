@@ -14,7 +14,10 @@ class CreatecontractdetailsmasterTable extends Migration
 		$table->date('startDate');
 		$table->date('endDate');
         $table->integer('termNo');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

@@ -26,13 +26,16 @@ class CreateEmployeemasterTable extends Migration
 		$table->integer('mobileNo');
 		$table->string('emailId');
 		$table->foreignId('placeId')->references('id')->on('placemaster');
-		$table->string('bankName');//fk md_bankmaster N
+		$table->foreignId('bankName')->references('id')->on('bankmaster');
 		$table->string('accountNumber');
-		// $table->foreignId('resignationType')->references('id')->on('resignationtypemaster');
+		$table->foreignId('resignationType')->references('id')->on('resignationtypemaster');
 		$table->date('resignationDate'); 
 		$table->string('employmentType'); //frontEnd dropdown html
 		$table->string('incrementCycle');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

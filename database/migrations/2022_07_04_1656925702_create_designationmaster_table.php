@@ -13,7 +13,10 @@ class CreateDesignationmasterTable extends Migration
 		$table->id();
 		$table->string('desisNameShort');
 		$table->string('desisNameLong');
-		$table->integer('dreatedBy');
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

@@ -23,7 +23,7 @@ class CreateUnitmasterTable extends Migration
 		$table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');
-
+		$table->integer('modifiedOn');
         });
     }
 

@@ -11,12 +11,15 @@ class CreatefamilydetailsmasterTable extends Migration
         Schema::create('familydetailsmaster', function (Blueprint $table) {
 
         $table->Id('familyId');
-		$table->Integer('personalNo');  //fk md employee master
+		$table->Integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
         $table->string('relativeName');
         $table->date('dob');
         $table->string('gender');
-        $table->string('relation');  //fk to md relation master
-
+        $table->string('relation')->references('id')->on('relationmaster');  //fk to md relation master
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 		
         });
     }

@@ -16,7 +16,10 @@ class CreatePlacemasterTable extends Migration
         $table->string('Drungkhag');
         $table->foreignId('Gewog')->references('id')->on('gewogmaster');
         $table->string('Village');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
 
         });

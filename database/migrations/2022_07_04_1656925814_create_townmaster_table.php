@@ -13,7 +13,10 @@ class CreateTownmasterTable extends Migration
 		$table->integer('townId');
 		$table->string('townName');
 		$table->integer('gewogId');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

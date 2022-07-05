@@ -16,10 +16,10 @@ class CreateServicemasterTable extends Migration
 		$table->integer('serviceHead');
 		$table->integer('serReportsToOffice');
 		$table->integer('serReportsToEmp');
-		$table->integer('createdBy');
+        $table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');
-
+		$table->integer('modifiedOn');
         });
     }
 

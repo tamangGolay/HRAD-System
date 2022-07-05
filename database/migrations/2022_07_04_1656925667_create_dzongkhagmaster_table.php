@@ -11,7 +11,11 @@ class CreateDzongkhagmasterTable extends Migration
         Schema::create('dzongkhagmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('dzongkhagName',50);
+		$table->string('dzongkhagName');
+        $table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
 
         });
     }

@@ -13,7 +13,10 @@ class CreateVillagemasterTable extends Migration
 		$table->integer('villageId');
 		$table->string('villageName');
 		$table->integer('gewog');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

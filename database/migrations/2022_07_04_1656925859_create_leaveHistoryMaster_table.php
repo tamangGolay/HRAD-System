@@ -10,15 +10,18 @@ class CreateleavehistorymasterTable extends Migration
     {
         Schema::create('leavehistorymaster', function (Blueprint $table) {
 
-		$table->integer('personalNo');  //fk to master employee
+		$table->integer('personalNo')->references('id')->on('employeemaster');  //fk to master employee
 		$table->date('applicationDate'); 
-		$table->string('leaveType');    //fk md leave_type
+		$table->string('leaveType')->references('id')->on('leavetypemaster');   //fk md leave_type
         $table->date('from'); 
         $table->date('to'); 
         $table->integer('leavePeriod'); 
         $table->string('status'); 
         $table->string('remarks'); 
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

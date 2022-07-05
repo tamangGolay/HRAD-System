@@ -13,7 +13,10 @@ class CreateDrungkhagmasterTable extends Migration
 		$table->integer('drungkhagId');
 		$table->string('drungkhagName');
 		$table->integer('dzongkhag');
-
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
+		$table->integer('modifiedOn');
         });
     }
 

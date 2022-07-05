@@ -10,17 +10,17 @@ class CreateDivisionmasterTable extends Migration
     {
         Schema::create('divisionmaster', function (Blueprint $table) {
 
-		$table->integer('DivisionId');
-		$table->string('DivNameShort');
-		$table->string('DivNameLong');
-		$table->integer('DivHead');
-		$table->integer('DivReportsToDepartment');
-		$table->integer('DivReportsToService');
-		$table->integer('DivReportsToCompany');
-		$table->integer('DivReportsToEmp');
-		$table->integer('CreatedBy');
-		$table->timestamp('CreatedOn');
-		$table->integer('ModifiedBy');
+		$table->integer('divisionId');
+		$table->string('divNameShort');
+		$table->string('divNameLong');
+		$table->integer('divHead');
+		$table->integer('divReportsToDepartment');
+		$table->integer('divReportsToService');
+		$table->integer('divReportsToCompany');
+		$table->integer('divReportsToEmp');
+		$table->integer('createdBy');
+		$table->timestamp('createdOn');
+		$table->integer('modifiedBy');
 
         });
     }

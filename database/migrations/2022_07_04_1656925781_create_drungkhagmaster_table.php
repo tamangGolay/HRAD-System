@@ -10,9 +10,9 @@ class CreateDrungkhagmasterTable extends Migration
     {
         Schema::create('drungkhagmaster', function (Blueprint $table) {
 
-		$table->integer('DrungkhagId');
-		$table->string('DrungkhagName');
-		$table->integer('Dzongkhag');
+		$table->integer('drungkhagId');
+		$table->string('drungkhagName');
+		$table->integer('dzongkhag');
 
         });
     }

@@ -10,19 +10,19 @@ class CreateSubstationmasterTable extends Migration
     {
         Schema::create('substationmaster', function (Blueprint $table) {
 
-		$table->integer('SSId');
-		$table->string('SSNameShort');
-		$table->string('SSNameLong');
-		$table->integer('SSHead');
-		$table->integer('SSReportsToUnit');
-		$table->integer('SSReportsToSubDivision');
-		$table->integer('SSReportsToDivision');
-		$table->integer('SSReportsToDepartment');
-		$table->integer('SSReportsToService');
-		$table->integer('SSReportsToCompany');
-		$table->integer('SSReportsToEmp');
-		$table->integer('CreatedBy');
-		$table->timestamp('CreatedOn')->nullable();
+		$table->integer('ssId');
+		$table->string('ssNameShort');
+		$table->string('ssNameLong');
+		$table->integer('ssHead');
+		$table->integer('ssReportsToUnit');
+		$table->integer('ssReportsToSubDivision');
+		$table->integer('ssReportsToDivision');
+		$table->integer('ssReportsToDepartment');
+		$table->integer('ssReportsToService');
+		$table->integer('ssReportsToCompany');
+		$table->integer('ssReportsToEmp');
+		$table->integer('createdBy');
+		$table->timestamp('createdOn')->nullable();
 
         });
     }

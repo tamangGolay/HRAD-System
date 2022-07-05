@@ -11,8 +11,8 @@ class CreateQualificationmaterTable extends Migration
         Schema::create('qualificationmater', function (Blueprint $table) {
          $table->integer('personalNo'); 
 		$table->integer('qualificationId');
-		$table->string('qualificationShortname');
-        $table->string('qualificationLongname');
+		$table->string('qualificationShortName');
+        $table->string('qualificationLongName');
 		$table->integer('qualificationLevel');
 		$table->integer('qualificationSequence');
         

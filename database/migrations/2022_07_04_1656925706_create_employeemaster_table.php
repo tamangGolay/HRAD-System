@@ -27,6 +27,7 @@ class CreateEmployeemasterTable extends Migration
 		$table->string('emailId');
 		$table->string('placeId');//fk md_placemaster N
 		$table->string('bankName');//fk md_bankmaster N
+		$table->string('accountNumber');
 		$table->string('resignationType'); //fk md_resignation_Type_Master N
 		$table->date('resignationDate'); 
 		$table->string('employmentType'); //frontEnd dropdown html

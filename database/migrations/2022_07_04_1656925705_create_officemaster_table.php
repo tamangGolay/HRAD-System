@@ -12,8 +12,10 @@ class CreateOfficemasterTable extends Migration
 
 		$table->id('officeId');
 		$table->integer('officeType');
+        $table->integer('officeName');  // fk  md office_name
 		$table->integer('officeLinkId');
-		$table->integer('officeAddress');
+		$table->integer('officeAddress');  // fk  md place_master
+        $table->integer('officeHead');  // fk  md Employee_master(Pno)
 		$table->integer('createdBy');
 		$table->timestamp('createdOn');
 		$table->integer('modifiedBy');

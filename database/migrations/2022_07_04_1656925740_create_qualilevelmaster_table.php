@@ -10,7 +10,7 @@ class CreateQualilevelmasterTable extends Migration
     {
         Schema::create('qualilevelmaster', function (Blueprint $table) {
 
-		$table->integer('qualiLevelId');
+		$table->integer('qualificationId');
 		$table->string('qualiLevelName');
 
         });

@@ -9,12 +9,13 @@ class CreateQualificationmaterTable extends Migration
     public function up()
     {
         Schema::create('qualificationmater', function (Blueprint $table) {
-
+         $table->integer('personalNo'); 
 		$table->integer('qualificationId');
-		$table->string('qualificationName');
+		$table->string('qualificationShortname');
+        $table->string('qualificationLongname');
 		$table->integer('qualificationLevel');
-		$table->integer('yearOfcompletion');
-
+		$table->integer('qualificationSequence');
+        
         });
     }
 

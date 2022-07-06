@@ -156,8 +156,8 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#officeName_id').val(data.id);
-          $('#name').val(data.shortOfficeName); //input id,database
-          $('#number').val(data.longOfficeName);
+          $('#shortOfficeName').val(data.shortOfficeName); //input id,database
+          $('#longOfficeName').val(data.longOfficeName);
       })
    });
 
@@ -216,8 +216,8 @@ a {
           $('#officeNameModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#officeName_id').val(data.id);
-          $('#name').val(data.officeName_name); //input id,database
-          $('#number').val(data.officeName_number);
+          $('#shortOfficeName').val(data.shortOfficeName); //input id,database
+          $('#longOfficeName').val(data.longOfficeName);
       })
    });
    

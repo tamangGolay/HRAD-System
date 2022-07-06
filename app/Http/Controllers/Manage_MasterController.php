@@ -50,7 +50,7 @@ class Manage_MasterController extends Controller
     public function store(Request $request)
     {
         officeName::updateOrCreate(['id' => $request->id],
-                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->number]);        
+                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName]);        
    
         return response()->json(['success'=>'New vehicle saved successfully.']);
     }

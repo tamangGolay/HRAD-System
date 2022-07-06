@@ -13,29 +13,32 @@ class CreateEmployeemasterTable extends Migration
 		$table->integer('empId');
 		$table->string('empName');
 		$table->string('bloodGroup');
-		$table->bigInteger('cidNo');
-		$table->date('dob');
-		$table->string('gender');
-		$table->date('appointmentDate');
-        $table->foreignId('grade')->references('id')->on('grademaster');
-		$table->integer('designation')->references('id')->on('designationmaster'); ;//fk md_designation N
-		$table->foreignId('office')->references('id')->on('officemaster');
-		$table->integer('basicPay');
-		$table->string('empStatus');
-		$table->date('lastDop');
-		$table->integer('mobileNo');
-		$table->string('emailId');
-		$table->foreignId('placeId')->references('id')->on('placemaster');
-		$table->foreignId('bankName')->references('id')->on('bankmaster');
-		$table->string('accountNumber');
-		$table->foreignId('resignationType')->references('id')->on('resignationtypemaster');
-		$table->date('resignationDate'); 
-		$table->string('employmentType'); //frontEnd dropdown html
-		$table->string('incrementCycle');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->bigInteger('cidNo')->nullable();
+		$table->date('dob')->nullable();
+		$table->string('gender')->nullable();
+		$table->date('appointmentDate')->nullable();
+        // $table->foreignId('grade')->references('id')->on('grademaster')->nullable();
+		// $table->integer('designation')->references('id')->on('designationmaster')->nullable();//fk md_designation N
+		// $table->foreignId('office')->references('id')->on('officemaster')->nullable();
+		$table->integer('basicPay')->nullable();
+		$table->string('empStatus')->nullable();
+		$table->date('lastDop')->nullable();
+		$table->integer('mobileNo')->nullable();
+		$table->string('emailId')->nullable();
+		// $table->foreignId('placeId')->references('id')->on('placemaster')->nullable();
+		// $table->foreignId('bankName')->references('id')->on('bankmaster')->nullable();
+		$table->string('accountNumber')->nullable();
+		// $table->foreignId('resignationType')->references('id')->on('resignationtypemaster')->nullable();
+		$table->date('resignationDate')->nullable(); 
+		$table->string('employmentType')->nullable(); //frontEnd dropdown html
+		$table->string('incrementCycle')->nullable();
+		$table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+		$table->date('updated_at');
+		$table->date('created_at');
+
         });
     }
 

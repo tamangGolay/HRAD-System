@@ -49,6 +49,7 @@ class MasterDataController extends Controller
         $EmployeeMaster->EmpId = $request->emp_id;//emp_id is from input name
         $EmployeeMaster->EmpName =  $request->name;//EmpName is from dB
        //rolepull 
+
         $EmployeeMaster->BloodGroup = $request->contact_number;   
        
         // $user->password =  Hash::make($request->password);      
@@ -79,7 +80,7 @@ class MasterDataController extends Controller
 
       //  });
 
-       return redirect('home')->with('page','employeeMaster')
+       return redirect('home')->with('page','employeemaster')
        ->with('adduser','Master Data Added Successfully!!!');
        
 

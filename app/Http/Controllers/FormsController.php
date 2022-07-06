@@ -3311,7 +3311,7 @@ if ($request->v == "room_details")
 
         //employeemaster
          //user add for login
-         if ($request->v == "employeeMaster")
+         if ($request->v == "employeemaster")
          {
  
              $user = Auth::user();

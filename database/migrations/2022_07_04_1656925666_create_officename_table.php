@@ -13,10 +13,12 @@ class CreateOfficenameTable extends Migration
 		$table->id();
 		$table->string('shortOfficeName');
 		$table->string('longOfficeName');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+        $table->integer('status')->default(0);
+//
 
         });
     }

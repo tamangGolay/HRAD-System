@@ -28,4 +28,5 @@ gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
 subdivisionmaster,Sub Division Master,Admin,yes,fa-clipboard-list
 substationmaster,Substation Master,Admin,yes,fa-clipboard-list
 unitmaster,Unit Master,Admin,yes,fa-clipboard-list
+officename,Office Name,Admin,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

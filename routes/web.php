@@ -328,3 +328,9 @@ Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
 
 //For MasterData
 Route::post('user','MasterDataController@storeUser')->name('user');
+
+//manage officeName
+Route::resource('officeName', Manage_MasterController::class);
+Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destroyofficeName');
+
+

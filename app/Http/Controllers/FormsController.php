@@ -3334,6 +3334,27 @@ if ($request->v == "room_details")
 
         //endemployeemaster
 
+
+         //officeName
+         if ($request->v == "officename")
+         {
+ 
+            
+ 
+ 
+ 
+           
+             $rhtml = view('masterData.officeName')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //end officeName
+
     }
 
 }

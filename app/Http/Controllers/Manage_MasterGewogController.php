@@ -2,12 +2,12 @@
          
 namespace App\Http\Controllers;
           
-use App\officeName;
+use App\gewog;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
         
-class Manage_MasterController extends Controller
+class Manage_MasterGewogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,20 @@ class Manage_MasterController extends Controller
     public function index(Request $request)
     {
 
-        $officeName = DB::table('officename')->where('status','0');
+       
+        $gewog = DB::table('gewogmaster')
+        ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
+        ->select('gewogmaster.id','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name')
+        ->where('gewogmaster.status','0');
         
         if ($request->ajax()) {
-            $data = $officeName;
+            $data = $gewog;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editOfficeName">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deleteOfficeName">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editgewog">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deletegewog">Delete</a>';
 
 
 
@@ -38,10 +42,10 @@ class Manage_MasterController extends Controller
                     ->make(true);
         }
       
-        return view('masterData.officeName',compact('officeName'));
+        return view('masterData.gewog',compact('gewog'));
     }
 
-  
+   
      
     /**
      * Store a newly created resource in storage.
@@ -51,10 +55,10 @@ class Manage_MasterController extends Controller
      */
     public function store(Request $request)
     {
-        officeName::updateOrCreate(['id' => $request->id],
-                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName]);        
+        gewog::updateOrCreate(['id' => $request->id],
+                ['gewogName' => $request->gewogName, 'dzongkhagId' => $request->dzongkhagId]);        
    
-        return response()->json(['success'=>'Office Name saved successfully.']);
+        return response()->json(['success'=>'Gewog saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +69,8 @@ class Manage_MasterController extends Controller
     public function edit($id)
     {
 
-        $conference = officeName::find($id);
-        return response()->json($conference);
+        $gewog = gewog::find($id);
+        return response()->json($gewog);
     }
   
     /**
@@ -77,11 +81,11 @@ class Manage_MasterController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('officeName')->where('id', $request->id)
+        $query = DB::table('gewogmaster')->where('id', $request->id)
             ->increment('status');
 
         return response()
-            ->json(['success' => 'Office Name deleted successfully.']);
+            ->json(['success' => 'Gewog deleted successfully.']);
     }
 
     //To redirect to the manage_vehicle page after the management of vehicle

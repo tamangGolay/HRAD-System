@@ -2,12 +2,12 @@
          
 namespace App\Http\Controllers;
           
-use App\officeName;
+use App\bank;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
         
-class Manage_MasterController extends Controller
+class Manage_MasterBankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,17 @@ class Manage_MasterController extends Controller
     public function index(Request $request)
     {
 
-        $officeName = DB::table('officename')->where('status','0');
+       
+        $bank = DB::table('bankmaster')->where('bankmaster.status','0');
         
         if ($request->ajax()) {
-            $data = $officeName;
+            $data = $bank;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editOfficeName">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deleteOfficeName">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editbank">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deletebank">Delete</a>';
 
 
 
@@ -38,10 +39,10 @@ class Manage_MasterController extends Controller
                     ->make(true);
         }
       
-        return view('masterData.officeName',compact('officeName'));
+        return view('masterData.bank',compact('bank'));
     }
 
-  
+   
      
     /**
      * Store a newly created resource in storage.
@@ -51,10 +52,10 @@ class Manage_MasterController extends Controller
      */
     public function store(Request $request)
     {
-        officeName::updateOrCreate(['id' => $request->id],
-                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName]);        
+        bank::updateOrCreate(['id' => $request->id],
+                ['bankName' => $request->bankName]);        
    
-        return response()->json(['success'=>'Office Name saved successfully.']);
+        return response()->json(['success'=>'bank saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +66,8 @@ class Manage_MasterController extends Controller
     public function edit($id)
     {
 
-        $conference = officeName::find($id);
-        return response()->json($conference);
+        $bank = bank::find($id);
+        return response()->json($bank);
     }
   
     /**
@@ -77,11 +78,11 @@ class Manage_MasterController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('officeName')->where('id', $request->id)
+        $query = DB::table('bankmaster')->where('id', $request->id)
             ->increment('status');
 
         return response()
-            ->json(['success' => 'Office Name deleted successfully.']);
+            ->json(['success' => 'bank deleted successfully.']);
     }
 
     //To redirect to the manage_vehicle page after the management of vehicle

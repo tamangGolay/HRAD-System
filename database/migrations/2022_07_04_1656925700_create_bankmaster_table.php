@@ -12,10 +12,12 @@ class CreateBankmasterTable extends Migration
 
 		$table->id();
 		$table->string('bankName');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+        $table->integer('status')->default(0);
+
         });
     }
 

@@ -366,3 +366,17 @@ Route::post('destroyContractDetail', 'Manage_ContractDetailController@delete')->
 //manage Service
 Route::resource('service', Manage_ServiceController::class);
 Route::post('destroyService', 'Manage_ServiceController@delete')->name('destroyService'); //for deleting contract details
+
+
+//golay
+
+
+Route::resource('gewog', Manage_MasterGewogController::class);
+Route::post('destroygewog', 'Manage_MasterGewogController@delete')->name('destroygewog');
+
+
+Route::resource('bank', Manage_MasterBankController::class);
+Route::post('destroybank', 'Manage_MasterBankController@delete')->name('destroybank');
+
+Route::resource('place', Manage_MasterPlaceController::class);
+Route::post('destroyplace', 'Manage_MasterPlaceController@delete')->name('destroyplace');

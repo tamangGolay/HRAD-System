@@ -29,6 +29,7 @@ subdivisionmaster,Sub Division Master,Admin,yes,fa-clipboard-list
 substationmaster,Substation Master,Admin,yes,fa-clipboard-list
 unitmaster,Unit Master,Admin,yes,fa-clipboard-list
 officename,Office Name,Admin,yes,fa-clipboard-list
+bankmaster,Bank Master,Admin,yes,fa-clipboard-list
 resignationtypemaster,Resignation Master,Admin,yes,fa-clipboard-list
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 contractdetails,Contract Details,Admin,yes,fa-clipboard-list

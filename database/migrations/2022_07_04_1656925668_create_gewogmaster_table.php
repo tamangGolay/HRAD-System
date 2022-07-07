@@ -12,11 +12,12 @@ class CreateGewogmasterTable extends Migration
 
 		$table->id();
 		$table->string('gewogName');
-        $table->foreignId('dzongkhagId')->references('id')->on('dzongkhagmaster');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
+        $table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
         });
     }
 

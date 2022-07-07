@@ -11,15 +11,17 @@ class CreatePlacemasterTable extends Migration
         Schema::create('placemaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('PlaceName');
-		$table->foreignId('Dzongkhag')->references('id')->on('dzongkhagmaster');
-        $table->string('Drungkhag');
-        $table->foreignId('Gewog')->references('id')->on('gewogmaster');
-        $table->string('Village');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->string('placeName');
+		$table->foreignId('dzongkhag')->references('id')->on('dzongkhags');
+        $table->string('drungkhag');
+        $table->foreignId('gewog')->references('id')->on('gewogmaster');
+        $table->string('village');
+		$table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+        $table->integer('status')->default(0);
+
 
 
         });

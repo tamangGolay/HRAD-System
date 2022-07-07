@@ -15,6 +15,8 @@ use App\guesthouseroom;
 use App\guesthouse;
 use App\Grade;
 use App\roombed;
+use App\gewog;
+
 
 class FormsController extends Controller
 {
@@ -3401,6 +3403,64 @@ if ($request->v == "room_details")
          }
 
         //end officeName
+
+            //gewogmaster
+            if ($request->v == "gewogmaster")
+            {
+                $dzongkhag = Dzongkhags::all();
+                
+               $gewog = DB::table('gewogmaster')
+               ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
+               ->select('dzongkhags.Dzongkhag_Name')
+               ->where('gewogmaster.status',0);         
+    
+                $rhtml = view('masterData.gewog')->with(['dzongkhag' => $dzongkhag])->render();
+                 return response()
+                     ->json(array(
+                     'success' => true,
+                     'html' => $rhtml
+                 ));
+     
+             }
+    
+            //end gewogmaster
+            
+    
+              //bankmaster
+              if ($request->v == "bankmaster")
+              {
+                         
+      
+                  $rhtml = view('masterData.bank')->render();
+                   return response()
+                       ->json(array(
+                       'success' => true,
+                       'html' => $rhtml
+                   ));
+       
+               }
+      
+              //end bankmaster
+    
+    
+              //placemaster
+              if ($request->v == "placemaster")
+              {
+                         
+                $dzongkhag = Dzongkhags::all();
+                $gewog = gewog::all();
+    
+    
+                  $rhtml = view('masterData.place')->with(['gewog' => $gewog,'dzongkhag' => $dzongkhag])->render();
+                   return response()
+                       ->json(array(
+                       'success' => true,
+                       'html' => $rhtml
+                   ));
+       
+               }
+      
+              //end placemaster
 
          //grade master
         

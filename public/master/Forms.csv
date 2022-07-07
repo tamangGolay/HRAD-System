@@ -21,6 +21,7 @@ grademaster,Grade Master,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
 qualificationmaster,Qualification Master,Admin,yes,fa-clipboard-list
 qualilevelmaster,Qualification Level Master,Admin,yes,fa-clipboard-list
+employeequalificationmaster,Employee Qualification,Admin,yes,fa-clipboard-list
 placemaster,Place Master,Admin,yes,fa-clipboard-list
 dzongkhagmaster,Dzongkhag Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
@@ -33,4 +34,6 @@ bankmaster,Bank Master,Admin,yes,fa-clipboard-list
 resignationtypemaster,Resignation Master,Admin,yes,fa-clipboard-list
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 contractdetails,Contract Details,Admin,yes,fa-clipboard-list
+relationmaster,Relation,Admin,yes,fa-clipboard-list
+displinaryhistorymaster,Displinary,Admin,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

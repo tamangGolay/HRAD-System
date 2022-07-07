@@ -21,6 +21,7 @@ grademaster,Grade Master,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
 qualificationmaster,Qualification Master,Admin,yes,fa-clipboard-list
 qualilevelmaster,Qualification Level Master,Admin,yes,fa-clipboard-list
+employeequalificationmaster,Employee Qualification,Admin,yes,fa-clipboard-list
 placemaster,Place Master,Admin,yes,fa-clipboard-list
 dzongkhagmaster,Dzongkhag Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
@@ -39,4 +40,6 @@ increment_history,increment history,Admin,yes,fa-list-ol
 office_reporting,Office reporting,Admin,yes,fa-list-ol
 pay_scale,Pay scale,Admin,yes,fa-list-ol
 promotion_history,Promotion history,Admin,yes,fa-list-ol
+relationmaster,Relation,Admin,yes,fa-clipboard-list
+displinaryhistorymaster,Displinary,Admin,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

@@ -11,12 +11,13 @@ class CreateEmployeequalificationmasterTable extends Migration
         Schema::create('employeequalificationmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('personalNo')->references('id')->on('employeemaster');;
-        $table->string('qualificationId')->references('id')->on('qualificationmaster');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->foreignId('personalNo')->references('id')->on('employeemaster');
+        $table->foreignId('qualificationId')->references('id')->on('qualificationmaster');
+        $table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+        $table->timestamp('modifiedOn')->nullable();
         });
     }
 

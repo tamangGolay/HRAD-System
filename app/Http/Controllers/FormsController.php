@@ -3621,6 +3621,85 @@ if ($request->v == "promotion_history")
 
 
 
+         //1. view for Qualificationleveltype (Tdee)
+
+         if ($request->v == "qualilevelmaster")  //form.csv
+         {    
+ 
+          $rhtml = view('masterData.qualificationLevelType')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  //end
+ 
+         //2. view for Qualificationlevel (Tdee)
+ 
+             if ($request->v == "qualificationmaster")  //form.csv
+                 {    
+ 
+              $rhtml = view('masterData.qualificationLevel')->render(); 
+                  return response()
+                     ->json(array(
+                      'success' => true,
+                      'html' => $rhtml
+                       ));
+              }  //end
+ 
+ 
+    //3. relationmaster          
+         if ($request->v == "relationmaster")
+         {
+ 
+              //  $conference = vehicles::all();
+             //  $review = DB::table('vehicledetails')->select('*')
+              //      ->paginate();
+ 
+          $rhtml = view('masterData.relation')->render();
+          return response()
+                ->json(array(
+               'success' => true,
+                  'html' => $rhtml
+      ));
+         }  
+ 
+          //4. Employee Qualificationlevel (Tdee)
+ 
+          if ($request->v == "employeequalificationmaster")  //form.csv
+          {     
+             // $empquali = DB::table('employeequalificationmaster')->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
+             // ->select('personalNo', 'empName')
+             //  ->where('status', '=', 0);
+             // ->where('employeequalificationmaster.id', '=', $request->id)
+             // ->first();
+ 
+         //  $rhtml = view('masterData.employeeQualification')->with(['empquali'=>$empquali])->render();
+         
+         $rhtml = view('masterData.employeeQualification')->render();  
+           return response()
+              ->json(array(
+               'success' => true,
+               'html' => $rhtml
+                ));
+       }  //end
+ 
+       //5. displinary          
+       if ($request->v == "displinaryhistorymaster")
+       {
+ 
+            //  $conference = vehicles::all();
+           //  $review = DB::table('vehicledetails')->select('*')
+            //      ->paginate();
+ 
+        $rhtml = view('masterData.displinary')->render();
+        return response()
+              ->json(array(
+             'success' => true,
+                'html' => $rhtml
+            ));
+       }  
+
     }
 
 }

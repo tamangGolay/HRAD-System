@@ -414,3 +414,25 @@ Route::post('destroybank', 'Manage_MasterBankController@delete')->name('destroyb
 
 Route::resource('place', Manage_MasterPlaceController::class);
 Route::post('destroyplace', 'Manage_MasterPlaceController@delete')->name('destroyplace');
+
+
+//qualificationleveltype
+Route::resource('qualificationlevel', QualilevelController::class);
+Route::post('destroyqualificationlevel', 'QualilevelController@delete')->name('destroyqualificationlevel');
+
+//qualification
+Route::resource('qualification', MasterQualiController::class);
+Route::post('destroyQualification', 'MasterQualiController@delete')->name('destroyQualification');
+
+//employee qualification
+Route::resource('employeeQualification', empQualificationController::class);
+Route::post('destroyEmpQualification', 'empQualificationController@delete')->name('destroyEmpQualification');
+
+//relation 
+Route::resource('relation', MasterRelationController::class);
+Route::post('destroyrelation', 'MasterRelationController@delete')->name('destroyrelation');
+
+//displinary
+Route::resource('displinary', DisplinaryController::class);
+Route::post('destroyDisplinary', 'DisplinaryController@delete')->name('destroyDisplinary');
+

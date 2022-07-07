@@ -33,4 +33,10 @@ bankmaster,Bank Master,Admin,yes,fa-clipboard-list
 resignationtypemaster,Resignation Master,Admin,yes,fa-clipboard-list
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 contractdetails,Contract Details,Admin,yes,fa-clipboard-list
+employee_reporting,Employee Reporting,Admin,yes,fa-list-ol
+family_details,Family details,Admin,yes,fa-list-ol
+increment_history,increment history,Admin,yes,fa-list-ol
+office_reporting,Office reporting,Admin,yes,fa-list-ol
+pay_scale,Pay scale,Admin,yes,fa-list-ol
+promotion_history,Promotion history,Admin,yes,fa-list-ol
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

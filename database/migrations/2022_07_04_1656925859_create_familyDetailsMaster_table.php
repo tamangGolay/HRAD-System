@@ -13,7 +13,7 @@ class CreatefamilydetailsmasterTable extends Migration
         $table->id();
 		$table->Integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
         $table->string('relativeName');
-        $table->date('dob')->nullable();
+        $table->date('dob');
         $table->string('gender');
         $table->string('relation')->references('id')->on('relationmaster');  //fk to md relation master
         $table->integer('status')->default(0);

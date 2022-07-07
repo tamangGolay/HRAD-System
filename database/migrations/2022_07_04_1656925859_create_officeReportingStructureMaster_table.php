@@ -12,8 +12,8 @@ class CreateofficereportingstructuremasterTable extends Migration
         $table->id();
 		$table->integer('officeId')->references('id')->on('officemaster');    //fk office master 
 		$table->integer('reportsToOffice'); 
-        $table->date('fromDate')->nullable(); 
-        $table->date('endDate')->nullable();
+        $table->date('fromDate'); 
+        $table->date('endDate');
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

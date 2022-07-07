@@ -13,8 +13,8 @@ class CreateempreportingstructuremasterTable extends Migration
 		$table->integer('personalNo')->references('id')->on('employeemaster');  //fk employee master
 		$table->integer('reportsToOffice'); 
 		$table->integer('reportsToEmployee');    
-        $table->date('fromDate')->nullable(); 
-        $table->date('endDate')->nullable();
+        $table->date('fromDate'); 
+        $table->date('endDate');
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

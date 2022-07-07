@@ -3528,6 +3528,98 @@ if ($request->v == "room_details")
          }
 
         //endcontractdetailmaster
+        if ($request->v == "employee_reporting")
+        {
+       
+           //  $conference = vehicles::all();
+           //  $review = DB::table('vehicledetails')->select('*')
+           //      ->paginate();
+       
+            $rhtml = view('emp.employee_reporting')->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+        }
+
+//payscale
+
+if ($request->v == "pay_scale")
+{
+
+   //  $conference = vehicles::all();
+   //  $review = DB::table('vehicledetails')->select('*')
+   //      ->paginate();
+
+    $rhtml = view('emp.pay_scale')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+//familydetails
+
+if ($request->v == "family_details")
+{
+
+
+    $rhtml = view('emp.family_details')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+//increment history
+
+if ($request->v == "increment_history")
+{
+
+
+    $rhtml = view('emp.increment_history')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+//office reporting
+if ($request->v == "office_reporting")
+{
+
+
+    $rhtml = view('emp.office_reporting')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+//promotion history
+
+if ($request->v == "promotion_history")
+{
+
+
+    $rhtml = view('emp.promotion_history')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+
+
+
+
+
 
     }
 

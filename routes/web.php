@@ -61,6 +61,40 @@ Route::resource('guesth', guestHouseEditController::class);
 Route::resource('vehicle', Manage_VehicleController::class);
 
 
+
+
+//employeeReporting
+
+Route::resource('employeeR', Manage_employeeController::class);
+Route::post('destroyemployeereport', 'Manage_employeeController@delete')->name('destroyemployeereport');
+
+//payscale
+
+Route::resource('pay', Manage_payController::class);
+Route::post('destroypayscale', 'Manage_payController@delete')->name('destroypayscale');
+
+
+//familydetails
+Route::resource('family', Manage_familyController::class);
+Route::post('destroyfamilydetails', 'Manage_familyController@delete')->name('destroyfamilydetails');
+
+
+//incrementdetails
+
+Route::resource('increment', Manage_incrementController::class);
+Route::post('destroyincrementhistory', 'Manage_incrementController@delete')->name('destroyincrementhistory');
+
+//reportoffice
+
+Route::resource('office', Manage_officeController::class);
+Route::post('destroyofficereport', 'Manage_officeController@delete')->name('destroyofficereport');
+
+
+//promotion history
+Route::resource('promotion', Manage_promotionController::class);
+Route::post('destroypromotionhistory', 'Manage_promotionController@delete')->name('destroypromotionhistory');
+
+
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);
 Route::post('destroyGuesthouse', 'Manage_GuesthouseController@delete')->name('destroyGuesthouse');

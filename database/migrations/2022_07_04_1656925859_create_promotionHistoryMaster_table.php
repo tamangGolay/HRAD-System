@@ -11,10 +11,10 @@ class CreatepromotionhistorymasterTable extends Migration
         Schema::create('promotionhistorymaster', function (Blueprint $table) {
             $table->id();
 		$table->integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
-		$table->date('promotionDate')->nullable();
+		$table->date('promotionDate');
         $table->string('gradeFrom');
         $table->string('gradeTo');
-        $table->date('nextDue')->nullable();
+        $table->date('nextDue');
         $table->string('remarks');
         $table->integer('status')->default(0);
 		$table->integer('createdBy')->nullable();

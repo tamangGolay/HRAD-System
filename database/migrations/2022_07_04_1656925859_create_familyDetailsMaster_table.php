@@ -10,16 +10,17 @@ class CreatefamilydetailsmasterTable extends Migration
     {
         Schema::create('familydetailsmaster', function (Blueprint $table) {
 
-        $table->Id('familyId');
+        $table->id();
 		$table->Integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
         $table->string('relativeName');
-        $table->date('dob');
+        $table->date('dob')->nullable();
         $table->string('gender');
         $table->string('relation')->references('id')->on('relationmaster');  //fk to md relation master
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->integer('status')->default(0);
+		$table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
 		
         });
     }

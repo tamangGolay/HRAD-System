@@ -9,17 +9,18 @@ class CreateincrementhistorymasterTable extends Migration
     public function up()
     {
         Schema::create('incrementhistorymaster', function (Blueprint $table) {
-
+            $table->id();
 		$table->integer('personalNo')->references('id')->on('employeemaster'); //fk md employee master
-		$table->date('incrementDate');
+		$table->date('incrementDate')->nullable();
 		$table->integer('oldBasic');
         $table->integer('newBasic');
-        $table->date('nextDue');
+        $table->date('nextDue')->nullable();
         $table->string('remarks');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
         });
     }
 

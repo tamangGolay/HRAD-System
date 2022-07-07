@@ -3526,8 +3526,24 @@ if ($request->v == "room_details")
              ));
  
          }
+        //endservicemaster
 
-        //endcontractdetailmaster
+         //substation
+         if ($request->v == "substationmaster")
+         {
+
+             $rhtml = view('masterData.substationMaster')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //end of substation
+
+
         if ($request->v == "employee_reporting")
         {
        

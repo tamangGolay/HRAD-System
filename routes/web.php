@@ -399,7 +399,11 @@ Route::post('destroyContractDetail', 'Manage_ContractDetailController@delete')->
 
 //manage Service
 Route::resource('service', Manage_ServiceController::class);
-Route::post('destroyService', 'Manage_ServiceController@delete')->name('destroyService'); //for deleting contract details
+Route::post('destroyService', 'Manage_ServiceController@delete')->name('destroyService'); //for deleting service details
+
+//manage substation
+Route::resource('substation', Manage_SubstationController::class);
+Route::post('destroySubstation', 'Manage_SubstationController@delete')->name('destroySubstation'); //for deleting substation details
 
 
 //golay

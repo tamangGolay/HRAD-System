@@ -363,3 +363,6 @@ Route::post('destroyDivision', 'Manage_DivisionController@delete')->name('destro
 Route::resource('contractdetail', Manage_ContractDetailController::class);
 Route::post('destroyContractDetail', 'Manage_ContractDetailController@delete')->name('destroyContractDetail'); //for deleting contract details
 
+//manage Service
+Route::resource('service', Manage_ServiceController::class);
+Route::post('destroyService', 'Manage_ServiceController@delete')->name('destroyService'); //for deleting contract details

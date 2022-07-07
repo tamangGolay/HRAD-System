@@ -3453,6 +3453,22 @@ if ($request->v == "room_details")
 
         //endcontractdetailmaster
 
+        //service master
+         if ($request->v == "servicemaster")
+         {
+ 
+    
+             $rhtml = view('masterData.serviceMaster')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //endcontractdetailmaster
+
     }
 
 }

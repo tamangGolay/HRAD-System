@@ -10,16 +10,17 @@ class CreateServicemasterTable extends Migration
     {
         Schema::create('servicemaster', function (Blueprint $table) {
 
-		$table->integer('serviceId');
+		$table->id();
 		$table->string('serNameShort');
 		$table->string('serNameLong');
-		$table->integer('serviceHead');
-		$table->integer('serReportsToOffice');
-		$table->integer('serReportsToEmp');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->integer('serviceHead')->nullable();
+		$table->integer('serReportsToOffice')->nullable();
+		$table->integer('serReportsToEmp')->nullable();
+        $table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
         });
     }
 

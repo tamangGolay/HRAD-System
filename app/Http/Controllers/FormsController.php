@@ -2943,6 +2943,54 @@ if ($request->v == "vehicleReport")
      ));
  }
 
+ //view for manage resignation
+ 
+ if ($request->v == "resignationtypemaster")
+ {
+     $rhtml = view('masterData.resignationMaster')->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
+
+ //view for manage designation
+
+ if ($request->v == "designationmaster")
+ {
+     $rhtml = view('masterData.designationMaster')->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
+
+ //view for manage company
+
+ if ($request->v == "companymaster")
+ {
+     $rhtml = view('masterData.companyMaster')->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
+
+  //view for manage leave type
+ 
+  if ($request->v == "leavetypemaster")
+  {
+      $rhtml = view('masterData.leavetypeMaster')->render();
+      return response()
+          ->json(array(
+          'success' => true,
+          'html' => $rhtml
+      ));
+  }
+
 
 //manage guesthouse
 if ($request->v == "manage_guesthouse")
@@ -2979,7 +3027,6 @@ if ($request->v == "room_details")
  //conference reprts
  if ($request->v == "cReports")
        {
-
                 $conference = conference::all();
 
                 $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')

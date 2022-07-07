@@ -10,14 +10,18 @@ class CreateCompanymasterTable extends Migration
     {
         Schema::create('companymaster', function (Blueprint $table) {
 
-		$table->integer('companyId');
+            $table->id();   
+		// $table->integer('companyId');
 		$table->string('comNameShort');
 		$table->string('comNameLong');
-		$table->integer('comReportsTo');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->string('comReportsTo');
+        $table->string('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+        $table->date('updated_at');
+        $table->date('created_at');
 
         });
     }

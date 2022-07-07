@@ -333,4 +333,20 @@ Route::post('user','MasterDataController@storeUser')->name('user');
 Route::resource('officeName', Manage_MasterController::class);
 Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destroyofficeName');
 
+//start sonam 
+//manage designation
+Route::resource('designation', DesignationMasterController::class);
+Route::post('destroydesignation', 'DesignationMasterController@delete')->name('destroydesignation');
 
+//manage resignation
+Route::resource('resignation', ResignationMasterController::class);
+Route::post('destroyresignation', 'ResignationMasterController@delete')->name('destroyresignation');
+
+//manage company
+Route::resource('company', CompanyMasterController::class);
+Route::post('destroycompany', 'CompanyMasterController@delete')->name('destroycompany');
+
+//manage leavetype
+Route::resource('leave', LeavetypeMasterController::class);
+Route::post('destroyleave', 'LeavetypeMasterController@delete')->name('destroyleave');
+//end sonam

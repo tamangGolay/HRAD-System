@@ -13,10 +13,11 @@ class CreateGrademasterTable extends Migration
             $table->id();
             $table->string('grade');
 		    $table->char('level');
-            $table->integer('createdBy');
-            $table->timestamp('createdOn');
-            $table->integer('modifiedBy');
-            $table->integer('modifiedOn');
+            $table->integer('status')->default(0);
+            $table->integer('createdBy')->nullable();
+            $table->timestamp('createdOn')->nullable();
+            $table->integer('modifiedBy')->nullable();
+            $table->integer('modifiedOn')->nullable();
         });
     }
 

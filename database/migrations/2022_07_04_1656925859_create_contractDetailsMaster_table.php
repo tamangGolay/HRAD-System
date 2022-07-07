@@ -9,15 +9,16 @@ class CreatecontractdetailsmasterTable extends Migration
     public function up()
     {
         Schema::create('contractdetailsmaster', function (Blueprint $table) {
-
-		$table->integer('personalNo');  // fk md master employee
-		$table->date('startDate');
-		$table->date('endDate');
+        $table->id();
+		$table->integer('personalNo');  // fk md master employee 
+		$table->date('startDate')->nullable();;
+		$table->date('endDate')->nullable();;
         $table->integer('termNo');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->integer('status')->default(0);
+		$table->integer('createdBy')->nullable();;
+		$table->timestamp('createdOn')->nullable();;
+		$table->integer('modifiedBy')->nullable();;
+		$table->integer('modifiedOn')->nullable();;
         });
     }
 

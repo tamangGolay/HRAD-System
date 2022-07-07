@@ -3402,6 +3402,57 @@ if ($request->v == "room_details")
 
         //end officeName
 
+         //grade master
+        
+         if ($request->v == "grademaster")
+         {
+             $rhtml = view('masterData.gradeMaster')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //endgrademaster
+
+
+         //division master
+         
+         if ($request->v == "divisionmaster")
+         {
+ 
+    
+             $rhtml = view('masterData.divisionMaster')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //enddivisionmaster
+
+
+         //contract detail master
+         
+         if ($request->v == "contractdetails")
+         {
+ 
+    
+             $rhtml = view('masterData.contractDetailMaster')->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+
+        //endcontractdetailmaster
+
     }
 
 }

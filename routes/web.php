@@ -350,3 +350,16 @@ Route::post('destroycompany', 'CompanyMasterController@delete')->name('destroyco
 Route::resource('leave', LeavetypeMasterController::class);
 Route::post('destroyleave', 'LeavetypeMasterController@delete')->name('destroyleave');
 //end sonam
+
+//manage grade 
+Route::resource('grade', Manage_GradeController::class);
+Route::post('destroyGrade', 'Manage_GradeController@delete')->name('destroyGrade');//for deleting grade
+
+//manage division
+Route::resource('division', Manage_DivisionController::class);
+Route::post('destroyDivision', 'Manage_DivisionController@delete')->name('destroyDivision'); //for deleting  division
+
+//manange contractdetail
+Route::resource('contractdetail', Manage_ContractDetailController::class);
+Route::post('destroyContractDetail', 'Manage_ContractDetailController@delete')->name('destroyContractDetail'); //for deleting contract details
+

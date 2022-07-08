@@ -11,7 +11,7 @@ class CreatefamilydetailsmasterTable extends Migration
         Schema::create('familydetailsmaster', function (Blueprint $table) {
 
         $table->id();
-		$table->Integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
+		$table->foreignId('personalNo')->references('id')->on('employeemaster');  //fk md employee master
         $table->string('relativeName');
         $table->date('dob');
         $table->string('gender');

@@ -10,7 +10,7 @@ class CreatepromotionhistorymasterTable extends Migration
     {
         Schema::create('promotionhistorymaster', function (Blueprint $table) {
             $table->id();
-		$table->integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
+		$table->foreignId('personalNo')->references('id')->on('employeemaster');  //fk md employee master
 		$table->date('promotionDate');
         $table->string('gradeFrom');
         $table->string('gradeTo');

@@ -10,7 +10,7 @@ class CreateofficereportingstructuremasterTable extends Migration
     {
         Schema::create('officereportingstructuremaster', function (Blueprint $table) {
         $table->id();
-		$table->integer('officeId')->references('id')->on('officemaster');    //fk office master 
+		$table->foreignId('officeId')->references('id')->on('officemaster');    //fk office master 
 		$table->integer('reportsToOffice'); 
         $table->date('fromDate'); 
         $table->date('endDate');

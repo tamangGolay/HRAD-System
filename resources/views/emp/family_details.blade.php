@@ -77,8 +77,16 @@ a {
                             <input type="text" id="number" name="number"  placeholder="relativename" class="form-control" required>
                         </div>
                     </div>
-      
-                   
+                    <div class="form-group">
+                    <select name="relation" id="relation" value="" required>
+                                             <option value="">Select Relation</option>
+                                             @foreach($family as $family)
+                    
+                                             <option value="{{$family->id}}">{{$family->relationshipName}}</option>
+										@endforeach
+							</select>
+
+</div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">DoB</label>
                         <div class="col-sm-12">
@@ -93,12 +101,9 @@ a {
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Relation</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="relation" name="relation"  placeholder="relation" class="form-control" required>
-                        </div>
-                    </div>
+                  
+
+                   
 
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="familyButton" value="create">Save changes
@@ -155,7 +160,7 @@ a {
             {data: 'relativeName', name: 'relativeName'},
             {data: 'dob', name: 'dob'},
             {data: 'gender', name: 'gender'},
-            {data: 'relation', name: 'relation'},
+            {data: 'relationshipName', name: 'relation'},
            
 
             {data: 'action', name: 'action', orderable: true, searchable: true},
@@ -165,7 +170,7 @@ a {
     //After Clicking the Add New button it will trigger here
     $('#manageFamily').click(function () {
         $('#familyButton').val("create-room");
-        // $('#family_id').val('');
+         $('#family_id').val('');
         $('#Form').trigger("reset");
         $('#modelHeading').html("Add new Payscale");
         $('#ajaxModel').modal('show');
@@ -187,7 +192,7 @@ a {
           $('#number').val(data.relativeName);
           $('#dob').val(data.dob);
           $('#gender').val(data.gender);
-          $('#relation').val(data.relation);
+          $('#relation').val(data.relationshipName);
 
       })
    });
@@ -251,7 +256,7 @@ a {
           $('#number').val(data.relativeName);
           $('#dob').val(data.dob);
           $('#gender').val(data.gender);
-          $('#relation').val(data.relation);
+          $('#relation').val(data.relationshipName);
 
 
 

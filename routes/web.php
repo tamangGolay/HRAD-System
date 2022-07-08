@@ -383,6 +383,14 @@ Route::post('destroycompany', 'CompanyMasterController@delete')->name('destroyco
 //manage leavetype
 Route::resource('leave', LeavetypeMasterController::class);
 Route::post('destroyleave', 'LeavetypeMasterController@delete')->name('destroyleave');
+
+//manage office
+Route::resource('office', OfficeMasterController::class);
+Route::post('destroyoffice', 'OfficeMasterController@delete')->name('destroyoffice');
+
+//manage department
+Route::resource('department', DepartmentMasterController::class);
+Route::post('destroydepartment', 'DepartmentMasterController@delete')->name('destroydepartment');
 //end sonam
 
 //manage grade 

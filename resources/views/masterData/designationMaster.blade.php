@@ -38,7 +38,7 @@ a {
                 <th>No</th>
                 <th>Designation Short Name</th>
                 <th>Designation Long Name</th>
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -60,15 +60,15 @@ a {
 
                    <input type="hidden" name="id" id="designation_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Designation Short Name</label>
-                        <div class="col-sm-12">
+                        <label for="name" class="col-lg-12 col-sm-12 control-label">Designation Short Name</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="text" class="form-control" id="desisNameShort" name="desisNameShort" placeholder="eg: CEO" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Designation Long name</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-12 control-label">Designation Long name</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="text" id="desisNameLong" name="desisNameLong"  placeholder="eg: Chief Executive officer" class="form-control" required>
                         </div>
                     </div>
@@ -207,7 +207,7 @@ a {
       var designation_id = $(this).data('id');
      
       $.get("{{ route('designation.index') }}" +'/' + designation_id +'/edit', function (data) {
-          $('#designationHeading').html("Do you want to delete designation name?");
+          $('#designationHeading').html("Do you want to delete?");
           $('#designationDeleteButton').val("edit-room");
           $('#designationModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),

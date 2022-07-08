@@ -19,6 +19,9 @@ use App\gewog;
 use App\family;
 use App\increment;
 use App\office;
+use App\Officem;
+use App\Department;
+use App\officeName;
 use App\promotion;
 use App\employeeR;
 use App\pay;
@@ -3000,6 +3003,38 @@ if ($request->v == "vehicleReport")
       ));
   }
 
+  //view for manage office
+
+ if ($request->v == "officemaster")
+ {
+    $officen = officeName::all();
+    // $placemastern = placeName::all();    join place master 
+
+    $name = DB::table('officemaster')
+    ->join('officename', 'officename.id', '=', 'officemaster.officeName')
+    ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
+    ->select('officename.longOfficeName','placemaster.placeName')
+    ->where('officemaster.status',0);
+
+     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen])->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
+
+ //view for manage department
+
+ if ($request->v == "departmentmaster")
+ {
+     $rhtml = view('masterData.departmentMaster')->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
 
 //manage guesthouse
 if ($request->v == "manage_guesthouse")

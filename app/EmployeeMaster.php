@@ -10,7 +10,7 @@ use App\Agencies;
 use App\RoleFormMapping;
 use App\RoleUserMappings;
 use DB;
-
+ 
 class EmployeeMaster extends Authenticatable
 {
     use Notifiable;
@@ -28,7 +28,7 @@ class EmployeeMaster extends Authenticatable
      * @var array
      */
 protected $fillable = [ 
-'id','EmpName','EmpId','BloodGroup','updated_at','created_at'];
+'id','EmpName','EmpId','BloodGroup','cidNo','dob','gender','appointmentDate','updated_at','created_at'];
 
     /**
      * The attributes that should be hidden for arrays.

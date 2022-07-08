@@ -29,13 +29,16 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageResignation">Add new resignation type&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageOffice">Add Office &nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
+
                 <th>No</th>
-                <th>Resignation Type</th>
+                <th>Office Name</th>
+                <th>Office Address</th>
+                <th>Office Head</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -56,23 +59,37 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="resignation_id">
+                   <input type="hidden" name="id" id="office_id">
                     <div class="form-group">
-                        <label for="name" class="col-lg-12 col-sm-2 control-label">Resignation Type</label>
-                        <div class="col-lg-12  col-sm-12">
-                            <input type="text" class="form-control" id="resignationType" name="resignationType" placeholder="eg. voluntery resignation" value="" maxlength="50" required>
+                        <label for="name" class="col-lg-12 col-sm-2 control-label">Office Name</label>
+                        <div class="col-lg-12 col-sm-12">
+                        <select class="col-lg-12 col-sm-12" name="officeName" id="officeName" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($officen as $officen)
+                                             <option value="{{$officen->id}}">{{$officen->longOfficeName}}</option>
+										@endforeach
+							</select>
+                        
+                        <!-- <input type="text" class="form-control" id="officeName" name="officeName" placeholder="eg: CEO" value="" maxlength="50" required> -->
                         </div>
                     </div>
      
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Designation Long name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="namelong" name="namelong"  placeholder="Vehicle number" class="form-control" required>
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Office Head</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required>
+                        </div>
+                    </div>
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="resignationButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="officeButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -84,11 +101,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="resignationModel" aria-hidden="true">
+<div class="modal fade" id="officeModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="resignationHeading"></h4>
+                <h4 class="modal-title" id="officeHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -99,7 +116,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="resignationDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="officeDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -120,21 +137,23 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('resignation.index') }}",
+        ajax: "{{ route('office.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'resignationType', name: 'resignationType'},
-            // {data: 'desisNameLong', name: 'namelong'},
+            // {data: 'officeName', name: 'officeName'},
+            {data: 'longOfficeName', name: 'officeName', orderable: false, searchable: false},
+            {data: 'placeName', name: 'officeAddress'},
+            {data: 'officeHead', name: 'officeHead'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageResignation').click(function () {
-        $('#resignationButton').val("create-room");
-        $('#resignation_id').val('');
+    $('#manageOffice').click(function () {
+        $('#officeButton').val("create-room");
+        $('#office_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add Resignation Type");
+        $('#modelHeading').html("Add new office");
         $('#ajaxModel').modal('show');
 
        
@@ -142,22 +161,23 @@ a {
 
   //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
-      var resignation_id = $(this).data('id');
+      var office_id = $(this).data('id');
      
-      $.get("{{ route('resignation.index') }}" +'/' + resignation_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit Resignation Type");
-          $('#resignationButton').val("edit-room");
+      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Office details");
+          $('#officeButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#resignation_id').val(data.id);
-          $('#resignationType').val(data.resignationType); //input id,database
-        //   $('#namelong').val(data.desisNameLong);
+          $('#office_id').val(data.id);
+          $('#officeName').val(data.longOfficeName); //input id,database
+          $('#officeAddress').val(data.placeName);
+          $('#officeHead').val(data.officeHead);
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#resignationButton').click(function (e) {
+    $('#officeButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -166,7 +186,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('resignation.store') }}",
+          url: "{{ route('office.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -192,37 +212,38 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#resignationButton').html('Save Changes');
+              $('#officeButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
       });
     });
-
+ 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteResignation', function () {
-      var resignation_id = $(this).data('id');
+    $('body').on('click', '.deleteOffice', function () {
+      var office_id = $(this).data('id');
      
-      $.get("{{ route('resignation.index') }}" +'/' + resignation_id +'/edit', function (data) {
-          $('#resignationHeading').html("Do you want to delete?");
-          $('#resignationDeleteButton').val("edit-room");
-          $('#resignationModel').modal('show');
+      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {
+          $('#officeHeading').html("Do you want to delete office?");
+          $('#officeDeleteButton').val("edit-room");
+          $('#officeModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#resignation_id').val(data.id);
-          $('#resignationType').val(data.resignationType); //input id,database
-        //   $('#namelong').val(data.desisNameLong);
+          $('#office_id').val(data.id);
+          $('#officeName').val(data.longOfficeName); //input id,database
+          $('#officeAddress').val(data.placeName);
+          $('#officeHead').val(data.officeHead);
       })
    });
    
   // after clicking yes in delete
-    $('#resignationDeleteButton').click(function (e) {
+    $('#officeDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyresignation') }}",
+          url: "{{ route('destroyoffice') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -239,26 +260,21 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();                 
-       
-       
-
-    
-         
+			table.draw();                          
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#resignationDeleteButton').html('Save Changes');
+              $('#officeDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
+    // $('body').on('click', '.deleteOffice', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',
 	// 						type: "POST",
-	// 						url: "{{ route('destroyresignation') }}",
+	// 						url: "{{ route('destroyVehicle') }}",
 	// 						data: {
 	// 							'id': $(this).data('id'),
 	// 							'_token': $('input[name=_token]').val()

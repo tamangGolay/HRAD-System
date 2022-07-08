@@ -29,13 +29,18 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageResignation">Add new resignation type&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageDepartment">Add Department&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
                 <th>No</th>
-                <th>Resignation Type</th>
+                <th>Department Short Name</th>
+                <th>Department Long Name</th>
+                <th>Department Head</th>
+                <th>Department To Service</th>
+                <th>Department To Company</th>
+                <th>Department To Employee</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -55,24 +60,51 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
-
-                   <input type="hidden" name="id" id="resignation_id">
+                   <input type="hidden" name="id" id="department_id">
                     <div class="form-group">
-                        <label for="name" class="col-lg-12 col-sm-2 control-label">Resignation Type</label>
-                        <div class="col-lg-12  col-sm-12">
-                            <input type="text" class="form-control" id="resignationType" name="resignationType" placeholder="eg. voluntery resignation" value="" maxlength="50" required>
+                        <label for="name" class="col-lg-12 col-sm-12 control-label">Department Short Name</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" class="form-control" id="deptNameShort" name="deptNameShort" placeholder="eg: CEO" value="" maxlength="50" required>
                         </div>
                     </div>
      
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Designation Long name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="namelong" name="namelong"  placeholder="Vehicle number" class="form-control" required>
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Department Long name</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="deptNameLong" name="deptNameLong"  placeholder="eg: Chief Executive officer" class="form-control" required>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Department Head</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="deptHead" name="deptHead"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Department Report To Service</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="deptReportsToService" name="deptReportsToService"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Department Report To Company</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="deptReportsToCompany" name="deptReportsToCompany"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Department Report To Employee</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="deptReportsToEmp" name="deptReportsToEmp"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        </div>
+                    </div>
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="resignationButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="departmentButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -84,11 +116,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="resignationModel" aria-hidden="true">
+<div class="modal fade" id="departmentModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="resignationHeading"></h4>
+                <h4 class="modal-title" id="departmentHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -99,8 +131,8 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="resignationDeleteButton" value="create">Yes</button>
-						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
+                    <button type="submit" class="btn btn-outline-success" id="departmentDeleteButton" value="create">Yes</button>
+						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                    
                     </div>
                 </form>
             </div>
@@ -120,21 +152,25 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('resignation.index') }}",
+        ajax: "{{ route('department.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'resignationType', name: 'resignationType'},
-            // {data: 'desisNameLong', name: 'namelong'},
+            {data: 'deptNameShort', name: 'deptNameShort'},
+            {data: 'deptNameLong', name: 'deptNameLong'},
+            {data: 'deptHead', name: 'deptHead'},
+            {data: 'deptReportsToService', name: 'deptReportsToService'},
+            {data: 'deptReportsToCompany', name: 'deptReportsToCompany'},
+            {data: 'deptReportsToEmp', name: 'deptReportsToEmp'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageResignation').click(function () {
-        $('#resignationButton').val("create-room");
-        $('#resignation_id').val('');
+    $('#manageDepartment').click(function () {
+        $('#departmentButton').val("create-room");
+        $('#department_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add Resignation Type");
+        $('#modelHeading').html("Add new Department");
         $('#ajaxModel').modal('show');
 
        
@@ -142,22 +178,26 @@ a {
 
   //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
-      var resignation_id = $(this).data('id');
+      var department_id = $(this).data('id');
      
-      $.get("{{ route('resignation.index') }}" +'/' + resignation_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit Resignation Type");
-          $('#resignationButton').val("edit-room");
+      $.get("{{ route('department.index') }}" +'/' + department_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Department details");
+          $('#departmentButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#resignation_id').val(data.id);
-          $('#resignationType').val(data.resignationType); //input id,database
-        //   $('#namelong').val(data.desisNameLong);
+          $('#department_id').val(data.id);
+          $('#deptNameShort').val(data.deptNameShort); //input id,database
+          $('#deptNameLong').val(data.deptNameLong);
+          $('#deptHead').val(data.deptHead);
+          $('#deptReportsToService').val(data.deptReportsToService);
+          $('#deptReportsToCompany').val(data.deptReportsToCompany);
+          $('#deptReportsToEmp').val(data.deptReportsToEmp);
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#resignationButton').click(function (e) {
+    $('#departmentButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -166,7 +206,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('resignation.store') }}",
+          url: "{{ route('department.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -192,7 +232,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#resignationButton').html('Save Changes');
+              $('#departmentButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
@@ -201,28 +241,32 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteResignation', function () {
-      var resignation_id = $(this).data('id');
+    $('body').on('click', '.deleteDepartment', function () {
+      var department_id = $(this).data('id');
      
-      $.get("{{ route('resignation.index') }}" +'/' + resignation_id +'/edit', function (data) {
-          $('#resignationHeading').html("Do you want to delete?");
-          $('#resignationDeleteButton').val("edit-room");
-          $('#resignationModel').modal('show');
+      $.get("{{ route('department.index') }}" +'/' + department_id +'/edit', function (data) {
+          $('#departmentHeading').html("Do you want to delete designation name?");
+          $('#departmentDeleteButton').val("edit-room");
+          $('#departmentModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#resignation_id').val(data.id);
-          $('#resignationType').val(data.resignationType); //input id,database
-        //   $('#namelong').val(data.desisNameLong);
+          $('#department_id').val(data.id);
+          $('#deptNameShort').val(data.deptNameShort); //input id,database
+          $('#deptNameLong').val(data.deptNameLong);
+          $('#deptHead').val(data.deptHead);
+          $('#deptReportsToService').val(data.deptReportsToService);
+          $('#deptReportsToCompany').val(data.deptReportsToCompany);
+          $('#deptReportsToEmp').val(data.deptReportsToEmp);
       })
    });
    
   // after clicking yes in delete
-    $('#resignationDeleteButton').click(function (e) {
+    $('#departmentDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyresignation') }}",
+          url: "{{ route('destroydepartment') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -239,26 +283,21 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();                 
-       
-       
-
-    
-         
+			table.draw();                          
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#resignationDeleteButton').html('Save Changes');
+              $('#departmentDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
+    // $('body').on('click', '.deleteDesignation', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',
 	// 						type: "POST",
-	// 						url: "{{ route('destroyresignation') }}",
+	// 						url: "{{ route('destroyVehicle') }}",
 	// 						data: {
 	// 							'id': $(this).data('id'),
 	// 							'_token': $('input[name=_token]').val()

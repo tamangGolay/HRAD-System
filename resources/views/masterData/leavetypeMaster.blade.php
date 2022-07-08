@@ -36,8 +36,7 @@ a {
             <tr>
                 <th>No</th>
                 <th>Leave Type</th>
-                <th>Vehicle_no</th>
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -59,8 +58,8 @@ a {
 
                    <input type="hidden" name="id" id="leave_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Leave Type</label>
-                        <div class="col-sm-12">
+                        <label for="name" class="col-lg-12 col-sm-2 control-label">Leave Type</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="text" class="form-control" id="leaveType" name="leaveType" placeholder="eg. casual leave" value="" maxlength="50" required>
                         </div>
                     </div>

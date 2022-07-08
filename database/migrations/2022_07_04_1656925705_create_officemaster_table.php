@@ -12,12 +12,15 @@ class CreateOfficemasterTable extends Migration
 
 		$table->id();
         $table->foreignId('officeName')->references('id')->on('officename');
-        $table->foreignId('officeAddress')->references('id')->on('placemaster');
+        $table->foreignId('officeAddress')->references('id')->on('placemaster')->nullable();
         $table->integer('officeHead');
-        $table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->string('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
+        $table->date('updated_at')->nullable();
+        $table->date('created_at')->nullable();
 
         });
     }

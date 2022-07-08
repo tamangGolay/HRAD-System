@@ -7,7 +7,7 @@
   .textfont{
 	font-family: Arial, Helvetica, sans-serif; 
 	font-size: 15px;
-  }
+  } 
 </style>
 <div class="container">
 	<div class="row">
@@ -36,6 +36,12 @@
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number:') }}</label>
 						<div class="col-md-4">
 							<input id="contact_number" type="number" autocomplete="off" placeholder="Contact Number" class="form-control" name="contact_number" required> </div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CID Number:') }}</label>
+						<div class="col-md-4">
+							<input id="cid_number" type="number" autocomplete="off" placeholder="cid" class="form-control" name="cid_number" required> </div>
 					</div>
 <!-- 
 					<div class="form-group row">

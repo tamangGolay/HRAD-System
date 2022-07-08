@@ -16,7 +16,13 @@ use App\guesthouse;
 use App\Grade;
 use App\roombed;
 use App\gewog;
-
+use App\family;
+use App\increment;
+use App\office;
+use App\promotion;
+use App\employeeR;
+use App\pay;
+use App\Relationname;
 
 class FormsController extends Controller
 {
@@ -3581,8 +3587,10 @@ if ($request->v == "pay_scale")
 if ($request->v == "family_details")
 {
 
+    $family = Relationname::all();
 
-    $rhtml = view('emp.family_details')->render();
+
+    $rhtml = view('emp.family_details')->with(['family' => $family])->render();
     return response()
         ->json(array(
         'success' => true,

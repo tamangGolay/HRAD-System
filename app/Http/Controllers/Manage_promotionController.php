@@ -17,10 +17,18 @@ class Manage_promotionController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $vehicle = DB::table('promotionhistorymaster')->where('status', 0);
+        $promotion = DB::table('promotionhistorymaster')      
+
+        ->join('employeemaster', 'employeemaster.id', '=', 'promotionhistorymaster.personalNo')
+        ->join('grademaster', 'grademaster.id', '=', 'promotionhistorymaster.gradeFrom')
+        // >join('grademaster as g', 'g.id', '=', 'promotionhistorymaster.gradeTo')
+     ->select('promotionhistorymaster.id','promotionhistorymaster.promotionDate',
+     'promotionhistorymaster.gradeFrom','promotionhistorymaster.gradeTo',
+     'promotionhistorymaster.nextDue', 'promotionhistorymaster.remarks','employeemaster.empId','grademaster.grade')
+   ->where('promotionhistorymaster.status','0');
         
         if ($request->ajax()) {
-            $data = $vehicle;
+            $data = $promotion;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -38,7 +46,7 @@ class Manage_promotionController extends Controller
                     ->make(true);
         }
       
-        return view('emp.promotion_history',compact('vehicle'));
+        return view('emp.promotion_history',compact('promotion'));
     }
      
     /**

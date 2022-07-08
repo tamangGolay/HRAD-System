@@ -64,13 +64,17 @@ a {
 
 
                    <input type="hidden" name="id" id="family_id">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="employee ID" value="" maxlength="50" required>
-                        </div>
-                    </div>
-     
+                              <div class="form-group">
+                    <select name="name" id="name" value="" required>
+                                             <option value="">Select Personal No.</option>
+                                             @foreach($personal as $personal)
+                    
+                                             <option value="{{$personal->id}}">{{$personal->empId}}</option>
+										@endforeach
+							</select>
+
+</div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Relative Name</label>
                         <div class="col-sm-12">

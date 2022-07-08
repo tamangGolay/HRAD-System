@@ -18,9 +18,10 @@ class Manage_familyController extends Controller
     {
 
         $family = DB::table('familydetailsmaster')
+        ->join('employeemaster', 'employeemaster.id', '=', 'familydetailsmaster.personalNo')
               ->join('relationmaster', 'relationmaster.id', '=', 'familydetailsmaster.relation')
         ->select('familydetailsmaster.id','familydetailsmaster.personalNo','familydetailsmaster.relativeName'
-        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName'
+        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName','employeemaster.empId'
         )
         ->where('familydetailsmaster.status','0');
         

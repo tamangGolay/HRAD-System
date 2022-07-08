@@ -17,7 +17,13 @@ class Manage_incrementController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $increment = DB::table('incrementhistorymaster')->where('status', 0);
+        $increment = DB::table('incrementhistorymaster')
+
+           ->join('employeemaster', 'employeemaster.id', '=', 'incrementhistorymaster.personalNo')
+        ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
+        'incrementhistorymaster.oldBasic','incrementhistorymaster.newBasic',
+        'incrementhistorymaster.nextDue', 'incrementhistorymaster.remarks','employeemaster.empId')
+      ->where('incrementhistorymaster.status','0');
         
         if ($request->ajax()) {
             $data = $increment;

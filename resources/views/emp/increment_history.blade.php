@@ -63,12 +63,16 @@ a {
 
 
                    <input type="hidden" name="id" id="increment_id">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="employee ID" value="" maxlength="50" required>
-                        </div>
-                    </div>
+                   <div class="form-group">
+                    <select name="name" id="name" value="" required>
+                                             <option value="">Select PersonalNo.</option>
+                                             @foreach($increment as $increment)
+                    
+                                             <option value="{{$increment->id}}">{{$increment->empId}}</option>
+										@endforeach
+							</select>
+
+</div>
      
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Increment Date</label>
@@ -157,7 +161,7 @@ a {
         serverSide: true,
         ajax: "{{ route('increment.index') }}",   //** */
         columns: [
-            {data: 'personalNo', name: 'personalNo'},
+            {data: 'empId', name: 'personalNo'},
             {data: 'incrementDate', name: 'incrementDate'},
             {data: 'oldBasic', name: 'oldBasic'},
             {data: 'newBasic', name: 'newBasic'},

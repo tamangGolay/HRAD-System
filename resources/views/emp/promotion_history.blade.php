@@ -66,12 +66,17 @@ a {
 
 
                    <input type="hidden" name="id" id="vehicle_id">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="employee ID" value="" maxlength="50" required>
-                        </div>
-                    </div>
+                   <div class="form-group">
+                    <select name="name" id="name" value="" required>
+                                             <option value="">Select PersonalNo.</option>
+                                             @foreach($promotion as $promotion)
+                    
+                                             <option value="{{$promotion->id}}">{{$promotion->empId}}</option>
+										@endforeach
+							</select>
+
+</div>
+     
                    
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Promotion Date</label>
@@ -81,20 +86,29 @@ a {
                     </div>
       
                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Grade From</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="from" name="from"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Grade To</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="to" name="to"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
+                   
 
+                    <div class="form-group">
+                    <select name="from" id="from" value="" required>
+                                             <option value="">Select Grade From.</option>
+                                             @foreach($grade as $grade)
+                    
+                                             <option value="{{$grade->id}}">{{$grade->grade}}</option>
+										@endforeach
+							</select>
+
+</div>
+                    
+<div class="form-group">
+                    <select name="to" id="to" value="" required>
+                                             <option value="">Select GradeTo.</option>
+                                             @foreach($gradeto as $gradeto)
+                    
+                                             <option value="{{$gradeto->id}}">{{$gradeto->grade}}</option>
+										@endforeach
+							</select>
+
+</div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Next Due</label>
                         <div class="col-sm-12">
@@ -160,10 +174,10 @@ a {
         serverSide: true,
         ajax: "{{ route('promotion.index') }}",   //**  both are database fields*/
         columns: [
-            {data: 'personalNo', name: 'personalNo'},
+            {data: 'empId', name: 'personalNo'},
             {data: 'promotionDate', name: 'promotionDate'},
-            {data: 'gradeFrom', name: 'gradeFrom'},
-            {data: 'gradeTo', name: 'gradeTo'},
+            {data: 'grade', name: 'gradeFrom'},
+            {data: 'grade', name: 'gradeTo'},
             {data: 'nextDue', name: 'nextDue'},
             {data: 'remarks', name: 'remarks'},
            

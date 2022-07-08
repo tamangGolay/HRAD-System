@@ -15,7 +15,7 @@ class CreatefamilydetailsmasterTable extends Migration
         $table->string('relativeName');
         $table->date('dob');
         $table->string('gender');
-        $table->string('relation')->references('id')->on('relationmaster');  //fk to md relation master
+        $table->foreignId('relation')->references('id')->on('relationmaster');  //fk to md relation master
         $table->integer('status')->default(0);
 		$table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

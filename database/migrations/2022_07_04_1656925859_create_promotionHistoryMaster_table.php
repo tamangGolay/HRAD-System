@@ -12,8 +12,8 @@ class CreatepromotionhistorymasterTable extends Migration
             $table->id();
 		$table->foreignId('personalNo')->references('id')->on('employeemaster');  //fk md employee master
 		$table->date('promotionDate');
-        $table->string('gradeFrom');
-        $table->string('gradeTo');
+        $table->foreignId('gradeFrom')->references('id')->on('grademaster');
+        $table->foreignId('gradeTo')->references('id')->on('grademaster'); 
         $table->date('nextDue');
         $table->string('remarks');
         $table->integer('status')->default(0);

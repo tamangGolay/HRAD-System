@@ -37,7 +37,7 @@ a {
             <tr>
                  
                 <th>Sl.No</th> 
-                <th>QualificationId</th>
+                <th>QualificationIdname</th>
                 <th>Qualification Short Name</th>
                 <th>Qualification Long Name</th> 
                 <th>Action</th>
@@ -62,24 +62,38 @@ a {
 
                    <input type="hidden" name="id" id="qid">
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
 
-                        <label for="name" class="col-sm-2 control-label">QualificationId</label>
+                        <label for="name" class="col-sm-2 col-lg-8  control-label">QualificationId</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="qualificationLevelId" name="qualificationLevelId" placeholder="id of qualification" value="" maxlength="50" required>
                         </div>
-                    </div>  
+                    </div>   -->
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
+                        <div class="col-sm-12">                            
+
+                            <select name="qualificationLevelId" id="qualificationLevelId" class="form-control" value="" required>
+                                             <option value="">Select Qualification Name</option>
+                                             @foreach($qualificationlevel as $qualificationlevel)
+                                             <option value="{{$qualificationlevel->id}}">{{$qualificationlevel->qualiLevelName}}</option>
+										@endforeach
+							</select>
+                        </div>
+                    </div>
+
                     
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Q Short Name</label>
+                        <label class="col-sm-2 col-lg-8  control-label">Qualification Short Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="qualificationShortName" name="qualificationShortName"  placeholder="Qualification Short Name" class="form-control" required>
                         </div>
                     </div> 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Q Long Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Long Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="qualificationLongName" name="qualificationLongName"  placeholder="Qualification Long Name" class="form-control" required>
                         </div>
@@ -136,7 +150,7 @@ a {
         ajax: "{{ route('qualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'qualificationLevelId', name: 'qualificationLevelId'},
+            {data: 'qualiLevelName', name: 'qualificationLevelId'}, 
             {data: 'qualificationShortName', name: 'qualificationShortName'},
             {data: 'qualificationLongName', name: 'qualificationLongName'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
@@ -164,7 +178,7 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#qualificationLevelId').val(data.qualificationLevelId);
+          $('#qualificationLevelId').val(data.qualiLevelName);
           $('#qualificationShortName').val(data.qualificationShortName);
           $('#qualificationLongName').val(data.qualificationLongName); //input id,database
           
@@ -226,7 +240,7 @@ a {
           $('#qualificationModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#qualificationLevelId').val(data.qualificationLevelId);
+          $('#qualificationLevelId').val(data.qualiLevelName);
           $('#qualificationShortName').val(data.qualificationShortName); //input id,database
           $('#qualificationLongName').val(data.qualificationLongName);
       })
@@ -256,7 +270,7 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();           
+			table.draw();    
        
 
     
@@ -269,37 +283,8 @@ a {
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyVehicle') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_vehicle';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+    
+	
      
      
 </script>

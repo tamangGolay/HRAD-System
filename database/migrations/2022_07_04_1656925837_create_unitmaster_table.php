@@ -10,20 +10,21 @@ class CreateUnitmasterTable extends Migration
     {
         Schema::create('unitmaster', function (Blueprint $table) {
 
-		$table->integer('unitId');
+		$table->id();
 		$table->string('unitNameShort');
 		$table->string('unitNameLong');
 		$table->integer('unitHead');
-		$table->integer('unitReportsToSubDivision');
-		$table->integer('unitReportsToDivision');
-		$table->integer('unitReportsToDepartment');
-		$table->integer('unitReportsToService');
-		$table->integer('unitReportsToCompany');
-		$table->integer('unitReportsToEmp');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->integer('unitReportsToSubDivision')->nullable();
+		$table->integer('unitReportsToDivision')->nullable();
+		$table->integer('unitReportsToDepartment')->nullable();
+		$table->integer('unitReportsToService')->nullable();
+		$table->integer('unitReportsToCompany')->nullable();
+		$table->integer('unitReportsToEmp')->nullable();
+		$table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+        $table->timestamp('modifiedOn')->nullable();
         });
     }
 

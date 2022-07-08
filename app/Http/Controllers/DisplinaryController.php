@@ -18,7 +18,12 @@ class DisplinaryController extends Controller
     public function index(Request $request)
     {
 
-        $quali = DB::table('displinaryhistorymaster')->where('status','0');        
+        // $quali = DB::table('displinaryhistorymaster')->where('status','0');   
+        $quali = DB::table('displinaryhistorymaster')
+        ->join('employeemaster', 'employeemaster.id', '=', 'displinaryhistorymaster.personalNo')
+        ->select('displinaryhistorymaster.id','employeemaster.empId','displinaryhistorymaster.incrementDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
+        ->where('displinaryhistorymaster.status','0');
+
         
         if ($request->ajax()) {
             $data = $quali;

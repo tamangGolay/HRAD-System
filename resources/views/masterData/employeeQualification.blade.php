@@ -37,7 +37,7 @@ a {
             <tr>                 
                 <th>Sl.No</th> 
                 <th>Pernonal No.</th>
-                <th>Qualification Id</th>                
+                <th>Qualification Full Name</th>                
                 <th>Action</th>
             </tr>
         </thead>
@@ -62,19 +62,33 @@ a {
 
                     <div class="form-group">
 
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal No</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No" value="" maxlength="50" required>
                         </div>
                     </div>  
                     
      
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-sm-2 control-label">QualificationId</label>
                         <div class="col-sm-12">
                             <input type="text" id="qualificationId" name="qualificationId"  placeholder="Qualification Id" class="form-control" required>
                         </div>
-                    </div>                     
+                    </div>   -->
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
+                        <div class="col-sm-12">
+                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
+
+                            <select name="qualificationId" id="qualificationId" class="form-control" value="" required>
+                                             <option value="">Select Qualification</option>
+                                             @foreach($qualification as $qualification)
+                                             <option value="{{$qualification->id}}">{{$qualification->qualificationLongName}}</option>
+										@endforeach
+							</select>
+                        </div>
+                    </div>
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="employeeQualiButton" value="create">Save changes
@@ -127,8 +141,8 @@ a {
         ajax: "{{ route('employeeQualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'personalNo', name: 'personalNo'},
-            {data: 'qualificationId', name: 'qualificationId'},           
+            {data: 'empId', name: 'personalNo'},
+            {data: 'qualificationLongName', name: 'qualificationId'},           
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -138,7 +152,7 @@ a {
         $('#employeeQualiButton').val("create-room");
         // $('#vehicle_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new emp qualification");
+        $('#modelHeading').html("Add new employee qualification");
         $('#ajaxModel').modal('show');
 
        
@@ -154,8 +168,8 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
-          $('#personalNo').val(data.personalNo);
-          $('#qualificationId').val(data.qualificationId);   //input id,database        
+          $('#personalNo').val(data.empId);
+          $('#qualificationId').val(data.qualificationLongName);   //input id,database        
          
       })
    });
@@ -215,8 +229,8 @@ a {
           $('#employeeQualiModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
-          $('#personalNo').val(data.personalNo);
-          $('#qualificationId').val(data.qualificationId); //input id,database
+          $('#personalNo').val(data.empId);
+          $('#qualificationId').val(data.qualificationLongName); //input id,database
           
       })
    });

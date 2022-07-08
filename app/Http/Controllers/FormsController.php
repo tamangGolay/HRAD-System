@@ -27,6 +27,8 @@ use App\employeeR;
 use App\pay;
 use App\Relationname;
 use App\EmployeeMaster;
+use App\QualificationLevel;
+use App\Qualification;
 
 class FormsController extends Controller
 {
@@ -3697,16 +3699,23 @@ if ($request->v == "promotion_history")
  
          //2. view for Qualificationlevel (Tdee)
  
-             if ($request->v == "qualificationmaster")  //form.csv
-                 {    
- 
-              $rhtml = view('masterData.qualificationLevel')->render(); 
-                  return response()
-                     ->json(array(
-                      'success' => true,
-                      'html' => $rhtml
-                       ));
-              }  //end
+         if ($request->v == "qualificationmaster")  //form.csv
+             {  
+                
+        $qualificationlevel = QualificationLevel::all();   //model of other joining table qualilevelmaster
+            
+         $quali = DB::table('qualificationmaster')
+            ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
+            ->select('qualilevelmaster.qualiLevelName')
+                ->where('qualificationmaster.status',0);          
+
+          $rhtml = view('masterData.qualificationLevel')->with(['qualificationlevel' => $qualificationlevel])->render();
+              return response()
+                 ->json(array(
+                  'success' => true,
+                  'html' => $rhtml
+                   ));
+          }  //end
  
  
     //3. relationmaster          
@@ -3729,29 +3738,27 @@ if ($request->v == "promotion_history")
  
           if ($request->v == "employeequalificationmaster")  //form.csv
           {     
-             // $empquali = DB::table('employeequalificationmaster')->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
-             // ->select('personalNo', 'empName')
-             //  ->where('status', '=', 0);
-             // ->where('employeequalificationmaster.id', '=', $request->id)
-             // ->first();
+            $qualification = Qualification::all();   //model of other joining table
+                
+            $empquali = DB::table('employeequalificationmaster')
+            ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.qualificationId')
+            ->select('qualificationmaster.qualificationLongName')
+            ->where('employeequalificationmaster.status',0);         
  
-         //  $rhtml = view('masterData.employeeQualification')->with(['empquali'=>$empquali])->render();
-         
-         $rhtml = view('masterData.employeeQualification')->render();  
-           return response()
-              ->json(array(
-               'success' => true,
-               'html' => $rhtml
+             $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification])->render();
+              return response()
+                  ->json(array(
+                  'success' => true,
+                  'html' => $rhtml     
+      
+
                 ));
-       }  //end
+       } 
+        //end
  
-       //5. displinary          
+       //5. displinary   (tdee)       
        if ($request->v == "displinaryhistorymaster")
-       {
- 
-            //  $conference = vehicles::all();
-           //  $review = DB::table('vehicledetails')->select('*')
-            //      ->paginate();
+       {              
  
         $rhtml = view('masterData.displinary')->render();
         return response()
@@ -3759,7 +3766,20 @@ if ($request->v == "promotion_history")
              'success' => true,
                 'html' => $rhtml
             ));
-       }  
+       }  //end
+
+       //6. Unitmaster (Tdee)          
+       if ($request->v == "unitmaster")
+       {
+            
+ 
+        $rhtml = view('masterData.unit')->render();
+        return response()
+              ->json(array(
+             'success' => true,
+                'html' => $rhtml
+            ));
+       }  //end
 
     }
 

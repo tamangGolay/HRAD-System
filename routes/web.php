@@ -448,3 +448,7 @@ Route::post('destroyrelation', 'MasterRelationController@delete')->name('destroy
 Route::resource('displinary', DisplinaryController::class);
 Route::post('destroyDisplinary', 'DisplinaryController@delete')->name('destroyDisplinary');
 
+//unit
+Route::resource('unit', ManageUnitController::class);
+Route::post('destroyUnit', 'ManageUnitController@delete')->name('destroyUnit');
+

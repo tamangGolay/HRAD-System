@@ -17,7 +17,15 @@ class Manage_familyController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $family = DB::table('familydetailsmaster')->where('status', 0);
+        $family = DB::table('familydetailsmaster')
+              ->join('relationmaster', 'relationmaster.id', '=', 'familydetailsmaster.relation')
+        ->select('familydetailsmaster.id','familydetailsmaster.personalNo','familydetailsmaster.relativeName'
+        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName'
+        )
+        ->where('familydetailsmaster.status','0');
+        
+
+
         
         if ($request->ajax()) {
             $data = $family;
@@ -49,7 +57,8 @@ class Manage_familyController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->id);
+       
+
         family::updateOrCreate(['personalNo' => $request->name],  ['relativeName' => $request->number,  'dob' => $request->dob,
         'gender' => $request->gender, 'relation' => $request->relation
     

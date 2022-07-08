@@ -63,12 +63,18 @@ a {
 
 
                    <input type="hidden" name="id" id="employee_id">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="employee ID" value="" maxlength="50" required>
-                        </div>
-                    </div>
+                    
+                   
+                   <div class="form-group">
+                    <select name="name" id="name" value="" required>
+                                             <option value="">Select PersonalNo.</option>
+                                             @foreach($employee as $employee)
+                    
+                                             <option value="{{$employee->id}}">{{$employee->empId}}</option>
+										@endforeach
+							</select>
+
+</div>
      
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Reports To Office</label>
@@ -152,7 +158,7 @@ a {
         serverSide: true,
         ajax: "{{ route('employeeR.index') }}",   //** */
         columns: [
-            {data: 'personalNo', name: 'personalNo'},
+            {data: 'empId', name: 'personalNo'},
             {data: 'reportsToOffice', name: 'reportsToOffice'},
             {data: 'reportsToEmployee', name: 'reportsToEmployee'},
             {data: 'fromDate', name: 'fromDate'},

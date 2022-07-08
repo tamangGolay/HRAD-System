@@ -17,7 +17,13 @@ class Manage_employeeController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $employee = DB::table('empreportingstructuremaster')->where('status', 0);
+        $employee = DB::table('empreportingstructuremaster')
+        ->join('employeemaster', 'employeemaster.id', '=', 'empreportingstructuremaster.personalNo')
+        ->select('empreportingstructuremaster.id','empreportingstructuremaster.reportsToOffice',
+        'empreportingstructuremaster.reportsToEmployee','empreportingstructuremaster.fromDate',
+        'empreportingstructuremaster.endDate','employeemaster.empId')
+      ->where('empreportingstructuremaster.status','0');
+  
         
         if ($request->ajax()) {
             $data = $employee;

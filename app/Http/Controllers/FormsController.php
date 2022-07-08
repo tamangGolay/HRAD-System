@@ -23,6 +23,7 @@ use App\promotion;
 use App\employeeR;
 use App\pay;
 use App\Relationname;
+use App\EmployeeMaster;
 
 class FormsController extends Controller
 {
@@ -3553,11 +3554,12 @@ if ($request->v == "room_details")
         if ($request->v == "employee_reporting")
         {
        
+            $employee = EmployeeMaster::all();
            //  $conference = vehicles::all();
            //  $review = DB::table('vehicledetails')->select('*')
            //      ->paginate();
        
-            $rhtml = view('emp.employee_reporting')->render();
+            $rhtml = view('emp.employee_reporting')->with(['employee' => $employee])->render();
             return response()
                 ->json(array(
                 'success' => true,

@@ -10,21 +10,22 @@ class CreateSubstationmasterTable extends Migration
     {
         Schema::create('substationmaster', function (Blueprint $table) {
 
-		$table->integer('ssId');
+		$table->id();
 		$table->string('ssNameShort');
 		$table->string('ssNameLong');
-		$table->integer('ssHead');
-		$table->integer('ssReportsToUnit');
-		$table->integer('ssReportsToSubDivision');
-		$table->integer('ssReportsToDivision');
-		$table->integer('ssReportsToDepartment');
-		$table->integer('ssReportsToService');
-		$table->integer('ssReportsToCompany');
-		$table->integer('ssReportsToEmp');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->integer('ssHead')->nullable();
+		$table->integer('ssReportsToUnit')->nullable();
+		$table->integer('ssReportsToSubDivision')->nullable();
+		$table->integer('ssReportsToDivision')->nullable();
+		$table->integer('ssReportsToDepartment')->nullable();
+		$table->integer('ssReportsToService')->nullable();
+		$table->integer('ssReportsToCompany')->nullable();
+		$table->integer('ssReportsToEmp')->nullable();
+		$table->integer('status')->default(0);
+		$table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
 
         });
     }

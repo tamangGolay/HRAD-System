@@ -9,14 +9,14 @@ class CreateEmployeemasterTable extends Migration
     public function up()
     {
         Schema::create('employeemaster', function (Blueprint $table) {
-		$table->id();
+		$table->id(); 
 		$table->integer('empId');
 		$table->string('empName');
 		$table->string('bloodGroup');
-		$table->bigInteger('cidNo')->nullable();
-		$table->date('dob')->nullable();
-		$table->string('gender')->nullable();
-		$table->date('appointmentDate')->nullable();
+		$table->bigInteger('cidNo');
+		$table->date('dob');
+		$table->string('gender');
+		$table->date('appointmentDate');
         // $table->foreignId('grade')->references('id')->on('grademaster')->nullable();
 		// $table->integer('designation')->references('id')->on('designationmaster')->nullable();//fk md_designation N
 		// $table->foreignId('office')->references('id')->on('officemaster')->nullable();

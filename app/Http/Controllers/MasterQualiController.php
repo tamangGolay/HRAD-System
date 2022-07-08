@@ -18,7 +18,13 @@ class MasterQualiController extends Controller
     public function index(Request $request)
     {
 
-        $quali = DB::table('qualificationmaster')->where('status','0');
+      // $quali = DB::table('qualificationmaster')->where('status','0');
+
+       $quali = DB::table('qualificationmaster')
+       ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
+       
+       ->select('qualificationmaster.id','qualilevelmaster.qualiLevelName','qualificationmaster.qualificationShortName','qualificationmaster.qualificationLongName')
+       ->where('qualificationmaster.status','0');  
         
         if ($request->ajax()) {
             $data = $quali;
@@ -87,7 +93,7 @@ class MasterQualiController extends Controller
     public function message(Request $request)
     {
 
-        return redirect('home')->with('page', 'qualificationLevel');
+        return redirect('home');
     }
 
 }

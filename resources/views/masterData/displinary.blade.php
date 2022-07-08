@@ -143,7 +143,7 @@ a {
         ajax: "{{ route('displinary.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'personalNo', name: 'personalNo'},
+            {data: 'empId', name: 'personalNo'},
             {data: 'incrementDate', name: 'incrementDate'},
             {data: 'case', name: 'case'},
             {data: 'actionTaken', name: 'actionTaken'},
@@ -172,7 +172,7 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#personalNo').val(data.personalNo);
+          $('#personalNo').val(data.empId);
           $('#incrementDate').val(data.incrementDate);
           $('#case').val(data.case); //input id,database
           $('#actionTaken').val(data.actionTaken);
@@ -235,7 +235,7 @@ a {
           $('#displinaryModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#personalNo').val(data.personalNo);
+          $('#personalNo').val(data.empId);
           $('#incrementDate').val(data.incrementDate);
           $('#case').val(data.case); //input id,database
           $('#actionTaken').val(data.actionTaken);

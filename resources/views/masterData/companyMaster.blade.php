@@ -37,9 +37,9 @@ a {
 
                 <th>No</th>
                 <th>Company Short Name</th>
-                <th>COmpany Long Name</th>
-                <th>to Long Name</th>
-                <th width="300px">Action</th>
+                <th>Company Long Name</th>
+                <th>Company Reports To</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -61,23 +61,23 @@ a {
 
                    <input type="hidden" name="id" id="companyId">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Company short Name</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="comNameShort" name="comNameShort" placeholder="eg: CEO" value="" maxlength="50" required>
+                        <label for="name" class="col-lg-12 col-sm-12 control-label">Company short Name</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" class="form-control" id="comNameShort" name="comNameShort" placeholder="eg: BPC" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Company Long name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="comNameLong" name="comNameLong"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <label class="col-lg-12 col-sm-12 control-label">Company Long name</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="comNameLong" name="comNameLong"  placeholder="eg: Bhutan Power Corporation" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">To Long name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="comReportsTo" name="comReportsTo"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <label class="col-lg-12 col-sm-12 control-label">Company Reports To</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="comReportsTo" name="comReportsTo"  placeholder="eg: DHI" class="form-control" required>
                         </div>
                     </div>
       
@@ -217,7 +217,7 @@ a {
       var companyId = $(this).data('id');
      
       $.get("{{ route('company.index') }}" +'/' + companyId +'/edit', function (data) {
-          $('#companyHeading').html("Do you want to delete company name?");
+          $('#companyHeading').html("Do you want to delete?");
           $('#companyDeleteButton').val("edit-room");
           $('#companyModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),

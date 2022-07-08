@@ -18,7 +18,14 @@ class EmpQualificationController extends Controller
     public function index(Request $request)
     {
 
-          $empquali = DB::table('employeequalificationmaster')->where('status','0');
+          //$empquali = DB::table('employeequalificationmaster')->where('status','0');
+          
+    $empquali = DB::table('employeequalificationmaster')
+          ->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
+          ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.qualificationId') 
+
+          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationLongName')
+          ->where('employeequalificationmaster.status','0');  
 
         if ($request->ajax()) {
             $data = $empquali;
@@ -46,10 +53,9 @@ class EmpQualificationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //  dd($request);
+    {          
         EmployeeQualification::updateOrCreate(['id' => $request->id], 
-                ['personalNo' => $request->personalNo,
+                ['personalNo' => $request->personalNo, 
                 'qualificationId' => $request->qualificationId]);        
    
         return response()->json(['success'=>'New qualification saved successfully.']);
@@ -61,11 +67,10 @@ class EmpQualificationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-
+    {           
         
-        $conference = EmployeeQualification::find($id);
-        return response()->json($conference);
+        $empquali = EmployeeQualification::find($id);
+        return response()->json($empquali);
     }
   
     /**

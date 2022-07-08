@@ -17,7 +17,6 @@ a {
 }
 
 </style>
-</style>
 
 
 
@@ -30,14 +29,16 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageEmpQuali">Add new qualification&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageOffice">Add Office &nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
-            <tr>                 
-                <th>Sl.No</th> 
-                <th>Pernonal No.</th>
-                <th>Qualification Full Name</th>                
+            <tr>
+
+                <th>No</th>
+                <th>Office Name</th>
+                <th>Office Address</th>
+                <th>Office Head</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -58,40 +59,37 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="eqid">
-
+                   <input type="hidden" name="id" id="office_id">
                     <div class="form-group">
-
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No" value="" maxlength="50" required>
-                        </div>
-                    </div>  
-                    
-     
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">QualificationId</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="qualificationId" name="qualificationId"  placeholder="Qualification Id" class="form-control" required>
-                        </div>
-                    </div>   -->
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="qualificationId" id="qualificationId" class="form-control" value="" required>
-                                             <option value="">Select Qualification</option>
-                                             @foreach($qualification as $qualification)
-                                             <option value="{{$qualification->id}}">{{$qualification->qualificationLongName}}</option>
+                        <label for="name" class="col-lg-12 col-sm-2 control-label">Office Name</label>
+                        <div class="col-lg-12 col-sm-12">
+                        <select class="col-lg-12 col-sm-12" name="officeName" id="officeName" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($officen as $officen)
+                                             <option value="{{$officen->id}}">{{$officen->longOfficeName}}</option>
 										@endforeach
 							</select>
+                        
+                        <!-- <input type="text" class="form-control" id="officeName" name="officeName" placeholder="eg: CEO" value="" maxlength="50" required> -->
+                        </div>
+                    </div>
+     
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Office Head</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required>
                         </div>
                     </div>
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="employeeQualiButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="officeButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -103,21 +101,22 @@ a {
 </div>
 
 
-<div class="modal fade" id="employeeQualiModel" aria-hidden="true">
+<div class="modal fade" id="officeModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="employeeQualiHeading"></h4>
+                <h4 class="modal-title" id="officeHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="employeeQualiDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="officeDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -138,21 +137,23 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('employeeQualification.index') }}",     // initial data in data table
+        ajax: "{{ route('office.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'personalNo'},
-            {data: 'qualificationLongName', name: 'qualificationId'},           
+            // {data: 'officeName', name: 'officeName'},
+            {data: 'longOfficeName', name: 'officeName', orderable: false, searchable: false},
+            {data: 'placeName', name: 'officeAddress'},
+            {data: 'officeHead', name: 'officeHead'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageEmpQuali').click(function () {
-        $('#employeeQualiButton').val("create-room");
-        // $('#vehicle_id').val('');
+    $('#manageOffice').click(function () {
+        $('#officeButton').val("create-room");
+        $('#office_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new employee qualification");
+        $('#modelHeading').html("Add new office");
         $('#ajaxModel').modal('show');
 
        
@@ -160,23 +161,23 @@ a {
 
   //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
-      var eqid = $(this).data('id');
+      var office_id = $(this).data('id');
      
-      $.get("{{ route('employeeQualification.index') }}" +'/' + eqid +'/edit', function (data) {
-          $('#modelHeading').html("Edit qualification details");
-          $('#employeeQualiButton').val("edit-empqualification");
+      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Office details");
+          $('#officeButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#eqid').val(data.id);
-          $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationLongName);   //input id,database        
-         
+          $('#office_id').val(data.id);
+          $('#officeName').val(data.longOfficeName); //input id,database
+          $('#officeAddress').val(data.placeName);
+          $('#officeHead').val(data.officeHead);
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#employeeQualiButton').click(function (e) {
+    $('#officeButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -185,7 +186,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('employeeQualification.store') }}",
+          url: "{{ route('office.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -200,49 +201,49 @@ a {
              setTimeout(function(){
               alt.parentNode.removeChild(alt);
              },4500);
-            document.body.appendChild(alt);              
+            document.body.appendChild(alt);                 
        
         
             window.location.href = '/home';
-            table.draw();
+        table.draw();
 
     
          
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#employeeQualiButton').html('Save Changes');
+              $('#officeButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
       });
     });
-
+ 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteEmpQualification', function () {
-      var eqid = $(this).data('id');
+    $('body').on('click', '.deleteOffice', function () {
+      var office_id = $(this).data('id');
      
-      $.get("{{ route('employeeQualification.index') }}" +'/' + eqid +'/edit', function (data) {
-          $('#employeeQualiHeading').html("Do you want to delete this emp qualification?");
-          $('#employeeQualiDeleteButton').val("edit-empqualification");
-          $('#employeeQualiModel').modal('show');
+      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {
+          $('#officeHeading').html("Do you want to delete office?");
+          $('#officeDeleteButton').val("edit-room");
+          $('#officeModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#eqid').val(data.id);
-          $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationLongName); //input id,database
-          
+          $('#office_id').val(data.id);
+          $('#officeName').val(data.longOfficeName); //input id,database
+          $('#officeAddress').val(data.placeName);
+          $('#officeHead').val(data.officeHead);
       })
    });
    
   // after clicking yes in delete
-    $('#employeeQualiDeleteButton').click(function (e) {
+    $('#officeDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyEmpQualification') }}",
+          url: "{{ route('destroyoffice') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -259,20 +260,46 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();           
-       
-
-    
-         
+			table.draw();                          
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#employeeQualiDeleteButton').html('Save Changes');
+              $('#officeDeleteButton').html('Save Changes');
           }
       });
     });
     
-    
+    // $('body').on('click', '.deleteOffice', function() {
+	// 				if(confirm("Do you want to delete it?")) {
+	// 					$.ajax({
+	// 						dataType: 'json',
+	// 						type: "POST",
+	// 						url: "{{ route('destroyVehicle') }}",
+	// 						data: {
+	// 							'id': $(this).data('id'),
+	// 							'_token': $('input[name=_token]').val()
+	// 						},
+	// 						success: function(data) {
+	// 							window.onload = callajaxOnPageLoad(page);
+	// 							var alt = document.createElement("div");
+	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
+	// 							alt.innerHTML = "Data Updated Successfully! ";
+	// 							setTimeout(function() {
+	// 								alt.parentNode.removeChild(alt);
+	// 							}, 4500);
+	// 							document.body.appendChild(alt);
+	// 							window.location.href = '/manage_vehicle';
+	// 							table.draw();
+	// 						},
+	// 						error: function(data) {
+	// 							console.log('Error:', data);
+	// 						}
+	// 					});
+	// 				}
+	// 				if(false) {
+	// 					window.close();
+	// 				}
+	// 	});
      
      
 </script>

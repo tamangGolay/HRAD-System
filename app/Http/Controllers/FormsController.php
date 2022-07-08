@@ -29,6 +29,7 @@ use App\Relationname;
 use App\EmployeeMaster;
 use App\QualificationLevel;
 use App\Qualification;
+use App\grademaster;
 
 class FormsController extends Controller
 {
@@ -3627,9 +3628,9 @@ if ($request->v == "family_details")
 {
 
     $family = Relationname::all();
+    $personal =EmployeeMaster::all();
 
-
-    $rhtml = view('emp.family_details')->with(['family' => $family])->render();
+    $rhtml = view('emp.family_details')->with(['family' => $family ,'personal' =>$personal])->render();
     return response()
         ->json(array(
         'success' => true,
@@ -3641,9 +3642,9 @@ if ($request->v == "family_details")
 
 if ($request->v == "increment_history")
 {
+    $increment = EmployeeMaster::all();
 
-
-    $rhtml = view('emp.increment_history')->render();
+    $rhtml = view('emp.increment_history')->with(['increment' => $increment])->render();
     return response()
         ->json(array(
         'success' => true,
@@ -3654,9 +3655,9 @@ if ($request->v == "increment_history")
 //office reporting
 if ($request->v == "office_reporting")
 {
+    $office = officeName::all();
 
-
-    $rhtml = view('emp.office_reporting')->render();
+    $rhtml = view('emp.office_reporting')->with(['office' => $office])->render();
     return response()
         ->json(array(
         'success' => true,
@@ -3668,9 +3669,11 @@ if ($request->v == "office_reporting")
 
 if ($request->v == "promotion_history")
 {
+    $promotion = EmployeeMaster::all();
+    $grade= grademaster::all();
+    $gradeto= grademaster::all();
 
-
-    $rhtml = view('emp.promotion_history')->render();
+    $rhtml = view('emp.promotion_history')->with(['promotion' => $promotion , 'grade' => $grade , 'gradeto' => $gradeto])->render();
     return response()
         ->json(array(
         'success' => true,

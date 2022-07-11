@@ -4,27 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGewogmasterTable extends Migration
+class CreateTownmasterTable extends Migration
 {
     public function up()
     {
-        Schema::create('gewogmaster', function (Blueprint $table) {
+        Schema::create('townmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('gewogName');
-        $table->foreignId('drungkhagId')->references('id')->on('drungkhagmaster');
-        // $table->integer('drungkhagId');
+		$table->string('townName');
+        $table->string('townClass');
         $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
+		$table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->integer('modifiedOn')->nullable();
+        $table->integer('status')->default(0);
+
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('gewogmaster');
+        Schema::dropIfExists('townmaster');
     }
 }

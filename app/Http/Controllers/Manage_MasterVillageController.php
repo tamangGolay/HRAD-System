@@ -2,12 +2,12 @@
          
 namespace App\Http\Controllers;
           
-use App\gewog;
+use App\village;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
         
-class Manage_MasterGewogController extends Controller
+class Manage_MasterVillageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,22 +18,19 @@ class Manage_MasterGewogController extends Controller
     {
 
        
-        $gewog = DB::table('gewogmaster')
-        ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
-        ->join('drungkhagmaster', 'drungkhagmaster.id', '=', 'gewogmaster.drungkhagId')
-         ->select('gewogmaster.id','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name',
-         'drungkhagmaster.drungkhagName'
-         )
-        ->where('gewogmaster.status','0');
+        $village = DB::table('villagemaster')
+        ->join('gewogmaster', 'gewogmaster.id', '=', 'villagemaster.gewogId')
+        ->select('villagemaster.id','villagemaster.villageName','gewogmaster.gewogName')
+        ->where('villagemaster.status','0');
         
         if ($request->ajax()) {
-            $data = $gewog;
+            $data = $village;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editgewog">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deletegewog">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editvillage">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteofficeName" data-original-title="Delete" class="btn btn-primary btn-sm deletevillage">Delete</a>';
 
 
 
@@ -45,7 +42,7 @@ class Manage_MasterGewogController extends Controller
                     ->make(true);
         }
       
-        return view('masterData.gewog',compact('gewog'));
+        return view('masterData.village',compact('village'));
     }
 
    
@@ -58,12 +55,12 @@ class Manage_MasterGewogController extends Controller
      */
     public function store(Request $request)
     {
-        gewog::updateOrCreate(['id' => $request->id],
-                ['gewogName' => $request->gewogName,
-                'drungkhagId' => $request->drungkhagId,
-                'dzongkhagId' => $request->dzongkhagId]);        
+        village::updateOrCreate(['id' => $request->id],
+                ['villageName' => $request->villageName, 
+                
+                'gewogId' => $request->gewogId]);        
    
-        return response()->json(['success'=>'Gewog saved successfully.']);
+        return response()->json(['success'=>'village saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.
@@ -74,8 +71,8 @@ class Manage_MasterGewogController extends Controller
     public function edit($id)
     {
 
-        $gewog = gewog::find($id);
-        return response()->json($gewog);
+        $village = village::find($id);
+        return response()->json($village);
     }
   
     /**
@@ -86,11 +83,11 @@ class Manage_MasterGewogController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('gewogmaster')->where('id', $request->id)
+        $query = DB::table('villagemaster')->where('id', $request->id)
             ->increment('status');
 
         return response()
-            ->json(['success' => 'Gewog deleted successfully.']);
+            ->json(['success' => 'village deleted successfully.']);
     }
 
     //To redirect to the manage_vehicle page after the management of vehicle

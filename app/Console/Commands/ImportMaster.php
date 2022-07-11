@@ -22,6 +22,13 @@ use App\guestHouseRate;
 use App\conferenceStatus;
 use App\rangeofpeople;
 use App\Uniform;
+use App\drungkhag;
+use App\town;
+use App\gewog;
+use App\village;
+use App\place;
+
+
 
 class ImportMaster extends Command
 {
@@ -59,6 +66,11 @@ class ImportMaster extends Command
     {
         //
         $this->importDzongkhags('dzongkhags',new Dzongkhags);
+        $this->importDrungkhags('drungkhagmaster',new drungkhag);
+        $this->importTown('townmaster',new town);
+        $this->importGewog('gewogmaster',new gewog);
+        $this->importVillage('villagemaster',new village);
+        $this->importPlace('placemaster',new place);
         $this->importOrgUnit('OrgUnit',new OrgUnit);
         $this->importRoles('roles',new Roles);
         $this->importUser('user',new User);
@@ -100,8 +112,68 @@ class ImportMaster extends Command
             $this->line($i." entries successfully added in ".$filename." table");
         }
     }
-     //function to import divisions list.
-     public function importGewogs($filename,Model $model) {
+
+
+     //function to import drungkhag list.
+     public function importDrungkhags($filename,Model $model) {
+        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+        {
+            $this->line("Importing ".$filename." tables...");
+            $i=0;
+            while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+            {
+                $data = [
+                        'drungkhagName' => $data[0],  
+                        'dzongkhagId' => $data[1]              
+            
+                    ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }
+            }
+
+            fclose($handle);
+            $this->line($i." entries successfully added in ".$filename." table");
+        }
+    }
+
+     //function to import town list.
+     public function importTown($filename,Model $model) {
+        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+        {
+            $this->line("Importing ".$filename." tables...");
+            $i=0;
+            while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+            {
+                $data = [
+                        'townName' => $data[0],  
+                        'townClass' => $data[1],  
+                        'dzongkhagId' => $data[2]              
+            
+                    ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }
+            }
+
+            fclose($handle);
+            $this->line($i." entries successfully added in ".$filename." table");
+        }
+    }
+     //function to import Gewog list.
+     public function importGewog($filename,Model $model) {
         if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
         {
             $this->line("Importing ".$filename." tables...");
@@ -110,9 +182,76 @@ class ImportMaster extends Command
             {               
 
                     $data = [                       
-                        'gewog_name' => $data[0],
-                        'dzongkhag_id' => $data[1],
-                        'type' => $data[2]
+                        'gewogName' => $data[0],
+                        'drungkhagId' => $data[1],
+                        'dzongkhagId' => $data[2]
+                    ];
+                    try{
+                        if($model::firstorCreate($data)) {
+                            $i++;
+                        }
+                    }
+                    catch(\Exception $e) {
+                        $this->error('something went wrong... '.$e);
+                        return;
+                    }                
+                               
+            }
+
+            fclose($handle);
+            $this->line($i." entries successfully added in ".$filename." table");
+        }
+    }
+
+     //function to import Gewog list.
+     public function importVillage($filename,Model $model) {
+        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+        {
+            $this->line("Importing ".$filename." tables...");
+            $i=0;
+            while( ($data = fgetcsv($handle,100,',')) !== FALSE)
+            {               
+
+                    $data = [
+                        'villageId' => $data[0],
+                       
+                        'villageName' => $data[1],
+                        'gewogId' => $data[2]
+                    ];
+                    try{
+                        if($model::firstorCreate($data)) {
+                            $i++;
+                        }
+                    }
+                    catch(\Exception $e) {
+                        $this->error('something went wrong... '.$e);
+                        return;
+                    }                
+                               
+            }
+
+            fclose($handle);
+            $this->line($i." entries successfully added in ".$filename." table");
+        }
+    }
+
+
+     //function to import Gewog list.
+     public function importPlace($filename,Model $model) {
+        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+        {
+            $this->line("Importing ".$filename." tables...");
+            $i=0;
+            while( ($data = fgetcsv($handle,100,',')) !== FALSE)
+            {               
+
+                    $data = [                       
+                        'villageId' => $data[0],
+                        'townId' => $data[1],
+                        'gewogId' => $data[2],
+                        'drungkhagId' => $data[3],
+                         'dzongkhagId' => $data[4],
+                        'placeCategory' => $data[5]
                     ];
                     try{
                         if($model::firstorCreate($data)) {

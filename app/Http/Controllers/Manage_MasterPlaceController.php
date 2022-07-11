@@ -18,9 +18,17 @@ class Manage_MasterPlaceController extends Controller
     {
 
         $place = DB::table('placemaster')
-        ->join('dzongkhags', 'dzongkhags.id', '=', 'placemaster.dzongkhag')
-        ->join('gewogmaster', 'gewogmaster.id', '=', 'placemaster.gewog')
-        ->select('placemaster.placeName','placemaster.id','placemaster.village','placemaster.drungkhag','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name')
+        ->join('dzongkhags', 'dzongkhags.id', '=', 'placemaster.dzongkhagId')
+        ->join('gewogmaster', 'gewogmaster.id', '=', 'placemaster.gewogId')
+        ->join('villagemaster', 'villagemaster.id', '=', 'placemaster.villageId')
+        ->join('townmaster', 'townmaster.id', '=', 'placemaster.townId')
+        ->join('drungkhagmaster', 'drungkhagmaster.id', '=', 'placemaster.drungkhagId')
+
+        // ->select('townmaster.townName','placemaster.placeCategory','placemaster.id','villagemaster.villageName',
+        //  'drungkhagmaster.drungkhagName','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name')
+       
+        ->select('placemaster.placeCategory','drungkhagmaster.drungkhagName','townmaster.townName','placemaster.id','villagemaster.villageName','dzongkhags.Dzongkhag_Name',
+        'gewogmaster.gewogName')
         ->where('placemaster.status','0');
         
         

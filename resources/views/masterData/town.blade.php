@@ -29,21 +29,17 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageplace">Add new place&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managetown">Add new town&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
+
                 <th>No</th>
-                <th>Village</th>
                 <th>Town</th>
-                <th>Gewog</th>
-                <th>Drungkhag</th>
+                <th>Town Class</th>
                 <th>Dzongkhag</th>
-                <th>Place Category</th>
-
-
-                <th width=150px">Action</th>
+                <th width="300px">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -62,67 +58,25 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+                <!-- <div class="form-group"> -->
+                        <!-- <label for="name" class="col-sm-2 control-label">townId</label> -->
+                        <!-- <div class="col-sm-12"> -->
+                        <input type="hidden" class="form-control" name="id" id="town_id">
+                        <!-- <input type="text" class="form-control" id="townName" name="townName" value=""  required> -->
 
-                   <input type="text" name="id" id="place_id">
-
-                   <div class="form-group">
-                        <label class="col-sm-2 control-label">Town</label>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Town</label>
                         <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="townId" id="townId" value="" required>
-                                             <option value="">Select Town</option>
-                                             @foreach($town as $town)
-
-                                             <option value="{{$town->id}}">{{$town->townName}}</option>
-										@endforeach
-							</select>
+                            <input type="text" class="form-control" id="townName" name="townName" value=""  required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Village</label>
+                        <label for="name" class="col-sm-2 control-label">Town Class</label>
                         <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="villageId" id="villageId" value="" required>
-                                             <option value="">Select Village</option>
-                                             @foreach($village as $village)
-
-                                             <option value="{{$village->id}}">{{$village->villageName}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Drungkhag</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="drungkhagId" id="drungkhagId" value="" required>
-                                             <option value="">Select Drungkhag</option>
-                                             @foreach($drungkhag as $drungkhag)
-
-                                             <option value="{{$drungkhag->id}}">{{$drungkhag->drungkhagName}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
-
-                  
-                   
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Gewog</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="gewogId" id="gewogId" value="" required>
-                                             <option value="">Select Gewog</option>
-                                             @foreach($gewog as $gewog)
-
-                                             <option value="{{$gewog->id}}">{{$gewog->gewogName}}</option>
-										@endforeach
-							</select>
+                            <input type="text" class="form-control" id="townClass" name="townClass" value=""  required>
                         </div>
                     </div>
      
@@ -140,16 +94,10 @@ a {
 							</select>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Place Category</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required>
-                        </div>
 								
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="placeButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="townButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -161,11 +109,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="placeModel" aria-hidden="true">
+<div class="modal fade" id="townModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="placeHeading"></h4>
+                <h4 class="modal-title" id="townHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -176,7 +124,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="placeDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="townDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -200,58 +148,47 @@ a {
         "searching": true,
 		"ordering": true,
 		"paging": true,
-        ajax: "{{ route('place.index') }}",
+        ajax: "{{ route('town.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: true, searchable: true},
-            {data: 'villageName', name: 'villageId', orderable: false, searchable: false},
-            {data: 'townName', name: 'townId', orderable: false, searchable: true},
-             {data: 'gewogName', name: 'gewogId', orderable: false, searchable: false},
-             {data: 'drungkhagName', name: 'drungkhagId', orderable: false, searchable: false},
-            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
-            {data: 'placeCategory', name: 'placeCategory', orderable: false, searchable: true},
+            {data: 'townName', name: 'townName', orderable: false, searchable: true},
+            {data: 'townClass', name: 'townClass', orderable: false, searchable: true},
+            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: true, searchable: false},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageplace').click(function () {
-        $('#placeButton').val("create-room");
-        $('#place_id').val('');
+    $('#managetown').click(function () {
+        $('#townButton').val("create-room");
+        $('#town_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new place");
+        $('#modelHeading').html("Add new town");
         $('#ajaxModel').modal('show');
 
        
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.editplace', function () {
-      var place_id = $(this).data('id');
+    $('body').on('click', '.edittown', function () {
+      var town_id = $(this).data('id');
      
-      $.get("{{ route('place.index') }}" +'/' + place_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit place details");
-          $('#placeButton').val("edit-room");
+      $.get("{{ route('town.index') }}" +'/' + town_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit town details");
+          $('#townButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#place_id').val(data.id);
-          $('#placeCategory').val(data.placeCategory); //input id,database
-          $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
-          $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
-
-         
-          
-     
-     
+          $('#town_id').val(data.id);
+          $('#townName').val(data.townName); //input id,database
+          $('#townClass').val(data.townClass); //input id,database
+         $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#placeButton').click(function (e) {
+    $('#townButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -260,7 +197,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('place.store') }}",
+          url: "{{ route('town.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -286,8 +223,8 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#placeButton').html('Save Changes');
-              alert(data);
+              $('#townButton').html('Save Changes');
+              alert("Please choose both the fields");
                 
           }
       });
@@ -295,33 +232,29 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteplace', function () {
-      var place_id = $(this).data('id');
+    $('body').on('click', '.deletetown', function () {
+      var town_id = $(this).data('id');
      
-      $.get("{{ route('place.index') }}" +'/' + place_id +'/edit', function (data) {
-          $('#placeHeading').html("Do you want to delete the place?");
-          $('#placeDeleteButton').val("edit-room");
-          $('#placeModel').modal('show');
+      $.get("{{ route('town.index') }}" +'/' + town_id +'/edit', function (data) {
+          $('#townHeading').html("Do you want to delete the town?");
+          $('#townDeleteButton').val("edit-room");
+          $('#townModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#place_id').val(data.id);
-          $('#placeCategory').val(data.placeCategory); //input id,database
-          $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
-          $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
-
+          $('#town_id').val(data.id);
+          $('#townClass').val(data.townClass); //input id,database
+            $('#townName').val(data.townName); //input id,database
+          $('#dzongkhagId').val(data.Dzongkhag_Name);
       })
    });
    
   // after clicking yes in delete
-    $('#placeDeleteButton').click(function (e) {
+    $('#townDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyplace') }}",
+          url: "{{ route('destroytown') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -347,17 +280,17 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#placeDeleteButton').html('Save Changes');
+              $('#townDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deleteplace', function() {
+    // $('body').on('click', '.deletetown', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',
 	// 						type: "POST",
-	// 						url: "{{ route('destroyplace') }}",
+	// 						url: "{{ route('destroytown') }}",
 	// 						data: {
 	// 							'id': $(this).data('id'),
 	// 							'_token': $('input[name=_token]').val()
@@ -371,7 +304,7 @@ a {
 	// 								alt.parentNode.removeChild(alt);
 	// 							}, 4500);
 	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_place';
+	// 							window.location.href = '/manage_town';
 	// 							table.draw();
 	// 						},
 	// 						error: function(data) {

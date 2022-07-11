@@ -8,7 +8,7 @@ class place extends Model
 {
     protected $table = "placemaster";
 
-    protected $fillable = ['id','placeName','dzongkhag','gewog','drungkhag','village','status'];
+    protected $fillable = ['id','villageId','townId','gewogId','drungkhagId','dzongkhagId','placeCategory','status'];
 
      public $timestamps = false;
 }

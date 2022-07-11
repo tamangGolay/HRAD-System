@@ -37,7 +37,8 @@ a {
 
                 <th>No</th>
                 <th>Gewog</th>
-                <th>Dzongkhag</th>
+                <th>Drungkhag</th>
+                 <th>Dzongkhag</th>
                 <th width="300px">Action</th>
             </tr>
         </thead>
@@ -63,6 +64,20 @@ a {
                         <label for="name" class="col-sm-2 control-label">Gewog</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Drungkhag</label>
+                        <div class="col-sm-12">
+                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
+                            <select name="drungkhagId" id="drungkhagId" value="" required>
+                                             <option value="">Select Drungkhag</option>
+                                             @foreach($drungkhag as $drungkhag)
+
+                                             <option value="{{$drungkhag->id}}">{{$drungkhag->drungkhagName}}</option>
+										@endforeach
+							</select>
                         </div>
                     </div>
      
@@ -132,12 +147,14 @@ a {
         processing: true,
         serverSide: true,
         "searching": true,
-		"ordering": false,
-		"paging": false,
+		"ordering": true,
+		"paging": true,
         ajax: "{{ route('gewog.index') }}",
         columns: [
-            {data: 'id', name: 'id',orderable: false, searchable: true},
+            {data: 'id', name: 'id',orderable: true, searchable: true},
             {data: 'gewogName', name: 'gewogName', orderable: false, searchable: true},
+            {data: 'drungkhagName', name: 'drungkhagId', orderable: false, searchable: false},
+
             {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
@@ -166,6 +183,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#gewog_id').val(data.id);
           $('#gewogName').val(data.gewogName); //input id,database
+          $('#drungkhagId').val(data.drungkhagId);//keeping input name and dB field name same so that the search will not give error
           $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
       })
    });
@@ -225,7 +243,7 @@ a {
           $('#gewogModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#gewog_id').val(data.id);
-          $('#gewogName').val(data.gewogName); //input id,database
+          $('#drungkhagId').val(data.drungkhagId); //input id,database
           $('#dzongkhagId').val(data.Dzongkhag_Name);
       })
    });

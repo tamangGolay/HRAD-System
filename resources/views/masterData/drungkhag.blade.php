@@ -29,21 +29,16 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageplace">Add new place&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managedrungkhag">Add new drungkhag&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
+
                 <th>No</th>
-                <th>Village</th>
-                <th>Town</th>
-                <th>Gewog</th>
                 <th>Drungkhag</th>
                 <th>Dzongkhag</th>
-                <th>Place Category</th>
-
-
-                <th width=150px">Action</th>
+                <th width="300px">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -62,67 +57,18 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+                <!-- <div class="form-group"> -->
+                        <!-- <label for="name" class="col-sm-2 control-label">DrungkhagId</label> -->
+                        <!-- <div class="col-sm-12"> -->
+                        <input type="hidden" class="form-control" name="id" id="drungkhag_id">
+                        <!-- <input type="text" class="form-control" id="drungkhagName" name="drungkhagName" value=""  required> -->
 
-                   <input type="text" name="id" id="place_id">
-
-                   <div class="form-group">
-                        <label class="col-sm-2 control-label">Town</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="townId" id="townId" value="" required>
-                                             <option value="">Select Town</option>
-                                             @foreach($town as $town)
-
-                                             <option value="{{$town->id}}">{{$town->townName}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
-
+                        <!-- </div> -->
+                    <!-- </div> -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Village</label>
+                        <label for="name" class="col-sm-2 control-label">Drungkhag</label>
                         <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="villageId" id="villageId" value="" required>
-                                             <option value="">Select Village</option>
-                                             @foreach($village as $village)
-
-                                             <option value="{{$village->id}}">{{$village->villageName}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Drungkhag</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
-
-                            <select name="drungkhagId" id="drungkhagId" value="" required>
-                                             <option value="">Select Drungkhag</option>
-                                             @foreach($drungkhag as $drungkhag)
-
-                                             <option value="{{$drungkhag->id}}">{{$drungkhag->drungkhagName}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
-
-                  
-                   
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Gewog</label>
-                        <div class="col-sm-12">
-                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="gewogId" id="gewogId" value="" required>
-                                             <option value="">Select Gewog</option>
-                                             @foreach($gewog as $gewog)
-
-                                             <option value="{{$gewog->id}}">{{$gewog->gewogName}}</option>
-										@endforeach
-							</select>
+                            <input type="text" class="form-control" id="drungkhagName" name="drungkhagName" value=""  required>
                         </div>
                     </div>
      
@@ -140,16 +86,10 @@ a {
 							</select>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Place Category</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required>
-                        </div>
 								
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="placeButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="drungkhagButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -161,11 +101,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="placeModel" aria-hidden="true">
+<div class="modal fade" id="drungkhagModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="placeHeading"></h4>
+                <h4 class="modal-title" id="drungkhagHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -176,7 +116,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="placeDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="drungkhagDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -198,60 +138,47 @@ a {
         processing: true,
         serverSide: true,
         "searching": true,
-		"ordering": true,
-		"paging": true,
-        ajax: "{{ route('place.index') }}",
+		"ordering": false,
+		"paging": false,
+        ajax: "{{ route('drungkhag.index') }}",
         columns: [
-            {data: 'id', name: 'id',orderable: true, searchable: true},
-            {data: 'villageName', name: 'villageId', orderable: false, searchable: false},
-            {data: 'townName', name: 'townId', orderable: false, searchable: true},
-             {data: 'gewogName', name: 'gewogId', orderable: false, searchable: false},
-             {data: 'drungkhagName', name: 'drungkhagId', orderable: false, searchable: false},
+            {data: 'id', name: 'id',orderable: false, searchable: true},
+            {data: 'drungkhagName', name: 'drungkhagName', orderable: false, searchable: true},
             {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
-            {data: 'placeCategory', name: 'placeCategory', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageplace').click(function () {
-        $('#placeButton').val("create-room");
-        $('#place_id').val('');
+    $('#managedrungkhag').click(function () {
+        $('#drungkhagButton').val("create-room");
+        $('#drungkhag_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new place");
+        $('#modelHeading').html("Add new drungkhag");
         $('#ajaxModel').modal('show');
 
        
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.editplace', function () {
-      var place_id = $(this).data('id');
+    $('body').on('click', '.editdrungkhag', function () {
+      var drungkhag_id = $(this).data('id');
      
-      $.get("{{ route('place.index') }}" +'/' + place_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit place details");
-          $('#placeButton').val("edit-room");
+      $.get("{{ route('drungkhag.index') }}" +'/' + drungkhag_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit drungkhag details");
+          $('#drungkhagButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#place_id').val(data.id);
-          $('#placeCategory').val(data.placeCategory); //input id,database
-          $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
-          $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
+          $('#drungkhag_id').val(data.id);
+          $('#drungkhagName').val(data.drungkhagName); //input id,database
           $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
-
-         
-          
-     
-     
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#placeButton').click(function (e) {
+    $('#drungkhagButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -260,7 +187,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('place.store') }}",
+          url: "{{ route('drungkhag.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -286,8 +213,8 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#placeButton').html('Save Changes');
-              alert(data);
+              $('#drungkhagButton').html('Save Changes');
+              alert("Please choose both the fields");
                 
           }
       });
@@ -295,33 +222,28 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteplace', function () {
-      var place_id = $(this).data('id');
+    $('body').on('click', '.deletedrungkhag', function () {
+      var drungkhag_id = $(this).data('id');
      
-      $.get("{{ route('place.index') }}" +'/' + place_id +'/edit', function (data) {
-          $('#placeHeading').html("Do you want to delete the place?");
-          $('#placeDeleteButton').val("edit-room");
-          $('#placeModel').modal('show');
+      $.get("{{ route('drungkhag.index') }}" +'/' + drungkhag_id +'/edit', function (data) {
+          $('#drungkhagHeading').html("Do you want to delete the drungkhag?");
+          $('#drungkhagDeleteButton').val("edit-room");
+          $('#drungkhagModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#place_id').val(data.id);
-          $('#placeCategory').val(data.placeCategory); //input id,database
-          $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
-          $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
-
+          $('#drungkhag_id').val(data.id);
+          $('#drungkhagName').val(data.drungkhagName); //input id,database
+          $('#dzongkhagId').val(data.Dzongkhag_Name);
       })
    });
    
   // after clicking yes in delete
-    $('#placeDeleteButton').click(function (e) {
+    $('#drungkhagDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyplace') }}",
+          url: "{{ route('destroydrungkhag') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -347,17 +269,17 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#placeDeleteButton').html('Save Changes');
+              $('#drungkhagDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deleteplace', function() {
+    // $('body').on('click', '.deletedrungkhag', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',
 	// 						type: "POST",
-	// 						url: "{{ route('destroyplace') }}",
+	// 						url: "{{ route('destroydrungkhag') }}",
 	// 						data: {
 	// 							'id': $(this).data('id'),
 	// 							'_token': $('input[name=_token]').val()
@@ -371,7 +293,7 @@ a {
 	// 								alt.parentNode.removeChild(alt);
 	// 							}, 4500);
 	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_place';
+	// 							window.location.href = '/manage_drungkhag';
 	// 							table.draw();
 	// 						},
 	// 						error: function(data) {

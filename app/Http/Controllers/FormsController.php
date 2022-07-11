@@ -30,6 +30,11 @@ use App\EmployeeMaster;
 use App\QualificationLevel;
 use App\Qualification;
 use App\grademaster;
+use App\village;
+use App\town;
+use App\drungkhag;
+
+
 
 class FormsController extends Controller
 {
@@ -3404,7 +3409,7 @@ if ($request->v == "room_details")
         }
 
         //employeemaster
-         //user add for login
+         //Golay's part from here
          if ($request->v == "employeemaster")
          {
  
@@ -3432,13 +3437,7 @@ if ($request->v == "room_details")
          //officeName
          if ($request->v == "officename")
          {
- 
-            
- 
- 
- 
-           
-             $rhtml = view('masterData.officeName')->render();
+            $rhtml = view('masterData.officeName')->render();
              return response()
                  ->json(array(
                  'success' => true,
@@ -3469,43 +3468,100 @@ if ($request->v == "room_details")
              }
     
             //end gewogmaster
+
+              //drungkhagmaster
+              if ($request->v == "drungkhagmaster")
+              {
+                  $dzongkhag = Dzongkhags::all();
+                  
+                       
+      
+                  $rhtml = view('masterData.drungkhag')->with(['dzongkhag' => $dzongkhag])->render();
+                   return response()
+                       ->json(array(
+                       'success' => true,
+                       'html' => $rhtml
+                   ));
+       
+               }
+      
+              //end drungkhagmaster
+  
+                //drungkhagmaster
+               if ($request->v == "townmaster")
+               {
+                   $dzongkhag = Dzongkhags::all();
+                   
+                        
+       
+                   $rhtml = view('masterData.town')->with(['dzongkhag' => $dzongkhag])->render();
+                    return response()
+                        ->json(array(
+                        'success' => true,
+                        'html' => $rhtml
+                    ));
+        
+                }
+       
+               //end townmaster
+              
+      
+                //bankmaster
+                if ($request->v == "bankmaster")
+                {
+                           
+        
+                    $rhtml = view('masterData.bank')->render();
+                     return response()
+                         ->json(array(
+                         'success' => true,
+                         'html' => $rhtml
+                     ));
+         
+                 }
+        
+                //end bankmaster
+      
+                //villagemaster
+                 if ($request->v == "villagemaster")
+                 {
+                            
+                   $gewog = gewog::all();
+       
+       
+                     $rhtml = view('masterData.village')->with(['gewog' => $gewog])->render();
+                      return response()
+                          ->json(array(
+                          'success' => true,
+                          'html' => $rhtml
+                      ));
+          
+                  }
+         
+                 //end villagemaster
             
-    
-              //bankmaster
-              if ($request->v == "bankmaster")
-              {
-                         
+             //placemaster
+             if ($request->v == "placemaster")
+             {
+                        
+               $dzongkhag = Dzongkhags::all();
+               $gewog = gewog::all();
+               $village = village::all();
+               $drungkhag = drungkhag::all();
+               $town = town::all();
+
+   
+   
+                 $rhtml = view('masterData.place')->with(['village' => $village ,'town' => $town,'drungkhag' => $drungkhag,'gewog' => $gewog,'dzongkhag' => $dzongkhag])->render();
+                  return response()
+                      ->json(array(
+                      'success' => true,
+                      'html' => $rhtml
+                  ));
       
-                  $rhtml = view('masterData.bank')->render();
-                   return response()
-                       ->json(array(
-                       'success' => true,
-                       'html' => $rhtml
-                   ));
-       
-               }
-      
-              //end bankmaster
-    
-    
-              //placemaster
-              if ($request->v == "placemaster")
-              {
-                         
-                $dzongkhag = Dzongkhags::all();
-                $gewog = gewog::all();
-    
-    
-                  $rhtml = view('masterData.place')->with(['gewog' => $gewog,'dzongkhag' => $dzongkhag])->render();
-                   return response()
-                       ->json(array(
-                       'success' => true,
-                       'html' => $rhtml
-                   ));
-       
-               }
-      
-              //end placemaster
+              }
+     
+             //end placemaster
 
          //grade master
         

@@ -21,7 +21,7 @@ class CreateOfficemasterTable extends Migration
 		$table->integer('modifiedOn')->nullable();
         $table->date('updated_at')->nullable();
         $table->date('created_at')->nullable();
-
+ 
         });
     }
 

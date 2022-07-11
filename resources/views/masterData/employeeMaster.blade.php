@@ -8,7 +8,7 @@
 	font-family: Arial, Helvetica, sans-serif; 
 	font-size: 15px;
   } 
-</style>
+</style> 
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -23,25 +23,144 @@
 					<div class="form-group row">
 						<label for="emp_id" class="col-md-4 col-form-label text-md-right">{{ __('Employee Number:') }}</label>
 						<div class="col-md-4">
-							<input id="emp_id" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;" class="form-control @error('emp_id') is-invalid @enderror" name="emp_id" value="{{ old('emp_id') }}" required autocomplete="emp_id" onFocusOut="getEmployeeDetails(this.value);"> </div> <span id="info" class="text-danger text-md-right"></span>
-						<div class="col-sm-2"> <span id="empid" class="text-danger"></span> </div>
-					</div>
-					<div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name:') }}</label>
-						<div class="col-md-4">
-							<input id="nameid" type="text" autocomplete="off" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name"> </div>
+							<input id="EmpId" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;"
+							 class="form-control @error('EmpId') is-invalid @enderror" name="EmpId" value="{{ old('EmpId') }}"
+							  required autocomplete="EmpId" onFocusOut="getEmployeeDetails(this.value);"> 
+						</div> 
+						<span id="info" class="text-danger text-md-right"></span>
+						<div class="col-sm-2"> 
+							<span id="EmpId" class="text-danger"></span>
+						 </div>
 					</div>
 
 					<div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number:') }}</label>
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name:') }}</label>
 						<div class="col-md-4">
-							<input id="contact_number" type="number" autocomplete="off" placeholder="Contact Number" class="form-control" name="contact_number" required> </div>
+							<input id="EmpName" type="text" autocomplete="off" placeholder="Name" 
+							class="form-control @error('EmpName') is-invalid @enderror" name="EmpName"
+							 value="{{ old('EmpName') }}" required autocomplete="EmpName"> 
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Blood Group:') }}</label>
+						<div class="col-md-4">
+							<input id="BloodGroup" type="text" autocomplete="off" placeholder="Contact Number" 
+							class="form-control" name="BloodGroup" required> 
+						</div>
 					</div>
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CID Number:') }}</label>
 						<div class="col-md-4">
-							<input id="cid_number" type="number" autocomplete="off" placeholder="cid" class="form-control" name="cid_number" required> </div>
+							<input id="cidNo" type="number" autocomplete="off" placeholder="cid" class="form-control"
+							 name="cidNo" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Date Of Birth:') }}</label>
+						<div class="col-md-4">
+							<input id="dob" type="date" autocomplete="off" placeholder="DOB" class="form-control"
+							 name="dob" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Select Gender:') }}</label>
+						<div class="col-sm-4">
+						<select name="gender" id="gender" class="form-control" required> 
+							<option value=" ">Select Gender</option> 
+							<option value="Male">Male</option>
+							<option value="Female">Female</option> 
+						</select> 
+						</div>
+					</div>
+					<!-- <div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gender:') }}</label>
+						<div class="col-md-4">
+							<input id="gender" type="text" autocomplete="off" placeholder="Gender" class="form-control"
+							 name="gender" required>
+						</div>
+					</div> -->
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Appoinment Date:') }}</label>
+						<div class="col-md-4">
+							<input id="appointmentDate" type="date" autocomplete="off" placeholder="eg: 1/1/2000" class="form-control"
+							 name="appointmentDate" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Basic Pay:') }}</label>
+						<div class="col-md-4">
+							<input id="basicPay" type="number" autocomplete="off" placeholder="eg:30,000" class="form-control"
+							 name="basicPay" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employee Status:') }}</label>
+						<div class="col-md-4">
+							<input id="empStatus" type="text" autocomplete="off" placeholder="eg: Single" class="form-control"
+							 name="empStatus" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Date of Promotion:') }}</label>
+						<div class="col-md-4">
+							<input id="lastDop" type="date" autocomplete="off" placeholder="1/1/2000" class="form-control"
+							 name="lastDop" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Mobile No:') }}</label>
+						<div class="col-md-4">
+							<input id="mobileNo" type="number" autocomplete="off" placeholder="eg: 17777777" class="form-control"
+							 name="mobileNo" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Email id:') }}</label>
+						<div class="col-md-4">
+							<input id="emailId" type="text" autocomplete="off" placeholder="eg: abc@gmail.com" class="form-control"
+							 name="emailId" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Bank account no:') }}</label>
+						<div class="col-md-4">
+							<input id="accountNumber" type="text" autocomplete="off" placeholder="eg: 200102384" class="form-control"
+							 name="accountNumber" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Resignation Date:') }}</label>
+						<div class="col-md-4">
+							<input id="resignationDate" type="date" autocomplete="off" placeholder="eg: 1/1/2000" class="form-control"
+							 name="resignationDate" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employment Type:') }}</label>
+						<div class="col-md-4">
+							<input id="employmentType" type="text" autocomplete="off" placeholder="eg: regular/contract" class="form-control"
+							 name="employmentType" required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Increment Cycle:') }}</label>
+						<div class="col-md-4">
+							<input id="incrementCycle" type="text" autocomplete="off" placeholder="eg: Jan/July" class="form-control"
+							 name="incrementCycle" required>
+						</div>
 					</div>
 <!-- 
 					<div class="form-group row">
@@ -76,25 +195,6 @@
 			</select>  -->
 						<!-- </div>
 					</div>
-
-
-
-
-			
-
-
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Select Gender:') }}</label>
-						<div class="col-sm-4">
-						<select name="gender" id="gender" class="form-control" required> 
-							<option value=" ">Select Gender</option> 
-							<option value="Male">Male</option>
-							<option value="Female">Female</option> 
-						</select> 
-						</div>
-					</div>
-
-
 					
 					<div class="form-group row">
 						<label class="col-sm-4 text-md-right" for="dzongkhag">{{ __('Select Gender:') }}</label>
@@ -179,7 +279,22 @@ function getEmployeeDetails(val) {
 	var csrftoken = document.getElementById('tokenid').value;
 	$.get('/getValues?source=useradd&info=' + val + '&token=' + csrftoken, function(data) {
 		console.log(data);
-		document.getElementById('nameid').value = '';
+		document.getElementById('EmpId').value = '';
+		document.getElementById('EmpName').value = '';
+		document.getElementById('BloodGroup').value = '';
+		document.getElementById('cidNo').value = '';
+		document.getElementById('dob').value = '';
+		document.getElementById('gender').value = '';
+		document.getElementById('appointmentDate').value = '';
+		document.getElementById('basicPay').value = '';
+		document.getElementById('empStatus').value = '';
+		document.getElementById('lastDop').value = '';
+		document.getElementById('mobileNo').value = '';
+		document.getElementById('emailId').value = '';
+		document.getElementById('accountNumber').value = '';
+		document.getElementById('resignationDate').value = '';
+		document.getElementById('employmentType').value = '';
+		document.getElementById('incrementCycle').value = '';
 		document.getElementById('empid').innerHTML = '';
 		$.each(data, function(index, Employee) {
 			if(Employee.emp_id != null) {

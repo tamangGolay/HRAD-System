@@ -78,7 +78,7 @@ a {
                         <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required>
-                        </div>
+                        </div> 
                     </div>
 
                     <div class="form-group">

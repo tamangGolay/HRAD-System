@@ -44,14 +44,26 @@ class MasterDataController extends Controller
     public function storeUser(Request $request)
     {     
       // dd($request);
-      
-        $EmployeeMaster = new EmployeeMaster;//EmployeeMaster is ModelName
-        $EmployeeMaster->EmpId = $request->emp_id;//emp_id is from input name
-        $EmployeeMaster->EmpName =  $request->name;//EmpName is from dB
-       //rolepull 
-        $EmployeeMaster->BloodGroup = $request->contact_number;
-        $EmployeeMaster->cidNo = $request->cid_number;   
        
+        $EmployeeMaster = new EmployeeMaster;//EmployeeMaster is ModelName
+        $EmployeeMaster->EmpId = $request->EmpId;//emp_id is from input name
+        $EmployeeMaster->EmpName =  $request->EmpName;//EmpName is from dB
+       //rolepull 
+        $EmployeeMaster->BloodGroup = $request->BloodGroup;
+        $EmployeeMaster->cidNo = $request->cidNo;
+        $EmployeeMaster->dob = $request->dob;
+        $EmployeeMaster->gender = $request->gender;
+        $EmployeeMaster->appointmentDate = $request->appointmentDate;
+        $EmployeeMaster->basicPay = $request->basicPay;
+        $EmployeeMaster->empStatus = $request->empStatus; 
+        $EmployeeMaster->lastDop = $request->lastDop;
+        $EmployeeMaster->mobileNo = $request->mobileNo;
+        $EmployeeMaster->emailId = $request->emailId;
+        $EmployeeMaster->accountNumber = $request->accountNumber;
+        $EmployeeMaster->resignationDate = $request->resignationDate;
+        $EmployeeMaster->employmentType = $request->employmentType;
+        $EmployeeMaster->incrementCycle = $request->incrementCycle;
+               
         // $user->password =  Hash::make($request->password);      
         // $user->org_unit_id = $request->orgunit;
         // $user->role_id = $request->role;

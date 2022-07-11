@@ -58,20 +58,20 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="text" name="id" id="village_id">
+                   <input type="hidden" name="id" id="village_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">village</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">village</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="villageName" name="villageName" value=""  required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Gewog</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Gewog</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="gewogId" id="gewogId" value="" required>
+                            <select name="gewogId" id="gewogId" value="" class="form-control" required>
                                              <option value="">Select Gewog</option>
                                              @foreach($gewog as $gewog)
 

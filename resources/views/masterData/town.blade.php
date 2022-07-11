@@ -67,14 +67,14 @@ a {
                         <!-- </div> -->
                     <!-- </div> -->
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Town</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Town</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="townName" name="townName" value=""  required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Town Class</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Town Class</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="townClass" name="townClass" value=""  required>
                         </div>
@@ -85,7 +85,7 @@ a {
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="dzongkhagId" id="dzongkhagId" value="" required>
+                            <select name="dzongkhagId" id="dzongkhagId" value="" class="form-control" required>
                                              <option value="">Select Dzongkhag</option>
                                              @foreach($dzongkhag as $dzongkhag)
 

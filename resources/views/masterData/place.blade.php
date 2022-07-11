@@ -63,14 +63,14 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="text" name="id" id="place_id">
+                   <input type="hidden" name="id" id="place_id">
 
                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Town</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Town</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="townId" id="townId" value="" required>
+                            <select name="townId" id="townId" value="" class="form-control" required>
                                              <option value="">Select Town</option>
                                              @foreach($town as $town)
 
@@ -81,11 +81,11 @@ a {
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Village</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Village</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="villageId" id="villageId" value="" required>
+                            <select name="villageId" id="villageId" value="" class="form-control"  required>
                                              <option value="">Select Village</option>
                                              @foreach($village as $village)
 
@@ -96,11 +96,11 @@ a {
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Drungkhag</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Drungkhag</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="drungkhagId" id="drungkhagId" value="" required>
+                            <select name="drungkhagId" id="drungkhagId" value="" class="form-control" required>
                                              <option value="">Select Drungkhag</option>
                                              @foreach($drungkhag as $drungkhag)
 
@@ -113,10 +113,10 @@ a {
                   
                    
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Gewog</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gewog</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="gewogId" id="gewogId" value="" required>
+                            <select name="gewogId" id="gewogId" value="" class="form-control" required>
                                              <option value="">Select Gewog</option>
                                              @foreach($gewog as $gewog)
 
@@ -127,11 +127,11 @@ a {
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Dzongkhag</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Dzongkhag</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="dzongkhagId" id="dzongkhagId" value="" required>
+                            <select name="dzongkhagId" id="dzongkhagId" value="" class="form-control" required>
                                              <option value="">Select Dzongkhag</option>
                                              @foreach($dzongkhag as $dzongkhag)
 
@@ -142,12 +142,11 @@ a {
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Place Category</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Place Category</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required>
                         </div>
-								
-      
+                    </div>
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="placeButton" value="create">Save changes
                      </button>

@@ -20,7 +20,7 @@ class EmpQualificationController extends Controller
 
           //$empquali = DB::table('employeequalificationmaster')->where('status','0');
           
-    $empquali = DB::table('employeequalificationmaster')
+         $empquali = DB::table('employeequalificationmaster')
           ->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
           ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.qualificationId') 
 
@@ -44,8 +44,7 @@ class EmpQualificationController extends Controller
         }
       
         return view('masterData.employeeQualification',compact('empquali'));
-    }
-     
+    }     
     /**
      * Store a newly created resource in storage.
      *

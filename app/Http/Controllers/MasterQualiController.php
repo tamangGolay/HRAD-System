@@ -68,8 +68,7 @@ class MasterQualiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-
+    {   
         $conference = Qualification::find($id);
         return response()->json($conference);
     }

@@ -17,9 +17,7 @@ class CreateQualificationmasterTable extends Migration
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
-        $table->timestamp('modifiedOn')->nullable();
-
-		
+        $table->timestamp('modifiedOn')->nullable(); 	
         
         });
     }

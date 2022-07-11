@@ -58,7 +58,8 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="eqid">
+                   <input type="hidden" name="id" id="eqid"> 
+                   
 
                     <div class="form-group">
 
@@ -66,20 +67,14 @@ a {
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No" value="" maxlength="50" required>
                         </div>
-                    </div>  
-                    
+                    </div>                    
      
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">QualificationId</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="qualificationId" name="qualificationId"  placeholder="Qualification Id" class="form-control" required>
-                        </div>
-                    </div>   -->
+                    
                     
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
                         <div class="col-sm-12">
-                            <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
+                            
 
                             <select name="qualificationId" id="qualificationId" class="form-control" value="" required>
                                              <option value="">Select Qualification</option>
@@ -272,8 +267,7 @@ a {
       });
     });
     
-    
-     
+  
      
 </script>
 

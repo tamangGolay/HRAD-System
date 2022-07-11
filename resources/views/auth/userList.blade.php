@@ -1,9 +1,5 @@
 
-
 <style>
-
-
-
 
 .w-25 {
 	white-space: nowrap;
@@ -266,8 +262,7 @@ a {
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
 
-								<input type="hidden" value="<?php echo $userList[0]->uid;?>" name="id" id="id" readonly>
-						
+								<input type="hidden" value="<?php echo $userList[0]->uid;?>" name="id" id="id" readonly> 	
 
 
 							
@@ -360,7 +355,6 @@ $(function() {
 						$('#designation').val(data.designation);
 						$('#gender').val(data.gender);
 						$('#email').val(data.email);
-
 						$('#dzongkhag').val(data.dzongkhag);
 
 

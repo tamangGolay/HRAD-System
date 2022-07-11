@@ -30,12 +30,7 @@ class ManageUnitController extends Controller
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
                            $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteUnit" data-original-title="Delete" class="btn btn-primary btn-sm deleteUnit">Delete</a>';
-
-
-
-
-    
-                            return $btn;
+                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);

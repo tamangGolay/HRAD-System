@@ -65,30 +65,30 @@ a {
 
                     <div class="form-group">
 
-                        <label for="name" class="col-sm-2 control-label">Personal No</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal No</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="personal No." value="" maxlength="50" required>
+                            <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No." value="" maxlength="50" required>
                         </div>
                     </div>     
      
                     
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Increment Date</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Increment Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="incrementDate" name="incrementDate"  placeholder="Increment date" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Case</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Case</label>
                         <div class="col-sm-12">
                             <input type="text" id="case" name="case"  placeholder="case" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Action taken</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Action taken</label>
                         <div class="col-sm-12">
                             <input type="text" id="actionTaken" name="actionTaken"  placeholder="Action taken" class="form-control" required>
                         </div>

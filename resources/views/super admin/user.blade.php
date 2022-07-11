@@ -93,7 +93,7 @@
 					<div class="form-group row">
 						<label class="col-sm-4 text-md-right" for="dzongkhag">{{ __('Select Gender:') }}</label>
 						<div class="col-sm-4">
-						<select class="form-select" name="dzongkhag"  id="dzongkhag" required>
+						<select  class="form-control" name="dzongkhag"  id="dzongkhag" required>
 							<option value="">Select Dzongkhag</option>
 							@foreach($dzongkhag as $dzongkhags)
 								<option name="dzongkhag" value="{{$dzongkhags->id}}">{{$dzongkhags->Dzongkhag_Name}}</option>

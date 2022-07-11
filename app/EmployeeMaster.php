@@ -27,10 +27,12 @@ class EmployeeMaster extends Authenticatable
      *
      * @var array
      */
-protected $fillable = [ 
-'id','empName','empId','BloodGroup','cidNo','dob','gender','appointmentDate','updated_at','created_at'];
 
-    /**
+
+protected $fillable = [ 
+    'id','empName','empId','bloodGroup','cidNo','dob','gender','appointmentDate','grade','designation','office','basicPay','empStatus','lastDop','mobileNo','emailId','placeId','bankName','accountNumber','resignationType','resignationDate','employmentType','incrementType','updated_at','created_at'];
+
+     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

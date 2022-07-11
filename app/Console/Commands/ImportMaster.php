@@ -36,6 +36,7 @@ use App\Resignation;
 use App\Leavetype;
 use App\Officem;
 use App\officeName;
+use App\EmployeeMaster;
 
 
 
@@ -103,6 +104,7 @@ class ImportMaster extends Command
         $this->importleavetype('leaveType',new Leavetype);
         $this->importofficename('officename',new officeName);// csv and model
         $this->importofficemaster('officeMaster',new Officem);
+        $this->importEmpMaster('employeemaster',new EmployeeMaster);   // csv n modal name employee master
 
 
 
@@ -1034,6 +1036,61 @@ public function importofficename($filename,Model $model) {
     }
 }
 //end sonam
+
+
+//function to import employee master level for employee
+  public function importEmpMaster($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'empName' => $data[0],
+                    'empId' => $data[1],
+                    'bloodGroup' => $data[2],
+                    'cidNo' => $data[3],
+                    'dob' => $data[4],
+                    'gender' => $data[5],
+                    'appointmentDate' => $data[6],
+                    'grade' => $data[7],
+                    'designation' => $data[8],
+                    'office' => $data[9],
+                    'basicPay' => $data[10], 
+                    'empStatus' => $data[11],
+                    'lastDop' => $data[12],
+                    'mobileNo' => $data[13],
+                    'emailId' => $data[14],
+                    'placeId' => $data[15],
+                    'bankName' => $data[16],
+                    'accountNumber' => $data[17],
+                    'resignationType' => $data[18],
+                    'resignationDate' => $data[19], 
+                    'employmentType' => $data[20],
+                    'incrementCycle' => $data[21]
+                                                          
+
+
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                
+           
+            
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
 
 
 

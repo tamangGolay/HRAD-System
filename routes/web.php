@@ -360,12 +360,31 @@ Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('de
 // for uniform deleting
 Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
 
+//golay
+//for drungkhag
+Route::resource('drungkhag', Manage_MasterDrungkhagController::class);
+Route::post('destroydrungkhag', 'Manage_MasterDrungkhagController@delete')->name('destroydrungkhag');
+//for town
+Route::resource('town', Manage_MasterTownController::class);
+Route::post('destroytown', 'Manage_MasterTownController@delete')->name('destroytown');
+//for gewog
+Route::resource('gewog', Manage_MasterGewogController::class);
+Route::post('destroygewog', 'Manage_MasterGewogController@delete')->name('destroygewog');
+//for village
+Route::resource('village', Manage_MasterVillageController::class);
+Route::post('destroyvillage', 'Manage_MasterVillageController@delete')->name('destroyvillage');
+//for bank
+Route::resource('bank', Manage_MasterBankController::class);
+Route::post('destroybank', 'Manage_MasterBankController@delete')->name('destroybank');
+//for place
+Route::resource('place', Manage_MasterPlaceController::class);
+Route::post('destroyplace', 'Manage_MasterPlaceController@delete')->name('destroyplace');
 //For MasterData
 Route::post('user','MasterDataController@storeUser')->name('user');
-
 //manage officeName
 Route::resource('officeName', Manage_MasterController::class);
 Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destroyofficeName');
+//golay end
 
 //start sonam 
 //manage designation

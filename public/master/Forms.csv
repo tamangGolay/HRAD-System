@@ -26,6 +26,8 @@ placemaster,Place Master,Admin,yes,fa-clipboard-list
 dzongkhagmaster,Dzongkhag Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
 gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
+townmaster,Town Master,Admin,yes,fa-clipboard-list
+villagemaster,Village Master,Admin,yes,fa-clipboard-list
 subdivisionmaster,Sub Division Master,Admin,yes,fa-clipboard-list
 substationmaster,Substation Master,Admin,yes,fa-clipboard-list
 unitmaster,Unit Master,Admin,yes,fa-clipboard-list

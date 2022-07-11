@@ -59,19 +59,19 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="text" name="id" id="gewog_id">
+                   <input type="hidden" name="id" id="gewog_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Gewog</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gewog</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Drungkhag</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Drungkhag</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="drungkhagId" id="drungkhagId" value="" required>
+                            <select name="drungkhagId" id="drungkhagId" value="" class="form-control" required>
                                              <option value="">Select Drungkhag</option>
                                              @foreach($drungkhag as $drungkhag)
 
@@ -82,11 +82,11 @@ a {
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Dzongkhag</label>
+                        <label class="col-sm-2  col-lg-8 control-label">Dzongkhag</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="dzongkhagId" id="dzongkhagId" value="" required>
+                            <select name="dzongkhagId" id="dzongkhagId" value="" class="form-control" required>
                                              <option value="">Select Dzongkhag</option>
                                              @foreach($dzongkhag as $dzongkhag)
 

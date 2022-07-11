@@ -3472,13 +3472,15 @@ if ($request->v == "room_details")
             if ($request->v == "gewogmaster")
             {
                 $dzongkhag = Dzongkhags::all();
+                $drungkhag = drungkhag::all();
                 
                $gewog = DB::table('gewogmaster')
                ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
-               ->select('dzongkhags.Dzongkhag_Name')
+               ->join('drungkhagmaster', 'drungkhagmaster.id', '=', 'gewogmaster.drungkhagId')
+               ->select('dzongkhags.Dzongkhag_Name','drungkhagmaster.drungkhagName')
                ->where('gewogmaster.status',0);         
     
-                $rhtml = view('masterData.gewog')->with(['dzongkhag' => $dzongkhag])->render();
+                $rhtml = view('masterData.gewog')->with(['dzongkhag' => $dzongkhag,'drungkhag' =>$drungkhag])->render();
                  return response()
                      ->json(array(
                      'success' => true,

@@ -39,6 +39,7 @@ use App\officeName;
 use App\EmployeeMaster;
 use App\ServiceMaster;
 use App\Department;
+use App\ContractDetailMaster;
 
 class ImportMaster extends Command
 {
@@ -105,6 +106,8 @@ class ImportMaster extends Command
         $this->importEmpMaster('employeemaster',new EmployeeMaster);   // csv n modal name employee master
         $this->importserviceMaster('services',new ServiceMaster);
         $this->importdepartment('department',new Department);
+        $this->importcontractdetails('contractdetails',new ContractDetailMaster);
+
      }
 
      public function importgrade($filename,Model $model) {
@@ -1066,6 +1069,37 @@ public function importserviceMaster($filename,Model $model) {
     }
 }
 //end of service
+//contract details import
+public function importcontractdetails($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'personalNo' => $data[0],    
+                    'startDate' => $data[1],
+                    'endDate' => $data[2],
+                    'termNo' => $data[3]                      
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end of contract details
 
 
 //function to import employee master level for employee

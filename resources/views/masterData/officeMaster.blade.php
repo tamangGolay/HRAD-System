@@ -72,7 +72,7 @@ a {
                         
                         <!-- <input type="text" class="form-control" id="officeName" name="officeName" placeholder="eg: CEO" value="" maxlength="50" required> -->
                         </div>
-                    </div>
+                    </div> 
      
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Address</label>

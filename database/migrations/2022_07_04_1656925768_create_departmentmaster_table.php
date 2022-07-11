@@ -13,10 +13,10 @@ class CreateDepartmentmasterTable extends Migration
 		$table->id();
 		$table->string('deptNameShort');
 		$table->string('deptNameLong');
-		$table->integer('deptHead');
-		$table->integer('deptReportsToService');
-		$table->integer('deptReportsToCompany');
-		$table->integer('deptReportsToEmp');
+		$table->foreignId('deptHead')->references('id')->on('employeemaster'); //name
+		$table->foreignId('deptReportsToService')->references('id')->on('servicemaster'); //service long name
+		$table->foreignId('deptReportsToCompany')->references('id')->on('companymaster'); //long name
+		// $table->integer('deptReportsToEmp');
 		$table->string('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

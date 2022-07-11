@@ -27,7 +27,7 @@ a {
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
- 
+  
 <div class="container">
     <a class="btn success" href="javascript:void(0)" id="manageDepartment">Add Department&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
@@ -38,9 +38,8 @@ a {
                 <th>Department Short Name</th>
                 <th>Department Long Name</th>
                 <th>Department Head</th>
-                <th>Department To Service</th>
-                <th>Department To Company</th>
-                <th>Department To Employee</th>
+                <th>Department Reports To Service</th>
+                <th>Department Reports To Company</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -78,28 +77,42 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Head</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="deptHead" name="deptHead"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <select class="col-lg-12 col-sm-12" name="deptHead" id="deptHead" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($employeen as $employeen)
+                                             <option value="{{$employeen->id}}">{{$employeen->empId}}</option>
+										@endforeach
+							</select>    
+                        
+                        <!-- <input type="text" id="deptHead" name="deptHead"  placeholder="eg: Chief Executive officer" class="form-control" required> -->
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Report To Service</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="deptReportsToService" name="deptReportsToService"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <select class="col-lg-12 col-sm-12" name="deptReportsToService" id="deptReportsToService" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($servicen as $servicen)
+                                             <option value="{{$servicen->id}}">{{$servicen->serNameLong}}</option>
+										@endforeach
+							</select>    
+                        
+                        <!-- <input type="text" id="deptReportsToService" name="deptReportsToService"  placeholder="eg: Chief Executive officer" class="form-control" required> -->
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Report To Company</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="deptReportsToCompany" name="deptReportsToCompany"  placeholder="eg: Chief Executive officer" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-12 col-sm-12 control-label">Department Report To Employee</label>
-                        <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="deptReportsToEmp" name="deptReportsToEmp"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <select class="col-lg-12 col-sm-12" name="deptReportsToService" id="deptReportsToService" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($companyn as $companyn)
+                                             <option value="{{$companyn->id}}">{{$companyn->comNameLong}}</option>
+										@endforeach
+							</select>    
+                        
+                        <!-- <input type="text" id="deptReportsToCompany" name="deptReportsToCompany"  placeholder="eg: Chief Executive officer" class="form-control" required> -->
                         </div>
                     </div>
       
@@ -157,10 +170,9 @@ a {
             {data: 'id', name: 'id'},
             {data: 'deptNameShort', name: 'deptNameShort'},
             {data: 'deptNameLong', name: 'deptNameLong'},
-            {data: 'deptHead', name: 'deptHead'},
-            {data: 'deptReportsToService', name: 'deptReportsToService'},
-            {data: 'deptReportsToCompany', name: 'deptReportsToCompany'},
-            {data: 'deptReportsToEmp', name: 'deptReportsToEmp'},
+            {data: 'empId', name: 'deptHead'},
+            {data: 'serNameLong', name: 'deptReportsToService'},
+            {data: 'comNameLong', name: 'deptReportsToCompany'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -188,10 +200,9 @@ a {
           $('#department_id').val(data.id);
           $('#deptNameShort').val(data.deptNameShort); //input id,database
           $('#deptNameLong').val(data.deptNameLong);
-          $('#deptHead').val(data.deptHead);
-          $('#deptReportsToService').val(data.deptReportsToService);
-          $('#deptReportsToCompany').val(data.deptReportsToCompany);
-          $('#deptReportsToEmp').val(data.deptReportsToEmp);
+          $('#deptHead').val(data.empId);
+          $('#deptReportsToService').val(data.serNameLong);
+          $('#deptReportsToCompany').val(data.comNameLong);
       })
    });
 
@@ -252,10 +263,9 @@ a {
           $('#department_id').val(data.id);
           $('#deptNameShort').val(data.deptNameShort); //input id,database
           $('#deptNameLong').val(data.deptNameLong);
-          $('#deptHead').val(data.deptHead);
-          $('#deptReportsToService').val(data.deptReportsToService);
-          $('#deptReportsToCompany').val(data.deptReportsToCompany);
-          $('#deptReportsToEmp').val(data.deptReportsToEmp);
+          $('#deptHead').val(data.empId);
+          $('#deptReportsToService').val(data.serNameLong);
+          $('#deptReportsToCompany').val(data.comNameLong);
       })
    });
    

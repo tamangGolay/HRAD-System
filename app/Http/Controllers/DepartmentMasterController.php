@@ -18,7 +18,16 @@ class DepartmentMasterController extends Controller
     public function index(Request $request)
     {
 
-        $b = DB::table('departmentmaster')->where('status','0');
+        $b = DB::table('departmentmaster')
+        ->join('employeemaster', 'employeemaster.id', '=', 'departmentmaster.deptHead')
+       ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
+       ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
+
+    //    ->select('dzongkhags.Dzongkhag_Name','officemaster.id','officename.longOfficeName','placemaster.dzongkhagId','officemaster.officeHead')
+       // ->select('officemaster.id','placemaster.placeName','officemaster.officeAddress','officemaster.officeHead')
+       ->select('deptNameShort','deptNameLong','employeemaster.empId','servicemaster.serNameLong','companymaster.comNameLong','departmentmaster.id','departmentmaster.deptHead','departmentmaster.deptReportsToService','departmentmaster.deptReportsToCompany')
+
+        ->where('departmentmaster.status','0');
         
         if ($request->ajax()) {
             $data = $b;
@@ -48,7 +57,9 @@ class DepartmentMasterController extends Controller
 // dd($request);
        
         Department::updateOrCreate(['id' => $request->id],
-        ['deptNameShort' => $request->deptNameShort, 'deptNameLong' => $request->deptNameLong, 'deptHead' => $request->deptHead, 'deptReportsToService' => $request->deptReportsToService, 'deptReportsToCompany' => $request->deptReportsToCompany, 'deptReportsToEmp' => $request->deptReportsToEmp]);    
+        ['deptNameShort' => $request->deptNameShort, 'deptNameLong' => $request->deptNameLong, 
+        'deptHead' => $request->deptHead, 'deptReportsToService' => $request->deptReportsToService,
+         'deptReportsToCompany' => $request->deptReportsToCompany]);    
         
 
    

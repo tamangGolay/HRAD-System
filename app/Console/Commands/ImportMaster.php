@@ -38,6 +38,7 @@ use App\Officem;
 use App\officeName;
 use App\EmployeeMaster;
 use App\ServiceMaster;
+use App\Department;
 
 class ImportMaster extends Command
 {
@@ -103,6 +104,7 @@ class ImportMaster extends Command
         $this->importofficemaster('officeMaster',new Officem);
         $this->importEmpMaster('employeemaster',new EmployeeMaster);   // csv n modal name employee master
         $this->importserviceMaster('services',new ServiceMaster);
+        $this->importdepartment('department',new Department);
      }
 
      public function importgrade($filename,Model $model) {
@@ -1120,6 +1122,38 @@ public function importserviceMaster($filename,Model $model) {
     }
 }
 
+//sonam
+public function importdepartment($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
 
+                $data = [                       
+                    'deptNameShort' => $data[0],    
+                    'deptNameLong' => $data[1],
+                    'deptHead' => $data[2],
+                    'deptReportsToService' => $data[3],
+                    'deptReportsToCompany' => $data[4],      
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end sonam
 
 }

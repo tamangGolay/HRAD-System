@@ -27,6 +27,8 @@ use App\employeeR;
 use App\pay;
 use App\Relationname;
 use App\EmployeeMaster;
+use App\Company;
+use App\ServiceMaster;
 use App\QualificationLevel;
 use App\Qualification;
 use App\grademaster;
@@ -35,7 +37,6 @@ use App\town;
 use App\drungkhag;
 use App\ContractDetailMaster;
 use App\DivisionMaster;
-use App\Company;
 use App\place;
 
 
@@ -3042,7 +3043,20 @@ if ($request->v == "vehicleReport")
 
  if ($request->v == "departmentmaster")
  {
-     $rhtml = view('masterData.departmentMaster')->render();
+    $employeen = EmployeeMaster::all();
+    $servicen = ServiceMaster::all();  
+    $companyn = Company::all();         
+   
+
+    $name = DB::table('departmentmaster')
+    ->join('employeemaster', 'employeemaster.id', '=', 'departmentmaster.deptHead')
+    ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
+    ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
+    ->select('employeemaster.empId','servicemaster.serNameLong','companymaster.comNameLong')
+
+    ->where('departmentmaster.status',0);
+
+     $rhtml = view('masterData.departmentMaster')->with(['employeen'=>$employeen,'servicen'=>$servicen, 'companyn'=>$companyn])->render();
      return response()
          ->json(array(
          'success' => true,

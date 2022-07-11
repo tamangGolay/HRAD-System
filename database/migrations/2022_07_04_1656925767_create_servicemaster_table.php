@@ -13,7 +13,7 @@ class CreateServicemasterTable extends Migration
 		$table->id();
 		$table->string('serNameShort');
 		$table->string('serNameLong');
-		$table->integer('serviceHead')->nullable();
+		$table->foreignId('serviceHead')->references('id')->on('employeemaster')->nullable();
 		$table->integer('serReportsToOffice')->nullable();
 		$table->integer('serReportsToEmp')->nullable();
         $table->integer('status')->default(0);

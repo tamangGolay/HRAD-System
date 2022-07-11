@@ -10,19 +10,20 @@ class CreateSubdivisionmasterTable extends Migration
     {
         Schema::create('subdivisionmaster', function (Blueprint $table) {
 
-		$table->integer('subDivisionid');
+		$table->id();
 		$table->string('subDivnameShort');
 		$table->string('subDivnameLong');
-		$table->integer('subDivhead');
-		$table->integer('subDivreportsTodivision');
+		$table->foreignId('subDivhead')->references('id')->on('employeemaster');
+		$table->foreignId('subDivreportsTodivision')->references('id')->on('divisionmaster');
 		$table->integer('subDivreportsTodepartment');
 		$table->integer('subDivreportsToservice');
 		$table->integer('subDivreportsTocompany');
-		$table->integer('subDivreportsToemp');
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->integer('subDivreportsToEmp');
+		$table->integer('status')->default(0);
+		$table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedOn')->nullable();
 
         });
     }

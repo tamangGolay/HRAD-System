@@ -19,12 +19,20 @@ class Manage_ContractDetailController extends Controller
     public function index(Request $request)
     {
 
-        $grade = DB::table('contractdetailsmaster')
-        ->select('id','personalNo','startDate','endDate','termNo')
+        $contractdetail = DB::table('contractdetailsmaster')
+        ->join('employeemaster', 'employeemaster.id', '=', 'contractdetailsmaster.personalNo')
+        ->select('contractdetailsmaster.id','employeemaster.empId','startDate','endDate','termNo')
         ->where('status','0');
+
+
+
+        // $gewog = DB::table('gewogmaster')
+        // ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
+        // ->select('gewogmaster.id','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name');
+
         
         if ($request->ajax()) {
-            $data = $grade;
+            $data = $contractdetail;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -38,7 +46,7 @@ class Manage_ContractDetailController extends Controller
                     ->make(true);
         }
       
-        return view('masterData.contractDetailMaster',compact('grade'));
+        return view('masterData.contractDetailMaster',compact('contractdetail'));
     }
      
     /**
@@ -52,7 +60,7 @@ class Manage_ContractDetailController extends Controller
         ContractDetailMaster::updateOrCreate(['id' => $request->id],  //contract detail
                 ['personalNo' => $request->personalNo, 'startDate' => $request->startDate, 'endDate' => $request->endDate,'termNo' => $request->termNo]);        
    
-        return response()->json(['success'=>'New COntract Details saved successfully.']);
+        return response()->json(['success'=>'New Contract Details saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.

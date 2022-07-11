@@ -431,6 +431,10 @@ Route::post('destroyService', 'Manage_ServiceController@delete')->name('destroyS
 Route::resource('substation', Manage_SubstationController::class);
 Route::post('destroySubstation', 'Manage_SubstationController@delete')->name('destroySubstation'); //for deleting substation details
 
+//manage sub division
+Route::resource('subdivision', Manage_SubDivisionController::class);
+Route::post('destroySubDivision', 'Manage_SubDivisionController@delete')->name('destroySubDivision'); //for deleting  sub division
+
 
 //golay
 

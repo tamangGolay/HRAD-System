@@ -152,7 +152,7 @@ a {
             {data: 'id', name:'id'},
             {data: 'serNameShort', name: 'serNameShort'},
             {data: 'serNameLong', name: 'serNameLong'},
-            {data: 'serviceHead', name: 'serviceHead'},
+            {data: 'empName', name: 'serviceHead'},
             {data: 'serReportsToOffice', name: 'serReportsToOffice'},
             {data: 'serReportsToEmp', name: 'serReportsToEmp'},
             // {data: 'divReportsToEmp', name: 'reportEmp'},
@@ -182,7 +182,7 @@ a {
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
           $('#serNameLong').val(data.serNameLong);
-          $('#serviceHead').val(data.serviceHead);
+          $('#serviceHead').val(data.empName);
           $('#serReportsToOffice').val(data.serReportsToOffice);
           $('#serReportsToEmp').val(data.serReportsToEmp);
       })
@@ -244,7 +244,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
-          $('#serviceHead').val(data.serviceHead);
+          $('#serviceHead').val(data.empName);
           $('#serReportsToOffice').val(data.serReportsToOffice);
           $('#serReportsToEmp').val(data.serReportsToEmp);
       })

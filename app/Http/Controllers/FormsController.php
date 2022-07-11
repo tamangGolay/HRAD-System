@@ -33,6 +33,8 @@ use App\grademaster;
 use App\village;
 use App\town;
 use App\drungkhag;
+use App\ContractDetailMaster;
+use App\DivisionMaster;
 
 
 
@@ -3601,9 +3603,14 @@ if ($request->v == "room_details")
          
          if ($request->v == "contractdetails")
          {
- 
-    
-             $rhtml = view('masterData.contractDetailMaster')->render();
+            $employeen = EmployeeMaster::all();
+           
+            $contractdetails = DB::table('contractdetailsmaster')
+            ->join('employeemaster', 'employeemaster.id', '=', 'contractdetailsmaster.personalNo')
+            ->select('employeemaster.empId')
+            ->where('contractdetailsmaster.status',0);         
+
+             $rhtml = view('masterData.contractDetailMaster')->with(['employeen' => $employeen])->render();
              return response()
                  ->json(array(
                  'success' => true,
@@ -3660,6 +3667,35 @@ if ($request->v == "room_details")
                 'html' => $rhtml
             ));
         }
+
+
+         //subdivision
+         if ($request->v == "subdivisionmaster")
+         {
+             
+             $subdiv = DivisionMaster::all();
+             $employeemas = EmployeeMaster::all();
+ 
+ 
+             $subdivisions = DB::table('subdivisionmaster')
+             ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivnameLong')
+             ->join('employeemaster', 'employeemaster.id', '=', 'subdivisionmaster.subDivhead')
+ 
+             ->select('divisionmaster.divNameLong','employeemaster.empName')
+          
+             ->where('subdivisionmaster.status',0);   
+ 
+ 
+ 
+             $rhtml = view('masterData.subDivisionMaster')->with(['subdiv' => $subdiv, 'employeemas' => $employeemas])->render();
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+             ));
+ 
+         }
+         //end of sub division
 
 //payscale
 

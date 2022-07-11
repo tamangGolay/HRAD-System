@@ -18,9 +18,12 @@ class Manage_ServiceController extends Controller
     public function index(Request $request)
     {
 
+
         $service = DB::table('servicemaster')
-        ->select('id','serNameShort','serNameLong','serviceHead','serReportsToOffice','serReportsToEmp')
+        ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
+        ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empName','serReportsToOffice','serReportsToEmp')
         ->where('status','0');
+        
         
         if ($request->ajax()) {
             $data = $service;

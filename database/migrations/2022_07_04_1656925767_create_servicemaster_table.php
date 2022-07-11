@@ -13,9 +13,8 @@ class CreateServicemasterTable extends Migration
 		$table->id();
 		$table->string('serNameShort');
 		$table->string('serNameLong');
-		$table->foreignId('serviceHead')->references('id')->on('employeemaster')->nullable();
-		$table->integer('serReportsToOffice')->nullable();
-		$table->integer('serReportsToEmp')->nullable();
+		$table->foreignId('serviceHead')->references('id')->on('employeemaster');
+		$table->foreignId('company')->references('id')->on('companymaster');
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

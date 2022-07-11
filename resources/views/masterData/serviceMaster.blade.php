@@ -39,8 +39,8 @@ a {
                 <th>Short name</th>
                 <th>Long name</th>
                 <th>Service Head</th>
-                <th>Service Report to Office</th>
-                <th>Division  Report to Employe</th>
+                <th>Company</th>
+                <!-- <th>Division  Report to Employe</th> -->
                 <th width="300px">action</th>
 
                 
@@ -81,21 +81,38 @@ a {
                      <div class="form-group">
                         <label class="col-sm-2 control-label">Service_Head</label>
                         <div class="col-sm-12">
-                            <input type="text" id="serviceHead" name="serviceHead"  placeholder="" class="form-control" required>
+                            <!-- <input type="text" id="serviceHead" name="serviceHead"  placeholder="" class="form-control" required> -->
+                            <select name="subDivhead" id="subDivhead" value="" class="form-control" required>
+
+                                             <option value="">select your division head</option>
+                                             @foreach($services as $services)
+
+                                             <option value="{{$services->id}}">{{$services->empName}}</option>
+										@endforeach
+							</select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Service_Reports_to_Office</label>
+                        <label class="col-sm-2 control-label">Company</label>
                         <div class="col-sm-12">
-                            <input type="text" id="serReportsToOffice" name="serReportsToOffice"  placeholder="" class="form-control" required>
+                            <!-- <input type="text" id="serReportsToOffice" name="serReportsToOffice"  placeholder="" class="form-control" required> -->
+                        <select name="company" id="company" value="" class="form-control" required>
+
+                                             <option value="">select your Company</option>
+                                             @foreach($companym as $companym)
+
+                                             <option value="{{$companym->id}}">{{$companym->comNameLong}}</option>
+										@endforeach
+							</select>
+
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-sm-2 control-label">Service_Reports_to_Employee</label>
                         <div class="col-sm-12">
                             <input type="text" id="serReportsToEmp" name="serReportsToEmp"  placeholder="" class="form-control" required>
                         </div>
-                    </div> 
+                    </div>  -->
                    
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="serviceButton" value="create">Save changes
@@ -153,8 +170,8 @@ a {
             {data: 'serNameShort', name: 'serNameShort'},
             {data: 'serNameLong', name: 'serNameLong'},
             {data: 'empName', name: 'serviceHead'},
-            {data: 'serReportsToOffice', name: 'serReportsToOffice'},
-            {data: 'serReportsToEmp', name: 'serReportsToEmp'},
+            {data: 'comNameLong', name: 'company'},
+            // {data: 'serReportsToEmp', name: 'serReportsToEmp'},
             // {data: 'divReportsToEmp', name: 'reportEmp'},
             {data: 'action', name: 'action'}
         ]
@@ -183,8 +200,8 @@ a {
           $('#serNameShort').val(data.serNameShort); //input id,database
           $('#serNameLong').val(data.serNameLong);
           $('#serviceHead').val(data.empName);
-          $('#serReportsToOffice').val(data.serReportsToOffice);
-          $('#serReportsToEmp').val(data.serReportsToEmp);
+          $('#company').val(data.comNameLong);
+        //   $('#serReportsToEmp').val(data.serReportsToEmp);
       })
    });
 
@@ -245,8 +262,8 @@ a {
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
           $('#serviceHead').val(data.empName);
-          $('#serReportsToOffice').val(data.serReportsToOffice);
-          $('#serReportsToEmp').val(data.serReportsToEmp);
+          $('#company').val(data.comNameLong);
+        //   $('#serReportsToEmp').val(data.serReportsToEmp);
       })
    });
    

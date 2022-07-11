@@ -9,6 +9,6 @@ class ServiceMaster extends Model
     protected $table = 'servicemaster';
 
    
-    protected $fillable = ['id','serNameShort','serNameLong','serviceHead','serReportsToOffice','serReportsToEmp','status'];
+    protected $fillable = ['id','serNameShort','serNameLong','serviceHead','company','status'];
       public $timestamps = false;
 }

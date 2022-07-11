@@ -35,6 +35,7 @@ use App\town;
 use App\drungkhag;
 use App\ContractDetailMaster;
 use App\DivisionMaster;
+use App\Company;
 use App\place;
 
 
@@ -3627,9 +3628,18 @@ if ($request->v == "room_details")
         //service master
          if ($request->v == "servicemaster")
          {
+            $services = EmployeeMaster::all();
+            $companym = Company::all();
+
+            $service = DB::table('servicemaster')
+            ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
+            ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
+            ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empName','companymaster.comNameLong')
+            ->where('servicemaster.status','0');
+
  
     
-             $rhtml = view('masterData.serviceMaster')->render();
+             $rhtml = view('masterData.serviceMaster')->with([ 'services' => $services,'companym' => $companym])->render();
              return response()
                  ->json(array(
                  'success' => true,

@@ -37,10 +37,7 @@ use App\Leavetype;
 use App\Officem;
 use App\officeName;
 use App\EmployeeMaster;
-
-
-
-
+use App\ServiceMaster;
 
 class ImportMaster extends Command
 {
@@ -105,10 +102,9 @@ class ImportMaster extends Command
         $this->importofficename('officename',new officeName);// csv and model
         $this->importofficemaster('officeMaster',new Officem);
         $this->importEmpMaster('employeemaster',new EmployeeMaster);   // csv n modal name employee master
-
-
-
+        $this->importserviceMaster('services',new ServiceMaster);
      }
+
      public function importgrade($filename,Model $model) {
         if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
         {
@@ -1036,6 +1032,38 @@ public function importofficename($filename,Model $model) {
     }
 }
 //end sonam
+// to import services
+
+public function importserviceMaster($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'serNameShort' => $data[0],    
+                    'serNameLong' => $data[1],
+                    'serviceHead' => $data[2],
+                    'company' => $data[3]                      
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end of service
 
 
 //function to import employee master level for employee

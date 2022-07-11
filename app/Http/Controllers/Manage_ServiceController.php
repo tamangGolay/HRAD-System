@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use DB;
 use App\ServiceMaster;
+use App\Company;
 
         
 class Manage_ServiceController extends Controller
@@ -18,11 +19,12 @@ class Manage_ServiceController extends Controller
     public function index(Request $request)
     {
 
-
         $service = DB::table('servicemaster')
+        
         ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
-        ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empName','serReportsToOffice','serReportsToEmp')
-        ->where('status','0');
+        ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
+        ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empName','companymaster.comNameLong')
+        ->where('servicemaster.status','0');
         
         
         if ($request->ajax()) {
@@ -56,7 +58,7 @@ class Manage_ServiceController extends Controller
     public function store(Request $request)
     {
          ServiceMaster::updateOrCreate(['id' => $request->id],  //vehicles
-                ['serNameShort' => $request->serNameShort, 'serNameLong' => $request->serNameLong, 'serviceHead' => $request->serviceHead,'serReportsToOffice' => $request->serReportsToOffice, 'serReportsToEmp' => $request->serReportsToEmp]);   
+                ['serNameShort' => $request->serNameShort, 'serNameLong' => $request->serNameLong, 'serviceHead' => $request->serviceHead,'serReportsToOffice' => $request->serReportsToOffice]);   
    
         return response()->json(['success'=>'New Service saved successfully.']);
     }

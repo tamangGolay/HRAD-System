@@ -86,9 +86,8 @@ Route::post('destroyincrementhistory', 'Manage_incrementController@delete')->nam
 
 //reportoffice
 
-Route::resource('office', Manage_officeController::class);
-Route::post('destroyofficereport', 'Manage_officeController@delete')->name('destroyofficereport');
-
+Route::resource('officereport', Manage_officereportController::class);
+Route::post('destroyofficehistory', 'Manage_officereportController@delete')->name('destroyofficehistory');
 
 //promotion history
 Route::resource('promotion', Manage_promotionController::class);

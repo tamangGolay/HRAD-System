@@ -2,12 +2,12 @@
          
 namespace App\Http\Controllers;
           
-use App\office;
+use App\officereport;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
         
-class Manage_officeController extends Controller
+class Manage_officereportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,16 @@ class Manage_officeController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $office = DB::table('officereportingstructuremaster')->where('status', 0);
+        $increment = DB::table('officereportingstructuremaster')->where('status','0');
         
         if ($request->ajax()) {
-            $data = $office;
+            $data = $increment;
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteOffice" data-original-title="Delete" class="btn btn-primary btn-sm deleteOffice">Delete</a>';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteIncrement" data-original-title="Delete" class="btn btn-primary btn-sm deleteIncrement">Delete</a>';
 
 
 
@@ -38,7 +38,7 @@ class Manage_officeController extends Controller
                     ->make(true);
         }
       
-        return view('emp.office_report',compact('office'));
+        return view('emp.office_reporting',compact('increment'));
     }
      
     /**
@@ -49,13 +49,14 @@ class Manage_officeController extends Controller
      */
     public function store(Request $request)
     {
-        
-        office::updateOrCreate(['officeId' => $request->name],  ['reportsToOffice' => $request->number,  'fromDate' => $request->start,
-        'endDate' => $request->end
+        // dd($request->id);
+        increment::updateOrCreate(['officeId ' => $request->name],  ['incrementDate' => $request->number,  'oldBasic' => $request->old,
+        'newBasic' => $request->new, 'nextDue' => $request->next, 'remarks' => $request->remarks
+    
 
     ]);        
    
-        return response()->json(['success'=>'Office report details saved successfully.']);
+        return response()->json(['success'=>'Increment details saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.
@@ -66,7 +67,7 @@ class Manage_officeController extends Controller
     public function edit($id)
     {
      
-        $conference = office::find($id);
+        $conference = increment::find($id);
         return response()->json($conference);
     }
   
@@ -80,18 +81,18 @@ class Manage_officeController extends Controller
     {
 
       
-        $query = DB::table('officereportingstructuremaster')->where('id', $request->id)
+        $query = DB::table('incrementhistorymaster')->where('id', $request->id)
             ->increment('status');
 
         return response()
-            ->json(['success' => 'Office Report data deleted successfully.']);
+            ->json(['success' => 'Increment data deleted successfully.']);
     }
 
-    //To redirect to the manage_office page after the management of office
+    //To redirect to the manage_increment page after the management of increment
     public function message(Request $request)
     {
 
-        return redirect('home')->with('page', 'office_report');
+        return redirect('home')->with('page', 'increment_history');
     }
 
 }

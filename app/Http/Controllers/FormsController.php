@@ -3655,9 +3655,9 @@ if ($request->v == "increment_history")
 //office reporting
 if ($request->v == "office_reporting")
 {
-    $office = officeName::all();
+    // $office = officeName::all();
 
-    $rhtml = view('emp.office_reporting')->with(['office' => $office])->render();
+    $rhtml = view('emp.office_reporting')->render();
     return response()
         ->json(array(
         'success' => true,

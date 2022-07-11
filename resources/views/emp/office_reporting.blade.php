@@ -29,17 +29,18 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageOffice">Add Office Report Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageIncrement">Add Increment Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
 
-                <th>Office Id</th>
-                <th>Reports to office</th>
-                <th>Start date</th>
-                <th>End date</th>
-               
+                <th>officeId </th>
+                <th>Reports To Office</th>
+                <th>From Date</th>
+                <th>End Date</th>
+                
+
                 <th width="300px">Action</th>
             </tr>
         </thead>
@@ -60,24 +61,26 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="office_id">
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Office Id</label>
+                   <input type="hidden" name="id" id="increment_id">
+                   <div class="form-group">
+                        <label class="col-sm-2 control-label">Office Id</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="employee ID" value="" maxlength="50" required>
+                            <input type="text" id="name" name="name"  placeholder="" class="form-control" required>
                         </div>
                     </div>
+
+</div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Report to office</label>
+                        <label class="col-sm-2 control-label">Report to Office</label>
                         <div class="col-sm-12">
-                            <input type="text" id="number" name="number"  placeholder="" class="form-control" required>
+                            <input type="date" id="number" name="number"  placeholder="" class="form-control" required>
                         </div>
                     </div>
       
                    
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Start Date</label>
+                        <label class="col-sm-2 control-label">From Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="start" name="start"  placeholder="" class="form-control" required>
                         </div>
@@ -90,10 +93,10 @@ a {
                         </div>
                     </div>
 
-                   
+         
 
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="officeButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="incrementButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -105,11 +108,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="officeModel" aria-hidden="true">
+<div class="modal fade" id="incrementModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="officeHeading"></h4>
+                <h4 class="modal-title" id="incrementHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -120,7 +123,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="officeDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="incrementDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -141,23 +144,25 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('office.index') }}",   //** */
+        ajax: "{{ route('officereport.index') }}",   //** */
         columns: [
-            {data: 'officeId', name: 'officeId'},
+            {data: 'officeId', name: '	officeId'},
             {data: 'reportsToOffice', name: 'reportsToOffice'},
             {data: 'fromDate', name: 'fromDate'},
             {data: 'endDate', name: 'endDate'},
            
+           
+
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageOffice').click(function () {
-        $('#officeButton').val("create-room");
-        // $('#office_id').val('');
+    $('#manageIncrement').click(function () {
+        $('#incrementButton').val("create-room");
+        // $('#increment_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new Details");
+        $('#modelHeading').html("Add new office Details");
         $('#ajaxModel').modal('show');
 
        
@@ -165,26 +170,29 @@ a {
 
   //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
-      var office_id = $(this).data('id');
+      var increment_id = $(this).data('id');
      
-      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {  //give route*
+      $.get("{{ route('officereport.index') }}" +'/' + increment_id +'/edit', function (data) {  //give route*
           $('#modelHeading').html("Edit family details");
-          $('#officeButton').val("edit-room");
+          $('#incrementButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#office_id').val(data.id);
+          $('#increment_id').val(data.id);
           $('#name').val(data.officeId); //input id,database
           $('#number').val(data.reportsToOffice);
           $('#start').val(data.fromDate);
           $('#end').val(data.endDate);
-         
+          
+
+
+          
 
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#officeButton').click(function (e) {
+    $('#incrementButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -193,7 +201,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('office.store') }}",
+          url: "{{ route('officereport.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -219,7 +227,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#officeButton').html('Save Changes');
+              $('#incrementButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
@@ -228,19 +236,20 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteOffice', function () {
-      var office_id = $(this).data('id');
+    $('body').on('click', '.deleteIncrement', function () {
+      var increment_id = $(this).data('id');
      
-      $.get("{{ route('office.index') }}" +'/' + office_id +'/edit', function (data) {
-          $('#officeHeading').html("Do you want to delete the Detail?");
-          $('#officeDeleteButton').val("edit-room");
-          $('#officeModel').modal('show');
+      $.get("{{ route('increment.index') }}" +'/' + increment_id +'/edit', function (data) {
+          $('#incrementHeading').html("Do you want to delete the Detail?");
+          $('#incrementDeleteButton').val("edit-room");
+          $('#incrementModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-           $('#office_id').val(data.id);
-           $('#name').val(data.officeId); //input id,database
+          $('#increment_id').val(data.id);
+          $('#name').val(data.officeId); //input id,database
           $('#number').val(data.reportsToOffice);
           $('#start').val(data.fromDate);
           $('#end').val(data.endDate);
+          
 
 
      
@@ -251,13 +260,13 @@ a {
    });
    
   // after clicking yes in delete
-    $('#officeDeleteButton').click(function (e) {
+    $('#incrementDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyofficereport') }}",
+          url: "{{ route('destroyofficehistory') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -283,12 +292,12 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#officeDeleteButton').html('Save Changes');
+              $('#incrementDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deleteOffice', function() {
+    // $('body').on('click', '.deleteIncrement', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',

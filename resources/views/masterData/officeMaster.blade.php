@@ -77,7 +77,15 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                        <select class="col-lg-12 col-sm-12" name="officeAddress" id="officeAddress" value="" required>
+                                             <option value="">Select Office Location</option>
+                                             @foreach($dzongkhag as $placemastern)
+                                             <option value="{{$placemastern->id}}">{{$placemastern->Dzongkhag_Name}}</option>
+										@endforeach
+							</select>
+
+
+                            <!-- <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required> -->
                         </div> 
                     </div>
 
@@ -142,7 +150,7 @@ a {
             {data: 'id', name: 'id'},
             // {data: 'officeName', name: 'officeName'},
             {data: 'longOfficeName', name: 'officeName', orderable: false, searchable: false},
-            {data: 'placeName', name: 'officeAddress'},
+            {data: 'Dzongkhag_Name', name: 'officeAddress'},
             {data: 'officeHead', name: 'officeHead'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
@@ -170,7 +178,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
           $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.placeName);
+          $('#officeAddress').val(data.Dzongkhag_Name);
           $('#officeHead').val(data.officeHead);
       })
    });
@@ -231,7 +239,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
           $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.placeName);
+          $('#officeAddress').val(data.Dzongkhag_Name);
           $('#officeHead').val(data.officeHead);
       })
    });

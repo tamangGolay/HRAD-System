@@ -35,6 +35,7 @@ use App\town;
 use App\drungkhag;
 use App\ContractDetailMaster;
 use App\DivisionMaster;
+use App\place;
 
 
 
@@ -3018,15 +3019,17 @@ if ($request->v == "vehicleReport")
  if ($request->v == "officemaster")
  {
     $officen = officeName::all();
-    // $placemastern = placeName::all();    join place master 
+    $placemastern = place::all();  
+    $dzongkhag = Dzongkhags::all();         
+   
 
     $name = DB::table('officemaster')
     ->join('officename', 'officename.id', '=', 'officemaster.officeName')
     ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
-    ->select('officename.longOfficeName','placemaster.placeName')
+    ->select('officename.longOfficeName','placemaster.dzongkhagId')
     ->where('officemaster.status',0);
 
-     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen])->render();
+     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'dzongkhag'=>$dzongkhag, 'placemastern'=>$placemastern])->render();
      return response()
          ->json(array(
          'success' => true,

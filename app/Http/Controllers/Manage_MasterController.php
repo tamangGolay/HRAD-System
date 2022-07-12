@@ -52,7 +52,8 @@ class Manage_MasterController extends Controller
     public function store(Request $request)
     {
         officeName::updateOrCreate(['id' => $request->id],
-                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName]);        
+                ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName,
+                 'officeType' => $request->officeType]);        
    
         return response()->json(['success'=>'Office Name saved successfully.']);
     }
@@ -88,7 +89,7 @@ class Manage_MasterController extends Controller
     public function message(Request $request)
     {
 
-        return redirect('home')->with('page', 'manage_vehicle');
+        return redirect('home');
     }
 
 }

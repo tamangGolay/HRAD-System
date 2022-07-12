@@ -1018,7 +1018,8 @@ public function importofficename($filename,Model $model) {
 
                 $data = [                       
                     'shortOfficeName' => $data[0],    
-                    'longOfficeName' => $data[1]    
+                    'longOfficeName' => $data[1],
+                    'officeType' => $data[2],    
                                        
                 ];
                 try{

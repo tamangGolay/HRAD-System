@@ -17,7 +17,7 @@ a {
 }
 
 </style>
-
+ 
 
 
 <link href="{{asset('css/bose.css')}}" rel="stylesheet">
@@ -38,7 +38,8 @@ a {
                 <th>No</th>
                 <th>Office Short Name</th>
                 <th>Office Long Name</th>
-                <th width="300px">Action</th>
+                <th>Office Type</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -60,16 +61,23 @@ a {
 
                    <input type="hidden" name="id" id="officeName_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">ShortName</label>
+                        <label for="name" class="col-sm-2 control-label">Office ShortName</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="shortOfficeName" name="shortOfficeName" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">LongName</label>
+                        <label class="col-sm-2 control-label">Office LongName</label>
                         <div class="col-sm-12">
                             <input type="text" id="longOfficeName" name="longOfficeName"   class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Office Type</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="officeType" name="officeType"   class="form-control" required>
                         </div>
                     </div>
       
@@ -130,7 +138,7 @@ a {
             {data: 'id', name: 'id',orderable: false, searchable: true},
             {data: 'shortOfficeName', name: 'shortOfficeName', orderable: false, searchable: true},
             {data: 'longOfficeName', name: 'longOfficeName', orderable: false, searchable: true},
-
+            {data: 'officeType', name: 'officeType', orderable: false, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -158,6 +166,7 @@ a {
           $('#officeName_id').val(data.id);
           $('#shortOfficeName').val(data.shortOfficeName); //input id,database
           $('#longOfficeName').val(data.longOfficeName);
+          $('#officeType').val(data.officeType);
       })
    });
 
@@ -218,6 +227,7 @@ a {
           $('#officeName_id').val(data.id);
           $('#shortOfficeName').val(data.shortOfficeName); //input id,database
           $('#longOfficeName').val(data.longOfficeName);
+          $('#officeType').val(data.officeType); 
       })
    });
    

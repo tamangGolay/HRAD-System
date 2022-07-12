@@ -13,6 +13,7 @@ class CreateOfficenameTable extends Migration
 		$table->id();
 		$table->string('shortOfficeName');
 		$table->string('longOfficeName');
+        $table->string('officeType');
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();

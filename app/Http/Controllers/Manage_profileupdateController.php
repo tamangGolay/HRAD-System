@@ -17,14 +17,28 @@ class Manage_profileupdateController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $increment = DB::table('incrementhistorymaster')
+        $grade = DB::table('employeemaster')
 
-           ->join('employeemaster', 'employeemaster.id', '=', 'incrementhistorymaster.personalNo')
-        ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
-        'incrementhistorymaster.oldBasic','incrementhistorymaster.newBasic',
-        'incrementhistorymaster.nextDue', 'incrementhistorymaster.remarks','employeemaster.empId')
-      ->where('incrementhistorymaster.status','0');
-        
+           ->join('employeemaster', 'employeemaster.bankName', '=', 'bankmaster.id')
+        //    ->join('employeemaster', 'employeemaster.designation', '=', 'designationmaster.id')
+        ->select('employeemaster.id','employeemaster.empId','employeemaster.cidNo',
+        'employeemaster.dob','employeemaster.bloodGroup','employeemaster.empName',
+        'employeemaster.gender', 'employeemaster.appointmentDate','employeemaster.grade',
+        'employeemaster.designation','employeemaster.basicPay','employeemaster.empStatus','employeemaster.mobileNo',
+        'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName','employeemaster.accountNumber',
+        'employeemaster.resignationType','employeemaster.resignationDate','employeemaster.employmentType','employeemaster.incrementCycle',
+        'bankmaster.bankName'
+        )
+      ->where('employeemaster.status','0');
+  
+      	
+  
+      
+      
+      
+      	
+      	
+      
         if ($request->ajax()) {
             $data = $increment;
             return Datatables::of($data)

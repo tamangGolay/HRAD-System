@@ -185,17 +185,11 @@
             </div>
 
 
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off"  required>                  
-                </div>
-            </div>
+      
 
             
          <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Appointmentdate:</label>
+              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointmentdate:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="date" class="form-control" name="appointment" id="appointment" placeholder="" autocomplete="off"  required>                  
                 </div>
@@ -219,14 +213,23 @@
                 <input type="text" class="form-control" name="place" id="place" placeholder="place" autocomplete="off"  required>                  
                 </div>
             </div>
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="bankname">&nbsp;&nbsp;&nbsp;Bank Name:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="bankname" id="bankname" placeholder="bankname" autocomplete="off"  required>                  
-                </div>
-            </div>
-
             
+            <div class="form-group">
+                        <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
+                        <div class="col-sm-10 col-md-6 col-lg-4">
+
+                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
+                            <select name="bankname" id="bankname" value="" class="form-control" required>
+                                             <option value="">Select Bank name</option>
+                                             @foreach($bank as $bank)
+
+                                             <option value="{{$bank->id}}">{{$bank->bankName}}</option>
+										@endforeach
+							</select>
+                        </div>
+                    </div>
+     
+            <br>    <br>    <br>
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="accountnumber">&nbsp;&nbsp;&nbsp;Account Number:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -238,6 +241,13 @@
               <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="designation" id="designation" placeholder="designation" autocomplete="off" readonly required>                  
+                </div>
+            </div>
+
+            <div class="form-group row"> 
+              <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off" readonly required>                  
                 </div>
             </div>
 
@@ -461,22 +471,22 @@ function getEmployeeDetails(val)
                     document.getElementById('cid').value = '';
                     document.getElementById('blood').value =  '';
                     document.getElementById('designation').value =  '';
-                    document.getElementById('grade').innerHTML = '';   
+                    document.getElementById('grade').value = '';   
                     document.getElementById('appointment').value = '';                      
                     document.getElementById('basicpay').value = '';
                     document.getElementById('empstatus').value =  '';
                     document.getElementById('lastdop').value =  '';
-                    document.getElementById('emailid').innerHTML = '';   
+                    document.getElementById('emailid').value = '';   
                     document.getElementById('place').value = '';                      
                     document.getElementById('bankname').value = '';
                     document.getElementById('accountnumber').value =  '';
                     document.getElementById('resignationtype').value =  '';
-                    document.getElementById('resignationdate').innerHTML = '';   
+                    document.getElementById('resignationdate').value = '';   
                     document.getElementById('employmenttype').value = '';                      
                     document.getElementById('incrementcycle').value = '';
                     document.getElementById('division').value =  '';
                    
-                    document.getElementById('empid').innerHTML = '';                        
+                    document.getElementById('empid').value = '';                        
 
 
 

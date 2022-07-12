@@ -38,7 +38,8 @@ use App\drungkhag;
 use App\ContractDetailMaster;
 use App\DivisionMaster;
 use App\place;
-
+use App\Designation;
+use App\bank;
 
 
 class FormsController extends Controller
@@ -3807,12 +3808,9 @@ if ($request->v == "promotion_history")
 //user_profile
 if ($request->v == "user_profile")
 {
-
-   //  $conference = vehicles::all();
-   //  $review = DB::table('vehicledetails')->select('*')
-   //      ->paginate();
-
-    $rhtml = view('emp.user_profile')->render();
+    $place= place::all();
+  $bank= bank::all();
+    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank ])->render();
     return response()
         ->json(array(
         'success' => true,

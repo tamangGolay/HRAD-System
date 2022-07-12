@@ -29,7 +29,7 @@ class Manage_UserController extends Controller
 
         ->select('users.id','users.email','dzongkhags.Dzongkhag_Name','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
         ->latest('users.id') //similar to orderby('id','desc')
-        ->where('users.status','0')
+        ->where('users.org_unit_id','44')
         ->paginate(10000);
         
         

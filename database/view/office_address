@@ -1,0 +1,16 @@
+
+
+
+create view office_address as
+select 
+view_place_data.placeId AS placeId,
+replace(concat(view_place_data.villageName,', ',view_place_data.gewogName,', ',view_place_data.drungkhagName,', ',view_place_data.dzongkhagName),',','') AS Address from hradsystem.view_place_data where view_place_data.placeCategory = 'Village' 
+union 
+select view_place_data.placeId AS placeId,concat(view_place_data.townName,', ',view_place_data.dzongkhagName) AS Address from hradsystem.view_place_data where view_place_data.placeCategory = 'Town'
+union
+select view_place_data.placeId AS placeId,replace(concat(view_place_data.gewogName,', ',view_place_data.drungkhagName,', ',view_place_data.dzongkhagName),',','') AS Address from hradsystem.view_place_data where view_place_data.placeCategory = 'Gewog' 
+union 
+select view_place_data.placeId AS placeId,concat(view_place_data.drungkhagName,', ',view_place_data.dzongkhagName) AS Address from hradsystem.view_place_data where view_place_data.placeCategory = 'Drungkhag' 
+union 
+select view_place_data.placeId AS placeId,concat(view_place_data.dzongkhagName) AS Address 
+from hradsystem.view_place_data where view_place_data.placeCategory = 'Dzongkhag'

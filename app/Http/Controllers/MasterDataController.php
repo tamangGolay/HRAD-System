@@ -15,6 +15,8 @@ use App\user_details;
 use DB;
 use App\orgunit;
 use App\Grade;
+use PDO;
+
 
 
 
@@ -44,6 +46,35 @@ class MasterDataController extends Controller
     public function storeUser(Request $request)
     {     
       // dd($request);
+
+      //  dd($request);
+
+      //code to insert the qualifications
+      if(isset($_POST["item_name"]))
+      {
+        $connect = new PDO("mysql:host=localhost;dbname=hradsystem", "root", "");
+        //  $id = ();
+        for($count = 0; $count < count($_POST["item_name"]); $count++)
+        {  
+          $query = "INSERT INTO employeequalificationmaster 
+          (personalNo, qualificationId) 
+          VALUES (:personalNo , :item_unit)
+          ";
+          $statement = $connect->prepare($query);
+          $statement->execute(
+          array(
+            // ':id'   => $id,
+            ':personalNo'  => $_POST["item_name"][$count], 
+            ':item_unit'  => $_POST["item_unit"][$count]
+          )
+          );
+        }
+        $result = $statement->fetchAll();
+        if(isset($result))
+        {
+          echo 'ok';
+        }
+       }
        
         $EmployeeMaster = new EmployeeMaster;//EmployeeMaster is ModelName
         $EmployeeMaster->EmpId = $request->EmpId;//emp_id is from input name

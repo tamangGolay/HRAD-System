@@ -258,6 +258,45 @@
 					</div> -->
 
 					<!-- <div class="form-group row mb-0"> -->
+					<div class="form-group row mb-0"> 
+					<?php
+							$connect = new PDO("mysql:host=localhost;dbname=hradsystem", "root", "");
+							function fill_unit_select_box($connect)
+							{ 
+							$output = '';
+							$query = "SELECT qualificationLongName,id FROM qualificationmaster ORDER BY qualificationLongName ASC";
+							$statement = $connect->prepare($query);
+							$statement->execute();
+							$result = $statement->fetchAll();
+							foreach($result as $row)
+							{
+							$output .= '<option value="'.$row["id"].'">'.$row["qualificationLongName"].'</option>';
+							}
+							return $output;
+							}
+
+							?>
+
+								<form method="post" id="insert_form">
+								<!-- <span id="error"></span> -->
+								<table align="right" class="table" id="item_table">
+								<div class="col-lg-5">
+
+								<label for="name" class="col-lg-10 col-form-label text-md-right">Choose Qualifications:</label>
+								<span class="fas fa-plus btn-success btn-sm add"></span>
+								
+								</table>
+								<div align="center">
+								<input type="submit" name="submit" class="btn btn-info" value="Insert" />
+								</div>
+								</div>
+								</div>
+
+							</form>
+							</body>
+							</html>
+										</div> 
+					
 						<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
 							<button type="submit" class="btn btn-outline-success btn-save" id="bsubmit">{{ __('Create User') }}</button>
 						</div>
@@ -353,3 +392,80 @@ function myFunction1() {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
 		</script>
+
+
+<script>
+$(document).ready(function(){
+ 
+ $(document).on('click', '.add', function(){
+  var html = '';
+  html += '<tr>';
+//   html += '<td><input type="hidden" name="{{ csrf_token() }}" class="form-control" /></td>';
+  html += '<td><input value="{{ Auth::user()->emp_id }}" type="hidden" name="item_name[]" class="form-control item_name" /></td>';
+//   html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
+  html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Qualification</option><?php echo fill_unit_select_box($connect); ?></select></td>';
+  html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="fas fa-minus"></span></button></td></tr>';
+  $('#item_table').append(html);
+ });
+ 
+ $(document).on('click', '.remove', function(){
+  $(this).closest('tr').remove();
+ });
+ 
+ $('#insert_form').on('submit', function(event){
+  event.preventDefault();
+  var error = '';
+  $('.item_name').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Item Name at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.item_quantity').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Item Quantity at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.item_unit').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Select Unit at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  var form_data = $(this).serialize();
+  if(error == '')
+  {
+   $.ajax({
+    url:"user",
+    method:"POST",
+	data:form_data,
+    success:function(data)
+    {
+     if(data == 'ok')
+     {
+      $('#item_table').find("tr:gt(0)").remove();
+      $('#error').html('<div class="alert alert-success">Item Details Saved</div>');
+     }
+    }
+   });
+  }
+  else
+  {
+   $('#error').html('<div class="alert alert-danger">'+error+'</div>');
+  }
+ });
+ 
+});
+</script>

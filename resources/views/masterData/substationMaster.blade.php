@@ -71,58 +71,58 @@ a {
                    <input type="hidden" name="id" id="substation_id">
 
                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Short_Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Short Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="ssNameShort" name="ssNameShort" placeholder="Enter short name" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Long_Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Long Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssNameLong" name="ssNameLong"  placeholder="Enter your long name" class="form-control" required>
                         </div>
                     </div>
 
                      <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Head</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Head</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssHead" name="ssHead"  placeholder="" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Unit</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Unit</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToUnit" name="ssReportsToUnit"  placeholder="" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Sub_Division</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Sub_Division</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToSubDivision" name="ssReportsToSubDivision"  placeholder="" class="form-control" required>
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Division</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Division</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToDivision" name="ssReportsToDivision"  placeholder="" class="form-control" required>
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Department</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Department</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToDepartment" name="ssReportsToDepartment"  placeholder="" class="form-control" required>
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Service</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Service</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToService" name="ssReportsToService"  placeholder="" class="form-control" required>
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Substation_Reports_to_Company</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Substation Reports To Company</label>
                         <div class="col-sm-12">
                             <input type="text" id="ssReportsToCompany" name="ssReportsToCompany"  placeholder="" class="form-control" required>
                         </div>

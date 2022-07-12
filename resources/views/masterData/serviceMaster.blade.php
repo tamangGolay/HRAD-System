@@ -66,20 +66,20 @@ a {
                    <input type="hidden" name="id" id="service_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Short_Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Short Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="serNameShort" name="serNameShort" placeholder="Enter short name" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Long_Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Long Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="serNameLong" name="serNameLong"  placeholder="Enter your long name" class="form-control" required>
                         </div>
                     </div>
                      <div class="form-group">
-                        <label class="col-sm-2 control-label">Service_Head</label>
+                        <label class="col-sm-2 col-lg-8  control-label">Service Head</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="serviceHead" name="serviceHead"  placeholder="" class="form-control" required> -->
                             <select name="subDivhead" id="subDivhead" value="" class="form-control" required>
@@ -87,13 +87,13 @@ a {
                                              <option value="">select your division head</option>
                                              @foreach($services as $services)
 
-                                             <option value="{{$services->id}}">{{$services->empName}}</option>
+                                             <option value="{{$services->id}}">{{$services->empId}}</option>
 										@endforeach
 							</select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Company</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Company</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="serReportsToOffice" name="serReportsToOffice"  placeholder="" class="form-control" required> -->
                         <select name="company" id="company" value="" class="form-control" required>
@@ -169,7 +169,7 @@ a {
             {data: 'id', name:'id'},
             {data: 'serNameShort', name: 'serNameShort'},
             {data: 'serNameLong', name: 'serNameLong'},
-            {data: 'empName', name: 'serviceHead'},
+            {data: 'empId', name: 'serviceHead'},
             {data: 'comNameLong', name: 'company'},
             // {data: 'serReportsToEmp', name: 'serReportsToEmp'},
             // {data: 'divReportsToEmp', name: 'reportEmp'},
@@ -199,7 +199,7 @@ a {
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
           $('#serNameLong').val(data.serNameLong);
-          $('#serviceHead').val(data.empName);
+          $('#serviceHead').val(data.empId);
           $('#company').val(data.comNameLong);
         //   $('#serReportsToEmp').val(data.serReportsToEmp);
       })
@@ -261,7 +261,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
-          $('#serviceHead').val(data.empName);
+          $('#serviceHead').val(data.empId);
           $('#company').val(data.comNameLong);
         //   $('#serReportsToEmp').val(data.serReportsToEmp);
       })

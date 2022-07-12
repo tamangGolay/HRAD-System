@@ -66,14 +66,14 @@ a {
                    <input type="hidden" name="id" id="subdivision_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Short_Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Short Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="subDivnameShort" name="subDivnameShort" placeholder="Enter short name" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2  control-label">Long_Name</label>
+                        <label class="col-sm-2 col-lg-8  control-label">Long Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="subDivnameLong" name="subDivnameLong"  placeholder="Enter your long name" class="form-control" required>
                         </div>

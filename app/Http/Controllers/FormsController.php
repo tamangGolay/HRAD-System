@@ -3650,7 +3650,7 @@ if ($request->v == "room_details")
             $service = DB::table('servicemaster')
             ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
             ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
-            ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empName','companymaster.comNameLong')
+            ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empId','companymaster.comNameLong')
             ->where('servicemaster.status','0');
 
  

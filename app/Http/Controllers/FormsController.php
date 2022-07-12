@@ -40,7 +40,7 @@ use App\DivisionMaster;
 use App\place;
 use App\Designation;
 use App\bank;
-
+use App\OfficeAddress;
 
 class FormsController extends Controller
 {
@@ -3017,22 +3017,26 @@ if ($request->v == "vehicleReport")
       ));
   }
 
-  //view for manage office
+ //view for manage office
 
  if ($request->v == "officemaster")
  {
     $officen = officeName::all();
     $placemastern = place::all();  
-    $dzongkhag = Dzongkhags::all();         
-   
+    //$dzongkhag = Dzongkhags::all(); 
+    $offhead = EmployeeMaster::all();
+    $offadd = OfficeAddress::all();   
 
+   
     $name = DB::table('officemaster')
     ->join('officename', 'officename.id', '=', 'officemaster.officeName')
-    ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
-    ->select('officename.longOfficeName','placemaster.dzongkhagId')
+    ->join('employeemaster', 'employeemaster.id', '=', 'officemaster.officeHead')
+    ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
+   // ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
+    ->select('officename.longOfficeName','office_address.Address','employeemaster.empId')
     ->where('officemaster.status',0);
 
-     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'dzongkhag'=>$dzongkhag, 'placemastern'=>$placemastern])->render();
+     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'placemastern'=>$placemastern, 'offhead'=>$offhead, 'offadd'=>$offadd])->render();
      return response()
          ->json(array(
          'success' => true,

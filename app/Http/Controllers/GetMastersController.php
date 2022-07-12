@@ -64,28 +64,28 @@ class GetMastersController extends Controller
 
         }
 
-        if ($table == "C_Booking")
+        if ($table == "user_profile")
         {
 
             //check cid if already in database.
             if (DB::table('employeemaster')->where('employeemaster.empId', $value)->exists())
             {
                 $emp = DB::table('employeemaster')
-                ->join('designationmaster', 'designationmaster.id', '=', 'employeemaster.designation')
                 ->join('grademaster','grademaster.id', '=', 'employeemaster.gradeId')
-                ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationType')
-                    ->select('employeemaster.empId','employeemaster.empName', 
+                ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
+                ->join('designationmaster','designationmaster.id', 'employeemaster.designationId')
+                ->select('employeemaster.empId','employeemaster.empName', 
                     'employeemaster.bloodGroup', 'employeemaster.cidNo',
                     'employeemaster.dob','employeemaster.gender','employeemaster.appointmentDate',
-                    'employeemaster.designation',
+                    'employeemaster.designationId',
                     'employeemaster.office','employeemaster.basicPay','employeemaster.empStatus',
                     'employeemaster.lastDop','employeemaster.mobileNo',
                     'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName',
-                    'employeemaster.accountNumber','employeemaster.resignationType',
+                    'employeemaster.accountNumber','employeemaster.resignationTypeID',
                     'employeemaster.resignationDate','employeemaster.employmentType',
                     'employeemaster.incrementCycle' ,'designationmaster.desisNameLong',
                     'grademaster.grade'  ,'resignationtypemaster.resignationType'
-                            ,'employeemaster.gradeId'
+                            ,'employeemaster.gradeId','designationmaster.desisNameLong','resignationtypemaster.resignationType'
   )
   ->where('employeemaster.empId', $value)->get();         
 
@@ -449,7 +449,7 @@ class GetMastersController extends Controller
     }
 
     //For view of conference
-    public function c_Booking()
+    public function user_profile()
     {
 	    $conference = conference::all()
             ->where('status_c',0)		    
@@ -501,7 +501,7 @@ class GetMastersController extends Controller
             ->latest('id')
             ->paginate(1000000000);
 
-        return view('C_Booking', compact('conference', 'c_book','no_of_people90'));
+        return view('user_profile', compact('conference', 'c_book','no_of_people90'));
 
     }
 

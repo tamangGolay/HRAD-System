@@ -4,7 +4,7 @@
 <!-- Stored in resources/views/pages/dispatch.blade.php -->
 @extends('layouts.masterstartpage')
 @section('pagehead')
-<!-- c_booking -->
+<!-- user_profile -->
 
 @endsection
 
@@ -55,7 +55,7 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
 <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet"> 
 
-<!-- c_booking -->
+<!-- user_profile -->
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
@@ -244,6 +244,8 @@
                 </div>
             </div>
 
+            <input type="hidden" class="form-control" name="designationId" id="designationId" placeholder="designationId" autocomplete="off" readonly required>                  
+
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -287,6 +289,9 @@
                 <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                  
                 </div>
             </div>
+
+            <input type="hidden" class="form-control" name="resignationtypeId" id="resignationtypeId" placeholder="grade" autocomplete="off" readonly required>                  
+
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="resignationdate">&nbsp;&nbsp;&nbsp;Resignation Date:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -358,90 +363,8 @@ $(document).ready(function() {
 
 } );
 
-	$(function () {
-            $('#dtpickerdemo2').datetimepicker();
-            $('#dtpickerdemo').datetimepicker();
-            $("#dtpickerdemo2").on("dp.change", function (e) {
-                // $('#dtpickerdemo2').data("DateTimePicker").minDate(e.date);                               
-            });
-            $("#dtpickerdemo").on("dp.change", function (e){
-                
-                $('#dtpickerdemo2').data("DateTimePicker").minDate(e.date);
-            });        
-          }); 
 
        
-
-
-$('#dtpickerdemo').datetimepicker({
-  format:'YYYY-MM-DD hh:mm A',
-
-      toolbarPlacement: "bottom",
-       
-    
-       showClear:true,
-       focusOnShow:false,
-   
-
-       sideBySide:true,
-       minDate:new Date(),
-  
-         stepping: 15,
-         showClose:true,
-
-       icons: {
-     close: 'OK',
-     clear: 'RESET'
-
-  }
-          
-   });
-
- 
-$('#dtpickerdemo2').datetimepicker({
-  format:'YYYY-MM-DD hh:mm A',
-  toolbarPlacement: "bottom",
-       
-       focusOnShow:false,
-    
-       showClear:true,
-
-      sideBySide:true,
-       minDate:new Date(),
-  
-         stepping: 15,
-         showClose:true,
-
-       icons: {
-     close: 'OK',
-     clear: 'RESET'
-  }
-});
-
-  $(document).ready(function() {
-  $("#dtpickerdemo").on("dp.show", function(e) {
-    $('.OK').html("OK");
-  });
-});
-
-
-$(document).ready(function() {
-  $("#dtpickerdemo").on("dp.show", function(e) {
-    $('.RESET').html("RESET");
-  });
-});
-
-$(document).ready(function() {
-  $("#dtpickerdemo2").on("dp.show", function(e) {
-    $('.OK').html("OK");
-  });
-});
-
-$(document).ready(function() {
-  $("#dtpickerdemo2").on("dp.show", function(e) {
-    $('.RESET').html("RESET");
-  });
-});
 
 
 
@@ -461,7 +384,7 @@ function getEmployeeDetails(val)
 
     //pulling records using cid from checkin table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=C_Booking&info='+val+'&token='+csrftoken,function(data){              
+          $.get('/getValues?source=user_profile&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
                   
                     document.getElementById('nameid').value = '';                      
@@ -505,7 +428,9 @@ function getEmployeeDetails(val)
                     document.getElementById('dob').value = Employee.dob;                      
                     document.getElementById('cid').value = Employee.cidNo; 
                     document.getElementById('blood').value =  Employee.bloodGroup; 
+                    document.getElementById('designationId').value =  Employee.designationId;
                     document.getElementById('designation').value =  Employee.desisNameLong; 
+                  
                     document.getElementById('gradeId').value = Employee.gradeId; 
                     document.getElementById('grade').value = Employee.grade; 
                     document.getElementById('empstatus').value = Employee.empStatus;    
@@ -520,6 +445,7 @@ function getEmployeeDetails(val)
 
                     document.getElementById('accountnumber').value =  Employee.accountNumber; 
                     document.getElementById('resignationtype').value =  Employee.resignationType; 
+                    document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 
                     document.getElementById('resignationdate').value = Employee.resignationDate;    
                     document.getElementById('employmenttype').value = Employee.employmentType;                       
                     document.getElementById('incrementcycle').value = Employee.incrementCycle; 

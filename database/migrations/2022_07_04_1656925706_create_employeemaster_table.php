@@ -18,7 +18,7 @@ class CreateEmployeemasterTable extends Migration
 		$table->string('gender');
 		$table->date('appointmentDate');
         $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
-		$table->foreignId('designation')->references('id')->on('designationmaster')->nullable();//fk md_designation N
+		$table->foreignId('designationId')->references('id')->on('designationmaster')->nullable();//fk md_designation N
 		$table->foreignId('office')->references('id')->on('officemaster')->nullable();
 		$table->integer('basicPay')->nullable();
 		$table->string('empStatus')->nullable();
@@ -28,7 +28,7 @@ class CreateEmployeemasterTable extends Migration
 	    $table->foreignId('placeId')->references('id')->on('placemaster')->nullable();
 		$table->foreignId('bankName')->references('id')->on('bankmaster')->nullable();
 		$table->string('accountNumber')->nullable();
-	    $table->foreignId('resignationType')->references('id')->on('resignationtypemaster')->nullable();
+	    $table->foreignId('resignationTypeId')->references('id')->on('resignationtypemaster')->nullable();
 		$table->date('resignationDate')->nullable(); 
 		$table->string('employmentType')->nullable(); //frontEnd dropdown html
 		$table->string('incrementCycle')->nullable();

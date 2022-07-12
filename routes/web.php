@@ -312,11 +312,11 @@ Route::post('/conferenceapprove','ConferenceController@conferenceapprove')->name
 Route::post('/conferencereject','ConferenceController@conferencereject')->name('conferencereject');
 // Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
 
-//C_booking page
-//Routes for c_booking page
+//user_profile page
+//Routes for user_profile page
 //To view the page
 
-Route::get('/cbook/', 'GetMastersController@c_booking');
+Route::get('/cbook/', 'GetMastersController@user_profile');
 //For message
 Route::get('/success', 'GetMastersController@success');
 Route::get('/error', 'GetMastersController@error');
@@ -324,7 +324,7 @@ Route::get('/error', 'GetMastersController@error');
 
 
 
-//Post data from form of C_booking page
+//Post data from form of user_profile page
 
 
 //Tracking page

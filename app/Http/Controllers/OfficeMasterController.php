@@ -20,16 +20,13 @@ class OfficeMasterController extends Controller
  
         $b = DB::table('officemaster')
         ->join('officename', 'officename.id', '=', 'officemaster.officeName')
-    //    ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
-       ->join('dzongkhags', 'dzongkhags.id', '=', 'officemaster.officeAddress')
+        ->join('employeemaster', 'employeemaster.id', '=', 'officemaster.officeHead')
+        ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
 
-    //    ->select('dzongkhags.Dzongkhag_Name','officemaster.id','officename.longOfficeName','placemaster.dzongkhagId','officemaster.officeHead')
-       // ->select('officemaster.id','placemaster.placeName','officemaster.officeAddress','officemaster.officeHead')
-       ->select('dzongkhags.Dzongkhag_Name','officemaster.id','officename.longOfficeName','officemaster.officeHead')
-
+       ->select('office_address.Address','employeemaster.empId','officemaster.id','officename.longOfficeName','officemaster.officeHead')
        ->where('officemaster.status','0');
 
-
+ 
         if ($request->ajax()) {
             $data = $b;
             return Datatables::of($data)

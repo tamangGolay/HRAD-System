@@ -35,7 +35,7 @@ a {
         <thead>
             <tr>
 
-                <th>No</th>
+                <th>No</th> 
                 <th>Office Name</th>
                 <th>Office Address</th>
                 <th>Office Head</th>
@@ -79,8 +79,8 @@ a {
                         <div class="col-lg-12 col-sm-12">
                         <select class="col-lg-12 col-sm-12" name="officeAddress" id="officeAddress" value="" required>
                                              <option value="">Select Office Location</option>
-                                             @foreach($dzongkhag as $placemastern)
-                                             <option value="{{$placemastern->id}}">{{$placemastern->Dzongkhag_Name}}</option>
+                                             @foreach($offadd as $placemastern)
+                                             <option value="{{$placemastern->placeId}}">{{$placemastern->Address}}</option>
 										@endforeach
 							</select>
 
@@ -92,7 +92,13 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Head</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required>
+                        <select class="col-lg-12 col-sm-12" name="officeHead" id="officeHead" value="" required>
+                                             <option value="">Select Office Location</option>
+                                             @foreach($offhead as $offhead)
+                                             <option value="{{$offhead->id}}">{{$offhead->empId}}</option>
+										@endforeach
+							</select>   
+                        <!-- <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required> -->
                         </div>
                     </div>
       
@@ -149,9 +155,9 @@ a {
         columns: [
             {data: 'id', name: 'id'},
             // {data: 'officeName', name: 'officeName'},
-            {data: 'longOfficeName', name: 'officeName', orderable: false, searchable: false},
-            {data: 'Dzongkhag_Name', name: 'officeAddress'},
-            {data: 'officeHead', name: 'officeHead'},
+            {data: 'longOfficeName', name: 'officeName', orderable: true, searchable: true},
+            {data: 'Address', name: 'officeAddress',orderable: true, searchable: true},
+            {data: 'empId', name: 'officeHead',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -178,8 +184,8 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
           $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.Dzongkhag_Name);
-          $('#officeHead').val(data.officeHead);
+          $('#officeAddress').val(data.Address);
+          $('#officeHead').val(data.empId);
       })
    });
 
@@ -239,8 +245,8 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
           $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.Dzongkhag_Name);
-          $('#officeHead').val(data.officeHead);
+          $('#officeAddress').val(data.Address);
+          $('#officeHead').val(data.empId);
       })
    });
    

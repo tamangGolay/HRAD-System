@@ -93,6 +93,13 @@ Route::post('destroyofficehistory', 'Manage_officereportController@delete')->nam
 Route::resource('promotion', Manage_promotionController::class);
 Route::post('destroypromotionhistory', 'Manage_promotionController@delete')->name('destroypromotionhistory');
 
+// Userprofile
+
+Route::post('/profileupdate','Manage_profileupdateController@store')->name('profileupdate');
+
+Route::get('getValues','GetMastersController@getValues');
+Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
+
 
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);
@@ -159,7 +166,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 
 
 
-Route::get('getValues','GetMastersController@getValues');
+// Route::get('getValues','GetMastersController@getValues');
 Route::get('getValues1','GetMastersController@getValues1');
 
 //route form post.
@@ -302,7 +309,8 @@ Route::get('/booking_reviewm', 'ConferenceController@message')->name('booking_re
 //Board room  approve
 Route::post('/conferenceapprove','ConferenceController@conferenceapprove')->name('conferenceapprove');
 //Board room reject
-Route::post('/conferencereject','ConferenceController@conferencereject')->name('conferencereject');Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
+Route::post('/conferencereject','ConferenceController@conferencereject')->name('conferencereject');
+// Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
 
 //C_booking page
 //Routes for c_booking page
@@ -317,10 +325,7 @@ Route::get('/error', 'GetMastersController@error');
 
 
 //Post data from form of C_booking page
-Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
-//onFocusOut for employee details
-//source == C_booking
-Route::get('getValues','GetMastersController@getValues');
+
 
 //Tracking page
 //Page to enter booking id or employee number

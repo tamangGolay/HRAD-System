@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-
+use App\conference;
+use App\conferencebook;
 use App\rangeofpeople;
 
 use Hash;
@@ -63,14 +64,20 @@ class GetMastersController extends Controller
 
         }
 
-        if ($table == "userdetails")
+        if ($table == "C_Booking")
         {
 
             //check cid if already in database.
-            if (DB::table('users')->where('users.emp_id', $value)->exists())
+            if (DB::table('employeemaster')->where('employeemaster.empId', $value)->exists())
             {
-                $emp = DB::table('users')->where('users.emp_id', $value)->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-                    ->select('users.grade','users.name', 'users.contact_number', 'users.org_unit_id','users.email','orgunit.description')
+                $emp = DB::table('employeemaster')->where('employeemaster.empId', $value)
+                    ->select('employeemaster.empId','employeemaster.empName', 'employeemaster.bloodGroup', 'employeemaster.cidNo',
+                    'employeemaster.dob','employeemaster.gender','employeemaster.appointmentDate','employeemaster.grade','employeemaster.designation',
+                    'employeemaster.office','employeemaster.basicPay','employeemaster.empStatus','employeemaster.lastDop','employeemaster.mobileNo',
+                    'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName','employeemaster.accountNumber','employeemaster.resignationType',
+                    'employeemaster.resignationDate','employeemaster.employmentType','employeemaster.incrementCycle'  
+                               
+  )
                     ->get();
 
                 return response()
@@ -85,28 +92,28 @@ class GetMastersController extends Controller
 
         }
 
-//         if ($table == "booking_review")
-//         {
+        if ($table == "booking_review")
+        {
 
-//             //check cid if already in database.
-//             if (DB::table('conferencerequest'))
-//             {
-//                 $emp = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-//                     ->select('conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date','conference.Conference_Name'
-// )
-//                     ->paginate(5);
+            //check cid if already in database.
+            if (DB::table('conferencerequest'))
+            {
+                $emp = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
+                    ->select('conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date','conference.Conference_Name'
+)
+                    ->paginate(5);
 
-//                 return response()
-//                     ->json($emp);
+                return response()
+                    ->json($emp);
 
-//             }
-//             else
-//             {
-//                 return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
 
-//             }
+            }
 
-//         }
+        }
 
         if ($table == 'division')
         {
@@ -367,31 +374,6 @@ class GetMastersController extends Controller
             }
 
         }
-  
-        // user uniform record add
-        if ($table == 'useruniformadd')
-        {
-
-            //check cid if already in database.
-            if (DB::table('employeeuniform')->where('employeeuniform.emp_id', $value)->exists())
-            {
-                $emp = DB::table('employeeuniform')
-            ->select('employeeuniform.emp_id'
-            )
-                    ->get();
-
-                return response()
-                    ->json($emp);
-
-            }
-            else
-            {
-                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
-
-            }
-
-        }
-
 
     }
 
@@ -458,61 +440,61 @@ class GetMastersController extends Controller
     }
 
     //For view of conference
-    // public function c_Booking()
-    // {
-	//     $conference = conference::all()
-    //         ->where('status_c',0)		    
-	// 	    ;
-    //         $no_of_people90 = rangeofpeople::all()
-    //         ->where('status_c',0)		    
-	// 	    ;
+    public function c_Booking()
+    {
+	    $conference = conference::all()
+            ->where('status_c',0)		    
+		    ;
+            $no_of_people90 = rangeofpeople::all()
+            ->where('status_c',0)		    
+		    ;
       
-    //      $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-    //         ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
+         $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
+            ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
 
 	    
            
-    //         ->where('status', 1)
-    //         ->where('conference_id', '1')
+            ->where('status', 1)
+            ->where('conference_id', '1')
 
-    //     //  ->where('conference_id' ,'=', '5')
+        //  ->where('conference_id' ,'=', '5')
         
-    //         ->orwhere("conference_id",">=","2")
-    //         ->where('status', 0)
-    //         ->where('default',)
+            ->orwhere("conference_id", "2")
+            ->where('status', 0)
+            ->where('default',)
 
-    //         // ->orwhere("conference_id", "3")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            ->orwhere("conference_id", "3")
+            ->where('status', 0)
+            ->where('default',)
 
-    //         // ->orwhere("conference_id", "4")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            ->orwhere("conference_id", "4")
+            ->where('status', 0)
+            ->where('default',)
 
-    //         // ->orwhere('conference_id', "5")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            ->orwhere('conference_id', "5")
+            ->where('status', 0)
+            ->where('default',)
 
-    //         // ->orwhere("conference_id", "6")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            // ->orwhere("conference_id", "6")
+            // ->where('status', 0)
+            // ->where('default',)
 
-    //         //  ->orwhere("conference_id", "7")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            //  ->orwhere("conference_id", "7")
+            // ->where('status', 0)
+            // ->where('default',)
 
-    //         // ->orwhere("conference_id", "8")
-    //         // ->where('status', 0)
-    //         // ->where('default',)
+            // ->orwhere("conference_id", "8")
+            // ->where('status', 0)
+            // ->where('default',)
 
-    //         ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'orgunit.description','conference.Conference_Name'
-    //                 )
-    //         ->latest('id')
-    //         ->paginate(1000000000);
+            ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'orgunit.description','conference.Conference_Name'
+                    )
+            ->latest('id')
+            ->paginate(1000000000);
 
-    //     return view('C_Booking', compact('conference', 'c_book','no_of_people90'));
+        return view('C_Booking', compact('conference', 'c_book','no_of_people90'));
 
-    // }
+    }
 
     public function success()
     {

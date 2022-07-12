@@ -1121,7 +1121,7 @@ public function importcontractdetails($filename,Model $model) {
                     'gender' => $data[5],
                     'appointmentDate' => $data[6],
                     'gradeId' => $data[7],
-                    'designation' => $data[8],
+                    'designationId' => $data[8],
                     'office' => $data[9],
                     'basicPay' => $data[10], 
                     'empStatus' => $data[11],
@@ -1131,7 +1131,7 @@ public function importcontractdetails($filename,Model $model) {
                     'placeId' => $data[15],
                     'bankName' => $data[16],
                     'accountNumber' => $data[17],
-                    'resignationType' => $data[18],
+                    'resignationTypeId' => $data[18],
                     'resignationDate' => $data[19], 
                     'employmentType' => $data[20],
                     'incrementCycle' => $data[21]

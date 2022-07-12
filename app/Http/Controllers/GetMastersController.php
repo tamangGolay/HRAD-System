@@ -71,21 +71,21 @@ class GetMastersController extends Controller
             if (DB::table('employeemaster')->where('employeemaster.empId', $value)->exists())
             {
                 $emp = DB::table('employeemaster')
-                ->join('designationmaster', 'designationmaster.id', '=', 'employeemaster.designation')
                 ->join('grademaster','grademaster.id', '=', 'employeemaster.gradeId')
-                ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationType')
-                    ->select('employeemaster.empId','employeemaster.empName', 
+                ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
+                ->join('designationmaster','designationmaster.id', 'employeemaster.designationId')
+                ->select('employeemaster.empId','employeemaster.empName', 
                     'employeemaster.bloodGroup', 'employeemaster.cidNo',
                     'employeemaster.dob','employeemaster.gender','employeemaster.appointmentDate',
-                    'employeemaster.designation',
+                    'employeemaster.designationId',
                     'employeemaster.office','employeemaster.basicPay','employeemaster.empStatus',
                     'employeemaster.lastDop','employeemaster.mobileNo',
                     'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName',
-                    'employeemaster.accountNumber','employeemaster.resignationType',
+                    'employeemaster.accountNumber','employeemaster.resignationTypeID',
                     'employeemaster.resignationDate','employeemaster.employmentType',
                     'employeemaster.incrementCycle' ,'designationmaster.desisNameLong',
                     'grademaster.grade'  ,'resignationtypemaster.resignationType'
-                            ,'employeemaster.gradeId'
+                            ,'employeemaster.gradeId','designationmaster.desisNameLong','resignationtypemaster.resignationType'
   )
   ->where('employeemaster.empId', $value)->get();         
 

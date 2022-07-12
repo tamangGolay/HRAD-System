@@ -244,6 +244,8 @@
                 </div>
             </div>
 
+            <input type="hidden" class="form-control" name="designationId" id="designationId" placeholder="designationId" autocomplete="off" readonly required>                  
+
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -287,6 +289,9 @@
                 <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                  
                 </div>
             </div>
+
+            <input type="hidden" class="form-control" name="resignationtypeId" id="resignationtypeId" placeholder="grade" autocomplete="off" readonly required>                  
+
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="resignationdate">&nbsp;&nbsp;&nbsp;Resignation Date:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -505,7 +510,9 @@ function getEmployeeDetails(val)
                     document.getElementById('dob').value = Employee.dob;                      
                     document.getElementById('cid').value = Employee.cidNo; 
                     document.getElementById('blood').value =  Employee.bloodGroup; 
+                    document.getElementById('designationId').value =  Employee.designationId;
                     document.getElementById('designation').value =  Employee.desisNameLong; 
+                  
                     document.getElementById('gradeId').value = Employee.gradeId; 
                     document.getElementById('grade').value = Employee.grade; 
                     document.getElementById('empstatus').value = Employee.empStatus;    
@@ -520,6 +527,7 @@ function getEmployeeDetails(val)
 
                     document.getElementById('accountnumber').value =  Employee.accountNumber; 
                     document.getElementById('resignationtype').value =  Employee.resignationType; 
+                    document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 
                     document.getElementById('resignationdate').value = Employee.resignationDate;    
                     document.getElementById('employmenttype').value = Employee.employmentType;                       
                     document.getElementById('incrementcycle').value = Employee.incrementCycle; 

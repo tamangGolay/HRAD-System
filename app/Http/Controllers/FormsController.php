@@ -3804,6 +3804,22 @@ if ($request->v == "promotion_history")
 
 
 
+//user_profile
+if ($request->v == "user_profile")
+{
+
+   //  $conference = vehicles::all();
+   //  $review = DB::table('vehicledetails')->select('*')
+   //      ->paginate();
+
+    $rhtml = view('emp.user_profile')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
 
 
 

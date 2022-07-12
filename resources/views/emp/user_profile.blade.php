@@ -251,6 +251,7 @@
                 </div>
             </div>
 
+            <input type="hidden" class="form-control" name="gradeId" id="gradeId" placeholder="grade" autocomplete="off" readonly required>                  
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
@@ -504,7 +505,8 @@ function getEmployeeDetails(val)
                     document.getElementById('dob').value = Employee.dob;                      
                     document.getElementById('cid').value = Employee.cidNo; 
                     document.getElementById('blood').value =  Employee.bloodGroup; 
-                    document.getElementById('designation').value =  Employee.designation; 
+                    document.getElementById('designation').value =  Employee.desisNameLong; 
+                    document.getElementById('gradeId').value = Employee.gradeId; 
                     document.getElementById('grade').value = Employee.grade; 
                     document.getElementById('empstatus').value = Employee.empStatus;    
    

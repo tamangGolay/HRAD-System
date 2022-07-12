@@ -17,7 +17,7 @@ class CreateEmployeemasterTable extends Migration
 		$table->date('dob');
 		$table->string('gender');
 		$table->date('appointmentDate');
-        $table->foreignId('grade')->references('id')->on('grademaster')->nullable();
+        $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
 		$table->foreignId('designation')->references('id')->on('designationmaster')->nullable();//fk md_designation N
 		$table->foreignId('office')->references('id')->on('officemaster')->nullable();
 		$table->integer('basicPay')->nullable();

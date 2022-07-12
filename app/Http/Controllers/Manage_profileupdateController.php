@@ -19,8 +19,8 @@ class Manage_profileupdateController extends Controller
 
         $grade = DB::table('employeemaster')
 
-           ->join('employeemaster', 'employeemaster.bankName', '=', 'bankmaster.id')
-        //    ->join('employeemaster', 'employeemaster.designation', '=', 'designationmaster.id')
+           ->join('bankmaster', 'bankmaster.id', '=', 'employeemaster.bankName')
+         //->join('employeemaster', 'employeemaster.designation', '=', 'designationmaster.id')
         ->select('employeemaster.id','employeemaster.empId','employeemaster.cidNo',
         'employeemaster.dob','employeemaster.bloodGroup','employeemaster.empName',
         'employeemaster.gender', 'employeemaster.appointmentDate','employeemaster.grade',
@@ -74,7 +74,7 @@ class Manage_profileupdateController extends Controller
         //  dd($request);
         EmployeeMaster::updateOrCreate(['empId' => $request->emp_id],  ['empName' => $request->name,  'mobileNo' => $request->contact_number,
         'office' => $request->division, 'dob' => $request->dob, 'cidNo' => $request->cid,  'bloodGroup' => $request->blood,
-         'designation' => $request->designation, 'grade' => $request->grade ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
+         'designation' => $request->designation, 'grade' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
           'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 'placeId' => $request->place,
         'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'resignationType' => $request->resignationtype ,
         'resignationDate' => $request->resignationdate, 'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle

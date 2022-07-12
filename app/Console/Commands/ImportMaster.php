@@ -1120,7 +1120,7 @@ public function importcontractdetails($filename,Model $model) {
                     'dob' => $data[4],
                     'gender' => $data[5],
                     'appointmentDate' => $data[6],
-                    'grade' => $data[7],
+                    'gradeId' => $data[7],
                     'designation' => $data[8],
                     'office' => $data[9],
                     'basicPay' => $data[10], 

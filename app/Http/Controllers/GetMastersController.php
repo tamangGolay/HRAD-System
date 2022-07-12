@@ -64,7 +64,7 @@ class GetMastersController extends Controller
 
         }
 
-        if ($table == "C_Booking")
+        if ($table == "user_profile")
         {
 
             //check cid if already in database.
@@ -449,7 +449,7 @@ class GetMastersController extends Controller
     }
 
     //For view of conference
-    public function c_Booking()
+    public function user_profile()
     {
 	    $conference = conference::all()
             ->where('status_c',0)		    
@@ -501,7 +501,7 @@ class GetMastersController extends Controller
             ->latest('id')
             ->paginate(1000000000);
 
-        return view('C_Booking', compact('conference', 'c_book','no_of_people90'));
+        return view('user_profile', compact('conference', 'c_book','no_of_people90'));
 
     }
 

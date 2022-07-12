@@ -4,7 +4,7 @@
 <!-- Stored in resources/views/pages/dispatch.blade.php -->
 @extends('layouts.masterstartpage')
 @section('pagehead')
-<!-- c_booking -->
+<!-- user_profile -->
 
 @endsection
 
@@ -55,7 +55,7 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
 <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet"> 
 
-<!-- c_booking -->
+<!-- user_profile -->
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
@@ -384,7 +384,7 @@ function getEmployeeDetails(val)
 
     //pulling records using cid from checkin table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=C_Booking&info='+val+'&token='+csrftoken,function(data){              
+          $.get('/getValues?source=user_profile&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
                   
                     document.getElementById('nameid').value = '';                      

@@ -152,7 +152,7 @@ a {
         ajax: "{{ route('contractdetail.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'personalNo'},
+            {data: 'empId', name: 'employeemaster.empId'},
             {data: 'startDate', name: 'startDate'},
             {data: 'endDate', name: 'endDate'},
             {data: 'termNo', name: 'termNo'},
@@ -181,7 +181,7 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#contractdetail_id').val(data.id);
-          $('#personalNo').val(data.empId); //input id,database
+          $('#personalNo').val(data.personalNo); //input id,database
           $('#startDate').val(data.startDate);
           $('#endDate').val(data.endDate);
           $('#termNo').val(data.termNo);
@@ -245,7 +245,7 @@ a {
           $('#contractdetailModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#contractdetail_id').val(data.id);
-          $('#personalNo').val(data.empId); //input id,database
+          $('#personalNo').val(data.personalNo); //input id,database
           $('#startDate').val(data.startDate);
           $('#endDate').val(data.endDate);
           $('#termNo').val(data.termNo);

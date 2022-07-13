@@ -153,9 +153,9 @@ a {
         columns: [
             {data: 'id', name: 'id',orderable: true, searchable: true},
             {data: 'gewogName', name: 'gewogName', orderable: false, searchable: true},
-            {data: 'drungkhagName', name: 'drungkhagId', orderable: false, searchable: false},
+            {data: 'drungkhagName', name: 'drungkhagmaster.drungkhagName', orderable: false, searchable: true},
 
-            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
+            {data: 'Dzongkhag_Name', name: 'dzongkhags.Dzongkhag_Name', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
@@ -184,7 +184,7 @@ a {
           $('#gewog_id').val(data.id);
           $('#gewogName').val(data.gewogName); //input id,database
           $('#drungkhagId').val(data.drungkhagId);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
+          $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
       })
    });
 
@@ -244,7 +244,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#gewog_id').val(data.id);
           $('#drungkhagId').val(data.drungkhagId); //input id,database
-          $('#dzongkhagId').val(data.Dzongkhag_Name);
+          $('#dzongkhagId').val(data.dzongkhagId);
       })
    });
    

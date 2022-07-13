@@ -139,7 +139,7 @@ a {
             {data: 'id', name: 'id',orderable: false, searchable: true},
             {data: 'villageName', name: 'villageName', orderable: false, searchable: true},
           
-            {data: 'gewogName', name: 'gewogId', orderable: false, searchable: false},
+            {data: 'gewogName', name: 'gewogmaster.gewogName', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]

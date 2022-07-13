@@ -65,11 +65,12 @@ class Manage_MasterPlaceController extends Controller
     public function store(Request $request)
     {
         place::updateOrCreate(['id' => $request->id],
-                ['placeName' => $request->placeName,
-                'village' => $request->village,
-                'drungkhag' => $request->drungkhag,
-                'gewog' => $request->gewogName,
-                'dzongkhag' => $request->dzongkhagId]);        
+                ['villageId' => $request->villageId,
+                'townId' => $request->townId,
+                'dzongkhagId' => $request->dzongkhagId,
+                'drungkhagId' => $request->drungkhagId,
+                'gewogId' => $request->gewogId,
+                'placeCategory' => $request->placeCategory]);        
    
         return response()->json(['success'=>'Place saved successfully.']);
     }

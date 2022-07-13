@@ -22,12 +22,12 @@ class EmpQualificationController extends Controller
           
          $empquali = DB::table('employeequalificationmaster')
           ->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
-          ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.qualificationId') 
+          ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.id') 
 
-          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationLongName')
+          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationName')
           ->where('employeequalificationmaster.status','0');  
 
-        if ($request->ajax()) {
+         if ($request->ajax()) {
             $data = $empquali;
             return Datatables::of($data)
                     ->addIndexColumn()
@@ -84,7 +84,7 @@ class EmpQualificationController extends Controller
             ->increment('status');
 
         return response()
-            ->json(['success' => 'Emp Qualification deleted successfully.']);
+            ->json(['success' => 'Employee Qualification deleted successfully.']);
     }
 
     //To redirect to the manage_vehicle page after the management of vehicle

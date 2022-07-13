@@ -9,10 +9,10 @@ class CreateQualificationmasterTable extends Migration
     public function up()
     {
         Schema::create('qualificationmaster', function (Blueprint $table) {
-        $table->id();
+        $table->id();        
+		$table->string('qualificationName');        
         $table->foreignId('qualificationLevelId')->references('id')->on('qualilevelmaster');
-		$table->string('qualificationShortName');
-        $table->string('qualificationLongName');
+        $table->foreignId('qualificationField')->references('id')->on('fieldmaster');
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

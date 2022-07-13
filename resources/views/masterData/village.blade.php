@@ -137,10 +137,8 @@ a {
         ajax: "{{ route('village.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'villageName', name: 'villageName', orderable: false, searchable: true},
-          
+            {data: 'villageName', name: 'villageName', orderable: false, searchable: true},          
             {data: 'gewogName', name: 'gewogmaster.gewogName', orderable: false, searchable: true},
-
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -269,37 +267,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deletevillage', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyvillage') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_village';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+    
      
      
 </script>

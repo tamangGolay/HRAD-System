@@ -31,7 +31,7 @@ use App\Company;
 use App\ServiceMaster;
 use App\QualificationLevel;
 use App\Qualification;
-use App\grademaster;
+use App\GradeMaster;
 use App\village;
 use App\town;
 use App\drungkhag;
@@ -39,6 +39,7 @@ use App\ContractDetailMaster;
 use App\DivisionMaster;
 use App\place;
 use App\Designation;
+use App\Resignation;
 use App\bank;
 use App\OfficeAddress;
 
@@ -3500,23 +3501,58 @@ if ($request->v == "room_details")
          if ($request->v == "employeemaster")
          {
  
-             $user = Auth::user();
-             $grade = Grade::all();
-             $dzongkhag = Dzongkhags::all();
-             $orgunit = orgunit::all();
-             $roles = roles::all();
- 
- 
- 
+            $user = Auth::user();
+            $grade = Grade::all();
+            $dzongkhag = Dzongkhags::all();
+            $orgunit = orgunit::all();
+            $roles = roles::all();
+            $bk = bank::all();
+            $dg = Designation::all(); 
+            $rg = Resignation::all(); 
+            $gg = GradeMaster::all();
+            $ff = officeName::all(); 
+            $pp = OfficeAddress::all();
            
-             $rhtml = view('masterData.employeeMaster')->with(['roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
-             return response()
-                 ->json(array(
-                 'success' => true,
-                 'html' => $rhtml
-             ));
- 
-         }
+
+
+            $bankName = DB::table('employeemaster')
+            ->join('bankmaster', 'bankmaster.id', '=', 'employeemaster.bankName')
+            ->select('bankmaster.bankName')    
+            ->where('employeemaster.status', '=', 0);
+
+            $designationId = DB::table('employeemaster')
+            ->join('designationmaster', 'designationmaster.id', '=', 'employeemaster.designationId')
+            ->select('designationmaster.desisNameLong')
+            ->where('employeemaster.status', '=', 0); 
+                
+            $resignationTypeId = DB::table('employeemaster')
+            ->join('resignationtypemaster', 'resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
+            ->select('resignationtypemaster.resignationType')
+            ->where('employeemaster.status', '=', 0);
+               
+            $gradeId = DB::table('employeemaster')
+            ->join('grademaster', 'grademaster.id', '=', 'employeemaster.gradeId')
+            ->select('grademaster.level')
+            ->where('employeemaster.status', '=', 0);
+
+            $office = DB::table('employeemaster')
+               ->join('officename', 'officename.id', '=', 'employeemaster.office')
+               ->select('officename.longOfficeName')
+               ->where('employeemaster.status', '=', 0);
+
+           $placeId = DB::table('employeemaster')
+               ->join('office_address', 'office_address.placeId', '=', 'employeemaster.placeId')
+               ->select('office_address.Address')
+               ->where('employeemaster.status', '=', 0);
+
+            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+
+        }
 
         //endemployeemaster
 

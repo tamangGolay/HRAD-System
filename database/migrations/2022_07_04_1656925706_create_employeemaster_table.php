@@ -19,7 +19,7 @@ class CreateEmployeemasterTable extends Migration
 		$table->date('appointmentDate');
         $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
 		$table->foreignId('designationId')->references('id')->on('designationmaster')->nullable();//fk md_designation N
-		$table->foreignId('office')->references('id')->on('officemaster')->nullable();
+		$table->foreignId('office')->references('id')->on('officename')->nullable();
 		$table->integer('basicPay')->nullable();
 		$table->string('empStatus')->nullable();
 		$table->date('lastDop')->nullable();
@@ -32,6 +32,7 @@ class CreateEmployeemasterTable extends Migration
 		$table->date('resignationDate')->nullable(); 
 		$table->string('employmentType')->nullable(); //frontEnd dropdown html
 		$table->string('incrementCycle')->nullable();
+		$table->string('status')->default(0);
 		$table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();

@@ -41,7 +41,7 @@
 							 value="{{ old('EmpName') }}" required autocomplete="EmpName"> 
 						</div>
 					</div>
-
+ 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Blood Group:') }}</label>
 						<div class="col-md-4">
@@ -91,6 +91,20 @@
 						</div>
 					</div>
 
+					<div class="form-group row"> 
+						<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
+							<div class="col-sm-10 col-md-6 col-lg-4">
+								<select name="gradeId" id="gradeId" value="" class="form-control" required>
+												<option value="">Select Grade</option>
+												@foreach($gg as $gg)
+
+												<option value="{{$gg->id}}">{{$gg->level}}</option>
+											@endforeach
+								</select>
+								<!-- <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off" readonly required>                   -->
+							</div>
+					</div>
+
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Basic Pay:') }}</label>
 						<div class="col-md-4">
@@ -130,12 +144,81 @@
 							 name="emailId" required>
 						</div>
 					</div>
+					<div class="form-group row">
+					<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Place:</label>
+						<div class="col-md-4">
+						<select name="placeId" id="placeId" value="" class="form-control" required>
+												<option value="">Select Place</option>
+												@foreach($pp as $pp1)
+
+												<option value="{{$pp1->placeId}}">{{$pp1->Address}}</option>
+											@endforeach
+								</select>
+						</div>
+					</div>
+
+					<div class="form-group row"> 
+						<label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
+							<div class="col-sm-10 col-md-6 col-lg-4">
+                <!-- <input type="text" class="form-control" name="designation" id="designation" placeholder="designation" autocomplete="off" readonly required>                   -->
+							<select name="designationId" id="designationId" value="" class="form-control" required>
+                                             <option value="">Select Bank name</option>
+                                             @foreach($dg as $dg)
+
+                                             <option value="{{$dg->id}}">{{$dg->desisNameLong}}</option>
+										@endforeach
+							</select>   
+							</div>
+            		</div>
+
+					<div class="form-group row"> 
+						<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Office:</label>
+							<div class="col-sm-10 col-md-6 col-lg-4">
+								<select name="office" id="office" value="" class="form-control" required>
+												<option value="">Select Office</option>
+												@foreach($ff as $ff)
+
+												<option value="{{$ff->id}}">{{$ff->longOfficeName}}</option>
+											@endforeach
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group">
+                        <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
+                        <div class="col-sm-10 col-md-6 col-lg-4">
+
+                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
+                            <select name="bankName" id="bankName" value="" class="form-control" required>
+                                             <option value="">Select Bank name</option>
+                                             @foreach($bk as $bk)
+
+                                             <option value="{{$bk->id}}">{{$bk->bankName}}</option>
+										@endforeach
+							</select>
+                        </div>
+                    </div>
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Bank account no:') }}</label>
 						<div class="col-md-4">
 							<input id="accountNumber" type="text" autocomplete="off" placeholder="eg: 200102384" class="form-control"
 							 name="accountNumber" required>
+						</div>
+					</div>
+
+					<div class="form-group row"> 
+						<label class="col-md-4 col-form-label text-md-right" for="resignationtype">&nbsp;&nbsp;&nbsp;Resignation Type:</label>
+							<div class="col-sm-10 col-md-6 col-lg-4">
+							<select name="resignationTypeId" id="resignationTypeId" value="" class="form-control" required>
+                                             <option value="">Select Resignation Type</option>
+                                             @foreach($rg as $rg)
+
+                                             <option value="{{$rg->id}}">{{$rg->resignationType}}</option>
+										@endforeach
+							</select>
+
+							<!-- <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                   -->
 						</div>
 					</div>
 
@@ -177,24 +260,6 @@
 						</div>
 					</div>
 
-
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Grade:') }}</label>
-						<div class="col-sm-4">
-						<select name="grade" id="grade" class="form-control" required>
-				<option value=" ">Select Grade</option> 
-
-					@foreach($grade as $grade)
-
-					<option value="{{$grade->id}}">
-					@if($grade->id < 20)
-
-					{{$grade->grade}}</option> 
-					@endif
-					@endforeach 
-			</select>  -->
-						<!-- </div>
-					</div>
 					
 					<div class="form-group row">
 						<label class="col-sm-4 text-md-right" for="dzongkhag">{{ __('Select Gender:') }}</label>

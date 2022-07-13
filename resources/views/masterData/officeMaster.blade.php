@@ -155,9 +155,9 @@ a {
         columns: [
             {data: 'id', name: 'id'},
             // {data: 'officeName', name: 'officeName'},
-            {data: 'longOfficeName', name: 'officeName', orderable: true, searchable: true},
-            {data: 'Address', name: 'officeAddress',orderable: true, searchable: true},
-            {data: 'empId', name: 'officeHead',orderable: true, searchable: true},
+            {data: 'longOfficeName', name: 'officename.longOfficeName', orderable: true, searchable: true},
+            {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
+            {data: 'empId', name: 'employeemaster.empId',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });

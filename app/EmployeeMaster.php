@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App; 
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,7 +30,7 @@ class EmployeeMaster extends Authenticatable
 
 
 protected $fillable = [ 
-    'id','empName','empId','bloodGroup','cidNo','dob','gender','appointmentDate','gradeId','designationId','office','basicPay','empStatus','lastDop','mobileNo','emailId','placeId','bankName','accountNumber','resignationTypeId','resignationDate','employmentType','incrementType','updated_at','created_at'];
+    'id','empName','empId','bloodGroup','cidNo','dob','gender','appointmentDate','gradeId','designationId','office','basicPay','empStatus','lastDop','mobileNo','emailId','placeId','bankName','accountNumber','resignationTypeId','resignationDate','employmentType','incrementType','status','updated_at','created_at'];
 
      /**
      * The attributes that should be hidden for arrays.

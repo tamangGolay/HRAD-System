@@ -74,6 +74,7 @@ class GetMastersController extends Controller
                 ->join('grademaster','grademaster.id', '=', 'employeemaster.gradeId')
                 ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
                 ->join('designationmaster','designationmaster.id', 'employeemaster.designationId')
+                ->join('office_address','office_address.placeId', 'employeemaster.placeId')
                 ->select('employeemaster.empId','employeemaster.empName', 
                     'employeemaster.bloodGroup', 'employeemaster.cidNo',
                     'employeemaster.dob','employeemaster.gender','employeemaster.appointmentDate',
@@ -84,8 +85,8 @@ class GetMastersController extends Controller
                     'employeemaster.accountNumber','employeemaster.resignationTypeID',
                     'employeemaster.resignationDate','employeemaster.employmentType',
                     'employeemaster.incrementCycle' ,'designationmaster.desisNameLong',
-                    'grademaster.grade'  ,'resignationtypemaster.resignationType'
-                            ,'employeemaster.gradeId','designationmaster.desisNameLong','resignationtypemaster.resignationType'
+                   'office_address.placeId', 'grademaster.grade'  ,'resignationtypemaster.resignationType',
+                    'office_address.Address' ,'employeemaster.gradeId','designationmaster.desisNameLong','resignationtypemaster.resignationType'
   )
   ->where('employeemaster.empId', $value)->get();         
 

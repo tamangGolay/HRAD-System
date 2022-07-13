@@ -4033,7 +4033,8 @@ if ($request->v == "user_profile")
 {
     $place= place::all();
   $bank= bank::all();
-    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank ])->render();
+  $officeaddress=OfficeAddress::all();
+    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank, 'officeaddress' =>$officeaddress ])->render();
     return response()
         ->json(array(
         'success' => true,

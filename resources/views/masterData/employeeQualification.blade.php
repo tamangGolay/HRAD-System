@@ -37,7 +37,7 @@ a {
             <tr>                 
                 <th>Sl.No</th> 
                 <th>Pernonal No.</th>
-                <th>Qualification Full Name</th>                
+                <th>Qualification Name</th>                
                 <th>Action</th>
             </tr>
         </thead>
@@ -79,7 +79,7 @@ a {
                             <select name="qualificationId" id="qualificationId" class="form-control" value="" required>
                                              <option value="">Select Qualification</option>
                                              @foreach($qualification as $qualification)
-                                             <option value="{{$qualification->id}}">{{$qualification->qualificationLongName}}</option>
+                                             <option value="{{$qualification->id}}">{{$qualification->qualificationName}}</option>
 										@endforeach
 							</select>
                         </div>
@@ -137,7 +137,7 @@ a {
         columns: [
             {data: 'id', name: 'id'},
             {data: 'empId', name: 'personalNo'},
-            {data: 'qualificationLongName', name: 'qualificationId'},           
+            {data: 'qualificationName', name: 'qualificationId'},           
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -164,7 +164,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
           $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationLongName);   //input id,database        
+          $('#qualificationId').val(data.qualificationName);   //input id,database        
          
       })
    });
@@ -225,7 +225,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
           $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationLongName); //input id,database
+          $('#qualificationId').val(data.qualificationName); //input id,database
           
       })
    });

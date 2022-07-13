@@ -18,12 +18,11 @@ class MasterQualiController extends Controller
     public function index(Request $request)
     {
 
-      // $quali = DB::table('qualificationmaster')->where('status','0');
 
        $quali = DB::table('qualificationmaster')
        ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
-       
-       ->select('qualificationmaster.id','qualilevelmaster.qualiLevelName','qualificationmaster.qualificationShortName','qualificationmaster.qualificationLongName')
+       ->join('fieldmaster','fieldmaster.id','=','qualificationmaster.qualificationField')
+       ->select('qualificationmaster.id','qualificationName','qualilevelmaster.qualiLevelName','fieldmaster.fieldName')
        ->where('qualificationmaster.status','0');  
         
         if ($request->ajax()) {
@@ -55,9 +54,9 @@ class MasterQualiController extends Controller
     {
         //  dd($request);
         Qualification::updateOrCreate(['id' => $request->id], 
-                ['qualificationLevelId' => $request->qualificationLevelId,
-                'qualificationShortName' => $request->qualificationShortName,
-                'qualificationLongName' => $request->qualificationLongName]);        
+                ['qualificationName' => $request->qualificationName,
+                'qualificationLevelId' => $request->qualificationLevelId,
+                'qualificationField' => $request->qualificationField]);        
    
         return response()->json(['success'=>'New qualification saved successfully.']);
     }

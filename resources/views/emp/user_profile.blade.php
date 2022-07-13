@@ -61,7 +61,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
 <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
  
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
 <!-- called in bose.css -->
 
@@ -118,7 +118,7 @@
                     if( isNaN(String.fromCharCode(event.keyCode))) return false;"
                     
                     
-                     class="form-control" value="{{ old('emp_id') }}"  autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
+                     class="form-control"  value="{{Auth::user()->emp_id}}" autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
 					 
 					 onKeyup="
 
@@ -127,7 +127,7 @@
 					 if(this.value[0] == 3)
 					 nima (this.value)
 
-					 ;" required>
+					 ;" onload readonly required>
 
 
                 </div>
@@ -351,8 +351,15 @@
 </div>
 
 <script type="text/javascript">
+  
+
 
 $(document).ready(function() {
+  $a= document.getElementById('emp_id').value;
+  getEmployeeDetails($a);
+
+
+
     $('#myTable').DataTable( {
         "pagingType": "simple_numbers",
         "ordering": false
@@ -362,7 +369,6 @@ $(document).ready(function() {
 
 
 } );
-
 
        
 
@@ -381,6 +387,8 @@ $(document).ready(function() {
 
 function getEmployeeDetails(val)
 {
+
+
 
     //pulling records using cid from checkin table 
       var csrftoken =document.getElementById('tokenid').value;

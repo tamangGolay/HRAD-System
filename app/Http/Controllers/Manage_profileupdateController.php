@@ -82,16 +82,7 @@ class Manage_profileupdateController extends Controller
  
 
 
-    // $employee = new EmployeeMaster;
-    //                 $employee->empId = $request->emp_id;
-    //                 $employee->empName = $request->name;
-    //                 $employee->bloodGroup = $request->blood;
-
-    //                 $employee->cidNo = $request->cid;
-
-    //                 $employee->save();
-
-        // return response()->json(['success'=>'User details saved successfully.']);
+   
         return redirect('home')->with('page', 'user_profile');
 
     }

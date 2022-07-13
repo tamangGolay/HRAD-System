@@ -3538,8 +3538,11 @@ if ($request->v == "room_details")
             //gewogmaster
             if ($request->v == "gewogmaster")
             {
-                $dzongkhag = Dzongkhags::all();
-                $drungkhag = drungkhag::all();
+                
+                $dzongkhag = Dzongkhags::all()
+                ->where('status',0);
+                $drungkhag = drungkhag::all()
+                ->where('status',0);
                 
                $gewog = DB::table('gewogmaster')
                ->join('dzongkhags', 'dzongkhags.id', '=', 'gewogmaster.dzongkhagId')
@@ -3579,7 +3582,8 @@ if ($request->v == "room_details")
                 //drungkhagmaster
                if ($request->v == "townmaster")
                {
-                   $dzongkhag = Dzongkhags::all();
+                   $dzongkhag = Dzongkhags::all()
+                   ->where('status',0);
                    
                         
        
@@ -3615,7 +3619,8 @@ if ($request->v == "room_details")
                  if ($request->v == "villagemaster")
                  {
                             
-                   $gewog = gewog::all();
+                   $gewog = gewog::all()
+                   ->where('status',0);
        
        
                      $rhtml = view('masterData.village')->with(['gewog' => $gewog])->render();
@@ -3633,11 +3638,20 @@ if ($request->v == "room_details")
              if ($request->v == "placemaster")
              {
                         
-               $dzongkhag = Dzongkhags::all();
-               $gewog = gewog::all();
-               $village = village::all();
-               $drungkhag = drungkhag::all();
-               $town = town::all();
+               $dzongkhag = Dzongkhags::all()
+               ->where('status',0);
+
+               $gewog = gewog::all()
+               ->where('status',0);
+
+               $village = village::all()
+               ->where('status',0);
+
+               $drungkhag = drungkhag::all()
+               ->where('status',0);
+
+               $town = town::all()
+               ->where('status',0);
 
    
    
@@ -3690,7 +3704,8 @@ if ($request->v == "room_details")
          
          if ($request->v == "contractdetails")
          {
-            $employeen = EmployeeMaster::all();
+            $employeen = EmployeeMaster::all()
+            ->where('status',0);
            
             $contractdetails = DB::table('contractdetailsmaster')
             ->join('employeemaster', 'employeemaster.id', '=', 'contractdetailsmaster.personalNo')
@@ -3711,8 +3726,11 @@ if ($request->v == "room_details")
         //service master
          if ($request->v == "servicemaster")
          {
-            $services = EmployeeMaster::all();
-            $companym = Company::all();
+            $services = EmployeeMaster::all()
+            ->where('status',0);
+
+            $companym = Company::all()
+            ->where('status',0);
 
             $service = DB::table('servicemaster')
             ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
@@ -3751,10 +3769,10 @@ if ($request->v == "room_details")
         if ($request->v == "employee_reporting")
         {
        
-            $employee = EmployeeMaster::all();
-           //  $conference = vehicles::all();
-           //  $review = DB::table('vehicledetails')->select('*')
-           //      ->paginate();
+            $employee = EmployeeMaster::all()
+            ->where('status',0);
+
+           
        
             $rhtml = view('emp.employee_reporting')->with(['employee' => $employee])->render();
             return response()
@@ -3769,8 +3787,11 @@ if ($request->v == "room_details")
          if ($request->v == "subdivisionmaster")
          {
              
-             $subdiv = DivisionMaster::all();
-             $employeemas = EmployeeMaster::all();
+             $subdiv = DivisionMaster::all()
+             ->where('status',0);
+
+             $employeemas = EmployeeMaster::all()
+             ->where('status',0);
  
  
              $subdivisions = DB::table('subdivisionmaster')
@@ -3798,9 +3819,7 @@ if ($request->v == "room_details")
 if ($request->v == "pay_scale")
 {
 
-   //  $conference = vehicles::all();
-   //  $review = DB::table('vehicledetails')->select('*')
-   //      ->paginate();
+  
 
     $rhtml = view('emp.pay_scale')->render();
     return response()
@@ -3881,7 +3900,7 @@ if ($request->v == "user_profile")
         ->json(array(
         'success' => true,
         'html' => $rhtml
-    ));
+     ));
 }
 
 
@@ -3906,8 +3925,9 @@ if ($request->v == "user_profile")
          if ($request->v == "qualificationmaster")  //form.csv
              {  
                 
-        $qualificationlevel = QualificationLevel::all();   //model of other joining table qualilevelmaster
-            
+        $qualificationlevel = QualificationLevel::all()   //model of other joining table qualilevelmaster
+        ->where('status',0);
+
          $quali = DB::table('qualificationmaster')
             ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
             ->select('qualilevelmaster.qualiLevelName')
@@ -3922,13 +3942,11 @@ if ($request->v == "user_profile")
           }  //end
  
  
-    //3. relationmaster          
+     //3. relationmaster          
          if ($request->v == "relationmaster")
          {
  
-              //  $conference = vehicles::all();
-             //  $review = DB::table('vehicledetails')->select('*')
-              //      ->paginate();
+              
  
           $rhtml = view('masterData.relation')->render();
           return response()
@@ -3942,7 +3960,8 @@ if ($request->v == "user_profile")
  
           if ($request->v == "employeequalificationmaster")  //form.csv
           {     
-            $qualification = Qualification::all();   //model of other joining table
+            $qualification = Qualification::all()   //model of other joining table
+            ->where('status',0);
                 
             $empquali = DB::table('employeequalificationmaster')
             ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.qualificationId')

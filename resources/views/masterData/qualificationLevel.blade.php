@@ -36,10 +36,10 @@ a {
         <thead>
             <tr>
                  
-                <th>Sl.No</th> 
-                <th>QualificationIdname</th>
-                <th>Qualification Short Name</th>
-                <th>Qualification Long Name</th> 
+                <th>Id</th> 
+                <th width=250px>Qualification Name</th>
+                <th>Qualification Level</th>
+                <th>Qualification Field</th> 
                 <th>Action</th>
             </tr>
         </thead>
@@ -62,16 +62,17 @@ a {
 
                    <input type="hidden" name="id" id="qid">
 
-                    <!-- <div class="form-group">
-
-                        <label for="name" class="col-sm-2 col-lg-8  control-label">QualificationId</label>
+                   <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="qualificationLevelId" name="qualificationLevelId" placeholder="id of qualification" value="" maxlength="50" required>
+                            <input type="text" id="qualificationName" name="qualificationName"  placeholder="Qualification Name" class="form-control" required>
                         </div>
-                    </div>   -->
+                    </div>
+
+                    
                     
                     <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Qualification Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Level</label>
                         <div class="col-sm-12">                            
 
                             <select name="qualificationLevelId" id="qualificationLevelId" class="form-control" value="" required>
@@ -81,23 +82,31 @@ a {
 										@endforeach
 							</select>
                         </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Field</label>
+                        <div class="col-sm-12">                            
+
+                            <select name="qualificationField" id="qualificationField" class="form-control" value="" required>
+                                             <option value="">Select Qualification Field</option>
+                                             @foreach($qmaster as $qmaster)
+                                             <option value="{{$qmaster->id}}">{{$qmaster->fieldName}}</option>
+										@endforeach
+							</select>
+                        </div>
                     </div>
 
                     
      
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8  control-label">Qualification Short Name</label>
+                    <!-- <div class="form-group">
+                        <label class="col-sm-2 col-lg-8  control-label">Qualification Field</label>
                         <div class="col-sm-12">
-                            <input type="text" id="qualificationShortName" name="qualificationShortName"  placeholder="Qualification Short Name" class="form-control" required>
+                            <input type="text" id="qualificationField" name="qualificationField"  placeholder="Qualification Field" class="form-control" required>
                         </div>
-                    </div> 
+                    </div>  -->
 
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Qualification Long Name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="qualificationLongName" name="qualificationLongName"  placeholder="Qualification Long Name" class="form-control" required>
-                        </div>
-                    </div>
+                    
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="qualificationButton" value="create">Save changes
@@ -150,10 +159,10 @@ a {
         ajax: "{{ route('qualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'qualificationName', name: 'qualificationName'},
             {data: 'qualiLevelName', name: 'qualilevelmaster.qualiLevelName',searchable: true}, 
-            {data: 'qualificationShortName', name: 'qualificationShortName'},
-            {data: 'qualificationLongName', name: 'qualificationLongName'},
-            {data: 'action', name: 'action', orderable: true, searchable: true},
+            {data: 'fieldName', name: 'fieldmaster.fieldName'},
+            {data: 'action', name: 'action', orderable: false, searchable: true},
         ]
     });
 
@@ -178,9 +187,9 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#qualificationLevelId').val(data.qualiLevelName);
-          $('#qualificationShortName').val(data.qualificationShortName);
-          $('#qualificationLongName').val(data.qualificationLongName); //input id,database
+          $('#qualificationName').val(data.qualificationName);
+          $('#qualificationLevelId').val(data.qualificationLevelId);          
+          $('#qualificationField').val(data.qualificationField);               //input id,database
           
       })
    });
@@ -240,9 +249,9 @@ a {
           $('#qualificationModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
-          $('#qualificationLevelId').val(data.qualiLevelName);
-          $('#qualificationShortName').val(data.qualificationShortName); //input id,database
-          $('#qualificationLongName').val(data.qualificationLongName);
+          $('#qualificationName').val(data.qualificationName);   //input id,database
+          $('#qualificationLevelId').val(data.qualificationLevelId);          
+          $('#qualificationField').val(data.qualificationField);   
       })
    });
    

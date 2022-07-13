@@ -42,6 +42,7 @@ use App\Designation;
 use App\Resignation;
 use App\bank;
 use App\OfficeAddress;
+use App\Field;
 
 class FormsController extends Controller
 {
@@ -4033,7 +4034,8 @@ if ($request->v == "user_profile")
 {
     $place= place::all();
   $bank= bank::all();
-    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank ])->render();
+  $officeaddress=OfficeAddress::all();
+    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank, 'officeaddress' =>$officeaddress ])->render();
     return response()
         ->json(array(
         'success' => true,
@@ -4063,21 +4065,26 @@ if ($request->v == "user_profile")
          if ($request->v == "qualificationmaster")  //form.csv
              {  
                 
+        
         $qualificationlevel = QualificationLevel::all()   //model of other joining table qualilevelmaster
         ->where('status',0);
 
-         $quali = DB::table('qualificationmaster')
-            ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
-            ->select('qualilevelmaster.qualiLevelName')
-                ->where('qualificationmaster.status',0);          
+        $qmaster = Field::all()
+        ->where('status',0);
 
-          $rhtml = view('masterData.qualificationLevel')->with(['qualificationlevel' => $qualificationlevel])->render();
-              return response()
-                 ->json(array(
-                  'success' => true,
-                  'html' => $rhtml
-                   ));
-          }  //end
+        $quali = DB::table('qualificationmaster')
+        ->join('qualilevelmaster', 'qualilevelmaster.id', '=', 'qualificationmaster.qualificationLevelId')
+        ->join('fieldmaster','fieldmaster.id','=','qualificationmaster.qualificationField')
+        ->select('qualilevelmaster.qualiLevelName','fieldmaster.fieldName')
+            ->where('qualificationmaster.status',0);          
+
+      $rhtml = view('masterData.qualificationLevel')->with(['qualificationlevel' => $qualificationlevel,'qmaster'=>$qmaster])->render();
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+      }  //end
  
  
      //3. relationmaster          
@@ -4102,8 +4109,8 @@ if ($request->v == "user_profile")
             ->where('status',0);
                 
             $empquali = DB::table('employeequalificationmaster')
-            ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.qualificationId')
-            ->select('qualificationmaster.qualificationLongName')
+            ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.id')
+            ->select('qualificationmaster.qualificationName')
             ->where('employeequalificationmaster.status',0);         
  
              $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification])->render();

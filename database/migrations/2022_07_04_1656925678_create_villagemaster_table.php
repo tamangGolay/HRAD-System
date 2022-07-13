@@ -11,7 +11,7 @@ class CreateVillagemasterTable extends Migration
         Schema::create('villagemaster', function (Blueprint $table) {
 
 		$table->id();
-        $table->integer('villageId')->unique();
+        $table->integer('villageId')->default(10000);
         $table->string('villageName');
         $table->foreignId('gewogId')->references('id')->on('gewogmaster');
 		$table->integer('createdBy')->nullable();

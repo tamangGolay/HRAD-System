@@ -329,13 +329,13 @@
 							function fill_unit_select_box($connect)
 							{ 
 							$output = '';
-							$query = "SELECT qualificationLongName,id FROM qualificationmaster ORDER BY qualificationLongName ASC";
+							$query = "SELECT qualificationName,id FROM qualificationmaster ORDER BY qualificationName ASC";
 							$statement = $connect->prepare($query);
 							$statement->execute();
 							$result = $statement->fetchAll();
 							foreach($result as $row)
 							{
-							$output .= '<option value="'.$row["id"].'">'.$row["qualificationLongName"].'</option>';
+							$output .= '<option value="'.$row["id"].'">'.$row["qualificationName"].'</option>';
 							}
 							return $output;
 							}

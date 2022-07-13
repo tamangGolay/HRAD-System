@@ -133,6 +133,93 @@ class FormsController extends Controller
        }
        //end of User List.
 
+//start of employeeList
+       if ($request->v == "suit")
+       {
+        //  dd($request);
+        // $rawSql = <<<SQL
+        //         WITH RECURSIVE a AS (
+        //             SELECT orgunit.id
+        //             FROM orgunit
+        //             WHERE id = 'Auth::user()->org_unit_id'
+                
+        //         UNION ALL
+                
+        //             SELECT child.parent_id
+        //             FROM orgunit child
+        //             JOIN orgunit g
+        //             ON g.id = child.parent_id
+                
+        //         )
+                
+        //         SELECT  u.id
+        //         FROM users u
+        //         JOIN orgunit parent
+        //         ON u.org_unit_id = parent.id
+        //         ;
+
+        //         SQL;
+
+        //         $results = DB::select($rawSql);
+        // dd($results->org_unit_id[]);
+
+
+
+
+               $roles = Roles::all();
+               $orgunit = orgunit::all();
+               $grade = Grade::all();
+               $dzongkhag = Dzongkhags::all();
+
+    //    User::find(Auth::user()->org_unit_id)->descendants()->get();
+    //    dd(User);
+
+        // if() {
+           $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
+               ->join('roles', 'users.role_id', '=', 'roles.id')
+               ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+               ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
+               ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
+
+               ->select('orgunit.id','orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
+               ->latest('users.id') //similar to orderby('id','desc')
+               ->where('users.org_unit_id',Auth::user()->org_unit_id)
+               ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
+            
+               //    ->whereColumn([
+            //        ['users.org_unit_id','=','orgunit.parent_id'],
+            //        ['orgunit.parent_id','=','orgunit.id'],
+            //        ['orgunit.id','=','orgunit.id']
+
+
+
+            //    ])
+
+
+               ->paginate(10000000);
+            // }
+
+            // $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
+            // ->join('roles', 'users.role_id', '=', 'roles.id')
+            // ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+            // ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
+            // ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
+
+            // ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
+            // ->latest('users.id') //similar to orderby('id','desc')
+            // ->where('users.status',0)
+
+            // ->paginate(10000000);
+
+           $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           return response()
+               ->json(array(
+               'success' => true,
+               'html' => $rhtml
+           ));
+       }
+       //end of employee List.
+
 
        //uniform view
 

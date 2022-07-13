@@ -118,7 +118,7 @@ a {
         serverSide: true,
         "searching": true,
 		"ordering": false,
-		"paging": false,
+		"paging": true,
         ajax: "{{ route('bank.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},

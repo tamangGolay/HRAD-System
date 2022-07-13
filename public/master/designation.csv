@@ -1,2 +1,311 @@
-CEO,Cheif Executive Officer
+CEO,Chief Executive Officer
+Dir,Director
 GM,General Manager
+PD,Project Director
+CS,Company Secretary
+BS,Billing Supervisor
+BS-I,Billing Support I
+BS-II,Billing Support II
+BS-III,Billing Support III
+BS-IV,Billing Support IV
+ABS,Assistant Billing Support
+ABS-I,Assistant Billing Support I
+ABS-II,Assistant Billing Support II
+ABS-III,Assistant Billing Support III
+ABS-IV,Assistant Billing Support IV
+SCCCO,Senior Chief Call Centre Officer
+CCCO,Chief Call Centre Officer
+DCCCO,Deputy Chief Call Centre Officer
+SSCO,Senior Call Centre Officer
+CCO,Call Centre Officer
+DDCO,Deputy Call Centre Officer
+AACO,Assistant Call Centre Officer
+SSCS,Senior Call Centre Supervisor
+CCS,Call Centre Supervisor
+CCA-I,Call Centre Agent I
+CCA-II,Call Centre Agent II
+CCA-III,Call Centre Agent III
+CCA-IV,Call Centre Agent IV
+CCA-V,Call Centre Agent V
+CCA-VI,Call Centre Agent VI
+AACA,Assistant Call Centre Agent I
+AACA,Assistant Call Centre Agent II
+AACA,Assistant Call Centre Agent III
+SJS,Senior Janitor Supervisor
+JS,Janitor Supervisor
+J-I,Janitor I
+J-II,Janitor II
+J-III,Janitor III
+J-IV,Janitor IV
+J-V,Janitor V
+J-VI,Janitor VI
+AJ-I,Assistant Janitor I
+AJ-II,Assistant Janitor II
+AJ-III,Assistant Janitor III
+SD-I,Senior Driver I
+SD-II,Senior Driver II
+SD-III,Senior Driver III
+D-I,Driver I
+D-II,Driver II
+D-III,Driver III
+D-IV,Driver IV
+D-V,Driver V
+AD-I,Assistant Driver I
+AD-II,Assistant Driver II
+AD-III,Assistant Driver III
+AD-IV,Assistant Driver IV
+SSC (C),Senior Chief Engineer (Civil)
+CE (C),Chief Engineer (Civil)
+SE (C),Superintending Engineer (Civil)
+EE (C),Executive Engineer (Civil)
+SE (C),Senior Engineer (Civil)
+E (C),Engineer (Civil)
+AE (C),Associate Engineer (Civil)
+JE (C),Junior Engineer (Civil)
+SO (C),Section Officer (Civil)
+T-I (C),Technician I (Civil)
+T-II (C),Technician II (Civil)
+TS-I (C),Technical Staff I (Civil)
+TS-II (C),Technical Staff II (Civil)
+TS-III (C),Technical Staff III (Civil)
+TS-IV (C),Technical Staff IV (Civil)
+ATS-I (C),Assistant Technical Staff I (Civil)
+ATS-II (C),Assistant Technical Staff II (Civil)
+TH-(C),Technical Helper (Civil)
+SSE (Comm),Senior Chief Engineer (Communication)
+CE (Comm),Chief Engineer (Communication)
+SE (Comm),Superintending Engineer (Communication)
+EE (Comm),Executive Engineer (Communication)
+SE (Comm),Senior Engineer (Communication)
+E (Comm),Engineer (Communication)
+AE (Comm),Associate Engineer (Communication)
+JE (Comm),Junior Engineer (Communication)
+SO (Comm),Section Officer (Communication)
+T-I (Comm),Technician I (Communication)
+T-II (Comm),Technician II (Communication)
+TS-I (Comm),Technical Staff I (Communication)
+TS-II (Comm),Technical Staff II (Communication)
+TS-III (Comm),Technical Staff III (Communication)
+T-IV (Comm),Technical Staff IV (Communication)
+ATS-I (Comm),Assistant Technical Staff I (Communication)
+ATS-II (Comm),Assistant Technical Staff II (Communication)
+TH (Comm),Technical Helper (Communication)
+SCE (E),Senior Chief Engineer (Electrical)
+CE (E),Chief Engineer (Electrical)
+SE (E),Superintending Engineer (Electrical)
+EE (E),Executive Engineer (Electrical)
+SE (E),Senior Engineer (Electrical)
+E (E),Engineer (Electrical)
+AE (E),Associate Engineer (Electrical)
+JE (E),Junior Engineer (Electrical)
+SO (E),Section Officer (Electrical)
+T-I (E),Technician I (Electrical)
+T-II (E),Technician II (Electrical)
+TS-I (E),Technical Staff I (Electrical)
+TS-II (E),Technical Staff II (Electrical)
+TS-III (E),Technical Staff III (Electrical)
+TS-IV (E),Technical Staff IV (Electrical)
+ATS-I (E),Assistant Technical Staff I (Electrical)
+ATS-II (E),Assistant Technical Staff II (Electrical)
+TH (E),Technical Helper (Electrical)
+SCE (M),Senior Chief Engineer (Mechanical)
+CE (M),Chief Engineer (Mechanical)
+SE (M),Superintending Engineer (Mechanical)
+EE (M),Executive Engineer (Mechanical)
+SE (M),Senior Engineer (Mechanical)
+E (M),Engineer (Mechanical)
+AE (M),Associate Engineer (Mechanical)
+JE (M),Junior Engineer (Mechanical)
+SO (M),Section Officer (Mechanical)
+T-I (M),Technician I (Mechanical)
+T-II (M),Technician II (Mechanical)
+TS-I (M),Technical Staff I (Mechanical)
+TS-II (M),Technical Staff II (Mechanical)
+TS-III (M),Technical Staff III (Mechanical)
+TS-IV (M),Technical Staff IV (Mechanical)
+ATS-I (M),Assistant Technical Staff I (Mechanical)
+ATS-II (M),Assistant Technical Staff II (Mechanical)
+TH (M),Technical Helper (Mechanical)
+SCEnvO,Senior Chief Environment Officer
+CEnvO,Chief Environment Officer
+DCEnvO,Deputy Chief Environment Officer
+SEnvO,Senior Environment Officer
+EnvO,Environment Officer
+DEnvO,Deputy Environment Officer
+AEnvO,Assistant Environment Officer
+SCFO,Senior Chief Finance Officer
+CFO,Chief Finance Officer
+DCFO,Deputy Chief Finance Officer
+SFO,Senior Finance Officer
+FO,Finance Officer
+DFO,Deputy Finance Officer
+AFO,Assistant Finance Officer
+DCA,Deputy Chief Accountant
+A-I,Accountant I
+A-II,Accountant II
+A-III,Accountant III
+A-IV,Accountant IV
+AC-I,Accounts Clerk I
+AC-II,Accounts Clerk II
+AC-III,Accounts Clerk III
+AC-IV,Accounts Clerk IV
+AC-V,Accounts Clerk V
+AC-VI,Accounts Clerk VI
+SCHRO,Senior Chief Human Resources Officer
+CCHO,Chief Human Resources Officer
+DCHRO,Deputy Chief Human Resources Officer
+SHRO,Senior Human Resources Officer
+HRO,Human Resources Officer
+DHRO,Deputy Human Resources Officer
+AHRO,Assistant Human Resources Officer
+HRA-I,Human Resources Assistant I
+HRA-II,Human Resources Assistant II
+HRA-III,Human Resources Assistant III
+HRA-IV,Human Resources Assistant IV
+HRC-I,Human Resources Clerk I
+HRC-II,Human Resources Clerk II
+HRC-III,Human Resources Clerk III
+HRH-I,Human Resources Helper I
+HRH-II,Human Resources Helper II
+HRH-III,Human Resources Helper III
+HRH-IV,Human Resources Helper IV
+SHRA-I,Senior Human Resources Admin I
+SHRA-II,Senior Human Resources Admin II
+SHRA-III,Senior Human Resources Admin III
+SHRA-IV,Senior Human Resources Admin IV
+HRA-I,Human Resources Admin I
+HRA-II,Human Resources Admin II
+HRA-III,Human Resources Admin III
+HRA-IV,Human Resources Admin IV
+AHRA-I,Assistant Human Resources Admin I
+AHRA-II,Assistant Human Resources Admin II
+AHRA-III,Assistant Human Resources Admin III
+AHRA-IV,Assistant Human Resources Admin IV
+SCITO,Senior Chief Information Technology Officer
+CITO,Chief Information Technology Officer
+DCITO,Deputy Chief Information Technology Officer
+SITO,Senior Information Technology Officer
+ITO,Information Technology Officer
+DITO,Deputy Information Technology Officer
+AITO,Assistant Information Technology Officer
+SITS,Senior Information Technology Supervisor
+ITS,Information Technology Supervisor
+ITT-I,Information Technology Technician I
+ITT-II,Information Technology Technician II
+SCIAO,Senior Chief Internal Audit Officer
+CIAO,Chief Internal Audit Officer
+DCIAO,Deputy Chief Internal Audit Officer
+SIAO,Senior Internal Audit Officer
+IAO,Internal Audit Officer
+DIAO,Deputy Internal Audit Officer
+AIAO,Assistant Internal Audit Officer
+SIAA-I,Senior Internal Audit Assistant I
+SIAA-II,Senior Internal Audit Assistant II
+IAA-I,Internal Audit Assistant I
+IAA-II,Internal Audit Assistant II
+SCLO,Senior Chief Legal Officer
+CLO,Chief Legal Officer
+DCLO,Deputy Chief Legal Officer
+SLO,Senior Legal Officer
+LO,Legal Officer
+DLO,Deputy Legal Officer
+ALO,Assistant Legal Officer
+SLA-I,Senior Legal Assistant I
+SLA-II,Senior Legal Assistant II
+LA-I,Legal Assistant I
+LA-II,Legal Assistant II
+SCMO,Senior Chief Media Officer
+CMO,Chief Media Officer
+DCMO,Deputy Chief Media Officer
+SMO,Senior Media Officer
+MO,Media Officer
+DMO,Deputy Media Officer
+AMO-I,Assistant Media Officer I
+AMO-II,Assistant Media Officer II
+MS,Media Supervisor
+MT-I,Media Technician I
+MT-II,Media Technician II
+SOS-I,Senior Office Secretary I
+SOS-II,Senior Office Secretary II
+SOS-III,Senior Office Secretary III
+OS-I,Office Secretary I
+OS-II,Office Secretary II
+OC-I,Office Clerk I
+OC-II,Office Clerk II
+OC-III,Office Clerk III
+AOH-I,Assistant Office Helper I
+AOH-II,Assistant Office Helper II
+AOH-III,Assistant Office Helper III
+SCPO,Senior Chief Program Officer
+CPO,Chief Program Officer
+DCPO,Deputy Chief Program Officer
+SPO,Senior Program Officer
+PO,Program Officer
+DPO,Deputy Program Officer
+APO-I,Assistant Program Officer I
+APO-II,Assistant Program Officer II
+SRC-I,Senior Revenue Cashier I
+SRC-II,Senior Revenue Cashier II
+SRC-III,Senior Revenue Cashier III
+SRC-IV,Senior Revenue Cashier IV
+RC-I,Revenue Cashier I
+RC-II,Revenue Cashier II
+RC-III,Revenue Cashier III
+RC-IV,Revenue Cashier IV
+ARC-I,Assistant Revenue Cashier I
+ARC-II,Assistant Revenue Cashier II
+ARC-III,Assistant Revenue Cashier III
+SCRO,Senior Chief Risk Officer
+CRO,Chief Risk Officer
+DCRO,Deputy Chief Risk Officer
+SRO,Senior Risk Officer
+RO,Risk Officer
+DRO,Deputy Risk Officer
+ARO-I,Assistant Risk Officer I
+ARO-II,Assistant Risk Officer II
+SCSFO,Senior Chief Security cum Fire Officer
+CSFO,Chief Security cum Fire Officer
+DCSFO,Deputy Chief Security cum Fire Officer
+SSFO,Senior Security cum Fire Officer
+SFO,Security cum Fire Officer
+DSFO,Deputy Security cum Fire Officer
+ASFO,Assistant Security cum Fire Officer
+SSFS,Senior Security cum Fire Supervisor
+SFS,Security cum Fire Supervisor
+JSFS-I,Junior Security cum Fire Supervisor I
+JSFS-II,Junior Security Cum Fire Supervisor II
+SSFG-I,Senior Security cum Fire Guard I
+SSFG-II,Senior Security cum Fire Guard II
+SFG-I,Security cum Fire Guard I
+SFG-II,Security cum Fire Guard II
+SFG-III,Security cum Fire Guard III
+SFG-IV,Security cum Fire Guard IV
+SFG-V,Security cum Fire Guard V
+SCM-I,Senior Chief Manager I
+SCM-II,Senior Chief Manager II
+CM,Chief Manager
+SM,Senior Manager
+M,Manager
+DM,Deputy Manager
+AM,Assistant Manager
+SS,Senior Supervisor
+S,Supervisor
+SCSO,Senior Chief Safety Officer
+CSO,Chief Safety Officer
+DCSO,Deputy Chief Safety Officer
+SSO,Senior Safety Officer
+SO,Safety Officer
+DSO,Deputy Safety Officer
+ASO,Assistant Safety Officer
+SSS,Senior Safety Supervisor
+SS,Safety Supervisor
+SA-I,Safety Assistant I
+SA-II,Safety Assistant II
+SCPM,Senior Chief Project Manager
+CPM,Chief Project Manager
+DCPM,Deputy Chief Project Manager
+SPM,Senior Project Manager
+PM,Project Manager
+DPM,Deputy Project Manager
+APM-I,Assistant Project Manager I
+APM-II,Assistant Project Manager II

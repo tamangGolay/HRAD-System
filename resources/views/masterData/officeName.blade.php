@@ -132,7 +132,7 @@ a {
         serverSide: true,
         "searching": true,
 		"ordering": false,
-		"paging": false,
+		"paging": true,
         ajax: "{{ route('officeName.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},

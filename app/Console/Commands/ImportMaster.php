@@ -112,7 +112,7 @@ class ImportMaster extends Command
         $this->importdepartment('department',new Department);
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
         $this->importfield('field',new Field);
-        $this->importqualificationLongname('qualificationLongname',new Qualification);
+        $this->importqualificationmaster('qualificationmaster',new Qualification);        
         $this->importpayscale('payscale',new pay);
         $this->importpostmaster('postmaster',new PostMaster);
         
@@ -1308,7 +1308,7 @@ public function importfield($filename,Model $model) {
 //end 
 
 // function to qualification name (Tdee)
-public function importqualificationLongname($filename,Model $model) {
+public function importqualificationmaster($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
     {
         $this->line("Importing ".$filename." tables...");
@@ -1317,9 +1317,9 @@ public function importqualificationLongname($filename,Model $model) {
         {               
 
                 $data = [                       
-                    'qualificationLevelId' => $data[0],    
-                    'qualificationShortName' => $data[1],
-                    'qualificationLongName' => $data[2]                        
+                    'qualificationName' => $data[0],    
+                    'qualificationLevelId' => $data[1],
+                    'qualificationField' => $data[2]                        
                                        
                 ];
                 try{

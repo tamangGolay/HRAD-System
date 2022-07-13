@@ -150,7 +150,7 @@ a {
         ajax: "{{ route('qualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'qualiLevelName', name: 'qualificationLevelId'}, 
+            {data: 'qualiLevelName', name: 'qualilevelmaster.qualiLevelName',searchable: true}, 
             {data: 'qualificationShortName', name: 'qualificationShortName'},
             {data: 'qualificationLongName', name: 'qualificationLongName'},
             {data: 'action', name: 'action', orderable: true, searchable: true},

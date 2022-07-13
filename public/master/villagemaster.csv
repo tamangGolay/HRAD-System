@@ -1,4045 +1,4045 @@
-1,Chakhar,1
-2,Changwa,1
-3,Damphel,1
-4,Dawathang,1
-5,Dhur Lusibee,1
-6,Dhur Moen,1
-7,Dodrong,1
-8,Dorjibe,1
-9,Druk Dok,1
-10,Goling,1
-11,Jamphel Lhakhang,1
-12,Kangdok,1
-13,Kenchosum,1
-14,Kharsa,1
-15,Kharsum,1
-16,Nang Lhakang,1
-17,Norbugang,1
-18,Pangrey,1
-19,Pedtsheling,1
-20,Potola,1
-21,Samthang,1
-22,Saram,1
-23,Shukdak,1
-24,Tamshing,1
-25,Tashiling (Chokhor),1
-26,Tendok,1
-27,Thangbi,1
-28,Torshong,1
-29,Zangling,1
-30,Zhabjethang,1
-31,Bhim,2
-32,Buli,2
-33,Buli/Uru,2
-34,Chedeypang,2
-35,Choda,2
-36,Choongphel,2
-37,Domkhar,2
-38,Gyaltsa,2
-39,Nangar,2
-40,Pangteygoenpa,2
-41,Phurjoen,2
-42,Samtenling,2
-43,Terzok,2
-44,Tharpaling,2
-45,Thrometh,2
-46,Thrometh (Samling),2
-47,Trakar,2
-48,Ursang,2
-49,Uru,2
-50,Urudrangbi,2
-51,Yamthrag,2
-52,Yerangbi,2
-53,Zhurey,2
-54,Zincha,2
-55,Zugney,2
-56,Zugney (Chorten Nengpa),2
-57,Benzabi,3
-58,Bezur,3
-59,Chhutoe,3
-60,Chojam,3
-61,Dazur,3
-62,Gambling,3
-63,Gangju,3
-64,Jamshong,3
-65,Jog,3
-66,Khangrab,3
-67,Khoyar,3
-68,Kidzom,3
-69,Kuenzangdrang,3
-70,Misserthang,3
-71,Namkha,3
-72,Nangnang,3
-73,Nimalung,3
-74,Pangshing,3
-75,Phom Drong,3
-76,Rimochen,3
-77,Sameth,3
-78,Shobugoenpa,3
-79,Tandigang,3
-80,Tashiling (Tang),3
-81,Tralang,3
-82,Ugyenchholing,3
-83,Beteng,4
-84,Pangkhar,4
-85,Shingkhar,4
-86,Sing-nyer,4
-87,Soomthrang,4
-88,Tansibi,4
-89,Ura-Charipa,4
-90,Ura-Tarshong,4
-91,Ura-Toepda,4
-92,Ura-Trab Krispai,4
-93,Bjagchhog,5
-94,Mebisa,5
-95,Tashi Gatshel,5
-96,Tsimakha,5
-97,Tsimasham,5
-98,Wangkha,5
-99,Baeyuel Kunzang,6
-100,Boeri,6
-101,Bongo,6
-102,Chhasilakha,6
-103,Choongkha,6
-104,Damji,6
-105,Gedu,6
-106,Junglay,6
-107,Jurma,6
-108,Ketogkha,6
-109,Miritsemo,6
-110,Pakshikha,6
-111,Phashooma,6
-112,Togtokha,6
-113,Zamsa,6
-114,Bunakha,7
-115,Dorgoen,7
-116,Gangkha,7
-117,Jongzhi,7
-118,Lang Nyelsa,7
-119,Metep,7
-120,Pagga,7
-121,Pagga Goenpa,7
-122,Rimtekha,7
-123,Shelgoan,7
-124,Sheyuel,7
-125,Tsamdrag,7
-126,Chhumedlakha (Barkhey),8
-127,Dangreyboog (Bich Darla),8
-128,Dojangchhey (Dojangchey),8
-129,Gamanang,8
-130,Gengu,8
-131,Khamaedthapang (Lower Saureni),8
-132,Kimalakha,8
-133,Norgangtoed,8
-134,Nyimgang (Ghamdara),8
-135,Pagshinggang (Pakshina),8
-136,Rinchhentse (Gurung Goan),8
-137,Samarchen (Samachin),8
-138,Sharphug (Sangkhu),8
-139,Sillangsa (Silley),8
-140,Sinchula,8
-141,Tabji,8
-142,Tagp-thang-boog (Bich Saureni),8
-143,Yagang,8
-144,Babana,9
-145,Doongma,9
-146,Drukdingsa,9
-147,Mangdokha,9
-148,Pangu,9
-149,Papaling,9
-150,Uezhi,9
-151,Changeykha,10
-152,Dagpa,10
-153,Dilib,10
-154,Geygoen,10
-155,Nayekha,10
-156,Omchhu,10
-157,Tsanglina,10
-158,Bachhu,11
-159,Chiyuel,11
-160,Daga,11
-161,Pangsela,11
-162,Phootsha,11
-163,Trashigang,11
-164,Tshebji,11
-165,Aamleg,12
-166,Bjagchhu,12
-167,Chagdokha,12
-168,Chimongna Ka,12
-169,Chimongna Kha ,12
-170,Damchekha,12
-171,Dofam,12
-172,Dolepchen,12
-173,Dupanang,12
-174,Dzedokha,12
-175,Lotokha,12
-176,Pamji,12
-177,Gumina,13
-178,Metap Goenpa Maed,13
-179,Metap Goenpa Toed,13
-180,Pangu,13
-181,Uekha,13
-182,Ahalay (Dophugchen),14
-183,Bosokha,14
-184,Chongeykha A,14
-185,Chonggeykha B,14
-186,Dajaygang,14
-187,Deling (Chomchey),14
-188,Dophulakha,14
-189,Gangteng,14
-190,Kungkha,14
-191,Lingdaen,14
-192,Marpji (Chilauney),14
-193,Pachhudrag (Pachu Dara),14
-194,Pachhugang (Pachu Tar),14
-195,Pachhuthang (Balden Dara),14
-196,Tashidingkha,14
-197,Toribari,14
-198,Wangdue Gatshel (Ramitay),14
-199,Bamenmo (Ragaythung),15
-200,Doruphug (Dhungayna),15
-201,Dungkarling (Ghumauney),15
-202,Gurung Dara),15
-203,Karmaling (Malbasay),15
-204,Khatob (Burkey),15
-205,Khepaithang (Khaibatar),15
-206,Pangna A,15
-207,Pangna B,15
-208,Pangna C,15
-209,Pedtshelnang (Pakchina),15
-210,Pekarling (Pekasey),15
-211,Phurpaling,15
-212,Rigzinling (Behitar),15
-213,Sengyegang(Singi),15
-214,Sonamtang (Kothiline),15
-215,Thongling (Daragoan),15
-216,Tshachhungnal (Ahalay),15
-217,Banglachu,16
-218,Chukam,16
-219,Dolepchen,16
-220,Dorona Chhewa (Thulo Dorona),16
-221,Dorona Chhoongwa (Sanu Dorona),16
-222,Lalidhapper,16
-223,Maamedthang,16
-224,Nedachu,16
-225,Nyimtola,16
-226,Sushithang,16
-227,Lower Pangna,17
-228,Lower Pangserbo,17
-229,Tangna,17
-230,Upper Pangna,17
-231,Upper Pangserbo,17
-232,Gangjab,18
-233,Gesarling,18
-234,Phuensoomgang,18
-235,Samtengang,18
-236,Tajoog,18
-237,Tashithang,18
-238,Baleggang,19
-239,Dogaag,19
-240,Gozhi,19
-241,Gozhi Maed,19
-242,Gozhi Toed,19
-243,Aetosi,20
-244,Bartsha,20
-245,Buchunang,20
-246,Dalithang,20
-247,Gangjab,20
-248,Jurugang,20
-249,Kanakha,20
-250,Kazhithang,20
-251,Khagochen,20
-252,Lhaling,20
-253,Lungtengang,20
-254,Namgaylang,20
-255,Nyindukha,20
-256,Pungzhi,20
-257,Tanabji,20
-258,Ganglingna (Labrang),21
-259,Jemthang (Balabas),21
-260,Karmaling (Kerabari),21
-261,Labtsakha (Deorali),21
-262,Omchhu (Homa),21
-263,Senchumthang (Dalbari),21
-264,Akhochen,22
-265,Gibsa,22
-266,Gumla,22
-267,Pasger (Paksey),22
-268,Pogtog,22
-269,Thomgang,22
-270,Baloong,23
-271,Barna,23
-272,Kompa,23
-273,Sidpa,23
-274,Thasa,23
-275,Chongsamling (Sibsooni),24
-276,Kuendrelthang (Majigaon),24
-277,Lhamoidzingkha (Kalikhola),24
-278,Loongsilsa (Daragaon),24
-279,Majathang (Lamchey),24
-280,Tshaemjeena,24
-281,Tshaemzhi Gosa (Tshaemjeena/Devitar),24
-282,Damchhunang (Allay),25
-283,Dangreyboog (Bichgoan),25
-284,Dramze Kesa (Katarey),25
-285,Gangtokha (Daragoan),25
-286,Lakpaling (Manglabarey),25
-287,Nichula,25
-288,Nyeltshosa (Basiney),25
-289,Omchhugang (Apgachi),25
-290,Tsheluthang (Suntoley),25
-291,Yarpheling (Solmoley),25
-292,Gangyab (Gopeni),26
-293,Langchhenthang (Hathikhara),26
-294,Namchagla,26
-295,Norbuling (Lodoma),26
-296,Shamdolay,26
-297,Tashiding,26
-298,Babythang,27
-299,Gakidthang,27
-300,Gelegchhu,27
-301,Goongpa Soomchu (Tisgharay),27
-302,Pateykha,27
-303,Rongchhu (Bandarchu),27
-304,Salambi,27
-305,Satshamchhu (Budheychu),27
-306,Tsangkha,27
-307,Zinchila,27
-308,Dharay,28
-309,Gangzur,28
-310,Gangzur (Panakhola),28
-311,Gangzur (Shamdolay),28
-312,Gangzur Maed (Salaree),28
-313,Gangzur Toed (Pasebung),28
-314,Norbuzhingkha,28
-315,Norbuzhingkha (Panakhola),28
-316,Samarchu (Samakhola),28
-317,Tsendagang,28
-318,Tsendagang (Suntoley),28
-319,Yuebug (Majuwa),28
-320,Jangsagang,29
-321,Karlingzingkha,29
-322,Pelling,29
-323,Samaed,29
-324,Tashigang,29
-325,Tongshong (Tongzho),29
-326,Tsangleykha,29
-327,Zamtog,29
-328,Bara,30
-329,Barsha,30
-330,Bayzhina,30
-331,Chalakha,30
-332,Chasungsa,30
-333,Chruawog,30
-334,Chubdey,30
-335,Churaphakha,30
-336,Damjee,30
-337,Gayza,30
-338,Jabisa,30
-339,Jazhidingkha,30
-340,Jizhi,30
-341,Kabina,30
-342,Khailog,30
-343,Namphakha,30
-344,Potogang,30
-345,Selikha,30
-346,Tashithang,30
-347,Tomu,30
-348,Tsanakha,30
-349,Yeodo,30
-350,Yeomena,30
-351,Zhazhukha,30
-352,Zomina,30
-353,Amochhu,31
-354,Baychhu,31
-355,Belpakha,31
-356,Chhogley,31
-357,Datakha,31
-358,Dochong,31
-359,Dongyebi,31
-360,Gathana,31
-361,Khailog,31
-362,Lungchukha,31
-363,Mani,31
-364,Neukha,31
-365,Nurbi,31
-366,Phulakha,31
-367,Tabchen,31
-368,Thangkha,31
-369,Tsangkha,31
-370,Tsebgang,31
-371,Tsheringkha,31
-372,Womchugang,31
-373,Yemena,31
-374,Zamna,31
-375,Zanang,31
-376,Chongra,32
-377,Gayza,32
-378,Lubcha,32
-379,Lungo,32
-380,Neylug,32
-381,Pazhi,32
-382,Toedkor,32
-383,Dotag,33
-384,Drangsho,33
-385,Lhedi,33
-386,Raminang,33
-387,Relo,33
-388,Shangsa,33
-389,Tagshor,33
-390,Thangza,33
-391,Threlga,33
-392,Toenchoe,33
-393,Tshozhi,33
-394,Uesana,33
-395,Wachey,33
-396,Chenpa,34
-397,Choomgpa,34
-398,Chubarna,34
-399,Dongsana/Taloong,34
-400,Geychhukha,34
-401,Gungkha,34
-402,Gyensa,34
-403,Jamgoen,34
-404,Longlong,34
-405,Machina,34
-406,Makana,34
-407,Pangphu,34
-408,Takchugoenpa,34
-409,Tokey,34
-410,Tsenka,34
-411,Tsenkagoenpa,34
-412,Wooka,34
-413,Yangoen,34
-414,Yangthang,34
-415,Yetshephu,34
-416,Yulang,34
-417,Dorithasa,35
-418,Fetena,35
-419,Gangrinmo,35
-420,Kowkha,35
-421,Ngatse,35
-422,Phootsena,35
-423,Rangtse,35
-424,Saidzong,35
-425,Sertena,35
-426,Ta-nga/Chigo,35
-427,Thangdokha,35
-428,Yangtse,35
-429,Yokha,35
-430,Bali,36
-431,Dragding,36
-432,Gargkha,36
-433,Hatam,36
-434,Ingo,36
-435,Kargoen,36
-436,Karjena,36
-437,Mombitshokha,36
-438,Naktshang,36
-439,Namdhu,36
-440,Pharikha,36
-441,Wangtsa,36
-442,Balamnang,37
-443,Barakha,37
-444,Barasham,37
-445,Chumeyding,37
-446,Dorikha,37
-447,Jenkanang,37
-448,Kouna,37
-449,Langjogang,37
-450,Langpa,37
-451,Lhakhangchen,37
-452,Norbugang,37
-453,Phendona,37
-454,Pudunang,37
-455,Sharri,37
-456,Ama,38
-457,Bibi,38
-458,Chinga,38
-459,Dongtse,38
-460,Gyeldrakha,38
-461,Mochhu,38
-462,Nakha,38
-463,Nakhatshochen,38
-464,Nakhekha,38
-465,Shaba,38
-466,Shema,38
-467,Shepji,38
-468,Tashigang,38
-469,Tingma,38
-470,Tsanglingna,38
-471,Yaba,38
-472,Bangyena,39
-473,Betso,39
-474,Doomchhog,39
-475,Dranggoen,39
-476,Geyruna,39
-477,Goensakha,39
-478,Hagoenpa,39
-479,Karnag,39
-480,Kipri,39
-481,Pagekha,39
-482,Sangkiri,39
-483,Tagchhu,39
-484,Takchugoenpa,39
-485,Tshaphel,39
-486,Tsiloongkha,39
-487,Amchi,40
-488,Changray,40
-489,Chhesa,40
-490,Denkaling,40
-491,Dhuthay,40
-492,Gangzur,40
-493,Jalamzur,40
-494,Jang,40
-495,Khamphu,40
-496,Khaujoong,40
-497,Kyidloong,40
-498,Lekpa,40
-499,Lingabi,40
-500,Magar,40
-501,Namseygang,40
-502,Napzala,40
-503,Ney,40
-504,Ngar/Nyar,40
-505,Nyimzhong,40
-506,Phatala,40
-507,Rotpa,40
-508,Samling,40
-509,Sapho,40
-510,Shawa,40
-511,Shomshing,40
-512,Tagzibar,40
-513,Tangsa,40
-514,Taushing,40
-515,Taushinggoenpa,40
-516,Thimyul,40
-517,Thrima,40
-518,Tongling,40
-519,Tsholing,40
-520,Youngmaling,40
-521,Zhamling,40
-522,Changkhala,41
-523,Jarey,41
-524,Kharchung/Pam,41
-525,Ladrong,41
-526,Ngang Ngae,41
-527,Trapashing,41
-528,Wayang,41
-529,Yabi,41
-530,Yumchhe,41
-531,Babtong,42
-532,Berpa,42
-533,Dragteng,42
-534,Gangla,42
-535,Goenkhar,42
-536,Karphu,42
-537,Kemtshong,42
-538,Khoema,42
-539,Kholma,42
-540,Khoma,42
-541,Laber,42
-542,Lawa,42
-543,Lukchu,42
-544,Nyalamdung,42
-545,Pangkhar,42
-546,Pengtse,42
-547,Rolmateng,42
-548,Serphu,42
-549,Taya,42
-550,Tsang-ngo,42
-551,Zangkhar,42
-552,Arjhaling,43
-553,Chagdzom,43
-554,Chaktamin,43
-555,Chhanyalgang,43
-556,Chhusa,43
-557,Chongsa,43
-558,Churchuma,43
-559,Darjaygang,43
-560,Dongmaed,43
-561,Drabling,43
-562,Dungkar,43
-563,Garong,43
-564,Goshingpang,43
-565,Gurta,43
-566,Jangtse,43
-567,Jasabi,43
-568,Lamsabi,43
-569,Lamsaykapa,43
-570,Maenbi,43
-571,Nagling,43
-572,Nyaray,43
-573,Pirbee,43
-574,Ruling,43
-575,Serphu,43
-576,Sershong,43
-577,Sewel,43
-578,Shangthongling,43
-579,Shauzhong,43
-580,Signar,43
-581,Sugpee,43
-582,Sumdhang,43
-583,Tabi,43
-584,Tagdzong,43
-585,Takharme,43
-586,Taling,43
-587,Tangroong,43
-588,Tergang,43
-589,Thangbi,43
-590,Thongjaling,43
-591,Thowa,43
-592,Thuenpey,43
-593,Tongmay,43
-594,Uygenphoog,43
-595,Wamdrang,43
-596,Wawel,43
-597,Zimpong,43
-598,Zongsar,43
-599,Bamendrangsa,44
-600,Bariphu,44
-601,Boushong,44
-602,Bumpashing,44
-603,Chalibi,44
-604,Chengaling,44
-605,Dangling,44
-606,Dangsangoenpa,44
-607,Dosagang,44
-608,Dromzhong,44
-609,Dungkardowa,44
-610,Gamshing,44
-611,Gangkhar,44
-612,Garapho,44
-613,Gorgan,44
-614,Kamdhar,44
-615,Kasithang,44
-616,Katog,44
-617,Khampaling,44
-618,Kharsa,44
-619,Khashaling,44
-620,Khochen,44
-621,Kimphay,44
-622,Kusumphay,44
-623,Langphog,44
-624,Larjab,44
-625,Ledong,44
-626,Lekpagang,44
-627,Lugarpang,44
-628,Maenjabi,44
-629,Manigang,44
-630,Moormo,44
-631,Nadrang,44
-632,Namdang,44
-633,Namnangbi,44
-634,Ngamaling,44
-635,Nyaibi,44
-636,Oumzor,44
-637,Pangsar,44
-638,Pelrigoenpa,44
-639,Petsizor,44
-640,Phagidroong,44
-641,Phungshingang,44
-642,Rawabi,44
-643,Rawabi Goenpa,44
-644,Rewaling,44
-645,Samcheling,44
-646,Samling,44
-647,Sershingbi,44
-648,Shangrabi,44
-649,Shormaed,44
-650,Tagmochhu,44
-651,Takayla,44
-652,Tangpa,44
-653,Tashiling,44
-654,Thekcholing,44
-655,Thongjaling,44
-656,Tongmakhar,44
-657,Tsampdemo,44
-658,Tungkhar,44
-659,Yanglagoenpa,44
-660,Yomaed,44
-661,Youngrab,44
-662,Youngshingphel,44
-663,Zarthang,44
-664,Zarthang Goenpa,44
-665,Zhungkhar,44
-666,Zungphu,44
-667,Balam,45
-668,Balam/Nimalawa,45
-669,Bamdhir,45
-670,Changchen,45
-671,Changshinpokpa,45
-672,Dowaletang,45
-673,Drukla,45
-674,Dulebi,45
-675,Gongdar,45
-676,Gortshom,45
-677,Gulipang,45
-678,Janakchen,45
-679,Kermademo,45
-680,Khenye Lhakhang,45
-681,Lhakhangtshawa,45
-682,Mangdhir,45
-683,Mukpakhar,45
-684,Obi,45
-685,Oonggar,45
-686,Pangshingmey,45
-687,Pholadowa,45
-688,Samdang,45
-689,Serbuchuka,45
-690,Singyebi,45
-691,Tachung,45
-692,Thangthrom Maed,45
-693,Thangthrom Maed Goenpa,45
-694,Tongthrong,45
-695,Tonzibi,45
-696,Tshochen,45
-697,Tshodrang,45
-698,Waney,45
-699,Yamalung Goenpa,45
-700,Yokpaling,45
-701,Yozer Goenpa,45
-702,Yurung,45
-703,Zhongmaed,45
-704,Amdrangchhu,46
-705,Boo-dur,46
-706,Chengling,46
-707,Chusa,46
-708,Dhokpabi,46
-709,Draag-gong,46
-710,Draag-gong Goenpa,46
-711,Draledowa,46
-712,Jabum,46
-713,Jalang,46
-714,Keroo,46
-715,Kupi-nyalsa,46
-716,Legchugang,46
-717,Legpachu,46
-718,Legshogang,46
-719,Minjey,46
-720,Nyaka,46
-721,Phangchenbi,46
-722,Pumogang,46
-723,Sershing,46
-724,Tongling,46
-725,Wangzhing,46
-726,Zham,46
-727,Artobadeb,47
-728,Autho,47
-729,Bangtsho,47
-730,Barchhu,47
-731,Changchang Goenpa,47
-732,Changmadung,47
-733,Chharbi,47
-734,Chim Gong,47
-735,Chowa,47
-736,Chulung,47
-737,Chungkha,47
-738,Dagarthang,47
-739,Dekaling,47
-740,Domkhar,47
-741,Dongling,47
-742,Dongthrom,47
-743,Gamanang,47
-744,Genchungla,47
-745,Godong/Gordong,47
-746,Go-nyid,47
-747,Guengdrang,47
-748,Jarkang,47
-749,Kawachen,47
-750,Khablang,47
-751,Kharphu,47
-752,Kiphung,47
-753,Lagay,47
-754,Langabi,47
-755,Lawsa,47
-756,Ngathung,47
-757,Peldraphu,47
-758,Phomed-doong,47
-759,Phowantay,47
-760,Phuntshochhoeling,47
-761,Phurshongang,47
-762,Sangphu,47
-763,Shermachhu,47
-764,Shermachhu Goenpa,47
-765,Sokarom,47
-766,Sokchen,47
-767,Takchu,47
-768,Tashi Ling,47
-769,Toekhar,47
-770,Tongphugang,47
-771,Tongsheling,47
-772,Tongshi Lung,47
-773,Trangka Shing,47
-774,Tsaenkhar,47
-775,Tshangphu,47
-776,Tshochim,47
-777,Tsholadrang,47
-778,Tsochhen,47
-779,Umling,47
-780,Wambur,47
-781,Yangla,47
-782,Yanglong,47
-783,Bahkaphai,48
-784,Balam,48
-785,Jadoong,48
-786,Jadoong Goenpa,48
-787,Jadoong Kha,48
-788,Khebishing,48
-789,Sangjuzor,48
-790,Selkhar,48
-791,Aagshaling,49
-792,Aidurla,49
-793,Bakhim,49
-794,Balingbi,49
-795,Bameijangsa,49
-796,Bana,49
-797,Barigoila,49
-798,Barleng,49
-799,Bewling,49
-800,Bolipang,49
-801,Budishing,49
-802,Chagsar,49
-803,Changmashing,49
-804,Charzhong,49
-805,Chaukileng,49
-806,Chawasing,49
-807,Chewang,49
-808,Chhaling,49
-809,Chulabi,49
-810,Damaling,49
-811,Darseng,49
-812,Dogtang,49
-813,Dokorbang,49
-814,Domangla,49
-815,Dongjug,49
-816,Dongtoed,49
-817,Dongtoed Bakhim,49
-818,Dopang,49
-819,Dopang,49
-820,Gensing,49
-821,Goensar,49
-822,Gorsum,49
-823,Gortongla,49
-824,Jachuling,49
-825,Jambi,49
-826,Japang,49
-827,Kadam,49
-828,Kampasadong,49
-829,Kamsa,49
-830,Kawakhoi,49
-831,Khachorshing,49
-832,Khampaje,49
-833,Kharduma,49
-834,Kharigab,49
-835,Kharigab,49
-836,Khartong,49
-837,Khemsang,49
-838,Khoijongla,49
-839,Khoilajong,49
-840,Kirzhong,49
-841,Kotshome,49
-842,Kurzam,49
-843,Lhakang,49
-844,Lhakang Bana,49
-845,Lhakang Dongbar,49
-846,Lhakang Goenshing,49
-847,Lhakang Khoyur,49
-848,Lhakang Lingchung,49
-849,Lhakang Pangjab,49
-850,Lhakang Ringseng,49
-851,Lhakang Ringseng,49
-852,Lhakang Sokpaling,49
-853,Lhakang Tengpa,49
-854,Lhakang Unakhang,49
-855,Lungkang,49
-856,Masangkangjay,49
-857,Mentshang,49
-858,Nagtshang,49
-859,Nagtshangwog,49
-860,Namabi,49
-861,Namathang,49
-862,Namling,49
-863,Nordangsa,49
-864,Numabiwang,49
-865,Nyerpa,49
-866,Oangthang Chungku,49
-867,Pangjagpa,49
-868,Pangshing,49
-869,Pangthang,49
-870,Pangthang,49
-871,Pangthang,49
-872,Pangthang Shokposeng,49
-873,Pemagayser,49
-874,Phachaphogchi,49
-875,Phodagnma,49
-876,Phumazur,49
-877,Pogtor,49
-878,Rahambi,49
-879,Remochhu,49
-880,Rolmochhu,49
-881,Salapho,49
-882,Sapogtor,49
-883,Shebchi,49
-884,Shingkharzhong,49
-885,Shogoseng,49
-886,Sogpaling,49
-887,Sumthuen,49
-888,Tadzong,49
-889,Tagling,49
-890,Tagling,49
-891,Tashipoktor,49
-892,Thangthala,49
-893,Thempang,49
-894,Tikusalung,49
-895,Toepaphu,49
-896,Torzhonggor,49
-897,Trashikhangsar,49
-898,Tshamkhang,49
-899,Tshangkhar,49
-900,Tshepadong,49
-901,Tshokila,49
-902,Usdur,49
-903,Wang,49
-904,Wangkhar,49
-905,Yangthang,49
-906,Yoekhoi,49
-907,Yoekhoi,49
-908,Yoezer Pangthang,49
-909,Yontenkhem,49
-910,Zanglawang,49
-911,Zhongje,49
-912,Zhongje,49
-913,Zhongkey,49
-914,Zinthuen,49
-915,Chagsakhar,50
-916,Doongshingma,50
-917,Khamang,50
-918,Pam,50
-919,Yangrapoongshing,50
-920,Yetong,50
-921,Bazor,51
-922,Bikhar,51
-923,Dramdetse,51
-924,Gashari,51
-925,Gobka,51
-926,Jiwa,51
-927,Laymey,51
-928,Laymey Serkhagphoog,51
-929,Luwang,51
-930,Ngarphai,51
-931,Ngarphel,51
-932,Ongkhar,51
-933,Phentshomo,51
-934,Serkhaphug,51
-935,Shadang,51
-936,Shaphangma,51
-937,Thoongdabi,51
-938,Thoongdari,51
-939,Thramlo,51
-940,Waichur,51
-941,Yalum,51
-942,Yengkhartshing,51
-943,Zangkhar,51
-944,Chhagsuzor,52
-945,Drepoong,52
-946,Labtsa Ka,52
-947,Labtsa Kha,52
-948,Tsangkhar,52
-949,Zunglen,52
-950,Baagla,53
-951,Baagla Edi,53
-952,Baagla Goenpa,53
-953,Baagla Khimong,53
-954,Bangbangla,53
-955,Bogarbi,53
-956,Chaibi,53
-957,Daagsa,53
-958,Damkhar,53
-959,Dekhar,53
-960,Dengkaling,53
-961,Dewabi,53
-962,Dogmo,53
-963,Goenpa,53
-964,Gorgdey,53
-965,Gorthongla,53
-966,Gungdue,53
-967,Kormaed,53
-968,Kumadzong,53
-969,Labtsa,53
-970,Mantshang,53
-971,Miden,53
-972,Pangthang,53
-973,Pangtong,53
-974,Phadzong,53
-975,Phosala,53
-976,Phuchung Goenpa,53
-977,Pikari,53
-978,Salibi,53
-979,Salibi Dungda,53
-980,Toedkar,53
-981,Tshabor,53
-982,Tshambali,53
-983,Weringla,53
-984,Yangbari,53
-985,Aring Daza,54
-986,Awatang,54
-987,Bacha,54
-988,Bacha,54
-989,Barlamtoed,54
-990,Barpoong,54
-991,Baydengyer,54
-992,Bilam,54
-993,Bumnali,54
-994,Chagpa,54
-995,Chenchari,54
-996,Dangkila,54
-997,Daroong,54
-998,Dekilam,54
-999,Doongkar,54
-1000,Doongmein,54
-1001,Dori,54
-1002,Dumdey,54
-1003,Gamong,54
-1004,Ganggarthang,54
-1005,Gaykhar,54
-1006,Gomtshanglo,54
-1007,Gongtshang,54
-1008,Kaikhar,54
-1009,Kangloong,54
-1010,Karmaling,54
-1011,Khemtagpa,54
-1012,Kognala,54
-1013,Korkhang,54
-1014,Korphu,54
-1015,Kurtakay,54
-1016,Langabi,54
-1017,Luzor,54
-1018,Maentsang,54
-1019,Maniling,54
-1020,Maphai,54
-1021,Menchaphoog,54
-1022,Moodoongbi,54
-1023,Moodoongkhar,54
-1024,Moogtangkhar,54
-1025,Ngamphoog,54
-1026,Ngangri,54
-1027,Orkawang,54
-1028,Pangkang,54
-1029,Pangthang,54
-1030,Pangthang,54
-1031,Pegpela,54
-1032,Phaichhelo,54
-1033,Phentokma,54
-1034,Poongla,54
-1035,Rewang,54
-1036,Rimpako,54
-1037,Ringphu,54
-1038,Ringphujab,54
-1039,Roinangwoong,54
-1040,Samkhar,54
-1041,Sangkama,54
-1042,Shingmung,54
-1043,Shingsiri,54
-1044,Singyephu,54
-1045,Tashi Tshering,54
-1046,Thongpashing,54
-1047,Tooloogpe,54
-1048,Tsangkhazor,54
-1049,Tselam,54
-1050,Tselam,54
-1051,Tselam/Kamling,54
-1052,Wodang,54
-1053,Ya-Ragkla,54
-1054,Amdaybu,55
-1055,Amshing Wog,55
-1056,Aring,55
-1057,Artshong,55
-1058,Bainang,55
-1059,Bargoenpa,55
-1060,Bargoenpa,55
-1061,Barzor,55
-1062,Chiphu,55
-1063,Deng,55
-1064,Deshingpeg,55
-1065,Dochhuru,55
-1066,Dochiru,55
-1067,Dogsabi,55
-1068,Dogtang,55
-1069,Dogtshong Nadang,55
-1070,Dongnala,55
-1071,Doongkargoerpa,55
-1072,Doongmarma,55
-1073,Draphu,55
-1074,Drongphoog,55
-1075,Duezawong,55
-1076,Ebi,55
-1077,Gabcha,55
-1078,Genchaphu,55
-1079,Ghishinghung,55
-1080,Goenpa,55
-1081,Gomchhu,55
-1082,Gunmari,55
-1083,Gyalkhar,55
-1084,Kamngeysa,55
-1085,Khangma,55
-1086,Khesigang,55
-1087,Khochung,55
-1088,Khoishing,55
-1089,Khurzong,55
-1090,Korshingngari,55
-1091,Kuli,55
-1092,Kyidpari,55
-1093,Kyidpari,55
-1094,Maenchabilam,55
-1095,Maentsala,55
-1096,Magola,55
-1097,Magola,55
-1098,Mooroong,55
-1099,Munma,55
-1100,Nadang,55
-1101,Nanari,55
-1102,Neykolog,55
-1103,Nugphu,55
-1104,Olkid,55
-1105,Pangthang,55
-1106,Pangthang,55
-1107,Pangthoong,55
-1108,Payka,55
-1109,Pedoongroong,55
-1110,Pogla,55
-1111,Putshume,55
-1112,Rishogay,55
-1113,Rizor,55
-1114,Romangla,55
-1115,Serkong,55
-1116,Shajula,55
-1117,Shetongbi,55
-1118,Shingchongri,55
-1119,Soichari,55
-1120,Suipari,55
-1121,Telpo,55
-1122,Tongkangla,55
-1123,Tongkangla/Sungkar,55
-1124,Tongkangla/Zitsibi,55
-1125,Tongla,55
-1126,Tongla Goenpa,55
-1127,Tongla Mangzing,55
-1128,Tsalabi,55
-1129,Tshamnagri,55
-1130,Tshangnari,55
-1131,Tshelshingtang,55
-1132,Tshowang,55
-1133,Tshowangri,55
-1134,Wangyer,55
-1135,Warongborang,55
-1136,Yuldagri,55
-1137,Zor,55
-1138,Zorthoong,55
-1139,Barpang,56
-1140,Gora,56
-1141,Gyelpoizhing,56
-1142,Jalbab,56
-1143,Jamcholing,56
-1144,Kadam,56
-1145,Kheshirpang,56
-1146,Kidekhar,56
-1147,Koenbar,56
-1148,Lukpangthang,56
-1149,Monggar,56
-1150,Nagling,56
-1151,Nyekhang,56
-1152,Phosorong,56
-1153,Pirbi,56
-1154,Pirbi,56
-1155,Pirbi,56
-1156,Shongkaling,56
-1157,Tagchhu,56
-1158,Themnangbi,56
-1159,Trailing,56
-1160,Tsenglung Goenpa,56
-1161,Wangling,56
-1162,Wengkhar,56
-1163,Yagpoogang,56
-1164,Besipoktor,57
-1165,Brakhagthang,57
-1166,Bumpa,57
-1167,Chagsakhar,57
-1168,Chhema,57
-1169,Dangthung,57
-1170,Dengsor,57
-1171,Deyphung,57
-1172,Dongshoom,57
-1173,Garpamani,57
-1174,Gashari,57
-1175,Gomchhu,57
-1176,Gomchhuzur,57
-1177,Gothonpo,57
-1178,Hurchilo,57
-1179,Jomri,57
-1180,Khalong,57
-1181,Maithung,57
-1182,Narang,57
-1183,Narang Besipoktor,57
-1184,Narang Pangkang,57
-1185,Narang Phaphugpangkang,57
-1186,Narang Raynangkhar,57
-1187,Pangkhang,57
-1188,Pangthang,57
-1189,Phenzur,57
-1190,Phusizur,57
-1191,Thongkhar,57
-1192,Thrinangphu,57
-1193,Wangyer,57
-1194,Waphaipangthang,57
-1195,Bumpazor,58
-1196,Goenpa,58
-1197,Ngatshang,58
-1198,Nyingala,58
-1199,Pelshool,58
-1200,Phanasi,58
-1201,Thoombari,58
-1202,Yekhar,58
-1203,Zangdari,58
-1204,Bongdeyma,59
-1205,Drogsar,59
-1206,Drogsar/Mangling,59
-1207,Jangdung,59
-1208,Kalapang,59
-1209,Masangdaza,59
-1210,Pangsibi,59
-1211,Resa,59
-1212,Saling,59
-1213,Seng-Gor,59
-1214,Thridangbi,59
-1215,Tshenzabi,59
-1216,Gangmoong,60
-1217,Jabgang,60
-1218,Muhoong,60
-1219,Serzhong,60
-1220,Shiling,60
-1221,Soenakhar,60
-1222,Thueling,60
-1223,Baribang,61
-1224,Daag,61
-1225,Dekdongla,61
-1226,Goenpa,61
-1227,Gyalong,61
-1228,Kadag,61
-1229,Kadag/Salipong,61
-1230,Kangkangma,61
-1231,Kangkari,61
-1232,Khatoed,61
-1233,Khatoed/Baribang,61
-1234,Khatoed/Silambi,61
-1235,Laijuk,61
-1236,Nagor,61
-1237,Nagor Goenpa,61
-1238,Nagor Pang,61
-1239,Nagor/Pam,61
-1240,Pam,61
-1241,Pang Gyerteng,61
-1242,Pang Gyerteng/Goenpa,61
-1243,Pang Gyerteng/Phungling,61
-1244,Salipong,61
-1245,Silambi,61
-1246,Silambi/Lemigoenpa,61
-1247,Silambi/Tumdrag,61
-1248,Wama,61
-1249,Wama/Chang Changma,61
-1250,Yarig,61
-1251,Atola,62
-1252,Baucholing,62
-1253,Changshing,62
-1254,Lingkhar,62
-1255,Ngaru-Pongtang,62
-1256,Panglen,62
-1257,Angtonyelsa,63
-1258,Aringtengma,63
-1259,Artogang,63
-1260,Chalgang,63
-1261,Chalgang/Kaling,63
-1262,Chalgang/Thowalsa,63
-1263,Chubar,63
-1264,Churtoog,63
-1265,Churtsha,63
-1266,Chutey,63
-1267,Damtshang Pokpa,63
-1268,Demoongla,63
-1269,Dokporo,63
-1270,Dolebtang,63
-1271,Dolebtang,63
-1272,Domula,63
-1273,Drenling,63
-1274,Drenling/Dabang,63
-1275,Drenling/Emalaphuk,63
-1276,Drenling/Gangka,63
-1277,Drenling/Gaptangra,63
-1278,Drenling/Kadamwo,63
-1279,Drenling/Khanakshing,63
-1280,Drongtoed Mawo,63
-1281,Gamanang,63
-1282,Gamanang/Loongdubi,63
-1283,Horong,63
-1284,Jangtagoen,63
-1285,Karshingang,63
-1286,Khanashing,63
-1287,Khashagang,63
-1288,Khashalbadap,63
-1289,Khimsang,63
-1290,Langabi,63
-1291,Legibi,63
-1292,Legibi,63
-1293,Leksingphu,63
-1294,Leksingphu/Bongring,63
-1295,Leksingphu/Churtung,63
-1296,Leksingphu/Dogtang,63
-1297,Leksingphu/Drengling,63
-1298,Leksingphu/Kadam,63
-1299,Leksingphu/Thongwang,63
-1300,Lewamani,63
-1301,Lhadrang,63
-1302,Loongdubi,63
-1303,Loongkang,63
-1304,Nagtshang,63
-1305,Norbugang,63
-1306,Nyartsi,63
-1307,Nyartsi/Shaboom,63
-1308,Nyartsi/Singma Nangka,63
-1309,Nyartsi/Tsema Nangka,63
-1310,Pang,63
-1311,Pangtshela,63
-1312,Paytshongbi,63
-1313,Paytshorgbi,63
-1314,Paytshorgbi/Balamchungku,63
-1315,Paytshorgbi/Rababi,63
-1316,Pherpobadap,63
-1317,Selwa Lhakhang,63
-1318,Shingmar Pokpa,63
-1319,Sowangtey,63
-1320,Tagkhambi/Barnang,63
-1321,Tagkhambi/Chimsaning,63
-1322,Tagkhambi/Dekiling,63
-1323,Tagkhambi/Gangka,63
-1324,Tagkhambi/Gendrang,63
-1325,Tagkhambi/Khoboom,63
-1326,Tagkhambi/Khomdangchhu,63
-1327,Tagkhambi/Kuengachhoeling,63
-1328,Tagkhambi/Norbugang,63
-1329,Tagkhambi/Pang,63
-1330,Tagkhambi/Wadong,63
-1331,Tagkhambi/Yerchung,63
-1332,Tagkhamtey,63
-1333,Talabadhap,63
-1334,Terkong,63
-1335,Tharmcharm,63
-1336,Thodamla,63
-1337,Thongzhong Goenpa,63
-1338,Thoomling,63
-1339,Thormazhong/Wadong,63
-1340,Threwatong,63
-1341,Tormazhong/Lhakhang,63
-1342,Tormazhong/Thongwang,63
-1343,Tshodrang,63
-1344,Wadong,63
-1345,Yabi,63
-1346,Yartogang,63
-1347,Zangtoong,63
-1348,Zhingjigpala,63
-1349,Banjar,64
-1350,Banjar/Bardang,64
-1351,Banjar/Barlam,64
-1352,Banjar/Dongmey,64
-1353,Banjar/Gangkhadung,64
-1354,Banjar/Gomchenberpo,64
-1355,Banjar/Jampeling,64
-1356,Banjar/Jargay,64
-1357,Banjar/Khemsar,64
-1358,Banjar/Kicheling,64
-1359,Banjar/Lhakhang,64
-1360,Banjar/Lomeywog,64
-1361,Banjar/Lungtakpa,64
-1362,Banjar/Merbang,64
-1363,Banjar/Murdumba,64
-1364,Banjar/Nyaka,64
-1365,Banjar/Pendenling,64
-1366,Banjar/Phuntsholing,64
-1367,Banjar/Rinzintakpa,64
-1368,Banjar/Samtenling,64
-1369,Banjar/Sangpoling,64
-1370,Banjar/Sisipang,64
-1371,Banjar/Taling,64
-1372,Banjar/Tashicholing,64
-1373,Banjar/Tashiling,64
-1374,Banjar/Umling,64
-1375,Banjar/Wachentakpa,64
-1376,Banjar/Yaloshing,64
-1377,Drangmaling,64
-1378,Drangmaling/Artogchen,64
-1379,Drangmaling/Nanggar,64
-1380,Drangmaling/Sarpashing,64
-1381,Drangmaling/Sep,64
-1382,Drangmaling/Tshowog,64
-1383,Ganglapong,64
-1384,Ganglapong/Ausudor,64
-1385,Ganglapong/Baboochu,64
-1386,Ganglapong/Barigang,64
-1387,Ganglapong/Barilungpa,64
-1388,Ganglapong/Bongring,64
-1389,Ganglapong/Changchen,64
-1390,Ganglapong/Chaptang,64
-1391,Ganglapong/Darshingwog,64
-1392,Ganglapong/Dawashing,64
-1393,Ganglapong/Dechenling,64
-1394,Ganglapong/Gawaling,64
-1395,Ganglapong/Genzangtse,64
-1396,Ganglapong/Goenpa,64
-1397,Ganglapong/Goenpokpa,64
-1398,Ganglapong/Golitagpa,64
-1399,Ganglapong/Halong,64
-1400,Ganglapong/Jalamwog,64
-1401,Ganglapong/Karshingtsa,64
-1402,Ganglapong/Khuling,64
-1403,Ganglapong/Korshing,64
-1404,Ganglapong/Leochen,64
-1405,Ganglapong/Lhakhang,64
-1406,Ganglapong/Lowatongkang,64
-1407,Ganglapong/Manitakpa,64
-1408,Ganglapong/Ney,64
-1409,Ganglapong/Nyaka,64
-1410,Ganglapong/Pang,64
-1411,Ganglapong/Pangthangtoe,64
-1412,Ganglapong/Phuntsholing,64
-1413,Ganglapong/Rewochakgang,64
-1414,Ganglapong/Samabar,64
-1415,Ganglapong/Samarchen,64
-1416,Ganglapong/Samling,64
-1417,Ganglapong/Senshingbi,64
-1418,Ganglapong/Shoksholong,64
-1419,Ganglapong/Sothriling,64
-1420,Ganglapong/Tashiling,64
-1421,Ganglapong/Tashipai,64
-1422,Ganglapong/Tashizanglung,64
-1423,Ganglapong/Tebiling,64
-1424,Ganglapong/Thongjalingwog,64
-1425,Ganglapong/Thongshingtakpa,64
-1426,Ganglapong/Tsendentsawa,64
-1427,Ganglapong/Wachen,64
-1428,Ganglapong/Zangshingtsawa,64
-1429,Ganglapong/Zhenthen,64
-1430,Tokari,64
-1431,Tokari/Artang,64
-1432,Tokari/Augungna,64
-1433,Tokari/Bangdrabi,64
-1434,Tokari/Brengpajab,64
-1435,Tokari/Bumpatakpa,64
-1436,Tokari/Chadongbi,64
-1437,Tokari/Chukiduwa,64
-1438,Tokari/Chumetakpa,64
-1439,Tokari/Darchen,64
-1440,Tokari/Debang,64
-1441,Tokari/Debang,64
-1442,Tokari/Dekigang,64
-1443,Tokari/Denchen,64
-1444,Tokari/Draktangkhar,64
-1445,Tokari/Duwashing,64
-1446,Tokari/Gensingnyesa,64
-1447,Tokari/Goenpa,64
-1448,Tokari/Golibi,64
-1449,Tokari/Jalamwog,64
-1450,Tokari/Jewashing,64
-1451,Tokari/Kolokbi,64
-1452,Tokari/Labi,64
-1453,Tokari/Leochung,64
-1454,Tokari/Lhadrang,64
-1455,Tokari/Mutigang,64
-1456,Tokari/Nakchen,64
-1457,Tokari/Nakiduwa,64
-1458,Tokari/Nakphung,64
-1459,Tokari/Nambucha,64
-1460,Tokari/Pam,64
-1461,Tokari/Ralamey,64
-1462,Tokari/Sangcha,64
-1463,Tokari/Shakhar,64
-1464,Tokari/Shingmartakpa,64
-1465,Tokari/Shojabi,64
-1466,Tokari/Shokang,64
-1467,Tokari/Shungpashing,64
-1468,Tokari/Singyetsawa,64
-1469,Tokari/Sogangguto,64
-1470,Tokari/Sogangwog,64
-1471,Tokari/Sumthuen,64
-1472,Tokari/Tabsina,64
-1473,Tokari/Tashiling,64
-1474,Tokari/Thekarla,64
-1475,Tokari/Thowa,64
-1476,Tokari/Thowagang,64
-1477,Tokari/Thrachamey,64
-1478,Tokari/Tsangtsa,64
-1479,Tokari/Tshendentsawa,64
-1480,Tokari/Tshiden,64
-1481,Tokari/Umling,64
-1482,Tokari/Wodang,64
-1483,Tokari/Woktapka,64
-1484,Tokari/Yedhap,64
-1485,Tokari/Zampatakpa,64
-1486,Bangkha,65
-1487,Chhuzom,65
-1488,Dala,65
-1489,Dawakha,65
-1490,Dzongang,65
-1491,Gagay,65
-1492,Gayjo,65
-1493,Goensakha,65
-1494,Jabisa,65
-1495,Khamdraag,65
-1496,Khamdraag-gang,65
-1497,Lagel,65
-1498,Langmikha,65
-1499,Mendrel Jabkha,65
-1500,Phuchhekha,65
-1501,Sali,65
-1502,Silu Goenpa,65
-1503,Tamchoegang,65
-1504,Tango,65
-1505,Tashigang,65
-1506,Tenchhekha,65
-1507,Toepchugang,65
-1508,Togtokha,65
-1509,Tshoelgang,65
-1510,Tshongkha,65
-1511,Tsinakha,65
-1512,Tsiphoog,65
-1513,Uesakha,65
-1514,Uesuna,65
-1515,Bamizhikha,66
-1516,Bara,66
-1517,Batsekha,66
-1518,Buelchukha,66
-1519,Changyoelkha,66
-1520,Chimakha,66
-1521,Damchenang,66
-1522,Damzhi,66
-1523,Dangribug,66
-1524,Delikha,66
-1525,Dorokha,66
-1526,Dragbeylo,66
-1527,Duezhi,66
-1528,Hingzhiwog,66
-1529,Jagchukha,66
-1530,Jagchutsekha,66
-1531,Jangonang,66
-1532,Jangonang,66
-1533,Jangsa,66
-1534,Jangsa Gongm,66
-1535,Jangsakha,66
-1536,Jangsana,66
-1537,Jangsuna,66
-1538,Jipa,66
-1539,Jizhigang,66
-1540,Jombenang,66
-1541,Jooka,66
-1542,Jooka Gom,66
-1543,Jooka Thangkha,66
-1544,Jugang Thagchukha,66
-1545,Karshitsha,66
-1546,Kempa,66
-1547,Khamshingwog,66
-1548,Khimsabu,66
-1549,Khimsarbu,66
-1550,Khimsarp,66
-1551,Kuduphoog,66
-1552,Kuduphoog Kotsha,66
-1553,Liwog,66
-1554,Nazhikha,66
-1555,Nazhikha,66
-1556,Phalom,66
-1557,Phenshing Zhikha,66
-1558,Pidekha,66
-1559,Ramnang,66
-1560,Richhendeling,66
-1561,Richhukha,66
-1562,Rijoog,66
-1563,Rijoog Tsima,66
-1564,Rijoogkha,66
-1565,Rimdo Kempa,66
-1566,Rimdotshelkha,66
-1567,Rotogang,66
-1568,Samarkha,66
-1569,Sephu Jizhigang,66
-1570,Shangzhikha,66
-1571,Tadingkha,66
-1572,Thangkana,66
-1573,Togtokha,66
-1574,Tshozarkha,66
-1575,Zharikha,66
-1576,Zhikha,66
-1577,Aa-tsho,67
-1578,Chhubar,67
-1579,Chingdued Goenpa,67
-1580,Jabji,67
-1581,Joogar,67
-1582,Joogar Tselkha,67
-1583,Loogchhoed,67
-1584,Pachhu,67
-1585,Phooshar,67
-1586,Phunoob,67
-1587,Changkhor,68
-1588,Changsima,68
-1589,Chhubjagkha,68
-1590,Chukhozakha,68
-1591,Donagmo,68
-1592,Drukgyeling,68
-1593,Gaupel,68
-1594,Goenkha,68
-1595,Hoongrelkha,68
-1596,Jangmedna,68
-1597,Jangsarbu,68
-1598,Loongchhungna,68
-1599,Nangshikha (Hungrel),68
-1600,Nyangmedzampa,68
-1601,Tshongdue,68
-1602,Zore Goenpa,68
-1603,Bartshik,69
-1604,Chhukha,69
-1605,Darkhang,69
-1606,Dokha,69
-1607,Gangjoog,69
-1608,Gedda Zam,69
-1609,Geptsha,69
-1610,Gyedkha,69
-1611,Jagar Thangmaed,69
-1612,Jagathang Maed,69
-1613,Jagathang Toed,69
-1614,Kyidchhu,69
-1615,Ngopa,69
-1616,Nubri,69
-1617,Sergang,69
-1618,Sharhikha,69
-1619,Shomo,69
-1620,Soe,69
-1621,Soe Yaksa,69
-1622,Tsendanang,69
-1623,Tsendonang,69
-1624,Tsenthang,69
-1625,Tsenthang Thangtoed,69
-1626,Tsenthang Toed,69
-1627,Achilakha,70
-1628,Achilakha,70
-1629,Atsha,70
-1630,Baangdey,70
-1631,Bakhimnang,70
-1632,Bameynyikha,70
-1633,Bara,70
-1634,Bedo,70
-1635,Bedotshekha,70
-1636,Choetenkha,70
-1637,Chuthagkha,70
-1638,Darchu,70
-1639,Dardo,70
-1640,Demcho,70
-1641,Dobu,70
-1642,Dolepchen,70
-1643,Dolepchen,70
-1644,Draglu,70
-1645,Dramato,70
-1646,Drangja Goenpa,70
-1647,Dzongdraagkha,70
-1648,Dzongkha,70
-1649,Gadraagna,70
-1650,Gadradazhikha,70
-1651,Gaitsa,70
-1652,Gangchujab,70
-1653,Gangtokha,70
-1654,Gartshangnang,70
-1655,Giutsig,70
-1656,Gonyim,70
-1657,Jagna,70
-1658,Janalungpa,70
-1659,Jangchubtoe,70
-1660,Jangka,70
-1661,Jangka,70
-1662,Jangka Tsekha,70
-1663,Jangkawogma,70
-1664,Jangminang,70
-1665,Jangsa,70
-1666,Jangsarbu,70
-1667,Jangsekha,70
-1668,Jangsipetsa,70
-1669,Jangtoedkha,70
-1670,Jemphu,70
-1671,Jieu,70
-1672,Jungsikha,70
-1673,Kazhi,70
-1674,Kenpalong,70
-1675,Khimchungnang,70
-1676,Kilikha,70
-1677,Lambatoed,70
-1678,Legchukha,70
-1679,Lhakhangnang,70
-1680,Lhakhangokha,70
-1681,Limchen,70
-1682,Linga,70
-1683,Lungpathangkha,70
-1684,Mayukha,70
-1685,Mekhu/Sikhu,70
-1686,Menchu,70
-1687,Naemjog,70
-1688,Naktshangtsawa,70
-1689,Namchikha,70
-1690,Nazhikha,70
-1691,Omchunang,70
-1692,Pangbisa,70
-1693,Para,70
-1694,Pepchu,70
-1695,Poeri,70
-1696,Potokha,70
-1697,Pumnang,70
-1698,Rabsima,70
-1699,Rangetsawa,70
-1700,Rema,70
-1701,Rhidima,70
-1702,Rimpoeri,70
-1703,Riphakha,70
-1704,Sama,70
-1705,Sasa,70
-1706,Serikha,70
-1707,Sharigyurwawog,70
-1708,Sharijekema,70
-1709,Shariling Shingtsa,70
-1710,Shariyurwatakpa,70
-1711,Shingkalachu,70
-1712,Sima,70
-1713,Talung,70
-1714,Tashigang,70
-1715,Temisema,70
-1716,Thangkha,70
-1717,Toechochu,70
-1718,Toechoelu,70
-1719,Tserinang,70
-1720,Tshangpa,70
-1721,Tshaphelo,70
-1722,Tshaphelo,70
-1723,Tshekha,70
-1724,Tshelgona,70
-1725,Tshetekha,70
-1726,Tshoshingtengkha,70
-1727,Ugyenguru,70
-1728,Wochen,70
-1729,Wolinang,70
-1730,Wolithangkha,70
-1731,Woochhu,70
-1732,Woochhu Toed,70
-1733,Woochhu Toed Ngo,70
-1734,Zhelngo,70
-1735,Zhelngo Wogma,70
-1736,Zhingchen,70
-1737,Zhingchen Thangkha,70
-1738,Zhogkukha,70
-1739,Bemphu,71
-1740,Bueltikha,71
-1741,Jadokha,71
-1742,Jagoen,71
-1743,Jazhina,71
-1744,Jilikha,71
-1745,Lingzhi,71
-1746,Nagu,71
-1747,Pherukha,71
-1748,Rangzhigang,71
-1749,Tabjo,71
-1750,Tokhab,71
-1751,Tshebji,71
-1752,Tshegoen,71
-1753,Tshendu Goenpa,71
-1754,Wanakha,71
-1755,Zursuna,71
-1756,Bara,72
-1757,Barakempa,72
-1758,Baratokha,72
-1759,Bjizhikha,72
-1760,Chesham,72
-1761,Chhukha (Shaba),72
-1762,Drugyaldingkha,72
-1763,Gangjoogkha,72
-1764,Gangri,72
-1765,Khasuna,72
-1766,Lholing,72
-1767,Naychu,72
-1768,Neyphu,72
-1769,Phubarna,72
-1770,Serina,72
-1771,Serlingnang,72
-1772,Tashichholing,72
-1773,Teli,72
-1774,Zhelngo,72
-1775,Zhingo,72
-1776,Zhunggar,72
-1777,Chhoeding,73
-1778,Chhungjey,73
-1779,Chuyul,73
-1780,Jiutsaphu,73
-1781,Lemdo,73
-1782,Lemgoen,73
-1783,Mitshig,73
-1784,Nyamed,73
-1785,Nyamjey,73
-1786,Nyechhu,73
-1787,Phangdo,73
-1788,Shana,73
-1789,Shari (Tsento),73
-1790,Soe Domzang,73
-1791,Soe Yagsa,73
-1792,Tagtshang,73
-1793,Tsatsam,73
-1794,Tshenshi,73
-1795,Yagsa,73
-1796,Zamsar,73
-1797,Baangdey,74
-1798,Baangdey Zam,74
-1799,Barkor,74
-1800,Chang Rouna,74
-1801,Chang Sinchuna,74
-1802,Changkar,74
-1803,Changmedthangka,74
-1804,Chewnang,74
-1805,Chhoeten Dangrim,74
-1806,Chiminang/Chimina,74
-1807,Chintsho,74
-1808,Darzhigang,74
-1809,Dochhukha,74
-1810,Drungna,74
-1811,Dungar,74
-1812,Dungchuphu,74
-1813,Gangkha,74
-1814,Gangkha,74
-1815,Gangtoed,74
-1816,Gebtoed,74
-1817,Gorina,74
-1818,Gyelgang,74
-1819,Jangkhuna,74
-1820,Jangsabu,74
-1821,Jangsina,74
-1822,Jangsuna,74
-1823,Jangteyna,74
-1824,Jieu,74
-1825,Jimnang,74
-1826,Kangjulo,74
-1827,Khangkhu,74
-1828,Khimsabu,74
-1829,Langmana,74
-1830,Langmana,74
-1831,Lankhang Jab,74
-1832,Lomlo,74
-1833,Mendrel,74
-1834,Mendrel/Rauna,74
-1835,Nakha,74
-1836,Nakha/Rawna,74
-1837,Namkar,74
-1838,Nangzhikha (Wangchang),74
-1839,Naymey,74
-1840,Ngetsu,74
-1841,Nyisu,74
-1842,Nyisu Chotentsawa,74
-1843,Olathang,74
-1844,Omchuna,74
-1845,Pumsima,74
-1846,Pumtakha,74
-1847,Rampozhing,74
-1848,Rawna,74
-1849,Segona,74
-1850,Segona,74
-1851,Sisitagpa,74
-1852,Sisitakpa,74
-1853,Tagokha,74
-1854,Tajoog,74
-1855,Tshogdu (Wangchang),74
-1856,Tshongdue,74
-1857,Tshshingtsawa,74
-1858,Tsirena,74
-1859,Wochhukha,74
-1860,Wochukha,74
-1861,Yekukha,74
-1862,Yurwawog,74
-1863,Yurwawog,74
-1864,Zakha,74
-1865,Zarchhekha,74
-1866,Zhikha,74
-1867,Zhingkha,74
-1868,Chhimoong,75
-1869,Chhiphoong,75
-1870,Loongkholom,75
-1871,Nyasikhar,75
-1872,Pangthang,75
-1873,Redingla,75
-1874,Arden,76
-1875,Chhoekhorling,76
-1876,Dizama,76
-1877,Kerong,76
-1878,Yargyewoong,76
-1879,Chongshing,77
-1880,Guyoom,77
-1881,Jorphoong,77
-1882,Maendi,77
-1883,Thongsa,77
-1884,Yomzor,77
-1885,Babta,78
-1886,Dechheling Martsala,78
-1887,Doongphu Goenpa,78
-1888,Gonpawoong,78
-1889,Kholomri,78
-1890,Mendelgang,78
-1891,Namdaling,78
-1892,Ridzomo,78
-1893,Rognawang,78
-1894,Shingchongri,78
-1895,Bangyuel,79
-1896,Belna Goenpa,79
-1897,Belnangzor,79
-1898,Dungmaed,79
-1899,La-Nyiri,79
-1900,Mangthangri,79
-1901,Mikuri,79
-1902,Tep Tep La,79
-1903,Thrumchoong,79
-1904,Tomi,79
-1905,Woonborang,79
-1906,Zimzor,79
-1907,Bongmaan,80
-1908,Duewang,80
-1909,Khar,80
-1910,Khawar,80
-1911,Khengzor,80
-1912,Labar,80
-1913,Nagtseri,80
-1914,Phadi,80
-1915,Regi,80
-1916,Shemshem,80
-1917,Shinangri,80
-1918,Tsebar,80
-1919,Yagyur,80
-1920,Zordoong,80
-1921,Bainangtang,81
-1922,Bargoenpa,81
-1923,Barkadung,81
-1924,Borphu,81
-1925,Champhari,81
-1926,Dapurung,81
-1927,Denphu,81
-1928,Dhalung,81
-1929,Dongtsheri,81
-1930,Drangsa Wong,81
-1931,Gashingkhar,81
-1932,Gayri,81
-1933,Ghorkaling,81
-1934,Jangray,81
-1935,Jazung,81
-1936,Jomgom,81
-1937,Khangmari,81
-1938,Khaykhar,81
-1939,Kheshingri,81
-1940,Kheydong,81
-1941,Kulung,81
-1942,Laypheri,81
-1943,Lumri,81
-1944,Maygamri,81
-1945,Menjung,81
-1946,Menphu,81
-1947,Mongthung,81
-1948,Muna,81
-1949,Nanong,81
-1950,Panglap Thongma,81
-1951,Pangthang,81
-1952,Phalamphu,81
-1953,Raling,81
-1954,Rangshi Gayri,81
-1955,Rangshi Goenpa,81
-1956,Rangthang Wong,81
-1957,Rashu Goenpa,81
-1958,Rayzor,81
-1959,Relung,81
-1960,Sa Yul,81
-1961,Sangshing Tang,81
-1962,Sayri,81
-1963,Sayrimkha,81
-1964,Terphug,81
-1965,Thongshing Gag,81
-1966,Thongthung,81
-1967,Thongthung Goenpa,81
-1968,Thorkhar,81
-1969,Thrangshing,81
-1970,Tokari,81
-1971,Tokari Gayri,81
-1972,Tshatshi,81
-1973,Woongchhillo,81
-1974,Woulingtang,81
-1975,Zhingri,81
-1976,Gashari,82
-1977,Maenchu,82
-1978,Nganglam,82
-1979,Nganglam Bazar,82
-1980,Norboogang,82
-1981,Nyingshingborang,82
-1982,Rinchenzor,82
-1983,Tshaelshingzor,82
-1984,Bainangwoong,83
-1985,Bartsheri,83
-1986,Chongmashing,83
-1987,Dagor,83
-1988,Gamung,83
-1989,Goenpoong,83
-1990,Kheri Goenpa,83
-1991,Khothagpa,83
-1992,Nangkhor,83
-1993,Shali,83
-1994,Shumar,83
-1995,Waphel,83
-1996,Yalang,83
-1997,Bangdala,84
-1998,Chengri,84
-1999,Dooknang,84
-2000,Doongnang,84
-2001,Doongsingma,84
-2002,Doopkang,84
-2003,Gomtshang,84
-2004,Jarimenang,84
-2005,Joenkha,84
-2006,Khangma,84
-2007,Khominang,84
-2008,Lhawong,84
-2009,Pangthang,84
-2010,Phusumri,84
-2011,Phutsoongbori,84
-2012,Porila,84
-2013,Rezor,84
-2014,Thoonggo,84
-2015,Thoongkhar,84
-2016,Wanglakho,84
-2017,Yangkhar,84
-2018,Choongkhar,85
-2019,Lenshingkhar,85
-2020,Ngangmalang,85
-2021,Pangthangdaza,85
-2022,Raysinang,85
-2023,Shumarjug,85
-2024,Tshelinggor,85
-2025,Zobel,85
-2026,Boemena,86
-2027,Chagsa,86
-2028,Choezhikha,86
-2029,Dechendingkha,86
-2030,Dosega,86
-2031,Gamkha,86
-2032,Gangkha,86
-2033,Gangmaloongma,86
-2034,Geonchhukha,86
-2035,Jaloong,86
-2036,Laphuna,86
-2037,Lobesa,86
-2038,Lumina,86
-2039,Menchuzakha,86
-2040,Mitshigna,86
-2041,Pachheykha,86
-2042,Phuntshoyangkhel,86
-2043,Sebjeekha,86
-2044,Sebtokha,86
-2045,Sobsokha,86
-2046,Tongde Baykha,86
-2047,Tshogkorna,86
-2048,Usakha,86
-2049,Yuwakha,86
-2050,Zhikha,86
-2051,Bali,88
-2052,Bumtakha,88
-2053,Chukhu Ngoedroobchhu,88
-2054,Chuphu Ngoedroobchhu,88
-2055,Humpathang,88
-2056,Jangkholo,88
-2057,Jangwakha,88
-2058,Kepailo,88
-2059,Lhabisa,88
-2060,Lorina,88
-2061,Nawakha,88
-2062,Ngoedroobchhu,88
-2063,Ngoedroobchhu Chukha,88
-2064,Ngoedroobchhu Khimchena,88
-2065,Ngoedroobchhu Tenkha,88
-2066,Puna Gom,88
-2067,Rechena,88
-2068,Sewala,88
-2069,Tenpakha,88
-2070,Yebisa,88
-2071,Changjokha,89
-2072,Danamo,89
-2073,Dzomisa,89
-2074,Gubji,89
-2075,Jangsar,89
-2076,Jangsarbu,89
-2077,Jasha Goenpa,89
-2078,Jimithang,89
-2079,Khilikhar,89
-2080,Likashong,89
-2081,Loongkha,89
-2082,Loongkhajang,89
-2083,Mendagang,89
-2084,Tanag,89
-2085,Thangzhi,89
-2086,Tseykha,89
-2087,Tseykhakha,89
-2088,Uesakha,89
-2089,Yangchenkha,89
-2090,Draagchhukha,90
-2091,Goomgang,90
-2092,Sechednang,90
-2093,Yorbo,90
-2094,Zhelngoesa,90
-2095,Baymenang,91
-2096,Baypai Gangkha,91
-2097,Bemsesi,91
-2098,Bemsesi Khuru,91
-2099,Botolo,91
-2100,Chokhor Luchhu,91
-2101,Dargaygang,91
-2102,Dawana,91
-2103,Dochhukha,91
-2104,Dochhukha Bangmena,91
-2105,Dochhukha Goenpa,91
-2106,Dochhukha Menchugang,91
-2107,Dochhukha Phaduna,91
-2108,Dochhukha Tongsana,91
-2109,DochhukhaRitsa,91
-2110,Dongkokha Drapchegang,91
-2111,Dongkokha Loongsilgang,91
-2112,Dongkokha Pepchu,91
-2113,Gagona,91
-2114,Gona Tengkha,91
-2115,Guma,91
-2116,Jangchubchen,91
-2117,Jangsa,91
-2118,Khuru Bamsesi Washegang,91
-2119,Khuru Bemsesi,91
-2120,Lakhu,91
-2121,Logodama,91
-2122,Nibji,91
-2123,Nibjiwoma,91
-2124,Semtogangchhu,91
-2125,Tenpakha,91
-2126,Tharabachey,91
-2127,Tongtshasho,91
-2128,Wangwakha,91
-2129,Wolajangsa Gumagangju,91
-2130,Wolakha,91
-2131,Zamdongkhar Bebigacha,91
-2132,Zamdongkhar Bebigar,91
-2133,Zamdongkhar Bebigarkha,91
-2134,Zamdongkhar Changyuel,91
-2135,Zamdongkhar Dongkhuju,91
-2136,Zamdongkhar Gaupay,91
-2137,Zamdongkhar Laykha,91
-2138,Zamdongkhar Logodama,91
-2139,Zamdongkhar Loongsilgang,91
-2140,Zamdongkhar Simtogang,91
-2141,Zamdongkhar Tashijong,91
-2142,Zamdongkhar Thara,91
-2143,Zamdongkhar Zinchey,91
-2144,Zerkha,91
-2145,Agonang,92
-2146,Ap Zhuksa,92
-2147,Bara,92
-2148,Botokha,92
-2149,Chhoeten Nyingpo,92
-2150,Chisegang,92
-2151,Chulukha,92
-2152,Chuzamgang,92
-2153,Damchi,92
-2154,Damteykha,92
-2155,Dokuna,92
-2156,Dokuna sophu,92
-2157,Dophukha,92
-2158,Dzongchung,92
-2159,Haylu Tongshu,92
-2160,Heyloog,92
-2161,Jangsa,92
-2162,Kazhikha,92
-2163,Kelwagang,92
-2164,Lengo Gaysa,92
-2165,Loongtikha,92
-2166,Pangreju,92
-2167,Peltari,92
-2168,Phakakha,92
-2169,Rangrekha,92
-2170,Serigang,92
-2171,Tongchena,92
-2172,Tongshina,92
-2173,Tongshiremay,92
-2174,Tongsigang,92
-2175,Tongzhoonang,92
-2176,Tshetenang,92
-2177,Tshomiding,92
-2178,Uesarkha,92
-2179,Wakhuna,92
-2180,Yurbu,92
-2181,Yuwa,92
-2182,Zarbisa,92
-2183,Zhingsahang,92
-2184,Dompala,93
-2185,Goomkarmo,93
-2186,Lingmukha,93
-2187,Nabchhed,93
-2188,Oomtekha,93
-2189,Bangna Thanka,94
-2190,Bara,94
-2191,Barna Thangka,94
-2192,Chongchog Goenpa,94
-2193,Chongzhikha,94
-2194,Datong Goenpa,94
-2195,Domina,94
-2196,Dubchu Goenpa,94
-2197,Gangchula,94
-2198,Gangkha,94
-2199,Gangla,94
-2200,Garakha,94
-2201,Goen Wogma,94
-2202,Goleygang,94
-2203,Gumena,94
-2204,Japana,94
-2205,Jarigang,94
-2206,Jazhikha,94
-2207,Jimjig,94
-2208,Keparabsel,94
-2209,Khubji,94
-2210,Kutsiphakhar,94
-2211,Langjo,94
-2212,Loigima,94
-2213,Manikha,94
-2214,Menchudamley,94
-2215,Mendrelji,94
-2216,Nangpakha,94
-2217,Norboo Tashi,94
-2218,Nyebakha,94
-2219,Palu,94
-2220,Pangzhi,94
-2221,Shenga Goenpa,94
-2222,Songchumo,94
-2223,Tagochen,94
-2224,Thonji,94
-2225,Tshamkana,94
-2226,Tshosa,94
-2227,Yedogang,94
-2228,Yedopang,94
-2229,Dongkokhar,95
-2230,Dongkokhar Shongrina,95
-2231,Gangthramo,95
-2232,Gomgang,95
-2233,Jawana,95
-2234,Kidlingkha,95
-2235,Labtsakha,95
-2236,Loongnangkha,95
-2237,Lungtamo,95
-2238,Lungtengang,95
-2239,Lutamo,95
-2240,Norbugang,95
-2241,Norbugang Bemidingkha,95
-2242,Norbugang Bulgang,95
-2243,Norbugang Dashigang,95
-2244,Norbugang Gaupay,95
-2245,Norbugang Lamseri,95
-2246,Norbugang Serinang,95
-2247,Norbugang Tshochuna,95
-2248,Paagchhakha,95
-2249,Pangmarpo,95
-2250,Talog,95
-2251,Talog Goenpa,95
-2252,Yonggu,95
-2253,Zamdongkhar Pangalay,95
-2254,Aechey,96
-2255,Bemsisi,96
-2256,Bichhekha,96
-2257,Bomthangka,96
-2258,Chandana,96
-2259,Chenlekha,96
-2260,Damkhyi,96
-2261,Dochogla,96
-2262,Ghagsa,96
-2263,Goenmkha,96
-2264,Goenmsa,96
-2265,Jaloong,96
-2266,Lemjakha,96
-2267,Lungjam,96
-2268,Maenchhuna,96
-2269,Mendrelgang,96
-2270,Phentekha,96
-2271,Rinakha,96
-2272,Siluna,96
-2273,Stokha,96
-2274,Tang Ho,96
-2275,Thinleygang,96
-2276,Tokha,96
-2277,Toktogkha,96
-2278,Tsheringgang,96
-2279,Yanglo,96
-2280,Yuel Ham O,96
-2281,Bederlo,97
-2282,Bidongkha,97
-2283,Bidongkha Tsetending,97
-2284,Chungkha,97
-2285,Dabji,97
-2286,Darshongma,97
-2287,Dawakha,97
-2288,Dawanang,97
-2289,Dengana,97
-2290,Gengo,97
-2291,Jarakha,97
-2292,Jopkha,97
-2293,Kewana,97
-2294,Kutshana,97
-2295,Lebchulo,97
-2296,Limkha,97
-2297,Naripa,97
-2298,Nebtenkha,97
-2299,Omchupang,97
-2300,Pangsho,97
-2301,Raro,97
-2302,Samdingkha,97
-2303,Tamidamchu,97
-2304,Thangji,97
-2305,Tsachuphu,97
-2306,Tsachuphu Kati,97
-2307,Tsachuphugang,97
-2308,Tsephu,97
-2309,Tsephu Atako,97
-2310,Tsephu Bumpai Tsawa,97
-2311,Tsephu Jara,97
-2312,Tsephu Khawakha,97
-2313,Tsephu Semeki,97
-2314,Tsering,97
-2315,Wangkha,97
-2316,Yuesakha,97
-2317,Yusakha Neyji,97
-2318,Ashikhar,98
-2319,Bangtsho,98
-2320,Chhenangri,98
-2321,Domphoog,98
-2322,Gerwa,98
-2323,Martang,98
-2324,Rikhey,98
-2325,Rishor,98
-2326,Amshing,99
-2327,Bargoenpa,99
-2328,Bazor,99
-2329,Belnang Woong,99
-2330,Brongshing,99
-2331,Broomi,99
-2332,Chidoongkhar,99
-2333,Denchhi,99
-2334,Denchhi Khoyar,99
-2335,Fremi,99
-2336,Gomdar,99
-2337,Khandoma,99
-2338,Khoyar,99
-2339,Khoyar PAngthang,99
-2340,Luzor,99
-2341,Narphoong,99
-2342,Palroong,99
-2343,Rechanglu,99
-2344,Rongchanglu,99
-2345,Sawang,99
-2346,Agoorthang (Aguritar),100
-2347,Aumshing (Betholi),100
-2348,Chelthang (Kharbandi/Khowrong),100
-2349,Damtsang (Daldalay),100
-2350,Dewathang (Nangley),100
-2351,Jampani,100
-2352,Jangsawom (Lower Golanti),100
-2353,Jansagom (Upper Golanti),100
-2354,Jomotshangkha (Daifam Throm),100
-2355,Lanchenphu Toed (Upper Hastinapur),100
-2356,Langchenphu Maed (Lower Hastinapur),100
-2357,Namchazor (Bajhrangi),100
-2358,Pagshingkha (Malabasy),100
-2359,Rongchhuthang (Khowrong),100
-2360,Betseling,101
-2361,Doongmanma,101
-2362,Gonong,101
-2363,Lauri,101
-2364,Momring,101
-2365,Patpanadang,101
-2366,Phajo Goenpa,101
-2367,Relnang,101
-2368,Serzhong,101
-2369,Tashiphu,101
-2370,Tshephu,101
-2371,Tshothang,101
-2372,Woongthig,101
-2373,Chhoedoong,102
-2374,Chongmashing,102
-2375,Dengshingzor,102
-2376,Doongmanma,102
-2377,Galingkhar,102
-2378,Gorthongma,102
-2379,Kaeptang,102
-2380,Kakani,102
-2381,Kakpadoong,102
-2382,Khalingdangre/Galingkhar,102
-2383,Loongbaktang,102
-2384,Martshala,102
-2385,Pelrithang,102
-2386,Raushing,102
-2387,Rechanglu,102
-2388,Sarjoong,102
-2389,Shem Shem,102
-2390,Suzor,102
-2391,Thizor,102
-2392,Thongpashing,102
-2393,Tsholingkhar,102
-2394,Tshongpashing,102
-2395,Wargphoog,102
-2396,Batshoong,103
-2397,Batshoong,103
-2398,Bilam,103
-2399,Chongti,103
-2400,Durtsun,103
-2401,Gonminang,103
-2402,Jalamwoong,103
-2403,Jangchhubling,103
-2404,Malang,103
-2405,Mandar,103
-2406,Mantsang,103
-2407,Menchari,103
-2408,Milum,103
-2409,Mitseshing,103
-2410,Morong,103
-2411,Nagzor,103
-2412,Nagzor,103
-2413,Phetong,103
-2414,Redumed,103
-2415,Rimoong,103
-2416,Suzoong,103
-2417,Tershiri,103
-2418,Thungshing,103
-2419,Wooling,103
-2420,Wooling,103
-2421,Bunakha (Majuwa),104
-2422,Chirtshosa (Kharbandi),104
-2423,Doongkarling (Dumpha),104
-2424,Dramzeygang (Kataray),104
-2425,Kathoobdang (Diklai),104
-2426,Labtshazor (Deorali),104
-2427,Lingmayshong (Tarulay),104
-2428,Loongminang (Gairitar),104
-2429,Pemathang (Beldara),104
-2430,Pemathang (Dalim),104
-2431,Pyertshosa (Kharbandi),104
-2432,Raling (Phedi),104
-2433,Uesarna (Nainital),104
-2434,Warong (Warang),104
-2435,Yuwathang (Nalapara),104
-2436,Balamnang (Nakalitar),105
-2437,Baylamsharang,105
-2438,Chhoetseyung (Daurey),105
-2439,Chhumaedthang (Gauthalay),105
-2440,Doongkarling/Dumpha/Gangatay,105
-2441,Drupchhugang (Kubindey),105
-2442,Karmaling (Kataray),105
-2443,Khamaedthang/Mansitar,105
-2444,Mendrupling (Bhawaney),105
-2445,Minjigang (Tekree),105
-2446,Phuentshogthang/Bakuli,105
-2447,Samdrupchhoeling/Raitar,105
-2448,Selmonang (Koila),105
-2449,Shangshingzor,105
-2450,Shukuni/Shangshingzor,105
-2451,Thangchu Goenpa/Chotaytar,105
-2452,Thhongsigang (Saureney),105
-2453,Thongjaling (Jagartala),105
-2454,Tsangchutham/U. Mansitar,105
-2455,Tshochoong (Bauney),105
-2456,Tshogskorling (Majuwa),105
-2457,Zomlaythang (Katikay),105
-2458,Damsagang Maed (Hillay),106
-2459,Damsagang Toed,106
-2460,Ngangtshothang Maed,106
-2461,Ngangtshothang Toed,106
-2462,Tshoduen (Sathpokari),106
-2463,Barkalangnang,107
-2464,Chasakhar/Maenjiwoong,107
-2465,Chemari,107
-2466,Dangtsho/Serthig,107
-2467,Dekorwoong/Khanduphoog,107
-2468,Deptsang,107
-2469,Dhukha/Monmola,107
-2470,Drenphoog,107
-2471,Goenpa/Monmola,107
-2472,Jab/Khanduphoog,107
-2473,Junme,107
-2474,Khanduphoog,107
-2475,Khuwangka/Monmola,107
-2476,Lamkhabjay/Serthig,107
-2477,Lhakhangzor/Serthig,107
-2478,Maenjiwoong/Khanduphoog,107
-2479,Maenjiwoongpeka/Khanduphoog,107
-2480,Pangthang/Khanduphoog,107
-2481,Pangthang/Monmola,107
-2482,Pangthang/Serthig,107
-2483,Pemagatshel,107
-2484,Phachhog,107
-2485,Phakchu/Khanduphoog,107
-2486,Rebalingbi,107
-2487,Sakari/Khanduphoog,107
-2488,Suskar,107
-2489,Tang Frang/Serthig,107
-2490,Tang Phrang/Khanduphoog,107
-2491,Tangngakpa/Serthig,107
-2492,Tashithang Gyed,107
-2493,Thujaycheling/Monmola,107
-2494,Tokari Goenpa/Serthig,107
-2495,Woong/Khanduphoog,107
-2496,Zor/Monmola,107
-2497,Bayuel,108
-2498,Benporong,108
-2499,Haila,108
-2500,Khainorong/Shogshi,108
-2501,Langnang Ringmo/Wangphoog,108
-2502,Lingsum/Shogshi,108
-2503,Manidangre/Shogshi,108
-2504,Sachhilo,108
-2505,Serchhenmo,108
-2506,Shogshi,108
-2507,Shoguwoong,108
-2508,Shokshi Pangthang,108
-2509,Wangphoog,108
-2510,Benyekha (Benekha),109
-2511,Damji (Damjee),109
-2512,Domchhukha (Bhalukhola),109
-2513,Drameling (Dhamiley),109
-2514,Duenchhukha (Denchukha),109
-2515,Duenchhukha (Gajbee),109
-2516,Gabji,109
-2517,Gawaling (Baseni),109
-2518,Gesarling (Boribotey),109
-2519,Kharzhing (Kadori),109
-2520,Khempaling (Khempa),109
-2521,Mayona (Dhamiley),109
-2522,Phazhing (Beteni),109
-2523,Poongthra A,109
-2524,Poongthra B,109
-2525,Relukha,109
-2526,Shetakha,109
-2527,Yomeling (Mayona),109
-2528,Aringgang (Tarigaon),110
-2529,Bamengang (Mithun),110
-2530,Chhuka (Basantey),110
-2531,Chilumchen (Chelumchen),110
-2532,Dangreyboog Ka (Beachgaon A),110
-2533,Dangreyboog Kha (Beachgoan),110
-2534,Dograp (Dogap),110
-2535,Dokarkha Ga (Dorokha C),110
-2536,Dokarkha Ka (Dorokha A),110
-2537,Dokarkha Kha (DorokhaB),110
-2538,Gangtokha (Daragaon),110
-2539,Jigme,110
-2540,Legpagang (Lapchey Goan),110
-2541,Manigang (Maney A),110
-2542,Manigang (Maney B),110
-2543,Melonggang (Sebichang),110
-2544,Mizomsa (Somlachen),110
-2545,Namchu,110
-2546,Ngagang (Damphuchen),110
-2547,Sangloong,110
-2548,Sengteng,110
-2549,Singye,110
-2550,Tengdelshong (Satakha),110
-2551,Thingyersa (Timburey),110
-2552,Thuloonggang,110
-2553,Wangchuck,110
-2554,Doomtoed (Daragon),111
-2555,Doomtoed Chhungwa (Sanu Doomtoed),111
-2556,Doongtoed Chhewa (Thulo Doomtoed),111
-2557,Gairigaon,111
-2558,Jarikha (Jaringay),111
-2559,Khaling (Khaling Goan),111
-2560,Kuzhuggang (Kuchey),111
-2561,Bepoteng (Belbotey),112
-2562,Chhoedagling (Choksa),112
-2563,Chhunaggang (Kalikhola),112
-2564,Daangling (Pakhagaon),112
-2565,Dewachen (Shivalaya),112
-2566,Gangjoog (Chebju),112
-2567,Gangtog (Gyanthok),112
-2568,Gyalposhing (Raja Rukh),112
-2569,Jamcholing (Sajbotey),112
-2570,Kangdoongphug (Jogimara),112
-2571,Namgay Chhoeling,112
-2572,Norjangsa (Girigaon),112
-2573,Pagshingkha (Malbasay),112
-2574,Peljorling Maed,112
-2575,Peljorling Toed,112
-2576,Satsangsa (Majuwa),112
-2577,Sernyagang (Kholakharka),112
-2578,Tashichhoeling (Sipsu),112
-2579,Tshachhungang (Noonpani),112
-2580,Tsholingkhar (Pokhari Dara),112
-2581,Tshosarling (Rangedara),112
-2582,Zhiwaling (Kothigaon),112
-2583,Damzagsa (Dipujora),82
-2584,Dawaling (Maghay),82
-2585,Dramzigang (Kataray),82
-2586,Gangtosa (Kothidara),82
-2587,Jarigang (Merik),82
-2588,Khangduzhi (Kopchey),82
-2589,Kyedsa (Kothidara/Kirney),82
-2590,Kyidsa (Kirney),82
-2591,Kyidtsaling (Dhapper),82
-2592,Labmi (Lamjee),82
-2593,Lamjosa (Lamjumsa),82
-2594,Madgang (Gairigaon),82
-2595,Norboogang (Tinteray),82
-2596,Thorila Thumkey,82
-2597,Tsaphelthang (Nabukharka),82
-2598,Tsheringang (Nangla Dang),82
-2599,Tshongduekha (Hatkhola),82
-2600,Yangphilthang (Bhimtar),82
-2601,Chhu Goo (Chingu),114
-2602,Chongzhu,114
-2603,Dangreyboog (Bich Gaon),114
-2604,Ghundagaon,114
-2605,Guengaling (Ghunday Gaon),114
-2606,Joenpang,114
-2607,Karmaling (Kamigoan),114
-2608,Khababgang (Thika),114
-2609,Linggarnang (Lingtam),114
-2610,Migphelgang (Dhakalgang),114
-2611,Norgeygang (Lower Bara),114
-2612,Noryog,114
-2613,Patshaling (Beteni),114
-2614,Phendegang (Fenchi),114
-2615,Samphelgang (Lepchagaon),114
-2616,Satsangma (Majuwa),114
-2617,Tshachhu,114
-2618,Zhendebgang (Mukheni Gaon),114
-2619,Balsathang (Bimirey),115
-2620,Beyulgang (Kopchey),115
-2621,Chhoekorling (Schooley),115
-2622,Chhoetenkha (Deorali),115
-2623,Chhujugthang (Chhetritar),115
-2624,Chhusilgang (Chisopani),115
-2625,Damtshangna (Ahaley),115
-2626,Darzhingthng (Jagatar),115
-2627,Dechengang (Sarki Gaon),115
-2628,Dizanggang (Kophi),115
-2629,Dramedsa (Sepeni),115
-2630,Dramzeling (Kataray),115
-2631,Gatsheling (Baraney),115
-2632,Gomsumposa (Tinratey),115
-2633,Jureygang (Bararay),115
-2634,Khangzhima (Chargharey),115
-2635,Komaling (Balsey),115
-2636,Lamaithang (Lamatar),115
-2637,Lungsirma (Sirisey),115
-2638,Lungtensa (Saureni),115
-2639,Manidara,115
-2640,Manigang (Manidara/Gangtey),115
-2641,Nakeyling (Nigurey),115
-2642,Neydagling (Dhamigaon),115
-2643,Ngadoongsa (Dhengrey),115
-2644,Norgyeling (Taley),115
-2645,Nyachhabsa (Gangtey),115
-2646,Nyadoesa (Katley),115
-2647,Pangthangjug (Thandey),115
-2648,Pekarling (Toribari),115
-2649,Pemaling (Kamigaon),115
-2650,Phagsamthang (Ghondeytar),115
-2651,Shing Ngarma (Khamarey),115
-2652,Singdregang (Jyamirkot),115
-2653,Tamchhaabsa (Birukhola),115
-2654,Tashithang (Tachey),115
-2655,Thangchhenang (Birutar),115
-2656,Tsajnsa Ka (Hatikhara A),115
-2657,Tsajnsa Kha (Hatikhara B),115
-2658,Tsakethang (Samatar),115
-2659,Yurungthang (Khopitar),115
-2660,Zamthangnang (Sagutar),115
-2661,Chhunag (Kalapani),116
-2662,Chhutharsum (Tindharey),116
-2663,Dewathang (Banstar),116
-2664,Doleg (Dholay),116
-2665,Doomshinggang (Dumshidara),116
-2666,Gaden (Bhotaykharka),116
-2667,Gashingma (Gashing),116
-2668,Goenpakha (Gombadara),116
-2669,Jangchhogling (Uttarey),116
-2670,Ketshaelgang (Thotney),116
-2671,Lachhuthang (Lahatar),116
-2672,Neygang (Damdara),116
-2673,Nyoenpaling,116
-2674,Nyoenpaling,116
-2675,Nyoenpaling,116
-2676,Peldenling (Gomtu),116
-2677,Samerchen (Ratey),116
-2678,Satergang (Khanigaon),116
-2679,Satorma (Panray),116
-2680,Tashilakha (Numilakha),116
-2681,Tashitshe (Lechi),116
-2682,Thongjabi (Thumkey),116
-2683,Tingtingma (Titi),116
-2684,Uelgyalling (Dolomthang),116
-2685,Bugtognang (Bukkay),117
-2686,Chathakgang (Sangla),117
-2687,Chhirlogsa (Chiloo),117
-2688,Damtshangma (Ahalay),117
-2689,Dewathang (Banstar),117
-2690,Dungkarling (Choilicoop),117
-2691,Gawadong (Sukraty),117
-2692,Goenpazor (Gombadara),117
-2693,Jangchhogling (Uttary),117
-2694,Khandothang (Mechetar),117
-2695,Kipadong (Sukraty/Bauwandara),117
-2696,Lamaithang (Lamitar),117
-2697,Lhakhangpong (Manderlin),117
-2698,Lingmaithang (Lamatar),117
-2699,Majathang (Budhuney),117
-2700,Nyimaling (Saureni),117
-2701,Serthang (Khalingtar),117
-2702,Shatshamchhu (Duarpani),117
-2703,Tsapero (Tasim),117
-2704,Tshongdzom (Malbasay),117
-2705,Yulu Maed (Bukay B),117
-2706,Yulu Toed (Bukay A),117
-2707,Bumpathang (Bahunitar),118
-2708,Chhuchhungsa (Jitti A),118
-2709,Chhuchhungsa (Jitti B),118
-2710,Chhuchhungsa (Jitti C),118
-2711,Chungthung,118
-2712,Depheling Toed (Gathiya A),118
-2713,Dephelling (Gathiya B),118
-2714,Dephelling (Gathiya C),118
-2715,Dephelling (Gathiya D),118
-2716,Joenlegsa (Setipekha),118
-2717,Khamzangling (Satvaiya),118
-2718,Khangchunggang (Pakhadura),118
-2719,Khangthongsumpa (Tintalay),118
-2720,Khangzangling (Labarbot),118
-2721,Kharselling (Mongargaon),118
-2722,Lingthang (Lengthey),118
-2723,Namseling,118
-2724,Ngoedroobling (Sombek A),118
-2725,Ngoedroobling (Sombek B),118
-2726,Ngoedroobling (Sombek C),118
-2727,Saduzhima (Chargharay A),118
-2728,Shaduzhima (Cargharay B),118
-2729,Tharpung (Tharphu),118
-2730,Tsangchushong (Latakhola),118
-2731,Bugkha (Bucca),119
-2732,Damzhagsa (Thunuwa),119
-2733,Dangraybug (Beachgaon),119
-2734,Domtshang (Balukoray),119
-2735,Doogpoling (Kamai Banjang),119
-2736,Gangtokha (Daragaon),119
-2737,Jinpathang (Deotey),119
-2738,Khempagang (Khempa Gaon),119
-2739,Lapchakha,119
-2740,Norjangsa Dangpa (Gairigaon Ek),119
-2741,Norjangsa Nyipa (Gairigaon Dho),119
-2742,Nyindooglakha,119
-2743,Panzhing Ghongma (Upper Phanbari),119
-2744,Panzhing Wogma (Lower Panbari),119
-2745,Sherabling (Jenchu Gaon),119
-2746,Tababgang (Tabagaon),119
-2747,Tading,119
-2748,Tenpaling (Titring),119
-2749,Thongsa (Ramitey),119
-2750,Tobchhenthang (Borbotey),119
-2751,Zochhaling (Sisney),119
-2752,Chhermaling (Fita),121
-2753,Dangreybug (Bichgaon),121
-2754,Dawathang (Jumsatar),121
-2755,Dawthongsa (Jumsiligaon),121
-2756,Denpajong (Soureney),121
-2757,Domdongsa (Balukhop),121
-2758,Dzongsar,121
-2759,Kachhen (Kachin),121
-2760,Kangzhima (Chargarey),121
-2761,Khengtong,121
-2762,Kuchhengang (Kuchin Parkha),121
-2763,Kuchhenthang (Kuchin Tar),121
-2764,Kuchhentoed (Kuchin Upper),121
-2765,Kuengaling (Pakpay),121
-2766,Miglamthang (N. Bindu),121
-2767,Miglamthang (N. Bindu),121
-2768,Nyizergang (Ningalay),121
-2769,Rangthagling (Jatey),121
-2770,Silwaithang (Bakbakey),121
-2771,Targothang (Okhar Botey),121
-2772,Tendruk,121
-2773,Tendrukthang (Tendu Tar),121
-2774,Thagpzosa (Dhoreni),121
-2775,Dangkharling (Bahun Gaon),122
-2776,Dangreyboog (Bich Gaon A),122
-2777,Dangreyboog (Bich Gaon A)/Jangsa,122
-2778,Dangreyboog (Bich Gaon B),122
-2779,Dangreyboog (Bich Gaon)/Khar,122
-2780,Dangreyboog (Bich Gaon)/Tashiding,122
-2781,Dechhengang (Rai Gaon),122
-2782,Jarip/Ngatshang,122
-2783,Jarithang (Jarip C),122
-2784,Jarithang Maed (Jarip B),122
-2785,Jarithang Toed (Jarip A),122
-2786,Kardog,122
-2787,Kardog,122
-2788,Kardog,122
-2789,Lhendupling (Thakuri Gaon),122
-2790,Nyimalung (Bhotaykharka),122
-2791,Rigpaling (Schooldara),122
-2792,Schooldara/Tashiding,122
-2793,Serigang (Bhotaykharka),122
-2794,Tharpaling (Majuwa),122
-2795,Choekiling (Gairigaon),123
-2796,Dungkar (Khumaune B),123
-2797,Guma (Nau Number),123
-2798,Jigmedthang (Lamitar),123
-2799,Kinzangling,123
-2800,Koenchogling (Kuchi Daina),123
-2801,Pelkithang (Kataharey),123
-2802,Ranjoongling (Suntalabari),123
-2803,Richhenphoog (Kharbandi),123
-2804,Samtenchhu (Khola Ghari),123
-2805,Sengeyling (Singidara),123
-2806,Soenakhar,123
-2807,Tsakaling,123
-2808,Tsakaling (Ghumauney A),123
-2809,Zoepaling (Jarip),123
-2810,Zurigang (Ghalley Gaon),123
-2811,Azhethang (Ranikhop),124
-2812,Bachhuthang (Bechkhola),124
-2813,Chhibigang (Gairigaon),124
-2814,Chhudzomsa (Dovan),124
-2815,Chunyethang (Baragaray),124
-2816,Dechenling (Nunpani),124
-2817,Dragchhu (Tirkhola),124
-2818,Galegthang (Ghunring),124
-2819,Jangchhubling (Pankhey),124
-2820,Lhayuel (Mougaon),124
-2821,Mautsangchhu (Maukhola),124
-2822,Mongarling (Mongergaon),124
-2823,Norbugang (Khargaon),124
-2824,Nyachhu (Machukhola),124
-2825,Pelrigang (Rametey),124
-2826,Rijugang (Fedi),124
-2827,Samtenphu (Daragaon),124
-2828,Sherabling (Pathibara),124
-2829,Thongjabi (Tarkharkha),124
-2830,Thselithang (Bhimirey),124
-2831,Barthang,125
-2832,Barthang (Daragoan),125
-2833,Chagsakhar,125
-2834,Chagsakhar (Danabari),125
-2835,Chagsakhar (Dawathang),125
-2836,Chagsakhar (Kalikhola),125
-2837,Chagsakhar (Limbutar),125
-2838,Chagsakhar (Somitar),125
-2839,Chagsakhar (Thewar),125
-2840,Chaskhar (Daragoan),125
-2841,Nyimaling,125
-2842,Nyimaling (Daragoan),125
-2843,Nyimaling (Lower Phanphaney),125
-2844,Pangzor,125
-2845,Pangzor (Danabari),125
-2846,Pangzor (Daragoan),125
-2847,Pangzor (Kalikhola),125
-2848,Pangzor (Upper Phanphaney),125
-2849,Shawaphoong,125
-2850,Shawaphoong (Daragoan),125
-2851,Shawaphoong (Lower Phanphaney),125
-2852,Tongjabi,125
-2853,Tongjabi (Danabari),125
-2854,Tongjabi (Daragoan),125
-2855,Tongjabi (Lower Phanphaney),125
-2856,Tshojan,125
-2857,Tshojan (Lower Phanphaney),125
-2858,Yueling,125
-2859,Yueling (Danabari),125
-2860,Yueling (Daragoan),125
-2861,Yueling (Lower Phanphaney),125
-2862,Zambabi,125
-2863,Zambabi (Danabari),125
-2864,Zombabi (Daragoan),125
-2865,Chhoekhorling (Toribari),126
-2866,Dabithang (Sukhatar),126
-2867,Darbithang (Sukhatar),126
-2868,Dekidling (Leopani),126
-2869,Dolongang (Gairegoan),126
-2870,Gawaithang (Kafleytar),126
-2871,Hamlingphu (Leokhop),126
-2872,Jigmedling (Chuwabari),126
-2873,Lungtenbi (Sukhatar),126
-2874,Menchhuthang (Rateygoan),126
-2875,Mendelgang (Bichpani),126
-2876,Norbuthang (Kafleytar),126
-2877,Nubgang (Dolpani),126
-2878,Rateypani (Dekiling),126
-2879,Tashiling (Lampatey),126
-2880,Yangchenphu (Kafleytar),126
-2881,Balchhangchhu (Belkhola),35
-2882,Bunakha (Bitsy),35
-2883,Chursini (Kagatey),35
-2884,Dragphuchhen (Gangatey),35
-2885,Gakidling (Hilley),35
-2886,Getemkha (Laring),35
-2887,Jachhu (Muga),35
-2888,Maenchhulam (Kharpani/Hilley),35
-2889,Omchhunang (Kwapani),35
-2890,Ralingthang (Noonpani),35
-2891,Sangkha (Rateypani/Hilley),35
-2892,Dzamlingthang (Mainator),128
-2893,Lekidthang (Lakitar),128
-2894,Pelrithang,128
-2895,Pelrithang (Lodrai),128
-2896,Pelrithang (Mainatar),128
-2897,Pelrithang (Somitar),128
-2898,Pemathang (Somitar),128
-2899,Bartsham Ka (Bichgaon A),129
-2900,Bartsham Kha (Bichgaon B),129
-2901,Chhoetenkhar (Sukumbasi),129
-2902,Chungsing,129
-2903,Doringphu (Dungay),129
-2904,Gakidling (Kholatar),129
-2905,Galegchhu (Galeychu),129
-2906,Gongduegang (Gong Gaon),129
-2907,Gongtsekha (Gongdara),129
-2908,Hokaling (Gairigaon),129
-2909,Jungchhurgang (Saudalay),129
-2910,Khamaed,129
-2911,Khamaed (Daragaon),129
-2912,Khamo,129
-2913,Khatoed,129
-2914,Khatoed (Sirangaon),129
-2915,Lungselgang,129
-2916,Mendrelgang (Bhirgaon),129
-2917,Moenchhukga (Mongergaon),129
-2918,Pachhakha (Beteni),129
-2919,Pemagang (Pakhey),129
-2920,Riti (Reti),129
-2921,Samkhara,129
-2922,Serbugang (Ashiney),129
-2923,Shingkharthang (Samkhara),129
-2924,Silsagang (Casey),129
-2925,Tagjogang (Babjungay),129
-2926,Tashigatshel (Chakpai),129
-2927,Tormaphoog (Tormay),129
-2928,Tshachhu (Tatopani),129
-2929,Chhoekhorling (Majuwa),130
-2930,Dechenpelri (Jaruwa),130
-2931,Dechhenpelri (Jaruwa),130
-2932,Dungkharling,130
-2933,Khenpagang (Dungmindra),130
-2934,Samtenling (Bhur),130
-2935,Samtenthang (Juprey),130
-2936,Samtenthang (Jupreydara),130
-2937,Chiwaling (Pingkhuwa),131
-2938,Labtsakha,131
-2939,Nenyul (Sisty),131
-2940,Peljorling (Kopchey),131
-2941,Rishong (Sistykhopan),131
-2942,Sahariphu (Balatung),131
-2943,Singhi,131
-2944,Tashitsel (Labarbotay),131
-2945,Wangchuling (Phibsoo),131
-2946,Yarpheling (Toemba),131
-2947,Yuejug (Chotatsirang),131
-2948,Barshong (Thaewar),132
-2949,Kapung (Somitar),132
-2950,Norbuling,132
-2951,Pangkhar (Somitar),132
-2952,Pemayoedling,132
-2953,Sherzhong,132
-2954,Tashiphoog,132
-2955,Dargyethang (Patabari),133
-2956,Gadanchholing (Sarpangbazar),133
-2957,Gomchola Ka (Chaar),133
-2958,Gomchola Kha (Kharey Pakhey),133
-2959,Koenchhogling (Kharpanitar),133
-2960,Norbugang (Akhow),133
-2961,Risoomgang (Tinjurey),133
-2962,Shompangkha (Sarpangtar),133
-2963,Thongjazor (Parkheygoan),133
-2964,Dorjitse (Chargery),134
-2965,Garkhola,134
-2966,Khamartari,134
-2967,Lamitar,134
-2968,Pemachholing (Dragaon),134
-2969,Singhi Dap,134
-2970,Singhi Dara,134
-2971,Tashichhoeling (Krasheschholing),134
-2972,Tashichholing,134
-2973,Woongchhilu (Limbutar),134
-2974,Yoed Zergang (Rangadara),134
-2975,Chubarthang (Chesopani),135
-2976,Daangling,135
-2977,Daangling (Dhoray),135
-2978,Daangling (Katesey),135
-2979,Dungmin,135
-2980,Dungmin (Baraytar),135
-2981,Dungmin (Bawanitar),135
-2982,Dungmin (Bichpany),135
-2983,Dungmin (Bistadara),135
-2984,Dungmin (Gobritar),135
-2985,Dungmin (Gurungtar),135
-2986,Dungmin (Salbandi),135
-2987,Gaden,135
-2988,Gaden (Proper Lalai),135
-2989,Gaden (School Dara),135
-2990,Gaden (Upper Lalai),135
-2991,Gaden (Upper Lalaidhap),135
-2992,Lingar,135
-2993,Lingar (Bistadara),135
-2994,Rijoog,135
-2995,Rijoog,135
-2996,Rijoog (Largkhar),135
-2997,Rijoog (Tamkuley),135
-2998,Tashithang,135
-2999,Thongjazor,135
-3000,Babi Chorten,136
-3001,Debsid,136
-3002,Gangchhe,136
-3003,Jumo,136
-3004,Lhoongtsho,136
-3005,Nezeylhakhang,136
-3006,Ngachuphakha,136
-3007,Rama,136
-3008,Sarbethang,136
-3009,Yoedselpang,136
-3010,Chamgang,137
-3011,Chamgang Toed,137
-3012,Doongdrog,137
-3013,Gyaltala,137
-3014,Wangdrog,137
-3015,Chizhi Goenpa,138
-3016,Ge-Nyenkha,138
-3017,Tsho-Chhenkha,138
-3018,Wangbama,138
-3019,Zanglegkha,138
-3020,Boegarna,139
-3021,Chhagminang,139
-3022,Chhandragang,139
-3023,Chhoekhor,139
-3024,Dazhi,139
-3025,Dechenphu,139
-3026,Deling Goenpa,139
-3027,Dodennang,139
-3028,Janazampa,139
-3029,Kabisa,139
-3030,Kuzhugchen,139
-3031,Tashiding,139
-3032,Wangkawog,139
-3033,Zhoshuel,139
-3034,Chagphu,140
-3035,Chhuzarkha,140
-3036,Gang Yuel,140
-3037,Khangkid Yuel,140
-3038,Sha Yuel,140
-3039,Bemegasa,141
-3040,Chimithangka,141
-3041,Chudingkha,141
-3042,Dalukha,141
-3043,Danglo,141
-3044,Doklaisa,141
-3045,Dolepchen,141
-3046,Dongkarla,141
-3047,Dramesa,141
-3048,Gida,141
-3049,Goenwog,141
-3050,Jadingkha,141
-3051,Jamdo,141
-3052,Jamdo Goma,141
-3053,Jamdo Woma,141
-3054,Jampel,141
-3055,Jiminang,141
-3056,Kepaithang,141
-3057,Kharibji,141
-3058,Kharphu,141
-3059,Khasadrapchu,141
-3060,Khasakha,141
-3061,Lamwog,141
-3062,Langdro,141
-3063,Lingzhipharka,141
-3064,Nyenzerkha,141
-3065,Patsekha,141
-3066,Puleona,141
-3067,Pungzhi,141
-3068,Samakha,141
-3069,Selaykha,141
-3070,Sengyelna/Karphu,141
-3071,Sigay,141
-3072,Silidraphu,141
-3073,Siluna,141
-3074,Simu,141
-3075,Sisinang,141
-3076,Tshaloongna,141
-3077,Tshaphu,141
-3078,Walunang,141
-3079,Zhingsagang,141
-3080,Barshong,142
-3081,Chungdulo,142
-3082,Gangbu,142
-3083,Goedshog,142
-3084,Gunglona,142
-3085,Jagoethang,142
-3086,Khasho,142
-3087,Lhayulhaetoed,142
-3088,Moentshiphoog,142
-3089,Naro,142
-3090,Pagoed,142
-3091,Sipchu,142
-3092,Tagsidthang,142
-3093,Walithang,142
-3094,Waza,142
-3095,Zhomthang,142
-3096,Zigu,142
-3097,Changmatasa,143
-3098,Damgochong,143
-3099,Dotaapaithang,143
-3100,Dozotoen,143
-3101,Gadraten,143
-3102,Jangothang,143
-3103,Jomphu,143
-3104,Toepgoethang,143
-3105,Betsamang,145
-3106,Bomdir,145
-3107,Gangkhardoong,145
-3108,Ngalimang,145
-3109,Pangkhar,145
-3110,Panglewog,145
-3111,Phanteng,145
-3112,Taphel,145
-3113,Tshaling,145
-3114,Wogmanang,145
-3115,Chhema (Jamkhar),146
-3116,Domshing,146
-3117,Largyab,146
-3118,Neydrag,146
-3119,Pachhu,146
-3120,Rijoong,146
-3121,Shingkhar,146
-3122,Tag Chhema,146
-3123,Tongla,146
-3124,Yoob,146
-3125,Zor (Jamkhar),146
-3126,Daka,147
-3127,Dengloom,147
-3128,Dolepchen,147
-3129,Domtshang,147
-3130,Gardung,147
-3131,Karmazom,147
-3132,Khamdang,147
-3133,Kilkhorchen,147
-3134,Koenchobling,147
-3135,Lengkhar,147
-3136,Ngalamang,147
-3137,Nombaring,147
-3138,Pam,147
-3139,Paychateng,147
-3140,Rabdeling,147
-3141,Serpang,147
-3142,Shakshing,147
-3143,Shalli,147
-3144,Shazam,147
-3145,Zharatshi,147
-3146,Aringborang,148
-3147,Bainang-Reb,148
-3148,Bar Dzong,148
-3149,Bawoong,148
-3150,Domtshang,148
-3151,Doongmaen,148
-3152,Gochang,148
-3153,Goenpa,148
-3154,Gongshing,148
-3155,Kakaney,148
-3156,Khalapangthang,148
-3157,Khiri,148
-3158,Lalam,148
-3159,Laybari,148
-3160,Lemrang,148
-3161,Lengbartang,148
-3162,Lushing,148
-3163,Maenshing,148
-3164,Nagtshang,148
-3165,Pangthang,148
-3166,Phairawa,148
-3167,Romang,148
-3168,Shangthang,148
-3169,Tag Dzong,148
-3170,Thongzor,148
-3171,Tsang-Rong,148
-3172,Tsenkang,148
-3173,Tshotsang,148
-3174,Tshurkhar,148
-3175,Tsushing,148
-3176,Woongkhar,148
-3177,Zor (Ramjar),148
-3178,Zorthoong,148
-3179,Bagpa (Toetsho),149
-3180,Bangkhabchen,149
-3181,Chaymkhar,149
-3182,Chhemkhar,149
-3183,Choklabtsa,149
-3184,Dagtsa,149
-3185,Dumang,149
-3186,Dungtse,149
-3187,Jangphoogtse,149
-3188,Khi-Nyel,149
-3189,Khoblakhar,149
-3190,Maeldoong,149
-3191,Manam,149
-3192,Nangkhar goenpa,149
-3193,Omba,149
-3194,Pajab,149
-3195,Pangthang Goenpa,149
-3196,Pungthung,149
-3197,Seb,149
-3198,Sengphu,149
-3199,Sertsho,149
-3200,Thangdang,149
-3201,Togshing,149
-3202,Tshengang,149
-3203,Bagpa (Tomizangsa),150
-3204,Bainangkhar,150
-3205,Changmadoong,150
-3206,Dongkashing,150
-3207,Dongshing,150
-3208,Dongtoed,150
-3209,Gomkor,150
-3210,Kenmong,150
-3211,Kuenzangling,150
-3212,Lhauzhing,150
-3213,Maenchhu,150
-3214,Memmong,150
-3215,Pang,150
-3216,Toka,150
-3217,Tsangdoong,150
-3218,Wogkhar,150
-3219,Bamchang,151
-3220,Chhema (Yalang),151
-3221,Doogti,151
-3222,Melongkhar,151
-3223,Namthi,151
-3224,Phuyang,151
-3225,Rinzin Toenpang,151
-3226,Rolam,151
-3227,Thragom,151
-3228,Yalang,151
-3229,Yarphel,151
-3230,Baney,152
-3231,Bayling,152
-3232,Bimkhar,152
-3233,Gangkhar,152
-3234,Li-chen,152
-3235,Rabti,152
-3236,Bainangkhar,153
-3237,Bargoen,153
-3238,Bumling,153
-3239,Chaod Lhakang wog,153
-3240,Dzong Goen,153
-3241,Dzong Thong,153
-3242,Jamoong,153
-3243,Kedpoong,153
-3244,Kumoong,153
-3245,Maentshang,153
-3246,Majadoong,153
-3247,Moogkhar,153
-3248,Nagtshang,153
-3249,Ngaloong,153
-3250,Ngaloong Gang,153
-3251,Pam,153
-3252,Pangthang,153
-3253,Resengma,153
-3254,Reygang,153
-3255,Rophoong,153
-3256,Sershing,153
-3257,Soortshong,153
-3258,Tashi Teng,153
-3259,Thangchey,153
-3260,Trashang,153
-3261,Yangkhar,153
-3262,Zhingom,153
-3263,Zoor,153
-3264,Bargoen (Bidung),154
-3265,Daling,154
-3266,Dodrom,154
-3267,Dori (Bidung),154
-3268,Gaygoen,154
-3269,Jaloong,154
-3270,Kakaniwog,154
-3271,Khairi,154
-3272,Limphang,154
-3273,Perthong,154
-3274,Retsang Peg,154
-3275,Takseri,154
-3276,Tsekhar,154
-3277,Tsigtoom,154
-3278,Maanthong,155
-3279,Mertsham,155
-3280,Pangthang,155
-3281,Ritsangdoong,155
-3282,Rongthoong,155
-3283,Thargom,155
-3284,Yonphoogla,155
-3285,Yonphoogpam,155
-3286,Bedengphoog,156
-3287,Chorphoog,156
-3288,Dangna,156
-3289,Doyam Chema,156
-3290,Drumshari,156
-3291,Gangpar,156
-3292,Kheri,156
-3293,Kheshing,156
-3294,Lagoen,156
-3295,Lamyong,156
-3296,Langnang,156
-3297,Madeywa,156
-3298,Merdag,156
-3299,Neyling,156
-3300,Passaphoog,156
-3301,Peydoong,156
-3302,Ribalingmi,156
-3303,Sarong,156
-3304,Threlphoog,156
-3305,Yungney,156
-3306,Zordoong,156
-3307,Barshong,157
-3308,Bayphoog (Khaling),157
-3309,Bayphoog Shiri,157
-3310,Brekha,157
-3311,Brekha Doongtshopay,157
-3312,Daksa,157
-3313,Daktsheng,157
-3314,Dangre,157
-3315,Doongthopay,157
-3316,Douzor,157
-3317,Dregoen,157
-3318,Dreywoong,157
-3319,Goenpa,157
-3320,Gomchhu,157
-3321,Jibechhu,157
-3322,Jiri,157
-3323,Khochiphaye,157
-3324,Kholdoong,157
-3325,Lemang,157
-3326,Lemi,157
-3327,Lemi Chhamzor,157
-3328,Liza,157
-3329,Meringzor,157
-3330,Mongkhorla,157
-3331,Rashuwoong,157
-3332,Thrimkhar,157
-3333,Thripang Goenpa,157
-3334,Tokaphu,157
-3335,Tshangpo,157
-3336,Wangachema,157
-3337,Bamshing,158
-3338,Bargoenpa (Lumang),158
-3339,Beamri,158
-3340,Chengri,158
-3341,Darnang,158
-3342,Daroong,158
-3343,Daroong Wadrangzor,158
-3344,Deno,158
-3345,Deno,158
-3346,Doomgmanma,158
-3347,Dori,158
-3348,Dori Tsano,158
-3349,Dubkhang,158
-3350,Dubkhang Goenpa,158
-3351,Gaphoo,158
-3352,Goenzor,158
-3353,Habla,158
-3354,Jabgoen,158
-3355,Jabgoenpa,158
-3356,Khaphe,158
-3357,Khargoen,158
-3358,Kharphoo,158
-3359,Kharphoogoenpa,158
-3360,Kheri (Lumang),158
-3361,Kheshing (Lumang),158
-3362,Kheshing Reserbu,158
-3363,Kheshing Roamzor,158
-3364,Kheshingserbu,158
-3365,Khinying Manma,158
-3366,Khomin,158
-3367,Kurchilo,158
-3368,Lumang,158
-3369,Lumang Goenzor,158
-3370,Lumang Gomtshang,158
-3371,Lumang Shachari,158
-3372,Moochhu,158
-3373,Omshari,158
-3374,Ragea,158
-3375,Reserbu,158
-3376,Rizang,158
-3377,Rushingye,158
-3378,Sangmari,158
-3379,Sayuel,158
-3380,Sethang,158
-3381,Shachari,158
-3382,Tashichoedling,158
-3383,Thrimla,158
-3384,Thrumnang,158
-3385,Thrumnang Lishingzor,158
-3386,Tsano,158
-3387,Tshangpo,158
-3388,Wadrangzor,158
-3389,Wamrong,158
-3390,Woongang,158
-3391,Chelephoo,159
-3392,Gyengo,159
-3393,Khashateng,159
-3394,Khiliphoo,159
-3395,Merag Maed,159
-3396,Merag Toed,159
-3397,Banyalting,160
-3398,Bargoenpa,160
-3399,Brang,160
-3400,Bumtang,160
-3401,Demkhar,160
-3402,Dorshing,160
-3403,Gadzari,160
-3404,Janyema,160
-3405,Karmagoenpa,160
-3406,Kharpa,160
-3407,Lem,160
-3408,Lhakhang,160
-3409,Momnangkhar,160
-3410,Pengtse,160
-3411,Phimshong,160
-3412,Shingchaloo,160
-3413,Shingkhang,160
-3414,Shingringmo,160
-3415,Soelkhar,160
-3416,Tathrang,160
-3417,Thongrong,160
-3418,Thrang,160
-3419,Yabrang,160
-3420,Yerchiloo,160
-3421,Boongmaen,161
-3422,Chamang,161
-3423,Chhima,161
-3424,Dekidling,161
-3425,Deling,161
-3426,Doon Goen,161
-3427,Doongsam,161
-3428,Doongshing/Tshatshey,161
-3429,Joenla Tshetshe,161
-3430,Joenlapam,161
-3431,Kadam,161
-3432,Khudumpang,161
-3433,Langteng,161
-3434,Melongkhar,161
-3435,Nagtshang,161
-3436,Pajogoenpa,161
-3437,Pakaling,161
-3438,Pangthang,161
-3439,Radhi Pangthang,161
-3440,Thangthrang,161
-3441,Togshingmang,161
-3442,Tongling Kadam,161
-3443,Tongling Khatoe,161
-3444,Tongling Pam,161
-3445,Tongling Pangthang,161
-3446,Tongling Tangthrang,161
-3447,Tongling Thrang,161
-3448,Tsengkhar,161
-3449,Borangmang,162
-3450,Borangtse,162
-3451,Burnlog,162
-3452,Melam Thoong,162
-3453,Moorbi,162
-3454,Sagteng,162
-3455,Sagteng Joenkhar,162
-3456,Sagteng Manirong,162
-3457,Sagteng Pusa,162
-3458,Sagteng Tenmang,162
-3459,Sagteng Thagthri,162
-3460,Tholong,162
-3461,Youngbazor,162
-3462,Bikhar,163
-3463,Khabti,163
-3464,Maelphel,163
-3465,Pam,163
-3466,Rangshinkhar,163
-3467,Samkhar,163
-3468,Yenangbrangsa,163
-3469,Chaling,164
-3470,Chhangmi,164
-3471,Galing,164
-3472,Gongtshephangma,164
-3473,Rangjoong,164
-3474,Shongphoog,164
-3475,Yobinang,164
-3476,Bayphu,165
-3477,Berdoongma,165
-3478,Bongzor,165
-3479,Lam Pangthang,165
-3480,Lhakhang Jab,165
-3481,Phakpari,165
-3482,Phungshing,165
-3483,Ramchong Ma,165
-3484,Ramchongma,165
-3485,Sako,165
-3486,Thoongkhar,165
-3487,Thrimshing,165
-3488,Tsangpo,165
-3489,Yemkhar,165
-3490,Youngdhir,165
-3491,Baepam,166
-3492,Barkazor,166
-3493,Benshingmo,166
-3494,Chhiya,166
-3495,Dangrong,166
-3496,Dayphoog,166
-3497,Dengtsalo,166
-3498,Geangkhar,166
-3499,Gongtsheri,166
-3500,Jomtshang,166
-3501,Lenche,166
-3502,Maenkhar,166
-3503,Mongka,166
-3504,Mongyea,166
-3505,Rizor,166
-3506,Tshedoong,166
-3507,Yerchhilo,166
-3508,Changzoe,167
-3509,Daliphang,167
-3510,Dambinang,167
-3511,Dargyeling,167
-3512,Duroong,167
-3513,Karthoong,167
-3514,Khardza,167
-3515,Kheri,167
-3516,Leyphoog,167
-3517,Shokang,167
-3518,Changray,168
-3519,Draagteng,168
-3520,Kuenga Rabten,168
-3521,Phelchung,168
-3522,Reyphel,168
-3523,Samchhoeling,168
-3524,Samling Chala,168
-3525,Samling Churak,168
-3526,Samling Churatak,168
-3527,Samling Dangrey,168
-3528,Samling Dara,168
-3529,Samling Gomola,168
-3530,Samling Khamaed,168
-3531,Samling Kikhornang,168
-3532,Samling Kingacholing,168
-3533,Samling Kormaed,168
-3534,Samling Kurbi,168
-3535,Samling Lhakhangjab,168
-3536,Samling Lhakhangwog,168
-3537,Samling Majaling,168
-3538,Samling Maling,168
-3539,Samling Malingbung,168
-3540,Samling Malingjug,168
-3541,Samling Marzhing,168
-3542,Samling Pesinang,168
-3543,Samling Phokchen,168
-3544,Samling Pingkhar,168
-3545,Samling Pisinang,168
-3546,Samling Pongpa,168
-3547,Samling Shangthong,168
-3548,Samling Shangthongjab,168
-3549,Samling Shingkhar,168
-3550,Samling Ta-Dzong,168
-3551,Samling Tangchen,168
-3552,Samling Theling,168
-3553,Samling Tsekunang,168
-3554,Samling Tshajab,168
-3555,Samling Tshokunang,168
-3556,Samling Wangthang,168
-3557,Samling Yumchen,168
-3558,Samling Zarchen,168
-3559,Samling Zhewthang,168
-3560,Tagtse,168
-3561,Tashidingkha,168
-3562,Uesar,168
-3563,Korphoog Maed,169
-3564,Korphoog Toed,169
-3565,Nabi,169
-3566,Nyimzhong Maed,169
-3567,Nyimzhong Toed,169
-3568,Baling,170
-3569,Bayzam,170
-3570,Beyling,170
-3571,Dandung,170
-3572,Jangbee,170
-3573,Koshala,170
-3574,Langthil,170
-3575,Ngadak,170
-3576,Ngomey,170
-3577,Pangzor,170
-3578,Phuzor Phumzor,170
-3579,Wangling,170
-3580,Yuling (Langthil),170
-3581,Bemjee,171
-3582,Bji,171
-3583,Bji Pam,171
-3584,Chela,171
-3585,Dangzhing,171
-3586,Darbab,171
-3587,Dorgen,171
-3588,Gagar,171
-3589,Jongthang,171
-3590,Kabab,171
-3591,Karzhong,171
-3592,Pang,171
-3593,Sengm-Bji,171
-3594,Sinphoog,171
-3595,Thang Ngyel,171
-3596,Chendenbji,172
-3597,Drangla Goenpa,172
-3598,Kaladrame,172
-3599,Kalathrelme,172
-3600,Nyala Goenpa,172
-3601,Tangsibji,172
-3602,Tshangkha,172
-3603,Barshong Maed (Gairigang Ka),173
-3604,Barshong Toed (Gairigang Ka),173
-3605,Chunyikhang (Baradhurey),173
-3606,Gairigang Kha (Gairigaon B),173
-3607,Gangtokha (Daragang),173
-3608,Toitshang,173
-3609,Dangrayboog Maed (Bichgaon Kha),174
-3610,Dangrayboog Toed (Bichgaon Ka),174
-3611,Khirithang (Khorsaney),174
-3612,Lhamoiloongm (Gopini),174
-3613,Norjangsa (Lalikharka),174
-3614,Chokpur,175
-3615,Dzamling Zor (Upper Suntolay),175
-3616,Dzamlingthang (Lower Lobsibotay),175
-3617,Pelrithang (Upper Lobsibotay),175
-3618,Pemathang (Lower Suntolay),175
-3619,Phuensoomgang (Gairigaon A),175
-3620,Dekidling (Lower Bockray),176
-3621,Maenchhana (Mithun),176
-3622,Nyizergang (Upper Salami),176
-3623,Sa-Tsangma (Majuwa),176
-3624,Tashiyangjong (Lower Salami),176
-3625,Dzamling Zor (Majigaon),177
-3626,Dzamling Zor (Manikhola),177
-3627,Dzamling Zor (Sarkigaon),177
-3628,Mendrelgang (Lamidara),177
-3629,Pemashong (Sarkigaon),177
-3630,Riserboo (Rateykhola),177
-3631,Riserboo A (Kamigaon),177
-3632,Riserboo B (Kamigaon),177
-3633,Shamshing Gaden (Manidara),177
-3634,Tashipang (Gurungaon),177
-3635,Chhuzomsa (Bulkay),178
-3636,Jakhor (Dhanisay),178
-3637,Munyulsa (Kaligaon),178
-3638,Pangthang (Pakhay),178
-3639,Patsaling Toed,178
-3640,Patshaling Maed,178
-3641,Thakorling (Thangray),178
-3642,Tsakaling (Kalay Kalikhola),178
-3643,Chhubapsa (Tshangay),179
-3644,Dhodomchen (Dhapkhola),179
-3645,Dongtod (Saureni),179
-3646,Dragithong (S/Melay),179
-3647,Goentengkha (Baithakey),179
-3648,Menchhunang (Kharkhola),179
-3649,Norbuthang (Manitar),179
-3650,Peljorling (Dhansiri),179
-3651,Serzhong (Phaleday),179
-3652,Tashichholing (Burichu),179
-3653,Tongshigang (T/Melay),179
-3654,Wangthangling (Jogitar),179
-3655,Charingma (Zulphaygaon),180
-3656,Darchhargang (Dhajey),180
-3657,Dawthongsa (Saunay),180
-3658,Gagaling (Ghaga Goan),180
-3659,Neymedsa (Nevarey),180
-3660,Nyimazor (Herabotay),180
-3661,Rangthangling (Chanautre),180
-3662,Rangthangling (Chanautre),180
-3663,Soonkosh,180
-3664,Dangreygang (Daragaon),181
-3665,Dekidling (Kokray),181
-3666,Dzomling (Katikey),181
-3667,Tashiling Maed (Bararay A),181
-3668,Tashiling Toed (Bararay B),181
-3669,Norboogang (Mazgaon),182
-3670,Semdenjong (Teoray),182
-3671,Sergithang Maed (Lower Sergithang),182
-3672,Sergithang Toed (Upper Sergithang),182
-3673,Tashithang (Patale Tar),182
-3674,Alenchi (Alaichey),183
-3675,Droobchhugang (Harpaypani),183
-3676,Gomsoom (Tintalay),183
-3677,Tsholingkar Toed (Upper Tshokana),183
-3678,Tsholingkhar (Kapazhing),183
-3679,Tsholingkhar Maed (Lower Tshokana),183
-3680,Chhuboelsa (Simpani),184
-3681,Damtshang,184
-3682,Doongkarling (Bouri),184
-3683,Kabelzhing (Tsheringtoe),184
-3684,Soentabsa (Dalleni),184
-3685,Tagthang (Bhaktar),184
-3686,Tongshingnang (Salleri),184
-3687,Tsirang Toed,184
-3688,Wangphoo (Dauthrey),184
-3689,Zomna (Jingay),184
-3690,Dzawa,185
-3691,Haragangkha,185
-3692,Jarog-gang,185
-3693,Kago,185
-3694,Lamga,185
-3695,Lawa,185
-3696,Lomtshokha,185
-3697,Lophokha,185
-3698,Nangzhina,185
-3699,Phagtakha,185
-3700,Rockha,185
-3701,Samthang,185
-3702,Bakakha,186
-3703,Balakha,186
-3704,Bjednagloongpa,186
-3705,Damzhingkhar,186
-3706,Darjeegang,186
-3707,Dekiling,186
-3708,Dongchen,186
-3709,Euchhu,186
-3710,Eusakha,186
-3711,Gangchukhar,186
-3712,Gangmarkhar,186
-3713,Garzhikha,186
-3714,Geyten,186
-3715,Gholaykhar,186
-3716,Gonaloo,186
-3717,Gongthangkha,186
-3718,Goomina,186
-3719,Jagarlingchu,186
-3720,Jangsergang,186
-3721,Jaubamo,186
-3722,Jazhikha,186
-3723,Kaangtegtewa,186
-3724,Kelakha,186
-3725,Khametey,186
-3726,Khatangkhar,186
-3727,Kokojoog,186
-3728,Kokokhar,186
-3729,Lamdogkha,186
-3730,Lamikhar,186
-3731,Lhakhangchen,186
-3732,Loongmo,186
-3733,Loongpa,186
-3734,Loongphugang,186
-3735,Namgyalling,186
-3736,Ngawang,186
-3737,Nyalagang,186
-3738,Okorzhing,186
-3739,Omchheygang,186
-3740,Omkhag,186
-3741,Pangmarchu,186
-3742,Pangmarkhar,186
-3743,Pangmarpo,186
-3744,Pelchhu,186
-3745,Phagpchhusa,186
-3746,Phuentshoggang,186
-3747,Rinchhenling,186
-3748,Sarchhu,186
-3749,Sershongnang,186
-3750,Shokeylog,186
-3751,Shongchuna,186
-3752,Shongtoedkhar,186
-3753,Sisidarkar,186
-3754,Takarkhar,186
-3755,Tarrog,186
-3756,Tarshingtsawa,186
-3757,Tashi Lakha,186
-3758,Tashi Tokha,186
-3759,Thingmakha,186
-3760,Toedkikhar,186
-3761,Toedkikhar,186
-3762,Toekizingkha,186
-3763,Togchennang,186
-3764,Tshangchhekhar,186
-3765,Tshering Pangchu,186
-3766,Tshigkona,186
-3767,Wachhey,186
-3768,Wakha,186
-3769,Zangtegkha,186
-3770,Bamed,187
-3771,Chhubar Taagm,187
-3772,Chhubarwog,187
-3773,Doenchhoeling,187
-3774,Dogsena,187
-3775,Drongmeed,187
-3776,Gedra Goenpa,187
-3777,Gempang,187
-3778,Godraang,187
-3779,Loomjoog,187
-3780,Norbooding,187
-3781,Phaljorling,187
-3782,Phuentshoggang,187
-3783,Ridag Goenpa,187
-3784,Rigoen,187
-3785,Rithangwog,187
-3786,Selgona,187
-3787,Taagsar,187
-3788,Tashidingkha,187
-3789,Tashigang,187
-3790,Tokaling,187
-3791,Tomla,187
-3792,Uesagang,187
-3793,Zimi,187
-3794,Gyapakha,188
-3795,Kamina,188
-3796,Sili,188
-3797,Taagsha,188
-3798,Tsara,188
-3799,Uma Khamaed,188
-3800,Uma Khatoed,188
-3801,Wogyal,188
-3802,Gangteng,189
-3803,Gangteng Tapaiteng,189
-3804,Geyla,189
-3805,Gorgoen,189
-3806,Jangchen,189
-3807,Koomboo,189
-3808,Maang,189
-3809,Saangtana,189
-3810,Uesa,189
-3811,Changkha,190
-3812,Dabchheykha,190
-3813,Gangche,190
-3814,Khamaedna,190
-3815,Khatoedkha,190
-3816,Matshig Kha,190
-3817,Matshigpogto,190
-3818,Pasakha,190
-3819,Ternga,190
-3820,Thoukha,190
-3821,Tongzhong,190
-3822,Gikha,191
-3823,Haebisa,191
-3824,Haetshokha,191
-3825,Medpaisa,191
-3826,Shingkhey,191
-3827,Shingkhey,191
-3828,Tabcheykha,191
-3829,Baedrog,192
-3830,Baelpa,192
-3831,Chegidp,192
-3832,Goendep,192
-3833,Kazhi,192
-3834,Komathrang,192
-3835,Lengbi,192
-3836,Lumchey,192
-3837,Eusa Gongm,193
-3838,Eusa Wogm,193
-3839,Haebisa,193
-3840,Halued,193
-3841,Khoorjoongla,193
-3842,Nagbisa,193
-3843,Chhaebhakha,194
-3844,Chhedalog,194
-3845,Chitokha,194
-3846,Gangjab,194
-3847,Geylegkha,194
-3848,Goensar,194
-3849,Kuenzangling,194
-3850,Nyishogkha,194
-3851,Pangkha,194
-3852,Pangzhikha,194
-3853,Samtengang,194
-3854,Zampa,194
-3855,Chhoongserkha,195
-3856,Chhung Goen,195
-3857,Domkha,195
-3858,Goenkhar,195
-3859,Koomchhi,195
-3860,Phangyuel,195
-3861,Wampoekhar,195
-3862,Chaji,196
-3863,Chemdro,196
-3864,Chumedchen,196
-3865,Damchoelhakhang,196
-3866,Darjeygyab,196
-3867,Dasangsar,196
-3868,Dogsenang,196
-3869,Drangpa,196
-3870,Gang-gyed,196
-3871,Gangphel,196
-3872,Gorphoog,196
-3873,Hapa,196
-3874,Jangchhub Goenpa,196
-3875,Khemdro,196
-3876,Khewang,196
-3877,Kikhorthang,196
-3878,Kilthang,196
-3879,Logchen,196
-3880,Nemphel,196
-3881,Nyimdrosa,196
-3882,Pangsar,196
-3883,Poelam,196
-3884,Ram Sarp,196
-3885,Taenkhegeyrey,196
-3886,Talachen,196
-3887,Taphoog,196
-3888,Taphoog,196
-3889,Tarchen,196
-3890,Tawa,196
-3891,Tshaldar,196
-3892,Yuelego,196
-3893,Zhephoog,196
-3894,Zhibar,196
-3895,Zhilam,196
-3896,Zhugar,196
-3897,Zigzi,196
-3898,Aaleygang,197
-3899,Agokha,197
-3900,Baegokha,197
-3901,Baeneybi,197
-3902,Beygongma,197
-3903,Chhagtshalkhar,197
-3904,Chhilikha,197
-3905,Chhumigtengkha,197
-3906,Dagphoog,197
-3907,Dagphugyen,197
-3908,Damchen,197
-3909,Damrukha,197
-3910,Dochhoongthoor,197
-3911,Doegorchabsa,197
-3912,Dongphel,197
-3913,Drolmanang,197
-3914,Drongmaed,197
-3915,Golegkhar,197
-3916,Gongkha,197
-3917,Gyala,197
-3918,Jangsanang,197
-3919,Jaserkha,197
-3920,Khamzhog,197
-3921,Khothangkha,197
-3922,Khothangkha Jongphel,197
-3923,Kibloong,197
-3924,Kilkhorthang,197
-3925,Langdo,197
-3926,Loongchoongna,197
-3927,Lungmagang,197
-3928,Marphelkha,197
-3929,Namgayling,197
-3930,Neygo,197
-3931,Neygobara,197
-3932,Nyachhegyekha,197
-3933,Nyalabi,197
-3934,Nyalakha,197
-3935,Nyizergang,197
-3936,Oharkha,197
-3937,Omchen,197
-3938,Omtekha,197
-3939,Oola,197
-3940,Rambigang,197
-3941,Ruechhedkha,197
-3942,Ruemina,197
-3943,Ruetoedkha,197
-3944,Samarkha,197
-3945,Samdrubgang,197
-3946,Samten Goenpa,197
-3947,Sergaykha,197
-3948,Sheley,197
-3949,Sheltogkha,197
-3950,Tashidingkha,197
-3951,Terkana,197
-3952,Toelakha,197
-3953,Tshamchhog,197
-3954,Tshamokha,197
-3955,Tshamonang,197
-3956,Wangduena,197
-3957,Zamding,197
-3958,Zamding Omtekha,197
-3959,Boomilog,198
-3960,Booso,198
-3961,Darrilog,198
-3962,Gangchhukha,198
-3963,Langbi,198
-3964,Longmaed,198
-3965,Longtoed,198
-3966,Loobear,198
-3967,Nakha,198
-3968,Nangkha (Sagatenten),198
-3969,Rabo,198
-3970,Riwanang,198
-3971,Rukoobji,198
-3972,Serthang,198
-3973,Wangdue Goenpa,198
-3974,Zeri,198
-3975,Gawaphel,199
-3976,Rinchhengang,199
-3977,Rinchhengang,199
-3978,Tartaloongchu,199
-3979,Thang Goo,199
-3980,Wangjokha,199
-3981,Bardo,200
-3982,Digala,200
-3983,Khomshar,200
-3984,Langdurbi,200
-3985,Phulabi,200
-3986,Barpong,201
-3987,Chabdenba,201
-3988,Dali,201
-3989,Kamati,201
-3990,Trong (Bjokar),201
-3991,Budhashi,202
-3992,Lamthang,202
-3993,Lichibi,202
-3994,Limapong,202
-3995,Mewangang,202
-3996,Samchheoling,202
-3997,Buli,203
-3998,Buli Goenpa,203
-3999,Dakphel,203
-4000,Duenmang,203
-4001,Goleng,203
-4002,Jimjong,203
-4003,Kamjong,203
-4004,Kidkhar,203
-4005,Nyakha,203
-4006,Tali,203
-4007,Tsheldang,203
-4008,Zhobleng,203
-4009,Jangkhar,204
-4010,Katong,204
-4011,Marangdued,204
-4012,Ngangla Trong,204
-4013,Panbang,204
-4014,Pongchaling,204
-4015,Ribati,204
-4016,Sonamthang,204
-4017,Thinleygang,204
-4018,Yumdang,204
-4019,Chabgoen,205
-4020,Chag-Ngar-Zam,205
-4021,Mamong Trong,205
-4022,Panabi,205
-4023,Pantang,205
-4024,Pongchola,205
-4025,Salapong,205
-4026,Shalingtoed,205
-4027,Tadijong,205
-4028,Tashibi,205
-4029,Zangbi,205
-4030,Nyimzhong,206
-4031,Radi,206
-4032,Shingkhar,206
-4033,Thajong,206
-4034,Thrisa,206
-4035,Wamling,206
-4036,Zangling,206
-4037,Berti,207
-4038,Dangkhar,207
-4039,Gomphu,207
-4040,Soobdrang,207
-4041,Tamag,207
-4042,Trong,207
-4043,Tshanglajong,207
-4044,Zurphel,207
-4045,N/A,208
+1,Not Available,1
+2,Chakhar,2
+3,Changwa,2
+4,Damphel,2
+5,Dawathang,2
+6,Dhur Lusibee,2
+7,Dhur Moen,2
+8,Dodrong,2
+9,Dorjibe,2
+10,Druk Dok,2
+11,Goling,2
+12,Jamphel Lhakhang,2
+13,Kangdok,2
+14,Kenchosum,2
+15,Kharsa,2
+16,Kharsum,2
+17,Nang Lhakang,2
+18,Norbugang,2
+19,Pangrey,2
+20,Pedtsheling,2
+21,Potola,2
+22,Samthang,2
+23,Saram,2
+24,Shukdak,2
+25,Tamshing,2
+26,Tashiling (Chokhor),2
+27,Tendok,2
+28,Thangbi,2
+29,Torshong,2
+30,Zangling,2
+31,Zhabjethang,2
+32,Bhim,3
+33,Buli,3
+34,Buli/Uru,3
+35,Chedeypang,3
+36,Choda,3
+37,Choongphel,3
+38,Domkhar,3
+39,Gyaltsa,3
+40,Nangar,3
+41,Pangteygoenpa,3
+42,Phurjoen,3
+43,Samtenling,3
+44,Terzok,3
+45,Tharpaling,3
+46,Thrometh,3
+47,Thrometh (Samling),3
+48,Trakar,3
+49,Ursang,3
+50,Uru,3
+51,Urudrangbi,3
+52,Yamthrag,3
+53,Yerangbi,3
+54,Zhurey,3
+55,Zincha,3
+56,Zugney,3
+57,Zugney (Chorten Nengpa),3
+58,Benzabi,4
+59,Bezur,4
+60,Chhutoe,4
+61,Chojam,4
+62,Dazur,4
+63,Gambling,4
+64,Gangju,4
+65,Jamshong,4
+66,Jog,4
+67,Khangrab,4
+68,Khoyar,4
+69,Kidzom,4
+70,Kuenzangdrang,4
+71,Misserthang,4
+72,Namkha,4
+73,Nangnang,4
+74,Nimalung,4
+75,Pangshing,4
+76,Phom Drong,4
+77,Rimochen,4
+78,Sameth,4
+79,Shobugoenpa,4
+80,Tandigang,4
+81,Tashiling (Tang),4
+82,Tralang,4
+83,Ugyenchholing,4
+84,Beteng,5
+85,Pangkhar,5
+86,Shingkhar,5
+87,Sing-nyer,5
+88,Soomthrang,5
+89,Tansibi,5
+90,Ura-Charipa,5
+91,Ura-Tarshong,5
+92,Ura-Toepda,5
+93,Ura-Trab Krispai,5
+94,Bjagchhog,6
+95,Mebisa,6
+96,Tashi Gatshel,6
+97,Tsimakha,6
+98,Tsimasham,6
+99,Wangkha,6
+100,Baeyuel Kunzang,7
+101,Boeri,7
+102,Bongo,7
+103,Chhasilakha,7
+104,Choongkha,7
+105,Damji,7
+106,Gedu,7
+107,Junglay,7
+108,Jurma,7
+109,Ketogkha,7
+110,Miritsemo,7
+111,Pakshikha,7
+112,Phashooma,7
+113,Togtokha,7
+114,Zamsa,7
+115,Bunakha,8
+116,Dorgoen,8
+117,Gangkha,8
+118,Jongzhi,8
+119,Lang Nyelsa,8
+120,Metep,8
+121,Pagga,8
+122,Pagga Goenpa,8
+123,Rimtekha,8
+124,Shelgoan,8
+125,Sheyuel,8
+126,Tsamdrag,8
+127,Chhumedlakha (Barkhey),9
+128,Dangreyboog (Bich Darla),9
+129,Dojangchhey (Dojangchey),9
+130,Gamanang,9
+131,Gengu,9
+132,Khamaedthapang (Lower Saureni),9
+133,Kimalakha,9
+134,Norgangtoed,9
+135,Nyimgang (Ghamdara),9
+136,Pagshinggang (Pakshina),9
+137,Rinchhentse (Gurung Goan),9
+138,Samarchen (Samachin),9
+139,Sharphug (Sangkhu),9
+140,Sillangsa (Silley),9
+141,Sinchula,9
+142,Tabji,9
+143,Tagp-thang-boog (Bich Saureni),9
+144,Yagang,9
+145,Babana,10
+146,Doongma,10
+147,Drukdingsa,10
+148,Mangdokha,10
+149,Pangu,10
+150,Papaling,10
+151,Uezhi,10
+152,Changeykha,11
+153,Dagpa,11
+154,Dilib,11
+155,Geygoen,11
+156,Nayekha,11
+157,Omchhu,11
+158,Tsanglina,11
+159,Bachhu,12
+160,Chiyuel,12
+161,Daga,12
+162,Pangsela,12
+163,Phootsha,12
+164,Trashigang,12
+165,Tshebji,12
+166,Aamleg,13
+167,Bjagchhu,13
+168,Chagdokha,13
+169,Chimongna Ka,13
+170,Chimongna Kha ,13
+171,Damchekha,13
+172,Dofam,13
+173,Dolepchen,13
+174,Dupanang,13
+175,Dzedokha,13
+176,Lotokha,13
+177,Pamji,13
+178,Gumina,14
+179,Metap Goenpa Maed,14
+180,Metap Goenpa Toed,14
+181,Pangu,14
+182,Uekha,14
+183,Ahalay (Dophugchen),15
+184,Bosokha,15
+185,Chongeykha A,15
+186,Chonggeykha B,15
+187,Dajaygang,15
+188,Deling (Chomchey),15
+189,Dophulakha,15
+190,Gangteng,15
+191,Kungkha,15
+192,Lingdaen,15
+193,Marpji (Chilauney),15
+194,Pachhudrag (Pachu Dara),15
+195,Pachhugang (Pachu Tar),15
+196,Pachhuthang (Balden Dara),15
+197,Tashidingkha,15
+198,Toribari,15
+199,Wangdue Gatshel (Ramitay),15
+200,Bamenmo (Ragaythung),16
+201,Doruphug (Dhungayna),16
+202,Dungkarling (Ghumauney),16
+203,Gurung Dara),16
+204,Karmaling (Malbasay),16
+205,Khatob (Burkey),16
+206,Khepaithang (Khaibatar),16
+207,Pangna A,16
+208,Pangna B,16
+209,Pangna C,16
+210,Pedtshelnang (Pakchina),16
+211,Pekarling (Pekasey),16
+212,Phurpaling,16
+213,Rigzinling (Behitar),16
+214,Sengyegang(Singi),16
+215,Sonamtang (Kothiline),16
+216,Thongling (Daragoan),16
+217,Tshachhungnal (Ahalay),16
+218,Banglachu,17
+219,Chukam,17
+220,Dolepchen,17
+221,Dorona Chhewa (Thulo Dorona),17
+222,Dorona Chhoongwa (Sanu Dorona),17
+223,Lalidhapper,17
+224,Maamedthang,17
+225,Nedachu,17
+226,Nyimtola,17
+227,Sushithang,17
+228,Lower Pangna,18
+229,Lower Pangserbo,18
+230,Tangna,18
+231,Upper Pangna,18
+232,Upper Pangserbo,18
+233,Gangjab,19
+234,Gesarling,19
+235,Phuensoomgang,19
+236,Samtengang,19
+237,Tajoog,19
+238,Tashithang,19
+239,Baleggang,20
+240,Dogaag,20
+241,Gozhi,20
+242,Gozhi Maed,20
+243,Gozhi Toed,20
+244,Aetosi,21
+245,Bartsha,21
+246,Buchunang,21
+247,Dalithang,21
+248,Gangjab,21
+249,Jurugang,21
+250,Kanakha,21
+251,Kazhithang,21
+252,Khagochen,21
+253,Lhaling,21
+254,Lungtengang,21
+255,Namgaylang,21
+256,Nyindukha,21
+257,Pungzhi,21
+258,Tanabji,21
+259,Ganglingna (Labrang),22
+260,Jemthang (Balabas),22
+261,Karmaling (Kerabari),22
+262,Labtsakha (Deorali),22
+263,Omchhu (Homa),22
+264,Senchumthang (Dalbari),22
+265,Akhochen,23
+266,Gibsa,23
+267,Gumla,23
+268,Pasger (Paksey),23
+269,Pogtog,23
+270,Thomgang,23
+271,Baloong,24
+272,Barna,24
+273,Kompa,24
+274,Sidpa,24
+275,Thasa,24
+276,Chongsamling (Sibsooni),25
+277,Kuendrelthang (Majigaon),25
+278,Lhamoidzingkha (Kalikhola),25
+279,Loongsilsa (Daragaon),25
+280,Majathang (Lamchey),25
+281,Tshaemjeena,25
+282,Tshaemzhi Gosa (Tshaemjeena/Devitar),25
+283,Damchhunang (Allay),26
+284,Dangreyboog (Bichgoan),26
+285,Dramze Kesa (Katarey),26
+286,Gangtokha (Daragoan),26
+287,Lakpaling (Manglabarey),26
+288,Nichula,26
+289,Nyeltshosa (Basiney),26
+290,Omchhugang (Apgachi),26
+291,Tsheluthang (Suntoley),26
+292,Yarpheling (Solmoley),26
+293,Gangyab (Gopeni),27
+294,Langchhenthang (Hathikhara),27
+295,Namchagla,27
+296,Norbuling (Lodoma),27
+297,Shamdolay,27
+298,Tashiding,27
+299,Babythang,28
+300,Gakidthang,28
+301,Gelegchhu,28
+302,Goongpa Soomchu (Tisgharay),28
+303,Pateykha,28
+304,Rongchhu (Bandarchu),28
+305,Salambi,28
+306,Satshamchhu (Budheychu),28
+307,Tsangkha,28
+308,Zinchila,28
+309,Dharay,29
+310,Gangzur,29
+311,Gangzur (Panakhola),29
+312,Gangzur (Shamdolay),29
+313,Gangzur Maed (Salaree),29
+314,Gangzur Toed (Pasebung),29
+315,Norbuzhingkha,29
+316,Norbuzhingkha (Panakhola),29
+317,Samarchu (Samakhola),29
+318,Tsendagang,29
+319,Tsendagang (Suntoley),29
+320,Yuebug (Majuwa),29
+321,Jangsagang,30
+322,Karlingzingkha,30
+323,Pelling,30
+324,Samaed,30
+325,Tashigang,30
+326,Tongshong (Tongzho),30
+327,Tsangleykha,30
+328,Zamtog,30
+329,Bara,31
+330,Barsha,31
+331,Bayzhina,31
+332,Chalakha,31
+333,Chasungsa,31
+334,Chruawog,31
+335,Chubdey,31
+336,Churaphakha,31
+337,Damjee,31
+338,Gayza,31
+339,Jabisa,31
+340,Jazhidingkha,31
+341,Jizhi,31
+342,Kabina,31
+343,Khailog,31
+344,Namphakha,31
+345,Potogang,31
+346,Selikha,31
+347,Tashithang,31
+348,Tomu,31
+349,Tsanakha,31
+350,Yeodo,31
+351,Yeomena,31
+352,Zhazhukha,31
+353,Zomina,31
+354,Amochhu,32
+355,Baychhu,32
+356,Belpakha,32
+357,Chhogley,32
+358,Datakha,32
+359,Dochong,32
+360,Dongyebi,32
+361,Gathana,32
+362,Khailog,32
+363,Lungchukha,32
+364,Mani,32
+365,Neukha,32
+366,Nurbi,32
+367,Phulakha,32
+368,Tabchen,32
+369,Thangkha,32
+370,Tsangkha,32
+371,Tsebgang,32
+372,Tsheringkha,32
+373,Womchugang,32
+374,Yemena,32
+375,Zamna,32
+376,Zanang,32
+377,Chongra,33
+378,Gayza,33
+379,Lubcha,33
+380,Lungo,33
+381,Neylug,33
+382,Pazhi,33
+383,Toedkor,33
+384,Dotag,34
+385,Drangsho,34
+386,Lhedi,34
+387,Raminang,34
+388,Relo,34
+389,Shangsa,34
+390,Tagshor,34
+391,Thangza,34
+392,Threlga,34
+393,Toenchoe,34
+394,Tshozhi,34
+395,Uesana,34
+396,Wachey,34
+397,Chenpa,35
+398,Choomgpa,35
+399,Chubarna,35
+400,Dongsana/Taloong,35
+401,Geychhukha,35
+402,Gungkha,35
+403,Gyensa,35
+404,Jamgoen,35
+405,Longlong,35
+406,Machina,35
+407,Makana,35
+408,Pangphu,35
+409,Takchugoenpa,35
+410,Tokey,35
+411,Tsenka,35
+412,Tsenkagoenpa,35
+413,Wooka,35
+414,Yangoen,35
+415,Yangthang,35
+416,Yetshephu,35
+417,Yulang,35
+418,Dorithasa,36
+419,Fetena,36
+420,Gangrinmo,36
+421,Kowkha,36
+422,Ngatse,36
+423,Phootsena,36
+424,Rangtse,36
+425,Saidzong,36
+426,Sertena,36
+427,Ta-nga/Chigo,36
+428,Thangdokha,36
+429,Yangtse,36
+430,Yokha,36
+431,Bali,37
+432,Dragding,37
+433,Gargkha,37
+434,Hatam,37
+435,Ingo,37
+436,Kargoen,37
+437,Karjena,37
+438,Mombitshokha,37
+439,Naktshang,37
+440,Namdhu,37
+441,Pharikha,37
+442,Wangtsa,37
+443,Balamnang,38
+444,Barakha,38
+445,Barasham,38
+446,Chumeyding,38
+447,Dorikha,38
+448,Jenkanang,38
+449,Kouna,38
+450,Langjogang,38
+451,Langpa,38
+452,Lhakhangchen,38
+453,Norbugang,38
+454,Phendona,38
+455,Pudunang,38
+456,Sharri,38
+457,Ama,39
+458,Bibi,39
+459,Chinga,39
+460,Dongtse,39
+461,Gyeldrakha,39
+462,Mochhu,39
+463,Nakha,39
+464,Nakhatshochen,39
+465,Nakhekha,39
+466,Shaba,39
+467,Shema,39
+468,Shepji,39
+469,Tashigang,39
+470,Tingma,39
+471,Tsanglingna,39
+472,Yaba,39
+473,Bangyena,40
+474,Betso,40
+475,Doomchhog,40
+476,Dranggoen,40
+477,Geyruna,40
+478,Goensakha,40
+479,Hagoenpa,40
+480,Karnag,40
+481,Kipri,40
+482,Pagekha,40
+483,Sangkiri,40
+484,Tagchhu,40
+485,Takchugoenpa,40
+486,Tshaphel,40
+487,Tsiloongkha,40
+488,Amchi,41
+489,Changray,41
+490,Chhesa,41
+491,Denkaling,41
+492,Dhuthay,41
+493,Gangzur,41
+494,Jalamzur,41
+495,Jang,41
+496,Khamphu,41
+497,Khaujoong,41
+498,Kyidloong,41
+499,Lekpa,41
+500,Lingabi,41
+501,Magar,41
+502,Namseygang,41
+503,Napzala,41
+504,Ney,41
+505,Ngar/Nyar,41
+506,Nyimzhong,41
+507,Phatala,41
+508,Rotpa,41
+509,Samling,41
+510,Sapho,41
+511,Shawa,41
+512,Shomshing,41
+513,Tagzibar,41
+514,Tangsa,41
+515,Taushing,41
+516,Taushinggoenpa,41
+517,Thimyul,41
+518,Thrima,41
+519,Tongling,41
+520,Tsholing,41
+521,Youngmaling,41
+522,Zhamling,41
+523,Changkhala,42
+524,Jarey,42
+525,Kharchung/Pam,42
+526,Ladrong,42
+527,Ngang Ngae,42
+528,Trapashing,42
+529,Wayang,42
+530,Yabi,42
+531,Yumchhe,42
+532,Babtong,43
+533,Berpa,43
+534,Dragteng,43
+535,Gangla,43
+536,Goenkhar,43
+537,Karphu,43
+538,Kemtshong,43
+539,Khoema,43
+540,Kholma,43
+541,Khoma,43
+542,Laber,43
+543,Lawa,43
+544,Lukchu,43
+545,Nyalamdung,43
+546,Pangkhar,43
+547,Pengtse,43
+548,Rolmateng,43
+549,Serphu,43
+550,Taya,43
+551,Tsang-ngo,43
+552,Zangkhar,43
+553,Arjhaling,44
+554,Chagdzom,44
+555,Chaktamin,44
+556,Chhanyalgang,44
+557,Chhusa,44
+558,Chongsa,44
+559,Churchuma,44
+560,Darjaygang,44
+561,Dongmaed,44
+562,Drabling,44
+563,Dungkar,44
+564,Garong,44
+565,Goshingpang,44
+566,Gurta,44
+567,Jangtse,44
+568,Jasabi,44
+569,Lamsabi,44
+570,Lamsaykapa,44
+571,Maenbi,44
+572,Nagling,44
+573,Nyaray,44
+574,Pirbee,44
+575,Ruling,44
+576,Serphu,44
+577,Sershong,44
+578,Sewel,44
+579,Shangthongling,44
+580,Shauzhong,44
+581,Signar,44
+582,Sugpee,44
+583,Sumdhang,44
+584,Tabi,44
+585,Tagdzong,44
+586,Takharme,44
+587,Taling,44
+588,Tangroong,44
+589,Tergang,44
+590,Thangbi,44
+591,Thongjaling,44
+592,Thowa,44
+593,Thuenpey,44
+594,Tongmay,44
+595,Uygenphoog,44
+596,Wamdrang,44
+597,Wawel,44
+598,Zimpong,44
+599,Zongsar,44
+600,Bamendrangsa,45
+601,Bariphu,45
+602,Boushong,45
+603,Bumpashing,45
+604,Chalibi,45
+605,Chengaling,45
+606,Dangling,45
+607,Dangsangoenpa,45
+608,Dosagang,45
+609,Dromzhong,45
+610,Dungkardowa,45
+611,Gamshing,45
+612,Gangkhar,45
+613,Garapho,45
+614,Gorgan,45
+615,Kamdhar,45
+616,Kasithang,45
+617,Katog,45
+618,Khampaling,45
+619,Kharsa,45
+620,Khashaling,45
+621,Khochen,45
+622,Kimphay,45
+623,Kusumphay,45
+624,Langphog,45
+625,Larjab,45
+626,Ledong,45
+627,Lekpagang,45
+628,Lugarpang,45
+629,Maenjabi,45
+630,Manigang,45
+631,Moormo,45
+632,Nadrang,45
+633,Namdang,45
+634,Namnangbi,45
+635,Ngamaling,45
+636,Nyaibi,45
+637,Oumzor,45
+638,Pangsar,45
+639,Pelrigoenpa,45
+640,Petsizor,45
+641,Phagidroong,45
+642,Phungshingang,45
+643,Rawabi,45
+644,Rawabi Goenpa,45
+645,Rewaling,45
+646,Samcheling,45
+647,Samling,45
+648,Sershingbi,45
+649,Shangrabi,45
+650,Shormaed,45
+651,Tagmochhu,45
+652,Takayla,45
+653,Tangpa,45
+654,Tashiling,45
+655,Thekcholing,45
+656,Thongjaling,45
+657,Tongmakhar,45
+658,Tsampdemo,45
+659,Tungkhar,45
+660,Yanglagoenpa,45
+661,Yomaed,45
+662,Youngrab,45
+663,Youngshingphel,45
+664,Zarthang,45
+665,Zarthang Goenpa,45
+666,Zhungkhar,45
+667,Zungphu,45
+668,Balam,46
+669,Balam/Nimalawa,46
+670,Bamdhir,46
+671,Changchen,46
+672,Changshinpokpa,46
+673,Dowaletang,46
+674,Drukla,46
+675,Dulebi,46
+676,Gongdar,46
+677,Gortshom,46
+678,Gulipang,46
+679,Janakchen,46
+680,Kermademo,46
+681,Khenye Lhakhang,46
+682,Lhakhangtshawa,46
+683,Mangdhir,46
+684,Mukpakhar,46
+685,Obi,46
+686,Oonggar,46
+687,Pangshingmey,46
+688,Pholadowa,46
+689,Samdang,46
+690,Serbuchuka,46
+691,Singyebi,46
+692,Tachung,46
+693,Thangthrom Maed,46
+694,Thangthrom Maed Goenpa,46
+695,Tongthrong,46
+696,Tonzibi,46
+697,Tshochen,46
+698,Tshodrang,46
+699,Waney,46
+700,Yamalung Goenpa,46
+701,Yokpaling,46
+702,Yozer Goenpa,46
+703,Yurung,46
+704,Zhongmaed,46
+705,Amdrangchhu,47
+706,Boo-dur,47
+707,Chengling,47
+708,Chusa,47
+709,Dhokpabi,47
+710,Draag-gong,47
+711,Draag-gong Goenpa,47
+712,Draledowa,47
+713,Jabum,47
+714,Jalang,47
+715,Keroo,47
+716,Kupi-nyalsa,47
+717,Legchugang,47
+718,Legpachu,47
+719,Legshogang,47
+720,Minjey,47
+721,Nyaka,47
+722,Phangchenbi,47
+723,Pumogang,47
+724,Sershing,47
+725,Tongling,47
+726,Wangzhing,47
+727,Zham,47
+728,Artobadeb,48
+729,Autho,48
+730,Bangtsho,48
+731,Barchhu,48
+732,Changchang Goenpa,48
+733,Changmadung,48
+734,Chharbi,48
+735,Chim Gong,48
+736,Chowa,48
+737,Chulung,48
+738,Chungkha,48
+739,Dagarthang,48
+740,Dekaling,48
+741,Domkhar,48
+742,Dongling,48
+743,Dongthrom,48
+744,Gamanang,48
+745,Genchungla,48
+746,Godong/Gordong,48
+747,Go-nyid,48
+748,Guengdrang,48
+749,Jarkang,48
+750,Kawachen,48
+751,Khablang,48
+752,Kharphu,48
+753,Kiphung,48
+754,Lagay,48
+755,Langabi,48
+756,Lawsa,48
+757,Ngathung,48
+758,Peldraphu,48
+759,Phomed-doong,48
+760,Phowantay,48
+761,Phuntshochhoeling,48
+762,Phurshongang,48
+763,Sangphu,48
+764,Shermachhu,48
+765,Shermachhu Goenpa,48
+766,Sokarom,48
+767,Sokchen,48
+768,Takchu,48
+769,Tashi Ling,48
+770,Toekhar,48
+771,Tongphugang,48
+772,Tongsheling,48
+773,Tongshi Lung,48
+774,Trangka Shing,48
+775,Tsaenkhar,48
+776,Tshangphu,48
+777,Tshochim,48
+778,Tsholadrang,48
+779,Tsochhen,48
+780,Umling,48
+781,Wambur,48
+782,Yangla,48
+783,Yanglong,48
+784,Bahkaphai,49
+785,Balam,49
+786,Jadoong,49
+787,Jadoong Goenpa,49
+788,Jadoong Kha,49
+789,Khebishing,49
+790,Sangjuzor,49
+791,Selkhar,49
+792,Aagshaling,50
+793,Aidurla,50
+794,Bakhim,50
+795,Balingbi,50
+796,Bameijangsa,50
+797,Bana,50
+798,Barigoila,50
+799,Barleng,50
+800,Bewling,50
+801,Bolipang,50
+802,Budishing,50
+803,Chagsar,50
+804,Changmashing,50
+805,Charzhong,50
+806,Chaukileng,50
+807,Chawasing,50
+808,Chewang,50
+809,Chhaling,50
+810,Chulabi,50
+811,Damaling,50
+812,Darseng,50
+813,Dogtang,50
+814,Dokorbang,50
+815,Domangla,50
+816,Dongjug,50
+817,Dongtoed,50
+818,Dongtoed Bakhim,50
+819,Dopang,50
+820,Dopang,50
+821,Gensing,50
+822,Goensar,50
+823,Gorsum,50
+824,Gortongla,50
+825,Jachuling,50
+826,Jambi,50
+827,Japang,50
+828,Kadam,50
+829,Kampasadong,50
+830,Kamsa,50
+831,Kawakhoi,50
+832,Khachorshing,50
+833,Khampaje,50
+834,Kharduma,50
+835,Kharigab,50
+836,Kharigab,50
+837,Khartong,50
+838,Khemsang,50
+839,Khoijongla,50
+840,Khoilajong,50
+841,Kirzhong,50
+842,Kotshome,50
+843,Kurzam,50
+844,Lhakang,50
+845,Lhakang Bana,50
+846,Lhakang Dongbar,50
+847,Lhakang Goenshing,50
+848,Lhakang Khoyur,50
+849,Lhakang Lingchung,50
+850,Lhakang Pangjab,50
+851,Lhakang Ringseng,50
+852,Lhakang Ringseng,50
+853,Lhakang Sokpaling,50
+854,Lhakang Tengpa,50
+855,Lhakang Unakhang,50
+856,Lungkang,50
+857,Masangkangjay,50
+858,Mentshang,50
+859,Nagtshang,50
+860,Nagtshangwog,50
+861,Namabi,50
+862,Namathang,50
+863,Namling,50
+864,Nordangsa,50
+865,Numabiwang,50
+866,Nyerpa,50
+867,Oangthang Chungku,50
+868,Pangjagpa,50
+869,Pangshing,50
+870,Pangthang,50
+871,Pangthang,50
+872,Pangthang,50
+873,Pangthang Shokposeng,50
+874,Pemagayser,50
+875,Phachaphogchi,50
+876,Phodagnma,50
+877,Phumazur,50
+878,Pogtor,50
+879,Rahambi,50
+880,Remochhu,50
+881,Rolmochhu,50
+882,Salapho,50
+883,Sapogtor,50
+884,Shebchi,50
+885,Shingkharzhong,50
+886,Shogoseng,50
+887,Sogpaling,50
+888,Sumthuen,50
+889,Tadzong,50
+890,Tagling,50
+891,Tagling,50
+892,Tashipoktor,50
+893,Thangthala,50
+894,Thempang,50
+895,Tikusalung,50
+896,Toepaphu,50
+897,Torzhonggor,50
+898,Trashikhangsar,50
+899,Tshamkhang,50
+900,Tshangkhar,50
+901,Tshepadong,50
+902,Tshokila,50
+903,Usdur,50
+904,Wang,50
+905,Wangkhar,50
+906,Yangthang,50
+907,Yoekhoi,50
+908,Yoekhoi,50
+909,Yoezer Pangthang,50
+910,Yontenkhem,50
+911,Zanglawang,50
+912,Zhongje,50
+913,Zhongje,50
+914,Zhongkey,50
+915,Zinthuen,50
+916,Chagsakhar,51
+917,Doongshingma,51
+918,Khamang,51
+919,Pam,51
+920,Yangrapoongshing,51
+921,Yetong,51
+922,Bazor,52
+923,Bikhar,52
+924,Dramdetse,52
+925,Gashari,52
+926,Gobka,52
+927,Jiwa,52
+928,Laymey,52
+929,Laymey Serkhagphoog,52
+930,Luwang,52
+931,Ngarphai,52
+932,Ngarphel,52
+933,Ongkhar,52
+934,Phentshomo,52
+935,Serkhaphug,52
+936,Shadang,52
+937,Shaphangma,52
+938,Thoongdabi,52
+939,Thoongdari,52
+940,Thramlo,52
+941,Waichur,52
+942,Yalum,52
+943,Yengkhartshing,52
+944,Zangkhar,52
+945,Chhagsuzor,53
+946,Drepoong,53
+947,Labtsa Ka,53
+948,Labtsa Kha,53
+949,Tsangkhar,53
+950,Zunglen,53
+951,Baagla,54
+952,Baagla Edi,54
+953,Baagla Goenpa,54
+954,Baagla Khimong,54
+955,Bangbangla,54
+956,Bogarbi,54
+957,Chaibi,54
+958,Daagsa,54
+959,Damkhar,54
+960,Dekhar,54
+961,Dengkaling,54
+962,Dewabi,54
+963,Dogmo,54
+964,Goenpa,54
+965,Gorgdey,54
+966,Gorthongla,54
+967,Gungdue,54
+968,Kormaed,54
+969,Kumadzong,54
+970,Labtsa,54
+971,Mantshang,54
+972,Miden,54
+973,Pangthang,54
+974,Pangtong,54
+975,Phadzong,54
+976,Phosala,54
+977,Phuchung Goenpa,54
+978,Pikari,54
+979,Salibi,54
+980,Salibi Dungda,54
+981,Toedkar,54
+982,Tshabor,54
+983,Tshambali,54
+984,Weringla,54
+985,Yangbari,54
+986,Aring Daza,55
+987,Awatang,55
+988,Bacha,55
+989,Bacha,55
+990,Barlamtoed,55
+991,Barpoong,55
+992,Baydengyer,55
+993,Bilam,55
+994,Bumnali,55
+995,Chagpa,55
+996,Chenchari,55
+997,Dangkila,55
+998,Daroong,55
+999,Dekilam,55
+1000,Doongkar,55
+1001,Doongmein,55
+1002,Dori,55
+1003,Dumdey,55
+1004,Gamong,55
+1005,Ganggarthang,55
+1006,Gaykhar,55
+1007,Gomtshanglo,55
+1008,Gongtshang,55
+1009,Kaikhar,55
+1010,Kangloong,55
+1011,Karmaling,55
+1012,Khemtagpa,55
+1013,Kognala,55
+1014,Korkhang,55
+1015,Korphu,55
+1016,Kurtakay,55
+1017,Langabi,55
+1018,Luzor,55
+1019,Maentsang,55
+1020,Maniling,55
+1021,Maphai,55
+1022,Menchaphoog,55
+1023,Moodoongbi,55
+1024,Moodoongkhar,55
+1025,Moogtangkhar,55
+1026,Ngamphoog,55
+1027,Ngangri,55
+1028,Orkawang,55
+1029,Pangkang,55
+1030,Pangthang,55
+1031,Pangthang,55
+1032,Pegpela,55
+1033,Phaichhelo,55
+1034,Phentokma,55
+1035,Poongla,55
+1036,Rewang,55
+1037,Rimpako,55
+1038,Ringphu,55
+1039,Ringphujab,55
+1040,Roinangwoong,55
+1041,Samkhar,55
+1042,Sangkama,55
+1043,Shingmung,55
+1044,Shingsiri,55
+1045,Singyephu,55
+1046,Tashi Tshering,55
+1047,Thongpashing,55
+1048,Tooloogpe,55
+1049,Tsangkhazor,55
+1050,Tselam,55
+1051,Tselam,55
+1052,Tselam/Kamling,55
+1053,Wodang,55
+1054,Ya-Ragkla,55
+1055,Amdaybu,56
+1056,Amshing Wog,56
+1057,Aring,56
+1058,Artshong,56
+1059,Bainang,56
+1060,Bargoenpa,56
+1061,Bargoenpa,56
+1062,Barzor,56
+1063,Chiphu,56
+1064,Deng,56
+1065,Deshingpeg,56
+1066,Dochhuru,56
+1067,Dochiru,56
+1068,Dogsabi,56
+1069,Dogtang,56
+1070,Dogtshong Nadang,56
+1071,Dongnala,56
+1072,Doongkargoerpa,56
+1073,Doongmarma,56
+1074,Draphu,56
+1075,Drongphoog,56
+1076,Duezawong,56
+1077,Ebi,56
+1078,Gabcha,56
+1079,Genchaphu,56
+1080,Ghishinghung,56
+1081,Goenpa,56
+1082,Gomchhu,56
+1083,Gunmari,56
+1084,Gyalkhar,56
+1085,Kamngeysa,56
+1086,Khangma,56
+1087,Khesigang,56
+1088,Khochung,56
+1089,Khoishing,56
+1090,Khurzong,56
+1091,Korshingngari,56
+1092,Kuli,56
+1093,Kyidpari,56
+1094,Kyidpari,56
+1095,Maenchabilam,56
+1096,Maentsala,56
+1097,Magola,56
+1098,Magola,56
+1099,Mooroong,56
+1100,Munma,56
+1101,Nadang,56
+1102,Nanari,56
+1103,Neykolog,56
+1104,Nugphu,56
+1105,Olkid,56
+1106,Pangthang,56
+1107,Pangthang,56
+1108,Pangthoong,56
+1109,Payka,56
+1110,Pedoongroong,56
+1111,Pogla,56
+1112,Putshume,56
+1113,Rishogay,56
+1114,Rizor,56
+1115,Romangla,56
+1116,Serkong,56
+1117,Shajula,56
+1118,Shetongbi,56
+1119,Shingchongri,56
+1120,Soichari,56
+1121,Suipari,56
+1122,Telpo,56
+1123,Tongkangla,56
+1124,Tongkangla/Sungkar,56
+1125,Tongkangla/Zitsibi,56
+1126,Tongla,56
+1127,Tongla Goenpa,56
+1128,Tongla Mangzing,56
+1129,Tsalabi,56
+1130,Tshamnagri,56
+1131,Tshangnari,56
+1132,Tshelshingtang,56
+1133,Tshowang,56
+1134,Tshowangri,56
+1135,Wangyer,56
+1136,Warongborang,56
+1137,Yuldagri,56
+1138,Zor,56
+1139,Zorthoong,56
+1140,Barpang,57
+1141,Gora,57
+1142,Gyelpoizhing,57
+1143,Jalbab,57
+1144,Jamcholing,57
+1145,Kadam,57
+1146,Kheshirpang,57
+1147,Kidekhar,57
+1148,Koenbar,57
+1149,Lukpangthang,57
+1150,Monggar,57
+1151,Nagling,57
+1152,Nyekhang,57
+1153,Phosorong,57
+1154,Pirbi,57
+1155,Pirbi,57
+1156,Pirbi,57
+1157,Shongkaling,57
+1158,Tagchhu,57
+1159,Themnangbi,57
+1160,Trailing,57
+1161,Tsenglung Goenpa,57
+1162,Wangling,57
+1163,Wengkhar,57
+1164,Yagpoogang,57
+1165,Besipoktor,58
+1166,Brakhagthang,58
+1167,Bumpa,58
+1168,Chagsakhar,58
+1169,Chhema,58
+1170,Dangthung,58
+1171,Dengsor,58
+1172,Deyphung,58
+1173,Dongshoom,58
+1174,Garpamani,58
+1175,Gashari,58
+1176,Gomchhu,58
+1177,Gomchhuzur,58
+1178,Gothonpo,58
+1179,Hurchilo,58
+1180,Jomri,58
+1181,Khalong,58
+1182,Maithung,58
+1183,Narang,58
+1184,Narang Besipoktor,58
+1185,Narang Pangkang,58
+1186,Narang Phaphugpangkang,58
+1187,Narang Raynangkhar,58
+1188,Pangkhang,58
+1189,Pangthang,58
+1190,Phenzur,58
+1191,Phusizur,58
+1192,Thongkhar,58
+1193,Thrinangphu,58
+1194,Wangyer,58
+1195,Waphaipangthang,58
+1196,Bumpazor,59
+1197,Goenpa,59
+1198,Ngatshang,59
+1199,Nyingala,59
+1200,Pelshool,59
+1201,Phanasi,59
+1202,Thoombari,59
+1203,Yekhar,59
+1204,Zangdari,59
+1205,Bongdeyma,60
+1206,Drogsar,60
+1207,Drogsar/Mangling,60
+1208,Jangdung,60
+1209,Kalapang,60
+1210,Masangdaza,60
+1211,Pangsibi,60
+1212,Resa,60
+1213,Saling,60
+1214,Seng-Gor,60
+1215,Thridangbi,60
+1216,Tshenzabi,60
+1217,Gangmoong,61
+1218,Jabgang,61
+1219,Muhoong,61
+1220,Serzhong,61
+1221,Shiling,61
+1222,Soenakhar,61
+1223,Thueling,61
+1224,Baribang,62
+1225,Daag,62
+1226,Dekdongla,62
+1227,Goenpa,62
+1228,Gyalong,62
+1229,Kadag,62
+1230,Kadag/Salipong,62
+1231,Kangkangma,62
+1232,Kangkari,62
+1233,Khatoed,62
+1234,Khatoed/Baribang,62
+1235,Khatoed/Silambi,62
+1236,Laijuk,62
+1237,Nagor,62
+1238,Nagor Goenpa,62
+1239,Nagor Pang,62
+1240,Nagor/Pam,62
+1241,Pam,62
+1242,Pang Gyerteng,62
+1243,Pang Gyerteng/Goenpa,62
+1244,Pang Gyerteng/Phungling,62
+1245,Salipong,62
+1246,Silambi,62
+1247,Silambi/Lemigoenpa,62
+1248,Silambi/Tumdrag,62
+1249,Wama,62
+1250,Wama/Chang Changma,62
+1251,Yarig,62
+1252,Atola,63
+1253,Baucholing,63
+1254,Changshing,63
+1255,Lingkhar,63
+1256,Ngaru-Pongtang,63
+1257,Panglen,63
+1258,Angtonyelsa,64
+1259,Aringtengma,64
+1260,Artogang,64
+1261,Chalgang,64
+1262,Chalgang/Kaling,64
+1263,Chalgang/Thowalsa,64
+1264,Chubar,64
+1265,Churtoog,64
+1266,Churtsha,64
+1267,Chutey,64
+1268,Damtshang Pokpa,64
+1269,Demoongla,64
+1270,Dokporo,64
+1271,Dolebtang,64
+1272,Dolebtang,64
+1273,Domula,64
+1274,Drenling,64
+1275,Drenling/Dabang,64
+1276,Drenling/Emalaphuk,64
+1277,Drenling/Gangka,64
+1278,Drenling/Gaptangra,64
+1279,Drenling/Kadamwo,64
+1280,Drenling/Khanakshing,64
+1281,Drongtoed Mawo,64
+1282,Gamanang,64
+1283,Gamanang/Loongdubi,64
+1284,Horong,64
+1285,Jangtagoen,64
+1286,Karshingang,64
+1287,Khanashing,64
+1288,Khashagang,64
+1289,Khashalbadap,64
+1290,Khimsang,64
+1291,Langabi,64
+1292,Legibi,64
+1293,Legibi,64
+1294,Leksingphu,64
+1295,Leksingphu/Bongring,64
+1296,Leksingphu/Churtung,64
+1297,Leksingphu/Dogtang,64
+1298,Leksingphu/Drengling,64
+1299,Leksingphu/Kadam,64
+1300,Leksingphu/Thongwang,64
+1301,Lewamani,64
+1302,Lhadrang,64
+1303,Loongdubi,64
+1304,Loongkang,64
+1305,Nagtshang,64
+1306,Norbugang,64
+1307,Nyartsi,64
+1308,Nyartsi/Shaboom,64
+1309,Nyartsi/Singma Nangka,64
+1310,Nyartsi/Tsema Nangka,64
+1311,Pang,64
+1312,Pangtshela,64
+1313,Paytshongbi,64
+1314,Paytshorgbi,64
+1315,Paytshorgbi/Balamchungku,64
+1316,Paytshorgbi/Rababi,64
+1317,Pherpobadap,64
+1318,Selwa Lhakhang,64
+1319,Shingmar Pokpa,64
+1320,Sowangtey,64
+1321,Tagkhambi/Barnang,64
+1322,Tagkhambi/Chimsaning,64
+1323,Tagkhambi/Dekiling,64
+1324,Tagkhambi/Gangka,64
+1325,Tagkhambi/Gendrang,64
+1326,Tagkhambi/Khoboom,64
+1327,Tagkhambi/Khomdangchhu,64
+1328,Tagkhambi/Kuengachhoeling,64
+1329,Tagkhambi/Norbugang,64
+1330,Tagkhambi/Pang,64
+1331,Tagkhambi/Wadong,64
+1332,Tagkhambi/Yerchung,64
+1333,Tagkhamtey,64
+1334,Talabadhap,64
+1335,Terkong,64
+1336,Tharmcharm,64
+1337,Thodamla,64
+1338,Thongzhong Goenpa,64
+1339,Thoomling,64
+1340,Thormazhong/Wadong,64
+1341,Threwatong,64
+1342,Tormazhong/Lhakhang,64
+1343,Tormazhong/Thongwang,64
+1344,Tshodrang,64
+1345,Wadong,64
+1346,Yabi,64
+1347,Yartogang,64
+1348,Zangtoong,64
+1349,Zhingjigpala,64
+1350,Banjar,65
+1351,Banjar/Bardang,65
+1352,Banjar/Barlam,65
+1353,Banjar/Dongmey,65
+1354,Banjar/Gangkhadung,65
+1355,Banjar/Gomchenberpo,65
+1356,Banjar/Jampeling,65
+1357,Banjar/Jargay,65
+1358,Banjar/Khemsar,65
+1359,Banjar/Kicheling,65
+1360,Banjar/Lhakhang,65
+1361,Banjar/Lomeywog,65
+1362,Banjar/Lungtakpa,65
+1363,Banjar/Merbang,65
+1364,Banjar/Murdumba,65
+1365,Banjar/Nyaka,65
+1366,Banjar/Pendenling,65
+1367,Banjar/Phuntsholing,65
+1368,Banjar/Rinzintakpa,65
+1369,Banjar/Samtenling,65
+1370,Banjar/Sangpoling,65
+1371,Banjar/Sisipang,65
+1372,Banjar/Taling,65
+1373,Banjar/Tashicholing,65
+1374,Banjar/Tashiling,65
+1375,Banjar/Umling,65
+1376,Banjar/Wachentakpa,65
+1377,Banjar/Yaloshing,65
+1378,Drangmaling,65
+1379,Drangmaling/Artogchen,65
+1380,Drangmaling/Nanggar,65
+1381,Drangmaling/Sarpashing,65
+1382,Drangmaling/Sep,65
+1383,Drangmaling/Tshowog,65
+1384,Ganglapong,65
+1385,Ganglapong/Ausudor,65
+1386,Ganglapong/Baboochu,65
+1387,Ganglapong/Barigang,65
+1388,Ganglapong/Barilungpa,65
+1389,Ganglapong/Bongring,65
+1390,Ganglapong/Changchen,65
+1391,Ganglapong/Chaptang,65
+1392,Ganglapong/Darshingwog,65
+1393,Ganglapong/Dawashing,65
+1394,Ganglapong/Dechenling,65
+1395,Ganglapong/Gawaling,65
+1396,Ganglapong/Genzangtse,65
+1397,Ganglapong/Goenpa,65
+1398,Ganglapong/Goenpokpa,65
+1399,Ganglapong/Golitagpa,65
+1400,Ganglapong/Halong,65
+1401,Ganglapong/Jalamwog,65
+1402,Ganglapong/Karshingtsa,65
+1403,Ganglapong/Khuling,65
+1404,Ganglapong/Korshing,65
+1405,Ganglapong/Leochen,65
+1406,Ganglapong/Lhakhang,65
+1407,Ganglapong/Lowatongkang,65
+1408,Ganglapong/Manitakpa,65
+1409,Ganglapong/Ney,65
+1410,Ganglapong/Nyaka,65
+1411,Ganglapong/Pang,65
+1412,Ganglapong/Pangthangtoe,65
+1413,Ganglapong/Phuntsholing,65
+1414,Ganglapong/Rewochakgang,65
+1415,Ganglapong/Samabar,65
+1416,Ganglapong/Samarchen,65
+1417,Ganglapong/Samling,65
+1418,Ganglapong/Senshingbi,65
+1419,Ganglapong/Shoksholong,65
+1420,Ganglapong/Sothriling,65
+1421,Ganglapong/Tashiling,65
+1422,Ganglapong/Tashipai,65
+1423,Ganglapong/Tashizanglung,65
+1424,Ganglapong/Tebiling,65
+1425,Ganglapong/Thongjalingwog,65
+1426,Ganglapong/Thongshingtakpa,65
+1427,Ganglapong/Tsendentsawa,65
+1428,Ganglapong/Wachen,65
+1429,Ganglapong/Zangshingtsawa,65
+1430,Ganglapong/Zhenthen,65
+1431,Tokari,65
+1432,Tokari/Artang,65
+1433,Tokari/Augungna,65
+1434,Tokari/Bangdrabi,65
+1435,Tokari/Brengpajab,65
+1436,Tokari/Bumpatakpa,65
+1437,Tokari/Chadongbi,65
+1438,Tokari/Chukiduwa,65
+1439,Tokari/Chumetakpa,65
+1440,Tokari/Darchen,65
+1441,Tokari/Debang,65
+1442,Tokari/Debang,65
+1443,Tokari/Dekigang,65
+1444,Tokari/Denchen,65
+1445,Tokari/Draktangkhar,65
+1446,Tokari/Duwashing,65
+1447,Tokari/Gensingnyesa,65
+1448,Tokari/Goenpa,65
+1449,Tokari/Golibi,65
+1450,Tokari/Jalamwog,65
+1451,Tokari/Jewashing,65
+1452,Tokari/Kolokbi,65
+1453,Tokari/Labi,65
+1454,Tokari/Leochung,65
+1455,Tokari/Lhadrang,65
+1456,Tokari/Mutigang,65
+1457,Tokari/Nakchen,65
+1458,Tokari/Nakiduwa,65
+1459,Tokari/Nakphung,65
+1460,Tokari/Nambucha,65
+1461,Tokari/Pam,65
+1462,Tokari/Ralamey,65
+1463,Tokari/Sangcha,65
+1464,Tokari/Shakhar,65
+1465,Tokari/Shingmartakpa,65
+1466,Tokari/Shojabi,65
+1467,Tokari/Shokang,65
+1468,Tokari/Shungpashing,65
+1469,Tokari/Singyetsawa,65
+1470,Tokari/Sogangguto,65
+1471,Tokari/Sogangwog,65
+1472,Tokari/Sumthuen,65
+1473,Tokari/Tabsina,65
+1474,Tokari/Tashiling,65
+1475,Tokari/Thekarla,65
+1476,Tokari/Thowa,65
+1477,Tokari/Thowagang,65
+1478,Tokari/Thrachamey,65
+1479,Tokari/Tsangtsa,65
+1480,Tokari/Tshendentsawa,65
+1481,Tokari/Tshiden,65
+1482,Tokari/Umling,65
+1483,Tokari/Wodang,65
+1484,Tokari/Woktapka,65
+1485,Tokari/Yedhap,65
+1486,Tokari/Zampatakpa,65
+1487,Bangkha,66
+1488,Chhuzom,66
+1489,Dala,66
+1490,Dawakha,66
+1491,Dzongang,66
+1492,Gagay,66
+1493,Gayjo,66
+1494,Goensakha,66
+1495,Jabisa,66
+1496,Khamdraag,66
+1497,Khamdraag-gang,66
+1498,Lagel,66
+1499,Langmikha,66
+1500,Mendrel Jabkha,66
+1501,Phuchhekha,66
+1502,Sali,66
+1503,Silu Goenpa,66
+1504,Tamchoegang,66
+1505,Tango,66
+1506,Tashigang,66
+1507,Tenchhekha,66
+1508,Toepchugang,66
+1509,Togtokha,66
+1510,Tshoelgang,66
+1511,Tshongkha,66
+1512,Tsinakha,66
+1513,Tsiphoog,66
+1514,Uesakha,66
+1515,Uesuna,66
+1516,Bamizhikha,67
+1517,Bara,67
+1518,Batsekha,67
+1519,Buelchukha,67
+1520,Changyoelkha,67
+1521,Chimakha,67
+1522,Damchenang,67
+1523,Damzhi,67
+1524,Dangribug,67
+1525,Delikha,67
+1526,Dorokha,67
+1527,Dragbeylo,67
+1528,Duezhi,67
+1529,Hingzhiwog,67
+1530,Jagchukha,67
+1531,Jagchutsekha,67
+1532,Jangonang,67
+1533,Jangonang,67
+1534,Jangsa,67
+1535,Jangsa Gongm,67
+1536,Jangsakha,67
+1537,Jangsana,67
+1538,Jangsuna,67
+1539,Jipa,67
+1540,Jizhigang,67
+1541,Jombenang,67
+1542,Jooka,67
+1543,Jooka Gom,67
+1544,Jooka Thangkha,67
+1545,Jugang Thagchukha,67
+1546,Karshitsha,67
+1547,Kempa,67
+1548,Khamshingwog,67
+1549,Khimsabu,67
+1550,Khimsarbu,67
+1551,Khimsarp,67
+1552,Kuduphoog,67
+1553,Kuduphoog Kotsha,67
+1554,Liwog,67
+1555,Nazhikha,67
+1556,Nazhikha,67
+1557,Phalom,67
+1558,Phenshing Zhikha,67
+1559,Pidekha,67
+1560,Ramnang,67
+1561,Richhendeling,67
+1562,Richhukha,67
+1563,Rijoog,67
+1564,Rijoog Tsima,67
+1565,Rijoogkha,67
+1566,Rimdo Kempa,67
+1567,Rimdotshelkha,67
+1568,Rotogang,67
+1569,Samarkha,67
+1570,Sephu Jizhigang,67
+1571,Shangzhikha,67
+1572,Tadingkha,67
+1573,Thangkana,67
+1574,Togtokha,67
+1575,Tshozarkha,67
+1576,Zharikha,67
+1577,Zhikha,67
+1578,Aa-tsho,68
+1579,Chhubar,68
+1580,Chingdued Goenpa,68
+1581,Jabji,68
+1582,Joogar,68
+1583,Joogar Tselkha,68
+1584,Loogchhoed,68
+1585,Pachhu,68
+1586,Phooshar,68
+1587,Phunoob,68
+1588,Changkhor,69
+1589,Changsima,69
+1590,Chhubjagkha,69
+1591,Chukhozakha,69
+1592,Donagmo,69
+1593,Drukgyeling,69
+1594,Gaupel,69
+1595,Goenkha,69
+1596,Hoongrelkha,69
+1597,Jangmedna,69
+1598,Jangsarbu,69
+1599,Loongchhungna,69
+1600,Nangshikha (Hungrel),69
+1601,Nyangmedzampa,69
+1602,Tshongdue,69
+1603,Zore Goenpa,69
+1604,Bartshik,70
+1605,Chhukha,70
+1606,Darkhang,70
+1607,Dokha,70
+1608,Gangjoog,70
+1609,Gedda Zam,70
+1610,Geptsha,70
+1611,Gyedkha,70
+1612,Jagar Thangmaed,70
+1613,Jagathang Maed,70
+1614,Jagathang Toed,70
+1615,Kyidchhu,70
+1616,Ngopa,70
+1617,Nubri,70
+1618,Sergang,70
+1619,Sharhikha,70
+1620,Shomo,70
+1621,Soe,70
+1622,Soe Yaksa,70
+1623,Tsendanang,70
+1624,Tsendonang,70
+1625,Tsenthang,70
+1626,Tsenthang Thangtoed,70
+1627,Tsenthang Toed,70
+1628,Achilakha,71
+1629,Achilakha,71
+1630,Atsha,71
+1631,Baangdey,71
+1632,Bakhimnang,71
+1633,Bameynyikha,71
+1634,Bara,71
+1635,Bedo,71
+1636,Bedotshekha,71
+1637,Choetenkha,71
+1638,Chuthagkha,71
+1639,Darchu,71
+1640,Dardo,71
+1641,Demcho,71
+1642,Dobu,71
+1643,Dolepchen,71
+1644,Dolepchen,71
+1645,Draglu,71
+1646,Dramato,71
+1647,Drangja Goenpa,71
+1648,Dzongdraagkha,71
+1649,Dzongkha,71
+1650,Gadraagna,71
+1651,Gadradazhikha,71
+1652,Gaitsa,71
+1653,Gangchujab,71
+1654,Gangtokha,71
+1655,Gartshangnang,71
+1656,Giutsig,71
+1657,Gonyim,71
+1658,Jagna,71
+1659,Janalungpa,71
+1660,Jangchubtoe,71
+1661,Jangka,71
+1662,Jangka,71
+1663,Jangka Tsekha,71
+1664,Jangkawogma,71
+1665,Jangminang,71
+1666,Jangsa,71
+1667,Jangsarbu,71
+1668,Jangsekha,71
+1669,Jangsipetsa,71
+1670,Jangtoedkha,71
+1671,Jemphu,71
+1672,Jieu,71
+1673,Jungsikha,71
+1674,Kazhi,71
+1675,Kenpalong,71
+1676,Khimchungnang,71
+1677,Kilikha,71
+1678,Lambatoed,71
+1679,Legchukha,71
+1680,Lhakhangnang,71
+1681,Lhakhangokha,71
+1682,Limchen,71
+1683,Linga,71
+1684,Lungpathangkha,71
+1685,Mayukha,71
+1686,Mekhu/Sikhu,71
+1687,Menchu,71
+1688,Naemjog,71
+1689,Naktshangtsawa,71
+1690,Namchikha,71
+1691,Nazhikha,71
+1692,Omchunang,71
+1693,Pangbisa,71
+1694,Para,71
+1695,Pepchu,71
+1696,Poeri,71
+1697,Potokha,71
+1698,Pumnang,71
+1699,Rabsima,71
+1700,Rangetsawa,71
+1701,Rema,71
+1702,Rhidima,71
+1703,Rimpoeri,71
+1704,Riphakha,71
+1705,Sama,71
+1706,Sasa,71
+1707,Serikha,71
+1708,Sharigyurwawog,71
+1709,Sharijekema,71
+1710,Shariling Shingtsa,71
+1711,Shariyurwatakpa,71
+1712,Shingkalachu,71
+1713,Sima,71
+1714,Talung,71
+1715,Tashigang,71
+1716,Temisema,71
+1717,Thangkha,71
+1718,Toechochu,71
+1719,Toechoelu,71
+1720,Tserinang,71
+1721,Tshangpa,71
+1722,Tshaphelo,71
+1723,Tshaphelo,71
+1724,Tshekha,71
+1725,Tshelgona,71
+1726,Tshetekha,71
+1727,Tshoshingtengkha,71
+1728,Ugyenguru,71
+1729,Wochen,71
+1730,Wolinang,71
+1731,Wolithangkha,71
+1732,Woochhu,71
+1733,Woochhu Toed,71
+1734,Woochhu Toed Ngo,71
+1735,Zhelngo,71
+1736,Zhelngo Wogma,71
+1737,Zhingchen,71
+1738,Zhingchen Thangkha,71
+1739,Zhogkukha,71
+1740,Bemphu,72
+1741,Bueltikha,72
+1742,Jadokha,72
+1743,Jagoen,72
+1744,Jazhina,72
+1745,Jilikha,72
+1746,Lingzhi,72
+1747,Nagu,72
+1748,Pherukha,72
+1749,Rangzhigang,72
+1750,Tabjo,72
+1751,Tokhab,72
+1752,Tshebji,72
+1753,Tshegoen,72
+1754,Tshendu Goenpa,72
+1755,Wanakha,72
+1756,Zursuna,72
+1757,Bara,73
+1758,Barakempa,73
+1759,Baratokha,73
+1760,Bjizhikha,73
+1761,Chesham,73
+1762,Chhukha (Shaba),73
+1763,Drugyaldingkha,73
+1764,Gangjoogkha,73
+1765,Gangri,73
+1766,Khasuna,73
+1767,Lholing,73
+1768,Naychu,73
+1769,Neyphu,73
+1770,Phubarna,73
+1771,Serina,73
+1772,Serlingnang,73
+1773,Tashichholing,73
+1774,Teli,73
+1775,Zhelngo,73
+1776,Zhingo,73
+1777,Zhunggar,73
+1778,Chhoeding,74
+1779,Chhungjey,74
+1780,Chuyul,74
+1781,Jiutsaphu,74
+1782,Lemdo,74
+1783,Lemgoen,74
+1784,Mitshig,74
+1785,Nyamed,74
+1786,Nyamjey,74
+1787,Nyechhu,74
+1788,Phangdo,74
+1789,Shana,74
+1790,Shari (Tsento),74
+1791,Soe Domzang,74
+1792,Soe Yagsa,74
+1793,Tagtshang,74
+1794,Tsatsam,74
+1795,Tshenshi,74
+1796,Yagsa,74
+1797,Zamsar,74
+1798,Baangdey,75
+1799,Baangdey Zam,75
+1800,Barkor,75
+1801,Chang Rouna,75
+1802,Chang Sinchuna,75
+1803,Changkar,75
+1804,Changmedthangka,75
+1805,Chewnang,75
+1806,Chhoeten Dangrim,75
+1807,Chiminang/Chimina,75
+1808,Chintsho,75
+1809,Darzhigang,75
+1810,Dochhukha,75
+1811,Drungna,75
+1812,Dungar,75
+1813,Dungchuphu,75
+1814,Gangkha,75
+1815,Gangkha,75
+1816,Gangtoed,75
+1817,Gebtoed,75
+1818,Gorina,75
+1819,Gyelgang,75
+1820,Jangkhuna,75
+1821,Jangsabu,75
+1822,Jangsina,75
+1823,Jangsuna,75
+1824,Jangteyna,75
+1825,Jieu,75
+1826,Jimnang,75
+1827,Kangjulo,75
+1828,Khangkhu,75
+1829,Khimsabu,75
+1830,Langmana,75
+1831,Langmana,75
+1832,Lankhang Jab,75
+1833,Lomlo,75
+1834,Mendrel,75
+1835,Mendrel/Rauna,75
+1836,Nakha,75
+1837,Nakha/Rawna,75
+1838,Namkar,75
+1839,Nangzhikha (Wangchang),75
+1840,Naymey,75
+1841,Ngetsu,75
+1842,Nyisu,75
+1843,Nyisu Chotentsawa,75
+1844,Olathang,75
+1845,Omchuna,75
+1846,Pumsima,75
+1847,Pumtakha,75
+1848,Rampozhing,75
+1849,Rawna,75
+1850,Segona,75
+1851,Segona,75
+1852,Sisitagpa,75
+1853,Sisitakpa,75
+1854,Tagokha,75
+1855,Tajoog,75
+1856,Tshogdu (Wangchang),75
+1857,Tshongdue,75
+1858,Tshshingtsawa,75
+1859,Tsirena,75
+1860,Wochhukha,75
+1861,Wochukha,75
+1862,Yekukha,75
+1863,Yurwawog,75
+1864,Yurwawog,75
+1865,Zakha,75
+1866,Zarchhekha,75
+1867,Zhikha,75
+1868,Zhingkha,75
+1869,Chhimoong,76
+1870,Chhiphoong,76
+1871,Loongkholom,76
+1872,Nyasikhar,76
+1873,Pangthang,76
+1874,Redingla,76
+1875,Arden,77
+1876,Chhoekhorling,77
+1877,Dizama,77
+1878,Kerong,77
+1879,Yargyewoong,77
+1880,Chongshing,78
+1881,Guyoom,78
+1882,Jorphoong,78
+1883,Maendi,78
+1884,Thongsa,78
+1885,Yomzor,78
+1886,Babta,79
+1887,Dechheling Martsala,79
+1888,Doongphu Goenpa,79
+1889,Gonpawoong,79
+1890,Kholomri,79
+1891,Mendelgang,79
+1892,Namdaling,79
+1893,Ridzomo,79
+1894,Rognawang,79
+1895,Shingchongri,79
+1896,Bangyuel,80
+1897,Belna Goenpa,80
+1898,Belnangzor,80
+1899,Dungmaed,80
+1900,La-Nyiri,80
+1901,Mangthangri,80
+1902,Mikuri,80
+1903,Tep Tep La,80
+1904,Thrumchoong,80
+1905,Tomi,80
+1906,Woonborang,80
+1907,Zimzor,80
+1908,Bongmaan,81
+1909,Duewang,81
+1910,Khar,81
+1911,Khawar,81
+1912,Khengzor,81
+1913,Labar,81
+1914,Nagtseri,81
+1915,Phadi,81
+1916,Regi,81
+1917,Shemshem,81
+1918,Shinangri,81
+1919,Tsebar,81
+1920,Yagyur,81
+1921,Zordoong,81
+1922,Bainangtang,82
+1923,Bargoenpa,82
+1924,Barkadung,82
+1925,Borphu,82
+1926,Champhari,82
+1927,Dapurung,82
+1928,Denphu,82
+1929,Dhalung,82
+1930,Dongtsheri,82
+1931,Drangsa Wong,82
+1932,Gashingkhar,82
+1933,Gayri,82
+1934,Ghorkaling,82
+1935,Jangray,82
+1936,Jazung,82
+1937,Jomgom,82
+1938,Khangmari,82
+1939,Khaykhar,82
+1940,Kheshingri,82
+1941,Kheydong,82
+1942,Kulung,82
+1943,Laypheri,82
+1944,Lumri,82
+1945,Maygamri,82
+1946,Menjung,82
+1947,Menphu,82
+1948,Mongthung,82
+1949,Muna,82
+1950,Nanong,82
+1951,Panglap Thongma,82
+1952,Pangthang,82
+1953,Phalamphu,82
+1954,Raling,82
+1955,Rangshi Gayri,82
+1956,Rangshi Goenpa,82
+1957,Rangthang Wong,82
+1958,Rashu Goenpa,82
+1959,Rayzor,82
+1960,Relung,82
+1961,Sa Yul,82
+1962,Sangshing Tang,82
+1963,Sayri,82
+1964,Sayrimkha,82
+1965,Terphug,82
+1966,Thongshing Gag,82
+1967,Thongthung,82
+1968,Thongthung Goenpa,82
+1969,Thorkhar,82
+1970,Thrangshing,82
+1971,Tokari,82
+1972,Tokari Gayri,82
+1973,Tshatshi,82
+1974,Woongchhillo,82
+1975,Woulingtang,82
+1976,Zhingri,82
+1977,Gashari,83
+1978,Maenchu,83
+1979,Nganglam,83
+1980,Nganglam Bazar,83
+1981,Norboogang,83
+1982,Nyingshingborang,83
+1983,Rinchenzor,83
+1984,Tshaelshingzor,83
+1985,Bainangwoong,84
+1986,Bartsheri,84
+1987,Chongmashing,84
+1988,Dagor,84
+1989,Gamung,84
+1990,Goenpoong,84
+1991,Kheri Goenpa,84
+1992,Khothagpa,84
+1993,Nangkhor,84
+1994,Shali,84
+1995,Shumar,84
+1996,Waphel,84
+1997,Yalang,84
+1998,Bangdala,85
+1999,Chengri,85
+2000,Dooknang,85
+2001,Doongnang,85
+2002,Doongsingma,85
+2003,Doopkang,85
+2004,Gomtshang,85
+2005,Jarimenang,85
+2006,Joenkha,85
+2007,Khangma,85
+2008,Khominang,85
+2009,Lhawong,85
+2010,Pangthang,85
+2011,Phusumri,85
+2012,Phutsoongbori,85
+2013,Porila,85
+2014,Rezor,85
+2015,Thoonggo,85
+2016,Thoongkhar,85
+2017,Wanglakho,85
+2018,Yangkhar,85
+2019,Choongkhar,86
+2020,Lenshingkhar,86
+2021,Ngangmalang,86
+2022,Pangthangdaza,86
+2023,Raysinang,86
+2024,Shumarjug,86
+2025,Tshelinggor,86
+2026,Zobel,86
+2027,Boemena,87
+2028,Chagsa,87
+2029,Choezhikha,87
+2030,Dechendingkha,87
+2031,Dosega,87
+2032,Gamkha,87
+2033,Gangkha,87
+2034,Gangmaloongma,87
+2035,Geonchhukha,87
+2036,Jaloong,87
+2037,Laphuna,87
+2038,Lobesa,87
+2039,Lumina,87
+2040,Menchuzakha,87
+2041,Mitshigna,87
+2042,Pachheykha,87
+2043,Phuntshoyangkhel,87
+2044,Sebjeekha,87
+2045,Sebtokha,87
+2046,Sobsokha,87
+2047,Tongde Baykha,87
+2048,Tshogkorna,87
+2049,Usakha,87
+2050,Yuwakha,87
+2051,Zhikha,87
+2052,Bali,89
+2053,Bumtakha,89
+2054,Chukhu Ngoedroobchhu,89
+2055,Chuphu Ngoedroobchhu,89
+2056,Humpathang,89
+2057,Jangkholo,89
+2058,Jangwakha,89
+2059,Kepailo,89
+2060,Lhabisa,89
+2061,Lorina,89
+2062,Nawakha,89
+2063,Ngoedroobchhu,89
+2064,Ngoedroobchhu Chukha,89
+2065,Ngoedroobchhu Khimchena,89
+2066,Ngoedroobchhu Tenkha,89
+2067,Puna Gom,89
+2068,Rechena,89
+2069,Sewala,89
+2070,Tenpakha,89
+2071,Yebisa,89
+2072,Changjokha,90
+2073,Danamo,90
+2074,Dzomisa,90
+2075,Gubji,90
+2076,Jangsar,90
+2077,Jangsarbu,90
+2078,Jasha Goenpa,90
+2079,Jimithang,90
+2080,Khilikhar,90
+2081,Likashong,90
+2082,Loongkha,90
+2083,Loongkhajang,90
+2084,Mendagang,90
+2085,Tanag,90
+2086,Thangzhi,90
+2087,Tseykha,90
+2088,Tseykhakha,90
+2089,Uesakha,90
+2090,Yangchenkha,90
+2091,Draagchhukha,91
+2092,Goomgang,91
+2093,Sechednang,91
+2094,Yorbo,91
+2095,Zhelngoesa,91
+2096,Baymenang,92
+2097,Baypai Gangkha,92
+2098,Bemsesi,92
+2099,Bemsesi Khuru,92
+2100,Botolo,92
+2101,Chokhor Luchhu,92
+2102,Dargaygang,92
+2103,Dawana,92
+2104,Dochhukha,92
+2105,Dochhukha Bangmena,92
+2106,Dochhukha Goenpa,92
+2107,Dochhukha Menchugang,92
+2108,Dochhukha Phaduna,92
+2109,Dochhukha Tongsana,92
+2110,DochhukhaRitsa,92
+2111,Dongkokha Drapchegang,92
+2112,Dongkokha Loongsilgang,92
+2113,Dongkokha Pepchu,92
+2114,Gagona,92
+2115,Gona Tengkha,92
+2116,Guma,92
+2117,Jangchubchen,92
+2118,Jangsa,92
+2119,Khuru Bamsesi Washegang,92
+2120,Khuru Bemsesi,92
+2121,Lakhu,92
+2122,Logodama,92
+2123,Nibji,92
+2124,Nibjiwoma,92
+2125,Semtogangchhu,92
+2126,Tenpakha,92
+2127,Tharabachey,92
+2128,Tongtshasho,92
+2129,Wangwakha,92
+2130,Wolajangsa Gumagangju,92
+2131,Wolakha,92
+2132,Zamdongkhar Bebigacha,92
+2133,Zamdongkhar Bebigar,92
+2134,Zamdongkhar Bebigarkha,92
+2135,Zamdongkhar Changyuel,92
+2136,Zamdongkhar Dongkhuju,92
+2137,Zamdongkhar Gaupay,92
+2138,Zamdongkhar Laykha,92
+2139,Zamdongkhar Logodama,92
+2140,Zamdongkhar Loongsilgang,92
+2141,Zamdongkhar Simtogang,92
+2142,Zamdongkhar Tashijong,92
+2143,Zamdongkhar Thara,92
+2144,Zamdongkhar Zinchey,92
+2145,Zerkha,92
+2146,Agonang,93
+2147,Ap Zhuksa,93
+2148,Bara,93
+2149,Botokha,93
+2150,Chhoeten Nyingpo,93
+2151,Chisegang,93
+2152,Chulukha,93
+2153,Chuzamgang,93
+2154,Damchi,93
+2155,Damteykha,93
+2156,Dokuna,93
+2157,Dokuna sophu,93
+2158,Dophukha,93
+2159,Dzongchung,93
+2160,Haylu Tongshu,93
+2161,Heyloog,93
+2162,Jangsa,93
+2163,Kazhikha,93
+2164,Kelwagang,93
+2165,Lengo Gaysa,93
+2166,Loongtikha,93
+2167,Pangreju,93
+2168,Peltari,93
+2169,Phakakha,93
+2170,Rangrekha,93
+2171,Serigang,93
+2172,Tongchena,93
+2173,Tongshina,93
+2174,Tongshiremay,93
+2175,Tongsigang,93
+2176,Tongzhoonang,93
+2177,Tshetenang,93
+2178,Tshomiding,93
+2179,Uesarkha,93
+2180,Wakhuna,93
+2181,Yurbu,93
+2182,Yuwa,93
+2183,Zarbisa,93
+2184,Zhingsahang,93
+2185,Dompala,94
+2186,Goomkarmo,94
+2187,Lingmukha,94
+2188,Nabchhed,94
+2189,Oomtekha,94
+2190,Bangna Thanka,95
+2191,Bara,95
+2192,Barna Thangka,95
+2193,Chongchog Goenpa,95
+2194,Chongzhikha,95
+2195,Datong Goenpa,95
+2196,Domina,95
+2197,Dubchu Goenpa,95
+2198,Gangchula,95
+2199,Gangkha,95
+2200,Gangla,95
+2201,Garakha,95
+2202,Goen Wogma,95
+2203,Goleygang,95
+2204,Gumena,95
+2205,Japana,95
+2206,Jarigang,95
+2207,Jazhikha,95
+2208,Jimjig,95
+2209,Keparabsel,95
+2210,Khubji,95
+2211,Kutsiphakhar,95
+2212,Langjo,95
+2213,Loigima,95
+2214,Manikha,95
+2215,Menchudamley,95
+2216,Mendrelji,95
+2217,Nangpakha,95
+2218,Norboo Tashi,95
+2219,Nyebakha,95
+2220,Palu,95
+2221,Pangzhi,95
+2222,Shenga Goenpa,95
+2223,Songchumo,95
+2224,Tagochen,95
+2225,Thonji,95
+2226,Tshamkana,95
+2227,Tshosa,95
+2228,Yedogang,95
+2229,Yedopang,95
+2230,Dongkokhar,96
+2231,Dongkokhar Shongrina,96
+2232,Gangthramo,96
+2233,Gomgang,96
+2234,Jawana,96
+2235,Kidlingkha,96
+2236,Labtsakha,96
+2237,Loongnangkha,96
+2238,Lungtamo,96
+2239,Lungtengang,96
+2240,Lutamo,96
+2241,Norbugang,96
+2242,Norbugang Bemidingkha,96
+2243,Norbugang Bulgang,96
+2244,Norbugang Dashigang,96
+2245,Norbugang Gaupay,96
+2246,Norbugang Lamseri,96
+2247,Norbugang Serinang,96
+2248,Norbugang Tshochuna,96
+2249,Paagchhakha,96
+2250,Pangmarpo,96
+2251,Talog,96
+2252,Talog Goenpa,96
+2253,Yonggu,96
+2254,Zamdongkhar Pangalay,96
+2255,Aechey,97
+2256,Bemsisi,97
+2257,Bichhekha,97
+2258,Bomthangka,97
+2259,Chandana,97
+2260,Chenlekha,97
+2261,Damkhyi,97
+2262,Dochogla,97
+2263,Ghagsa,97
+2264,Goenmkha,97
+2265,Goenmsa,97
+2266,Jaloong,97
+2267,Lemjakha,97
+2268,Lungjam,97
+2269,Maenchhuna,97
+2270,Mendrelgang,97
+2271,Phentekha,97
+2272,Rinakha,97
+2273,Siluna,97
+2274,Stokha,97
+2275,Tang Ho,97
+2276,Thinleygang,97
+2277,Tokha,97
+2278,Toktogkha,97
+2279,Tsheringgang,97
+2280,Yanglo,97
+2281,Yuel Ham O,97
+2282,Bederlo,98
+2283,Bidongkha,98
+2284,Bidongkha Tsetending,98
+2285,Chungkha,98
+2286,Dabji,98
+2287,Darshongma,98
+2288,Dawakha,98
+2289,Dawanang,98
+2290,Dengana,98
+2291,Gengo,98
+2292,Jarakha,98
+2293,Jopkha,98
+2294,Kewana,98
+2295,Kutshana,98
+2296,Lebchulo,98
+2297,Limkha,98
+2298,Naripa,98
+2299,Nebtenkha,98
+2300,Omchupang,98
+2301,Pangsho,98
+2302,Raro,98
+2303,Samdingkha,98
+2304,Tamidamchu,98
+2305,Thangji,98
+2306,Tsachuphu,98
+2307,Tsachuphu Kati,98
+2308,Tsachuphugang,98
+2309,Tsephu,98
+2310,Tsephu Atako,98
+2311,Tsephu Bumpai Tsawa,98
+2312,Tsephu Jara,98
+2313,Tsephu Khawakha,98
+2314,Tsephu Semeki,98
+2315,Tsering,98
+2316,Wangkha,98
+2317,Yuesakha,98
+2318,Yusakha Neyji,98
+2319,Ashikhar,99
+2320,Bangtsho,99
+2321,Chhenangri,99
+2322,Domphoog,99
+2323,Gerwa,99
+2324,Martang,99
+2325,Rikhey,99
+2326,Rishor,99
+2327,Amshing,100
+2328,Bargoenpa,100
+2329,Bazor,100
+2330,Belnang Woong,100
+2331,Brongshing,100
+2332,Broomi,100
+2333,Chidoongkhar,100
+2334,Denchhi,100
+2335,Denchhi Khoyar,100
+2336,Fremi,100
+2337,Gomdar,100
+2338,Khandoma,100
+2339,Khoyar,100
+2340,Khoyar PAngthang,100
+2341,Luzor,100
+2342,Narphoong,100
+2343,Palroong,100
+2344,Rechanglu,100
+2345,Rongchanglu,100
+2346,Sawang,100
+2347,Agoorthang (Aguritar),101
+2348,Aumshing (Betholi),101
+2349,Chelthang (Kharbandi/Khowrong),101
+2350,Damtsang (Daldalay),101
+2351,Dewathang (Nangley),101
+2352,Jampani,101
+2353,Jangsawom (Lower Golanti),101
+2354,Jansagom (Upper Golanti),101
+2355,Jomotshangkha (Daifam Throm),101
+2356,Lanchenphu Toed (Upper Hastinapur),101
+2357,Langchenphu Maed (Lower Hastinapur),101
+2358,Namchazor (Bajhrangi),101
+2359,Pagshingkha (Malabasy),101
+2360,Rongchhuthang (Khowrong),101
+2361,Betseling,102
+2362,Doongmanma,102
+2363,Gonong,102
+2364,Lauri,102
+2365,Momring,102
+2366,Patpanadang,102
+2367,Phajo Goenpa,102
+2368,Relnang,102
+2369,Serzhong,102
+2370,Tashiphu,102
+2371,Tshephu,102
+2372,Tshothang,102
+2373,Woongthig,102
+2374,Chhoedoong,103
+2375,Chongmashing,103
+2376,Dengshingzor,103
+2377,Doongmanma,103
+2378,Galingkhar,103
+2379,Gorthongma,103
+2380,Kaeptang,103
+2381,Kakani,103
+2382,Kakpadoong,103
+2383,Khalingdangre/Galingkhar,103
+2384,Loongbaktang,103
+2385,Martshala,103
+2386,Pelrithang,103
+2387,Raushing,103
+2388,Rechanglu,103
+2389,Sarjoong,103
+2390,Shem Shem,103
+2391,Suzor,103
+2392,Thizor,103
+2393,Thongpashing,103
+2394,Tsholingkhar,103
+2395,Tshongpashing,103
+2396,Wargphoog,103
+2397,Batshoong,104
+2398,Batshoong,104
+2399,Bilam,104
+2400,Chongti,104
+2401,Durtsun,104
+2402,Gonminang,104
+2403,Jalamwoong,104
+2404,Jangchhubling,104
+2405,Malang,104
+2406,Mandar,104
+2407,Mantsang,104
+2408,Menchari,104
+2409,Milum,104
+2410,Mitseshing,104
+2411,Morong,104
+2412,Nagzor,104
+2413,Nagzor,104
+2414,Phetong,104
+2415,Redumed,104
+2416,Rimoong,104
+2417,Suzoong,104
+2418,Tershiri,104
+2419,Thungshing,104
+2420,Wooling,104
+2421,Wooling,104
+2422,Bunakha (Majuwa),105
+2423,Chirtshosa (Kharbandi),105
+2424,Doongkarling (Dumpha),105
+2425,Dramzeygang (Kataray),105
+2426,Kathoobdang (Diklai),105
+2427,Labtshazor (Deorali),105
+2428,Lingmayshong (Tarulay),105
+2429,Loongminang (Gairitar),105
+2430,Pemathang (Beldara),105
+2431,Pemathang (Dalim),105
+2432,Pyertshosa (Kharbandi),105
+2433,Raling (Phedi),105
+2434,Uesarna (Nainital),105
+2435,Warong (Warang),105
+2436,Yuwathang (Nalapara),105
+2437,Balamnang (Nakalitar),106
+2438,Baylamsharang,106
+2439,Chhoetseyung (Daurey),106
+2440,Chhumaedthang (Gauthalay),106
+2441,Doongkarling/Dumpha/Gangatay,106
+2442,Drupchhugang (Kubindey),106
+2443,Karmaling (Kataray),106
+2444,Khamaedthang/Mansitar,106
+2445,Mendrupling (Bhawaney),106
+2446,Minjigang (Tekree),106
+2447,Phuentshogthang/Bakuli,106
+2448,Samdrupchhoeling/Raitar,106
+2449,Selmonang (Koila),106
+2450,Shangshingzor,106
+2451,Shukuni/Shangshingzor,106
+2452,Thangchu Goenpa/Chotaytar,106
+2453,Thhongsigang (Saureney),106
+2454,Thongjaling (Jagartala),106
+2455,Tsangchutham/U. Mansitar,106
+2456,Tshochoong (Bauney),106
+2457,Tshogskorling (Majuwa),106
+2458,Zomlaythang (Katikay),106
+2459,Damsagang Maed (Hillay),107
+2460,Damsagang Toed,107
+2461,Ngangtshothang Maed,107
+2462,Ngangtshothang Toed,107
+2463,Tshoduen (Sathpokari),107
+2464,Barkalangnang,108
+2465,Chasakhar/Maenjiwoong,108
+2466,Chemari,108
+2467,Dangtsho/Serthig,108
+2468,Dekorwoong/Khanduphoog,108
+2469,Deptsang,108
+2470,Dhukha/Monmola,108
+2471,Drenphoog,108
+2472,Goenpa/Monmola,108
+2473,Jab/Khanduphoog,108
+2474,Junme,108
+2475,Khanduphoog,108
+2476,Khuwangka/Monmola,108
+2477,Lamkhabjay/Serthig,108
+2478,Lhakhangzor/Serthig,108
+2479,Maenjiwoong/Khanduphoog,108
+2480,Maenjiwoongpeka/Khanduphoog,108
+2481,Pangthang/Khanduphoog,108
+2482,Pangthang/Monmola,108
+2483,Pangthang/Serthig,108
+2484,Pemagatshel,108
+2485,Phachhog,108
+2486,Phakchu/Khanduphoog,108
+2487,Rebalingbi,108
+2488,Sakari/Khanduphoog,108
+2489,Suskar,108
+2490,Tang Frang/Serthig,108
+2491,Tang Phrang/Khanduphoog,108
+2492,Tangngakpa/Serthig,108
+2493,Tashithang Gyed,108
+2494,Thujaycheling/Monmola,108
+2495,Tokari Goenpa/Serthig,108
+2496,Woong/Khanduphoog,108
+2497,Zor/Monmola,108
+2498,Bayuel,109
+2499,Benporong,109
+2500,Haila,109
+2501,Khainorong/Shogshi,109
+2502,Langnang Ringmo/Wangphoog,109
+2503,Lingsum/Shogshi,109
+2504,Manidangre/Shogshi,109
+2505,Sachhilo,109
+2506,Serchhenmo,109
+2507,Shogshi,109
+2508,Shoguwoong,109
+2509,Shokshi Pangthang,109
+2510,Wangphoog,109
+2511,Benyekha (Benekha),110
+2512,Damji (Damjee),110
+2513,Domchhukha (Bhalukhola),110
+2514,Drameling (Dhamiley),110
+2515,Duenchhukha (Denchukha),110
+2516,Duenchhukha (Gajbee),110
+2517,Gabji,110
+2518,Gawaling (Baseni),110
+2519,Gesarling (Boribotey),110
+2520,Kharzhing (Kadori),110
+2521,Khempaling (Khempa),110
+2522,Mayona (Dhamiley),110
+2523,Phazhing (Beteni),110
+2524,Poongthra A,110
+2525,Poongthra B,110
+2526,Relukha,110
+2527,Shetakha,110
+2528,Yomeling (Mayona),110
+2529,Aringgang (Tarigaon),111
+2530,Bamengang (Mithun),111
+2531,Chhuka (Basantey),111
+2532,Chilumchen (Chelumchen),111
+2533,Dangreyboog Ka (Beachgaon A),111
+2534,Dangreyboog Kha (Beachgoan),111
+2535,Dograp (Dogap),111
+2536,Dokarkha Ga (Dorokha C),111
+2537,Dokarkha Ka (Dorokha A),111
+2538,Dokarkha Kha (DorokhaB),111
+2539,Gangtokha (Daragaon),111
+2540,Jigme,111
+2541,Legpagang (Lapchey Goan),111
+2542,Manigang (Maney A),111
+2543,Manigang (Maney B),111
+2544,Melonggang (Sebichang),111
+2545,Mizomsa (Somlachen),111
+2546,Namchu,111
+2547,Ngagang (Damphuchen),111
+2548,Sangloong,111
+2549,Sengteng,111
+2550,Singye,111
+2551,Tengdelshong (Satakha),111
+2552,Thingyersa (Timburey),111
+2553,Thuloonggang,111
+2554,Wangchuck,111
+2555,Doomtoed (Daragon),112
+2556,Doomtoed Chhungwa (Sanu Doomtoed),112
+2557,Doongtoed Chhewa (Thulo Doomtoed),112
+2558,Gairigaon,112
+2559,Jarikha (Jaringay),112
+2560,Khaling (Khaling Goan),112
+2561,Kuzhuggang (Kuchey),112
+2562,Bepoteng (Belbotey),113
+2563,Chhoedagling (Choksa),113
+2564,Chhunaggang (Kalikhola),113
+2565,Daangling (Pakhagaon),113
+2566,Dewachen (Shivalaya),113
+2567,Gangjoog (Chebju),113
+2568,Gangtog (Gyanthok),113
+2569,Gyalposhing (Raja Rukh),113
+2570,Jamcholing (Sajbotey),113
+2571,Kangdoongphug (Jogimara),113
+2572,Namgay Chhoeling,113
+2573,Norjangsa (Girigaon),113
+2574,Pagshingkha (Malbasay),113
+2575,Peljorling Maed,113
+2576,Peljorling Toed,113
+2577,Satsangsa (Majuwa),113
+2578,Sernyagang (Kholakharka),113
+2579,Tashichhoeling (Sipsu),113
+2580,Tshachhungang (Noonpani),113
+2581,Tsholingkhar (Pokhari Dara),113
+2582,Tshosarling (Rangedara),113
+2583,Zhiwaling (Kothigaon),113
+2584,Damzagsa (Dipujora),83
+2585,Dawaling (Maghay),83
+2586,Dramzigang (Kataray),83
+2587,Gangtosa (Kothidara),83
+2588,Jarigang (Merik),83
+2589,Khangduzhi (Kopchey),83
+2590,Kyedsa (Kothidara/Kirney),83
+2591,Kyidsa (Kirney),83
+2592,Kyidtsaling (Dhapper),83
+2593,Labmi (Lamjee),83
+2594,Lamjosa (Lamjumsa),83
+2595,Madgang (Gairigaon),83
+2596,Norboogang (Tinteray),83
+2597,Thorila Thumkey,83
+2598,Tsaphelthang (Nabukharka),83
+2599,Tsheringang (Nangla Dang),83
+2600,Tshongduekha (Hatkhola),83
+2601,Yangphilthang (Bhimtar),83
+2602,Chhu Goo (Chingu),115
+2603,Chongzhu,115
+2604,Dangreyboog (Bich Gaon),115
+2605,Ghundagaon,115
+2606,Guengaling (Ghunday Gaon),115
+2607,Joenpang,115
+2608,Karmaling (Kamigoan),115
+2609,Khababgang (Thika),115
+2610,Linggarnang (Lingtam),115
+2611,Migphelgang (Dhakalgang),115
+2612,Norgeygang (Lower Bara),115
+2613,Noryog,115
+2614,Patshaling (Beteni),115
+2615,Phendegang (Fenchi),115
+2616,Samphelgang (Lepchagaon),115
+2617,Satsangma (Majuwa),115
+2618,Tshachhu,115
+2619,Zhendebgang (Mukheni Gaon),115
+2620,Balsathang (Bimirey),116
+2621,Beyulgang (Kopchey),116
+2622,Chhoekorling (Schooley),116
+2623,Chhoetenkha (Deorali),116
+2624,Chhujugthang (Chhetritar),116
+2625,Chhusilgang (Chisopani),116
+2626,Damtshangna (Ahaley),116
+2627,Darzhingthng (Jagatar),116
+2628,Dechengang (Sarki Gaon),116
+2629,Dizanggang (Kophi),116
+2630,Dramedsa (Sepeni),116
+2631,Dramzeling (Kataray),116
+2632,Gatsheling (Baraney),116
+2633,Gomsumposa (Tinratey),116
+2634,Jureygang (Bararay),116
+2635,Khangzhima (Chargharey),116
+2636,Komaling (Balsey),116
+2637,Lamaithang (Lamatar),116
+2638,Lungsirma (Sirisey),116
+2639,Lungtensa (Saureni),116
+2640,Manidara,116
+2641,Manigang (Manidara/Gangtey),116
+2642,Nakeyling (Nigurey),116
+2643,Neydagling (Dhamigaon),116
+2644,Ngadoongsa (Dhengrey),116
+2645,Norgyeling (Taley),116
+2646,Nyachhabsa (Gangtey),116
+2647,Nyadoesa (Katley),116
+2648,Pangthangjug (Thandey),116
+2649,Pekarling (Toribari),116
+2650,Pemaling (Kamigaon),116
+2651,Phagsamthang (Ghondeytar),116
+2652,Shing Ngarma (Khamarey),116
+2653,Singdregang (Jyamirkot),116
+2654,Tamchhaabsa (Birukhola),116
+2655,Tashithang (Tachey),116
+2656,Thangchhenang (Birutar),116
+2657,Tsajnsa Ka (Hatikhara A),116
+2658,Tsajnsa Kha (Hatikhara B),116
+2659,Tsakethang (Samatar),116
+2660,Yurungthang (Khopitar),116
+2661,Zamthangnang (Sagutar),116
+2662,Chhunag (Kalapani),117
+2663,Chhutharsum (Tindharey),117
+2664,Dewathang (Banstar),117
+2665,Doleg (Dholay),117
+2666,Doomshinggang (Dumshidara),117
+2667,Gaden (Bhotaykharka),117
+2668,Gashingma (Gashing),117
+2669,Goenpakha (Gombadara),117
+2670,Jangchhogling (Uttarey),117
+2671,Ketshaelgang (Thotney),117
+2672,Lachhuthang (Lahatar),117
+2673,Neygang (Damdara),117
+2674,Nyoenpaling,117
+2675,Nyoenpaling,117
+2676,Nyoenpaling,117
+2677,Peldenling (Gomtu),117
+2678,Samerchen (Ratey),117
+2679,Satergang (Khanigaon),117
+2680,Satorma (Panray),117
+2681,Tashilakha (Numilakha),117
+2682,Tashitshe (Lechi),117
+2683,Thongjabi (Thumkey),117
+2684,Tingtingma (Titi),117
+2685,Uelgyalling (Dolomthang),117
+2686,Bugtognang (Bukkay),118
+2687,Chathakgang (Sangla),118
+2688,Chhirlogsa (Chiloo),118
+2689,Damtshangma (Ahalay),118
+2690,Dewathang (Banstar),118
+2691,Dungkarling (Choilicoop),118
+2692,Gawadong (Sukraty),118
+2693,Goenpazor (Gombadara),118
+2694,Jangchhogling (Uttary),118
+2695,Khandothang (Mechetar),118
+2696,Kipadong (Sukraty/Bauwandara),118
+2697,Lamaithang (Lamitar),118
+2698,Lhakhangpong (Manderlin),118
+2699,Lingmaithang (Lamatar),118
+2700,Majathang (Budhuney),118
+2701,Nyimaling (Saureni),118
+2702,Serthang (Khalingtar),118
+2703,Shatshamchhu (Duarpani),118
+2704,Tsapero (Tasim),118
+2705,Tshongdzom (Malbasay),118
+2706,Yulu Maed (Bukay B),118
+2707,Yulu Toed (Bukay A),118
+2708,Bumpathang (Bahunitar),119
+2709,Chhuchhungsa (Jitti A),119
+2710,Chhuchhungsa (Jitti B),119
+2711,Chhuchhungsa (Jitti C),119
+2712,Chungthung,119
+2713,Depheling Toed (Gathiya A),119
+2714,Dephelling (Gathiya B),119
+2715,Dephelling (Gathiya C),119
+2716,Dephelling (Gathiya D),119
+2717,Joenlegsa (Setipekha),119
+2718,Khamzangling (Satvaiya),119
+2719,Khangchunggang (Pakhadura),119
+2720,Khangthongsumpa (Tintalay),119
+2721,Khangzangling (Labarbot),119
+2722,Kharselling (Mongargaon),119
+2723,Lingthang (Lengthey),119
+2724,Namseling,119
+2725,Ngoedroobling (Sombek A),119
+2726,Ngoedroobling (Sombek B),119
+2727,Ngoedroobling (Sombek C),119
+2728,Saduzhima (Chargharay A),119
+2729,Shaduzhima (Cargharay B),119
+2730,Tharpung (Tharphu),119
+2731,Tsangchushong (Latakhola),119
+2732,Bugkha (Bucca),120
+2733,Damzhagsa (Thunuwa),120
+2734,Dangraybug (Beachgaon),120
+2735,Domtshang (Balukoray),120
+2736,Doogpoling (Kamai Banjang),120
+2737,Gangtokha (Daragaon),120
+2738,Jinpathang (Deotey),120
+2739,Khempagang (Khempa Gaon),120
+2740,Lapchakha,120
+2741,Norjangsa Dangpa (Gairigaon Ek),120
+2742,Norjangsa Nyipa (Gairigaon Dho),120
+2743,Nyindooglakha,120
+2744,Panzhing Ghongma (Upper Phanbari),120
+2745,Panzhing Wogma (Lower Panbari),120
+2746,Sherabling (Jenchu Gaon),120
+2747,Tababgang (Tabagaon),120
+2748,Tading,120
+2749,Tenpaling (Titring),120
+2750,Thongsa (Ramitey),120
+2751,Tobchhenthang (Borbotey),120
+2752,Zochhaling (Sisney),120
+2753,Chhermaling (Fita),122
+2754,Dangreybug (Bichgaon),122
+2755,Dawathang (Jumsatar),122
+2756,Dawthongsa (Jumsiligaon),122
+2757,Denpajong (Soureney),122
+2758,Domdongsa (Balukhop),122
+2759,Dzongsar,122
+2760,Kachhen (Kachin),122
+2761,Kangzhima (Chargarey),122
+2762,Khengtong,122
+2763,Kuchhengang (Kuchin Parkha),122
+2764,Kuchhenthang (Kuchin Tar),122
+2765,Kuchhentoed (Kuchin Upper),122
+2766,Kuengaling (Pakpay),122
+2767,Miglamthang (N. Bindu),122
+2768,Miglamthang (N. Bindu),122
+2769,Nyizergang (Ningalay),122
+2770,Rangthagling (Jatey),122
+2771,Silwaithang (Bakbakey),122
+2772,Targothang (Okhar Botey),122
+2773,Tendruk,122
+2774,Tendrukthang (Tendu Tar),122
+2775,Thagpzosa (Dhoreni),122
+2776,Dangkharling (Bahun Gaon),123
+2777,Dangreyboog (Bich Gaon A),123
+2778,Dangreyboog (Bich Gaon A)/Jangsa,123
+2779,Dangreyboog (Bich Gaon B),123
+2780,Dangreyboog (Bich Gaon)/Khar,123
+2781,Dangreyboog (Bich Gaon)/Tashiding,123
+2782,Dechhengang (Rai Gaon),123
+2783,Jarip/Ngatshang,123
+2784,Jarithang (Jarip C),123
+2785,Jarithang Maed (Jarip B),123
+2786,Jarithang Toed (Jarip A),123
+2787,Kardog,123
+2788,Kardog,123
+2789,Kardog,123
+2790,Lhendupling (Thakuri Gaon),123
+2791,Nyimalung (Bhotaykharka),123
+2792,Rigpaling (Schooldara),123
+2793,Schooldara/Tashiding,123
+2794,Serigang (Bhotaykharka),123
+2795,Tharpaling (Majuwa),123
+2796,Choekiling (Gairigaon),124
+2797,Dungkar (Khumaune B),124
+2798,Guma (Nau Number),124
+2799,Jigmedthang (Lamitar),124
+2800,Kinzangling,124
+2801,Koenchogling (Kuchi Daina),124
+2802,Pelkithang (Kataharey),124
+2803,Ranjoongling (Suntalabari),124
+2804,Richhenphoog (Kharbandi),124
+2805,Samtenchhu (Khola Ghari),124
+2806,Sengeyling (Singidara),124
+2807,Soenakhar,124
+2808,Tsakaling,124
+2809,Tsakaling (Ghumauney A),124
+2810,Zoepaling (Jarip),124
+2811,Zurigang (Ghalley Gaon),124
+2812,Azhethang (Ranikhop),125
+2813,Bachhuthang (Bechkhola),125
+2814,Chhibigang (Gairigaon),125
+2815,Chhudzomsa (Dovan),125
+2816,Chunyethang (Baragaray),125
+2817,Dechenling (Nunpani),125
+2818,Dragchhu (Tirkhola),125
+2819,Galegthang (Ghunring),125
+2820,Jangchhubling (Pankhey),125
+2821,Lhayuel (Mougaon),125
+2822,Mautsangchhu (Maukhola),125
+2823,Mongarling (Mongergaon),125
+2824,Norbugang (Khargaon),125
+2825,Nyachhu (Machukhola),125
+2826,Pelrigang (Rametey),125
+2827,Rijugang (Fedi),125
+2828,Samtenphu (Daragaon),125
+2829,Sherabling (Pathibara),125
+2830,Thongjabi (Tarkharkha),125
+2831,Thselithang (Bhimirey),125
+2832,Barthang,126
+2833,Barthang (Daragoan),126
+2834,Chagsakhar,126
+2835,Chagsakhar (Danabari),126
+2836,Chagsakhar (Dawathang),126
+2837,Chagsakhar (Kalikhola),126
+2838,Chagsakhar (Limbutar),126
+2839,Chagsakhar (Somitar),126
+2840,Chagsakhar (Thewar),126
+2841,Chaskhar (Daragoan),126
+2842,Nyimaling,126
+2843,Nyimaling (Daragoan),126
+2844,Nyimaling (Lower Phanphaney),126
+2845,Pangzor,126
+2846,Pangzor (Danabari),126
+2847,Pangzor (Daragoan),126
+2848,Pangzor (Kalikhola),126
+2849,Pangzor (Upper Phanphaney),126
+2850,Shawaphoong,126
+2851,Shawaphoong (Daragoan),126
+2852,Shawaphoong (Lower Phanphaney),126
+2853,Tongjabi,126
+2854,Tongjabi (Danabari),126
+2855,Tongjabi (Daragoan),126
+2856,Tongjabi (Lower Phanphaney),126
+2857,Tshojan,126
+2858,Tshojan (Lower Phanphaney),126
+2859,Yueling,126
+2860,Yueling (Danabari),126
+2861,Yueling (Daragoan),126
+2862,Yueling (Lower Phanphaney),126
+2863,Zambabi,126
+2864,Zambabi (Danabari),126
+2865,Zombabi (Daragoan),126
+2866,Chhoekhorling (Toribari),127
+2867,Dabithang (Sukhatar),127
+2868,Darbithang (Sukhatar),127
+2869,Dekidling (Leopani),127
+2870,Dolongang (Gairegoan),127
+2871,Gawaithang (Kafleytar),127
+2872,Hamlingphu (Leokhop),127
+2873,Jigmedling (Chuwabari),127
+2874,Lungtenbi (Sukhatar),127
+2875,Menchhuthang (Rateygoan),127
+2876,Mendelgang (Bichpani),127
+2877,Norbuthang (Kafleytar),127
+2878,Nubgang (Dolpani),127
+2879,Rateypani (Dekiling),127
+2880,Tashiling (Lampatey),127
+2881,Yangchenphu (Kafleytar),127
+2882,Balchhangchhu (Belkhola),36
+2883,Bunakha (Bitsy),36
+2884,Chursini (Kagatey),36
+2885,Dragphuchhen (Gangatey),36
+2886,Gakidling (Hilley),36
+2887,Getemkha (Laring),36
+2888,Jachhu (Muga),36
+2889,Maenchhulam (Kharpani/Hilley),36
+2890,Omchhunang (Kwapani),36
+2891,Ralingthang (Noonpani),36
+2892,Sangkha (Rateypani/Hilley),36
+2893,Dzamlingthang (Mainator),129
+2894,Lekidthang (Lakitar),129
+2895,Pelrithang,129
+2896,Pelrithang (Lodrai),129
+2897,Pelrithang (Mainatar),129
+2898,Pelrithang (Somitar),129
+2899,Pemathang (Somitar),129
+2900,Bartsham Ka (Bichgaon A),130
+2901,Bartsham Kha (Bichgaon B),130
+2902,Chhoetenkhar (Sukumbasi),130
+2903,Chungsing,130
+2904,Doringphu (Dungay),130
+2905,Gakidling (Kholatar),130
+2906,Galegchhu (Galeychu),130
+2907,Gongduegang (Gong Gaon),130
+2908,Gongtsekha (Gongdara),130
+2909,Hokaling (Gairigaon),130
+2910,Jungchhurgang (Saudalay),130
+2911,Khamaed,130
+2912,Khamaed (Daragaon),130
+2913,Khamo,130
+2914,Khatoed,130
+2915,Khatoed (Sirangaon),130
+2916,Lungselgang,130
+2917,Mendrelgang (Bhirgaon),130
+2918,Moenchhukga (Mongergaon),130
+2919,Pachhakha (Beteni),130
+2920,Pemagang (Pakhey),130
+2921,Riti (Reti),130
+2922,Samkhara,130
+2923,Serbugang (Ashiney),130
+2924,Shingkharthang (Samkhara),130
+2925,Silsagang (Casey),130
+2926,Tagjogang (Babjungay),130
+2927,Tashigatshel (Chakpai),130
+2928,Tormaphoog (Tormay),130
+2929,Tshachhu (Tatopani),130
+2930,Chhoekhorling (Majuwa),131
+2931,Dechenpelri (Jaruwa),131
+2932,Dechhenpelri (Jaruwa),131
+2933,Dungkharling,131
+2934,Khenpagang (Dungmindra),131
+2935,Samtenling (Bhur),131
+2936,Samtenthang (Juprey),131
+2937,Samtenthang (Jupreydara),131
+2938,Chiwaling (Pingkhuwa),132
+2939,Labtsakha,132
+2940,Nenyul (Sisty),132
+2941,Peljorling (Kopchey),132
+2942,Rishong (Sistykhopan),132
+2943,Sahariphu (Balatung),132
+2944,Singhi,132
+2945,Tashitsel (Labarbotay),132
+2946,Wangchuling (Phibsoo),132
+2947,Yarpheling (Toemba),132
+2948,Yuejug (Chotatsirang),132
+2949,Barshong (Thaewar),133
+2950,Kapung (Somitar),133
+2951,Norbuling,133
+2952,Pangkhar (Somitar),133
+2953,Pemayoedling,133
+2954,Sherzhong,133
+2955,Tashiphoog,133
+2956,Dargyethang (Patabari),134
+2957,Gadanchholing (Sarpangbazar),134
+2958,Gomchola Ka (Chaar),134
+2959,Gomchola Kha (Kharey Pakhey),134
+2960,Koenchhogling (Kharpanitar),134
+2961,Norbugang (Akhow),134
+2962,Risoomgang (Tinjurey),134
+2963,Shompangkha (Sarpangtar),134
+2964,Thongjazor (Parkheygoan),134
+2965,Dorjitse (Chargery),135
+2966,Garkhola,135
+2967,Khamartari,135
+2968,Lamitar,135
+2969,Pemachholing (Dragaon),135
+2970,Singhi Dap,135
+2971,Singhi Dara,135
+2972,Tashichhoeling (Krasheschholing),135
+2973,Tashichholing,135
+2974,Woongchhilu (Limbutar),135
+2975,Yoed Zergang (Rangadara),135
+2976,Chubarthang (Chesopani),136
+2977,Daangling,136
+2978,Daangling (Dhoray),136
+2979,Daangling (Katesey),136
+2980,Dungmin,136
+2981,Dungmin (Baraytar),136
+2982,Dungmin (Bawanitar),136
+2983,Dungmin (Bichpany),136
+2984,Dungmin (Bistadara),136
+2985,Dungmin (Gobritar),136
+2986,Dungmin (Gurungtar),136
+2987,Dungmin (Salbandi),136
+2988,Gaden,136
+2989,Gaden (Proper Lalai),136
+2990,Gaden (School Dara),136
+2991,Gaden (Upper Lalai),136
+2992,Gaden (Upper Lalaidhap),136
+2993,Lingar,136
+2994,Lingar (Bistadara),136
+2995,Rijoog,136
+2996,Rijoog,136
+2997,Rijoog (Largkhar),136
+2998,Rijoog (Tamkuley),136
+2999,Tashithang,136
+3000,Thongjazor,136
+3001,Babi Chorten,137
+3002,Debsid,137
+3003,Gangchhe,137
+3004,Jumo,137
+3005,Lhoongtsho,137
+3006,Nezeylhakhang,137
+3007,Ngachuphakha,137
+3008,Rama,137
+3009,Sarbethang,137
+3010,Yoedselpang,137
+3011,Chamgang,138
+3012,Chamgang Toed,138
+3013,Doongdrog,138
+3014,Gyaltala,138
+3015,Wangdrog,138
+3016,Chizhi Goenpa,139
+3017,Ge-Nyenkha,139
+3018,Tsho-Chhenkha,139
+3019,Wangbama,139
+3020,Zanglegkha,139
+3021,Boegarna,140
+3022,Chhagminang,140
+3023,Chhandragang,140
+3024,Chhoekhor,140
+3025,Dazhi,140
+3026,Dechenphu,140
+3027,Deling Goenpa,140
+3028,Dodennang,140
+3029,Janazampa,140
+3030,Kabisa,140
+3031,Kuzhugchen,140
+3032,Tashiding,140
+3033,Wangkawog,140
+3034,Zhoshuel,140
+3035,Chagphu,141
+3036,Chhuzarkha,141
+3037,Gang Yuel,141
+3038,Khangkid Yuel,141
+3039,Sha Yuel,141
+3040,Bemegasa,142
+3041,Chimithangka,142
+3042,Chudingkha,142
+3043,Dalukha,142
+3044,Danglo,142
+3045,Doklaisa,142
+3046,Dolepchen,142
+3047,Dongkarla,142
+3048,Dramesa,142
+3049,Gida,142
+3050,Goenwog,142
+3051,Jadingkha,142
+3052,Jamdo,142
+3053,Jamdo Goma,142
+3054,Jamdo Woma,142
+3055,Jampel,142
+3056,Jiminang,142
+3057,Kepaithang,142
+3058,Kharibji,142
+3059,Kharphu,142
+3060,Khasadrapchu,142
+3061,Khasakha,142
+3062,Lamwog,142
+3063,Langdro,142
+3064,Lingzhipharka,142
+3065,Nyenzerkha,142
+3066,Patsekha,142
+3067,Puleona,142
+3068,Pungzhi,142
+3069,Samakha,142
+3070,Selaykha,142
+3071,Sengyelna/Karphu,142
+3072,Sigay,142
+3073,Silidraphu,142
+3074,Siluna,142
+3075,Simu,142
+3076,Sisinang,142
+3077,Tshaloongna,142
+3078,Tshaphu,142
+3079,Walunang,142
+3080,Zhingsagang,142
+3081,Barshong,143
+3082,Chungdulo,143
+3083,Gangbu,143
+3084,Goedshog,143
+3085,Gunglona,143
+3086,Jagoethang,143
+3087,Khasho,143
+3088,Lhayulhaetoed,143
+3089,Moentshiphoog,143
+3090,Naro,143
+3091,Pagoed,143
+3092,Sipchu,143
+3093,Tagsidthang,143
+3094,Walithang,143
+3095,Waza,143
+3096,Zhomthang,143
+3097,Zigu,143
+3098,Changmatasa,144
+3099,Damgochong,144
+3100,Dotaapaithang,144
+3101,Dozotoen,144
+3102,Gadraten,144
+3103,Jangothang,144
+3104,Jomphu,144
+3105,Toepgoethang,144
+3106,Betsamang,146
+3107,Bomdir,146
+3108,Gangkhardoong,146
+3109,Ngalimang,146
+3110,Pangkhar,146
+3111,Panglewog,146
+3112,Phanteng,146
+3113,Taphel,146
+3114,Tshaling,146
+3115,Wogmanang,146
+3116,Chhema (Jamkhar),147
+3117,Domshing,147
+3118,Largyab,147
+3119,Neydrag,147
+3120,Pachhu,147
+3121,Rijoong,147
+3122,Shingkhar,147
+3123,Tag Chhema,147
+3124,Tongla,147
+3125,Yoob,147
+3126,Zor (Jamkhar),147
+3127,Daka,148
+3128,Dengloom,148
+3129,Dolepchen,148
+3130,Domtshang,148
+3131,Gardung,148
+3132,Karmazom,148
+3133,Khamdang,148
+3134,Kilkhorchen,148
+3135,Koenchobling,148
+3136,Lengkhar,148
+3137,Ngalamang,148
+3138,Nombaring,148
+3139,Pam,148
+3140,Paychateng,148
+3141,Rabdeling,148
+3142,Serpang,148
+3143,Shakshing,148
+3144,Shalli,148
+3145,Shazam,148
+3146,Zharatshi,148
+3147,Aringborang,149
+3148,Bainang-Reb,149
+3149,Bar Dzong,149
+3150,Bawoong,149
+3151,Domtshang,149
+3152,Doongmaen,149
+3153,Gochang,149
+3154,Goenpa,149
+3155,Gongshing,149
+3156,Kakaney,149
+3157,Khalapangthang,149
+3158,Khiri,149
+3159,Lalam,149
+3160,Laybari,149
+3161,Lemrang,149
+3162,Lengbartang,149
+3163,Lushing,149
+3164,Maenshing,149
+3165,Nagtshang,149
+3166,Pangthang,149
+3167,Phairawa,149
+3168,Romang,149
+3169,Shangthang,149
+3170,Tag Dzong,149
+3171,Thongzor,149
+3172,Tsang-Rong,149
+3173,Tsenkang,149
+3174,Tshotsang,149
+3175,Tshurkhar,149
+3176,Tsushing,149
+3177,Woongkhar,149
+3178,Zor (Ramjar),149
+3179,Zorthoong,149
+3180,Bagpa (Toetsho),150
+3181,Bangkhabchen,150
+3182,Chaymkhar,150
+3183,Chhemkhar,150
+3184,Choklabtsa,150
+3185,Dagtsa,150
+3186,Dumang,150
+3187,Dungtse,150
+3188,Jangphoogtse,150
+3189,Khi-Nyel,150
+3190,Khoblakhar,150
+3191,Maeldoong,150
+3192,Manam,150
+3193,Nangkhar goenpa,150
+3194,Omba,150
+3195,Pajab,150
+3196,Pangthang Goenpa,150
+3197,Pungthung,150
+3198,Seb,150
+3199,Sengphu,150
+3200,Sertsho,150
+3201,Thangdang,150
+3202,Togshing,150
+3203,Tshengang,150
+3204,Bagpa (Tomizangsa),151
+3205,Bainangkhar,151
+3206,Changmadoong,151
+3207,Dongkashing,151
+3208,Dongshing,151
+3209,Dongtoed,151
+3210,Gomkor,151
+3211,Kenmong,151
+3212,Kuenzangling,151
+3213,Lhauzhing,151
+3214,Maenchhu,151
+3215,Memmong,151
+3216,Pang,151
+3217,Toka,151
+3218,Tsangdoong,151
+3219,Wogkhar,151
+3220,Bamchang,152
+3221,Chhema (Yalang),152
+3222,Doogti,152
+3223,Melongkhar,152
+3224,Namthi,152
+3225,Phuyang,152
+3226,Rinzin Toenpang,152
+3227,Rolam,152
+3228,Thragom,152
+3229,Yalang,152
+3230,Yarphel,152
+3231,Baney,153
+3232,Bayling,153
+3233,Bimkhar,153
+3234,Gangkhar,153
+3235,Li-chen,153
+3236,Rabti,153
+3237,Bainangkhar,154
+3238,Bargoen,154
+3239,Bumling,154
+3240,Chaod Lhakang wog,154
+3241,Dzong Goen,154
+3242,Dzong Thong,154
+3243,Jamoong,154
+3244,Kedpoong,154
+3245,Kumoong,154
+3246,Maentshang,154
+3247,Majadoong,154
+3248,Moogkhar,154
+3249,Nagtshang,154
+3250,Ngaloong,154
+3251,Ngaloong Gang,154
+3252,Pam,154
+3253,Pangthang,154
+3254,Resengma,154
+3255,Reygang,154
+3256,Rophoong,154
+3257,Sershing,154
+3258,Soortshong,154
+3259,Tashi Teng,154
+3260,Thangchey,154
+3261,Trashang,154
+3262,Yangkhar,154
+3263,Zhingom,154
+3264,Zoor,154
+3265,Bargoen (Bidung),155
+3266,Daling,155
+3267,Dodrom,155
+3268,Dori (Bidung),155
+3269,Gaygoen,155
+3270,Jaloong,155
+3271,Kakaniwog,155
+3272,Khairi,155
+3273,Limphang,155
+3274,Perthong,155
+3275,Retsang Peg,155
+3276,Takseri,155
+3277,Tsekhar,155
+3278,Tsigtoom,155
+3279,Maanthong,156
+3280,Mertsham,156
+3281,Pangthang,156
+3282,Ritsangdoong,156
+3283,Rongthoong,156
+3284,Thargom,156
+3285,Yonphoogla,156
+3286,Yonphoogpam,156
+3287,Bedengphoog,157
+3288,Chorphoog,157
+3289,Dangna,157
+3290,Doyam Chema,157
+3291,Drumshari,157
+3292,Gangpar,157
+3293,Kheri,157
+3294,Kheshing,157
+3295,Lagoen,157
+3296,Lamyong,157
+3297,Langnang,157
+3298,Madeywa,157
+3299,Merdag,157
+3300,Neyling,157
+3301,Passaphoog,157
+3302,Peydoong,157
+3303,Ribalingmi,157
+3304,Sarong,157
+3305,Threlphoog,157
+3306,Yungney,157
+3307,Zordoong,157
+3308,Barshong,158
+3309,Bayphoog (Khaling),158
+3310,Bayphoog Shiri,158
+3311,Brekha,158
+3312,Brekha Doongtshopay,158
+3313,Daksa,158
+3314,Daktsheng,158
+3315,Dangre,158
+3316,Doongthopay,158
+3317,Douzor,158
+3318,Dregoen,158
+3319,Dreywoong,158
+3320,Goenpa,158
+3321,Gomchhu,158
+3322,Jibechhu,158
+3323,Jiri,158
+3324,Khochiphaye,158
+3325,Kholdoong,158
+3326,Lemang,158
+3327,Lemi,158
+3328,Lemi Chhamzor,158
+3329,Liza,158
+3330,Meringzor,158
+3331,Mongkhorla,158
+3332,Rashuwoong,158
+3333,Thrimkhar,158
+3334,Thripang Goenpa,158
+3335,Tokaphu,158
+3336,Tshangpo,158
+3337,Wangachema,158
+3338,Bamshing,159
+3339,Bargoenpa (Lumang),159
+3340,Beamri,159
+3341,Chengri,159
+3342,Darnang,159
+3343,Daroong,159
+3344,Daroong Wadrangzor,159
+3345,Deno,159
+3346,Deno,159
+3347,Doomgmanma,159
+3348,Dori,159
+3349,Dori Tsano,159
+3350,Dubkhang,159
+3351,Dubkhang Goenpa,159
+3352,Gaphoo,159
+3353,Goenzor,159
+3354,Habla,159
+3355,Jabgoen,159
+3356,Jabgoenpa,159
+3357,Khaphe,159
+3358,Khargoen,159
+3359,Kharphoo,159
+3360,Kharphoogoenpa,159
+3361,Kheri (Lumang),159
+3362,Kheshing (Lumang),159
+3363,Kheshing Reserbu,159
+3364,Kheshing Roamzor,159
+3365,Kheshingserbu,159
+3366,Khinying Manma,159
+3367,Khomin,159
+3368,Kurchilo,159
+3369,Lumang,159
+3370,Lumang Goenzor,159
+3371,Lumang Gomtshang,159
+3372,Lumang Shachari,159
+3373,Moochhu,159
+3374,Omshari,159
+3375,Ragea,159
+3376,Reserbu,159
+3377,Rizang,159
+3378,Rushingye,159
+3379,Sangmari,159
+3380,Sayuel,159
+3381,Sethang,159
+3382,Shachari,159
+3383,Tashichoedling,159
+3384,Thrimla,159
+3385,Thrumnang,159
+3386,Thrumnang Lishingzor,159
+3387,Tsano,159
+3388,Tshangpo,159
+3389,Wadrangzor,159
+3390,Wamrong,159
+3391,Woongang,159
+3392,Chelephoo,160
+3393,Gyengo,160
+3394,Khashateng,160
+3395,Khiliphoo,160
+3396,Merag Maed,160
+3397,Merag Toed,160
+3398,Banyalting,161
+3399,Bargoenpa,161
+3400,Brang,161
+3401,Bumtang,161
+3402,Demkhar,161
+3403,Dorshing,161
+3404,Gadzari,161
+3405,Janyema,161
+3406,Karmagoenpa,161
+3407,Kharpa,161
+3408,Lem,161
+3409,Lhakhang,161
+3410,Momnangkhar,161
+3411,Pengtse,161
+3412,Phimshong,161
+3413,Shingchaloo,161
+3414,Shingkhang,161
+3415,Shingringmo,161
+3416,Soelkhar,161
+3417,Tathrang,161
+3418,Thongrong,161
+3419,Thrang,161
+3420,Yabrang,161
+3421,Yerchiloo,161
+3422,Boongmaen,162
+3423,Chamang,162
+3424,Chhima,162
+3425,Dekidling,162
+3426,Deling,162
+3427,Doon Goen,162
+3428,Doongsam,162
+3429,Doongshing/Tshatshey,162
+3430,Joenla Tshetshe,162
+3431,Joenlapam,162
+3432,Kadam,162
+3433,Khudumpang,162
+3434,Langteng,162
+3435,Melongkhar,162
+3436,Nagtshang,162
+3437,Pajogoenpa,162
+3438,Pakaling,162
+3439,Pangthang,162
+3440,Radhi Pangthang,162
+3441,Thangthrang,162
+3442,Togshingmang,162
+3443,Tongling Kadam,162
+3444,Tongling Khatoe,162
+3445,Tongling Pam,162
+3446,Tongling Pangthang,162
+3447,Tongling Tangthrang,162
+3448,Tongling Thrang,162
+3449,Tsengkhar,162
+3450,Borangmang,163
+3451,Borangtse,163
+3452,Burnlog,163
+3453,Melam Thoong,163
+3454,Moorbi,163
+3455,Sagteng,163
+3456,Sagteng Joenkhar,163
+3457,Sagteng Manirong,163
+3458,Sagteng Pusa,163
+3459,Sagteng Tenmang,163
+3460,Sagteng Thagthri,163
+3461,Tholong,163
+3462,Youngbazor,163
+3463,Bikhar,164
+3464,Khabti,164
+3465,Maelphel,164
+3466,Pam,164
+3467,Rangshinkhar,164
+3468,Samkhar,164
+3469,Yenangbrangsa,164
+3470,Chaling,165
+3471,Chhangmi,165
+3472,Galing,165
+3473,Gongtshephangma,165
+3474,Rangjoong,165
+3475,Shongphoog,165
+3476,Yobinang,165
+3477,Bayphu,166
+3478,Berdoongma,166
+3479,Bongzor,166
+3480,Lam Pangthang,166
+3481,Lhakhang Jab,166
+3482,Phakpari,166
+3483,Phungshing,166
+3484,Ramchong Ma,166
+3485,Ramchongma,166
+3486,Sako,166
+3487,Thoongkhar,166
+3488,Thrimshing,166
+3489,Tsangpo,166
+3490,Yemkhar,166
+3491,Youngdhir,166
+3492,Baepam,167
+3493,Barkazor,167
+3494,Benshingmo,167
+3495,Chhiya,167
+3496,Dangrong,167
+3497,Dayphoog,167
+3498,Dengtsalo,167
+3499,Geangkhar,167
+3500,Gongtsheri,167
+3501,Jomtshang,167
+3502,Lenche,167
+3503,Maenkhar,167
+3504,Mongka,167
+3505,Mongyea,167
+3506,Rizor,167
+3507,Tshedoong,167
+3508,Yerchhilo,167
+3509,Changzoe,168
+3510,Daliphang,168
+3511,Dambinang,168
+3512,Dargyeling,168
+3513,Duroong,168
+3514,Karthoong,168
+3515,Khardza,168
+3516,Kheri,168
+3517,Leyphoog,168
+3518,Shokang,168
+3519,Changray,169
+3520,Draagteng,169
+3521,Kuenga Rabten,169
+3522,Phelchung,169
+3523,Reyphel,169
+3524,Samchhoeling,169
+3525,Samling Chala,169
+3526,Samling Churak,169
+3527,Samling Churatak,169
+3528,Samling Dangrey,169
+3529,Samling Dara,169
+3530,Samling Gomola,169
+3531,Samling Khamaed,169
+3532,Samling Kikhornang,169
+3533,Samling Kingacholing,169
+3534,Samling Kormaed,169
+3535,Samling Kurbi,169
+3536,Samling Lhakhangjab,169
+3537,Samling Lhakhangwog,169
+3538,Samling Majaling,169
+3539,Samling Maling,169
+3540,Samling Malingbung,169
+3541,Samling Malingjug,169
+3542,Samling Marzhing,169
+3543,Samling Pesinang,169
+3544,Samling Phokchen,169
+3545,Samling Pingkhar,169
+3546,Samling Pisinang,169
+3547,Samling Pongpa,169
+3548,Samling Shangthong,169
+3549,Samling Shangthongjab,169
+3550,Samling Shingkhar,169
+3551,Samling Ta-Dzong,169
+3552,Samling Tangchen,169
+3553,Samling Theling,169
+3554,Samling Tsekunang,169
+3555,Samling Tshajab,169
+3556,Samling Tshokunang,169
+3557,Samling Wangthang,169
+3558,Samling Yumchen,169
+3559,Samling Zarchen,169
+3560,Samling Zhewthang,169
+3561,Tagtse,169
+3562,Tashidingkha,169
+3563,Uesar,169
+3564,Korphoog Maed,170
+3565,Korphoog Toed,170
+3566,Nabi,170
+3567,Nyimzhong Maed,170
+3568,Nyimzhong Toed,170
+3569,Baling,171
+3570,Bayzam,171
+3571,Beyling,171
+3572,Dandung,171
+3573,Jangbee,171
+3574,Koshala,171
+3575,Langthil,171
+3576,Ngadak,171
+3577,Ngomey,171
+3578,Pangzor,171
+3579,Phuzor Phumzor,171
+3580,Wangling,171
+3581,Yuling (Langthil),171
+3582,Bemjee,172
+3583,Bji,172
+3584,Bji Pam,172
+3585,Chela,172
+3586,Dangzhing,172
+3587,Darbab,172
+3588,Dorgen,172
+3589,Gagar,172
+3590,Jongthang,172
+3591,Kabab,172
+3592,Karzhong,172
+3593,Pang,172
+3594,Sengm-Bji,172
+3595,Sinphoog,172
+3596,Thang Ngyel,172
+3597,Chendenbji,173
+3598,Drangla Goenpa,173
+3599,Kaladrame,173
+3600,Kalathrelme,173
+3601,Nyala Goenpa,173
+3602,Tangsibji,173
+3603,Tshangkha,173
+3604,Barshong Maed (Gairigang Ka),174
+3605,Barshong Toed (Gairigang Ka),174
+3606,Chunyikhang (Baradhurey),174
+3607,Gairigang Kha (Gairigaon B),174
+3608,Gangtokha (Daragang),174
+3609,Toitshang,174
+3610,Dangrayboog Maed (Bichgaon Kha),175
+3611,Dangrayboog Toed (Bichgaon Ka),175
+3612,Khirithang (Khorsaney),175
+3613,Lhamoiloongm (Gopini),175
+3614,Norjangsa (Lalikharka),175
+3615,Chokpur,176
+3616,Dzamling Zor (Upper Suntolay),176
+3617,Dzamlingthang (Lower Lobsibotay),176
+3618,Pelrithang (Upper Lobsibotay),176
+3619,Pemathang (Lower Suntolay),176
+3620,Phuensoomgang (Gairigaon A),176
+3621,Dekidling (Lower Bockray),177
+3622,Maenchhana (Mithun),177
+3623,Nyizergang (Upper Salami),177
+3624,Sa-Tsangma (Majuwa),177
+3625,Tashiyangjong (Lower Salami),177
+3626,Dzamling Zor (Majigaon),178
+3627,Dzamling Zor (Manikhola),178
+3628,Dzamling Zor (Sarkigaon),178
+3629,Mendrelgang (Lamidara),178
+3630,Pemashong (Sarkigaon),178
+3631,Riserboo (Rateykhola),178
+3632,Riserboo A (Kamigaon),178
+3633,Riserboo B (Kamigaon),178
+3634,Shamshing Gaden (Manidara),178
+3635,Tashipang (Gurungaon),178
+3636,Chhuzomsa (Bulkay),179
+3637,Jakhor (Dhanisay),179
+3638,Munyulsa (Kaligaon),179
+3639,Pangthang (Pakhay),179
+3640,Patsaling Toed,179
+3641,Patshaling Maed,179
+3642,Thakorling (Thangray),179
+3643,Tsakaling (Kalay Kalikhola),179
+3644,Chhubapsa (Tshangay),180
+3645,Dhodomchen (Dhapkhola),180
+3646,Dongtod (Saureni),180
+3647,Dragithong (S/Melay),180
+3648,Goentengkha (Baithakey),180
+3649,Menchhunang (Kharkhola),180
+3650,Norbuthang (Manitar),180
+3651,Peljorling (Dhansiri),180
+3652,Serzhong (Phaleday),180
+3653,Tashichholing (Burichu),180
+3654,Tongshigang (T/Melay),180
+3655,Wangthangling (Jogitar),180
+3656,Charingma (Zulphaygaon),181
+3657,Darchhargang (Dhajey),181
+3658,Dawthongsa (Saunay),181
+3659,Gagaling (Ghaga Goan),181
+3660,Neymedsa (Nevarey),181
+3661,Nyimazor (Herabotay),181
+3662,Rangthangling (Chanautre),181
+3663,Rangthangling (Chanautre),181
+3664,Soonkosh,181
+3665,Dangreygang (Daragaon),182
+3666,Dekidling (Kokray),182
+3667,Dzomling (Katikey),182
+3668,Tashiling Maed (Bararay A),182
+3669,Tashiling Toed (Bararay B),182
+3670,Norboogang (Mazgaon),183
+3671,Semdenjong (Teoray),183
+3672,Sergithang Maed (Lower Sergithang),183
+3673,Sergithang Toed (Upper Sergithang),183
+3674,Tashithang (Patale Tar),183
+3675,Alenchi (Alaichey),184
+3676,Droobchhugang (Harpaypani),184
+3677,Gomsoom (Tintalay),184
+3678,Tsholingkar Toed (Upper Tshokana),184
+3679,Tsholingkhar (Kapazhing),184
+3680,Tsholingkhar Maed (Lower Tshokana),184
+3681,Chhuboelsa (Simpani),185
+3682,Damtshang,185
+3683,Doongkarling (Bouri),185
+3684,Kabelzhing (Tsheringtoe),185
+3685,Soentabsa (Dalleni),185
+3686,Tagthang (Bhaktar),185
+3687,Tongshingnang (Salleri),185
+3688,Tsirang Toed,185
+3689,Wangphoo (Dauthrey),185
+3690,Zomna (Jingay),185
+3691,Dzawa,186
+3692,Haragangkha,186
+3693,Jarog-gang,186
+3694,Kago,186
+3695,Lamga,186
+3696,Lawa,186
+3697,Lomtshokha,186
+3698,Lophokha,186
+3699,Nangzhina,186
+3700,Phagtakha,186
+3701,Rockha,186
+3702,Samthang,186
+3703,Bakakha,187
+3704,Balakha,187
+3705,Bjednagloongpa,187
+3706,Damzhingkhar,187
+3707,Darjeegang,187
+3708,Dekiling,187
+3709,Dongchen,187
+3710,Euchhu,187
+3711,Eusakha,187
+3712,Gangchukhar,187
+3713,Gangmarkhar,187
+3714,Garzhikha,187
+3715,Geyten,187
+3716,Gholaykhar,187
+3717,Gonaloo,187
+3718,Gongthangkha,187
+3719,Goomina,187
+3720,Jagarlingchu,187
+3721,Jangsergang,187
+3722,Jaubamo,187
+3723,Jazhikha,187
+3724,Kaangtegtewa,187
+3725,Kelakha,187
+3726,Khametey,187
+3727,Khatangkhar,187
+3728,Kokojoog,187
+3729,Kokokhar,187
+3730,Lamdogkha,187
+3731,Lamikhar,187
+3732,Lhakhangchen,187
+3733,Loongmo,187
+3734,Loongpa,187
+3735,Loongphugang,187
+3736,Namgyalling,187
+3737,Ngawang,187
+3738,Nyalagang,187
+3739,Okorzhing,187
+3740,Omchheygang,187
+3741,Omkhag,187
+3742,Pangmarchu,187
+3743,Pangmarkhar,187
+3744,Pangmarpo,187
+3745,Pelchhu,187
+3746,Phagpchhusa,187
+3747,Phuentshoggang,187
+3748,Rinchhenling,187
+3749,Sarchhu,187
+3750,Sershongnang,187
+3751,Shokeylog,187
+3752,Shongchuna,187
+3753,Shongtoedkhar,187
+3754,Sisidarkar,187
+3755,Takarkhar,187
+3756,Tarrog,187
+3757,Tarshingtsawa,187
+3758,Tashi Lakha,187
+3759,Tashi Tokha,187
+3760,Thingmakha,187
+3761,Toedkikhar,187
+3762,Toedkikhar,187
+3763,Toekizingkha,187
+3764,Togchennang,187
+3765,Tshangchhekhar,187
+3766,Tshering Pangchu,187
+3767,Tshigkona,187
+3768,Wachhey,187
+3769,Wakha,187
+3770,Zangtegkha,187
+3771,Bamed,188
+3772,Chhubar Taagm,188
+3773,Chhubarwog,188
+3774,Doenchhoeling,188
+3775,Dogsena,188
+3776,Drongmeed,188
+3777,Gedra Goenpa,188
+3778,Gempang,188
+3779,Godraang,188
+3780,Loomjoog,188
+3781,Norbooding,188
+3782,Phaljorling,188
+3783,Phuentshoggang,188
+3784,Ridag Goenpa,188
+3785,Rigoen,188
+3786,Rithangwog,188
+3787,Selgona,188
+3788,Taagsar,188
+3789,Tashidingkha,188
+3790,Tashigang,188
+3791,Tokaling,188
+3792,Tomla,188
+3793,Uesagang,188
+3794,Zimi,188
+3795,Gyapakha,189
+3796,Kamina,189
+3797,Sili,189
+3798,Taagsha,189
+3799,Tsara,189
+3800,Uma Khamaed,189
+3801,Uma Khatoed,189
+3802,Wogyal,189
+3803,Gangteng,190
+3804,Gangteng Tapaiteng,190
+3805,Geyla,190
+3806,Gorgoen,190
+3807,Jangchen,190
+3808,Koomboo,190
+3809,Maang,190
+3810,Saangtana,190
+3811,Uesa,190
+3812,Changkha,191
+3813,Dabchheykha,191
+3814,Gangche,191
+3815,Khamaedna,191
+3816,Khatoedkha,191
+3817,Matshig Kha,191
+3818,Matshigpogto,191
+3819,Pasakha,191
+3820,Ternga,191
+3821,Thoukha,191
+3822,Tongzhong,191
+3823,Gikha,192
+3824,Haebisa,192
+3825,Haetshokha,192
+3826,Medpaisa,192
+3827,Shingkhey,192
+3828,Shingkhey,192
+3829,Tabcheykha,192
+3830,Baedrog,193
+3831,Baelpa,193
+3832,Chegidp,193
+3833,Goendep,193
+3834,Kazhi,193
+3835,Komathrang,193
+3836,Lengbi,193
+3837,Lumchey,193
+3838,Eusa Gongm,194
+3839,Eusa Wogm,194
+3840,Haebisa,194
+3841,Halued,194
+3842,Khoorjoongla,194
+3843,Nagbisa,194
+3844,Chhaebhakha,195
+3845,Chhedalog,195
+3846,Chitokha,195
+3847,Gangjab,195
+3848,Geylegkha,195
+3849,Goensar,195
+3850,Kuenzangling,195
+3851,Nyishogkha,195
+3852,Pangkha,195
+3853,Pangzhikha,195
+3854,Samtengang,195
+3855,Zampa,195
+3856,Chhoongserkha,196
+3857,Chhung Goen,196
+3858,Domkha,196
+3859,Goenkhar,196
+3860,Koomchhi,196
+3861,Phangyuel,196
+3862,Wampoekhar,196
+3863,Chaji,197
+3864,Chemdro,197
+3865,Chumedchen,197
+3866,Damchoelhakhang,197
+3867,Darjeygyab,197
+3868,Dasangsar,197
+3869,Dogsenang,197
+3870,Drangpa,197
+3871,Gang-gyed,197
+3872,Gangphel,197
+3873,Gorphoog,197
+3874,Hapa,197
+3875,Jangchhub Goenpa,197
+3876,Khemdro,197
+3877,Khewang,197
+3878,Kikhorthang,197
+3879,Kilthang,197
+3880,Logchen,197
+3881,Nemphel,197
+3882,Nyimdrosa,197
+3883,Pangsar,197
+3884,Poelam,197
+3885,Ram Sarp,197
+3886,Taenkhegeyrey,197
+3887,Talachen,197
+3888,Taphoog,197
+3889,Taphoog,197
+3890,Tarchen,197
+3891,Tawa,197
+3892,Tshaldar,197
+3893,Yuelego,197
+3894,Zhephoog,197
+3895,Zhibar,197
+3896,Zhilam,197
+3897,Zhugar,197
+3898,Zigzi,197
+3899,Aaleygang,198
+3900,Agokha,198
+3901,Baegokha,198
+3902,Baeneybi,198
+3903,Beygongma,198
+3904,Chhagtshalkhar,198
+3905,Chhilikha,198
+3906,Chhumigtengkha,198
+3907,Dagphoog,198
+3908,Dagphugyen,198
+3909,Damchen,198
+3910,Damrukha,198
+3911,Dochhoongthoor,198
+3912,Doegorchabsa,198
+3913,Dongphel,198
+3914,Drolmanang,198
+3915,Drongmaed,198
+3916,Golegkhar,198
+3917,Gongkha,198
+3918,Gyala,198
+3919,Jangsanang,198
+3920,Jaserkha,198
+3921,Khamzhog,198
+3922,Khothangkha,198
+3923,Khothangkha Jongphel,198
+3924,Kibloong,198
+3925,Kilkhorthang,198
+3926,Langdo,198
+3927,Loongchoongna,198
+3928,Lungmagang,198
+3929,Marphelkha,198
+3930,Namgayling,198
+3931,Neygo,198
+3932,Neygobara,198
+3933,Nyachhegyekha,198
+3934,Nyalabi,198
+3935,Nyalakha,198
+3936,Nyizergang,198
+3937,Oharkha,198
+3938,Omchen,198
+3939,Omtekha,198
+3940,Oola,198
+3941,Rambigang,198
+3942,Ruechhedkha,198
+3943,Ruemina,198
+3944,Ruetoedkha,198
+3945,Samarkha,198
+3946,Samdrubgang,198
+3947,Samten Goenpa,198
+3948,Sergaykha,198
+3949,Sheley,198
+3950,Sheltogkha,198
+3951,Tashidingkha,198
+3952,Terkana,198
+3953,Toelakha,198
+3954,Tshamchhog,198
+3955,Tshamokha,198
+3956,Tshamonang,198
+3957,Wangduena,198
+3958,Zamding,198
+3959,Zamding Omtekha,198
+3960,Boomilog,199
+3961,Booso,199
+3962,Darrilog,199
+3963,Gangchhukha,199
+3964,Langbi,199
+3965,Longmaed,199
+3966,Longtoed,199
+3967,Loobear,199
+3968,Nakha,199
+3969,Nangkha (Sagatenten),199
+3970,Rabo,199
+3971,Riwanang,199
+3972,Rukoobji,199
+3973,Serthang,199
+3974,Wangdue Goenpa,199
+3975,Zeri,199
+3976,Gawaphel,200
+3977,Rinchhengang,200
+3978,Rinchhengang,200
+3979,Tartaloongchu,200
+3980,Thang Goo,200
+3981,Wangjokha,200
+3982,Bardo,201
+3983,Digala,201
+3984,Khomshar,201
+3985,Langdurbi,201
+3986,Phulabi,201
+3987,Barpong,202
+3988,Chabdenba,202
+3989,Dali,202
+3990,Kamati,202
+3991,Trong (Bjokar),202
+3992,Budhashi,203
+3993,Lamthang,203
+3994,Lichibi,203
+3995,Limapong,203
+3996,Mewangang,203
+3997,Samchheoling,203
+3998,Buli,204
+3999,Buli Goenpa,204
+4000,Dakphel,204
+4001,Duenmang,204
+4002,Goleng,204
+4003,Jimjong,204
+4004,Kamjong,204
+4005,Kidkhar,204
+4006,Nyakha,204
+4007,Tali,204
+4008,Tsheldang,204
+4009,Zhobleng,204
+4010,Jangkhar,205
+4011,Katong,205
+4012,Marangdued,205
+4013,Ngangla Trong,205
+4014,Panbang,205
+4015,Pongchaling,205
+4016,Ribati,205
+4017,Sonamthang,205
+4018,Thinleygang,205
+4019,Yumdang,205
+4020,Chabgoen,206
+4021,Chag-Ngar-Zam,206
+4022,Mamong Trong,206
+4023,Panabi,206
+4024,Pantang,206
+4025,Pongchola,206
+4026,Salapong,206
+4027,Shalingtoed,206
+4028,Tadijong,206
+4029,Tashibi,206
+4030,Zangbi,206
+4031,Nyimzhong,207
+4032,Radi,207
+4033,Shingkhar,207
+4034,Thajong,207
+4035,Thrisa,207
+4036,Wamling,207
+4037,Zangling,207
+4038,Berti,208
+4039,Dangkhar,208
+4040,Gomphu,208
+4041,Soobdrang,208
+4042,Tamag,208
+4043,Trong,208
+4044,Tshanglajong,208
+4045,Zurphel,208

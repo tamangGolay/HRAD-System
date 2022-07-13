@@ -13,11 +13,13 @@ class CreateDivisionmasterTable extends Migration
 		$table->id();
 		$table->string('divNameShort');
 		$table->string('divNameLong');
-		$table->integer('divHead')->nullable();
-		$table->integer('divReportsToDepartment')->nullable();
-		$table->integer('divReportsToService')->nullable();
-		$table->integer('divReportsToCompany')->nullable();
-		$table->integer('divReportsToEmp')->nullable();
+		$table->foreignId('divDzoId')->references('id')->on('dzongkhags');		
+		$table->foreignId('divHead')->references('id')->on('employeemaster');		
+		$table->foreignId('divReportsToDepartment')->references('id')->on('departmentmaster')->nullable();
+		$table->foreignId('deptDzoId')->references('id')->on('dzongkhags')->nullable();
+		$table->foreignId('divReportsToService')->references('id')->on('servicemaster')->nullable();
+		$table->foreignId('serviceDzoId')->references('id')->on('dzongkhags');
+		$table->foreignId('divReportsToCompany')->references('id')->on('companymaster')->nullable();
 		$table->integer('status')->default(0);
 		$table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

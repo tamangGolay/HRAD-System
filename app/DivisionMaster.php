@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Divisionmaster extends Model
 {
     protected $table = 'divisionmaster';
-
    
-    protected $fillable = ['id','divNameShort','divNameLong','divHead','divReportsToDepartment','divReportsToService','divReportsToCompany','divReportsToEmp','status'];
+    protected $fillable = ['id','divNameShort','divNameLong','divDzoId','divHead','divReportsToDepartment','deptDzoId','divReportsToService','serviceDzoId','divReportsToCompany','status'];
 
       public $timestamps = false;
 }

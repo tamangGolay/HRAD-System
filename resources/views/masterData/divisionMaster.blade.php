@@ -38,11 +38,13 @@ a {
                 <th>id</th>
                 <th>Division short name</th>
                 <th>Division Long name</th>
-                <!-- <th>Division Head</th>
-                <th>Division reports to department</th>
-                <th>Division reports to service</th>
-                <th>Division reports to Employe</th> -->
-                <th width="300px">action</th>
+                <th>Division Dzo Name</th>
+                 <th>Division Head</th>
+                 <th>Dept Dzo name</th>
+                 <th>Service Dzo name</th>
+         <!--  <th>Division reports to department</th>
+                <th>Division reports to service</th> -->                
+                <th >Action</th>
 
                 
             </tr>
@@ -67,44 +69,71 @@ a {
                    <input type="hidden" name="id" id="division_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Short_Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Division Short Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="divNameShort" name="divNameShort" placeholder="Enter short name" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Long_Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Division Long Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="divNameLong" name="divNameLong"  placeholder="Enter your long name" class="form-control" required>
                         </div>
-                    </div>
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Division Head</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="divhead" name="divhead"  placeholder="Enter your grade level" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Div Reports to Dept</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="reportDept" name="reportDept"  placeholder="Enter your grade level" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Div Reports to service</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="reportService" name="reportservice"  placeholder="Enter your grade level" class="form-control" required>
-                        </div>
-                    </div> -->
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Div Reports to employee</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="reportEmp" name="reportEmp"  placeholder="Enter your grade level" class="form-control" required>
-                        </div>
-                    </div> -->
+                    </div> 
 
-      
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Division Dzongkhag Name</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="divDzoId" name="divDzoId"  placeholder="Enter your div dzo name" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Division Head</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="divHead" name="divHead"  placeholder="Enter your div head" class="form-control" required>
+                        </div>
+                    </div>
+
+                    
+
+                <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Division Reports to Dept</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="divReportsToDepartment" name="divReportsToDepartment"  placeholder="to dept" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Dept Dzongkhag Name</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="deptDzoId" name="deptDzoId"  placeholder="Enter your dept dzo name" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Division Reports to Services</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="divReportsToService" name="divReportsToService"  placeholder="to service" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Service Dzongkhag Name</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="serviceDzoId" name="serviceDzoId"  placeholder="Enter your dept dzo name" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Division Reports to Company</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="divReportsToCompany" name="divReportsToCompany"  placeholder="to company" class="form-control" required>
+                        </div>
+                    </div>
+
+                                      
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="divisionButton" value="create">Save changes
                      </button>
@@ -160,7 +189,10 @@ a {
             {data: 'id', name:'id'},
             {data: 'divNameShort', name: 'divNameShort'},
             {data: 'divNameLong', name: 'divNameLong'},
-            // {data: 'divHead', name: 'divhead'},
+            {data: 'Dzongkhag_Name', name: 'divDzoId'},
+            {data: 'empId', name: 'divHead'},
+            {data: 'C', name: 'deptDzoId'},
+            {data: 'D', name: 'serviceDzoId'},
             // {data: 'divReportsToDepartment', name: 'reportDept'},
             // {data: 'divReportsToService', name: 'reportService'},
             // {data: 'divReportsToEmp', name: 'reportEmp'},
@@ -190,8 +222,16 @@ a {
           $('#division_id').val(data.id);
           $('#divNameShort').val(data.divNameShort); //input id,database
           $('#divNameLong').val(data.divNameLong);
+          $('#divDzoId').val(data.Dzongkhag_Name);
+          $('#divHead').val(data.empId);
+          $('#divReportsToDepartment').val(data.divReportsToDepartment);
+          $('#deptDzoId').val(data.Dzongkhag_Name);
+          $('#divReportsToService').val(data.divReportsToService);
+          $('#serviceDzoId').val(data.Dzongkhag_Name);
+          $('#divReportsToCompany').val(data.divReportsToCompany);
+          
       })
-   });
+   })
 
 //   After clicking save changes in Add and Edit it will trigger here
 
@@ -250,6 +290,14 @@ a {
           $('#division_id').val(data.id);
           $('#divNameShort').val(data.divNameShort); //input id,database
           $('#divNameLong').val(data.divNameLong);
+          $('#divDzoId').val(data.Dzongkhag_Name);
+          $('#divHead').val(data.empId);
+          $('#divReportsToDepartment').val(data.divReportsToDepartment);
+          $('#deptDzoId').val(data.Dzongkhag_Name);
+          $('#divReportsToService').val(data.divReportsToService);
+          $('#serviceDzoId').val(data.Dzongkhag_Name);
+          $('#divReportsToCompany').val(data.divReportsToCompany);
+
       })
    });
    
@@ -288,37 +336,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyDivision') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_vehicle';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+  
      
      
 </script>

@@ -75,7 +75,7 @@ class Manage_profileupdateController extends Controller
         EmployeeMaster::updateOrCreate(['empId' => $request->emp_id],  ['empName' => $request->name,  'mobileNo' => $request->contact_number,
         'office' => $request->division, 'dob' => $request->dob, 'cidNo' => $request->cid,  'bloodGroup' => $request->blood,
          'designation' => $request->designationId, 'grade' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
-          'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 'place' => $request->placeId,
+          'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 'placeId' => $request->placeId,
         'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'resignationType' => $request->resignationtypeId ,
         'resignationDate' => $request->resignationdate, 'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle
     ]);        

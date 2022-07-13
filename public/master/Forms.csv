@@ -10,6 +10,7 @@ dzongkhagmaster,Dzongkhag Master,Admin,yes,fa-clipboard-list
 employeemaster,Employee Master,Admin,yes,fa-clipboard-list
 employeequalificationmaster,Employee Qualification,Admin,yes,fa-clipboard-list
 employee_reporting,Employee Reporting,Admin,yes,fa-list-ol
+field,Field Name,Admin,yes,fa-list-ol
 family_details,Family details,Admin,yes,fa-list-ol
 gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
 grademaster,Grade Master,Admin,yes,fa-clipboard-list

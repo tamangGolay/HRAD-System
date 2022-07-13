@@ -479,3 +479,8 @@ Route::post('destroyDisplinary', 'DisplinaryController@delete')->name('destroyDi
 Route::resource('unit', ManageUnitController::class);
 Route::post('destroyUnit', 'ManageUnitController@delete')->name('destroyUnit');
 
+//fieldname
+//unit
+Route::resource('field', Manage_FieldController::class);
+Route::post('destroyField', 'Manage_FieldController@delete')->name('destroyField');
+

@@ -41,6 +41,7 @@ use App\ServiceMaster;
 use App\Department;
 use App\ContractDetailMaster;
 use App\Qualification;
+use App\Field;
 
 class ImportMaster extends Command
 {
@@ -108,6 +109,7 @@ class ImportMaster extends Command
         $this->importserviceMaster('services',new ServiceMaster);
         $this->importdepartment('department',new Department);
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
+        $this->importfield('field',new Field);
         $this->importqualificationLongname('qualificationLongname',new Qualification);
         
 
@@ -804,8 +806,7 @@ public function importbank($filename,Model $model) {
         {               
 
                 $data = [                       
-                    'bankName' => $data[0]
-                    
+                    'bankName' => $data[0]              
 
                     
 
@@ -1195,7 +1196,38 @@ public function importdepartment($filename,Model $model) {
 //end sonam
 
 
-//
+// function to field name
+public function importfield($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'fieldName' => $data[0]                      
+                                        
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
+
+// function to qualification name (Tdee)
 public function importqualificationLongname($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
     {

@@ -40,6 +40,7 @@ use App\EmployeeMaster;
 use App\ServiceMaster;
 use App\Department;
 use App\ContractDetailMaster;
+use App\Qualification;
 
 class ImportMaster extends Command
 {
@@ -107,6 +108,8 @@ class ImportMaster extends Command
         $this->importserviceMaster('services',new ServiceMaster);
         $this->importdepartment('department',new Department);
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
+        $this->importqualificationLongname('qualificationLongname',new Qualification);
+        
 
      }
 
@@ -1190,5 +1193,38 @@ public function importdepartment($filename,Model $model) {
     }
 }
 //end sonam
+
+
+//
+public function importqualificationLongname($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'qualificationLevelId' => $data[0],    
+                    'qualificationShortName' => $data[1],
+                    'qualificationLongName' => $data[2]                        
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
 
 }

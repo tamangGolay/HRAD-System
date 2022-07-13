@@ -20,7 +20,7 @@ class Manage_MasterDrungkhagController extends Controller
 
        
         $drungkhag = DB::table('drungkhagmaster')
-        ->join('dzongkhags', 'dzongkhags.id', '=', 'drungkhagmaster.id')
+        ->join('dzongkhags', 'dzongkhags.id', '=', 'drungkhagmaster.dzongkhagId')
         ->select('drungkhagmaster.id','drungkhagmaster.drungkhagName','dzongkhags.Dzongkhag_Name')
         ->where('drungkhagmaster.status','0');
         
@@ -93,7 +93,7 @@ class Manage_MasterDrungkhagController extends Controller
     public function message(Request $request)
     {
 
-        return redirect('home')->with('page', 'manage_vehicle');
+        return redirect('home');
     }
 
 }

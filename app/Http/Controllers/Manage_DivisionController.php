@@ -19,9 +19,15 @@ class Manage_DivisionController extends Controller
     {
 
         $a = DB::table('divisionmaster')
-        ->select('id','divNameShort','divNameLong')
-        ->where('status','0');
         
+        ->join('employeemaster', 'employeemaster.id', '=', 'divisionmaster.divHead')
+        ->join('dzongkhags','dzongkhags.id','=','divisionmaster.divDzoId')
+        ->join('dzongkhags as a','a.id','=','divisionmaster.deptDzoId')
+        ->join('dzongkhags as b','b.id','=','divisionmaster.serviceDzoId')
+
+        ->select('divisionmaster.id','divNameShort','divNameLong','dzongkhags.Dzongkhag_Name','employeemaster.empId','divReportsToDepartment','a.Dzongkhag_Name as C','divReportsToService','b.Dzongkhag_Name as D','divReportsToCompany')
+        ->where('divisionmaster.status','0');
+              
         if ($request->ajax()) {
             $data = $a;
             return Datatables::of($data)
@@ -53,7 +59,9 @@ class Manage_DivisionController extends Controller
     public function store(Request $request)
     {
          DivisionMaster::updateOrCreate(['id' => $request->id],  //vehicles
-                ['divNameShort' => $request->divNameShort, 'divNameLong' => $request->divNameLong]);  
+                ['divNameShort' => $request->divNameShort, 'divNameLong' => $request->divNameLong, 'divDzoId' => $request->divDzoId,'divHead' => $request->divHead, 
+                'divReportsToDepartment' => $request->divReportsToDepartment,'deptDzoId' => $request->deptDzoId,'divReportsToService' => $request->divReportsToService,
+                'serviceDzoId' => $request->serviceDzoId,'divReportsToCompany' => $request->divReportsToCompany]);  
    
         return response()->json(['success'=>'New vehicle saved successfully.']);
     }

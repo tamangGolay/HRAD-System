@@ -4040,6 +4040,18 @@ if ($request->v == "user_profile")
             ));
        }  //end
 
+       //7. fieldmaster          
+       if ($request->v == "field")     //name in form 
+        {              
+
+        $rhtml = view('masterData.field')->render();
+        return response()
+              ->json(array(
+             'success' => true,
+                'html' => $rhtml
+          ));
+         } 
+
     }
 
 }

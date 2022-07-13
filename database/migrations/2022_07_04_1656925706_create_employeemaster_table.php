@@ -12,8 +12,9 @@ class CreateEmployeemasterTable extends Migration
 		$table->id(); 
 		$table->integer('empId');
 		$table->string('empName');
-		$table->string('bloodGroup');
+		$table->string('bloodGroup')->nullable();
 		$table->bigInteger('cidNo');
+		$table->string('cidOther')->nullable();
 		$table->date('dob');
 		$table->string('gender');
 		$table->date('appointmentDate');

@@ -45,5 +45,6 @@ uniform,Uniform,Uniform,yes,fa-clipboard-list
 uniformReport,Uniform Report,Uniform,yes,fa-clipboard-list
 officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
 TotalShoeSizes,Total No of Shoes,Uniform,yes,fa-clipboard-list
-role_form,Role Form Mapping,Admin,yes,fa-list-oluserList,User Lists,Admin,yes,fa-list
 user_profile,Profile,Admin,yes,fa-list-ol
+postmaster,Post Master,Admin,yes,fa-list-ol
+role_form,Role Form Mapping,Admin,yes,fa-list-oluserList,User Lists,Admin,yes,fa-list

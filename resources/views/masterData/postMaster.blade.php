@@ -29,17 +29,21 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managePay">Add new payscale&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageGrade">Add new Post &nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
+                <th>id</th>
+                <th>short Name</th>
+                <th>long Name</th>
+                <th>Position Specific Allowance</th>
+                <th>Contract Allowance</th>
+                <th>Communication Allowance</th>
+                <th>Type</th>
+                <th width="200px">action</th>
 
-                <th>Grade</th>
-                <th>Minimum</th>
-                <th>Increment</th>
-                <th>Maximum</th>
-                <th width="300px">Action</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -59,37 +63,54 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="pay_id">
+                   <input type="hidden" name="id" id="post_id">
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Grade</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Short Name</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="B1" value="" maxlength="50" required>
+                            <input type="text" class="form-control" id="shortName" name="shortName" placeholder="Enter short name" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Low</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Long Name</label>
                         <div class="col-sm-12">
-                            <input type="text" id="number" name="number"  placeholder="low value" class="form-control" required>
+                            <input type="text" id="longName" name="longName"  placeholder="" class="form-control" required>
                         </div>
                     </div>
-      
+
+
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Increment</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Position Specific Allowance</label>
                         <div class="col-sm-12">
-                            <input type="text" id="increment" name="increment"  placeholder="increment" class="form-control" required>
+                            <input type="text" id="positionSpecificAllowance" name="positionSpecificAllowance"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">High</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Contract Allowance</label>
                         <div class="col-sm-12">
-                            <input type="text" id="high" name="high"  placeholder="high" class="form-control" required>
+                            <input type="text" id="contractAllowance" name="contractAllowance"  placeholder="" class="form-control" required>
                         </div>
                     </div>
-                    
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Communication Allowance</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="communicationAllowance" name="communicationAllowance"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Type</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="type" name="type"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>
+      
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="payButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="postButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -101,11 +122,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="payModel" aria-hidden="true">
+<div class="modal fade" id="gradeModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="payHeading"></h4>
+                <h4 class="modal-title" id="postHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -116,7 +137,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="payDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="gradeDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -132,64 +153,69 @@ a {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>   -->
 <script type="text/javascript">
+
   
     //Loading the contents of the Datatable from here
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('pay.index') }}",   //** */
+        ajax: "{{ route('postmaster.index') }}",
         columns: [
-            {data: 'grade', name: 'grade'},
-            {data: 'low', name: 'low'},
-            {data: 'increment', name: 'increment'},
-            {data: 'high', name: 'high'},
-           
-
-            {data: 'action', name: 'action', orderable: true, searchable: true},
+            {data: 'id', name: 'id'},
+            {data: 'shortName', name: 'shortName'},
+            {data: 'longName', name: 'longName'},
+            {data: 'positionSpecificAllowance', name: 'positionSpecificAllowance'},
+            {data: 'contractAllowance', name: 'contractAllowance'},
+            {data: 'communicationAllowance', name: 'communicationAllowance'},
+            {data: 'type', name: 'type'},
+            {data: 'action', name: 'action'}
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#managePay').click(function () {
-        $('#payButton').val("create-room");
-        // $('#pay_id').val('');
+    $('#manageGrade').click(function () {    //manange vehicle
+        $('#postButton').val("create-room");
+        $('#post_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new Payscale");
-        $('#ajaxModel').modal('show');
+        $('#modelHeading').html("Add new post master");   // model heading
+        $('#ajaxModel').modal('show');  
 
        
     });
 
   //  After clicking the edit button it will trigger here
     $('body').on('click', '.edit', function () {
-      var pay_id = $(this).data('id');
+      var post_id = $(this).data('id');
      
-      $.get("{{ route('pay.index') }}" +'/' + pay_id +'/edit', function (data) {  //give route*
-          $('#modelHeading').html("Edit payscale details");
-          $('#payButton').val("edit-room");
+      $.get("{{ route('postmaster.index') }}" +'/' + post_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Post details");
+          $('#postButton').val("edit-grade");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#pay_id').val(data.id);
-          $('#name').val(data.grade); //input id,database
-          $('#number').val(data.low);
-          $('#increment').val(data.increment);
-          $('#high').val(data.high);
-
+          $('#post_id').val(data.id);
+          $('#shortName').val(data.shortName); //input id,database
+          $('#longName').val(data.longName);
+          $('#positionSpecificAllowance').val(data.positionSpecificAllowance);
+          $('#contractAllowance').val(data.contractAllowance);
+          $('#communicationAllowance').val(data.communicationAllowance);
+          $('#type').val(data.type);
+          
       })
    });
 
+
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#payButton').click(function (e) {
+    $('#postButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
         $(this).html('Save');
 
         
-    
+
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('pay.store') }}",
+          url: "{{ route('postmaster.store') }}",    // grade-route
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -215,42 +241,42 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#payButton').html('Save Changes');
+              $('#postButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
       });
     });
 
+
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deletePay', function () {
-      var pay_id = $(this).data('id');
+    $('body').on('click', '.deleteGrade', function () {
+      var post_id = $(this).data('id');
      
-      $.get("{{ route('pay.index') }}" +'/' + pay_id +'/edit', function (data) {
-          $('#payHeading').html("Do you want to delete the detail?");
-          $('#payDeleteButton').val("edit-room");
-          $('#payModel').modal('show');
+      $.get("{{ route('postmaster.index') }}" +'/' + post_id +'/edit', function (data) {
+          $('#postHeading').html("Do you want to delete the post master?");
+          $('#gradeDeleteButton').val("edit-grade");
+          $('#gradeModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#pay_id').val(data.id);
-          $('#name').val(data.grade); //input id,database
-          $('#number').val(data.low);
-          $('#increment').val(data.increment);
-          $('#high').val(data.high);
-
-
-
+          $('#post_id').val(data.id);
+          $('#shortName').val(data.shortName); //input id,database
+          $('#longName').val(data.longName);
+          $('#positionSpecificAllowance').val(data.positionSpecificAllowance);
+          $('#contractAllowance').val(data.contractAllowance);
+          $('#communicationAllowance').val(data.communicationAllowance);
+          $('#type').val(data.type);
       })
    });
    
   // after clicking yes in delete
-    $('#payDeleteButton').click(function (e) {
+    $('#gradeDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroypayscale') }}",
+          url: "{{ route('destroyPostMaster') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -276,12 +302,12 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#payDeleteButton').html('Save Changes');
+              $('#gradeDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.payVehicle', function() {
+    // $('body').on('click', '.deleteVehicle', function() {
 	// 				if(confirm("Do you want to delete it?")) {
 	// 					$.ajax({
 	// 						dataType: 'json',

@@ -42,6 +42,8 @@ use App\Department;
 use App\ContractDetailMaster;
 use App\Qualification;
 use App\Field;
+use App\pay;
+use App\PostMaster;
 
 class ImportMaster extends Command
 {
@@ -111,6 +113,8 @@ class ImportMaster extends Command
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
         $this->importfield('field',new Field);
         $this->importqualificationLongname('qualificationLongname',new Qualification);
+        $this->importpayscale('payscale',new pay);
+        $this->importpostmaster('postmaster',new PostMaster);
         
 
      }
@@ -148,6 +152,82 @@ class ImportMaster extends Command
             $this->line($i." entries successfully added in ".$filename." table");
         }
     }
+//import post master
+public function importpostmaster($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'shortName' => $data[0],  //database field name
+                    'longName' => $data[1],
+                    'positionSpecificAllowance' => $data[2],
+                    'contractAllowance' => $data[3],
+                    'communicationAllowance' => $data[4],
+                    'type' => $data[5]
+                    
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                
+           
+            
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end of post master
+
+
+
+
+//function to import pay scale
+
+public function importpayscale($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'grade' => $data[0],  //database field name
+                    'low' => $data[1],
+                    'increment' => $data[2],
+                    'high' => $data[3]
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                
+           
+            
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+
+//end of pay scale
+
 
     //function to import agencies list.
     public function importDzongkhags($filename,Model $model) {

@@ -420,6 +420,11 @@ Route::post('destroydepartment', 'DepartmentMasterController@delete')->name('des
 Route::resource('grade', Manage_GradeController::class);
 Route::post('destroyGrade', 'Manage_GradeController@delete')->name('destroyGrade');//for deleting grade
 
+//manage post master
+Route::resource('postmaster', Manage_PostController::class);
+Route::post('destroyPostMaster', 'Manage_PostController@delete')->name('destroyPostMaster');//for deleting post
+
+
 //manage division
 Route::resource('division', Manage_DivisionController::class);
 Route::post('destroyDivision', 'Manage_DivisionController@delete')->name('destroyDivision'); //for deleting  division

@@ -3800,9 +3800,24 @@ if ($request->v == "room_details")
                  'html' => $rhtml
              ));
  
-         }
+         } 
 
         //endgrademaster
+        //post master
+        
+    if ($request->v == "postmaster")
+    {
+
+    $rhtml = view('masterData.postMaster')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+
+    }
+
+        //end of post master
 
 
          //division master

@@ -1,0 +1,9 @@
+CEO,Chief Executive Officer,0,100,0,contract
+HOS,Director,0,80,2000,contract
+HOD-C,General Manager,0,75,1500,contract
+HOD-R,General Manager,30,0,1500,regular
+HODE,Head of Department Equivalent,30,0,1500,regular
+DH-I,Division Head I,20,0,1000,regular
+DH-II,Division Head II,15,0,800,regular
+HOSD,Head of Sub Division,10,0,500,regular
+HOU,Head of Unit,0,0,300,regular

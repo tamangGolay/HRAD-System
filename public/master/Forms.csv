@@ -14,7 +14,7 @@ field,Field Name,Admin,yes,fa-list-ol
 family_details,Family details,Admin,yes,fa-list-ol
 gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
 grademaster,Grade Master,Admin,yes,fa-clipboard-list
-increment_history,increment history,Admin,yes,fa-list-ol
+increment_history,Increment history,Admin,yes,fa-list-ol
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
 officename,Office Name,Admin,yes,fa-clipboard-list

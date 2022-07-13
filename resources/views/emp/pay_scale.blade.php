@@ -39,7 +39,7 @@ a {
                 <th>Minimum</th>
                 <th>Increment</th>
                 <th>Maximum</th>
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

@@ -35,10 +35,9 @@ a {
         <thead>
             <tr>
 
-                <th>id</th>
-                <th>Relation Name</th>
-                
-                <th width="300px">Action</th>
+                <th>Id</th>
+                <th>Relation Name</th>                
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

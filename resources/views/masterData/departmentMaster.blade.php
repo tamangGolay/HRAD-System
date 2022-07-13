@@ -77,7 +77,7 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Head</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="deptHead" id="deptHead" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="deptHead" id="deptHead" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($employeen as $employeen)
                                              <option value="{{$employeen->id}}">{{$employeen->empId}}</option>
@@ -91,7 +91,7 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Report To Service</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="deptReportsToService" id="deptReportsToService" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="deptReportsToService" id="deptReportsToService" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($servicen as $servicen)
                                              <option value="{{$servicen->id}}">{{$servicen->serNameLong}}</option>
@@ -105,7 +105,7 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Report To Company</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="deptReportsToService" id="deptReportsToService" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="deptReportsToCompany" id="deptReportsToCompany" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($companyn as $companyn)
                                              <option value="{{$companyn->id}}">{{$companyn->comNameLong}}</option>
@@ -200,9 +200,9 @@ a {
           $('#department_id').val(data.id);
           $('#deptNameShort').val(data.deptNameShort); //input id,database
           $('#deptNameLong').val(data.deptNameLong);
-          $('#deptHead').val(data.empId);
-          $('#deptReportsToService').val(data.serNameLong);
-          $('#deptReportsToCompany').val(data.comNameLong);
+          $('#deptHead').val(data.deptHead);
+          $('#deptReportsToService').val(data.deptReportsToService);
+          $('#deptReportsToCompany').val(data.deptReportsToCompany);
       })
    });
 

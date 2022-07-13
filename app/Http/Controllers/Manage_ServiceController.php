@@ -58,7 +58,7 @@ class Manage_ServiceController extends Controller
     public function store(Request $request)
     {
          ServiceMaster::updateOrCreate(['id' => $request->id],  //vehicles
-                ['serNameShort' => $request->serNameShort, 'serNameLong' => $request->serNameLong, 'serviceHead' => $request->serviceHead,'serReportsToOffice' => $request->serReportsToOffice]);   
+                ['serNameShort' => $request->serNameShort, 'serNameLong' => $request->serNameLong, 'serviceHead' => $request->serviceHead,'company' => $request->company]);   
    
         return response()->json(['success'=>'New Service saved successfully.']);
     }

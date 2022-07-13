@@ -34,12 +34,12 @@ a {
     @csrf
         <thead>
             <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>Personal Number</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Term Number</th>
-                <th width="300px">action</th> 
+                <th width="300px">Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -62,7 +62,7 @@ a {
                    <input type="hidden" name="id" id="contractdetail_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal_Number</label>
+                        <label for="name" class="col-sm-2 control-label">Personal Number</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Enter your Personal Number" value="" maxlength="50" required> -->
                             <select name="personalNo" id="personalNo" value="" class="form-control" required>
@@ -77,7 +77,7 @@ a {
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Start_Date</label>
+                        <label class="col-sm-2 control-label">Start Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="startDate" name="startDate"  placeholder="Enter start date" class="form-control" required>
                         </div>
@@ -85,7 +85,7 @@ a {
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">End_Date</label>
+                        <label class="col-sm-2 control-label">End Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="endDate" name="endDate"  placeholder="Enter end date" class="form-control" required>
                         </div>
@@ -93,7 +93,7 @@ a {
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Term_Number</label>
+                        <label class="col-sm-2 control-label">Term Number</label>
                         <div class="col-sm-12">
                             <input type="text" id="termNo" name="termNo"  placeholder="Enter your term number" class="form-control" required>
                         </div>

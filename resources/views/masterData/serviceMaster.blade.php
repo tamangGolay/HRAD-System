@@ -82,9 +82,9 @@ a {
                         <label class="col-sm-2 col-lg-8  control-label">Service Head</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" id="serviceHead" name="serviceHead"  placeholder="" class="form-control" required> -->
-                            <select name="subDivhead" id="subDivhead" value="" class="form-control" required>
+                            <select name="serviceHead" id="serviceHead" value="" class="form-control" required>
 
-                                             <option value="">select your division head</option>
+                                             <option value="">select your service head</option>
                                              @foreach($services as $services)
 
                                              <option value="{{$services->id}}">{{$services->empId}}</option>
@@ -107,12 +107,7 @@ a {
 
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Service_Reports_to_Employee</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="serReportsToEmp" name="serReportsToEmp"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>  -->
+                    
                    
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="serviceButton" value="create">Save changes

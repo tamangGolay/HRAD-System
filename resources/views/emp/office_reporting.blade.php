@@ -29,7 +29,7 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageIncrement">Add Increment Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageIncrement">Add Office Reporting&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>

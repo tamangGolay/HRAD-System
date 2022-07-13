@@ -144,7 +144,7 @@ a {
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
             {data: 'drungkhagName', name: 'drungkhagName', orderable: false, searchable: true},
-            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
+            {data: 'Dzongkhag_Name', name: 'dzongkhags.Dzongkhag_Name', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
@@ -172,7 +172,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#drungkhag_id').val(data.id);
           $('#drungkhagName').val(data.drungkhagName); //input id,database
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
+          $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
       })
    });
 
@@ -232,7 +232,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#drungkhag_id').val(data.id);
           $('#drungkhagName').val(data.drungkhagName); //input id,database
-          $('#dzongkhagId').val(data.Dzongkhag_Name);
+          $('#dzongkhagId').val(data.dzongkhagId);
       })
    });
    

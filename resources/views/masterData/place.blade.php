@@ -202,11 +202,11 @@ a {
         ajax: "{{ route('place.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: true, searchable: true},
-            {data: 'villageName', name: 'villageId', orderable: false, searchable: false},
-            {data: 'townName', name: 'townId', orderable: false, searchable: true},
-             {data: 'gewogName', name: 'gewogId', orderable: false, searchable: false},
-             {data: 'drungkhagName', name: 'drungkhagId', orderable: false, searchable: false},
-            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: false, searchable: false},
+            {data: 'villageName', name: 'villagemaster.villageName', orderable: false, searchable: true},
+            {data: 'townName', name: 'townmaster.townName', orderable: false, searchable: true},
+             {data: 'gewogName', name: 'gewogmaster.gewogName', orderable: false, searchable: true},
+             {data: 'drungkhagName', name: 'drungkhagmaster.drungkhagName', orderable: false, searchable: true},
+            {data: 'Dzongkhag_Name', name: '.dzongkhags.Dzongkhag_Name', orderable: false, searchable: true},
             {data: 'placeCategory', name: 'placeCategory', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
@@ -237,9 +237,9 @@ a {
           $('#placeCategory').val(data.placeCategory); //input id,database
           $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
           $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
+          $('#gewogId').val(data.gewogId);//keeping input name and dB field name same so that the search will not give error
+          $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
+          $('#drungkhagId').val(data.drungkhagId);//keeping input name and dB field name same so that the search will not give error
 
          
           
@@ -306,9 +306,9 @@ a {
           $('#placeCategory').val(data.placeCategory); //input id,database
           $('#townId').val(data.townId);//keeping input name and dB field name same so that the search will not give error
           $('#villageId').val(data.villageId);//keeping input name and dB field name same so that the search will not give error
-          $('#gewogId').val(data.gewogName);//keeping input name and dB field name same so that the search will not give error
-          $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
-          $('#drungkhagId').val(data.drungkhagName);//keeping input name and dB field name same so that the search will not give error
+          $('#gewogId').val(data.gewogId);//keeping input name and dB field name same so that the search will not give error
+          $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
+          $('#drungkhagId').val(data.drungkhagId);//keeping input name and dB field name same so that the search will not give error
 
       })
    });

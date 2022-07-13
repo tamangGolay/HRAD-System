@@ -153,7 +153,7 @@ a {
             {data: 'id', name: 'id',orderable: true, searchable: true},
             {data: 'townName', name: 'townName', orderable: false, searchable: true},
             {data: 'townClass', name: 'townClass', orderable: false, searchable: true},
-            {data: 'Dzongkhag_Name', name: 'dzongkhagId', orderable: true, searchable: false},
+            {data: 'Dzongkhag_Name', name: 'dzongkhags.Dzongkhag_Name', orderable: true, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
@@ -182,7 +182,7 @@ a {
           $('#town_id').val(data.id);
           $('#townName').val(data.townName); //input id,database
           $('#townClass').val(data.townClass); //input id,database
-         $('#dzongkhagId').val(data.Dzongkhag_Name);//keeping input name and dB field name same so that the search will not give error
+         $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
       })
    });
 
@@ -243,7 +243,7 @@ a {
           $('#town_id').val(data.id);
           $('#townClass').val(data.townClass); //input id,database
             $('#townName').val(data.townName); //input id,database
-          $('#dzongkhagId').val(data.Dzongkhag_Name);
+          $('#dzongkhagId').val(data.dzongkhagId);
       })
    });
    

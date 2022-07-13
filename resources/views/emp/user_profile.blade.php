@@ -200,9 +200,9 @@
             
       
                     <div class="form-group row">
-					<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Place:</label>
+					<label class="col-md-4 col-form-label text-md-right" for="place">&nbsp;&nbsp;&nbsp;Place:</label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
-						<select name="place" id="place" value="" class="form-control" required>
+						<select name="placeId" id="placeId" value="" class="form-control" required>
 												<option value="">Select Place</option>
 												@foreach($officeaddress as $officeaddress)
 
@@ -213,7 +213,7 @@
 					</div>
           
 
-            <input type="hidden" class="form-control" name="placeId" id="placeId" placeholder="Officeaddress" autocomplete="off" readonly required>                  
+            <input type="hidden" class="form-control" name="place" id="place" placeholder="Officeaddress" autocomplete="off" readonly required>                  
             <div class="form-group">
                         <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
                         <div class="col-sm-10 col-md-6 col-lg-4">
@@ -445,7 +445,7 @@ function getEmployeeDetails(val)
                     document.getElementById('dob').value = Employee.dob;                      
                     document.getElementById('cid').value = Employee.cidNo; 
                     document.getElementById('blood').value =  Employee.bloodGroup; 
-                    document.getElementById('designationId').value =  Employee.designationId;
+                    document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
                     document.getElementById('designation').value =  Employee.desisNameLong; 
                   
                     document.getElementById('gradeId').value = Employee.gradeId; 
@@ -457,7 +457,7 @@ function getEmployeeDetails(val)
                     document.getElementById('basicpay').value = Employee.basicPay; 
                     document.getElementById('lastdop').value =  Employee.lastDop; 
                     document.getElementById('emailid').value = Employee.emailId;    
-                    document.getElementById('placeId').value = Employee.placeId;  
+                    document.getElementById('placeId').value = Employee.placeId;  //pulls id of office_address table
                     document.getElementById('place').value = Employee.Address;                      
                     document.getElementById('bankname').value = Employee.bankName; 
 

@@ -392,9 +392,11 @@ if ($request->v == "guestHouseReports")
                ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
                ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
 
-               ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
+               ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
                ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.org_unit_id',45)
+               ->where('users.org_unit_id',Auth::user()->org_unit_id)
+               ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
+
 
                ->paginate(10000000);
             // }

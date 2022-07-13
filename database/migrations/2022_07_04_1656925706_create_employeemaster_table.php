@@ -17,20 +17,27 @@ class CreateEmployeemasterTable extends Migration
 		$table->string('cidOther')->nullable();
 		$table->date('dob');
 		$table->string('gender');
-		$table->date('appointmentDate');
-        $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
-		$table->foreignId('designationId')->references('id')->on('designationmaster')->nullable();//fk md_designation N
-		$table->foreignId('office')->references('id')->on('officename')->nullable();
+		$table->date('appointmentDate')->nullable();
+        // $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
+		$table->string('gradeId');
+
+		$table->foreignId('designationId')->references('id')->on('designationmaster');//fk md_designation N
+		// $table->foreignId('office')->references('id')->on('officemaster')->nullable();
+		$table->string('office');
+
 		$table->integer('basicPay')->nullable();
 		$table->string('empStatus')->nullable();
-		$table->date('lastDop')->nullable();
+		$table->string('lastDop')->nullable();
 		$table->integer('mobileNo')->nullable();
 		$table->string('emailId')->nullable();
-	    $table->foreignId('placeId')->references('id')->on('placemaster')->nullable();
-		$table->foreignId('bankName')->references('id')->on('bankmaster')->nullable();
+	    // $table->foreignId('placeId')->references('id')->on('placemaster')->nullable();
+		$table->string('placeId')->nullable();
+		$table->string('resignationTypeId')->nullable();
+		$table->string('bankName')->nullable();
+		// $table->foreignId('bankName')->references('id')->on('bankmaster')->nullable();
 		$table->string('accountNumber')->nullable();
-	    $table->foreignId('resignationTypeId')->references('id')->on('resignationtypemaster')->nullable();
-		$table->date('resignationDate')->nullable(); 
+	    // $table->foreignId('resignationTypeId')->references('id')->on('resignationtypemaster')->nullable();
+		$table->date('resignationDate')->format('d/m/Y')->nullable(); 
 		$table->string('employmentType')->nullable(); //frontEnd dropdown html
 		$table->string('incrementCycle')->nullable();
 		$table->string('status')->default(0);

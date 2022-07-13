@@ -1196,33 +1196,35 @@ public function importcontractdetails($filename,Model $model) {
         while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
         {               
 
-                $data = [                       
-                    'empName' => $data[0],
-                    'empId' => $data[1],
-                    'bloodGroup' => $data[2],
-                    'cidNo' => $data[3],
-                    'dob' => $data[4],
-                    'gender' => $data[5],
-                    'appointmentDate' => $data[6],
-                    'gradeId' => $data[7],
-                    'designationId' => $data[8],
-                    'office' => $data[9],
-                    'basicPay' => $data[10], 
-                    'empStatus' => $data[11],
-                    'lastDop' => $data[12],
-                    'mobileNo' => $data[13],
-                    'emailId' => $data[14],
-                    'placeId' => $data[15],
-                    'bankName' => $data[16],
-                    'accountNumber' => $data[17],
-                    'resignationTypeId' => $data[18],
-                    'resignationDate' => $data[19], 
-                    'employmentType' => $data[20],
-                    'incrementCycle' => $data[21]
-                                                          
+            $data = [
+                'empId' => $data[0],
+                'empName' => $data[1],
+                // 'bloodGroup' => $data[2],
+                'cidNo' => $data[2],
+                'cidOther' => $data[3],
+                'dob' => $data[4],
+                'gender' => $data[5],
+                'appointmentDate' => $data[6],
+                'gradeId' => $data[7],
+                'designationId' => $data[8],
+                'office' => $data[9],
+                'basicPay' => $data[10], 
+                'employmentType' => $data[11],
+                'lastDop' => $data[12],
+                'mobileNo' => $data[13],
+                'emailId' => $data[14],
+                'incrementCycle' => $data[15]
+
+                // 'empStatus' => $data[11],
+                // 'placeId' => $data[15],
+                // 'bankName' => $data[16],
+                // 'accountNumber' => $data[17],
+                // 'resignationTypeId' => $data[18],
+                // 'resignationDate' => $data[19], 
+                                                      
 
 
-                ];
+            ];
                 try{
                     if($model::firstorCreate($data)) {
                         $i++;

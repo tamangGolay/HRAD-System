@@ -187,16 +187,7 @@
 
       
 
-            
-         <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointmentdate:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="date" class="form-control" name="appointment" id="appointment" placeholder="" autocomplete="off"  required>                  
-                </div>
-            </div>
-
-
-           
+                
 
             
             <div class="form-group row"> 
@@ -269,6 +260,15 @@
                 <input type="text" class="form-control" name="division" id="division" placeholder="Division" readonly required>                  
                 </div>
             </div> 
+
+                   
+         <div class="form-group row"> 
+              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointmentdate:</label>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                <input type="date" class="form-control" name="appointment" id="appointment" placeholder="" autocomplete="off"  readonly required>                  
+                </div>
+            </div>
+
 
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="basicpay">&nbsp;&nbsp;&nbsp;Basic Pay:</label>

@@ -22,9 +22,9 @@ class EmpQualificationController extends Controller
           
          $empquali = DB::table('employeequalificationmaster')
           ->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
-          ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.id') 
+          ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.qualificationId') 
 
-          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationName')
+          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationName','yearCompleted')
           ->where('employeequalificationmaster.status','0');  
 
          if ($request->ajax()) {
@@ -55,7 +55,7 @@ class EmpQualificationController extends Controller
     {          
         EmployeeQualification::updateOrCreate(['id' => $request->id], 
                 ['personalNo' => $request->personalNo, 
-                'qualificationId' => $request->qualificationId]);        
+                'qualificationId' => $request->qualificationId,'yearCompleted' => $request->yearCompleted,]);        
    
         return response()->json(['success'=>'New qualification saved successfully.']);
     }

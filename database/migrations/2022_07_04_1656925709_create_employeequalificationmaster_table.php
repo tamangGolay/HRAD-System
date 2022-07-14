@@ -14,6 +14,7 @@ class CreateEmployeequalificationmasterTable extends Migration
 		// $table->foreignId('personalNo')->references('id')->on('employeemaster');
         $table->string('personalNo');
         $table->foreignId('qualificationId')->references('id')->on('qualificationmaster');
+        $table->string('yearCompleted')->nullable();
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

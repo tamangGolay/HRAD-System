@@ -44,6 +44,7 @@ use App\Qualification;
 use App\Field;
 use App\pay;
 use App\PostMaster;
+use App\EmployeeQualification;
 
 class ImportMaster extends Command
 {
@@ -115,6 +116,7 @@ class ImportMaster extends Command
         $this->importqualificationmaster('qualificationmaster',new Qualification);        
         $this->importpayscale('payscale',new pay);
         $this->importpostmaster('postmaster',new PostMaster);
+        $this->importemployeequalification('employeequalification',new EmployeeQualification);
         
 
      }
@@ -1322,6 +1324,38 @@ public function importqualificationmaster($filename,Model $model) {
                     'qualificationName' => $data[0],    
                     'qualificationLevelId' => $data[1],
                     'qualificationField' => $data[2]                        
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
+
+// function to qualification name (Tdee)
+public function importemployeequalification($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'personalNo' => $data[0],    
+                    'qualificationId' => $data[1],
+                    'yearCompleted' => $data[2]                        
                                        
                 ];
                 try{

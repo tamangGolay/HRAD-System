@@ -37,7 +37,8 @@ a {
             <tr>                 
                 <th>Sl.No</th> 
                 <th>Pernonal No.</th>
-                <th>Qualification Name</th>                
+                <th>Qualification Name</th>      
+                <th width=90px>Year Completed</th>           
                 <th>Action</th>
             </tr>
         </thead>
@@ -58,16 +59,22 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="eqid"> 
-                   
+                   <input type="hidden" name="id" id="eqid">               
 
+                    
+                    
                     <div class="form-group">
+                        <label class="col-sm-2 col-lg-8 control-label">Personal Number</label>
+                        <div class="col-sm-12">                            
 
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal No</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No" value="" maxlength="50" required>
+                            <select name="personalNo" id="personalNo" class="form-control" value="" required>
+                                             <option value="">Select Personal No</option>
+                                             @foreach($pno as $pno)
+                                             <option value="{{$pno->id}}">{{$pno->empId}}</option>
+										@endforeach
+							</select>
                         </div>
-                    </div>                    
+                    </div>
      
                     
                     
@@ -84,6 +91,17 @@ a {
 							</select>
                         </div>
                     </div>
+                    
+
+                     <div class="form-group">
+
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Year Completed</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="yearCompleted" name="yearCompleted" placeholder="Year completion" value="" maxlength="50" required>
+                        </div>
+                    </div> 
+
+                    
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="employeeQualiButton" value="create">Save changes
@@ -136,8 +154,9 @@ a {
         ajax: "{{ route('employeeQualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'personalNo'},
-            {data: 'qualificationName', name: 'qualificationId'},           
+            {data: 'empId', name: 'employeemaster.empId'},
+            {data: 'qualificationName', name: 'qualificationmaster.qualificationName'},
+            {data: 'yearCompleted', name: 'yearCompleted'},           
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -163,8 +182,9 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
-          $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationName);   //input id,database        
+          $('#personalNo').val(data.personalNo);
+          $('#qualificationId').val(data.qualificationId);   //input id,database 
+          $('#yearCompleted').val(data.yearCompleted);        
          
       })
    });
@@ -224,8 +244,9 @@ a {
           $('#employeeQualiModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#eqid').val(data.id);
-          $('#personalNo').val(data.empId);
-          $('#qualificationId').val(data.qualificationName); //input id,database
+          $('#personalNo').val(data.personalNo);
+          $('#qualificationId').val(data.qualificationId); //input id,database
+          $('#yearCompleted').val(data.yearCompleted);  
           
       })
    });

@@ -9,7 +9,7 @@ class EmployeeQualification extends Model
     //
     protected $table = 'employeequalificationmaster';
 
-    protected $fillable = ['personalNo','qualificationId','status'];
+    protected $fillable = ['personalNo','qualificationId','yearCompleted','status'];
     
     public $timestamps = false;
 }

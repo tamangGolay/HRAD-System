@@ -3597,7 +3597,7 @@ if ($request->v == "room_details")
             $bk = bank::all();
             $dg = Designation::all(); 
             $rg = Resignation::all(); 
-            $gg = GradeMaster::all();
+            $gg = pay::all();
             $ff = officeName::all(); 
             $pp = OfficeAddress::all();
            
@@ -3619,8 +3619,8 @@ if ($request->v == "room_details")
             ->where('employeemaster.status', '=', 0);
                
             $gradeId = DB::table('employeemaster')
-            ->join('grademaster', 'grademaster.id', '=', 'employeemaster.gradeId')
-            ->select('grademaster.level')
+            ->join('payscalemaster', 'payscalemaster.id', '=', 'employeemaster.gradeId')
+            ->select('payscalemaster.grade')
             ->where('employeemaster.status', '=', 0);
 
             $office = DB::table('employeemaster')

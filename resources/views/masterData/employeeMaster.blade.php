@@ -98,7 +98,7 @@
 												<option value="">Select Grade</option>
 												@foreach($gg as $gg)
 
-												<option value="{{$gg->id}}">{{$gg->level}}</option>
+												<option value="{{$gg->id}}">{{$gg->grade}}</option>
 											@endforeach
 								</select>
 								<!-- <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off" readonly required>                   -->
@@ -162,7 +162,7 @@
 							<div class="col-sm-10 col-md-6 col-lg-4">
                 <!-- <input type="text" class="form-control" name="designation" id="designation" placeholder="designation" autocomplete="off" readonly required>                   -->
 							<select name="designationId" id="designationId" value="" class="form-control" required>
-                                             <option value="">Select Bank name</option>
+                                             <option value="">Select designation</option>
                                              @foreach($dg as $dg)
 
                                              <option value="{{$dg->id}}">{{$dg->desisNameLong}}</option>
@@ -184,7 +184,7 @@
 							</div>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group row">
                         <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
                         <div class="col-sm-10 col-md-6 col-lg-4">
 
@@ -351,8 +351,8 @@
 								<span class="fas fa-plus btn-success btn-sm add"></span>
 								
 								</table>
-								<div align="center">
-								<input type="submit" name="submit" class="btn btn-info" value="Insert" />
+								<div align="center" class="col-lg-12">
+								<input type="submit" name="submit" class="btn btn-outline-success col-lg-2" value="Insert" />
 								</div>
 								</div>
 								</div>
@@ -360,11 +360,11 @@
 							</form>
 							</body>
 							</html>
-										</div> 
+						</div> 
 					
-						<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
+						<!-- <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
 							<button type="submit" class="btn btn-outline-success btn-save" id="bsubmit">{{ __('Create User') }}</button>
-						</div>
+						</div> -->
 					</div>
 				</form>
 				</div>
@@ -468,7 +468,7 @@ $(document).ready(function(){
 //   html += '<td><input type="hidden" name="{{ csrf_token() }}" class="form-control" /></td>';
   html += '<td><input value="{{ Auth::user()->emp_id }}" type="hidden" name="item_name[]" class="form-control item_name" /></td>';
 //   html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
-  html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Qualification</option><?php echo fill_unit_select_box($connect); ?></select></td>';
+  html += '<td align="center"><select name="item_unit[]" class="form-control col-lg-5 center item_unit"><option value="">Select Qualification</option><?php echo fill_unit_select_box($connect); ?></select></td>';
   html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="fas fa-minus"></span></button></td></tr>';
   $('#item_table').append(html);
  });

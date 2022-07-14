@@ -16,6 +16,7 @@ use DB;
 use App\orgunit;
 use App\GradeMaster;
 use App\Designation;
+use App\pay;
 use PDO;
 
 
@@ -146,10 +147,9 @@ class MasterDataController extends Controller
                 ->first();
                 
         $gradeId = DB::table('employeemaster')
-                ->join('grademaster', 'grademaster.id', '=', 'employeemaster.gradeId')
-                ->select('grademaster.level')
-                ->where('employeemaster.status', '=', 0)
-                ->first();
+                ->join('payscalemaster', 'payscalemaster.id', '=', 'employeemaster.gradeId')
+                ->select('payscalemaster.grade')
+                ->where('employeemaster.status', '=', 0);
                 
         $office = DB::table('employeemaster')
                 ->join('officename', 'officename.id', '=', 'employeemaster.office')

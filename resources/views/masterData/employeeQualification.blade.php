@@ -36,7 +36,7 @@ a {
         <thead>
             <tr>                 
                 <th>Sl.No</th> 
-                <th>Pernonal No.</th>
+                <th>Personal No.</th>
                 <th>Qualification Name</th>      
                 <th width=90px>Year Completed</th>           
                 <th>Action</th>

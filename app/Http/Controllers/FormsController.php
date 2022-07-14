@@ -4107,13 +4107,17 @@ if ($request->v == "user_profile")
           {     
             $qualification = Qualification::all()   //model of other joining table
             ->where('status',0);
-                
+            
+            $pno = EmployeeMaster::all()
+            ->where('status',0);
+
             $empquali = DB::table('employeequalificationmaster')
             ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.id')
-            ->select('qualificationmaster.qualificationName')
+            ->join('employeemaster','employeemaster.id','=','employeequalificationmaster.id')
+            ->select('qualificationmaster.qualificationName','employeemaster.empId')
             ->where('employeequalificationmaster.status',0);         
  
-             $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification])->render();
+             $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification,'pno'=>$pno])->render();
               return response()
                   ->json(array(
                   'success' => true,

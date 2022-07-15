@@ -23,7 +23,7 @@
 					<div class="form-group row">
 						<label for="emp_id" class="col-md-4 col-form-label text-md-right">{{ __('Employee Number:') }}</label>
 						<div class="col-md-4">
-							<input id="EmpId" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;"
+							<input onchange="myChangeFunction(this)" id="empId" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;"
 							 class="form-control @error('EmpId') is-invalid @enderror" name="EmpId" value="{{ old('EmpId') }}"
 							  required autocomplete="EmpId" onFocusOut="getEmployeeDetails(this.value);"> 
 						</div> 
@@ -36,7 +36,7 @@
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name:') }}</label>
 						<div class="col-md-4">
-							<input id="EmpName" type="text" autocomplete="off" placeholder="Name" 
+							<input id="EmpName" type="text"  autocomplete="off" placeholder="Name" 
 							class="form-control @error('EmpName') is-invalid @enderror" name="EmpName"
 							 value="{{ old('EmpName') }}" required autocomplete="EmpName"> 
 						</div>
@@ -144,7 +144,7 @@
 							 name="emailId" required>
 						</div>
 					</div>
-					<!-- <div class="form-group row">
+					<div class="form-group row">
 					<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Place:</label>
 						<div class="col-md-4">
 						<select name="placeId" id="placeId" value="" class="form-control" required>
@@ -155,7 +155,7 @@
 											@endforeach
 								</select>
 						</div>
-					</div> -->
+					</div>
 
 					<div class="form-group row"> 
 						<label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
@@ -184,10 +184,12 @@
 							</div>
 					</div>
 
-					<!-- <div class="form-group row">
+					<div class="form-group row">
                         <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
                         <div class="col-sm-10 col-md-6 col-lg-4">
-                           <select name="bankName" id="bankName" value="" class="form-control" required>
+
+                            <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
+                            <select name="bankName" id="bankName" value="" class="form-control" required>
                                              <option value="">Select Bank name</option>
                                              @foreach($bk as $bk)
 
@@ -195,35 +197,38 @@
 										@endforeach
 							</select>
                         </div>
-                    </div> -->
+                    </div>
 
-					<!-- <div class="form-group row">
+					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Bank account no:') }}</label>
 						<div class="col-md-4">
 							<input id="accountNumber" type="text" autocomplete="off" placeholder="eg: 200102384" class="form-control"
 							 name="accountNumber" required>
 						</div>
-					</div> -->
+					</div>
 
-					<!-- <div class="form-group row"> 
+					<div class="form-group row"> 
 						<label class="col-md-4 col-form-label text-md-right" for="resignationtype">&nbsp;&nbsp;&nbsp;Resignation Type:</label>
 							<div class="col-sm-10 col-md-6 col-lg-4">
 							<select name="resignationTypeId" id="resignationTypeId" value="" class="form-control" required>
                                              <option value="">Select Resignation Type</option>
                                              @foreach($rg as $rg)
+
                                              <option value="{{$rg->id}}">{{$rg->resignationType}}</option>
 										@endforeach
 							</select>
-						</div>
-					</div> -->
 
-					<!-- <div class="form-group row">
+							<!-- <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                   -->
+						</div>
+					</div>
+
+					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Resignation Date:') }}</label>
 						<div class="col-md-4">
 							<input id="resignationDate" type="date" autocomplete="off" placeholder="eg: 1/1/2000" class="form-control"
 							 name="resignationDate" required>
 						</div>
-					</div> -->
+					</div>
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employment Type:') }}</label>
@@ -319,7 +324,7 @@
 
 					<!-- <div class="form-group row mb-0"> -->
 					<div class="form-group row mb-0"> 
-					<?php
+					<!--?php
 							$connect = new PDO("mysql:host=localhost;dbname=hradsystem", "root", "");
 							function fill_unit_select_box($connect)
 							{ 
@@ -335,17 +340,17 @@
 							return $output;
 							}
 
-							?>
+							?-->
 
 								<form method="post" id="insert_form">
 								<!-- <span id="error"></span> -->
-								<table align="right" class="table" id="item_table">
+								<!-- <table align="right" class="table" id="item_table">
 								<div class="col-lg-5">
 
 								<label for="name" class="col-lg-10 col-form-label text-md-right">Choose Qualifications:</label>
 								<span class="fas fa-plus btn-success btn-sm add"></span>
 								
-								</table>
+								</table> -->
 								<div align="center" class="col-lg-12">
 								<input type="submit" name="submit" class="btn btn-outline-success col-lg-2" value="Insert" />
 								</div>
@@ -378,23 +383,23 @@ function getEmployeeDetails(val) {
 	var csrftoken = document.getElementById('tokenid').value;
 	$.get('/getValues?source=useradd&info=' + val + '&token=' + csrftoken, function(data) {
 		console.log(data);
-		document.getElementById('EmpId').value = '';
-		document.getElementById('EmpName').value = '';
-		document.getElementById('BloodGroup').value = '';
-		document.getElementById('cidNo').value = '';
-		document.getElementById('dob').value = '';
-		document.getElementById('gender').value = '';
-		document.getElementById('appointmentDate').value = '';
-		document.getElementById('basicPay').value = '';
-		document.getElementById('empStatus').value = '';
-		document.getElementById('lastDop').value = '';
-		document.getElementById('mobileNo').value = '';
-		document.getElementById('emailId').value = '';
-		document.getElementById('accountNumber').value = '';
-		document.getElementById('resignationDate').value = '';
-		document.getElementById('employmentType').value = '';
-		document.getElementById('incrementCycle').value = '';
-		document.getElementById('empid').innerHTML = '';
+		// document.getElementById('EmpId').value = '';
+		// document.getElementById('EmpName').value = '';
+		// document.getElementById('BloodGroup').value = '';
+		// document.getElementById('cidNo').value = '';
+		// document.getElementById('dob').value = '';
+		// document.getElementById('gender').value = '';
+		// document.getElementById('appointmentDate').value = '';
+		// document.getElementById('basicPay').value = '';
+		// document.getElementById('empStatus').value = '';
+		// document.getElementById('lastDop').value = '';
+		// document.getElementById('mobileNo').value = '';
+		// document.getElementById('emailId').value = '';
+		// document.getElementById('accountNumber').value = '';
+		// document.getElementById('resignationDate').value = '';
+		// document.getElementById('employmentType').value = '';
+		// document.getElementById('incrementCycle').value = '';
+		// document.getElementById('empid').innerHTML = '';
 		$.each(data, function(index, Employee) {
 			if(Employee.emp_id != null) {
 				document.getElementById('empid').innerHTML = 'Already a user!!!';
@@ -454,78 +459,3 @@ function myFunction1() {
 		</script>
 
 
-<script>
-$(document).ready(function(){
- 
- $(document).on('click', '.add', function(){
-  var html = '';
-  html += '<tr>';
-//   html += '<td><input type="hidden" name="{{ csrf_token() }}" class="form-control" /></td>';
-  html += '<td><input value="{{ Auth::user()->emp_id }}" type="hidden" name="item_name[]" class="form-control item_name" /></td>';
-//   html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
-  html += '<td align="center"><select name="item_unit[]" class="form-control col-lg-5 center item_unit"><option value="">Select Qualification</option><?php echo fill_unit_select_box($connect); ?></select></td>';
-  html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="fas fa-minus"></span></button></td></tr>';
-  $('#item_table').append(html);
- });
- 
- $(document).on('click', '.remove', function(){
-  $(this).closest('tr').remove();
- });
- 
- $('#insert_form').on('submit', function(event){
-  event.preventDefault();
-  var error = '';
-  $('.item_name').each(function(){
-   var count = 1;
-   if($(this).val() == '')
-   {
-    error += "<p>Enter Item Name at "+count+" Row</p>";
-    return false;
-   }
-   count = count + 1;
-  });
-  
-  $('.item_quantity').each(function(){
-   var count = 1;
-   if($(this).val() == '')
-   {
-    error += "<p>Enter Item Quantity at "+count+" Row</p>";
-    return false;
-   }
-   count = count + 1;
-  });
-  
-  $('.item_unit').each(function(){
-   var count = 1;
-   if($(this).val() == '')
-   {
-    error += "<p>Select Unit at "+count+" Row</p>";
-    return false;
-   }
-   count = count + 1;
-  });
-  var form_data = $(this).serialize();
-  if(error == '')
-  {
-   $.ajax({
-    url:"user",
-    method:"POST",
-	data:form_data,
-    success:function(data)
-    {
-     if(data == 'ok')
-     {
-      $('#item_table').find("tr:gt(0)").remove();
-      $('#error').html('<div class="alert alert-success">Item Details Saved</div>');
-     }
-    }
-   });
-  }
-  else
-  {
-   $('#error').html('<div class="alert alert-danger">'+error+'</div>');
-  }
- });
- 
-});
-</script>

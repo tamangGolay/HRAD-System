@@ -19,7 +19,7 @@
 				<!-- Authentication Links -->
 				<li class="nav-item dropdown">
 					<a class="nav-link" data-value="none" data-toggle="dropdown" href="#"> <i class="fas fa-user"></i>&nbsp;
-						<?php $roles = Auth::user()->role; ?> {{ Auth::user()->name }} <i class="fas fa-angle-down"></i> </a>
+						<?php $roles = Auth::user()->role; ?> {{ Auth::user()->empName }} <i class="fas fa-angle-down"></i> </a>
 					<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

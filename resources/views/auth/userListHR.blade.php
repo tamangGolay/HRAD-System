@@ -78,28 +78,37 @@ a {
 						<tr class="thw">
 							<th>Employee No</th>
 							<th>Name</th>
-							<th>Contact No</th>
-							<th>Wing/Dept/Div</th>
-							<th>Grade</th>
+							<th>Cid No</th>
+							<th>Gender</th>
+							<th>Office</th>
+
+				
+							<!-- <th>Grade</th>
 							<th>User Role</th>
-							<!-- <th>Dzongkhag</th> -->
+							<th>BasicPay</th> -->
 
 							<th class="fat">Action</th>
 						</tr>
 					</thead>
 					<tbody> @foreach($userList as $ul)
 						<tr>
-							<td> {{$ul->emp_id}} </td>
-							<td> {{$ul->uname}} </td>
-							<td> {{$ul->contact_number}} </td>
-							<td> {{$ul->description}} </td>
-							<td> {{$ul->grade}} </td>
-							<td> {{$ul->name}} </td>
-							<!-- <td> {{$ul->Dzongkhag_Name}} </td> -->
+							<td> {{$ul->empId}} </td>
+							<td> {{$ul->empName}} </td>
+							<td> {{$ul->cidNo}} </td>
+							<td> {{$ul->gender}} </td>
+							<td> 
+							 {{$ul->shortOfficeName}}/
+								{{$ul->Address}}
+							</td>
+
+						
+
+
+
 
 							<td>
-							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$ul->uid}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
-							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$ul->uid}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
+							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$ul->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
+							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$ul->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
 							</td>
 						</tr> @endforeach </tbody>
 				</table>
@@ -125,102 +134,152 @@ a {
 							<form id="Form" name="Form" class="form-horizontal"> @csrf
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
-
-								<input type="hidden" value="<?php echo $userList[0]->uid;?>" name="id" id="id" readonly>
+								<input type="hidden" value="<?php echo $userList[0]->id;?>" name="id" id="id" >
 						
 
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
 									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->emp_id; ?>" name="emp_id" id="emp_id" readonly>
+									<input type="text" value="<?php echo $userList[0]->empId; ?>" name="emp_id" id="emp_id" >
 
 									</div>
 								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="empName">{{ __('Name:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->empName; ?>" name="empName" id="empName" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="cidNo">{{ __('Cid Number:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->cidNo; ?>" name="cidNo" id="cidNo" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="dob">{{ __('Date of Birth:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->dob; ?>" name="dob" id="dob" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="appointmentDate">{{ __('Appointment Date:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->appointmentDate; ?>" name="appointmentDate" id="appointmentDate" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="gradeId">{{ __('Grade:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->gradeId; ?>" name="gradeId" id="gradeId" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="lastDop">{{ __('Last Dop:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->lastDop; ?>" name="lastDop" id="lastDop" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="emailId">{{ __('Email:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->emailId; ?>" name="emailId" id="emailId" >
+
+									</div>
+								</div>
+
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="basicPay">{{ __('Basic Pay:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->basicPay; ?>" name="basicPay" id="basicPay" >
+
+									</div>
+								</div>
+
+				
+
+								<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="designation">{{ __('Designation:') }}</label>
+						<div class="col-sm-6">
+
+							<select class="form-control" name="designation" id="designation" required> @foreach($designation as $designation)
+								<option value="{{$designation->id}}" > {{$designation->desisNameLong}}
+								</option>
+								@endforeach </select>
+						</div>
+					</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="mobileNo">{{ __('MobileNo:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->mobileNo; ?>" name="mobileNo" id="mobileNo" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('incrementCycle:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->incrementCycle; ?>" name="incrementCycle" id="incrementCycle" >
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('Gender:') }}</label>
+									<div class="col-sm-4">
+									<input type="text" value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
+
+									</div>
+								</div>
+
 
 								
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="name">{{ __('Contact Number:') }}</label>
-									<div class="col-sm-4">
-									<input type="number" value="<?php echo $userList[0]->contact_number; ?>" name="contact_number" id="contact_number" required>
-
-									</div>
-								</div>
 
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="dzongkhag">{{ __('Dzongkhag:') }}</label>
-									<div class="col-sm-4">
-									<select name="dzongkhag" id="dzongkhag" value="<?php echo $userList[0]->Dzongkhag_Name; ?>" required>
-										@foreach($dzongkhag as $dzongkhag)
-											<option value="{{$dzongkhag->id}}">{{$dzongkhag->Dzongkhag_Name}}</option>
-										@endforeach
-									</select>
-									</div>
-								</div>
-
-
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="designation">{{ __('Designation:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->designation; ?>" name="designation" id="designation" required>
-
-									</div>
-								</div>
-
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="designation">{{ __('Gender:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" required>
-
-									</div>
-								</div>
-
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="name">{{ __('Name:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->uname; ?>" name="name" id="name" >
-
-									</div>
-								</div>
-
-
-							
-
-								<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Wing/Dept/Div:') }}</label>
+						<label class="col-sm-4 text-md-right" for="office">{{ __('Office:') }}</label>
 						<div class="col-sm-6">
-							<select name="org_unit" id="org_unit" class="form-control" required> @foreach($orgunit as $orgunits)
-								<option value="{{$orgunits->id}}">{{$orgunits->description}}</option> @endforeach </select>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="role">{{ __('Grade:') }}</label>
-						<div class="col-sm-6">
-						<select name="grade" id="grade" class="form-control" required>
-						<option value=" ">Select Grade</option> 
 
-							@foreach($grade as $grade)
-
-							<option value="{{$grade->id}}">
-							@if($grade->id < 21)
-
-							{{$grade->grade}}</option> 
-							@endif
-							@endforeach 
-						</select> 
+							<select class="form-control" name="office" id="office" required> @foreach($officedetails as $office)
+								<option value="{{$office->id}}" > {{$office->shortOfficeName}}
+								</option>
+								@endforeach </select>
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="name">{{ __('Email:') }}</label>
-							<div class="col-sm-4">
-								<input type="text" value="<?php echo $userList[0]->email; ?>" name="email" id="email" >
 
-							</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="Address">{{ __('Office Address:') }}</label>
+						<div class="col-sm-6">
+
+							<select class="form-control" name="Address" id="Address" required> @foreach($officedetails as $office)
+								<option value="{{$office->id}}" > {{$office->Address}}
+								</option>
+								@endforeach </select>
+						</div>
 					</div>
 
-					<div class="form-group row">
+
+
+
+								<div class="form-group row">
 						<label class="col-sm-4 text-md-right" for="role">{{ __('Role:') }}</label>
 						<div class="col-sm-6">
 							<select class="form-control" name="role" id="role" required> @foreach($roles as $role)
@@ -231,19 +290,9 @@ a {
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<label for="conferenceuser" class="col-md-4 col-form-label text-md-right">{{ __('Conference User:') }}</label>
-						<div class="col-md-6">
-							<div class="input-group ">
-								<input type="text" class="form-control" id="conferenceuser" name="conferenceuser" autocomplete="off" placeholder=" 1 = Conference User or 0 = other employee" required />
-								<div class="input-group-append"> </div>
-							</div>
-						</div>
-					</div>
-								
-								
-								
-								<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+
+													
+					<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
 									<button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Save changes </button>
 									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>      
 
@@ -265,13 +314,7 @@ a {
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
 
-								<input type="hidden" value="<?php echo $userList[0]->uid;?>" name="id" id="id" readonly>
-						
-
-
-							
-								
-								<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+									<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
 									<button type="submit" class="btn btn-outline-success" id="saveUserBtn" value="create">Yes</button>
 									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>
 
@@ -280,8 +323,15 @@ a {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
+
+
+
+
+
+								
+							
 
 
 
@@ -339,6 +389,25 @@ $(function() {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
+
+		// 		$table->id();
+
+		// $table->integer('empId');
+		// $table->string('empName');
+		// $table->string('bloodGroup')->nullable();
+		// $table->bigInteger('cidNo');
+		// $table->string('cidOther')->nullable();
+		
+        
+
+		
+	
+	
+	
+		
+		
+
+	
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
 					$.get("{{ route('g.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
@@ -346,30 +415,22 @@ $(function() {
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
 						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database
-						$('#name').val(data.name);
-						$('#emp_id').val(data.emp_id);
-						$('#contact_number').val(data.contact_number);
-						$('#role').val(data.role_id);//#input id and with data(DB field name)
-						$('#org_unit').val(data.org_unit_id);
-						$('#conferenceuser').val(data.conference_user);
-						$('#grade').val(data.grade);
-						$('#designation').val(data.designation);
-						$('#gender').val(data.gender);
-						$('#email').val(data.email);
-						$('#dzongkhag').val(data.dzongkhag);
+						$('#employmentType').val(data.employmentType);
+						$('#empName').val(data.empName);
+						$('#empId').val(data.empId);
+						$('#incrementCycle').val(data.incrementCycle);
+						$('#role_id').val(data.role_id);//#input id and with data(DB field name)
+						$('#office').val(data.office);
+						$('#mobileNo').val(data.mobileNo);
+						$('#designation').val(data.designationId);
+						$('#basicPay').val(data.basicPay);
+						$('#email').val(data.emailId);
+						$('#lastDop').val(data.lastDop);
+						$('#gradeId').val(data.gradeId);
+						$('#appointmentDate').val(data.appointmentDate);
+						$('#dob').val(data.dob);
+						$('#cidNo').val(data.cidNo);
 
-
-
-
-						
-
-					
-
-						
-
-				
-
-				
 					})
 				});
 				$('#saveBtn').click(function(e) {

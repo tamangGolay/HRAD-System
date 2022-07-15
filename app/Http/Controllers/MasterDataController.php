@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\EmployeeMaster;
+use App\User;
 use Auth;
 use Hash;
 use App\Roles;
@@ -46,62 +46,67 @@ class MasterDataController extends Controller
     // }
 
     public function storeUser(Request $request)
-    {     
-      // dd($request);
+    {
+      
+      // $id = "select id from users where empId = $request->emp_id";
+     
+    // dd($request);
+
+
 
       // dd($request);
 
       //code to insert the qualifications
-      if(isset($_POST["item_name"]))
-      {
-        $connect = new PDO("mysql:host=localhost;dbname=hradsystem", "root", "");
-        //  $id = ();
-        for($count = 0; $count < count($_POST["item_name"]); $count++)
-        {  
-          $query = "INSERT INTO employeequalificationmaster 
-          (personalNo, qualificationId) 
-          VALUES (:personalNo , :item_unit)
-          ";
-          $statement = $connect->prepare($query);
-          $statement->execute(
-          array(
-            // ':id'   => $id,
-            ':personalNo'  => $_POST["item_name"][$count], 
-            ':item_unit'  => $_POST["item_unit"][$count]
-          )
-          );
-        }
-        $result = $statement->fetchAll();
-        if(isset($result))
-        {
-          echo 'ok';
-        }
-       } 
+      // if(isset($_POST["item_name"]))
+      // {
+      //   $connect = new PDO("mysql:host=localhost;dbname=hradsystem", "root", "");
+      //   //  $id = ();
+      //   for($count = 0; $count < count($_POST["item_name"]); $count++)
+      //   {  
+      //     $query = "INSERT INTO employeequalificationmaster 
+      //     (personalNo, qualificationId) 
+      //     VALUES (:personalNo , :item_unit)
+      //     ";
+      //     $statement = $connect->prepare($query);
+      //     $statement->execute(
+      //     array(
+      //       // ':id'   => $id,
+      //       ':personalNo'  => $_POST["item_name"][$count], 
+      //       ':item_unit'  => $_POST["item_unit"][$count]
+      //     )
+      //     );
+      //   }
+      //   $result = $statement->fetchAll();
+      //   if(isset($result))
+      //   {
+      //     echo 'ok';
+      //   }
+      //  } 
        
-        $EmployeeMaster = new EmployeeMaster;//EmployeeMaster is ModelName
-        $EmployeeMaster->EmpId = $request->EmpId;//emp_id is from input name
-        $EmployeeMaster->EmpName =  $request->EmpName;//EmpName is from dB
+        $users = new User;//users is ModelName
+        $users->EmpId = $request->EmpId;//emp_id is from input name
+        $users->EmpName =  $request->EmpName;//EmpName is from dB
        //rolepull 
-        $EmployeeMaster->BloodGroup = $request->BloodGroup;
-        $EmployeeMaster->cidNo = $request->cidNo;
-        $EmployeeMaster->dob = $request->dob;
-        $EmployeeMaster->gender = $request->gender;
-        $EmployeeMaster->appointmentDate = $request->appointmentDate; 
-        $EmployeeMaster->gradeId = $request->gradeId;
-        $EmployeeMaster->basicPay = $request->basicPay;
-        $EmployeeMaster->empStatus = $request->empStatus; 
-        $EmployeeMaster->lastDop = $request->lastDop;
-        $EmployeeMaster->mobileNo = $request->mobileNo;
-        $EmployeeMaster->emailId = $request->emailId;
-        $EmployeeMaster->placeId = $request->placeId;
-        $EmployeeMaster->designationId = $request->designationId;
-        $EmployeeMaster->office = $request->office;
-        $EmployeeMaster->bankName = $request->bankName;
-        $EmployeeMaster->accountNumber = $request->accountNumber; 
-        $EmployeeMaster->resignationTypeId = $request->resignationTypeId;
-        $EmployeeMaster->resignationDate = $request->resignationDate;
-        $EmployeeMaster->employmentType = $request->employmentType;
-        $EmployeeMaster->incrementCycle = $request->incrementCycle;
+        $users->BloodGroup = $request->BloodGroup;
+        $users->cidNo = $request->cidNo;
+        $users->dob = $request->dob;
+        $users->gender = $request->gender;
+        $users->appointmentDate = $request->appointmentDate; 
+        $users->gradeId = $request->gradeId;
+        $users->basicPay = $request->basicPay;
+        $users->empStatus = $request->empStatus; 
+        $users->lastDop = $request->lastDop;
+        $users->mobileNo = $request->mobileNo;
+        $users->emailId = $request->emailId;
+        // $users->placeId = $request->placeId;
+        $users->designationId = $request->designationId;
+        $users->office = $request->office;
+        // $users->bankName = $request->bankName;
+        // $users->accountNumber = $request->accountNumber; 
+        $users->resignationTypeId = $request->resignationTypeId;
+        $users->resignationDate = $request->resignationDate;
+        $users->employmentType = $request->employmentType;
+        $users->incrementCycle = $request->incrementCycle;
                
         // $user->password =  Hash::make($request->password);      
         // $user->org_unit_id = $request->orgunit;
@@ -123,49 +128,50 @@ class MasterDataController extends Controller
 
       //  DB::transaction(function() use ($user,$roleuser)
       //  {
-        $EmployeeMaster->save();
+        $users->save();
 
-        $designationId = DB::table('employeemaster')
-            ->join('designationmaster', 'designationmaster.id', '=', 'employeemaster.designationId')
+        $designationId = DB::table('users')
+            ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')
                 ->select('designationmaster.desisNameLong')
-                ->where('employeemaster.status', '=', 0)
+                ->where('users.status', '=', 0)
                 // ->where('vehiclerequest.id', '=', $Request_vehicle->id)
                 ->first();
 
-        $bankName = DB::table('employeemaster')
-            ->join('bankmaster', 'bankmaster.id', '=', 'employeemaster.bankName')
-            // ->join('designationmaster', 'designationmaster.id', '=', 'employeemaster.designationId')
+        $bankName = DB::table('users')
+            ->join('bankmaster', 'bankmaster.id', '=', 'users.bankName')
+            // ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')
                 ->select('bankmaster.bankName')
-                ->where('employeemaster.status', '=', 0)
+                ->where('users.status', '=', 0)
                 // ->where('vehiclerequest.id', '=', $Request_vehicle->id)
                 ->first();
 
-        $resignationTypeId = DB::table('employeemaster')
-                ->join('resignationtypemaster', 'resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
+        $resignationTypeId = DB::table('users')
+                ->join('resignationtypemaster', 'resignationtypemaster.id', '=', 'users.resignationTypeId')
                 ->select('resignationtypemaster.resignationType')
-                ->where('employeemaster.status', '=', 0)
+                ->where('users.status', '=', 0)
                 ->first();
                 
-        $gradeId = DB::table('employeemaster')
-                ->join('payscalemaster', 'payscalemaster.id', '=', 'employeemaster.gradeId')
+        $gradeId = DB::table('users')
+                ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
                 ->select('payscalemaster.grade')
-                ->where('employeemaster.status', '=', 0);
+                ->where('users.status', '=', 0);
                 
-        $office = DB::table('employeemaster')
-                ->join('officename', 'officename.id', '=', 'employeemaster.office')
+        $office = DB::table('users')
+                ->join('officename', 'officename.id', '=', 'users.office')
                 ->select('officename.longOfficeName')
-                ->where('employeemaster.status', '=', 0)
+                ->where('users.status', '=', 0)
                 ->first(); 
 
-        $placeId = DB::table('employeemaster')
-                // ->join('placemaster', 'placemaster.id ', '=', 'office_address.placeId')
-                ->join('office_address', 'office_address.placeId', '=', 'employeemaster.placeId')
-                ->select('office_address.Address')
-                ->where('employeemaster.status', '=', 0)
-                ->first();
+        // $placeId = DB::table('users')
+        //         // ->join('placemaster', 'placemaster.id ', '=', 'office_address.placeId')
+        //         ->join('office_address', 'office_address.placeId', '=', 'users.placeId')
+        //         ->select('office_address.Address')
+        //         ->where('users.status', '=', 0)
+        //         ->first();
 
-       return redirect('home')->with('page','employeemaster')
-       ->with('adduser','Master Data Added Successfully!!!');
+       return redirect('home')->with('success','Master Data Added Successfully!!!')
+       ->with('page','employeemaster')
+       ;
        
 
 

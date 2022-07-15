@@ -116,8 +116,8 @@ a {
 
                    
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="familyButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="familyButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -183,7 +183,7 @@ a {
         $('#familyButton').val("create-room");
          $('#family_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new Payscale");
+        $('#modelHeading').html("Add new family relation");
         $('#ajaxModel').modal('show');
 
        

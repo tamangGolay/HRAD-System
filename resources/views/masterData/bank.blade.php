@@ -68,8 +68,8 @@ a {
      
                    	
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="bankButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit" class="btn btn-outline-success" id="bankButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -250,37 +250,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deletebank', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroybank') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_bank';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+    
      
      
 </script>

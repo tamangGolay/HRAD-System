@@ -58,7 +58,7 @@ a {
 
 
                    <input type="hidden" name="id" id="field_id">
-                   
+
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Field Name</label>
                         <div class="col-sm-12">
@@ -68,8 +68,8 @@ a {
      
                    	
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="fieldButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="fieldButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

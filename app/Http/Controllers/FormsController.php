@@ -44,6 +44,7 @@ use App\bank;
 use App\OfficeAddress;
 use App\Field;
 use App\Officedetails;
+use App\JacketSize;
 
 
 class FormsController extends Controller
@@ -4241,17 +4242,20 @@ if ($request->v == "user_profile")
          } 
 
          
-        //  //pantsize
-        //  if ($request->v == "pantmaster")  //form.csv
-        //  {    
+       //uniform
+       //jacket
+         if ($request->v == "jacketsize")  //form.csv
+         {    
  
-        //   $rhtml = view('masterData.pant')->render(); 
-        //   return response()
-        //      ->json(array(
-        //       'success' => true,
-        //       'html' => $rhtml
-        //        ));
-        //  }  //end
+       
+          $rhtml = view('uniform.jacketSize')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  
+         //end
 
     
 

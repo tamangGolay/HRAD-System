@@ -12,7 +12,7 @@ class CreateJacketmasterTable extends Migration
 
 		$table->id();
 		$table->string('sizeName');
-		$table->string('usUkSize')();
+		$table->string('usUkSize');
 		$table->string('euSize');
 		$table->string('gender');
         $table->string('status')->default(0);

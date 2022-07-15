@@ -1428,8 +1428,8 @@ public function importjacket($filename,Model $model) {
         {               
 
                 $data = [                       
-                    'SizeName' => $data[0],    
-                    'usUKSize' => $data[1],
+                    'sizeName' => $data[0],    
+                    'usUkSize' => $data[1],
                     'euSize' => $data[2],
                     'gender' => $data[3]                         
                                        

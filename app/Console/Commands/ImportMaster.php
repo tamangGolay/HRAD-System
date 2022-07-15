@@ -91,9 +91,9 @@ class ImportMaster extends Command
         $this->importOrgUnit('OrgUnit',new OrgUnit);
         $this->importRoles('roles',new Roles);
         $this->importUser('user',new User);
-        $this->importForms('forms',new Forms);
-        $this->importRoleForms('roleformaccess',new RoleFormMapping);        
-        $this->importUserRole('roleuser',new RoleUserMappings);
+        // $this->importForms('forms',new Forms);
+        // $this->importRoleForms('roleformaccess',new RoleFormMapping);        
+        // $this->importUserRole('roleuser',new RoleUserMappings);
         $this->importrangeofpeople('rangeofpeople',new rangeofpeople);
         $this->importvehicle('vehicleDetails',new vehicles);
         $this->importstatus('status',new status);//.csv and modelname
@@ -108,7 +108,10 @@ class ImportMaster extends Command
         $this->importleavetype('leaveType',new Leavetype);
         $this->importofficename('officename',new officeName);// csv and model
         $this->importofficemaster('officeMaster',new Officem);
-        $this->importEmpMaster('employeemaster',new EmployeeMaster);   // csv n modal name employee master
+        $this->importUser('employeemaster',new EmployeeMaster);   // csv n modal name employee master
+        $this->importForms('forms',new Forms);
+        $this->importRoleForms('roleformaccess',new RoleFormMapping);        
+        $this->importUserRole('roleuser',new RoleUserMappings);   // csv n modal name employee master
         $this->importserviceMaster('services',new ServiceMaster);
         $this->importdepartment('department',new Department);
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
@@ -549,50 +552,50 @@ public function importgHouseRate($filename,Model $model) {
         }
     }
 
-     //function to import default user admin.
-     public function importUser($filename,Model $model) {
+    //  //function to import default user admin.
+    //  public function importUser($filename,Model $model) {
 
-        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-        {
-            $this->line("Importing ".$filename." tables...");
-            $i=0;
-            while( ($data = fgetcsv($handle,10000,',')) !== FALSE)
-            {               
-                    $data = [  
+    //     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    //     {
+    //         $this->line("Importing ".$filename." tables...");
+    //         $i=0;
+    //         while( ($data = fgetcsv($handle,10000,',')) !== FALSE)
+    //         {               
+    //                 $data = [  
                                              
 
-                        'name' => $data[0],
-                        'emp_id' => $data[1],  
-                        'designation' => $data[2],                      
-                        'org_unit_id' => $data[3],                      
-                        'contact_number'=>$data[4],
-                        'conference_user'=>$data[5],
-                        'email' => $data[6],
-                        'role_id' => $data[7],
-                        'grade' => $data[8],
-                        'gender' => $data[9],
-                        'dzongkhag'  => $data[10]             
+    //                     'name' => $data[0],
+    //                     'emp_id' => $data[1],  
+    //                     'designation' => $data[2],                      
+    //                     'org_unit_id' => $data[3],                      
+    //                     'contact_number'=>$data[4],
+    //                     'conference_user'=>$data[5],
+    //                     'email' => $data[6],
+    //                     'role_id' => $data[7],
+    //                     'grade' => $data[8],
+    //                     'gender' => $data[9],
+    //                     'dzongkhag'  => $data[10]             
                                   
                        
 
-                    ];
-                    try{
-                        if($model::firstorCreate($data)) {
-                            $i++;
-                        }
-                    }
-                    catch(\Exception $e) {
-                        $this->error('something went wrong... '.$e);
-                        return;
-                    }                
+    //                 ];
+    //                 try{
+    //                     if($model::firstorCreate($data)) {
+    //                         $i++;
+    //                     }
+    //                 }
+    //                 catch(\Exception $e) {
+    //                     $this->error('something went wrong... '.$e);
+    //                     return;
+    //                 }                
                
                 
-            }
+    //         }
 
-            fclose($handle);
-            $this->line($i." entries successfully added in ".$filename." table");
-        }
-    }
+    //         fclose($handle);
+    //         $this->line($i." entries successfully added in ".$filename." table");
+    //     }
+    // }
 
 
 
@@ -1189,8 +1192,8 @@ public function importcontractdetails($filename,Model $model) {
 //end of contract details
 
 
-//function to import employee master level for employee
-  public function importEmpMaster($filename,Model $model) {
+//function to import User master level for employeemaster
+public function importUser($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
     {
         $this->line("Importing ".$filename." tables...");
@@ -1215,7 +1218,9 @@ public function importcontractdetails($filename,Model $model) {
                 'lastDop' => $data[12],
                 'mobileNo' => $data[13],
                 'emailId' => $data[14],
-                'incrementCycle' => $data[15]
+                'incrementCycle' => $data[15],
+                'role_id' => $data[16]
+
 
                 // 'empStatus' => $data[11],
                 // 'placeId' => $data[15],

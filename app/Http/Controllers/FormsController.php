@@ -44,6 +44,7 @@ use App\bank;
 use App\OfficeAddress;
 use App\Field;
 use App\Officedetails;
+use App\JacketSize;
 
 
 class FormsController extends Controller
@@ -3250,16 +3251,16 @@ if ($request->v == "vehicleReport")
     $officen = officeName::all();
     $placemastern = place::all();  
     //$dzongkhag = Dzongkhags::all(); 
-    $offhead = EmployeeMaster::all();
+    $offhead = User::all();
     $offadd = OfficeAddress::all();   
 
    
     $name = DB::table('officemaster')
     ->join('officename', 'officename.id', '=', 'officemaster.officeName')
-    ->join('employeemaster', 'employeemaster.id', '=', 'officemaster.officeHead')
+    ->join('users', 'users.empId', '=', 'officemaster.officeHead')
     ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
    // ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
-    ->select('officename.longOfficeName','office_address.Address','employeemaster.empId')
+    ->select('officename.longOfficeName','office_address.Address','users.empId')
     ->where('officemaster.status',0);
 
      $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'placemastern'=>$placemastern, 'offhead'=>$offhead, 'offadd'=>$offadd])->render();
@@ -3274,16 +3275,16 @@ if ($request->v == "vehicleReport")
 
  if ($request->v == "departmentmaster")
  {
-    $employeen = EmployeeMaster::all();
+    $employeen = User::all();
     $servicen = ServiceMaster::all();  
     $companyn = Company::all();         
    
 
     $name = DB::table('departmentmaster')
-    ->join('employeemaster', 'employeemaster.id', '=', 'departmentmaster.deptHead')
+    ->join('users', 'users.id', '=', 'departmentmaster.deptHead')
     ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
     ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
-    ->select('employeemaster.empId','servicemaster.serNameLong','companymaster.comNameLong')
+    ->select('users.empId','servicemaster.serNameLong','companymaster.comNameLong')
 
     ->where('departmentmaster.status',0);
 
@@ -4240,7 +4241,47 @@ if ($request->v == "user_profile")
           ));
          } 
 
-    }
+         
+       //uniform
+       //jacket
+         if ($request->v == "jacketsize")  //form.csv
+         {    
+ 
+       
+          $rhtml = view('uniform.jacketSize')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  
+         //end
 
+         // uniform pantsize
+         if ($request->v == "pantsize")  //form.csv
+         {    
+ 
+          $rhtml = view('uniform.pant')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  //end
+
+          // uniform shirtsize
+          if ($request->v == "shirtsize")  //form.csv
+          {    
+  
+           $rhtml = view('uniform.shirt')->render(); 
+           return response()
+              ->json(array(
+               'success' => true,
+               'html' => $rhtml
+                ));
+          }  //end
+
+    
+
+ }
 }
-

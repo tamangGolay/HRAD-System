@@ -485,7 +485,13 @@ Route::resource('unit', ManageUnitController::class);
 Route::post('destroyUnit', 'ManageUnitController@delete')->name('destroyUnit');
 
 //fieldname
-//unit
 Route::resource('field', Manage_FieldController::class);
 Route::post('destroyField', 'Manage_FieldController@delete')->name('destroyField');
 
+//PantSize Name
+Route::resource('pant', Manage_PantController::class);
+Route::post('destroyPant', 'Manage_PantController@delete')->name('destroyPant');
+
+//Shirt Size Name
+Route::resource('shirt', Manage_ShirtController::class);
+Route::post('destroyShirt', 'Manage_ShirtController@delete')->name('destroyShirt');

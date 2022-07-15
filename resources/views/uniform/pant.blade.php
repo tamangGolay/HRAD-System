@@ -17,7 +17,6 @@ a {
 }
 
 </style>
-</style>
 
 
 
@@ -30,17 +29,15 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageDisplinary">Add new displinary&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managepant">Add new Pant Size Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
-                 
-                <th>Sl.No</th> 
-                <th>Personal No</th>
-                <th>Increment date</th>
-                <th>Case</th> 
-                <th>Action Taken</th> 
+
+                <th>No</th>
+                <th width=300px>Pant Size name</th>
+                <th>Gender</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -60,42 +57,31 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
-
-                   <input type="hidden" name="id" id="qid">
+                   <input type="hidden" name="id" id="pant_id">
 
                     <div class="form-group">
-
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal No</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Pant Size Name</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Personal No." value="" maxlength="50" required>
+                            <input type="text" class="form-control" id="pantSizeName" name="pantSizeName" value=""  required>
                         </div>
-                    </div>     
-     
+                    </div>
+
                     
-
                     <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Increment Date</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gender</label>
                         <div class="col-sm-12">
-                            <input type="date" id="incrementDate" name="incrementDate"  placeholder="Increment date" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Case</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="case" name="case"  placeholder="case" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Action taken</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="actionTaken" name="actionTaken"  placeholder="Action taken" class="form-control" required>
-                        </div>
-                    </div>
+                        <select name="gender" id="gender" class="form-control" required> 
+							<option value=" ">Select Gender</option> 
+							<option value="Male">Male</option>
+							<option value="Female">Female</option> 
+						</select> 
+						</div>					
+                    </div>               
+                                       
+                   	
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="displinaryButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="pantButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -107,19 +93,22 @@ a {
 </div>
 
 
-<div class="modal fade" id="displinaryModel" aria-hidden="true">
+<div class="modal fade" id="pantModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="displinaryHeading"></h4>
+                <h4 class="modal-title" id="pantHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">                   
+                <input type="hidden"  value="{{ csrf_token() }}">
+
+
+                   
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="displinaryDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="pantDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -140,49 +129,47 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('displinary.index') }}",     // initial data in data table
+        "searching": true,
+		"ordering": false,
+		"paging": false,
+        ajax: "{{ route('pant.index') }}",
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'empId', name: 'users.empId'},
-            {data: 'incrementDate', name: 'incrementDate'},
-            {data: 'case', name: 'case'},
-            {data: 'actionTaken', name: 'actionTaken'},
-            {data: 'action', name: 'action', orderable: true, searchable: true},
+            {data: 'id', name: 'id',orderable: false, searchable: true},
+            {data: 'pantSizeName', name: 'pantSizeName', orderable: false, searchable: true},
+            {data: 'gender', name: 'gender', orderable: false, searchable: true},
+            {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#manageDisplinary').click(function () {
-        $('#displinaryButton').val("create-room");
-        // $('#vehicle_id').val('');
+    $('#managepant').click(function () {
+        $('#pantButton').val("create-room");
+        $('#pant_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new displinary");
+        $('#modelHeading').html("Add new PantSizeName");
         $('#ajaxModel').modal('show');
 
        
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.edit', function () {
-      var qid = $(this).data('id');
+    $('body').on('click', '.editpant', function () {
+      var pant_id = $(this).data('id');
      
-      $.get("{{ route('displinary.index') }}" +'/' + qid +'/edit', function (data) {
-          $('#modelHeading').html("Edit displinary details");
-          $('#displinaryButton').val("edit-displinary");
+      $.get("{{ route('pant.index') }}" +'/' + pant_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Pant Size details");
+          $('#pantButton').val("edit-pant");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#qid').val(data.id);
-          $('#personalNo').val(data.personalNo);
-          $('#incrementDate').val(data.incrementDate);
-          $('#case').val(data.case); //input id,database
-          $('#actionTaken').val(data.actionTaken);
-          
+          $('#pant_id').val(data.id);
+          $('#pantSizeName').val(data.pantSizeName); //input id,database
+          $('#gender').val(data.gender);
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#displinaryButton').click(function (e) {
+    $('#pantButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -191,7 +178,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('displinary.store') }}",
+          url: "{{ route('pant.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -210,15 +197,15 @@ a {
        
         
             window.location.href = '/home';
-            table.draw();
+        table.draw();
 
     
          
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#displinaryButton').html('Save Changes');
-              alert("Cannot leave fields empty");
+              $('#pantButton').html('Save Changes');
+              alert(data);
                 
           }
       });
@@ -226,30 +213,28 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteDisplinary', function () {
-      var qid = $(this).data('id');
+    $('body').on('click', '.deletePant', function () {
+      var pant_id = $(this).data('id');
      
-      $.get("{{ route('displinary.index') }}" +'/' + qid +'/edit', function (data) {
-          $('#displinaryHeading').html("Do you want to delete this displinary action?");
-          $('#displinaryDeleteButton').val("edit-displinary");
-          $('#displinaryModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-          $('#qid').val(data.id);
-          $('#personalNo').val(data.personalNo);
-          $('#incrementDate').val(data.incrementDate);
-          $('#case').val(data.case); //input id,database
-          $('#actionTaken').val(data.actionTaken);
+      $.get("{{ route('pant.index') }}" +'/' + pant_id +'/edit', function (data) {
+          $('#pantHeading').html("Do you want to delete this PantSize?");
+          $('#pantDeleteButton').val("edit-pant");
+          $('#pantModel').modal('show');
+          $('meta[name="csrf-token"]').attr('content'),          
+          $('#pant_id').val(data.id);
+          $('#pantSizeName').val(data.pantSizeName); //input id,database
+          $('#gender').val(data.gender);
       })
    });
    
   // after clicking yes in delete
-    $('#displinaryDeleteButton').click(function (e) {
+    $('#pantDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyDisplinary') }}",
+          url: "{{ route('destroyPant') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -266,7 +251,8 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();           
+			table.draw();                 
+       
        
 
     
@@ -274,11 +260,10 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#displinaryDeleteButton').html('Save Changes');
+              $('#pantDeleteButton').html('Save Changes');
           }
       });
     });
-    
     
      
      
@@ -290,5 +275,4 @@ a {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
 		</script>
-
 

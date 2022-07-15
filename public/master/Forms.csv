@@ -33,6 +33,10 @@ townmaster,Town Master,Admin,yes,fa-clipboard-list
 unitmaster,Unit Master,Admin,yes,fa-clipboard-list
 villagemaster,Village Master,Admin,yes,fa-clipboard-list
 userList,User Lists,Admin,yes,fa-list
+jacketsize,Jacket Size,Admin,yes,fa-clipboard-list
+pantsize,Pant Size,Admin,yes,fa-list-ol
+shirtsize,Shirt Size,Admin,yes,fa-list-ol
+shoesize,Shoe Size,Admin,yes,fa-list-ol
 Request_vehicle,Request Vehicle,Vehicle,yes,fa-car
 changepassword,Change Password,Password,yes,fa-edit
 resetpassword,Reset Password,Password,yes,fa-edit

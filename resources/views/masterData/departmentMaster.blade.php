@@ -63,14 +63,14 @@ a {
                     <div class="form-group">
                         <label for="name" class="col-lg-12 col-sm-12 control-label">Department Short Name</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" class="form-control" id="deptNameShort" name="deptNameShort" placeholder="eg: CEO" value="" maxlength="50" required>
+                            <input type="text" class="form-control" id="deptNameShort" name="deptNameShort" placeholder="eg: ITD" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Department Long name</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="deptNameLong" name="deptNameLong"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                            <input type="text" id="deptNameLong" name="deptNameLong"  placeholder="eg: Information Technology Division" class="form-control" required>
                         </div>
                     </div>
 

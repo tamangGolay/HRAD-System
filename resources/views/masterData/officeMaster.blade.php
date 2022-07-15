@@ -95,7 +95,7 @@ a {
                         <select class="col-lg-12 col-sm-12" name="officeHead" id="officeHead" value="" required>
                                              <option value="">Select Office Location</option>
                                              @foreach($offhead as $offhead)
-                                             <option value="{{$offhead->id}}">{{$offhead->empId}}</option>
+                                             <option value="{{$offhead->empId}}">{{$offhead->empId}}</option>
 										@endforeach
 							</select>   
                         <!-- <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required> -->
@@ -157,7 +157,7 @@ a {
             // {data: 'officeName', name: 'officeName'},
             {data: 'longOfficeName', name: 'officename.longOfficeName', orderable: true, searchable: true},
             {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
-            {data: 'empId', name: 'employeemaster.empId',orderable: true, searchable: true},
+            {data: 'empId', name: 'users.empId',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -183,9 +183,9 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
-          $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.Address);
-          $('#officeHead').val(data.empId);
+          $('#officeName').val(data.officeName); //input id,database
+          $('#officeAddress').val(data.officeAddress);
+          $('#officeHead').val(data.officeHead);
       })
    });
 

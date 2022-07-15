@@ -21,10 +21,10 @@ class EmpQualificationController extends Controller
           //$empquali = DB::table('employeequalificationmaster')->where('status','0');
           
          $empquali = DB::table('employeequalificationmaster')
-          ->join('employeemaster', 'employeemaster.id', '=', 'employeequalificationmaster.personalNo')
+          ->join('users', 'users.id', '=', 'employeequalificationmaster.personalNo')
           ->join('qualificationmaster','qualificationmaster.id','=','employeequalificationmaster.qualificationId') 
 
-          ->select('employeequalificationmaster.id','employeemaster.empId','qualificationmaster.qualificationName','yearCompleted')
+          ->select('employeequalificationmaster.id','users.empId','qualificationmaster.qualificationName','yearCompleted')
           ->where('employeequalificationmaster.status','0');  
 
          if ($request->ajax()) {

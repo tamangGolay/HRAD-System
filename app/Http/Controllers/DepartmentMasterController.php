@@ -19,13 +19,13 @@ class DepartmentMasterController extends Controller
     {
 
         $b = DB::table('departmentmaster')
-        ->join('employeemaster', 'employeemaster.id', '=', 'departmentmaster.deptHead')
+        ->join('users', 'users.id', '=', 'departmentmaster.deptHead')
        ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
        ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
 
     //    ->select('dzongkhags.Dzongkhag_Name','officemaster.id','officename.longOfficeName','placemaster.dzongkhagId','officemaster.officeHead')
        // ->select('officemaster.id','placemaster.placeName','officemaster.officeAddress','officemaster.officeHead')
-       ->select('deptNameShort','deptNameLong','employeemaster.empId','servicemaster.serNameLong','companymaster.comNameLong','departmentmaster.id','departmentmaster.deptHead','departmentmaster.deptReportsToService','departmentmaster.deptReportsToCompany')
+       ->select('deptNameShort','deptNameLong','users.empId','servicemaster.serNameLong','companymaster.comNameLong','departmentmaster.id','departmentmaster.deptHead','departmentmaster.deptReportsToService','departmentmaster.deptReportsToCompany')
 
         ->where('departmentmaster.status','0');
         

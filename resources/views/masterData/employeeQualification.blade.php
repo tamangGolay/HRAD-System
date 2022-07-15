@@ -59,8 +59,7 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="eqid">               
-
+                   <input type="hidden" name="id" id="eqid">  
                     
                     
                     <div class="form-group">
@@ -154,7 +153,7 @@ a {
         ajax: "{{ route('employeeQualification.index') }}",     // initial data in data table
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'employeemaster.empId'},
+            {data: 'empId', name: 'users.empId'},
             {data: 'qualificationName', name: 'qualificationmaster.qualificationName'},
             {data: 'yearCompleted', name: 'yearCompleted'},           
             {data: 'action', name: 'action', orderable: true, searchable: true},

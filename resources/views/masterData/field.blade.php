@@ -57,9 +57,10 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="text" name="id" id="field_id">
+                   <input type="hidden" name="id" id="field_id">
+                   
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 col-g-8 control-label">Field Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Field Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="fieldName" name="fieldName" value=""  required>
                         </div>

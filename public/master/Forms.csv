@@ -19,6 +19,7 @@ leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
 officename,Office Name,Admin,yes,fa-clipboard-list
 office_reporting,Office reporting,Admin,yes,fa-list-ol
+pantsize,Pant Size,Admin,yes,fa-list-ol
 pay_scale,Pay scale,Admin,yes,fa-list-ol
 placemaster,Place Master,Admin,yes,fa-clipboard-list
 promotion_history,Promotion history,Admin,yes,fa-list-ol

@@ -20,8 +20,8 @@ class DisplinaryController extends Controller
 
         // $quali = DB::table('displinaryhistorymaster')->where('status','0');   
         $quali = DB::table('displinaryhistorymaster')
-        ->join('employeemaster', 'employeemaster.id', '=', 'displinaryhistorymaster.personalNo')
-        ->select('displinaryhistorymaster.id','employeemaster.empId','displinaryhistorymaster.incrementDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
+        ->join('users', 'users.id', '=', 'displinaryhistorymaster.personalNo')
+        ->select('displinaryhistorymaster.id','users.empId','displinaryhistorymaster.incrementDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
         ->where('displinaryhistorymaster.status','0');
 
         

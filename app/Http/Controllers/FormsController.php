@@ -4240,7 +4240,20 @@ if ($request->v == "user_profile")
           ));
          } 
 
-    }
+         
+        //  //pantsize
+        //  if ($request->v == "pantmaster")  //form.csv
+        //  {    
+ 
+        //   $rhtml = view('masterData.pant')->render(); 
+        //   return response()
+        //      ->json(array(
+        //       'success' => true,
+        //       'html' => $rhtml
+        //        ));
+        //  }  //end
 
+    
+
+ }
 }
-

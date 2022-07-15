@@ -45,6 +45,7 @@ use App\Field;
 use App\pay;
 use App\PostMaster;
 use App\EmployeeQualification;
+use App\Pant;
 
 class ImportMaster extends Command
 {
@@ -120,6 +121,7 @@ class ImportMaster extends Command
         $this->importpayscale('payscale',new pay);
         $this->importpostmaster('postmaster',new PostMaster);
         $this->importemployeequalification('employeequalification',new EmployeeQualification);
+        $this->importpant('Pant',new Pant);
         
 
      }
@@ -1361,6 +1363,38 @@ public function importemployeequalification($filename,Model $model) {
                     'personalNo' => $data[0],    
                     'qualificationId' => $data[1],
                     'yearCompleted' => $data[2]                        
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
+
+// function to import pant size name (Tdee)
+public function importpant($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'pantSizeName' => $data[0],    
+                    'gender' => $data[1]
+                                          
                                        
                 ];
                 try{

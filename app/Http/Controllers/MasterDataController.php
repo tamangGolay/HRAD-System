@@ -137,13 +137,13 @@ class MasterDataController extends Controller
                 // ->where('vehiclerequest.id', '=', $Request_vehicle->id)
                 ->first();
 
-        $bankName = DB::table('users')
-            ->join('bankmaster', 'bankmaster.id', '=', 'users.bankName')
-            // ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')
-                ->select('bankmaster.bankName')
-                ->where('users.status', '=', 0)
-                // ->where('vehiclerequest.id', '=', $Request_vehicle->id)
-                ->first();
+        // $bankName = DB::table('users')
+        //     ->join('bankmaster', 'bankmaster.id', '=', 'users.bankName')
+        //     // ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')
+        //         ->select('bankmaster.bankName')
+        //         ->where('users.status', '=', 0)
+        //         // ->where('vehiclerequest.id', '=', $Request_vehicle->id)
+        //         ->first();
 
         $resignationTypeId = DB::table('users')
                 ->join('resignationtypemaster', 'resignationtypemaster.id', '=', 'users.resignationTypeId')

@@ -23,13 +23,13 @@
 					<div class="form-group row">
 						<label for="emp_id" class="col-md-4 col-form-label text-md-right">{{ __('Employee Number:') }}</label>
 						<div class="col-md-4">
-							<input onchange="myChangeFunction(this)" id="empId" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;"
+							<input  id="emp_id" type="number" placeholder="Employee Number" onKeyPress="if(this.value.length==8) return false;"
 							 class="form-control @error('EmpId') is-invalid @enderror" name="EmpId" value="{{ old('EmpId') }}"
 							  required autocomplete="EmpId" onFocusOut="getEmployeeDetails(this.value);"> 
 						</div> 
 						<span id="info" class="text-danger text-md-right"></span>
 						<div class="col-sm-2"> 
-							<span id="EmpId" class="text-danger"></span>
+							<span id="empid" class="text-danger"></span>
 						 </div>
 					</div>
 
@@ -401,7 +401,7 @@ function getEmployeeDetails(val) {
 		// document.getElementById('incrementCycle').value = '';
 		// document.getElementById('empid').innerHTML = '';
 		$.each(data, function(index, Employee) {
-			if(Employee.emp_id != null) {
+			if(Employee.empId != null) {
 				document.getElementById('empid').innerHTML = 'Already a user!!!';
 				document.getElementById('emp_id').value = '';
 			}

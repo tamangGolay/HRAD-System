@@ -283,10 +283,10 @@ $emp = DB::table('users')
         {
 
             //check cid if already in database.
-            if (DB::table('users')->where('users.emp_id', $value)->exists())
+            if (DB::table('users')->where('users.empId', $value)->exists())
             {
                 $emp = DB::table('users')
-            ->select('users.emp_id'
+            ->select('users.empId'
             )
                     ->get();
 

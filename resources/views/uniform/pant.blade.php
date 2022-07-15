@@ -29,14 +29,15 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managefield">Add new Field&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managepant">Add new Pant Size Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
 
                 <th>No</th>
-                <th>Field</th>
+                <th width=300px>Pant Size name</th>
+                <th>Gender</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -56,20 +57,31 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+                   <input type="hidden" name="id" id="pant_id">
 
-                   <input type="hidden" name="id" id="field_id">
-                   
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Field Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Pant Size Name</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="fieldName" name="fieldName" value=""  required>
+                            <input type="text" class="form-control" id="pantSizeName" name="pantSizeName" value=""  required>
                         </div>
                     </div>
-     
+
+                    
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gender</label>
+                        <div class="col-sm-12">
+                        <select name="gender" id="gender" class="form-control" required> 
+							<option value=" ">Select Gender</option> 
+							<option value="Male">Male</option>
+							<option value="Female">Female</option> 
+						</select> 
+						</div>					
+                    </div>               
+                                       
                    	
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="fieldButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="pantButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -81,11 +93,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="fieldModel" aria-hidden="true">
+<div class="modal fade" id="pantModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="fieldHeading"></h4>
+                <h4 class="modal-title" id="pantHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -96,7 +108,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="fieldDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="pantDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -120,42 +132,44 @@ a {
         "searching": true,
 		"ordering": false,
 		"paging": false,
-        ajax: "{{ route('field.index') }}",
+        ajax: "{{ route('pant.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'fieldName', name: 'fieldName', orderable: false, searchable: true},
+            {data: 'pantSizeName', name: 'pantSizeName', orderable: false, searchable: true},
+            {data: 'gender', name: 'gender', orderable: false, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#managefield').click(function () {
-        $('#fieldButton').val("create-room");
-        $('#field_id').val('');
+    $('#managepant').click(function () {
+        $('#pantButton').val("create-room");
+        $('#pant_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new Field");
+        $('#modelHeading').html("Add new PantSizeName");
         $('#ajaxModel').modal('show');
 
        
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.editfield', function () {
-      var field_id = $(this).data('id');
+    $('body').on('click', '.editpant', function () {
+      var pant_id = $(this).data('id');
      
-      $.get("{{ route('field.index') }}" +'/' + field_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit Field details");
-          $('#fieldButton').val("edit-field");
+      $.get("{{ route('pant.index') }}" +'/' + pant_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Pant Size details");
+          $('#pantButton').val("edit-pant");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#field_id').val(data.id);
-          $('#fieldName').val(data.fieldName); //input id,database
+          $('#pant_id').val(data.id);
+          $('#pantSizeName').val(data.pantSizeName); //input id,database
+          $('#gender').val(data.gender);
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#fieldButton').click(function (e) {
+    $('#pantButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -164,7 +178,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('field.store') }}",
+          url: "{{ route('pant.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -190,7 +204,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#fieldButton').html('Save Changes');
+              $('#pantButton').html('Save Changes');
               alert(data);
                 
           }
@@ -199,27 +213,28 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteField', function () {
-      var field_id = $(this).data('id');
+    $('body').on('click', '.deletePant', function () {
+      var pant_id = $(this).data('id');
      
-      $.get("{{ route('field.index') }}" +'/' + field_id +'/edit', function (data) {
-          $('#fieldHeading').html("Do you want to delete this Field?");
-          $('#fieldDeleteButton').val("edit-field");
-          $('#fieldModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-          $('#field_id').val(data.id);
-          $('#fieldName').val(data.fieldName); //input id,database
+      $.get("{{ route('pant.index') }}" +'/' + pant_id +'/edit', function (data) {
+          $('#pantHeading').html("Do you want to delete this PantSize?");
+          $('#pantDeleteButton').val("edit-pant");
+          $('#pantModel').modal('show');
+          $('meta[name="csrf-token"]').attr('content'),          
+          $('#pant_id').val(data.id);
+          $('#pantSizeName').val(data.pantSizeName); //input id,database
+          $('#gender').val(data.gender);
       })
    });
    
   // after clicking yes in delete
-    $('#fieldDeleteButton').click(function (e) {
+    $('#pantDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroyField') }}",
+          url: "{{ route('destroyPant') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -245,7 +260,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#fieldDeleteButton').html('Save Changes');
+              $('#pantDeleteButton').html('Save Changes');
           }
       });
     });
@@ -260,5 +275,4 @@ a {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
 		</script>
-
 

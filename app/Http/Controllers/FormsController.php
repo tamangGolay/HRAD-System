@@ -4257,6 +4257,30 @@ if ($request->v == "user_profile")
          }  
          //end
 
+         // uniform pantsize
+         if ($request->v == "pantsize")  //form.csv
+         {    
+ 
+          $rhtml = view('uniform.pant')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  //end
+
+          // uniform shirtsize
+          if ($request->v == "shirtsize")  //form.csv
+          {    
+  
+           $rhtml = view('uniform.shirt')->render(); 
+           return response()
+              ->json(array(
+               'success' => true,
+               'html' => $rhtml
+                ));
+          }  //end
+
     
 
  }

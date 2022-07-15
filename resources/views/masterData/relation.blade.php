@@ -59,15 +59,15 @@ a {
 
                    <input type="hidden" name="id" id="relationid">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Relationship</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Relationship</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="relationshipName" name="relationshipName" placeholder="Relation to the employee" value="" maxlength="50" required>
                         </div>
                     </div>     
                     
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="relationButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="relationButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

@@ -90,8 +90,8 @@ a {
                         </div>
                     </div>
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="jacketButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="jacketButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -157,7 +157,7 @@ a {
         $('#jacketButton').val("create-room");
         $('#jacket_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new bank");
+        $('#modelHeading').html("Add new Jacket Size");
         $('#ajaxModel').modal('show');
 
        

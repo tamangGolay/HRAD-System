@@ -4055,15 +4055,15 @@ if ($request->v == "room_details")
              $subdiv = DivisionMaster::all()
              ->where('status',0);
 
-             $employeemas = EmployeeMaster::all()
+             $employeemas = User::all()
              ->where('status',0);
  
  
              $subdivisions = DB::table('subdivisionmaster')
              ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivnameLong')
-             ->join('employeemaster', 'employeemaster.id', '=', 'subdivisionmaster.subDivhead')
+             ->join('users', 'users.id', '=', 'subdivisionmaster.subDivhead')
  
-             ->select('divisionmaster.divNameLong','employeemaster.empName')
+             ->select('divisionmaster.divNameLong','users.empName')
           
              ->where('subdivisionmaster.status',0);   
  

@@ -137,8 +137,8 @@ a {
                     </div>
 
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="subdivisionButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="subdivisionButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -193,7 +193,7 @@ a {
             {data: 'id', name:'id'},
             {data: 'subDivnameShort', name: 'subDivnameShort'},
             {data: 'subDivnameLong', name: 'subDivnameLong'},
-            {data: 'empName', name: 'subDivhead'},
+            {data: 'empName', name: 'empName'},
             {data: 'divNameLong', name: 'subDivreportsTodivision'},
             {data: 'subDivreportsTodepartment', name: 'subDivreportsTodepartment'},
             {data: 'subDivreportsToservice', name: 'subDivreportsToservice'},
@@ -226,7 +226,7 @@ a {
           $('#subdivision_id').val(data.id);
           $('#subDivnameShort').val(data.subDivnameShort); //input id,database
           $('#subDivnameLong').val(data.subDivnameLong);
-          $('#subDivhead').val(data.empName);
+          $('#subDivhead').val(data.subDivhead);
           $('#subDivreportsTodivision').val(data.divNameLong);
           $('#subDivreportsTodepartment').val(data.subDivreportsTodepartment);
           $('#subDivreportsToservice').val(data.subDivreportsToservice);

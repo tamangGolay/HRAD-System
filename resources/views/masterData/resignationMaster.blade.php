@@ -58,7 +58,7 @@ a {
 
                    <input type="hidden" name="id" id="resignation_id">
                     <div class="form-group">
-                        <label for="name" class="col-lg-12 col-sm-2 control-label">Resignation Type</label>
+                        <label for="name" class="col-lg-8 col-sm-2 control-label">Resignation Type</label>
                         <div class="col-lg-12  col-sm-12">
                             <input type="text" class="form-control" id="resignationType" name="resignationType" placeholder="eg. voluntery resignation" value="" maxlength="50" required>
                         </div>
@@ -71,8 +71,8 @@ a {
                         </div>
                     </div> -->
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="resignationButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="resignationButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

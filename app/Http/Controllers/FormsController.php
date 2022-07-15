@@ -4236,11 +4236,14 @@ if ($request->v == "user_profile")
             
             $pno = EmployeeMaster::all()
             ->where('status',0);
+            
+            $pno = User::all()
+            ->where('status',0);
 
             $empquali = DB::table('employeequalificationmaster')
             ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.id')
-            ->join('employeemaster','employeemaster.id','=','employeequalificationmaster.id')
-            ->select('qualificationmaster.qualificationName','employeemaster.empId')
+            ->join('users','users.id','=','employeequalificationmaster.id')
+            ->select('qualificationmaster.qualificationName','users.empId')
             ->where('employeequalificationmaster.status',0);         
  
              $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification,'pno'=>$pno])->render();

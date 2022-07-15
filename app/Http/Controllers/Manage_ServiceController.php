@@ -18,13 +18,12 @@ class Manage_ServiceController extends Controller
      */
     public function index(Request $request)
     {
-
         $service = DB::table('servicemaster')
-        
-        ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
+        ->join('users', 'users.id', '=', 'servicemaster.serviceHead')
         ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
-        ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empId','companymaster.comNameLong')
+        ->select('servicemaster.id','serNameShort','serNameLong','users.empId','companymaster.comNameLong')
         ->where('servicemaster.status','0');
+        
         
         
         if ($request->ajax()) {
@@ -33,8 +32,8 @@ class Manage_ServiceController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteService" data-original-title="Delete" class="btn btn-primary btn-sm deleteService">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteService" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteService">Delete</a>';
 
 
 

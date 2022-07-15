@@ -17,19 +17,19 @@ class Manage_profileupdateController extends Controller
     public function index(Request $request)  //pull the data in the front
     {
 
-        $grade = DB::table('employeemaster')
+        $grade = DB::table('users')
 
-           ->join('bankmaster', 'bankmaster.id', '=', 'employeemaster.bankName')
-         //->join('employeemaster', 'employeemaster.designation', '=', 'designationmaster.id')
-        ->select('employeemaster.id','employeemaster.empId','employeemaster.cidNo',
-        'employeemaster.dob','employeemaster.bloodGroup','employeemaster.empName',
-        'employeemaster.gender', 'employeemaster.appointmentDate','employeemaster.grade',
-        'employeemaster.designation','employeemaster.basicPay','employeemaster.empStatus','employeemaster.mobileNo',
-        'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName','employeemaster.accountNumber',
-        'employeemaster.resignationType','employeemaster.resignationDate','employeemaster.employmentType','employeemaster.incrementCycle',
+           ->join('bankmaster', 'bankmaster.id', '=', 'users.bankName')
+         //->join('users', 'users.designation', '=', 'designationmaster.id')
+        ->select('users.id','users.empId','users.cidNo',
+        'users.dob','users.bloodGroup','users.empName',
+        'users.gender', 'users.appointmentDate','users.grade',
+        'users.designation','users.basicPay','users.empStatus','users.mobileNo',
+        'users.emailId','users.placeId','users.bankName','users.accountNumber',
+        'users.resignationType','users.resignationDate','users.employmentType','users.incrementCycle',
         'bankmaster.bankName'
         )
-      ->where('employeemaster.status','0');
+      ->where('users.status','0');
   
       	
   
@@ -73,16 +73,16 @@ class Manage_profileupdateController extends Controller
 
         //  dd($request);
         EmployeeMaster::updateOrCreate(['empId' => $request->emp_id],  ['empName' => $request->name,  'mobileNo' => $request->contact_number,
-        'office' => $request->division, 'dob' => $request->dob, 'cidNo' => $request->cid,  'bloodGroup' => $request->blood,
-         'designation' => $request->designationId, 'grade' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
-          'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 'placeId' => $request->placeId,
-        'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'resignationType' => $request->resignationtypeId ,
-        'resignationDate' => $request->resignationdate, 'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle
+        'division' => $request->office, 'dob' => $request->dob, 'cidNo' => $request->cid, 
+         'designation' => $request->designationId, 'gradeId' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
+          'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 
+        'office' =>$request->office,
+         'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle
     ]);        
  
 
-
-   
+//'placeId' => $request->placeId,'resignationDate' => $request->resignationdate, 'resignationType' => $request->resignationtypeId ,
+   //'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'bloodGroup' => $request->blood,
         return redirect('home')->with('page', 'user_profile');
 
     }

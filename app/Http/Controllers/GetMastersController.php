@@ -67,29 +67,45 @@ class GetMastersController extends Controller
         if ($table == "user_profile")
         {
 
+            
+          
             //check cid if already in database.
-            if (DB::table('employeemaster')->where('employeemaster.empId', $value)->exists())
+            if (DB::table('users')->where('users.empId', $value)->exists())
             {
-                $emp = DB::table('employeemaster')
-                ->join('grademaster','grademaster.id', '=', 'employeemaster.gradeId')
-                ->join('resignationtypemaster','resignationtypemaster.id', '=', 'employeemaster.resignationTypeId')
-                ->join('designationmaster','designationmaster.id', 'employeemaster.designationId')
-                ->join('office_address','office_address.placeId', 'employeemaster.placeId')
-                ->select('employeemaster.empId','employeemaster.empName', 
-                    'employeemaster.bloodGroup', 'employeemaster.cidNo',
-                    'employeemaster.dob','employeemaster.gender','employeemaster.appointmentDate',
-                    'employeemaster.designationId',
-                    'employeemaster.office','employeemaster.basicPay','employeemaster.empStatus',
-                    'employeemaster.lastDop','employeemaster.mobileNo',
-                    'employeemaster.emailId','employeemaster.placeId','employeemaster.bankName',
-                    'employeemaster.accountNumber','employeemaster.resignationTypeID',
-                    'employeemaster.resignationDate','employeemaster.employmentType',
-                    'employeemaster.incrementCycle' ,'designationmaster.desisNameLong',
-                   'office_address.placeId', 'grademaster.grade'  ,'resignationtypemaster.resignationType',
-                    'office_address.Address' ,'employeemaster.gradeId','designationmaster.desisNameLong','resignationtypemaster.resignationType'
-  )
-  ->where('employeemaster.empId', $value)->get();         
+               
+            
+//                 $emp = DB::table('users')
+//                 ->join('grademaster','grademaster.id', '=', 'users.gradeId')
+//                 // ->join('resignationtypemaster','resignationtypemaster.id', '=', 'users.resignationTypeId')
+//                 ->join('designationmaster','designationmaster.id', 'users.designationId')
+//                 ->join('officedetails','officedetails.id', 'users.office')
+//                 ->select('users.empId','users.empName', 
+//                     'users.bloodGroup', 'users.cidNo','users.cidOther',
+//                     'users.dob','users.gender','users.appointmentDate',
+//                     'users.designationId',
+//                     'users.office','users.basicPay','users.empStatus',
+//                     'users.lastDop','users.mobileNo',
+//                     'users.emailId',
+                 
+//                     'users.resignationDate','users.employmentType',
+//                     'users.incrementCycle' ,'designationmaster.desisNameLong',
+//                     'grademaster.grade'  ,
+//                    'users.gradeId','designationmaster.desisNameLong',
+//                    'officedetails.id','officedetails.Address','officedetails.shortOfficeName',
+//   )
+//   ->where('users.empId', $value)->get();         
 
+
+
+
+$emp = DB::table('users')
+->join('designationmaster','designationmaster.id', 'users.designationId')
+->join('officedetails','officedetails.id', 'users.office')
+->select('users.*','designationmaster.desisNameLong','officedetails.id',
+'officedetails.Address','officedetails.shortOfficeName')
+
+
+->where('users.empId', $value)->get();  
                 return response()
                     ->json($emp);
 

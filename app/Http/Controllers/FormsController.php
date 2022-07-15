@@ -523,6 +523,8 @@ if ($request->v == "guestHouseReports")
                $orgunit = orgunit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
+               $designation = Designation::all();
+
 
             $userLists = DB::table('users')
             // ->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
@@ -574,7 +576,7 @@ if ($request->v == "guestHouseReports")
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,

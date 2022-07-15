@@ -74,7 +74,7 @@ class Manage_UserController extends Controller
                  'office' => $request->office,
                  'gradeId' => $request->gradeId,
                  'gender' => $request->gender, //null
-                'designationId' => $request->designationId,
+                'designationId' => $request->designation,
                 'incrementCycle' => $request->incrementCycle,
                 'emailId' => $request->emailId,
                 'dob' => $request->dob,
@@ -140,14 +140,14 @@ class Manage_UserController extends Controller
     {
 
 
-        $isconferenceuser = DB::table('users')->select('conference_user')
-        ->where('id', $request->id)
-        ->first();
-        if($isconferenceuser->conference_user == 1){//For headquarter employee 
-            $query = DB::table('users')->where('id', $request->id)
-            ->decrement('conference_user');
+        // $isconferenceuser = DB::table('users')->select('conference_user')
+        // ->where('id', $request->id)
+        // ->first();
+        // if($isconferenceuser->conference_user == 1){//For headquarter employee 
+        //     $query = DB::table('users')->where('id', $request->id)
+        //     ->decrement('conference_user');
 
-        }
+        // }
 
         $query = DB::table('users')->where('id', $request->id)
             ->increment('status');

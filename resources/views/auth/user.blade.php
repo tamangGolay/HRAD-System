@@ -101,6 +101,8 @@ a {
 								{{$ul->Address}}
 							</td>
 
+						
+
 
 
 
@@ -209,13 +211,18 @@ a {
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="designation">{{ __('Designation:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->designationId; ?>" name="designation" id="designation" >
+				
 
-									</div>
-								</div>
+								<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="designation">{{ __('Designation:') }}</label>
+						<div class="col-sm-6">
+
+							<select class="form-control" name="designation" id="designation" required> @foreach($designation as $designation)
+								<option value="{{$designation->id}}" > {{$designation->desisNameLong}}
+								</option>
+								@endforeach </select>
+						</div>
+					</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="mobileNo">{{ __('MobileNo:') }}</label>
@@ -415,7 +422,7 @@ $(function() {
 						$('#role_id').val(data.role_id);//#input id and with data(DB field name)
 						$('#office').val(data.office);
 						$('#mobileNo').val(data.mobileNo);
-						$('#designation').val(data.designation);
+						$('#designation').val(data.designationId);
 						$('#basicPay').val(data.basicPay);
 						$('#email').val(data.emailId);
 						$('#lastDop').val(data.lastDop);

@@ -29,14 +29,17 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managebank">Add new bank&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managejacket">Add new Jacket Size&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
 
                 <th>No</th>
-                <th>Bank</th>
+                <th>Jacket Size</th>
+                <th>US/Uk Size</th>
+                <th>Eu Size</th>
+
                 <th width="300px">Action</th>
             </tr>
         </thead>
@@ -57,18 +60,38 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="text" name="id" id="bank_id">
+                   <input type="hidden" name="id" id="jacket_id">
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">bank</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Jacket Size</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="bankName" name="bankName" value=""  required>
+                            <input type="text" class="form-control" id="sizeName" name="sizeName" value=""  required>
                         </div>
                     </div>
-     
-                   	
-      
+
+                    <div class="form-group">
+                        <label class="col-lg-8 col-sm-12 control-label">US/UK Size</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="usUkSize" name="usUkSize"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-8 col-sm-12 control-label">Eu Size</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="euSize" name="euSize"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-8 col-sm-12 control-label">Gender</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="gender" name="gender"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>
+
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="bankButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-primary" id="jacketButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -80,11 +103,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="bankModel" aria-hidden="true">
+<div class="modal fade" id="jacketModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="bankHeading"></h4>
+                <h4 class="modal-title" id="jacketHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -95,7 +118,7 @@ a {
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="bankDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="jacketDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -119,18 +142,20 @@ a {
         "searching": true,
 		"ordering": false,
 		"paging": true,
-        ajax: "{{ route('bank.index') }}",
+        ajax: "{{ route('jacket.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'bankName', name: 'bankName', orderable: false, searchable: true},
-            {data: 'action', name: 'action', orderable: true, searchable: false},
+            {data: 'sizeName', name: 'sizeName', orderable: false, searchable: true},
+            {data: 'usUkSize', name: 'usUkSize', orderable: false, searchable: true},
+            {data: 'euSize', name: 'euSize', orderable: false, searchable: true},
+             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
 
     //After Clicking the Add New button it will trigger here
-    $('#managebank').click(function () {
-        $('#bankButton').val("create-room");
-        $('#bank_id').val('');
+    $('#managejacket').click(function () {
+        $('#jacketButton').val("create-room");
+        $('#jacket_id').val('');
         $('#Form').trigger("reset");
         $('#modelHeading').html("Add new bank");
         $('#ajaxModel').modal('show');
@@ -139,22 +164,26 @@ a {
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.editbank', function () {
-      var bank_id = $(this).data('id');
+    $('body').on('click', '.editjacket', function () {
+      var jacket_id = $(this).data('id');
      
-      $.get("{{ route('bank.index') }}" +'/' + bank_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit bank details");
-          $('#bankButton').val("edit-room");
+      $.get("{{ route('jacket.index') }}" +'/' + jacket_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Jacket details");
+          $('#jacketButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#bank_id').val(data.id);
-          $('#bankName').val(data.bankName); //input id,database
+          $('#jacket_id').val(data.id);
+          $('#sizeName').val(data.sizeName); //input id,database
+          $('#usUkSize').val(data.usUkSize);
+          $('#euSize').val(data.euSize);
+          $('#gender').val(data.gender);
+          
       })
    });
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#bankButton').click(function (e) {
+    $('#jacketButton').click(function (e) {
        
         e.preventDefault();
         $(this).html('Save');
@@ -163,7 +192,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('bank.store') }}",
+          url: "{{ route('jacket.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -189,7 +218,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#bankButton').html('Save Changes');
+              $('#jacketButton').html('Save Changes');
               alert(data);
                 
           }
@@ -198,27 +227,30 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deletebank', function () {
-      var bank_id = $(this).data('id');
+    $('body').on('click', '.deleteJacket', function () {
+      var jacket_id = $(this).data('id');
      
-      $.get("{{ route('bank.index') }}" +'/' + bank_id +'/edit', function (data) {
-          $('#bankHeading').html("Do you want to delete the bank?");
-          $('#bankDeleteButton').val("edit-room");
-          $('#bankModel').modal('show');
+      $.get("{{ route('jacket.index') }}" +'/' + jacket_id +'/edit', function (data) {
+          $('#jacketHeading').html("Do you want to delete the Jacket size name?");
+          $('#jacketDeleteButton').val("edit-room");
+          $('#jacketModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#bank_id').val(data.id);
-          $('#bankName').val(data.bankName); //input id,database
+          $('#jacket_id').val(data.id);
+          $('#sizeName').val(data.sizeName); //input id,database
+          $('#usUkSize').val(data.usUkSize);
+          $('#euSize').val(data.euSize);
+          $('#gender').val(data.gender);
       })
    });
    
   // after clicking yes in delete
-    $('#bankDeleteButton').click(function (e) {
+    $('#jacketDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('destroybank') }}",
+          url: "{{ route('destroyJacket') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -244,42 +276,12 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#bankDeleteButton').html('Save Changes');
+              $('#jacketDeleteButton').html('Save Changes');
           }
       });
     });
     
-    // $('body').on('click', '.deletebank', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroybank') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_bank';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+    
      
      
 </script>

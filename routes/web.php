@@ -495,3 +495,7 @@ Route::post('destroyPant', 'Manage_PantController@delete')->name('destroyPant');
 //Shirt Size Name
 Route::resource('shirt', Manage_ShirtController::class);
 Route::post('destroyShirt', 'Manage_ShirtController@delete')->name('destroyShirt');
+
+//jacket size
+Route::resource('jacket', Manage_MasterJacketSizeController::class);
+Route::post('destroyJacket', 'Manage_MasterJacketSizeController@delete')->name('destroyJacket');

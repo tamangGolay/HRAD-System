@@ -82,8 +82,8 @@ a {
                     </div>
 								
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="villageButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="villageButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

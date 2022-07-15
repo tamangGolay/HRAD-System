@@ -19,10 +19,10 @@ class Manage_incrementController extends Controller
 
         $increment = DB::table('incrementhistorymaster')
 
-           ->join('employeemaster', 'employeemaster.id', '=', 'incrementhistorymaster.personalNo')
+           ->join('users', 'users.id', '=', 'incrementhistorymaster.personalNo')
         ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
         'incrementhistorymaster.oldBasic','incrementhistorymaster.newBasic',
-        'incrementhistorymaster.nextDue', 'incrementhistorymaster.remarks','employeemaster.empId')
+        'incrementhistorymaster.nextDue', 'incrementhistorymaster.remarks','users.empId')
       ->where('incrementhistorymaster.status','0');
         
         if ($request->ajax()) {

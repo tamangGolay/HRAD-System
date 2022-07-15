@@ -4114,7 +4114,7 @@ if ($request->v == "family_details")
 
 if ($request->v == "increment_history")
 {
-    $increment = EmployeeMaster::all();
+    $increment = User::all();
 
     $rhtml = view('emp.increment_history')->with(['increment' => $increment])->render();
     return response()

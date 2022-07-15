@@ -54,10 +54,9 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    <input type="hidden" name="id" id="leave_id">
-                    <div class="form-group">
+
+                   <div class="form-group">
                         <label for="name" class="col-lg-12 col-sm-2 control-label">Leave Type</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" class="form-control" id="leaveType" name="leaveType" placeholder="eg. casual leave" value="" maxlength="50" required>
@@ -71,8 +70,8 @@ a {
                         </div>
                     </div> -->
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="leaveButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="leaveButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

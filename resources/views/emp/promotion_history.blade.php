@@ -40,12 +40,8 @@ a {
                 <th>Grade From</th>
                 <th>Grade To</th>
                 <th>Next Due</th>
-                <th>Remarks</th>
-
-
-               
-
-                <th width="300px">Action</th>
+                <th>Remarks</th>  
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -63,68 +59,67 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    <input type="hidden" name="id" id="vehicle_id">
-                   <div class="form-group">
-                    <select name="name" id="name" value="" required>
-                                             <option value="">Select PersonalNo.</option>
-                                             @foreach($promotion as $promotion)
-                    
-                                             <option value="{{$promotion->id}}">{{$promotion->empId}}</option>
-										@endforeach
-							</select>
-
-</div>
-     
                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Promotion Date</label>
-                        <div class="col-sm-12">
-                            <input type="date" id="number" name="number"  placeholder="" class="form-control" required>
+                   <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Employee No</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <select class="col-lg-12 col-sm-12 form-control"  name="name" id="name" value="" required>
+                                <option value="">Select PersonalNo.</option>
+                                    @foreach($promotion as $promotion)
+                                        <option value="{{$promotion->id}}">{{$promotion->empId}}</option>
+                                    @endforeach
+                            </select>
                         </div>
                     </div>
-      
-                   
-                   
 
                     <div class="form-group">
-                    <select name="from" id="from" value="" required>
+                        <label class="col-sm-2 col-lg-12 col-sm-12 control-label">Promotion Date</label>
+                        <div class="col-sm-12 col-lg-12 col-sm-12">
+                            <input type="date" id="number" name="number"  placeholder="" class="form-control" required>
+                        </div>
+                    </div>           
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Grade</label>
+                        <div class="col-lg-12 col-sm-12">
+                                    <select class="col-sm-12 col-lg-12 col-sm-12 form-control" name="from" id="from" value="" required>
                                              <option value="">Select Grade From.</option>
                                              @foreach($grade as $grade)
-                    
                                              <option value="{{$grade->id}}">{{$grade->grade}}</option>
 										@endforeach
-							</select>
-
-</div>
+							        </select>
+                        </div>
+                    </div>
                     
-<div class="form-group">
-                    <select name="to" id="to" value="" required>
+                    <div class="form-group">
+                    <label class="col-lg-12 col-sm-12 control-label">Grade To</label>
+                        <div class="col-lg-12 col-sm-12">
+                    <select class="col-lg-12 col-sm-12 form-control" name="to" id="to" value="" required>
                                              <option value="">Select GradeTo.</option>
                                              @foreach($gradeto as $gradeto)
                     
                                              <option value="{{$gradeto->id}}">{{$gradeto->grade}}</option>
 										@endforeach
 							</select>
-
-</div>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Next Due</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-12 control-label">Next Due</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="date" id="next" name="next"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Remarks</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-12control-label">Remarks</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="text" id="remarks" name="remarks"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="vehicleButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="vehicleButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

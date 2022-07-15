@@ -4141,7 +4141,8 @@ if ($request->v == "office_reporting")
 
 if ($request->v == "promotion_history")
 {
-    $promotion = EmployeeMaster::all();
+    // $promotion = EmployeeMaster::all();
+    $promotion = User::all();
     $grade= grademaster::all();
     $gradeto= grademaster::all();
 

@@ -10,7 +10,7 @@ class CreateleavebalancemasterTable extends Migration
     {
         Schema::create('leavebalancemaster', function (Blueprint $table) {
 
-		$table->integer('personalNo')->references('id')->on('employeemaster');  //fk to master employee
+		$table->integer('personalNo')->references('id')->on('users');  //fk to master employee
 		$table->integer('casualLeaveBalance'); 
 		$table->integer('earnedLeaveBalance'); 
 		$table->integer('createdBy');

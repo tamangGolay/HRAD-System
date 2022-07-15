@@ -13,7 +13,7 @@ class CreateDepartmentmasterTable extends Migration
 		$table->id();
 		$table->string('deptNameShort');
 		$table->string('deptNameLong');
-		$table->foreignId('deptHead')->references('id')->on('employeemaster'); //name
+		$table->foreignId('deptHead')->references('id')->on('users'); //name
 		$table->foreignId('deptReportsToService')->references('id')->on('servicemaster'); //service long name
 		$table->foreignId('deptReportsToCompany')->references('id')->on('companymaster'); //long name
 		// $table->integer('deptReportsToEmp');

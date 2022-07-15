@@ -10,7 +10,7 @@ class CreateempreportingstructuremasterTable extends Migration
     {
         Schema::create('empreportingstructuremaster', function (Blueprint $table) {
             $table->id();
-		$table->foreignId('personalNo')->references('id')->on('employeemaster');  //fk employee master
+		$table->foreignId('personalNo')->references('id')->on('users');  //fk employee master
 		$table->integer('reportsToOffice'); 
 		$table->integer('reportsToEmployee');    
         $table->date('fromDate'); 

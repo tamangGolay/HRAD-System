@@ -46,7 +46,7 @@ class AuthController extends Controller
       // dd($request);
      
         $user = new User;
-        $user->emp_id = $request->emp_id;
+        $user->empId = $request->emp_id;
         $user->name =  $request->name;
         $user->email = $request->email;   
         $user->password =  Hash::make($request->password);      
@@ -106,7 +106,7 @@ class AuthController extends Controller
     public function registerUser(Request $request)
     {
       $id = DB::table('users')->select('id')
-      ->where('emp_id', $request->emp_id)
+      ->where('empId', $request->emp_id)
       ->first();
       
 
@@ -115,7 +115,7 @@ class AuthController extends Controller
 
     //  dd($request);
       //   $user = new User;
-      //   $user->emp_id = $request->emp_id;
+      //   $user->empId = $request->empId;
       //   $user->name =  $request->name;
       //   $user->email = $request->email;   
       //   $user->password =  Hash::make($request->password);      
@@ -184,30 +184,32 @@ class AuthController extends Controller
 
     public function authenticate(Request $request)
     {
+        $credentials = $request->only('empId', 'password');
 
-        $credentials = $request->only('emp_id', 'password');
+        
         $status = DB::table('users')->select('status')
-        ->where('emp_id', $request->emp_id)
+        ->where('empId', $request->emp_id)
         ->first();
+        // dd($status);
 
-        $email = DB::table('users')->select('email')
-        ->where('emp_id', $request->emp_id)
-        ->first();
+        // $email = DB::table('users')->select('email')
+        // ->where('empId', $request->empId)
+        // ->first();
 
-        if($status == null){
-          return redirect('login')->with('error', 'Please Register!!!');
-        }
+        // if($status == null){
+        //   return redirect('login')->with('error', 'Please Register!!!');
+        // }
 
-        if($email->email == 'e'){
-          return redirect('login')->with('error', 'Please Register!!!');
-        }
+        // if($email->email == 'e'){
+        //   return redirect('login')->with('error', 'Please Register!!!');
+        // }
 
-        if($status->status == 0){
+        // if($status->status == 0){
 
 
         if (Auth::attempt($credentials)) {
 
-
+// dd("here");
               if (Auth::user()->first_time_login) {
                 $first_time_login = true;
                 Auth::user()->first_time_login = false;
@@ -226,7 +228,7 @@ class AuthController extends Controller
             return redirect()->intended('/home');
         }
      
-      }
+      // }
 
         return redirect('login')->with('error', 'Invalid credentials');
     }

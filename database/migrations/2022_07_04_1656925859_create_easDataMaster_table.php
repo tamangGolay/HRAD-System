@@ -9,7 +9,7 @@ class CreateeasdatamasterTable extends Migration
     public function up()
     {
         Schema::create('easdatamaster', function (Blueprint $table) {
-		$table->integer('personalNo') ->references('id')->on('employeemaster'); //fk to master employee
+		$table->integer('personalNo') ->references('id')->on('users'); //fk to master employee
 		$table->integer('year'); //fk to master employee
 		$table->integer('rating'); //fk to master employee
 		$table->integer('createdBy');

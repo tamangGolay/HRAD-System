@@ -13,7 +13,7 @@ class CreateSubdivisionmasterTable extends Migration
 		$table->id();
 		$table->string('subDivnameShort');
 		$table->string('subDivnameLong');
-		$table->foreignId('subDivhead')->references('id')->on('employeemaster');
+		$table->foreignId('subDivhead')->references('id')->on('users');
 		$table->foreignId('subDivreportsTodivision')->references('id')->on('divisionmaster');
 		$table->integer('subDivreportsTodepartment');
 		$table->integer('subDivreportsToservice');

@@ -10,11 +10,11 @@ use App\Agencies;
 use App\RoleFormMapping;
 use App\RoleUserMappings;
 use DB;
-
-class User extends Authenticatable
+ 
+class Officedetails extends Authenticatable
 {
     use Notifiable;
-    protected $table = 'users';
+    protected $table = 'officedetails';
    
 
 //    public function agency()
@@ -28,14 +28,11 @@ class User extends Authenticatable
      * @var array
      */
 
-  
+
 protected $fillable = [ 
-    'cidNo','incrementCycle','appointmentDate', 'lastDop', 'basicPay','dob','id','gender','empName','empId','designationId','office'
+    'id','shortOfficeName','Address'];
 
-,'mobileNo','password','status','conference_user','emailId','role_id','gradeId'
- ];
-
-    /**
+     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

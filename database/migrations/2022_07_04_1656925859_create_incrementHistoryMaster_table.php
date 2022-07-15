@@ -10,7 +10,7 @@ class CreateincrementhistorymasterTable extends Migration
     {
         Schema::create('incrementhistorymaster', function (Blueprint $table) {
             $table->id();
-		$table->foreignId('personalNo')->references('id')->on('employeemaster'); //fk md employee master
+		$table->foreignId('personalNo')->references('id')->on('users'); //fk md employee master
 		$table->date('incrementDate');
 		$table->integer('oldBasic');
         $table->integer('newBasic');

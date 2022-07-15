@@ -4,20 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeemasterTable extends Migration
+class CreateUsersTable extends Migration
 {
     public function up()
     {
-        Schema::create('employeemaster', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
 		$table->id(); 
 		$table->integer('empId');
 		$table->string('empName');
 		$table->string('bloodGroup')->nullable();
 		$table->bigInteger('cidNo');
 		$table->string('cidOther')->nullable();
-		$table->date('dob');
+		$table->string('dob');
 		$table->string('gender');
-		$table->date('appointmentDate')->nullable();
+		$table->string('appointmentDate')->nullable();
         // $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
 		$table->string('gradeId');
 
@@ -49,15 +49,20 @@ class CreateEmployeemasterTable extends Migration
 		$table->date('resignationDate')->nullable(); 
 		$table->string('employmentType')->nullable(); //frontEnd dropdown html
 		$table->string('incrementCycle')->nullable();
+		
+
+		$table->string('password')->default('$2y$10$fDIw.1lGpnLMdBNWB2RlKuo1JfVi7IpHfxrTCr5NyaE2AtIf9qFFC');
+		$table->boolean('first_time_login')->default(true);
+		// $table->foreignId('role_id')->references('id')->on('roles')->default(14);
+		$table->string('role_id')->default(14);
 		$table->string('status')->default(0);
 		$table->date('updated_at');
         $table->date('created_at');
-
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('employeemaster');
+        Schema::dropIfExists('users');
     }
 }

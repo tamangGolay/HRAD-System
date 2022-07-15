@@ -10,7 +10,7 @@ class CreateeassummaryhistorymasterTable extends Migration
     {
         Schema::create('eassummaryhistorymaster', function (Blueprint $table) {
 
-        $table->integer('personalNo')->references('id')->on('employeemaster');  //fk md employee master
+        $table->integer('personalNo')->references('id')->on('users');  //fk md employee master
 		$table->integer('year');
         $table->integer('rating');
         $table->integer('createdBy');

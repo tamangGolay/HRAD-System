@@ -14,7 +14,7 @@ class CreateDivisionmasterTable extends Migration
 		$table->string('divNameShort');
 		$table->string('divNameLong');
 		$table->foreignId('divDzoId')->references('id')->on('dzongkhags');		
-		$table->foreignId('divHead')->references('id')->on('employeemaster');		
+		$table->foreignId('divHead')->references('id')->on('users');		
 		$table->foreignId('divReportsToDepartment')->references('id')->on('departmentmaster')->nullable();
 		$table->foreignId('deptDzoId')->references('id')->on('dzongkhags')->nullable();
 		$table->foreignId('divReportsToService')->references('id')->on('servicemaster')->nullable();

@@ -64,20 +64,26 @@ class Manage_UserController extends Controller
     public function store(Request $request)
     {
 // dd($request);
+
+// "Address" => "1"
             User::updateOrCreate(['id' => $request->id],
-                ['name' => $request->name,
-                 'emp_id' => $request->emp_id,
-                 'contact_number' => $request->contact_number,
+                ['empName' => $request->empName,
+                 'empId' => $request->emp_id,
+                 'cidNo' => $request->cidNo,
                  'role_id' => $request->role,
-                 'org_unit_id' => $request->org_unit,
-                 'grade' => $request->grade,
-                 'gender' => $request->gender,
-                'designation' => $request->designation,
-                'dzongkhag' => $request->dzongkhag,
-                'email' => $request->email,
+                 'office' => $request->office,
+                 'gradeId' => $request->gradeId,
+                 'gender' => $request->gender, //null
+                'designationId' => $request->designationId,
+                'incrementCycle' => $request->incrementCycle,
+                'emailId' => $request->emailId,
+                'dob' => $request->dob,
+                'appointmentDate' => $request->appointmentDate,
+                'lastDop' => $request->lastDop,
+                'basicPay' => $request->basicPay,
+                'mobileNo' => $request->mobileNo,
+                'dob' => $request->dob
 
-
-                'conference_user' => $request->conferenceuser
                 
                 ]); 
 

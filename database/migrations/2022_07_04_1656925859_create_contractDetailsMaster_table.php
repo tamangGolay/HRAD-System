@@ -10,7 +10,7 @@ class CreatecontractdetailsmasterTable extends Migration
     {
         Schema::create('contractdetailsmaster', function (Blueprint $table) {
         $table->id();
-		$table->foreignId('personalNo')->references('id')->on('employeemaster');  // fk md master employee 
+		$table->foreignId('personalNo')->references('id')->on('users');  // fk md master employee 
 		$table->date('startDate');
 		$table->date('endDate');
         $table->integer('termNo');

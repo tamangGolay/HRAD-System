@@ -67,7 +67,7 @@ a:hover{
 						<div class="form-group row">
 							<!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->
 							<div class="input-group mb-3 col-75">
-								<input id="emp_id" type="number" placeholder="Employee Number" class="form-control" name="emp_id" value="{{ old('emp_id') }}" required autocomplete="email" onKeyPress="if(this.value.length==8) return false; 
+								<input id="emp_id" type="number" placeholder="Employee Number" class="form-control" name="empId" value="{{ old('emp_id') }}" required autocomplete="email" onKeyPress="if(this.value.length==8) return false; 
                     
                     if( isNaN(String.fromCharCode(event.keyCode))) return false;" autofocus>
 								<div class="input-group-append">

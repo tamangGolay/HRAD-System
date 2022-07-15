@@ -51,7 +51,7 @@ class Manage_ShirtController extends Controller
         Shirt::updateOrCreate(['id' => $request->id],
                 ['shirtSizeName' => $request->shirtSizeName,'gender' => $request->gender]);        
    
-        return response()->json(['success'=>'PantSize Name saved successfully.']);
+        return response()->json(['success'=>'Shirt Size Name saved successfully.']);
     }
     /**
      * Show the form for editing the specified resource.

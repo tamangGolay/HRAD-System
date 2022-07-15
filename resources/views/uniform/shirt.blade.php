@@ -60,7 +60,7 @@ a {
                    <input type="hidden" name="id" id="shirt_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Pant Size Name</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Shirt Size Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="shirtSizeName" name="shirtSizeName" value=""  required>
                         </div>
@@ -178,7 +178,7 @@ a {
     
         $.ajax({
           data: $('#Form').serialize(),
-          url: "{{ route('pant.store') }}",
+          url: "{{ route('shirt.store') }}",
           type: "POST",
           dataType: 'json',
           success: function (data) {
@@ -213,7 +213,7 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deletePant', function () {
+    $('body').on('click', '.deleteShirt', function () {
       var shirt_id = $(this).data('id');
      
       $.get("{{ route('shirt.index') }}" +'/' + shirt_id +'/edit', function (data) {

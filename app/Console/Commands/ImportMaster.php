@@ -46,6 +46,7 @@ use App\pay;
 use App\PostMaster;
 use App\EmployeeQualification;
 use App\Pant;
+use App\JacketSize;
 
 class ImportMaster extends Command
 {
@@ -122,6 +123,8 @@ class ImportMaster extends Command
         $this->importpostmaster('postmaster',new PostMaster);
         $this->importemployeequalification('employeequalification',new EmployeeQualification);
         $this->importpant('Pant',new Pant);
+        $this->importjacket('jacket',new JacketSize);
+        
         
 
      }
@@ -1413,5 +1416,43 @@ public function importpant($filename,Model $model) {
     }
 }
 //end 
+
+// function to import jacket size name 
+
+public function importjacket($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'SizeName' => $data[0],    
+                    'usUKSize' => $data[1],
+                    'euSize' => $data[2],
+                    'gender' => $data[3]                         
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
+
+
+
+
 
 }

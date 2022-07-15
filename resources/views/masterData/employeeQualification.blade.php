@@ -98,9 +98,7 @@ a {
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="yearCompleted" name="yearCompleted" placeholder="Year completion" value="" maxlength="50" required>
                         </div>
-                    </div> 
-
-                    
+                    </div>                     
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="employeeQualiButton" value="create">Save changes

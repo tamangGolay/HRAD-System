@@ -18,10 +18,10 @@ class Manage_familyController extends Controller
     {
 
         $family = DB::table('familydetailsmaster')
-        ->join('employeemaster', 'employeemaster.id', '=', 'familydetailsmaster.personalNo')
+        ->join('users', 'users.id', '=', 'familydetailsmaster.personalNo')
               ->join('relationmaster', 'relationmaster.id', '=', 'familydetailsmaster.relation')
         ->select('familydetailsmaster.id','familydetailsmaster.personalNo','familydetailsmaster.relativeName'
-        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName','employeemaster.empId'
+        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName','users.empId'
         )
         ->where('familydetailsmaster.status','0');
         
@@ -34,8 +34,8 @@ class Manage_familyController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteFamily" data-original-title="Delete" class="btn btn-primary btn-sm deleteFamily">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteFamily" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteFamily">Delete</a>';
 
 
 

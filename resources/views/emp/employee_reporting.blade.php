@@ -66,7 +66,7 @@ a {
                     
                    
                    <div class="form-group">
-                    <select name="name" id="name" value="" required>
+                    <select class=form-control name="name" id="name" value="" required>
                                              <option value="">Select PersonalNo.</option>
                                              @foreach($employee as $employee)
                     
@@ -77,7 +77,7 @@ a {
 </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Reports To Office</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Reports To Office</label>
                         <div class="col-sm-12">
                             <input type="text" id="number" name="number"  placeholder="" class="form-control" required>
                         </div>
@@ -85,21 +85,21 @@ a {
       
                    
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Reports To Employee</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Reports To Employee</label>
                         <div class="col-sm-12">
                             <input type="text" id="employee" name="employee"  placeholder="" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">From Date</label>
+                        <label class="col-sm-2 col-lg-8  control-label">From Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="start" name="start"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">End Date</label>
+                        <label class="col-sm-2 col-lg-8 control-label">End Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="end" name="end"  placeholder="" class="form-control" required>
                         </div>

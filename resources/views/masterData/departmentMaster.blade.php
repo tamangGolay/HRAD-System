@@ -35,11 +35,11 @@ a {
         <thead>
             <tr>
                 <th>No</th>
-                <th>Department Short Name</th>
-                <th>Department Long Name</th>
-                <th>Department Head</th>
-                <th>Department Reports To Service</th>
-                <th>Department Reports To Company</th>
+                <th width=50px>Dept Short Name</th>
+                <th width=180px>Department Long Name</th>
+                <th width=50px>Dept Head</th>
+                <th width=160px>Department Reports To Service</th>
+                <th width=180px>Department Reports To Company</th>
                 <th>Action</th>
             </tr>
         </thead>

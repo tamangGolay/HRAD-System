@@ -62,7 +62,7 @@ a {
                    <input type="hidden" name="id" id="contractdetail_id">
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Personal Number</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Personal Number</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" class="form-control" id="personalNo" name="personalNo" placeholder="Enter your Personal Number" value="" maxlength="50" required> -->
                             <select name="personalNo" id="personalNo" value="" class="form-control" required>
@@ -77,7 +77,7 @@ a {
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Start Date</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Start Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="startDate" name="startDate"  placeholder="Enter start date" class="form-control" required>
                         </div>
@@ -85,7 +85,7 @@ a {
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">End Date</label>
+                        <label class="col-sm-2 col-lg-8 control-label">End Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="endDate" name="endDate"  placeholder="Enter end date" class="form-control" required>
                         </div>
@@ -93,7 +93,7 @@ a {
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Term Number</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Term Number</label>
                         <div class="col-sm-12">
                             <input type="text" id="termNo" name="termNo"  placeholder="Enter your term number" class="form-control" required>
                         </div>

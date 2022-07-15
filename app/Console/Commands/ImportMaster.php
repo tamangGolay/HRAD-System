@@ -90,7 +90,7 @@ class ImportMaster extends Command
         $this->importPlace('placemaster',new place);
         $this->importOrgUnit('OrgUnit',new OrgUnit);
         $this->importRoles('roles',new Roles);
-        $this->importUser('user',new User);
+        // $this->importUser('user',new User);
         // $this->importForms('forms',new Forms);
         // $this->importRoleForms('roleformaccess',new RoleFormMapping);        
         // $this->importUserRole('roleuser',new RoleUserMappings);

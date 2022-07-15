@@ -15,7 +15,7 @@ class CreateOfficemasterTable extends Migration
         $table->foreignId('officeAddress')->references('id')->on('placemaster')->nullable();
         $table->integer('officeHead')->references('id')->on('employeemaster');
         $table->string('status')->default(0);
-        $table->integer('reportToOffice');
+        $table->integer('reportToOffice')->nullable();
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();

@@ -164,8 +164,8 @@ a {
             {data: 'id', name:'id'},
             {data: 'serNameShort', name: 'serNameShort'},
             {data: 'serNameLong', name: 'serNameLong'},
-            {data: 'empId', name: 'serviceHead'},
-            {data: 'comNameLong', name: 'company'},
+            {data: 'empId', name: 'users.empId'},
+            {data: 'comNameLong', name: 'companymaster.comNameLong'},
             // {data: 'serReportsToEmp', name: 'serReportsToEmp'},
             // {data: 'divReportsToEmp', name: 'reportEmp'},
             {data: 'action', name: 'action'}
@@ -194,8 +194,8 @@ a {
           $('#service_id').val(data.id);
           $('#serNameShort').val(data.serNameShort); //input id,database
           $('#serNameLong').val(data.serNameLong);
-          $('#serviceHead').val(data.empId);
-          $('#company').val(data.comNameLong);
+          $('#serviceHead').val(data.serviceHead);
+          $('#company').val(data.company);
         //   $('#serReportsToEmp').val(data.serReportsToEmp);
       })
    });

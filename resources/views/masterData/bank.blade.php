@@ -29,14 +29,14 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managebank">Add new bank&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managebank">Add new Bank Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
 
                 <th>No</th>
-                <th>Bank</th>
+                <th>Bank Name</th>
                 <th width="300px">Action</th>
             </tr>
         </thead>
@@ -56,10 +56,11 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+                   <input type="hidden" name="id" id="bank_id">
 
-                   <input type="text" name="id" id="bank_id">
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">bank</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Bank Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="bankName" name="bankName" value=""  required>
                         </div>

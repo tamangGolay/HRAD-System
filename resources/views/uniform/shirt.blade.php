@@ -131,7 +131,7 @@ a {
         serverSide: true,
         "searching": true,
 		"ordering": false,
-		"paging": false,
+		"paging": true,
         ajax: "{{ route('shirt.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},

@@ -48,6 +48,7 @@ use App\EmployeeQualification;
 use App\Pant;
 use App\JacketSize;
 use App\Shirt;
+use App\Shoesize;
 
 class ImportMaster extends Command
 {
@@ -126,6 +127,7 @@ class ImportMaster extends Command
         $this->importpant('Pant',new Pant);
         $this->importshirt('Shirt',new Shirt);
         $this->importjacket('jacket',new JacketSize);
+        $this->importshoesize('shoesize',new Shoesize);
         
         
 
@@ -1466,6 +1468,41 @@ public function importjacket($filename,Model $model) {
                     'usUkSize' => $data[1],
                     'euSize' => $data[2],
                     'gender' => $data[3]                         
+                                       
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+
+// function to import Shoe size name 
+
+public function importshoesize($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                      
+                            'usShoeSize' => $data[0],    
+                            'ukShoeSize' => $data[1],
+                            'euShoeSize' => $data[2],
+                            'footLengthInches' => $data[3],
+                            'footLengthCm' => $data[4],
+                            'gender' => $data[5]                         
                                        
                 ];
                 try{

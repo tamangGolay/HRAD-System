@@ -499,3 +499,7 @@ Route::post('destroyShirt', 'Manage_ShirtController@delete')->name('destroyShirt
 //jacket size
 Route::resource('jacket', Manage_MasterJacketSizeController::class);
 Route::post('destroyJacket', 'Manage_MasterJacketSizeController@delete')->name('destroyJacket');
+
+//uniform shoe size
+Route::resource('shoesize', ShoeSizeMasterController::class);
+Route::post('destroyshoesize', 'ShoeSizeMasterController@delete')->name('destroyshoesize');

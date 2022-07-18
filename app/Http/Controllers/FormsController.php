@@ -46,7 +46,8 @@ use App\Field;
 use App\Officedetails;
 use App\JacketSize;
 use App\Shoesize;
-
+use App\EmployeeQualification;
+use App\Qualificationview;
 
 class FormsController extends Controller
 {
@@ -4149,7 +4150,10 @@ if ($request->v == "user_profile")
     $place= place::all();
   $bank= bank::all();
   $officeaddress=Officedetails::all();
-    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank, 'officeaddress' =>$officeaddress ])->render();
+  $qualification=Qualificationview::all()->where('empId',Auth::user()->id);
+
+    $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank, 'officeaddress' =>$officeaddress,
+     'qualification' =>$qualification ])->render();
     return response()
         ->json(array(
         'success' => true,

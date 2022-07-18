@@ -117,7 +117,7 @@
                     if( isNaN(String.fromCharCode(event.keyCode))) return false;"
                     
                     
-                     class="form-control"  value="" autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
+                     class="form-control"  value="{{Auth::user()->empId}}" autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
 					 
 					 onKeyup="
 
@@ -126,7 +126,7 @@
 					 if(this.value[0] == 3)
 					 nima (this.value)
 
-					 ;" onload  required>
+					 ;" onload readonly required>
           
 
                 </div>
@@ -213,7 +213,7 @@
 					<label class="col-md-4 col-form-label text-md-right" for="qualification">&nbsp;&nbsp;&nbsp;Qualification:</label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 						<select name="qualification" id="qualification" value="" class="form-control" readonly required>
-												<option value="">Qualification</option>
+												<!-- <option value="">Qualification</option> -->
 												@foreach($qualification as $qualification)
 
 												<option value="{{$qualification->id}}">{{$qualification->qualificationName}}</option>
@@ -369,8 +369,8 @@
 
 
 $(document).ready(function() {
-  // $a= document.getElementById('emp_id').value;
-  // getEmployeeDetails($a);
+  $a= document.getElementById('emp_id').value;
+  getEmployeeDetails($a);
 
 
 
@@ -427,7 +427,7 @@ function getEmployeeDetails(val)
                     document.getElementById('office').value = '';                      
                     // document.getElementById('resignationtype').value =  '';
                     // document.getElementById('resignationdate').value = '';  
-                    document.getElementById('qualification').value = '';    
+                    // document.getElementById('qualification').value = '';    
                     document.getElementById('employmenttype').value = '';                      
                     document.getElementById('incrementcycle').value = '';
                     
@@ -467,7 +467,7 @@ function getEmployeeDetails(val)
                     //  document.getElementById('placeId').value = Employee.id;  //pulls id of officedetailss table
                     document.getElementById('office').value = Employee.office; //pulls id from users table                      
                     // document.getElementById('bankname').value = Employee.bankName; 
-                    document.getElementById('qualification').value = Employee.qualificationId;
+                    // document.getElementById('qualification').value = Employee.qualificationName;
                     // document.getElementById('accountnumber').value =  Employee.accountNumber; 
                     // document.getElementById('resignationtype').value =  Employee.resignationType; 
                     // document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 

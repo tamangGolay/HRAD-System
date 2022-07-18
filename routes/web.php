@@ -503,3 +503,7 @@ Route::post('destroyJacket', 'Manage_MasterJacketSizeController@delete')->name('
 //uniform shoe size
 Route::resource('shoesize', ShoeSizeMasterController::class);
 Route::post('destroyshoesize', 'ShoeSizeMasterController@delete')->name('destroyshoesize');
+
+//raincoat size
+Route::resource('raincoat', Manage_MasterRainCoatController::class);
+Route::post('destroyRainCoat', 'Manage_MasterRainCoatController@delete')->name('destroyRainCoat');

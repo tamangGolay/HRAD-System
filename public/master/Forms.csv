@@ -35,6 +35,7 @@ villagemaster,Village Master,Admin,yes,fa-clipboard-list
 userList,User Lists,Admin,yes,fa-list
 jacketsize,Jacket Size,Admin,yes,fa-clipboard-list
 pantsize,Pant Size,Admin,yes,fa-list-ol
+raincoatsize,Rain Coat Size,Admin,yes,fa-clipboard-list
 shirtsize,Shirt Size,Admin,yes,fa-list-ol
 shoesize,Shoe Size,Admin,yes,fa-list-ol
 Request_vehicle,Request Vehicle,Vehicle,yes,fa-car

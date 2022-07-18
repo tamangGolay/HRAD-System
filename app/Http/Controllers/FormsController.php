@@ -4297,6 +4297,23 @@ if ($request->v == "user_profile")
                ));
          }  
          //end
+        //raincoat
+
+         if ($request->v == "raincoatsize")  //form.csv
+         {    
+ 
+       
+          $rhtml = view('uniform.rainCoatSize')->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }  
+         //end
+
+
+
 
          // uniform pantsize
          if ($request->v == "pantsize")  //form.csv

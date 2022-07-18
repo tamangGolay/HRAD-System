@@ -1,0 +1,6 @@
+CREATE or REPLACE VIEW qualification AS
+select employeequalificationmaster.id AS Id,employeequalificationmaster.personalNo AS empId,qualificationmaster.qualificationName AS qualificationName 
+from employeequalificationmaster
+join qualificationmaster 
+where employeequalificationmaster.qualificationId = qualificationmaster.id
+;

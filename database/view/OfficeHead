@@ -1,0 +1,13 @@
+CREATE or REPLACE VIEW officehead AS
+select officemaster.id AS OfficeId,officename.shortOfficeName AS officeName,office_address.Address AS Address, concat(users.empName, ' (', officemaster.officeHead, ')') AS HeadOfOffice from officemaster join officename join office_address join users where officemaster.officeName = officename.id and officemaster.officeAddress = office_address.placeId and officemaster.officeHead = users.empId ORDER BY 2 ASC, 3 ASC ;
+
+
+
+
+
+
+
+
+
+
+

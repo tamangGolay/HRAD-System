@@ -67,35 +67,35 @@ a {
                         <label for="name" class="col-lg-12 col-sm-12 control-label">US Shoe Size</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" class="form-control" id="usShoeSize" name="usShoeSize"
-                            placeholder="eg: CEO" value="" maxlength="50" required>
+                            placeholder="eg: 2.5" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">UK Shoe Size</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="ukShoeSize" name="ukShoeSize"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                            <input type="text" id="ukShoeSize" name="ukShoeSize"  placeholder="eg: 4.5" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">EU Shoe Size</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="euShoeSize" name="euShoeSize"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                            <input type="text" id="euShoeSize" name="euShoeSize"  placeholder="eg: 38" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Foot Length Inches</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="footLengthInches" name="footLengthInches"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                            <input type="text" id="footLengthInches" name="footLengthInches"  placeholder="eg: 5.5" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Foot Length Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="footLengthCm" name="footLengthCm"  placeholder="eg: Chief Executive officer" class="form-control" required>
+                            <input type="text" id="footLengthCm" name="footLengthCm"  placeholder="eg: 15" class="form-control" required>
                         </div>
                     </div>
 

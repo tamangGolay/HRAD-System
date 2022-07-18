@@ -101,8 +101,13 @@ class GetMastersController extends Controller
 $emp = DB::table('users')
 ->join('designationmaster','designationmaster.id', 'users.designationId')
 ->join('officedetails','officedetails.id', 'users.office')
+->join('employeequalificationmaster','employeequalificationmaster.personalNo', 'users.id')
+->join('qualificationmaster','qualificationmaster.id', 'employeequalificationmaster.qualificationId')
+
 ->select('users.*','designationmaster.desisNameLong','officedetails.id',
-'officedetails.Address','officedetails.shortOfficeName')
+'officedetails.Address','officedetails.shortOfficeName','employeequalificationmaster.qualificationId',
+'qualificationmaster.qualificationName'
+)
 
 
 ->where('users.empId', $value)->get();  

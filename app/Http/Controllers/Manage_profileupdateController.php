@@ -77,7 +77,8 @@ class Manage_profileupdateController extends Controller
          'designation' => $request->designationId, 'gradeId' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
           'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 
         'office' =>$request->office,
-         'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle
+         'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle,
+         'qualification' => $request->qualificationId
     ]);        
  
 

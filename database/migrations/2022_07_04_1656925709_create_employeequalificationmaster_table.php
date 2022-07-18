@@ -11,8 +11,8 @@ class CreateEmployeequalificationmasterTable extends Migration
         Schema::create('employeequalificationmaster', function (Blueprint $table) {
 
 		$table->id();
-		// $table->foreignId('personalNo')->references('id')->on('employeemaster');
-        $table->string('personalNo');
+		$table->foreignId('personalNo')->references('id')->on('users');
+        //$table->string('personalNo');
         $table->foreignId('qualificationId')->references('id')->on('qualificationmaster');
         $table->string('yearCompleted')->nullable();
         $table->integer('status')->default(0);

@@ -157,7 +157,7 @@ a {
             // {data: 'officeName', name: 'officeName'},
             {data: 'longOfficeName', name: 'officename.longOfficeName', orderable: true, searchable: true},
             {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
-            {data: 'empId', name: 'users.empId',orderable: true, searchable: true},
+            {data: 'HeadOfOffice', name: 'officeHead.HeadOfOffice',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });

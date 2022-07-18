@@ -3298,7 +3298,9 @@ if ($request->v == "vehicleReport")
     ->join('users', 'users.empId', '=', 'officemaster.officeHead')
     ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
    // ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
-    ->select('officename.longOfficeName','office_address.Address','users.empId')
+   ->join('officehead', 'officehead.id', '=', 'officemaster.officeAddress')
+
+   ->select('officehead.NameOfHead','officename.longOfficeName','office_address.Address','users.empId')
     ->where('officemaster.status',0);
 
      $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'placemastern'=>$placemastern, 'offhead'=>$offhead, 'offadd'=>$offadd])->render();

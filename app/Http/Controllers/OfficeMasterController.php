@@ -22,8 +22,9 @@ class OfficeMasterController extends Controller
         ->join('officename', 'officename.id', '=', 'officemaster.officeName')
         ->join('users', 'users.empId', '=', 'officemaster.officeHead')
         ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
+        ->join('officehead', 'officehead.OfficeId', '=', 'officemaster.id')
 
-       ->select('office_address.Address','users.empId','officemaster.id','officename.longOfficeName','officemaster.officeHead')
+       ->select('officehead.HeadOfOffice','office_address.Address','users.empId','officemaster.id','officename.longOfficeName','officemaster.officeHead')
        ->where('officemaster.status','0');
 
  

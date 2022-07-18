@@ -63,9 +63,12 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="family_id">
+                      <input type="hidden" name="id" id="family_id">
+
                               <div class="form-group">
-                    <select name="name" id="name" value="" required>
+                              <label class="col-sm-2 col-lg-8 control-label">Personal No</label>
+                              <div class="col-sm-12">    
+                             <select class=form-control name="name" id="name" value="" required>
                                              <option value="">Select Personal No.</option>
                                              @foreach($personal as $personal)
                     
@@ -73,33 +76,37 @@ a {
 										@endforeach
 							</select>
 
-</div>
+                        </div> </div>
 
+                       
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Relative Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Relative Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="number" name="number"  placeholder="relativename" class="form-control" required>
                         </div>
                     </div>
+
                     <div class="form-group">
-                    <select name="relation" id="relation" value="" required>
+                    <label class="col-sm-2 col-lg-8 control-label">Relation Name</label>
+                    <div class="col-sm-12"> 
+                    <select class=form-control name="relation" id="relation" value="" required>
                                              <option value="">Select Relation</option>
                                              @foreach($family as $family)
                     
                                              <option value="{{$family->id}}">{{$family->relationshipName}}</option>
 										@endforeach
 							</select>
-
+</div>
 </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">DoB</label>
+                        <label class="col-sm-2 col-lg-8 control-label">DoB</label>
                         <div class="col-sm-12">
                             <input type="date" id="dob" name="dob"  placeholder="dob" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Gender</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Gender</label>
                         <div class="col-sm-12">
                             <input type="text" id="gender" name="gender"  placeholder="gender" class="form-control" required>
                         </div>
@@ -109,8 +116,8 @@ a {
 
                    
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="familyButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="familyButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -176,7 +183,7 @@ a {
         $('#familyButton').val("create-room");
          $('#family_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new Payscale");
+        $('#modelHeading').html("Add new family relation");
         $('#ajaxModel').modal('show');
 
        

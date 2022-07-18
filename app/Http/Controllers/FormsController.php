@@ -343,29 +343,16 @@ class FormsController extends Controller
  //end for total shoe sizes;
 
 
-         //View for Total shoe sizes
-         if ($request->v == "TotalShoeSizes")  
-         {
-  
-            $data2 = DB::table('officeuniform') 
-            ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
-            ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
-            
-                     
-               ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.shoe_3','officeuniform.shoe_4','officeuniform.shoe_5', 'officeuniform.shoe_6','officeuniform.shoe_7','officeuniform.shoe_8','officeuniform.shoe_9','officeuniform.shoe_10','officeuniform.shoe_11','officeuniform.shoe_12','officeuniform.shoe_13','officeuniform.shoe_14','officeuniform.shoe_15','dzongkhag')
-               ->where('officeuniform.id',4) 
-               ->orwhere('officeuniform.id',5) 
-               ->paginate(10000);
-    
-                   $rhtml = view('uniform.totalShoes')->with(['data2' => $data2])->render();
-                   return response()
-                       ->json(array(
-                       'success' => true,
-                       'html' => $rhtml
-                   ));   
-            }
-  
-  //end for total shoe sizes;
+//uniform shoe size
+if ($request->v == "shoesize")
+{
+    $rhtml = view('uniform.shoeSize')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
 
 
 
@@ -4055,15 +4042,15 @@ if ($request->v == "room_details")
              $subdiv = DivisionMaster::all()
              ->where('status',0);
 
-             $employeemas = EmployeeMaster::all()
+             $employeemas = User::all()
              ->where('status',0);
  
  
              $subdivisions = DB::table('subdivisionmaster')
              ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivnameLong')
-             ->join('employeemaster', 'employeemaster.id', '=', 'subdivisionmaster.subDivhead')
+             ->join('users', 'users.id', '=', 'subdivisionmaster.subDivhead')
  
-             ->select('divisionmaster.divNameLong','employeemaster.empName')
+             ->select('divisionmaster.divNameLong','users.empName')
           
              ->where('subdivisionmaster.status',0);   
  
@@ -4114,7 +4101,7 @@ if ($request->v == "family_details")
 
 if ($request->v == "increment_history")
 {
-    $increment = EmployeeMaster::all();
+    $increment = User::all();
 
     $rhtml = view('emp.increment_history')->with(['increment' => $increment])->render();
     return response()
@@ -4141,7 +4128,8 @@ if ($request->v == "office_reporting")
 
 if ($request->v == "promotion_history")
 {
-    $promotion = EmployeeMaster::all();
+    // $promotion = EmployeeMaster::all();
+    $promotion = User::all();
     $grade= grademaster::all();
     $gradeto= grademaster::all();
 
@@ -4236,11 +4224,14 @@ if ($request->v == "user_profile")
             
             $pno = EmployeeMaster::all()
             ->where('status',0);
+            
+            $pno = User::all()
+            ->where('status',0);
 
             $empquali = DB::table('employeequalificationmaster')
             ->join('qualificationmaster', 'qualificationmaster.id', '=', 'employeequalificationmaster.id')
-            ->join('employeemaster','employeemaster.id','=','employeequalificationmaster.id')
-            ->select('qualificationmaster.qualificationName','employeemaster.empId')
+            ->join('users','users.id','=','employeequalificationmaster.id')
+            ->select('qualificationmaster.qualificationName','users.empId')
             ->where('employeequalificationmaster.status',0);         
  
              $rhtml = view('masterData.employeeQualification')->with(['qualification' => $qualification,'pno'=>$pno])->render();

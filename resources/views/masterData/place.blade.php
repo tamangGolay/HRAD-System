@@ -147,8 +147,8 @@ a {
                             <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required>
                         </div>
                     </div>
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="placeButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="placeButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

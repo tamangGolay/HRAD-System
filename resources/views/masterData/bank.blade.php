@@ -29,14 +29,14 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managebank">Add new bank&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managebank">Add new Bank Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table">
     @csrf
         <thead>
             <tr>
 
                 <th>No</th>
-                <th>Bank</th>
+                <th>Bank Name</th>
                 <th width="300px">Action</th>
             </tr>
         </thead>
@@ -56,10 +56,11 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
+                   <input type="hidden" name="id" id="bank_id">
 
-                   <input type="text" name="id" id="bank_id">
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">bank</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Bank Name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="bankName" name="bankName" value=""  required>
                         </div>
@@ -67,8 +68,8 @@ a {
      
                    	
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="bankButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit" class="btn btn-outline-success" id="bankButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -118,7 +119,7 @@ a {
         serverSide: true,
         "searching": true,
 		"ordering": false,
-		"paging": true,
+		//"paging": true,
         ajax: "{{ route('bank.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
@@ -249,37 +250,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deletebank', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroybank') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_bank';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
+    
      
      
 </script>

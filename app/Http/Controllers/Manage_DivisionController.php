@@ -20,12 +20,12 @@ class Manage_DivisionController extends Controller
 
         $a = DB::table('divisionmaster')
         
-        ->join('employeemaster', 'employeemaster.id', '=', 'divisionmaster.divHead')
+        ->join('users', 'users.id', '=', 'divisionmaster.divHead')
         ->join('dzongkhags','dzongkhags.id','=','divisionmaster.divDzoId')
         ->join('dzongkhags as a','a.id','=','divisionmaster.deptDzoId')
         ->join('dzongkhags as b','b.id','=','divisionmaster.serviceDzoId')
 
-        ->select('divisionmaster.id','divNameShort','divNameLong','dzongkhags.Dzongkhag_Name','employeemaster.empId','divReportsToDepartment','a.Dzongkhag_Name as C','divReportsToService','b.Dzongkhag_Name as D','divReportsToCompany')
+        ->select('divisionmaster.id','divNameShort','divNameLong','dzongkhags.Dzongkhag_Name','users.empId','divReportsToDepartment','a.Dzongkhag_Name as C','divReportsToService','b.Dzongkhag_Name as D','divReportsToCompany')
         ->where('divisionmaster.status','0');
               
         if ($request->ajax()) {
@@ -34,8 +34,8 @@ class Manage_DivisionController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteDivision" data-original-title="Delete" class="btn btn-primary btn-sm deleteDivision">Delete</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteDivision" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteDivision">Delete</a>';
 
 
 

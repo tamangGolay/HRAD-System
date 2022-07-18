@@ -22,9 +22,9 @@ class Manage_SubDivisionController extends Controller
     
         $subdivision = DB::table('subdivisionmaster')
         ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivreportsTodivision')
-        ->join('employeemaster', 'employeemaster.id', '=', 'subdivisionmaster.subDivhead')
+        ->join('users', 'users.id', '=', 'subdivisionmaster.subDivhead')
 
-        ->select('subdivisionmaster.id','subDivnameShort','subDivnameLong','employeemaster.empName','divisionmaster.divNameLong','subDivreportsTodepartment','subDivreportsToservice','subDivreportsTocompany','subDivreportsToEmp')
+        ->select('subdivisionmaster.id','subDivnameShort','subDivnameLong','users.empName','divisionmaster.divNameLong','subDivreportsTodepartment','subDivreportsToservice','subDivreportsTocompany','subDivreportsToEmp')
         
         ->where('subdivisionmaster.status','0');
 

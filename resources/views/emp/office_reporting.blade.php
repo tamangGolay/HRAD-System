@@ -35,13 +35,11 @@ a {
         <thead>
             <tr>
 
-                <th>officeId </th>
+                <th>Id </th>
                 <th>Reports To Office</th>
                 <th>From Date</th>
                 <th>End Date</th>
-                
-
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -59,44 +57,43 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    <input type="hidden" name="id" id="increment_id">
+
                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Office Id</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-2 control-label">Office Id</label>
+                        <div class="col-lg-12 col-sm-2">
                             <input type="text" id="name" name="name"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
-</div>
+
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Report to Office</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-2 control-label">Report to Office</label>
+                        <div class="col-lg-12 col-sm-2">
                             <input type="date" id="number" name="number"  placeholder="" class="form-control" required>
                         </div>
                     </div>
       
                    
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">From Date</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-2 control-label">From Date</label>
+                        <div class="col-lg-12 col-sm-2">
                             <input type="date" id="start" name="start"  placeholder="" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">End Date</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-2 control-label">End Date</label>
+                        <div class="col-lg-12 col-sm-2">
                             <input type="date" id="end" name="end"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
          
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="incrementButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="incrementButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

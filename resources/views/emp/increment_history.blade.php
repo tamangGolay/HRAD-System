@@ -64,7 +64,8 @@ a {
 
                    <input type="hidden" name="id" id="increment_id">
                    <div class="form-group">
-                    <select name="name" id="name" value="" required>
+                   <label class="col-sm-2  col-lg-8 control-label">Personal Number</label>
+                    <select name="name" id="name" class="form-control" value="" required>
                                              <option value="">Select PersonalNo.</option>
                                              @foreach($increment as $increment)
                     
@@ -75,7 +76,7 @@ a {
 </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Increment Date</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Increment Date</label>
                         <div class="col-sm-12">
                             <input type="date" id="number" name="number"  placeholder="" class="form-control" required>
                         </div>
@@ -83,35 +84,35 @@ a {
       
                    
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Old Basic</label>
+                        <label class="col-sm-2  col-lg-8 control-label">Old Basic</label>
                         <div class="col-sm-12">
                             <input type="text" id="old" name="old"  placeholder="" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">New Basic</label>
+                        <label class="col-sm-2 col-lg-8 control-label">New Basic</label>
                         <div class="col-sm-12">
                             <input type="text" id="new" name="new"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Next Due</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Next Due</label>
                         <div class="col-sm-12">
                             <input type="date" id="next" name="next"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Remarks</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Remarks</label>
                         <div class="col-sm-12">
                             <input type="text" id="remarks" name="remarks"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="incrementButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="incrementButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -161,7 +162,7 @@ a {
         serverSide: true,
         ajax: "{{ route('increment.index') }}",   //** */
         columns: [
-            {data: 'empId', name: 'personalNo'},
+            {data: 'empId', name: 'users.empId'},
             {data: 'incrementDate', name: 'incrementDate'},
             {data: 'oldBasic', name: 'oldBasic'},
             {data: 'newBasic', name: 'newBasic'},
@@ -194,7 +195,7 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#increment_id').val(data.id);
-          $('#name').val(data.personalNo); //input id,database
+          $('#name').val(data.name); //input id,database
           $('#number').val(data.incrementDate);
           $('#old').val(data.oldBasic);
           $('#new').val(data.newBasic);
@@ -262,7 +263,7 @@ a {
           $('#incrementModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
            $('#increment_id').val(data.id);
-          $('#name').val(data.personalNo); //input id,database
+          $('#name').val(data.name); //input id,database
           $('#number').val(data.incrementDate);
           $('#old').val(data.oldBasic);
           $('#new').val(data.newBasic);

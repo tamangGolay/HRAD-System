@@ -35,11 +35,11 @@ a {
         <thead>
             <tr>
                 <th>No</th>
-                <th>Department Short Name</th>
-                <th>Department Long Name</th>
-                <th>Department Head</th>
-                <th>Department Reports To Service</th>
-                <th>Department Reports To Company</th>
+                <th width=50px>Dept Short Name</th>
+                <th width=180px>Department Long Name</th>
+                <th width=50px>Dept Head</th>
+                <th width=160px>Department Reports To Service</th>
+                <th width=180px>Department Reports To Company</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -116,8 +116,8 @@ a {
                         </div>
                     </div>
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="departmentButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="departmentButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

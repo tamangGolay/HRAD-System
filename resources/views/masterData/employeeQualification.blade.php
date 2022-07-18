@@ -98,12 +98,10 @@ a {
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="yearCompleted" name="yearCompleted" placeholder="Year completion" value="" maxlength="50" required>
                         </div>
-                    </div> 
-
-                    
+                    </div>                     
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="employeeQualiButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="employeeQualiButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

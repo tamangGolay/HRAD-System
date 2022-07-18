@@ -18,10 +18,10 @@ class Manage_employeeController extends Controller
     {
 
         $employee = DB::table('empreportingstructuremaster')
-        ->join('employeemaster', 'employeemaster.id', '=', 'empreportingstructuremaster.personalNo')
+        ->join('users', 'users.id', '=', 'empreportingstructuremaster.personalNo')
         ->select('empreportingstructuremaster.id','empreportingstructuremaster.reportsToOffice',
         'empreportingstructuremaster.reportsToEmployee','empreportingstructuremaster.fromDate',
-        'empreportingstructuremaster.endDate','employeemaster.empId')
+        'empreportingstructuremaster.endDate','users.empId')
       ->where('empreportingstructuremaster.status','0');
   
         

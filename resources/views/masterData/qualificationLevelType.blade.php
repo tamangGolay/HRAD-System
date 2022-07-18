@@ -61,7 +61,7 @@ a {
                     
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">QualificationLevel Name</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Qualification Level Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="qualiLevelName" name="qualiLevelName"  placeholder="QualificationLevel Name" class="form-control" required>
                         </div>
@@ -69,8 +69,8 @@ a {
 
                    
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="qualilevelButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="qualilevelButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -95,7 +95,7 @@ a {
 
                    
       
-                <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+                <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 text-center">
                     <button type="submit" class="btn btn-outline-success" id="qualilevelDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>

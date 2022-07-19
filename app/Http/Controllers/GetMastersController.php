@@ -335,10 +335,10 @@ $emp = DB::table('users')
         {
 
             //check empid if already in wf relaese database
-            if (DB::table('wfrelease')->where('wfrelease.EmpId', $value)->exists())
+            if (DB::table('wfrelease')->where('wfrelease.empId', $value)->exists())
             {
             $emp = DB::table('wfrelease')
-            ->select('wfrelease.EmpId')
+            ->select('wfrelease.empId')
             ->get();
 
                 return response()

@@ -129,7 +129,7 @@ function checkEmployee(val) {
 		console.log(data);
 		
 		$.each(data, function(index, Employee) {
-			if(Employee.EmpId != null) {
+			if(Employee.empId != null) {  //empId here is db col name from wfrelease
 				document.getElementById('empid').innerHTML = 'Sorry!.This user is not eligble for Refund.';
 				document.getElementById('emp_id').value = '';
 			}

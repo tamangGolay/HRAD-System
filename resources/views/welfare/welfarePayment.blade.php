@@ -21,7 +21,7 @@
 								 getEmployeeDetails(this.value)
 								 
 					if(this.value[0] == 3)
-					 nima (this.value) ;" required>
+					checkvalue (this.value) ;" required>
 
 					</div>
 					
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 
 <script>
-	function nima()
+	function checkvalue()
 	{
 
 		if(document.getElementById('empId').value[0] == '3' ){

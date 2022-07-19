@@ -4089,8 +4089,11 @@ if ($request->v == "pay_scale")
 if ($request->v == "family_details")
 {
 
-    $family = Relationname::all();
-    $personal =EmployeeMaster::all();
+    $family = Relationname::all()
+    ->where('status',0);
+
+    $personal =EmployeeMaster::all()
+    ->where('status',0);
 
     $rhtml = view('emp.family_details')->with(['family' => $family ,'personal' =>$personal])->render();
     return response()

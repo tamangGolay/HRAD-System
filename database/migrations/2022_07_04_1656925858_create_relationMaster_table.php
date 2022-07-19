@@ -12,6 +12,7 @@ class CreaterelationmasterTable extends Migration
 
         $table->id();
 		$table->string('relationshipName');
+        $table->string('verification');
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

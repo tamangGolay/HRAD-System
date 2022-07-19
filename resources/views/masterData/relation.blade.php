@@ -37,7 +37,8 @@ a {
 
                 <th>Id</th>
                 <th>Relation Name</th>                
-                <th>Action</th>
+                <th>Verification</th>
+                <th>Action</th>            
             </tr>
         </thead>
         <tbody>
@@ -58,12 +59,20 @@ a {
 
 
                    <input type="hidden" name="id" id="relationid">
-                    <div class="form-group">
+                    
+                   <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Relationship</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="relationshipName" name="relationshipName" placeholder="Relation to the employee" value="" maxlength="50" required>
                         </div>
-                    </div>     
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Verification</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="verification" name="verification" placeholder="Verify with" value="" maxlength="50" required>
+                        </div>
+                    </div>
                     
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
@@ -116,7 +125,8 @@ a {
         ajax: "{{ route('relation.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'relationshipName', name: 'relationshipName'},          
+            {data: 'relationshipName', name: 'relationshipName'},
+            {data: 'verification', name: 'verification'},          
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -141,8 +151,9 @@ a {
           $('#relationButton').val("edit-relation");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#relationid').val(data.id);
+          $('#relationid').val(data.id); 
           $('#relationshipName').val(data.relationshipName); //input id,database
+          $('#verification').val(data.verification);
           
       })
    });
@@ -201,8 +212,9 @@ a {
           $('#relationDeleteButton').val("edit-relation");
           $('#vehicleModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#relationid').val(data.id);
+          $('#relationid').val(data.id); 
           $('#relationshipName').val(data.relationshipName); //input id,database
+          $('#verification').val(data.verification);
           
       })
    });

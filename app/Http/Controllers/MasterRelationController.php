@@ -52,8 +52,9 @@ class MasterRelationController extends Controller
     public function store(Request $request)
     {
         // dd($request->id);
-        Relationname::updateOrCreate(['id' => $request->id],
-                ['relationshipName' => $request->relationshipName]);        
+        Relationname::updateOrCreate(['id' => $request->id], 
+                ['relationshipName' => $request->relationshipName, 
+                'verification' => $request->verification]);        
    
         return response()->json(['success'=>'New relation saved successfully.']);
     }

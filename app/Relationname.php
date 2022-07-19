@@ -9,7 +9,7 @@ class Relationname extends Model
     //
     protected $table = 'relationmaster';
 
-    protected $fillable = ['id','relationshipName','status'];
+    protected $fillable = ['id','relationshipName','verification','status'];
     
     public $timestamps = false;
 }

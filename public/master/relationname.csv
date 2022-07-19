@@ -1,0 +1,14 @@
+Spouse,Marriage certificate
+Daughter (Biological),Family Tree
+Father (Biological),Family Tree
+Mother (Biological),Family Tree
+Son (Biological),Family Tree
+Daughter (Adopted),Legal documents
+Father (Adopted),Legal documents
+Mother (Adopted),Legal documents
+Son (Adopted),Legal documents
+Mother-in-law (Biological),Marriage Certificate & Family Tree
+Father-in-law (Biological),Marriage Certificate & Family Tree
+Sibling (Same parents),Family Tree
+Sibling (Same mother),Family Tree
+Sibling (Same father),Family Tree

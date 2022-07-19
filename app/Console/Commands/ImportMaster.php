@@ -33,6 +33,7 @@ use App\bank;
 use App\Company;
 use App\Designation;
 use App\Resignation;
+use App\Relationname;
 use App\Leavetype;
 use App\Officem;
 use App\officeName;
@@ -110,6 +111,7 @@ class ImportMaster extends Command
         $this->importcompany('companyMaster',new Company);
         $this->importdesignation('designation',new Designation);
         $this->importresignation('resignation',new Resignation);
+        $this->importrelation('relationname',new Relationname);
         $this->importleavetype('leaveType',new Leavetype);
         $this->importofficename('officename',new officeName);// csv and model
         $this->importofficemaster('officeMaster',new Officem);
@@ -1153,6 +1155,34 @@ public function importserviceMaster($filename,Model $model) {
                     'serNameLong' => $data[1],
                     'serviceHead' => $data[2],
                     'company' => $data[3]                      
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+
+public function importrelation($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                       
+                    'relationshipName' => $data[0],    
+                    'verification' => $data[1]                     
                 ];
                 try{
                     if($model::firstorCreate($data)) {

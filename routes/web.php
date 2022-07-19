@@ -510,3 +510,6 @@ Route::post('destroyRainCoat', 'Manage_MasterRainCoatController@delete')->name('
 
 //route for payment release
 Route::post('paymentRelease','PaymentReleaseController@paymentRelease')->name('paymentRelease');
+
+//welfare refund
+Route::post('Request_refund','WelfareRefundController@Request_refund')->name('Request_refund');

@@ -327,7 +327,57 @@ $emp = DB::table('users')
 
             }
 
+        }//end
+
+
+        //welfare refund
+        if ($table == 'checkrefund')
+        {
+
+            //check empid if already in wf relaese database
+            if (DB::table('wfrelease')->where('wfrelease.EmpId', $value)->exists())
+            {
+            $emp = DB::table('wfrelease')
+            ->select('wfrelease.EmpId')
+            ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Employee Id!']);
+
+            }
+
+        }//end tdee
+
+
+        if ($table == "getName")
+        {
+
+            //check cid if already in database.
+
+            if (DB::table('users')->where('users.empId', $value)->exists())
+            {
+                $emp = DB::table('users')->where('users.empId', $value)
+                    ->select('users.empName','users.empId')
+                    ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
         }
+
+        //end tdee
 
            //For user add ; to check if the user already exist
            if ($table == 'useraddregister')

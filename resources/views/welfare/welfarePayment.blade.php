@@ -39,7 +39,7 @@
 
 
 			<div class="textfont form-group row">
-				<label for="password" class="col-md-4 col-form-label text-md-right">Release Date</label>
+				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Release Date</label>
 					<div class="col-md-6">
 								
 						<input id="releaseDate" type="date" class="form-control" name="releaseDate"  required>
@@ -47,15 +47,15 @@
 			</div>
 						
 			<div class="textfont form-group row">
-				<label for="password" class="col-md-4 col-form-label text-md-right">Amount</label>
+				<label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
 					<div class="col-md-6">
-						<input id="amount" type="text" class="form-control" name="amount" required>
+						<input id="amount" type="number" class="form-control" name="amount" required>
 						
 					</div>
 			</div>			
 
 						<div class="textfont form-group row">
-							<label for="password" class="col-md-4 col-form-label text-md-right">Reason</label>
+							<label for="reason" class="col-md-4 col-form-label text-md-right">Reason</label>
 							<div class="col-md-6">
 								
 									<input id="reason" type="text" class="form-control" name="reason" required>

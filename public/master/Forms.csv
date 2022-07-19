@@ -52,5 +52,7 @@ officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
 TotalShoeSizes,Total No of Shoes,Uniform,yes,fa-clipboard-list
 user_profile,Profile,Admin,yes,fa-list-ol
 postmaster,Post Master,Admin,yes,fa-list-ol
-employeeList,Employee List,Admin,yes,fa-list
-role_form,Role Form Mapping,Admin,yes,fa-list-oluserList,User Lists,Admin,yes,fa-list
+employeeList,Employee List,Admin,yes,fa-list-ol
+welfarepayment,Welfare Payment,Admin,yes,fa-list-ol
+refund,Welfare Refund,Admin,yes,fa-list-ol
+role_form,Role Form Mapping,Admin,yes,fa-list-oluserList,User Lists,Admin,yes,fa-list-ol

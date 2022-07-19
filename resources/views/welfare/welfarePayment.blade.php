@@ -124,7 +124,7 @@ function getEmployeeDetails(val)
                             
                             else {
                                 document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-								// document.getElementById('emp_id').value='';
+								 document.getElementById('empId').value='';
                     
                             }                       
                                                          

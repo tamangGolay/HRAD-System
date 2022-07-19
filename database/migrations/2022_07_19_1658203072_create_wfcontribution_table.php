@@ -14,7 +14,7 @@ class CreateWfcontributionTable extends Migration
 		$table->date('contributionDate');
 		$table->integer('year');
 		$table->integer('month');
-		;
+		$table->double('amount');
 
         });
     }

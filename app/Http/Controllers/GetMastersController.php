@@ -64,12 +64,36 @@ class GetMastersController extends Controller
 
         }
 
-        if ($table == "user_profile")
+// pull name form users table
+
+if ($table == "paymentInfo")
+        {
+
+            //check cid if already in database.
+
+            if (DB::table('users')->where('users.empId', $value)->exists())
+            {
+                $emp = DB::table('users')->where('users.empId', $value)
+                    ->select('users.empName','users.empId')
+                    ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
+        }
+
+         if ($table == "user_profile")
         {
 
             
-          
-            //check cid if already in database.
+          //check cid if already in database.
             if (DB::table('users')->where('users.empId', $value)->exists())
             {
                
@@ -94,8 +118,6 @@ class GetMastersController extends Controller
 //                    'officedetails.id','officedetails.Address','officedetails.shortOfficeName',
 //   )
 //   ->where('users.empId', $value)->get();         
-
-
 
 
 $emp = DB::table('users')

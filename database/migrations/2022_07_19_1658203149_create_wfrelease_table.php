@@ -9,11 +9,12 @@ class CreateWfreleaseTable extends Migration
     public function up()
     {
         Schema::create('wfrelease', function (Blueprint $table) {
-
-		$table->integer('EmpId',8);
+        $table->id();
+		$table->integer('empId');
 		$table->date('releaseDate');
-		;
-		$table->string('reason',50);
+		$table->Integer('amount');
+		$table->string('reason');
+        $table->integer('status')->default(0);
 
         });
     }

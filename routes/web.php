@@ -507,3 +507,6 @@ Route::post('destroyshoesize', 'ShoeSizeMasterController@delete')->name('destroy
 //raincoat size
 Route::resource('raincoat', Manage_MasterRainCoatController::class);
 Route::post('destroyRainCoat', 'Manage_MasterRainCoatController@delete')->name('destroyRainCoat');
+
+//route for payment release
+Route::post('paymentRelease','PaymentReleaseController@paymentRelease')->name('paymentRelease');

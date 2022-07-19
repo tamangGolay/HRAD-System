@@ -4348,6 +4348,18 @@ if ($request->v == "user_profile")
                 ));
           }  //end
 
+// for welfare payment
+          if ($request->v == "welfarepayment")  //form.csv
+          {    
+  
+           $rhtml = view('welfare.welfarePayment')->render(); 
+           return response()
+              ->json(array(
+               'success' => true,
+               'html' => $rhtml
+                ));
+          }  //end
+
     
 
  }

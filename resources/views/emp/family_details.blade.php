@@ -38,12 +38,12 @@ a {
               
                 <th>Personal No.</th>
                 <th>Relative Name</th>
+                <th>Relative's CID</th>
+                <th width=80px>Relative's Other CID</th>
                 <th>Date of Birth</th>
                 <th>Gender</th>
-                <th>Relation</th>
-                
-
-                <th width="300px">Action</th>
+                <th width=50px>Relation</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -66,8 +66,8 @@ a {
                       <input type="hidden" name="id" id="family_id">
 
                               <div class="form-group">
-                              <label class="col-sm-2 col-lg-8 control-label">Personal No</label>
-                              <div class="col-sm-12">    
+                              <label class="col-lg-12 col-sm-12 control-label">Personal No</label>
+                              <div class="col-lg-12 col-sm-12">    
                              <select class=form-control name="name" id="name" value="" required>
                                              <option value="">Select Personal No.</option>
                                              @foreach($personal as $personal)
@@ -80,15 +80,29 @@ a {
 
                        
                     <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Relative Name</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's Name</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="text" id="number" name="number"  placeholder="relativename" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                    <label class="col-sm-2 col-lg-8 control-label">Relation Name</label>
-                    <div class="col-sm-12"> 
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's CID</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="cidNo" name="cidNo" onKeyPress="if(this.value.length==11) return false;" placeholder="eg:11233142524" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's other CID</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="cidOther" name="cidOther"  placeholder="Only if relative dont have CID" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="col-lg-12 col-sm-12 control-label">Relationship</label>
+                    <div class="col-lg-12 col-sm-12"> 
                     <select class=form-control name="relation" id="relation" value="" required>
                                              <option value="">Select Relation</option>
                                              @foreach($family as $family)
@@ -99,26 +113,25 @@ a {
 </div>
 </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">DoB</label>
-                        <div class="col-sm-12">
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's DoB</label>
+                        <div class="col-lg-12 col-sm-12">
                             <input type="date" id="dob" name="dob"  placeholder="dob" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Gender</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="gender" name="gender"  placeholder="gender" class="form-control" required>
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's Gender</label>
+                        <div class="col-lg-12 col-sm-12">
+                        <select name="gender" id="gender" class="form-control" required> 
+							<option value=" ">Select Gender</option> 
+							<option value="Male">Male</option>
+							<option value="Female">Female</option> 
+						</select>
                         </div>
-                    </div>
-
-                  
-
-                   
+                    </div>                   
 
                     <div class="col-sm-offset-2 col-sm-10 text-center">
-                     <button type="submit"  class="btn btn-outline-success" id="familyButton" value="create">Save changes
-                     </button>
+                     <button type="submit"  class="btn btn-outline-success" id="familyButton" value="create">Save changes</button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
                     </div>
@@ -167,13 +180,13 @@ a {
         serverSide: true,
         ajax: "{{ route('family.index') }}",   //** */
         columns: [
-            {data: 'personalNo', name: 'personalNo'},
+            {data: 'empId', name: 'personalNo'},
             {data: 'relativeName', name: 'relativeName'},
+            {data: 'cidNo', name: 'cidNo'},
+            {data: 'cidOther', name: 'cidOther'},
             {data: 'dob', name: 'dob'},
             {data: 'gender', name: 'gender'},
             {data: 'relationshipName', name: 'relation'},
-           
-
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -183,7 +196,7 @@ a {
         $('#familyButton').val("create-room");
          $('#family_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new family relation");
+        $('#modelHeading').html("Add Family Members");
         $('#ajaxModel').modal('show');
 
        
@@ -201,6 +214,8 @@ a {
           $('#family_id').val(data.id);
           $('#name').val(data.personalNo); //input id,database
           $('#number').val(data.relativeName);
+          $('#cidNo').val(data.cidNo);
+          $('#cidOther').val(data.cidOther);
           $('#dob').val(data.dob);
           $('#gender').val(data.gender);
           $('#relation').val(data.relationshipName);
@@ -265,6 +280,8 @@ a {
            $('#family_id').val(data.id);
           $('#name').val(data.personalNo); //input id,database
           $('#number').val(data.relativeName);
+          $('#cidNo').val(data.cidNo);
+          $('#cidOther').val(data.cidOther);
           $('#dob').val(data.dob);
           $('#gender').val(data.gender);
           $('#relation').val(data.relationshipName);

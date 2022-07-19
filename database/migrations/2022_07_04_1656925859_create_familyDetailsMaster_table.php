@@ -13,6 +13,8 @@ class CreatefamilydetailsmasterTable extends Migration
         $table->id();
 		$table->foreignId('personalNo')->references('id')->on('users');  //fk md employee master
         $table->string('relativeName');
+        $table->bigInteger('cidNo');
+		$table->string('cidOther')->nullable();
         $table->date('dob');
         $table->string('gender');
         $table->foreignId('relation')->references('id')->on('relationmaster');  //fk to md relation master

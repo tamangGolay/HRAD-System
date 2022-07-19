@@ -9,7 +9,7 @@ class family extends Model
     //
     protected $table = 'familydetailsmaster';
 
-    protected $fillable = ['personalNo', 'relativeName','dob','gender','relation'];
+    protected $fillable = ['personalNo', 'relativeName','cidNo','cidOther','dob','gender','relation'];
     
     public $timestamps = false;
 }

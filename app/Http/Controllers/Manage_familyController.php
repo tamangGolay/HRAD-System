@@ -21,7 +21,7 @@ class Manage_familyController extends Controller
         ->join('users', 'users.id', '=', 'familydetailsmaster.personalNo')
               ->join('relationmaster', 'relationmaster.id', '=', 'familydetailsmaster.relation')
         ->select('familydetailsmaster.id','familydetailsmaster.personalNo','familydetailsmaster.relativeName'
-        ,'familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName','users.empId'
+        ,'familydetailsmaster.cidNo','familydetailsmaster.cidOther','familydetailsmaster.dob','familydetailsmaster.gender','relationmaster.relationshipName','users.empId'
         )
         ->where('familydetailsmaster.status','0');
         
@@ -60,7 +60,7 @@ class Manage_familyController extends Controller
     {
        
 
-        family::updateOrCreate(['personalNo' => $request->name],  ['relativeName' => $request->number,  'dob' => $request->dob,
+        family::updateOrCreate(['personalNo' => $request->name],  ['relativeName' => $request->number, 'cidNo' => $request->cidNo, 'cidOther' => $request->cidOther,  'dob' => $request->dob,
         'gender' => $request->gender, 'relation' => $request->relation
     
 

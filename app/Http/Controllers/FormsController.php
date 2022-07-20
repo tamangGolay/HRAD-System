@@ -49,6 +49,7 @@ use App\Shoesize;
 use App\EmployeeQualification;
 use App\Qualificationview;
 use App\SkillCategory;
+use App\SubSkillCategory;
 
 class FormsController extends Controller
 {
@@ -4416,7 +4417,24 @@ if ($request->v == "skillcategory")  //form.csv
 }  //end
 
 //skill category
+//view for manage skill master
 
+if ($request->v == "skillmaster")
+{ 
+   $skilm = SubSkillCategory::all(); 
+
+   $b = DB::table('skillmaster')
+       ->join('skillsubcategory', 'skillsubcategory.id', '=', 'skillmaster.subCatId')
+       ->select('skillsubcategory.subCatName')
+       ->where('skillmaster.status','0');
+
+    $rhtml = view('masterData.skillMaster')->with(['skilm'=>$skilm])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
 
 //sub skill category
 if ($request->v == "subskillcategory")  //form.csv

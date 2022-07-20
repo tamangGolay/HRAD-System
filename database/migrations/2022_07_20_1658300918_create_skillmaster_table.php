@@ -10,17 +10,20 @@ class CreateSkillmasterTable extends Migration
     {
         Schema::create('skillmaster', function (Blueprint $table) {
 
-		$table->integer('skillId');
+		// $table->id('skillId');
+        $table->id();
 		$table->string('skillName');
-		$table->integer('subCatId')->nullable();
+		$table->foreignId('subCatId')->references('id')->on('skillsubcategory');  // fk md master skill sub category 
 		$table->integer('status')->default(0);
 		$table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->integer('modifiedOn')->nullable();
+        $table->date('updated_at');
+        $table->date('created_at');
         });
     }
-
+ 
     public function down()
     {
         Schema::dropIfExists('skillmaster');

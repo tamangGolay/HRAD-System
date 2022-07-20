@@ -422,6 +422,10 @@ Route::post('destroyoffice', 'OfficeMasterController@delete')->name('destroyoffi
 //manage department
 Route::resource('department', DepartmentMasterController::class);
 Route::post('destroydepartment', 'DepartmentMasterController@delete')->name('destroydepartment');
+
+//manage skill master
+Route::resource('skillmaster', SkillMasterController::class);
+Route::post('destroyskillmaster', 'SkillMasterController@delete')->name('destroyskillmaster');
 //end sonam
 
 //manage grade 

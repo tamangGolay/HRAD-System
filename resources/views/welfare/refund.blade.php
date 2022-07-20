@@ -11,10 +11,7 @@
   }
 </style>
 
-<!-- <link href="{{asset('css/bose.css')}}" rel="stylesheet">  -->
- <!-- css property called in bose.css -->
 
-<!-- Stored in resources/views/pages/dispatch.blade.php -->
 <div class="container">
  <div class="row">	
 	<div class="col-md-12">
@@ -25,21 +22,13 @@
 			<!--/card-header-->
 			<div class="textfont card-body">
 				<form method="POST" action="{{ route('Request_refund') }}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-					<input type="hidden" class="form-control" value="{{ Auth::user()->name }}" name="name" id="name" placeholder="Employ ID">
 					
-					<!-- <input type="hidden" class="form-control" value="{{ Auth::user()->emp_id }}" name="emp_id" id="emp_id" placeholder="Employ ID">
-					 -->
+					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					<input type="hidden" class="form-control air-datepicker" id="date_of_requisition" name="date_of_requisition" autocomplete="off" required readonly>
 					
-					<!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Date of requistion:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                </div>
-            </div> -->
-
+					
 					<div class="form-group row">
-						<label for ="emp_id" class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Employee Id:</label>
+						<label for ="emp_id" class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Emp Id:</label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							
 					
@@ -59,16 +48,16 @@
 				</div>	
 
 				<div class=" textfont form-group row"> 
-          <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
+                <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
                       <div class="col-sm-10 col-md-6 col-lg-4">
                         <input type="text" name="empName" class="form-control" id="empName" placeholder="Name" readonly required>
                       </div>
-              </div>
+                  </div>
 
 					
 					 
 					<div class="form-group row">
-						<label class="col-md-4 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Refund Date:</label>
+						<label class="col-md-4 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Date:</label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 						<input type="date" class="form-control" name="refundDate" autocomplete="off" id="refundDate" required> 
 						</div>
@@ -100,26 +89,16 @@
 
 		
 		
-		<script type="text/javascript">
-		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<strong></strong>';
-		});
-		</script>
-		<script>
-		var today = new Date();
-		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-		document.getElementById("date_of_requisition").value = date;
-		</script>
+		
+		
 
-
-
-
-
-<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+   <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">
 		
 		$(document).ready(function() {
-		document.getElementById('contenthead').innerHTML = '<strong></strong>';
+
+		document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
+
 		});
 
 function checkEmployee(val) {

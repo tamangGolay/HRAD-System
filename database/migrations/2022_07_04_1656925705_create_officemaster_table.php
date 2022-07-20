@@ -13,7 +13,7 @@ class CreateOfficemasterTable extends Migration
 		$table->id();
         $table->foreignId('officeName')->references('id')->on('officename');
         $table->foreignId('officeAddress')->references('id')->on('placemaster')->nullable();
-        $table->integer('officeHead')->references('id')->on('users');
+        $table->string('officeHead')->nullable();
         $table->string('status')->default(0);
         $table->integer('reportToOffice')->nullable();
         $table->integer('createdBy')->nullable();

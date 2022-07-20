@@ -18,7 +18,7 @@ class CreateofficereportingstructuremasterTable extends Migration
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+		$table->timestamp('modifiedOn')->nullable();
 
         });
     }

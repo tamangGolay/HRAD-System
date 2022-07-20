@@ -26,24 +26,30 @@ class EmployeeController extends Controller
 
 //LekiCSV
 
-    public function importForm(){
+    // public function importForm(){
 
-        return view('import-form');
-        }
+    //     return view('import-form');
+    //     }
 
         public function import(Request $request){
+
+            // dd($request);
 
             // dd($request);
            $this->validate($request,
            [ 'file' =>'required|mimes:xls,xlsx,csv'
 
-           ]   );
+           ]  );
             
          Excel::import(new EmployeeImport, request()->file('file'));
         
+        //  return view('welfare.allEmployeeContribution')
+        //  ->with('success', 'Excel Data Imported successfully.');
 
+        return redirect('home')->with('page', 'allEmployeeContribution')
+        ->with('success', 'Excel Data Imported successfully.');
 
-        return back()->with('success', 'Excel Data Imported successfully.');
+        // return back()->with('success', 'Excel Data Imported successfully.');
 
     }
 

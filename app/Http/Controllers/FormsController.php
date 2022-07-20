@@ -639,6 +639,22 @@ return response()
            ));
        }
        //end of oneEmployee .
+
+
+       
+       //Start oneEmployee
+       if ($request->v == "allEmployeeContribution")
+       {
+        
+
+           $rhtml = view('welfare.allEmployeeContribution')->render();
+           return response()
+               ->json(array(
+               'success' => true,
+               'html' => $rhtml
+           ));
+       }
+       //end of oneEmployee .
        
         //Q_Checkout form
         if ($request->v == "Q_Checkout")

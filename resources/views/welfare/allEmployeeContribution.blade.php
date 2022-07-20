@@ -17,141 +17,69 @@ a {
 }
 
 </style>
+@if(session()->has('alert-success'))
+				<div class="alert alert-info"> {{ session()->get('alert-success') }} </div> @endif
 
+                @if(session()->has('error'))
+				<div class="alert alert-danger"> {{ session()->get('error') }} </div> @endif
 
 
 <link href="{{asset('css/bose.css')}}" rel="stylesheet">
 <!-- called in bose.css -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> -->
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
- 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script> 
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageFamily">Add Family Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
-    <table class="table table-bordered data-table">
-    @csrf
-        <thead>
-            <tr>
+    <div class="row">
+     <div class="col-md-6 offset-md-3">
+            <div class="card">
+             <div class="card-header">
+                Import
+             </div>
+                <div class="card-body">
 
-              
-                <th>Personal No.</th>
-                <th>Relative Name</th>
-                <th>Date of Birth</th>
-                <th>Gender</th>
-                <th>Relation</th>
-                
-
-                <th width="300px">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-   
-<div class="modal fade" id="ajaxModel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modelHeading"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="Form" name="Form" class="form-horizontal">
-                @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">
+                @if(count($errors) > 0)
+    <div class="alert alert-danger">
+     Upload Validation Error<br><br>
+     <ul>
+      @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+     </ul>
+    </div>
+   @endif
 
 
-                      <input type="hidden" name="id" id="family_id">
 
-                              <div class="form-group">
-                              <label class="col-sm-2 col-lg-8 control-label">Personal No</label>
-                              <div class="col-sm-12">    
-                             <select class=form-control name="name" id="name" value="" required>
-                                             <option value="">Select Personal No.</option>
-                                             @foreach($personal as $personal)
-                    
-                                             <option value="{{$personal->id}}">{{$personal->empId}}</option>
-										@endforeach
-							</select>
-
-                        </div> </div>
-
-                       
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Relative Name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="number" name="number"  placeholder="relativename" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                    <label class="col-sm-2 col-lg-8 control-label">Relation Name</label>
-                    <div class="col-sm-12"> 
-                    <select class=form-control name="relation" id="relation" value="" required>
-                                             <option value="">Select Relation</option>
-                                             @foreach($family as $family)
-                    
-                                             <option value="{{$family->id}}">{{$family->relationshipName}}</option>
-										@endforeach
-							</select>
-</div>
-</div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">DoB</label>
-                        <div class="col-sm-12">
-                            <input type="date" id="dob" name="dob"  placeholder="dob" class="form-control" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Gender</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="gender" name="gender"  placeholder="gender" class="form-control" required>
-                        </div>
-                    </div>
-
-                  
-
-                   
-
-                    <div class="col-sm-offset-2 col-sm-10 text-center">
-                     <button type="submit"  class="btn btn-outline-success" id="familyButton" value="create">Save changes
-                     </button>
-                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
-
-                    </div>
-                </form>
+   @if($message = Session::get('success'))
+   <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+           <strong>{{ $message }}</strong>
+           </div>
+   @endif    
+<form method="POST" enctype="multipart/form-data" action="{{route('import')}}" >
+    {{csrf_field()}}
+    <div class="form-group">
+    <label for="title">Choose CSV</label>
+    <input type="file" name="file" class="form-control">
+    </div>
+<input type="submit"name="upload" value="upload"class="btn btn-primary"> Submit</button> 
+</form>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 
-<div class="modal fade" id="familyModel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="familyHeading"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="Form" name="Form" class="form-horizontal">
-                @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">
 
-
-                   
-      
-                <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="familyDeleteButton" value="create">Yes</button>
-						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
     
 
@@ -161,159 +89,10 @@ a {
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>   -->
 <script type="text/javascript">
   
-    //Loading the contents of the Datatable from here
-    var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('family.index') }}",   //** */
-        columns: [
-            {data: 'personalNo', name: 'personalNo'},
-            {data: 'relativeName', name: 'relativeName'},
-            {data: 'dob', name: 'dob'},
-            {data: 'gender', name: 'gender'},
-            {data: 'relationshipName', name: 'relation'},
-           
-
-            {data: 'action', name: 'action', orderable: true, searchable: true},
-        ]
-    });
-
-    //After Clicking the Add New button it will trigger here
-    $('#manageFamily').click(function () {
-        $('#familyButton').val("create-room");
-         $('#family_id').val('');
-        $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new family relation");
-        $('#ajaxModel').modal('show');
-
-       
-    });
-
-  //  After clicking the edit button it will trigger here
-    $('body').on('click', '.edit', function () {
-      var family_id = $(this).data('id');
-     
-      $.get("{{ route('family.index') }}" +'/' + family_id +'/edit', function (data) {  //give route*
-          $('#modelHeading').html("Edit family details");
-          $('#familyButton').val("edit-room");
-          $('#ajaxModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-          $('#family_id').val(data.id);
-          $('#name').val(data.personalNo); //input id,database
-          $('#number').val(data.relativeName);
-          $('#dob').val(data.dob);
-          $('#gender').val(data.gender);
-          $('#relation').val(data.relationshipName);
-
-      })
-   });
-
-//   After clicking save changes in Add and Edit it will trigger here
-
-    $('#familyButton').click(function (e) {
-       
-        e.preventDefault();
-        $(this).html('Save');
-
-        
-    
-        $.ajax({
-          data: $('#Form').serialize(),
-          url: "{{ route('family.store') }}",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-     
-              $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
-              table.draw();
-              window.onload = callajaxOnPageLoad(page);
-             var alt = document.createElement("div");
-             alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-             alt.innerHTML = "Data Updated Successfully! ";
-             setTimeout(function(){
-              alt.parentNode.removeChild(alt);
-             },4500);
-            document.body.appendChild(alt);                 
-       
-        
-            window.location.href = '/home';
-        table.draw();
-
-    
-         
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#familyButton').html('Save Changes');
-              alert("Cannot leave fields empty");
-                
-          }
-      });
-    });
-
-  //  After clicking delete it will trigger here
-
-    $('body').on('click', '.deleteFamily', function () {
-      var family_id = $(this).data('id');
-     
-      $.get("{{ route('family.index') }}" +'/' + family_id +'/edit', function (data) {
-          $('#familyHeading').html("Do you want to delete the Detail?");
-          $('#familyDeleteButton').val("edit-room");
-          $('#familyModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-           $('#family_id').val(data.id);
-          $('#name').val(data.personalNo); //input id,database
-          $('#number').val(data.relativeName);
-          $('#dob').val(data.dob);
-          $('#gender').val(data.gender);
-          $('#relation').val(data.relationshipName);
+  
 
 
-
-
-
-      })
-   });
-   
-  // after clicking yes in delete
-    $('#familyDeleteButton').click(function (e) {
-        e.preventDefault();
-        $(this).html('Save');
-    
-        $.ajax({
-          data: $('#Form').serialize(),
-          url: "{{ route('destroyfamilydetails') }}",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-     
-              $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
-              table.draw();
-              window.onload = callajaxOnPageLoad(page);
-        var alt = document.createElement("div");
-             alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-             alt.innerHTML = "Data Updated Successfully! ";
-             setTimeout(function(){
-              alt.parentNode.removeChild(alt);
-             },4500);
-            document.body.appendChild(alt);
-            window.location.href = '/home';
-			table.draw();                 
-       
-       
-
-    
-         
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#familyDeleteButton').html('Save Changes');
-          }
-      });
-    });
-    
+  
 
 
      

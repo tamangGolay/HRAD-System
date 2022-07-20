@@ -5,23 +5,35 @@ a {
     text-decoration: none;
 }
 
+<style>
+
+
+
+
 .btn-primary {
     color: #fff !important;
     background-color: #007bff;
     border-color: #007bff;
 }
-.success {
+.alert-success {
     color: #fff !important;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
 }
+
+.alert-danger {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
 
 </style>
 @if(session()->has('alert-success'))
-				<div class="alert alert-info"> {{ session()->get('alert-success') }} </div> @endif
+				<div class="alert alert-success"> {{ session()->get('alert-success') }} </div> @endif
 
-                @if(session()->has('error'))
-				<div class="alert alert-danger"> {{ session()->get('error') }} </div> @endif
+<!-- @if(session()->has('alert-danger'))
+				<div class="alert alert-danger"> {{ session()->get('alert-danger') }} </div> @endif -->
 
 
 <link href="{{asset('css/bose.css')}}" rel="stylesheet">

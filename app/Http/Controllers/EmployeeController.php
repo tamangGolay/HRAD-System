@@ -8,6 +8,7 @@ use DataTables;
 use DB;
 use App\Imports\EmployeeImport; 
 use Excel;     
+use Validator;
 class EmployeeController extends Controller
 {
     /**
@@ -36,10 +37,33 @@ class EmployeeController extends Controller
             // dd($request);
 
             // dd($request);
-           $this->validate($request,
-           [ 'file' =>'required|mimes:xls,xlsx,csv'
 
-           ]  );
+            $validator = Validator::make($request->all(), [
+                'file' => 'required|mimes:xls,xlsx,csv',
+            ]);
+     
+            if ($validator->fails()) {
+                return redirect('home')->with('page', 'allEmployeeContribution')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+    // $validator = $this->validate($request,
+    //        [ 'file' =>'required|mimes:xls,xlsx,csv'
+
+    //        ]);
+           
+    // if ($validator->fails()) {
+
+    //     return redirect('home')->with('page', 'allEmployeeContribution')
+    //                     ->withErrors($validator)
+    //                     ->withInput();
+    // }
+ 
+
+
+    else{
+        
+        
             
          Excel::import(new EmployeeImport, request()->file('file'));
         
@@ -50,7 +74,7 @@ class EmployeeController extends Controller
         ->with('success', 'Excel Data Imported successfully.');
 
         // return back()->with('success', 'Excel Data Imported successfully.');
-
+        }
     }
 
 }

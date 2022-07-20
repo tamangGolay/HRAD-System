@@ -4,16 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWfreleaseTable extends Migration
+class CreateSkillsubcategoryTable extends Migration
 {
     public function up()
     {
-        Schema::create('wfrelease', function (Blueprint $table) {
+        Schema::create('skillsubcategory', function (Blueprint $table) {
         $table->id();
-		$table->integer('empId');
-		$table->date('releaseDate');
-		$table->float('amount');
-		$table->string('reason');
+		$table->string('subCatName');
+		$table->integer('catId');		
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();
@@ -25,6 +23,6 @@ class CreateWfreleaseTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('wfrelease');
+        Schema::dropIfExists('skillsubcategory');
     }
 }

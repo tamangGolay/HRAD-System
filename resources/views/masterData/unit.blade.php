@@ -30,7 +30,7 @@ a {
  
 <div class="container">
     <a class="btn success" href="javascript:void(0)" id="manageUnit">Add new Unit&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
-    <table class="table table-bordered data-table">
+    <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
             <tr>

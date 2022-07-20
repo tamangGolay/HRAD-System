@@ -4414,6 +4414,19 @@ if ($request->v == "skillcategory")  //form.csv
       ));
 }  //end
 
+//skill category
+
+if ($request->v == "subskillcategory")  //form.csv
+{    
+
+ $rhtml = view('masterData.skillSubCategory')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
 
     
 

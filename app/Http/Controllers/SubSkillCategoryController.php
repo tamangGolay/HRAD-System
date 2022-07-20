@@ -20,8 +20,9 @@ class SubSkillCategoryController extends Controller
     {
 
         $subCat = DB::table('skillsubcategory')
-        
-        ->where('status','0');
+                       ->join('skillcategorymaster','skillcategorymaster.id','=','skillsubcategory.catId')
+                       ->select('skillsubcategory.id','subCatName','skillcategorymaster.categoryName')
+                        ->where('skillsubcategory.status',0);
         
         if ($request->ajax()) {
             $data = $subCat;
@@ -50,7 +51,7 @@ class SubSkillCategoryController extends Controller
     public function store(Request $request)
     {
         SubSkillCategory::updateOrCreate(['id' => $request->id],  //model
-                ['subcatName' => $request->subcatName,'catId' => $request->catId]);        
+                ['subCatName' => $request->subCatName,'catId' => $request->catId]);        
    
         return response()->json(['success'=>'New Skill Category  saved successfully.']);
     }

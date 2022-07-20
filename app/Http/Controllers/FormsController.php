@@ -48,6 +48,7 @@ use App\JacketSize;
 use App\Shoesize;
 use App\EmployeeQualification;
 use App\Qualificationview;
+use App\SkillCategory;
 
 class FormsController extends Controller
 {
@@ -4416,10 +4417,20 @@ if ($request->v == "skillcategory")  //form.csv
 
 //skill category
 
-if ($request->v == "subskillcategory")  //form.csv
-{    
 
- $rhtml = view('masterData.skillSubCategory')->render(); 
+//sub skill category
+if ($request->v == "subskillcategory")  //form.csv
+{      
+    $subCat = SkillCategory::all()
+    ->where('status',0);
+
+    $test = DB::table('skillsubcategory')
+    ->join('skillcategorymaster','skillcategorymaster.id','=','skillsubcategory.catId')
+    ->select('skillcategorymaster.categoryName')
+     ->where('skillsubcategory.status',0);
+
+ $rhtml = view('masterData.skillSubCategory')->with(['subCat'=>$subCat])->render();
+  
  return response()
     ->json(array(
      'success' => true,

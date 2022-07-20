@@ -52,6 +52,7 @@ use App\Shirt;
 use App\Shoesize;
 use App\RainCoatSize;
 use App\SkillCategory;
+use App\SubSkillCategory;
 
 class ImportMaster extends Command
 {
@@ -134,6 +135,7 @@ class ImportMaster extends Command
         $this->importshoesize('shoesize',new Shoesize);
         $this->importraincoatsize('raincoatsize',new RainCoatSize);
         $this->importskillcategory('skillcategory',new SkillCategory);
+        $this->importskillsubcategory('skillsubcategory',new SubSkillCategory);  //csv n model
         
         
 
@@ -1608,6 +1610,38 @@ public function importskillcategory($filename,Model $model) {
 
                 $data = [                      
                             'categoryName' => $data[0]  
+                                                              
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
+
+//function to import sub skill category
+
+public function importskillsubcategory($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                      
+                            'subCatName' => $data[0],
+                            'catId' => $data[1]    
                                                               
                 ];
                 try{

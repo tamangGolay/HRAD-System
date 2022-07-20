@@ -11,7 +11,7 @@ class CreateSkillsubcategoryTable extends Migration
         Schema::create('skillsubcategory', function (Blueprint $table) {
         $table->id();
 		$table->string('subCatName');
-		$table->integer('catId');		
+		$table->foreignId('catId')->references('id')->on('skillcategorymaster');		
         $table->integer('status')->default(0);
         $table->integer('createdBy')->nullable();
 		$table->timestamp('createdOn')->nullable();

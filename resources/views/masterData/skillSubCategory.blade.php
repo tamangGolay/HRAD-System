@@ -68,9 +68,15 @@ a {
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Category Name</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="catId" name="catId" value=""  required>
+                        <label class="col-sm-2 col-lg-8 control-label">Category Name</label>
+                        <div class="col-sm-12">                            
+
+                            <select name="catId" id="catId" class="form-control" value="" required>
+                                             <option value="">Select Category Name</option>
+                                             @foreach($subCat as $subCat)
+                                             <option value="{{$subCat->id}}">{{$subCat->categoryName}}</option>
+										@endforeach
+							</select>
                         </div>
                     </div>
      
@@ -126,14 +132,14 @@ a {
         processing: true,
         serverSide: true,
         "searching": true,
-		"ordering": false,
+		//"ordering": false,
 		//"paging": true,
         ajax: "{{ route('subCat.index') }}",
         columns: [
-            {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'subCatName', name: 'subCatName', orderable: false, searchable: true},
-            {data: 'catId', name: 'catId', orderable: false, searchable: true},
-            {data: 'action', name: 'action', orderable: true, searchable: false},
+            {data: 'id', name: 'id'},
+            {data: 'subCatName', name: 'subCatName'},
+            {data: 'categoryName', name: 'skillcategorymaster.categoryName'},
+            {data: 'action', name: 'action'},
         ]
     });
 

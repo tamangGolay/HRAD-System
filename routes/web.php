@@ -240,7 +240,7 @@ Route::get('/getView','FormsController@getView');
 
 // Route::get('/import',[EmployeeController::class,'import'])->name('import');
 Route::get('/import-form','EmployeeController@importform');
-Route::post('import','EmployeeController@import')->name('import');
+Route::post('/import','EmployeeController@import')->name('import');
 
 //leki
 Route::post('Q_Facility_Rooms','GuestHouseController@addRoomDetails')->name('Q_Facility_Rooms');
@@ -525,3 +525,8 @@ Route::post('Request_refund','WelfareRefundController@Request_refund')->name('Re
 //skill category
 Route::resource('skillcategory', SkillCategoryController::class);
 Route::post('destroySkill', 'SkillCategoryController@delete')->name('destroySkill');//for deleting skill category
+
+
+//sub skill category
+Route::resource('subCat', SubSkillCategoryController::class);
+Route::post('destroysubCat', 'SubSkillCategoryController@delete')->name('destroysubCat');

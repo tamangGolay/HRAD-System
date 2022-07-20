@@ -51,6 +51,7 @@ use App\JacketSize;
 use App\Shirt;
 use App\Shoesize;
 use App\RainCoatSize;
+use App\SkillCategory;
 
 class ImportMaster extends Command
 {
@@ -132,6 +133,7 @@ class ImportMaster extends Command
         $this->importjacket('jacket',new JacketSize);
         $this->importshoesize('shoesize',new Shoesize);
         $this->importraincoatsize('raincoatsize',new RainCoatSize);
+        $this->importskillcategory('skillcategory',new SkillCategory);
         
         
 
@@ -1594,7 +1596,35 @@ public function importshoesize($filename,Model $model) {
 //end 
 
 
+// function to import Shoe size name 
 
+public function importskillcategory($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
 
+                $data = [                      
+                            'categoryName' => $data[0]  
+                                                              
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
 
 }

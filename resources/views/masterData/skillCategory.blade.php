@@ -56,7 +56,7 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
 
 
-                   <input type="hidden" name="id" id="grade_id">
+                   <input type="hidden" name="id" id="skillcategory_id">
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Category Name</label>
@@ -66,7 +66,7 @@ a {
                      </div>
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
-                     <button type="submit"  class="btn btn-outline-success" id="gradeButton" value="create">Save changes
+                     <button type="submit"  class="btn btn-outline-success" id="skillcategoryButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -78,11 +78,11 @@ a {
 </div>
 
 
-<div class="modal fade" id="gradeModel" aria-hidden="true">
+<div class="modal fade" id="skillCategoryModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="gradeHeading"></h4>
+                <h4 class="modal-title" id="skillcategoryHeading"></h4>
             </div>
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
@@ -90,7 +90,7 @@ a {
                 <input type="hidden"  value="{{ csrf_token() }}">
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="gradeDeleteButton" value="create">Yes</button>
+                    <button type="submit" class="btn btn-outline-success" id="skillCategoryDeleteButton" value="create">Yes</button>
 						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                     </button>
                     </div>
                 </form>
@@ -122,8 +122,8 @@ a {
 
     //After Clicking the Add New button it will trigger here
     $('#manageSkillCategory').click(function () {    //manange vehicle
-        $('#gradeButton').val("create-room");
-        $('#grade_id').val('');
+        $('#skillcategoryButton').val("create-room");
+        $('#skillcategory_id').val('');
         $('#Form').trigger("reset");
         $('#modelHeading').html("Add new skill Category");   // model heading
         $('#ajaxModel').modal('show');  
@@ -132,15 +132,15 @@ a {
     });
 
   //  After clicking the edit button it will trigger here
-    $('body').on('click', '.edit', function () {
-      var grade_id = $(this).data('id');
+    $('body').on('click', '.editSkillCategory', function () {
+      var skillcategory_id = $(this).data('id');
      
-      $.get("{{ route('skillcategory.index') }}" +'/' + grade_id +'/edit', function (data) {
+      $.get("{{ route('skillcategory.index') }}" +'/' + skillcategory_id +'/edit', function (data) {
           $('#modelHeading').html("Edit Grade details");
-          $('#gradeButton').val("edit-grade");
+          $('#skillcategoryButton').val("edit-grade");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#grade_id').val(data.id);
+          $('#skillcategory_id').val(data.id);
           $('#categoryName').val(data.categoryName); //input id,database
       })
    });
@@ -148,7 +148,7 @@ a {
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#gradeButton').click(function (e) {  //after clicking save changes
+    $('#skillcategoryButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
         $(this).html('Save');
@@ -183,7 +183,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#gradeButton').html('Save Changes');
+              $('#skillcategoryButton').html('Save Changes');
               alert("Cannot leave fields empty");
                 
           }
@@ -193,22 +193,22 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteGrade', function () {
-      var grade_id = $(this).data('id');
+    $('body').on('click', '.deleteSkillCategory', function () {
+      var skillcategory_id = $(this).data('id');
      
-      $.get("{{ route('skillcategory.index') }}" +'/' + grade_id +'/edit', function (data) {
-          $('#gradeHeading').html("Do you want to delete the Grade?");
-          $('#gradeDeleteButton').val("edit-grade");
-          $('#gradeModel').modal('show');
+      $.get("{{ route('skillcategory.index') }}" +'/' + skillcategory_id +'/edit', function (data) {
+          $('#skillcategoryHeading').html("Do you want to delete the Skill Category?");
+          $('#skillCategoryDeleteButton').val("edit-grade");
+          $('#skillCategoryModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
-          $('#grade_id').val(data.id);
+          $('#skillcategory_id').val(data.id);
           $('#categoryName').val(data.categoryName); //input id,database
           
       })
    });
    
   // after clicking yes in delete
-    $('#gradeDeleteButton').click(function (e) {
+    $('#skillCategoryDeleteButton').click(function (e) {
         e.preventDefault();
         $(this).html('Save');
     
@@ -240,7 +240,7 @@ a {
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#gradeDeleteButton').html('Save Changes');
+              $('#skillCategoryDeleteButton').html('Save Changes');
           }
       });
     });

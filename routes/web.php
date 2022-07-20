@@ -234,7 +234,13 @@ Route::get('/pass',function(){
 
 Route::get('/getView','FormsController@getView');
 
+//CSV
 
+// Route::get('/import-form',[EmployeeController::class,'importform']);
+
+// Route::get('/import',[EmployeeController::class,'import'])->name('import');
+Route::get('/import-form','EmployeeController@importform');
+Route::post('/import','EmployeeController@import')->name('import');
 
 //leki
 Route::post('Q_Facility_Rooms','GuestHouseController@addRoomDetails')->name('Q_Facility_Rooms');

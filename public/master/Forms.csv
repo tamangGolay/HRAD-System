@@ -58,4 +58,5 @@ refund,Welfare Refund,Admin,yes,fa-list-ol
 allEmployeeContribution,All employee contribution,Admin,yes,fa-list-ol
 skillcategory,Skill Category,Admin,yes,fa-list-ol
 oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
+skillmaster,Skill Master,Admin,yes,fa-list-ol
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

@@ -388,6 +388,8 @@ Route::post('user','MasterDataController@storeUser')->name('user');
 //manage officeName
 Route::resource('officeName', Manage_MasterController::class);
 Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destroyofficeName');
+Route::post('save', 'OneEmployeeController@saveRecord')->name('save');
+
 //golay end
 
 //start sonam 
@@ -513,3 +515,4 @@ Route::post('paymentRelease','PaymentReleaseController@paymentRelease')->name('p
 
 //welfare refund
 Route::post('Request_refund','WelfareRefundController@Request_refund')->name('Request_refund');
+

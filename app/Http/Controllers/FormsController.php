@@ -623,10 +623,23 @@ return response()
            ));
        }
        //end of User List.
-       
-       
-       
 
+
+
+       //Start oneEmployee
+       if ($request->v == "oneEmployee")
+       {
+        
+
+           $rhtml = view('welfare.oneEmployee')->render();
+           return response()
+               ->json(array(
+               'success' => true,
+               'html' => $rhtml
+           ));
+       }
+       //end of oneEmployee .
+       
         //Q_Checkout form
         if ($request->v == "Q_Checkout")
         {

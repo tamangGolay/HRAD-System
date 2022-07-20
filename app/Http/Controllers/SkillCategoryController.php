@@ -1,0 +1,92 @@
+<?php
+         
+namespace App\Http\Controllers;
+          
+use App\Vehicles;
+use Illuminate\Http\Request;
+use DataTables;
+use DB;
+use App\SkillCategory;
+
+        
+class SkillCategoryController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+
+        $skills = DB::table('skillcategorymaster')
+        ->select('id','categoryName')
+        ->where('status','0');
+        
+        if ($request->ajax()) {
+            $data = $skills;
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteGrade" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteGrade">Delete</a>';
+
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
+        return view('masterData.skillCategory',compact('skills'));
+    }
+     
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        SkillCategory::updateOrCreate(['id' => $request->id],  //vehicles
+                ['categoryName' => $request->categoryName]);        
+   
+        return response()->json(['success'=>'New Skill Category  saved successfully.']);
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+        $conference = SkillCategory::find($id);
+        return response()->json($conference);
+    }
+  
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $query = DB::table('skillcategorymaster')->where('id', $request->id)
+            ->increment('status');
+
+        return response()
+            ->json(['success' => 'Skill Category deleted successfully.']);
+    }
+
+    //To redirect to the manage_vehicle page after the management of vehicle
+    public function message(Request $request)
+    {
+
+        return redirect('home');
+    }
+
+}

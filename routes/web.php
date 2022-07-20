@@ -516,3 +516,6 @@ Route::post('paymentRelease','PaymentReleaseController@paymentRelease')->name('p
 //welfare refund
 Route::post('Request_refund','WelfareRefundController@Request_refund')->name('Request_refund');
 
+//skill category
+Route::resource('skillcategory', SkillCategoryController::class);
+Route::post('destroySkill', 'SkillCategoryController@delete')->name('destroySkill');//for deleting skill category

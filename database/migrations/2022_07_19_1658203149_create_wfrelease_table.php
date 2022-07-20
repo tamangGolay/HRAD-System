@@ -12,7 +12,7 @@ class CreateWfreleaseTable extends Migration
         $table->id();
 		$table->integer('empId');
 		$table->date('releaseDate');
-		$table->Integer('amount');
+		$table->float('amount');
 		$table->string('reason');
         $table->integer('status')->default(0);
 

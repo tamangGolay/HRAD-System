@@ -10,7 +10,8 @@ class CreateWfrefundTable extends Migration
     {
         Schema::create('wfrefund', function (Blueprint $table) {
 
-		$table->integer('empId',8);
+        $table->id();
+		$table->integer('empId');
 		$table->date('refundDate');
         $table->float('refundAmount');
 		$table->integer('status')->default(0);

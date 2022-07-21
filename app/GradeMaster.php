@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class GradeMaster extends Model
 {
-    protected $table = 'grademaster';
+    protected $table = 'payscalemaster';
 
    
-    protected $fillable = ['id','grade','level','status'];
+    protected $fillable = ['id','grade','low', 'increment', 'high', 'status'];
 
      public $timestamps = false;
 }

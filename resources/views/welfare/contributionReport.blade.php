@@ -22,35 +22,40 @@
  </style>
  </head>
  <body>
-  <div class="container-fluid">    
+  
+  
+<div class="container-fluid"  style="margin-right:20%;width:95%;">    
  <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+                
+                    <div class="form-group row col-sm-12 col-md-12">
+                    <div class="col-lg-6 col-sm-12 col-md-6">
+                    <label class="col-md-4 col-form-label text-md-left" for="stardate">Start Date</label>
 
-
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="form-group textfont">
-                    <label class="col-md-4 col-form-label" for="no_of_people">Start Date</label>
                         <input type="date" name="filter_startdate" id="filter_startdate" placeholder="Start Date" class="form-control" required>
-                        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-   
-                    </div>
-                    <div class="form-group textfont">
-                    <label class="col-md-4 col-form-label" for="no_of_people">End Date</label>
+     
+                    </div>  
+						
+                    
+                    <div class="col-lg-6 col-sm-12 col-md-6">
+                    <label class="col-md-4 col-form-label text-md-left" for="stardate">End Date</label>
 
-                     <input type="date" name="filter_enddate" id="filter_enddate"  placeholder="End Date" class="form-control" required>
+                        <input type="date" name="filter_enddate" id="filter_enddate"  placeholder="End Date" class="form-control" required>
                        
                     </div>
+                  </div>
                     
                     <div class="form-group textfont" align="center">
-                        <button type="button" name="filter" id="filter" class="btn btn-success">Filter</button>
+                        <button type="button" style="width:90px" name="filter" id="filter" class="btn btn-success">Filter</button>
 
-                        <button type="button" name="reset" id="reset" class="btn btn-secondary">Reset</button>
+                        <button type="button"  style="width:90px" name="reset" id="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
+
             </div>
+            
             <br />
-            <div class="card-header bg-green">
+<div class="card-header bg-green">
 		<div class="col text-center">
 			<h5>
                 <b>Contribution Report</b>

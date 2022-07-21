@@ -4404,6 +4404,18 @@ if ($request->v == "refund")  //form.csv
       ));
 }  //end
 
+if ($request->v == "refundReport")  //form.csv
+{    
+
+ $rhtml = view('welfare.welfareRefundReport')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
 //skill category
 
 if ($request->v == "skillcategory")  //form.csv

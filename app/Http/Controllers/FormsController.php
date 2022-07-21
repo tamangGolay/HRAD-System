@@ -360,28 +360,28 @@ if ($request->v == "shoesize")
 
 
 
-         //vehicle report List.
-         if ($request->v == "reportsbak")
-         {
-            
-            $data = DB::table('vehiclerequest')
-    //    ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-    //    ->join('status', 'status.id', '=', 'vehiclerequest.status')
-    //    ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-    //   ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-      
-       ->select('*')
-       ->get();
-      
+        //Contribution report List.
+        if ($request->v == "contributionReport")
+        {
+           
+           $data = DB::table('wfcontribution')
+   //    ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+   //    ->join('status', 'status.id', '=', 'vehiclerequest.status')
+   //    ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+   //   ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
+     
+      ->select('*')
+      ->get();
+     
 
-         $rhtml = view('vehicle.reportsbak')->with(['data' => $data])->render();
-         return response()
-             ->json(array(
-             'success' => true,
-             'html' => $rhtml
-         ));
-         }
-         //end vehicle report.
+        $rhtml = view('welfare.contributionReport')->with(['data' => $data])->render();
+        return response()
+            ->json(array(
+            'success' => true,
+            'html' => $rhtml
+        ));
+        }
+        //end Contribution report.
 
 
 //Conference Report

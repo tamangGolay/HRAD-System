@@ -62,6 +62,7 @@ class EmployeeController extends Controller
 
 
     else{
+        try{
         
         
             
@@ -75,7 +76,22 @@ class EmployeeController extends Controller
 
         // return back()->with('success', 'Excel Data Imported successfully.');
         }
+
+        
+
+        catch(\Illuminate\Database\QueryException $e){
+
+            // \Session::flash('error', 'Unable to process request.Error:'.json_encode($e->getMessage(), true));
+        //   }
+        
+        return redirect('home')->with('page', 'allEmployeeContribution')
+                                    ->with('error',"The Records contain either duplicate or null values");
+        
+        
+        }
     }
+
+}
 
 }
            

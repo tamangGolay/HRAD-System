@@ -32,8 +32,8 @@ a {
 @if(session()->has('alert-success'))
 				<div class="alert alert-success"> {{ session()->get('alert-success') }} </div> @endif
 
-<!-- @if(session()->has('alert-danger'))
-				<div class="alert alert-danger"> {{ session()->get('alert-danger') }} </div> @endif -->
+@if(session()->has('error'))
+				<div class="alert alert-danger"> {{ session()->get('error') }} </div> @endif
 
 
 <link href="{{asset('css/bose.css')}}" rel="stylesheet">

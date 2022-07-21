@@ -541,3 +541,6 @@ Route::post('destroyEmployeeSkill', 'EmployeeSkillMapController@delete')->name('
 
 //report for refund
 Route::resource('refundReport', 'RefundReportController');//refund report
+
+//welfare payment report
+Route::resource('paymentreport', 'PaymentReportController');

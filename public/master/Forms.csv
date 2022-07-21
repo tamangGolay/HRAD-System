@@ -47,7 +47,9 @@ shirtsize,Shirt Size,Admin,yes,fa-tshirt
 shoesize,Shoe Size,Admin,yes,fa-list-ol
 allEmployeeContribution,All employee contribution,Admin,yes,fa-list-ol
 oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
+contributionReport,Contribution Report,Admin,yes,fa-list-ol
 welfarepayment,Welfare Payment,Admin,yes,fa-list-ol
+welfarepaymentreport,Payment Report,Admin,yes,fa-list-ol
 refund,Welfare Refund,Admin,yes,fa-list-ol
 refundReport,Welfare Refund Report,Admin,yes,fa-list-ol
 resetpassword,Reset Password,Password,yes,fa-edit
@@ -57,5 +59,4 @@ uniform,Uniform,Uniform,yes,fa-clipboard-list
 uniformReport,Uniform Report,Uniform,yes,fa-clipboard-list
 officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
 TotalShoeSizes,Total No of Shoes,Uniform,yes,fa-clipboard-list
-contributionReport,Contribution Report,Admin,yes,fa-list-ol
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

@@ -9,6 +9,6 @@ class Officem extends Model
     //
     protected $table = 'officemaster';
 
-    protected $fillable = ['id','officeName','officeAddress','officeHead','status', 'updated_at','created_at'];
+    protected $fillable = ['id','officeName','officeAddress','officeHead','reportToOffice','createdBy','status', 'updated_at','created_at'];
     
 }  

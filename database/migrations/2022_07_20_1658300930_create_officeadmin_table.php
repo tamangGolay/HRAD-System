@@ -4,30 +4,29 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOfficemasterTable extends Migration
+class CreateOfficeadminTable extends Migration
 {
     public function up()
     {
-        Schema::create('officemaster', function (Blueprint $table) {
+        Schema::create('officeadmin', function (Blueprint $table) {
 
-		$table->id();
-        $table->foreignId('officeName')->references('id')->on('officename');
-        $table->foreignId('officeAddress')->references('id')->on('placemaster')->nullable();
-        $table->string('officeHead')->nullable();
+		$table->id();        
+        $table->foreignId('officeId')->references('id')->on('officemaster')->nullable();       
+        $table->string('officeAdmin')->nullable();
         $table->string('status')->default(0);
-        $table->string('reportToOffice')->nullable();
         $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
+		$table->date('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->timestamp('modifiedOn')->nullable();
         $table->date('updated_at')->nullable();
         $table->date('created_at')->nullable();
+        
  
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('officemaster');
+        Schema::dropIfExists('officeadmin');
     }
 }

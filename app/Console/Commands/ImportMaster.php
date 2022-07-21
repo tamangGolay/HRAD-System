@@ -54,6 +54,7 @@ use App\RainCoatSize;
 use App\SkillCategory;
 use App\SubSkillCategory;
 use App\Skillmaster;
+use App\officeAdmin;
 
 class ImportMaster extends Command
 {
@@ -138,6 +139,7 @@ class ImportMaster extends Command
         $this->importskillcategory('skillcategory',new SkillCategory);
         $this->importskillsubcategory('skillsubcategory',new SubSkillCategory);  //csv n model
         $this->importskillmaster('skillmaster',new Skillmaster);
+        $this->importofficeAdmin('officeAdmin',new officeAdmin);
         
         
 
@@ -1098,7 +1100,11 @@ public function importofficemaster($filename,Model $model) {
                 $data = [                       
                     'officeName' => $data[0],    
                     'officeAddress' => $data[1],    
-                    'officeHead' => $data[2]                    
+                    'officeHead' => $data[2],
+                    'reportToOffice' => $data[3],
+                    'createdBy' => $data[4]
+                    
+
                 ];
                 try{
                     if($model::firstorCreate($data)) {
@@ -1694,4 +1700,36 @@ public function importskillmaster($filename,Model $model) {
 }
 //end 
 
+//function to import skill master
+
+public function importofficeAdmin($filename,Model $model) {
+    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
+    {
+        $this->line("Importing ".$filename." tables...");
+        $i=0;
+        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
+        {               
+
+                $data = [                      
+                            'officeId' => $data[0],
+                            'officeAdmin' => $data[1]
+                                 
+                                                              
+                ];
+                try{
+                    if($model::firstorCreate($data)) {
+                        $i++;
+                    }
+                }
+                catch(\Exception $e) {
+                    $this->error('something went wrong... '.$e);
+                    return;
+                }                    
+        }
+
+        fclose($handle);
+        $this->line($i." entries successfully added in ".$filename." table");
+    }
+}
+//end 
 }

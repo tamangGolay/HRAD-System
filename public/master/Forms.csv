@@ -10,7 +10,7 @@ divisionmaster,Division Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
 employeemaster,Employee Master,Admin,yes,fa-clipboard-list
 employeeList,Employee List,Admin,yes,fa-list-ol
-employeequalificationmaster,Employee Qualification,Admin,yes,fa-clipboard-list
+employeequalificationmaster,Employee Qualification,Admin,yes,fa-graduation-cap
 employee_reporting,Employee Reporting,Admin,yes,fa-list-ol
 field,Field Name,Admin,yes,fa-list-ol
 family_details,Family details,Admin,yes,fa-list-ol

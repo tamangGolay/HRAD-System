@@ -1,3 +1,5 @@
+user_profile,Profile,Admin,yes,fa-list-ol
+changepassword,Change Password,Password,yes,fa-edit
 bankmaster,Bank Master,Admin,yes,fa-clipboard-list
 companymaster,Company Master,Admin,yes,fa-clipboard-list
 contractdetails,Contract Details,Admin,yes,fa-clipboard-list
@@ -6,8 +8,8 @@ designationmaster,Designation Master,Admin,yes,fa-clipboard-list
 displinaryhistorymaster,Displinary,Admin,yes,fa-clipboard-list
 divisionmaster,Division Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
-dzongkhagmaster,Dzongkhag Master,Admin,yes,fa-clipboard-list
 employeemaster,Employee Master,Admin,yes,fa-clipboard-list
+employeeList,Employee List,Admin,yes,fa-list-ol
 employeequalificationmaster,Employee Qualification,Admin,yes,fa-clipboard-list
 employee_reporting,Employee Reporting,Admin,yes,fa-list-ol
 field,Field Name,Admin,yes,fa-list-ol
@@ -21,6 +23,7 @@ officename,Office Name,Admin,yes,fa-clipboard-list
 office_reporting,Office reporting,Admin,yes,fa-list-ol
 pay_scale,Pay scale,Admin,yes,fa-chart-line
 placemaster,Place Master,Admin,yes,fa-clipboard-list
+postmaster,Post Master,Admin,yes,fa-list-ol
 promotion_history,Promotion history,Admin,yes,fa-list-ol
 qualilevelmaster,Qualification Level Master,Admin,yes,fa-book
 qualificationmaster,Qualification Master,Admin,yes,fa-graduation-cap
@@ -33,32 +36,24 @@ townmaster,Town Master,Admin,yes,fa-city
 unitmaster,Unit Master,Admin,yes,fa-clipboard-list
 villagemaster,Village Master,Admin,yes,fa-clipboard-list
 userList,User Lists,Admin,yes,fa-list
+employeeskillmap,Employee Skills,Admin,yes,fa-list-ol
+skillmaster,Skill Master,Admin,yes,fa-list-ol
+skillcategory,Skill Category,Admin,yes,fa-list-ol
+subskillcategory,Sub Skill Category,Admin,yes,fa-list-ol
 jacketsize,Jacket Size,Admin,yes,fa-clipboard-list
 pantsize,Pant Size,Admin,yes,fa-list-ol
 raincoatsize,Rain Coat Size,Admin,yes,fa-clipboard-list
 shirtsize,Shirt Size,Admin,yes,fa-tshirt
 shoesize,Shoe Size,Admin,yes,fa-list-ol
-Request_vehicle,Request Vehicle,Vehicle,yes,fa-car
-changepassword,Change Password,Password,yes,fa-edit
+allEmployeeContribution,All employee contribution,Admin,yes,fa-list-ol
+oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
+welfarepayment,Welfare Payment,Admin,yes,fa-list-ol
+refund,Welfare Refund,Admin,yes,fa-list-ol
 resetpassword,Reset Password,Password,yes,fa-edit
 user,Add User,Admin,yes,fas fa-user-plus
-ICD_Review,ICD review,Vehicle,yes,fa-clipboard-list
 userListHR,User Lists HR,Admin HR,yes,fa-list
-MTO_Review,MTO Vehicle Review,Vehicle,yes,fa-clipboard-list
-manage_vehicle,Manage Vehicle,Admin,yes,fa-list-ol
 uniform,Uniform,Uniform,yes,fa-clipboard-list
 uniformReport,Uniform Report,Uniform,yes,fa-clipboard-list
 officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
 TotalShoeSizes,Total No of Shoes,Uniform,yes,fa-clipboard-list
-user_profile,Profile,Admin,yes,fa-list-ol
-postmaster,Post Master,Admin,yes,fa-list-ol
-employeeList,Employee List,Admin,yes,fa-list-ol
-welfarepayment,Welfare Payment,Admin,yes,fa-list-ol
-refund,Welfare Refund,Admin,yes,fa-list-ol
-allEmployeeContribution,All employee contribution,Admin,yes,fa-list-ol
-skillcategory,Skill Category,Admin,yes,fa-list-ol
-subskillcategory,Sub Skill Category,Admin,yes,fa-list-ol
-oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
-skillmaster,Skill Master,Admin,yes,fa-list-ol
-employeeskillmap,Employee Skills,Admin,yes,fa-list-ol
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

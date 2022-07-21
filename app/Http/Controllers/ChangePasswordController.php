@@ -115,7 +115,7 @@ class ChangePasswordController extends Controller
     {
         // dd($request);
 
-        if(DB::table('users')->where('users.emp_id',$request->emp_id)
+        if(DB::table('users')->where('users.empId',$request->emp_id)
         ->exists()){
 
 
@@ -127,7 +127,7 @@ class ChangePasswordController extends Controller
         $new_password=Hash::make($request->new_password);
 
         
-        DB::update('update users set password = ?  where emp_id = ?',[$new_password,$request->emp_id]);
+        DB::update('update users set password = ?  where empId = ?',[$new_password,$request->emp_id]);
 
 
             

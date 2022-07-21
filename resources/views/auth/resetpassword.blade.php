@@ -102,7 +102,7 @@ function getEmployeeDetails(val) {
 	$.get('/getValues?source=useradd&info=' + val + '&token=' + csrftoken, function(data) {
 		document.getElementById('empid').innerHTML = '';
 		$.each(data, function(index, Employee) {
-			if(Employee.emp_id != null) {} else {
+			if(Employee.empId != null) {} else {
 				document.getElementById('empid').innerHTML = 'Not a user!!!';
 				document.getElementById('emp_id').value = '';
 			}

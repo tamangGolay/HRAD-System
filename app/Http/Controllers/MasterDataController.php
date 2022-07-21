@@ -121,14 +121,19 @@ class MasterDataController extends Controller
         // $user->created_by = Auth::id();
 
         //add role in the user_role_mapping.
-        // $roleuser = new roleusermappings;       
-        // $roleuser->role_id = $request->role;
-        // $roleuser->created_by = Auth::id();
+        $roleuser = new roleusermappings;       
+        $roleuser->role_id = $request->role;
+        $roleuser->created_by = Auth::id();
 
 
-      //  DB::transaction(function() use ($user,$roleuser)
-      //  {
+       DB::transaction(function() use ($users,$roleuser)
+       {
         $users->save();
+
+        $roleuser->user_id = $users->id;
+        $roleuser->save();
+
+       });
 
         $designationId = DB::table('users')
             ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')

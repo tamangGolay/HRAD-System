@@ -46,7 +46,7 @@ Route::resource('g', Manage_UserController::class);
 
 
 //vehicle Report
-Route::post('reportsearch', 'reportSearchController@index')->name('reportsearch');
+Route::post('reportsearch', 'ContributionReportController@index')->name('reportsearch');
 
 
 

@@ -1,13 +1,13 @@
-user_profile,Profile,Admin,yes,fa-list-ol
+user_profile,Profile,Admin,yes,fa-address-card
 changepassword,Change Password,Password,yes,fa-edit
-bankmaster,Bank Master,Admin,yes,fa-clipboard-list
-companymaster,Company Master,Admin,yes,fa-clipboard-list
-contractdetails,Contract Details,Admin,yes,fa-clipboard-list
+bankmaster,Bank Master,Admin,yes,fa-piggy-bank
+companymaster,Company Master,Admin,yes,fa-building
+contractdetails,Contract Details,Admin,yes,fa-file-signature
 departmentmaster,Department Master,Admin,yes,fa-clipboard-list
 designationmaster,Designation Master,Admin,yes,fa-clipboard-list 
 displinaryhistorymaster,Displinary,Admin,yes,fa-clipboard-list
 divisionmaster,Division Master,Admin,yes,fa-clipboard-list
-drungkhagmaster,Drungkhag Master,Admin,yes,fa-clipboard-list
+drungkhagmaster,Drungkhag Master,Admin,yes,fa-location-arrow
 employeemaster,Employee Master,Admin,yes,fa-clipboard-list
 employeeList,Employee List,Admin,yes,fa-list-ol
 employeequalificationmaster,Employee Qualification,Admin,yes,fa-graduation-cap

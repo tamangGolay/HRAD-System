@@ -49,6 +49,7 @@ allEmployeeContribution,All employee contribution,Admin,yes,fa-list-ol
 oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
 welfarepayment,Welfare Payment,Admin,yes,fa-list-ol
 refund,Welfare Refund,Admin,yes,fa-list-ol
+refundReport,Welfare Refund Report,Admin,yes,fa-list-ol
 resetpassword,Reset Password,Password,yes,fa-edit
 user,Add User,Admin,yes,fas fa-user-plus
 userListHR,User Lists HR,Admin HR,yes,fa-list

@@ -534,3 +534,7 @@ Route::post('destroySkill', 'SkillCategoryController@delete')->name('destroySkil
 //sub skill category
 Route::resource('subCat', SubSkillCategoryController::class);
 Route::post('destroysubCat', 'SubSkillCategoryController@delete')->name('destroysubCat');
+
+//employee skill map
+Route::resource('employeeskillmap', EmployeeSkillMapController::class);
+Route::post('destroyEmployeeSkill', 'EmployeeSkillMapController@delete')->name('destroyEmployeeSkill');//for deleting skill category

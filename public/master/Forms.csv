@@ -60,4 +60,5 @@ skillcategory,Skill Category,Admin,yes,fa-list-ol
 subskillcategory,Sub Skill Category,Admin,yes,fa-list-ol
 oneEmployee,Individual Contribution,Admin,yes,fa-list-ol
 skillmaster,Skill Master,Admin,yes,fa-list-ol
+employeeskillmap,Employee Skills,Admin,yes,fa-list-ol
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

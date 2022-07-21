@@ -50,6 +50,7 @@ use App\EmployeeQualification;
 use App\Qualificationview;
 use App\SkillCategory;
 use App\SubSkillCategory;
+use App\Skillmaster;
 
 class FormsController extends Controller
 {
@@ -4456,6 +4457,34 @@ if ($request->v == "subskillcategory")  //form.csv
       ));
 }  //end
 
+// employee skill map
+
+if ($request->v == "employeeskillmap")  //form.csv
+{   
+
+    $emp = User::all()
+   ->where('status',0);
+
+   $skills = Skillmaster::all()
+   ->where('status',0);
+
+    $empskills = DB::table('employeeskillmap')
+    ->join('users', 'users.id', '=', 'employeeskillmap.pNo')
+    ->join('skillmaster', 'skillmaster.id', '=', 'employeeskillmap.skillId')
+    ->select('employeeskillmap.id','users.empId','skillmaster.skillName','obtainedOn','expiryDate')
+    ->where('employeeskillmap.status','0');
+    
+    
+
+    $rhtml = view('masterData.employeeSkillMap')->with([ 'emp' => $emp,'skills' => $skills])->render();
+
+
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
 
     
 

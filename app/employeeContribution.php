@@ -10,5 +10,5 @@ class employeeContribution extends Model
     protected $table = 'wfcontribution';
 
     protected $fillable = ['empId','contributionDate','year','month','amount','officeId'];
-    
+    public $timestamps = false;
 }  

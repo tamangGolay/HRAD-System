@@ -9,5 +9,5 @@ class officeAdmin extends Model
     //
     protected $table = 'officeadmin';
     protected $fillable = ['id','officeId','officeAdmin','status'];
-    
+    public $timestamps = false;
 }  

@@ -9,6 +9,7 @@ class Officem extends Model
     //
     protected $table = 'officereportingstructuremaster';
 
-    protected $fillable = ['id','officeId ','reportsToOffice','fromDate','	endDate', 'updated_at','created_at'];
+    protected $fillable = ['id','officeId ','reportsToOffice','fromDate','	endDate'];
+    public $timestamps = false;
     
 }  

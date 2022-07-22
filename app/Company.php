@@ -9,6 +9,6 @@ class Company extends Model
     //
     protected $table = 'companymaster';
 
-    protected $fillable = ['id','comNameShort','comNameLong','comReportsTo','status', 'updated_at','created_at'];
-    
+    protected $fillable = ['id','comNameShort','comNameLong','comReportsTo','status'];
+    public $timestamps = false;
 }  

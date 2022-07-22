@@ -20,8 +20,7 @@ class CreateOfficemasterTable extends Migration
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->timestamp('modifiedOn')->nullable();
-        $table->date('updated_at')->nullable();
-        $table->date('created_at')->nullable();
+       
  
         });
     }

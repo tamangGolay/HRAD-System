@@ -16,8 +16,7 @@ class CreateleavetypemasterTable extends Migration
 		$table->timestamp('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->integer('modifiedOn')->nullable();
-        $table->date('updated_at');
-        $table->date('created_at');
+       
         });
     }
 

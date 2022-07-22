@@ -24,30 +24,15 @@ class ContributionReportController extends Controller
       
 
        $data = DB::table('wfcontribution')
-      //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-      //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
-      //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-      //  ->join('users', 'users.id', '=', 'vehiclerequest.supervisor')
+       ->join('officename','officename.id', 'wfcontribution.officeId')
 
-      
-
-      
-        //  ->where('vehiclerequest.status',4)
-         ->where('contributionDate','>=',$request->filter_startdate)
-         ->where('contributionDate','<=',$request->filter_enddate)
-
-        //  ->orwhere('vehiclerequest.status',3)
-        //  ->where('start_date','>=',$request->filter_startdate)
-        //  ->where('end_date','<=',$request->filter_enddate)
-
-         
-        //  ->orwhere('vehiclerequest.status',5)
-        //  ->where('start_date','>=',$request->filter_startdate)
-        //  ->where('end_date','<=',$request->filter_enddate)
-
-        //  ->select('users.designation','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','vehiclerequest.id','start_date','end_date','vehicledetails.vehicle_name','purpose','placesToVisit', 'users.name','vehiclestatus.action')
-
-        ->select('*')
+       //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+       //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
+       //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+ 
+         //  ->select('users.designation','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','vehiclerequest.id','start_date','end_date','vehicledetails.vehicle_name','purpose','placesToVisit', 'users.name','vehiclestatus.action')
+ 
+         ->select('wfcontribution.*','officename.longOfficeName')
   
 
          ->get();
@@ -57,14 +42,15 @@ class ContributionReportController extends Controller
        
 
        $data = DB::table('wfcontribution')
-      //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-      //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
-      //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-      // ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-      //MTO names
+       ->join('officename','officename.id', 'wfcontribution.officeId')
 
-     
-      ->select('*')      
+       //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
+       //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
+       //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
+       //MTO names
+ 
+      
+       ->select('wfcontribution.*','officename.longOfficeName')  
 
       // ->select('users.name','users.designation', 'vehiclerequest.id','vehiclerequest.purpose','vehiclerequest.placesToVisit','vehiclestatus.action','vehicledetails.vehicle_name','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','start_date','end_date')      
 	     

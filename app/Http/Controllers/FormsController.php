@@ -4392,6 +4392,19 @@ if ($request->v == "user_profile")
                 ));
           }  //end
 
+
+//welfare payment report
+if ($request->v == "welfarepaymentreport")  //form.csv
+{    
+
+ $rhtml = view('welfare.welfarePaymentReport')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
         //welfare refund  
 if ($request->v == "refund")  //form.csv
 {    

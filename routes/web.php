@@ -537,4 +537,10 @@ Route::post('destroysubCat', 'SubSkillCategoryController@delete')->name('destroy
 
 //employee skill map
 Route::resource('employeeskillmap', EmployeeSkillMapController::class);
-Route::post('destroyEmployeeSkill', 'EmployeeSkillMapController@delete')->name('destroyEmployeeSkill');//for deleting skill category
+Route::post('destroyEmployeeSkill', 'EmployeeSkillMapController@delete')->name('destroyEmployeeSkill');//for deleting skill category 
+
+//report for refund
+Route::resource('refundReport', 'RefundReportController');//refund report
+
+//welfare payment report
+Route::resource('paymentreport', 'PaymentReportController');

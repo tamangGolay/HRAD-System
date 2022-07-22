@@ -3,13 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <meta name="csrf-token" content="{!! csrf_token() !!}">
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
-  <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-  <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>   -->
-  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+  
   <style>
     .ghbheading{
     font-family: "Times New Roman", Times, serif;
@@ -22,9 +16,7 @@
  </style>
  </head>
  <body>
-  
-  
-<div class="container-fluid"  style="margin-right:20%;width:95%;">    
+ <div class="container-fluid" style="margin-right:20%;width:95%;">    
  <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
                 
@@ -35,7 +27,7 @@
                         <input type="date" name="filter_startdate" id="filter_startdate" placeholder="Start Date" class="form-control" required>
      
                     </div>  
-						
+            
                     
                     <div class="col-lg-6 col-sm-12 col-md-6">
                     <label class="col-md-4 col-form-label text-md-left" for="stardate">End Date</label>
@@ -46,22 +38,23 @@
                   </div>
                     
                     <div class="form-group textfont" align="center">
-                        <button type="button" style="width:90px" name="filter" id="filter" class="btn btn-success">Filter</button>
+                        <button type="button" name="filter" style="width:90px" id="filter" class="btn  btn-success">Filter</button>
 
-                        <button type="button"  style="width:90px" name="reset" id="reset" class="btn btn-warning">Reset</button>
+                        <button type="button" name="reset" style="width:90px" id="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </div>
 
             </div>
             
             <br />
-<div class="card-header bg-green">
-		<div class="col text-center">
-			<h5>
-                <b>Contribution Report</b>
+
+    <div class="card-header bg-green">
+    <div class="col text-center">
+      <h5>
+                <b>Welfare Payment Report</b>
             </h5>
         </div>
-	</div> 
+  </div>
 
 
             
@@ -70,15 +63,11 @@
         <thead>
          
          <tr class="text-nowrap">
-             <!-- <th>Booking Id</th> -->
+             <th>Sl No</th>
             <th>Emp Id</th>
-            <th>Date</th>
-            <th>Year</th>
-            <th>Month</th>
+            <th>Release Date</th>
             <th>Amount</th>
-
-            
-             </th>
+            <th>Reason</th>
             
          </tr>
     </thead>
@@ -91,13 +80,8 @@
 </html>
 
 <script>
-$(document).ready(function(){
 
-    $.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-	});
+$(document).ready(function(){
 
     fill_datatable();
 
@@ -112,6 +96,7 @@ $(document).ready(function(){
                     'copy',
                     'excel',
                     'csv',
+                    'pdf',
                     'print'
              ],
 
@@ -121,46 +106,37 @@ $(document).ready(function(){
 
            
             ajax:{
-                url: "/reportsearch",
-                type: "Post",
+                url: "{{ route('paymentreport.index') }}", 
                 data:{filter_startdate:filter_startdate, filter_enddate:filter_enddate}
-           
-               
             },
-
-          
-            
             columns: [
-              
+                {
+                    data:'id',
+                    name:'id'
+                },
                 {
                     data:'empId',
                     name:'empId'
                 },
 
                 {
-                    data:'contributionDate',
-                    name:'contributionDate'
-                },
-                {
-                    data:'year',
-                    name:'year'
-                },
-
-                {
-                    data:'month',
-                    name:'month'
+                    data:'releaseDate',
+                    name:'releaseDate'
                 },
                 {
                     data:'amount',
                     name:'amount'
+                },
+
+                {
+                    data:'reason',
+                    name:'reason'
                 }
 
-            
+                
             ]
 
-        //     createdRow: (row, data, dataIndex, cells) => {
-        //      $(cells[13]).css('background-color', data.status_color)
-        //  }
+        
         });
     }
 

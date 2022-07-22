@@ -11,7 +11,7 @@ class Refund extends Model
     //
     protected $table = 'wfrefund';
 
-    protected $fillable = ['empId','refundDate','refundAmount'];
+    protected $fillable = ['id','empId','refundDate','refundAmount'];
     public $timestamps = false;
    
 }

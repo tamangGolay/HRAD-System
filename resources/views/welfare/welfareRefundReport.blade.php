@@ -1,9 +1,8 @@
+
 <html>
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <meta name="csrf-token" content="{!! csrf_token() !!}">
-
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
   <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
@@ -21,8 +20,9 @@
   }
  </style>
  </head>
+ 
  <body>
-  
+ 
   
 <div class="container-fluid"  style="margin-right:20%;width:95%;">    
  <div class="row">
@@ -58,109 +58,81 @@
 <div class="card-header bg-green">
 		<div class="col text-center">
 			<h5>
-                <b>Contribution Report</b>
+                <b>Welfare Refund Report</b>
             </h5>
         </div>
-	</div> 
+	</div>   
 
-
-            
    <div class="table-responsive textfont">
-    <table id="report_data" class="table table-bordered table-striped">
+    <table id="report_data" class="table table-bordered table-striped" >
         <thead>
-         
          <tr class="text-nowrap">
-             <!-- <th>Booking Id</th> -->
-            <th>Emp Id</th>
-            <th>Date</th>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Amount</th>
 
+            <th>Sl No</th>
+            <th>Employee Id</th>
+            <th>Refund Amount</th>
+            <th>Refund Date</th>
             
-             </th>
             
-         </tr>
-    </thead>
- </table>
+        </tr>
+         </thead>
+     </table>
    </div>
-            <br />
-            <br />
+     <br />
+ <br/>
   </div>
+
  </body>
 </html>
 
 <script>
 $(document).ready(function(){
 
-    $.ajaxSetup({
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					}
-	});
-
     fill_datatable();
 
     function fill_datatable(filter_startdate = '', filter_enddate = '')
     {
-
-   
         var dataTable = $('#report_data').DataTable({
 
-            dom:'Blfrtip',   
+            dom: 'Blfrtip',
+			
+			lengthMenu: [ 4, 7, 10 ],
             buttons: [
                     'copy',
                     'excel',
                     'csv',
                     'print'
-             ],
-
-            
+             ], 
             processing: true,
             serverSide: true,
 
-           
             ajax:{
-                url: "/reportsearch",
-                type: "Post",
+                url: "{{ route('refundReport.index') }}",
                 data:{filter_startdate:filter_startdate, filter_enddate:filter_enddate}
-           
-               
             },
-
-          
-            
             columns: [
-              
+
+                {
+                    data:'id',
+                    name:'id'
+                },
                 {
                     data:'empId',
                     name:'empId'
                 },
 
                 {
-                    data:'contributionDate',
-                    name:'contributionDate'
+                    data:'refundAmount',
+                    name:'refundAmount'
                 },
                 {
-                    data:'year',
-                    name:'year'
-                },
+                    data:'refundDate',
+                    name:'refundDate'
+                }               
+                
+				
 
-                {
-                    data:'month',
-                    name:'month'
-                },
-                {
-                    data:'amount',
-                    name:'amount'
-                }
-
-            
             ]
-
-        //     createdRow: (row, data, dataIndex, cells) => {
-        //      $(cells[13]).css('background-color', data.status_color)
-        //  }
         });
     }
 
@@ -188,7 +160,5 @@ $(document).ready(function(){
     });
 
 });
-
-
   
 </script>

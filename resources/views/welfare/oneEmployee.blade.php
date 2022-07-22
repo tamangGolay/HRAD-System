@@ -43,7 +43,7 @@
                         <th>Amount</th>
                         <th>Year</th> 
                         <th>Month</th> 
-                        <!-- <th>Contribution Date</th>  -->
+                        <th>Office</th> 
 
                     </tr>
                 </thead>
@@ -98,8 +98,16 @@
 
                             </select> 
                         </td> 
-                        <!-- <td id="col4" style="display:none;"> 
-                        </td> -->
+                        <td id="col4" > 
+
+<select class="form-control" name="officeName[]" id="officeName" required>
+                     <option value="">Select Office</option>
+                     @foreach($officeName as $officeName)
+                     <option value="{{$officeName->id}}">{{$officeName->longOfficeName}}</option>
+                @endforeach
+    </select>
+
+</td>
                     </tr>
                 </tbody>  
             </table> 
@@ -132,7 +140,7 @@
                 cell = row.insertCell(i);
                 var copycel = document.getElementById('col'+i).innerHTML;
                 cell.innerHTML=copycel;
-                if(i == 4)
+                if(i == 5)
                 { 
                     var radioinput = document.getElementById('col3').getElementsByTagName('input'); 
                     for(var j = 0; j <= radioinput.length; j++)

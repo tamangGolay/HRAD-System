@@ -24,6 +24,8 @@ class ContributionReportController extends Controller
       
 
        $data = DB::table('wfcontribution')
+       ->join('officename','officename.id', 'wfcontribution.officeId')
+
       //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
       //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
       //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
@@ -47,7 +49,7 @@ class ContributionReportController extends Controller
 
         //  ->select('users.designation','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','vehiclerequest.id','start_date','end_date','vehicledetails.vehicle_name','purpose','placesToVisit', 'users.name','vehiclestatus.action')
 
-        ->select('*')
+        ->select('wfcontribution.*','officename.longOfficeName')
   
 
          ->get();
@@ -57,6 +59,8 @@ class ContributionReportController extends Controller
        
 
        $data = DB::table('wfcontribution')
+       ->join('officename','officename.id', 'wfcontribution.officeId')
+
       //  ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
       //  ->join('vehiclestatus', 'vehiclestatus.id', '=', 'vehiclerequest.status')
       //  ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
@@ -64,7 +68,7 @@ class ContributionReportController extends Controller
       //MTO names
 
      
-      ->select('*')      
+      ->select('wfcontribution.*','officename.longOfficeName')      
 
       // ->select('users.name','users.designation', 'vehiclerequest.id','vehiclerequest.purpose','vehiclerequest.placesToVisit','vehiclestatus.action','vehicledetails.vehicle_name','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','start_date','end_date')      
 	     

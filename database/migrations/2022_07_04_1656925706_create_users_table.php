@@ -56,8 +56,8 @@ class CreateUsersTable extends Migration
 		// $table->foreignId('role_id')->references('id')->on('roles')->default(14);
 		$table->string('role_id')->default(14);
 		$table->string('status')->default(0);
-		$table->date('updated_at');
-        $table->date('created_at');
+		// $table->date('updated_at');
+        // $table->date('created_at');
         });
     }
 

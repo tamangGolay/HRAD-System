@@ -22,7 +22,7 @@ class ContributionReportController extends Controller
 
 
       
-
+// dd($request->filter_startdate);
        $data = DB::table('wfcontribution')
        ->join('officename','officename.id', 'wfcontribution.officeId')
 
@@ -33,6 +33,9 @@ class ContributionReportController extends Controller
          //  ->select('users.designation','vehiclerequest.emp_id','vname','orgunit.description','dateOfRequisition','vehiclerequest.id','start_date','end_date','vehicledetails.vehicle_name','purpose','placesToVisit', 'users.name','vehiclestatus.action')
  
          ->select('wfcontribution.*','officename.longOfficeName')
+        ->where('wfcontribution.contributionDate','>=',$request->filter_startdate) 
+        ->where('wfcontribution.contributionDate','<=',$request->filter_enddate) 
+
   
 
          ->get();

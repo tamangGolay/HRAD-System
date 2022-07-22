@@ -9,7 +9,8 @@ class Leavetype extends Model
     //
     protected $table = 'leavetypemaster';
 
-    protected $fillable = ['id','leaveType','created_at','updated_at','status'];
+    protected $fillable = ['id','leaveType','status'];
     
+    public $timestamps = false;
 }
  

@@ -16,8 +16,7 @@ class CreateWfcontributionTable extends Migration
 		$table->integer('month');
 		$table->double('amount');
         $table->integer('officeId');
-        $table->timestamp('updated_at')->nullable();
-		$table->timestamp('created_at')->nullable();
+        
 
         });
     }

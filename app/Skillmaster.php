@@ -9,6 +9,6 @@ class Skillmaster extends Model
     //
     protected $table = 'skillmaster';
 
-    protected $fillable = ['id','skillName','subCatId','status', 'updated_at','created_at'];
-    
+    protected $fillable = ['id','skillName','subCatId','status'];
+    public $timestamps = false;
 }  

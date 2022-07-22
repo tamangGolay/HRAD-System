@@ -22,8 +22,7 @@ class CreateShoesizeTable extends Migration
 		$table->date('createdOn')->nullable();
 		$table->integer('modifiedBy')->nullable();
 		$table->date('modifiedOn')->nullable();
-		$table->date('updated_at');
-        $table->date('created_at');
+		
         });
     }
 

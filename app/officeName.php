@@ -10,7 +10,7 @@ class officename extends Model
     protected $table = 'officename';
 
     protected $fillable = ['id','shortOfficeName',
-    'longOfficeName','officeType','status','created_at','updated_at'];
+    'longOfficeName','officeType','status'];
     
     public $timestamps = false;
 }

@@ -19,16 +19,19 @@ class EmployeeImport implements ToModel
     {
 
 
+
         //  dd($row);
         return new employeeContribution([
             
             
              
               'empId'  => $row[0],
-              'contributionDate'  => $row[1],
+              'contributionDate'  =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]),
               'year'   => $row[2],
               'month'    => $row[3],
               'amount'  => $row[4],
+              'officeId' =>  $row[5],
+             
               
              
         
@@ -43,4 +46,6 @@ class EmployeeImport implements ToModel
         // }
     
     }}
+
+    
 

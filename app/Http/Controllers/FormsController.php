@@ -632,9 +632,12 @@ return response()
        //Start oneEmployee
        if ($request->v == "oneEmployee")
        {
-        
+        $officeName = officeName::all();
 
-           $rhtml = view('welfare.oneEmployee')->render();
+
+           $rhtml = view('welfare.oneEmployee')->with(['officeName' => $officeName])
+           
+           ->render();
            return response()
                ->json(array(
                'success' => true,

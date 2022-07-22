@@ -76,6 +76,7 @@
             <th>Year</th>
             <th>Month</th>
             <th>Amount</th>
+            <th>Office</th>
 
             
              </th>
@@ -153,7 +154,12 @@ $(document).ready(function(){
                 {
                     data:'amount',
                     name:'amount'
+                },
+                {
+                    data:'longOfficeName',
+                    name:'longOfficeName'
                 }
+
 
             
             ]

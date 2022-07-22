@@ -1,6 +1,11 @@
 <!-- Stored in resources/views/pages/dispatch.blade.php -->@extends('layouts.masterstartpage') @section('pagehead')
 <!-- c_booking -->
 <style>
+    
+a {
+    color: black !important;
+    text-decoration: none;
+}
 .chgpsswd{
 
     font-family: "Times New Roman", Times, serif;
@@ -65,7 +70,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	document.getElementById('contenthead').innerHTML = '<strong>Change Password</strong>';
+	// document.getElementById('contenthead').innerHTML = '<strong>Change Password</strong>';
+	document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
+
+		
 });
 
 function myFunction1() {

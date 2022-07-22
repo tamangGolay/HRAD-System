@@ -24,14 +24,12 @@ class OneEmployeeController extends Controller
                 'amount' => $request->amount[$key],
                 'year' => $request->Year[$key],
                 'month' => $request->month[$key],
-                'officeId' => $request->officeName[$key],
-
             ];
             DB::table('wfcontribution')->insert($saveRecord);
         }
 
-        return redirect('home')
-        ->with('success', 'Data inserted successfully!');
+        return redirect('/');
+
     }
 
 

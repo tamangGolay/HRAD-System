@@ -43,7 +43,7 @@
                         <th>Amount</th>
                         <th>Year</th> 
                         <th>Month</th> 
-                        <th>Office</th> 
+                        <!-- <th>Contribution Date</th>  -->
 
                     </tr>
                 </thead>
@@ -98,16 +98,8 @@
 
                             </select> 
                         </td> 
-                        <td id="col4" > 
-
-                        <select class="form-control" name="officeName[]" id="officeName" required>
-                                             <option value="">Select Office</option>
-                                             @foreach($officeName as $officeName)
-                                             <option value="{{$officeName->id}}">{{$officeName->longOfficeName}}</option>
-										@endforeach
-							</select>
-                        
-                        </td>
+                        <!-- <td id="col4" style="display:none;"> 
+                        </td> -->
                     </tr>
                 </tbody>  
             </table> 
@@ -140,7 +132,7 @@
                 cell = row.insertCell(i);
                 var copycel = document.getElementById('col'+i).innerHTML;
                 cell.innerHTML=copycel;
-                if(i == 5)
+                if(i == 4)
                 { 
                     var radioinput = document.getElementById('col3').getElementsByTagName('input'); 
                     for(var j = 0; j <= radioinput.length; j++)
@@ -160,7 +152,7 @@
             var table = document.getElementById('emptbl');
             var rowCount = table.rows.length;
 
-            if(rowCount >= 4)
+            if(rowCount >= '4')
             {
                 var row = table.deleteRow(rowCount-1);
                 rowCount--;

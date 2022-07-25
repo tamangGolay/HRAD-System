@@ -104,11 +104,6 @@ class ImportMaster extends Command
         // $this->importForms('forms',new Forms);
         // $this->importRoleForms('roleformaccess',new RoleFormMapping);        
         // $this->importUserRole('roleuser',new RoleUserMappings);
-        $this->importrangeofpeople('rangeofpeople',new rangeofpeople);
-        $this->importvehicle('vehicleDetails',new vehicles);
-        $this->importstatus('status',new status);//.csv and modelname
-        $this->importgHouseRate('guestHouseRate',new guestHouseRate);
-        $this->importconStatus('conferenceStatus',new conferenceStatus);
         $this->importuniform('uniformcount',new Uniform);
         $this->importQualiLevel('qualification',new QualificationLevel); 
         $this->importbank('bank',new bank);

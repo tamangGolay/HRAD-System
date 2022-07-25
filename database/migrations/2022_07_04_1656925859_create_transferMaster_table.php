@@ -9,8 +9,7 @@ class CreatetransfermasterTable extends Migration
     public function up()
     {
         Schema::create('transfermaster', function (Blueprint $table) {
-
-		$table->integer('personalNo')->references('id')->on('users');   //fk md employee master
+        $table->integer('personalNo')->references('id')->on('users');   //fk md employee master
 		$table->date('transferDate');
         $table->string('transferFrom')->references('id')->on('officemaster'); //fk md officeMaster
         $table->string('transferTo');

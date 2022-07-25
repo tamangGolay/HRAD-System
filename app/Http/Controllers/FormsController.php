@@ -563,7 +563,7 @@ return response()
                $officedetails = Officedetails::all();
 
                $orgunit = orgunit::all();
-               $grade = Grade::all();
+            //    $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
                $designation = Designation::all();
 
@@ -618,7 +618,7 @@ return response()
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,
@@ -3741,7 +3741,7 @@ if ($request->v == "room_details")
          {
  
             $user = Auth::user();
-            $grade = Grade::all();
+            // $grade = Grade::all();
             $dzongkhag = Dzongkhags::all();
             $orgunit = orgunit::all();
             $roles = roles::all();
@@ -3784,7 +3784,7 @@ if ($request->v == "room_details")
                ->select('office_address.Address')
                ->where('employeemaster.status', '=', 0);
 
-            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
+            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
             return response()
                 ->json(array(
                 'success' => true,

@@ -76,7 +76,7 @@ a {
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Increment Date</label>
                         <div class="col-sm-12">
-                            <input type="date" id="incrementDate" name="incrementDate"  placeholder="Increment date" class="form-control" required>
+                            <input type="date" id="issueDate" name="issueDate"  placeholder="Increment date" class="form-control" required>
                         </div>
                     </div>
 
@@ -144,7 +144,7 @@ a {
         columns: [
             {data: 'id', name: 'id'},
             {data: 'empId', name: 'users.empId'},
-            {data: 'incrementDate', name: 'incrementDate'},
+            {data: 'issueDate', name: 'issueDate'},
             {data: 'case', name: 'case'},
             {data: 'actionTaken', name: 'actionTaken'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
@@ -173,7 +173,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
           $('#personalNo').val(data.personalNo);
-          $('#incrementDate').val(data.incrementDate);
+          $('#issueDate').val(data.issueDate);
           $('#case').val(data.case); //input id,database
           $('#actionTaken').val(data.actionTaken);
           
@@ -236,7 +236,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#qid').val(data.id);
           $('#personalNo').val(data.personalNo);
-          $('#incrementDate').val(data.incrementDate);
+          $('#issueDate').val(data.issueDate);
           $('#case').val(data.case); //input id,database
           $('#actionTaken').val(data.actionTaken);
       })

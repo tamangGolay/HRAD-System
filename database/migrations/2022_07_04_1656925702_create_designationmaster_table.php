@@ -11,14 +11,13 @@ class CreateDesignationmasterTable extends Migration
         Schema::create('designationmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('desisNameShort');
-		$table->string('desisNameLong');
-        $table->string('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
-        
+		$table->string('desisNameShort',10);
+		$table->string('desisNameLong',100);
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();        
 
 		
 

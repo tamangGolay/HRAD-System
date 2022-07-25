@@ -11,13 +11,13 @@ class CreateDrungkhagmasterTable extends Migration
         Schema::create('drungkhagmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('drungkhagName');
-        $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
-        $table->integer('status')->default(0);
+		$table->string('drungkhagName',50);
+        $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');        
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();   
+        $table->tinyInteger('status')->unsigned()->default(0);
 
         });
     }

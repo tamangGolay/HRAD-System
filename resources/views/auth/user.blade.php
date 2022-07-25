@@ -424,7 +424,7 @@ $(function() {
 						$('#mobileNo').val(data.mobileNo);
 						$('#designation').val(data.designationId);
 						$('#basicPay').val(data.basicPay);
-						$('#email').val(data.emailId);
+						$('#emailId').val(data.emailId);
 						$('#lastDop').val(data.lastDop);
 						$('#gradeId').val(data.gradeId);
 						$('#appointmentDate').val(data.appointmentDate);

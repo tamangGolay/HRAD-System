@@ -9,7 +9,7 @@ class DisplinaryHistory extends Model
     //
     protected $table = 'displinaryhistorymaster';
 
-    protected $fillable = ['id','personalNo','issueDate','case','actionTaken','status'];
+    protected $fillable = ['id','personalNo','incrementDate','case','actionTaken','status'];
     
     public $timestamps = false;
 }

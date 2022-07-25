@@ -11,14 +11,14 @@ class CreatedisplinaryhistorymasterTable extends Migration
         Schema::create('displinaryhistorymaster', function (Blueprint $table) {
         $table->id();
 		$table->foreignId('personalNo')->references('id')->on('users'); //fk md employee master
-		$table->date('issueDate');
-		$table->string('case',200);
-        $table->string('actionTaken',200);
-        $table->tinyInteger('status')->unsigned()->default(0);
-        $table->integer('createdBy')->unsigned()->nullable();
-		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->unsigned()->nullable();
-		$table->date('modifiedOn')->nullable();  
+		$table->date('incrementDate');
+		$table->string('case');
+        $table->string('actionTaken');
+        $table->integer('status')->default(0);
+        $table->integer('createdBy')->nullable();
+		$table->timestamp('createdOn')->nullable();
+		$table->integer('modifiedBy')->nullable();
+        $table->timestamp('modifiedOn')->nullable();
         });
     }
 

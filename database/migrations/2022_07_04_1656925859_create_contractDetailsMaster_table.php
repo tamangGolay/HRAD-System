@@ -13,12 +13,12 @@ class CreatecontractdetailsmasterTable extends Migration
 		$table->foreignId('personalNo')->references('id')->on('users');  // fk md master employee 
 		$table->date('startDate');
 		$table->date('endDate');
-        $table->tinyInteger('termNo')->unsigned();
-        $table->integer('createdBy')->unsigned()->nullable();
-		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->unsigned()->nullable();
-		$table->date('modifiedOn')->nullable();
-        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('termNo');
+        $table->integer('status')->default(0);
+		$table->integer('createdBy')->nullable();;
+		$table->timestamp('createdOn')->nullable();;
+		$table->integer('modifiedBy')->nullable();;
+		$table->integer('modifiedOn')->nullable();;
         });
     }
 

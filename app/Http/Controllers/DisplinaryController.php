@@ -21,7 +21,7 @@ class DisplinaryController extends Controller
         // $quali = DB::table('displinaryhistorymaster')->where('status','0');   
         $quali = DB::table('displinaryhistorymaster')
         ->join('users', 'users.id', '=', 'displinaryhistorymaster.personalNo')
-        ->select('displinaryhistorymaster.id','users.empId','displinaryhistorymaster.issueDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
+        ->select('displinaryhistorymaster.id','users.empId','displinaryhistorymaster.incrementDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
         ->where('displinaryhistorymaster.status','0');
 
         
@@ -55,7 +55,7 @@ class DisplinaryController extends Controller
         //  dd($request);
         DisplinaryHistory::updateOrCreate(['id' => $request->id], 
                 ['personalNo' => $request->personalNo,
-                'issueDate' => $request->issueDate,
+                'incrementDate' => $request->incrementDate,
                 'case' => $request->case,
                 'actionTaken' => $request->actionTaken,]);        
    

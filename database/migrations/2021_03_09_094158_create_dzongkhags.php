@@ -14,8 +14,14 @@ class CreateDzongkhags extends Migration
     public function up()
     {
         Schema::create('dzongkhags', function (Blueprint $table) {
-            $table->id();
+
+            $table->smallInteger('id',2);
             $table->string('Dzongkhag_Name',30);
+            $table->integer('createdBy')->unsigned()->nullable();
+            $table->date('createdOn')->nullable();
+            $table->integer('modifiedBy')->unsigned()->nullable();
+            $table->date('modifiedOn')->nullable();
+            
           
         });
     }

@@ -9,7 +9,7 @@ class bank extends Model
     //
     protected $table = 'bankmaster';
 
-    protected $fillable = ['id','bankName','status'];
+    protected $fillable = ['bankName','status'];
 
      public $timestamps = false;
 }

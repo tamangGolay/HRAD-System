@@ -1,0 +1,4 @@
+UPDATE hradsystem.users
+set hradsystem.users.emailid = (SELECT laravel.users.email FROM laravel.users
+                                WHERE laravel.users.emp_id = hradsystem.users.empId
+                                AND laravel.users.email like '%bpc.bt')

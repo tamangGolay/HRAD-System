@@ -241,7 +241,7 @@ a {
 								</div>
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('Gender:') }}</label>
+									<label class="col-sm-4 text-md-right" for="gender">{{ __('Gender:') }}</label>
 									<div class="col-sm-4">
 									<input type="text" value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
 
@@ -424,7 +424,7 @@ $(function() {
 						$('#mobileNo').val(data.mobileNo);
 						$('#designation').val(data.designationId);
 						$('#basicPay').val(data.basicPay);
-						$('#email').val(data.emailId);
+						$('#emailId').val(data.emailId);
 						$('#lastDop').val(data.lastDop);
 						$('#gradeId').val(data.gradeId);
 						$('#appointmentDate').val(data.appointmentDate);

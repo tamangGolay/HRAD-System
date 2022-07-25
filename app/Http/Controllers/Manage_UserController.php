@@ -7,6 +7,7 @@ use App\roleusermappings;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use Auth;
         
 class Manage_UserController extends Controller
 {
@@ -66,27 +67,26 @@ class Manage_UserController extends Controller
 // dd($request);
 
 // "Address" => "1"
-            // User::updateOrCreate(['id' => $request->id],
-            //     ['empName' => $request->empName,
-            //      'empId' => $request->emp_id,
-            //      'cidNo' => $request->cidNo,
-            //      'role_id' => $request->role,
-            //      'office' => $request->office,
-            //      'gradeId' => $request->gradeId,
-            //      'gender' => $request->gender, //null
-            //     'designationId' => $request->designation,
-            //     'incrementCycle' => $request->incrementCycle,
-            //     'emailId' => $request->emailId,
-            //     'dob' => $request->dob,
-            //     'appointmentDate' => $request->appointmentDate,
-            //     'lastDop' => $request->lastDop,
-            //     'basicPay' => $request->basicPay,
-            //     'mobileNo' => $request->mobileNo,
-            //     'dob' => $request->dob,
-            //     'created_by' => Auth::id()
+            User::updateOrCreate(['id' => $request->id],
+                ['empName' => $request->empName,
+                 'empId' => $request->emp_id,
+                 'cidNo' => $request->cidNo,
+                 'role_id' => $request->role,
+                 'office' => $request->office,
+                 'gradeId' => $request->gradeId,
+                 'gender' => $request->gender, //null
+                'designationId' => $request->designation,
+                'incrementCycle' => $request->incrementCycle,
+                'emailId' => $request->emailId,
+                'dob' => $request->dob,
+                'appointmentDate' => $request->appointmentDate,
+                'lastDop' => $request->lastDop,
+                'basicPay' => $request->basicPay,
+                'mobileNo' => $request->mobileNo,
+                'dob' => $request->dob,
+                'created_by' => Auth::id()
 
-                
-            //     ]); 
+                ]); 
 
 
 
@@ -97,7 +97,7 @@ class Manage_UserController extends Controller
                 // $roleuser->user_id = $user->id;
                 // $roleuser->save();
         
-dd($request->id);
+// dd($request->id);
                  roleusermappings::updateOrCreate(['user_id' => $request->id],
                  [
                  'role_id' => $request->role,

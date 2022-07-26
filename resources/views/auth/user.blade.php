@@ -178,14 +178,22 @@ a {
 									</div>
 								</div>
 
+
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="gradeId">{{ __('Grade:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->gradeId; ?>" name="gradeId" id="gradeId" >
+						<label class="col-sm-4 text-md-right" for="gradeId">{{ __('Grade:') }}</label>
+						<div class="col-sm-6">
 
-									</div>
-								</div>
+							<select class="form-control" name="gradeId" id="gradeId" required> 
+							<option value="">Select Grade</option>	
+							@foreach($gg as $gg)
+								<option value="{{$gg->id}}" > {{$gg->grade}}
+								</option>
+								@endforeach </select>
+						</div>
+					</div>
 
+
+				
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="lastDop">{{ __('Last Dop:') }}</label>
 									<div class="col-sm-4">

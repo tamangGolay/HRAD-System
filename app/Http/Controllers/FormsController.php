@@ -179,6 +179,9 @@ class FormsController extends Controller
                $orgunit = orgunit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
+               $gradeId = DB::table('users')
+               ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
+               ->select('payscalemaster.grade');
 
     //    User::find(Auth::user()->org_unit_id)->descendants()->get();
     //    dd(User);
@@ -220,7 +223,7 @@ class FormsController extends Controller
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,
@@ -566,6 +569,8 @@ return response()
             //    $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
                $designation = Designation::all();
+              
+               $gg = pay::all();
 
 
             $userLists = DB::table('users')
@@ -618,7 +623,7 @@ return response()
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,

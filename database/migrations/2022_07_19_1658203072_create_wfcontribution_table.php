@@ -10,12 +10,18 @@ class CreateWfcontributionTable extends Migration
     {
         Schema::create('wfcontribution', function (Blueprint $table) {
 
-		$table->integer('empId',8);
+      
+        $table->integer('empId',8);
 		$table->date('contributionDate');
 		$table->integer('year');
 		$table->integer('month');
-		$table->double('amount');
+		$table->decimal('amount',10,2);
         $table->integer('officeId');
+        $table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         
 
         });

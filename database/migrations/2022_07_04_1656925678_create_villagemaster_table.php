@@ -12,13 +12,13 @@ class CreateVillagemasterTable extends Migration
 
 		$table->id();
         $table->integer('villageId')->default(10000);
-        $table->string('villageName');
+        $table->string('villageName',100);
         $table->foreignId('gewogId')->references('id')->on('gewogmaster');
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();		
-        $table->integer('status')->default(0);
+		$table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
 
         });
     }

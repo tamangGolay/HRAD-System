@@ -20,7 +20,10 @@ class CreateForms extends Migration
             $table->string('group',50)->nullable();
             $table->string('menu',10)->default('yes');
             $table->string('icon',20)->nullable();
-            $table->timestamps();
+            $table->integer('createdBy')->unsigned()->nullable();
+            $table->date('createdOn')->nullable();
+            $table->integer('modifiedBy')->unsigned()->nullable();
+            $table->date('modifiedOn')->nullable(); 
         });
     }
 

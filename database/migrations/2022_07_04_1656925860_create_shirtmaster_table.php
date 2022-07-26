@@ -11,13 +11,14 @@ class CreateShirtmasterTable extends Migration
         Schema::create('shirtmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('shirtSizeName');       
-        $table->string('gender');
-        $table->integer('status')->default(0);             
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
+		$table->string('shirtSizeName',10);       
+        // $table->string('gender');
+        $table->enum('gender', ['Male', 'Female', 'Other'])->default('Male');
+        $table->tinyInteger('status')->default(0);
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

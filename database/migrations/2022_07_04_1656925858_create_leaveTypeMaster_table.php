@@ -10,12 +10,12 @@ class CreateleavetypemasterTable extends Migration
     {
         Schema::create('leavetypemaster', function (Blueprint $table) {
         $table->id();
-		$table->string('leaveType');  
-        $table->string('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+		$table->string('leaveType',30);  
+        $table->tinyInteger('status')->default(0);
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
        
         });
     }

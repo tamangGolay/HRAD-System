@@ -12,14 +12,17 @@ class CreateOfficeadminTable extends Migration
 
 		$table->id();        
         $table->foreignId('officeId')->references('id')->on('officemaster')->nullable();       
-        $table->string('officeAdmin')->nullable();
-        $table->string('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
-        $table->date('updated_at')->nullable();
-        $table->date('created_at')->nullable();
+        $table->integer('officeAdmin')->nullable();
+        $table->tinyInteger('status')->default(0);
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
+        
+        
+        
+        // $table->date('updated_at')->nullable();
+        // $table->date('created_at')->nullable();
         
  
         });

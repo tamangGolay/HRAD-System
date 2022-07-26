@@ -11,12 +11,12 @@ class CreateleavebalancemasterTable extends Migration
         Schema::create('leavebalancemaster', function (Blueprint $table) {
 
 		$table->integer('personalNo')->references('id')->on('users');  //fk to master employee
-		$table->integer('casualLeaveBalance'); 
-		$table->integer('earnedLeaveBalance'); 
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+		$table->decimal('casualLeaveBalance',5,2); 
+		$table->decimal('earnedLeaveBalance',5,2); 
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

@@ -18,7 +18,10 @@ class CreateRoleFormMapping extends Migration
             $table->foreignId('role_id')->references('id')->on('roles');
             $table->foreignId('form_id')->references('id')->on('forms');
             $table->foreignId('created_by')->references('id')->on('users');
-            $table->timestamps();
+            $table->integer('createdBy')->unsigned()->nullable();
+            $table->date('createdOn')->nullable();
+            $table->integer('modifiedBy')->unsigned()->nullable();
+            $table->date('modifiedOn')->nullable();
         });
     }
 

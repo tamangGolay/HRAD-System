@@ -13,12 +13,12 @@ class CreateWfrefundTable extends Migration
         $table->id();
 		$table->integer('empId');
 		$table->date('refundDate');
-        $table->float('refundAmount');
-		$table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
+        $table->decimal('refundAmount',8,2);
+        $table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         
 
         });

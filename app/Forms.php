@@ -9,5 +9,5 @@ class Forms extends Model
     //
     protected $table = "forms";
     protected $fillable = ["forms","description","group","menu","icon"];
-
+    public $timestamps = false;
 }

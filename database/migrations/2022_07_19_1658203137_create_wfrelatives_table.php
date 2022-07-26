@@ -17,7 +17,10 @@ class CreateWfrelativesTable extends Migration
 		$table->date('doB');
 		$table->integer('relation');
 		$table->string('status')->default('Active');//Active/Deceased/Separated
-
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

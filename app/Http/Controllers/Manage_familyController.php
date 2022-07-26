@@ -1,11 +1,12 @@
 <?php
          
 namespace App\Http\Controllers;
-          
+use Illuminate\Support\Facades\Validator;
 use App\family;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+
         
 class Manage_familyController extends Controller
 {
@@ -58,13 +59,23 @@ class Manage_familyController extends Controller
      */
     public function store(Request $request)
     {
-       
+        // for getting either of the cid no
+        $validator = validator::make($request->all(),[
+            'cidNo' => 'required_without:cidOther',
+            'cidOther' => 'required:cidNo',
+            ]);       
 
         family::updateOrCreate(['personalNo' => $request->name],  ['relativeName' => $request->number, 'cidNo' => $request->cidNo, 'cidOther' => $request->cidOther,  'dob' => $request->dob,
         'gender' => $request->gender, 'relation' => $request->relation
     
 
-    ]);        
+    ]);
+    
+            // // for getting either of the cid no
+            // $request = validate([
+            //     'cidNo' => 'required_without:cidOther',
+            //     'cidOther' => 'required_without:cidNo',
+            //     ]);
    
         return response()->json(['success'=>'Family details saved successfully.']);
     }

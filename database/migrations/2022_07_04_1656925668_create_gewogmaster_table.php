@@ -11,15 +11,15 @@ class CreateGewogmasterTable extends Migration
         Schema::create('gewogmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('gewogName');
+		$table->string('gewogName',100);
         $table->foreignId('drungkhagId')->references('id')->on('drungkhagmaster');
         // $table->integer('drungkhagId');
         $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+        $table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

@@ -14,11 +14,11 @@ class CreateofficereportingstructuremasterTable extends Migration
 		$table->integer('reportsToOffice'); 
         $table->date('fromDate'); 
         $table->date('endDate');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
+        $table->tinyInteger('status')->default(0);
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
 
         });
     }

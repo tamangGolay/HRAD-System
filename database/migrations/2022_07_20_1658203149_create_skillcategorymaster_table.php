@@ -12,12 +12,11 @@ class CreateSkillcategorymasterTable extends Migration
 
 		$table->id();
 		$table->string('categoryName');
-        $table->string('status')->default(0);
-		$table->integer('createdBy')->nullable();
-		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->date('modifiedOn')->nullable();
-
+        $table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

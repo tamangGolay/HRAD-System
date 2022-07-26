@@ -16,12 +16,12 @@ class CreateleavehistorymasterTable extends Migration
         $table->date('from'); 
         $table->date('to'); 
         $table->integer('leavePeriod'); 
-        $table->string('status'); 
         $table->string('remarks'); 
-		$table->integer('createdBy');
-		$table->timestamp('createdOn');
-		$table->integer('modifiedBy');
-		$table->integer('modifiedOn');
+        $table->tinyInteger('status')->default(0);
+		$table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

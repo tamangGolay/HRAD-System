@@ -11,12 +11,12 @@ class CreateFieldmasterTable extends Migration
         Schema::create('fieldmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('fieldName');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-        $table->timestamp('modifiedOn')->nullable();
+		$table->string('fieldName',30);
+        $table->tinyInteger('status')->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
         });
     }
 

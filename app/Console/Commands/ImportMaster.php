@@ -10,27 +10,16 @@ use App\Roles;
 use App\RoleFormMapping;
 use App\User;
 use App\RoleUserMappings;
-use App\Facility;
 use App\Forms;
-use App\conferenceRequest;
 use App\OrgUnit;
-use App\conference;
-use App\Vehicles;
-use App\roomBed;
-use App\status;
-use App\guestHouseRate;
-use App\conferenceStatus;
-use App\rangeofpeople;
 use App\Uniform;
 use App\drungkhag;
 use App\town;
 use App\gewog;
 use App\village;
 use App\place;
-use App\GradeMaster;
 use App\QualificationLevel; 
 use App\bank;
-use App\Company;
 use App\Designation;
 use App\Resignation;
 use App\Relationname;
@@ -38,8 +27,6 @@ use App\Leavetype;
 use App\Officem;
 use App\officeName;
 use App\EmployeeMaster;
-use App\ServiceMaster;
-use App\Department;
 use App\ContractDetailMaster;
 use App\Qualification;
 use App\Field;
@@ -91,8 +78,8 @@ class ImportMaster extends Command
     public function handle()
     {
         //
-       // $this->importgrade('grade',new GradeMaster);  //csv,model name
-        $this->importDzongkhags('dzongkhags',new Dzongkhags);
+       
+        $this->importDzongkhags('dzongkhags',new Dzongkhags);  //csv n  model
         $this->importDrungkhags('drungkhagmaster',new drungkhag);
         $this->importTown('townmaster',new town);
         $this->importGewog('gewogmaster',new gewog);
@@ -107,7 +94,7 @@ class ImportMaster extends Command
         $this->importuniform('uniformcount',new Uniform);
         $this->importQualiLevel('qualification',new QualificationLevel); 
         $this->importbank('bank',new bank);
-        $this->importcompany('companyMaster',new Company);
+        
         $this->importdesignation('designation',new Designation);
         $this->importresignation('resignation',new Resignation);
         $this->importrelation('relationname',new Relationname);
@@ -118,8 +105,7 @@ class ImportMaster extends Command
         $this->importForms('forms',new Forms);
         $this->importRoleForms('roleformaccess',new RoleFormMapping);        
         $this->importUserRole('roleuser',new RoleUserMappings);   // csv n modal name employee master
-        $this->importserviceMaster('services',new ServiceMaster);
-        $this->importdepartment('department',new Department);
+        
         $this->importcontractdetails('contractdetails',new ContractDetailMaster);
         $this->importfield('field',new Field);
         $this->importqualificationmaster('qualificationmaster',new Qualification);        
@@ -135,44 +121,12 @@ class ImportMaster extends Command
         $this->importskillsubcategory('skillsubcategory',new SubSkillCategory);  //csv n model
         $this->importskillmaster('skillmaster',new Skillmaster);
         $this->importofficeAdmin('officeAdmin',new officeAdmin);
-        
-        
+            
 
      }
 
-     public function importgrade($filename,Model $model) {
-        if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-        {
-            $this->line("Importing ".$filename." tables...");
-            $i=0;
-            while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-            {               
+     
     
-                    $data = [                       
-                        'grade' => $data[0],  //database field name
-                        'level' => $data[1]
-    
-                        
-    
-    
-                    ];
-                    try{
-                        if($model::firstorCreate($data)) {
-                            $i++;
-                        }
-                    }
-                    catch(\Exception $e) {
-                        $this->error('something went wrong... '.$e);
-                        return;
-                    }                
-               
-                
-            }
-    
-            fclose($handle);
-            $this->line($i." entries successfully added in ".$filename." table");
-        }
-    }
 //import post master
 public function importpostmaster($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
@@ -648,8 +602,6 @@ public function importgHouseRate($filename,Model $model) {
             $this->line($i." entries successfully added in ".$filename." table");
         }
     }
-
-    
    
 
 
@@ -967,40 +919,7 @@ public function importQualiLevel($filename,Model $model) {
 //sonam
 //sonam
 
-public function importcompany($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
 
-                $data = [                       
-                    'comNameShort' => $data[0],
-                    'comNameLong' => $data[1],
-                    'comReportsTo' => $data[2]
-
-                    
-
-
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                
-           
-            
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
 
 public function importdesignation($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
@@ -1149,35 +1068,6 @@ public function importofficename($filename,Model $model) {
 //end sonam
 // to import services
 
-public function importserviceMaster($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
-
-                $data = [                       
-                    'serNameShort' => $data[0],    
-                    'serNameLong' => $data[1],
-                    'serviceHead' => $data[2],
-                    'company' => $data[3]                      
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                    
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
 
 public function importrelation($filename,Model $model) {
     if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
@@ -1298,39 +1188,6 @@ public function importUser($filename,Model $model) {
     }
 }
 
-//sonam
-public function importdepartment($filename,Model $model) {
-    if(($handle = fopen(public_path() . '/master/'.$filename.'.csv','r')) !== FALSE)
-    {
-        $this->line("Importing ".$filename." tables...");
-        $i=0;
-        while( ($data = fgetcsv($handle,1000,',')) !== FALSE)
-        {               
-
-                $data = [                       
-                    'deptNameShort' => $data[0],    
-                    'deptNameLong' => $data[1],
-                    'deptHead' => $data[2],
-                    'deptReportsToService' => $data[3],
-                    'deptReportsToCompany' => $data[4],      
-                                       
-                ];
-                try{
-                    if($model::firstorCreate($data)) {
-                        $i++;
-                    }
-                }
-                catch(\Exception $e) {
-                    $this->error('something went wrong... '.$e);
-                    return;
-                }                    
-        }
-
-        fclose($handle);
-        $this->line($i." entries successfully added in ".$filename." table");
-    }
-}
-//end sonam
 
 
 // function to field name

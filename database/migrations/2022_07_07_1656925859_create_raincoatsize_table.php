@@ -18,7 +18,7 @@ class CreateRaincoatsizeTable extends Migration
 		$table->decimal('bottomCm',6,2);
 		$table->decimal('lengthCm',6,2);
 		$table->decimal('sleeveCm',6,2);
-		$table->string('gender',10);
+		$table->enum('gender', ['Male', 'Female','unisex', 'Other'])->default('unisex');
 		$table->tinyInteger('status')->unsigned()->default(0);
         $table->integer('createdBy')->unsigned()->nullable();
         $table->date('createdOn')->nullable();

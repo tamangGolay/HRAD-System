@@ -1,21 +1,16 @@
 user_profile,Profile,Admin,yes,fa-address-card
 changepassword,Change Password,Password,yes,fa-edit
 bankmaster,Bank Master,Admin,yes,fa-piggy-bank
-companymaster,Company Master,Admin,yes,fa-building
 contractdetails,Contract Details,Admin,yes,fa-file-signature
-departmentmaster,Department Master,Admin,yes,fa-clipboard-list
 designationmaster,Designation Master,Admin,yes,fa-clipboard-list 
 displinaryhistorymaster,Displinary,Admin,yes,fa-clipboard-list
-divisionmaster,Division Master,Admin,yes,fa-clipboard-list
 drungkhagmaster,Drungkhag Master,Admin,yes,fa-location-arrow
 employeemaster,Employee Master,Admin,yes,fa-clipboard-list
 employeeList,Employee List,Admin,yes,fa-list-ol
 employeequalificationmaster,Employee Qualification,Admin,yes,fa-graduation-cap
-employee_reporting,Employee Reporting,Admin,yes,fa-list-ol
 field,Field Name,Admin,yes,fa-list-ol
 family_details,Family details,Admin,yes,fa-list-ol
 gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
-grademaster,Grade Master,Admin,yes,fa-clipboard-list
 increment_history,Increment history,Admin,yes,fa-list-ol
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
@@ -29,11 +24,7 @@ qualilevelmaster,Qualification Level Master,Admin,yes,fa-book
 qualificationmaster,Qualification Master,Admin,yes,fa-graduation-cap
 relationmaster,Relation,Admin,yes,fa-clipboard-list
 resignationtypemaster,Resignation Master,Admin,yes,fa-clipboard-list
-servicemaster,Service Master,Admin,yes,fa-clipboard-list
-subdivisionmaster,Sub Division Master,Admin,yes,fa-clipboard-list
-substationmaster,Substation Master,Admin,yes,fa-clipboard-list
 townmaster,Town Master,Admin,yes,fa-city
-unitmaster,Unit Master,Admin,yes,fa-clipboard-list
 villagemaster,Village Master,Admin,yes,fa-clipboard-list
 userList,User Lists,Admin,yes,fa-list
 employeeskillmap,Employee Skills,Admin,yes,fa-list-ol
@@ -56,7 +47,4 @@ resetpassword,Reset Password,Password,yes,fa-edit
 user,Add User,Admin,yes,fas fa-user-plus
 userListHR,User Lists HR,Admin HR,yes,fa-list
 uniform,Uniform,Uniform,yes,fa-clipboard-list
-uniformReport,Uniform Report,Uniform,yes,fa-clipboard-list
-officeuniformReport,Total Uniform Size Report,Uniform,yes,fa-clipboard-list
-TotalShoeSizes,Total No of Shoes,Uniform,yes,fa-clipboard-list
 role_form,Role Form Mapping,Admin,yes,fa-list-ol

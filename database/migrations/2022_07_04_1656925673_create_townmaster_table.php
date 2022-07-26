@@ -11,14 +11,14 @@ class CreateTownmasterTable extends Migration
         Schema::create('townmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('townName');
-        $table->string('townClass');
+		$table->string('townName',100);
+        $table->string('townClass',100);
         $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
-        $table->integer('status')->default(0);
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
 
         });
     }

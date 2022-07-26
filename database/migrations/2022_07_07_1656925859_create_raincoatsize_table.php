@@ -11,19 +11,19 @@ class CreateRaincoatsizeTable extends Migration
         Schema::create('raincoatsize', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('sizeName');
-		$table->integer('shouldersCm');
-		$table->integer('chestCm');
-		$table->integer('waistCm');
-		$table->integer('bottomCm');
-		$table->integer('lengthCm');
-		$table->integer('sleeveCm');
-		$table->string('gender');
-		$table->string('status')->default(0);
-		$table->integer('createdBy')->nullable();
-		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->date('modifiedOn')->nullable();
+		$table->string('sizeName',10);
+		$table->decimal('shouldersCm',6,2);
+		$table->decimal('chestCm',6,2);
+		$table->decimal('waistCm',6,2);
+		$table->decimal('bottomCm',6,2);
+		$table->decimal('lengthCm',6,2);
+		$table->decimal('sleeveCm',6,2);
+		$table->string('gender',10);
+		$table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
 
         });
     }

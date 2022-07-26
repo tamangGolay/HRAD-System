@@ -12,11 +12,11 @@ class CreateSkillsubcategoryTable extends Migration
         $table->id();
 		$table->string('subCatName');
 		$table->foreignId('catId')->references('id')->on('skillcategorymaster');		
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
 
         });
     }

@@ -16,16 +16,20 @@ class CreateEmployeeuniform extends Migration
         Schema::create('employeeuniform', function (Blueprint $table) {
             $table->id();
             $table->string('emp_id');
-            $table->string('name'); 
-            $table->string('contact_number'); 
+            $table->string('name',50); 
+            $table->integer('contact_number')->unsigned(); 
             $table->foreignId('org_unit_id')->references('id')->on('orgUnit')->nullable();
-            $table->string('shirt'); 
-            $table->string('pant'); 
-            $table->string('jacket'); 
-            $table->string('raincoat'); 
-            $table->integer('shoe'); 
-            $table->integer('jumboot'); 
-            $table->timestamps();
+            $table->tinyInteger('shirt'); 
+            $table->tinyInteger('pant'); 
+            $table->tinyInteger('jacket'); 
+            $table->tinyInteger('raincoat'); 
+            $table->tinyInteger('shoe'); 
+            $table->tinyInteger('jumboot'); 
+            $table->tinyInteger('status')->unsigned()->default(0);
+            $table->integer('createdBy')->unsigned()->nullable();
+            $table->date('createdOn')->nullable();
+            $table->integer('modifiedBy')->unsigned()->nullable();
+            $table->date('modifiedOn')->nullable();
         });
     }
 

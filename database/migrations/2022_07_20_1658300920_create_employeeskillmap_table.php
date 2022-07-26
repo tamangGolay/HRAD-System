@@ -15,12 +15,11 @@ class CreateEmployeeskillmapTable extends Migration
 		$table->foreignId('skillId')->references('id')->on('skillcategorymaster');
         $table->date('obtainedOn');
 		$table->date('expiryDate');
-		$table->string('status')->default(0);
-		$table->integer('createdBy')->nullable();
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
 		$table->date('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
 		$table->date('modifiedOn')->nullable();
-
         });
     }
 

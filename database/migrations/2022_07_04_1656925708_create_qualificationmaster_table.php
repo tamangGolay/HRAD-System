@@ -10,14 +10,14 @@ class CreateQualificationmasterTable extends Migration
     {
         Schema::create('qualificationmaster', function (Blueprint $table) {
         $table->id();        
-		$table->string('qualificationName');        
+		$table->string('qualificationName',100);        
         $table->foreignId('qualificationLevelId')->references('id')->on('qualilevelmaster');
         $table->foreignId('qualificationField')->references('id')->on('fieldmaster');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-        $table->timestamp('modifiedOn')->nullable(); 	
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
         
         });
     }

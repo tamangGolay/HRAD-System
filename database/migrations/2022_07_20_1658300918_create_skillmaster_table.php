@@ -14,11 +14,11 @@ class CreateSkillmasterTable extends Migration
         $table->id();
 		$table->string('skillName');
 		$table->foreignId('subCatId')->references('id')->on('skillsubcategory');  // fk md master skill sub category 
-		$table->integer('status')->default(0);
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
         
         });
     }

@@ -12,17 +12,17 @@ class CreatefamilydetailsmasterTable extends Migration
 
         $table->id();
 		$table->foreignId('personalNo')->references('id')->on('users');  //fk md employee master
-        $table->string('relativeName');
+        $table->string('relativeName',50);
         $table->bigInteger('cidNo');
-		$table->string('cidOther')->nullable();
+		$table->string('cidOther',30)->nullable();
         $table->date('dob');
-        $table->string('gender');
+        $table->string('gender',10);
         $table->foreignId('relation')->references('id')->on('relationmaster');  //fk to md relation master
-        $table->integer('status')->default(0);
-		$table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();
 		
         });
     }

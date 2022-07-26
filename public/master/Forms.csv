@@ -13,6 +13,7 @@ family_details,Family details,Admin,yes,fa-list-ol
 gewogmaster,Gewog Master,Admin,yes,fa-clipboard-list
 increment_history,Increment history,Admin,yes,fa-list-ol
 leavetypemaster,Leave Type Master,Admin,yes,fa-clipboard-list
+notesheet,Note Sheet,Admin,yes,fa-clipboard-list
 officemaster,Office Master,Admin,yes,fa-clipboard-list
 officename,Office Name,Admin,yes,fa-clipboard-list
 office_reporting,Office reporting,Admin,yes,fa-list-ol

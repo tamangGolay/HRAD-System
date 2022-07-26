@@ -4520,6 +4520,17 @@ if ($request->v == "employeeskillmap")  //form.csv
 }  //end
 
     
+ // Notesheet
+ if ($request->v == "notesheet")  //form.csv
+ {    
+
+  $rhtml = view('Notesheet.notesheetRequest')->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
 
  }
 }

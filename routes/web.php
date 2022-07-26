@@ -544,3 +544,6 @@ Route::resource('refundReport', 'RefundReportController');//refund report
 
 //welfare payment report
 Route::resource('paymentreport', 'PaymentReportController');
+
+//welfare refund
+Route::post('Request_notesheet','NotesheetController@Request_notesheet')->name('Request_notesheet');

@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
 		$table->bigInteger('cidNo');
 		$table->string('cidOther')->nullable();
 		$table->string('dob');
-		$table->string('gender');
+		$table->enum('gender', ['Male', 'Female', 'Other'])->default('Male');
 		$table->string('appointmentDate')->nullable();
         // $table->foreignId('gradeId')->references('id')->on('grademaster')->nullable();
 		$table->string('gradeId');

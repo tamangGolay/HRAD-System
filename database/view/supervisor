@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2022 at 12:03 PM
+-- Generation Time: Jul 26, 2022 at 05:52 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `latest`
+-- Database: `hradsystem`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Structure for view `employeesupervisor`
 --
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `employeesupervisor`  AS SELECT `users`.`empId` AS `employee`, `officemaster`.`officeHead` AS `supervisor` FROM (`users` join `officemaster`) WHERE `users`.`office` = `officemaster`.`id` AND `users`.`empId` <> `officemaster`.`officeHead` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `employeesupervisor`  AS SELECT `a`.`empId` AS `employee`, `a`.`empName` AS `empName`, `officemaster`.`officeHead` AS `supervisor`, `b`.`empName` AS `superName`, `b`.`emailId` AS `emailId` FROM ((`users` `a` join `users` `b`) join `officemaster`) WHERE `a`.`office` = `officemaster`.`id` AND `a`.`empId` <> `officemaster`.`officeHead` AND `b`.`empId` = `officemaster`.`officeHead` ;
 
 --
 -- VIEW `employeesupervisor`

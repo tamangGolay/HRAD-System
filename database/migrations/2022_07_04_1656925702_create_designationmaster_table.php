@@ -13,14 +13,11 @@ class CreateDesignationmasterTable extends Migration
 		$table->id();
 		$table->string('desisNameShort');
 		$table->string('desisNameLong');
-        $table->string('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
-        
-
-		
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();   
+        $table->tinyInteger('status')->unsigned()->default(0);  	
 
         });
     }

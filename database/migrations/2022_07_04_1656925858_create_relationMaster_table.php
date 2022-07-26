@@ -11,13 +11,13 @@ class CreaterelationmasterTable extends Migration
         Schema::create('relationmaster', function (Blueprint $table) {
 
         $table->id();
-		$table->string('relationshipName');
-        $table->string('verification');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-        $table->timestamp('modifiedOn')->nullable();
+		$table->string('relationshipName',100);
+        $table->string('verification',255);
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
         });
     }
 

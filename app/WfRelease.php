@@ -9,7 +9,8 @@ class WfRelease extends Model
     //
     protected $table = 'wfrelease';
 
-    protected $fillable = [ 'id','empId','releaseDate','amount','reason','status'];
+    protected $fillable = [ 'id','empId','releaseDate','amount','deathOf','reason','status'];
     public $timestamps = false;
 
 }
+

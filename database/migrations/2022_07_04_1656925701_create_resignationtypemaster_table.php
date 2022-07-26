@@ -11,12 +11,12 @@ class CreateResignationtypemasterTable extends Migration
         Schema::create('resignationtypemaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('resignationType');
-        $table->string('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->integer('modifiedBy')->nullable();
-		$table->integer('modifiedOn')->nullable();
+		$table->string('resignationType',100);
+        $table->tinyInteger('status')->unsigned()->default(0);
+        $table->integer('createdBy')->unsigned()->nullable();
+        $table->date('createdOn')->nullable();
+        $table->integer('modifiedBy')->unsigned()->nullable();
+        $table->date('modifiedOn')->nullable();	
      
         });
     }

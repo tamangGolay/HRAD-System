@@ -11,17 +11,17 @@ class CreatePostmasterTable extends Migration
         Schema::create('postmaster', function (Blueprint $table) {
 
 		$table->id();
-		$table->string('shortName');
+		$table->string('shortName',10);
 		$table->string('longName');
 		$table->integer('positionSpecificAllowance');
 		$table->integer('contractAllowance');
 		$table->integer('communicationAllowance');
-		$table->string('type');
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable(); 
-		$table->integer('modifiedBy')->nullable(); 
-		$table->integer('modifiedOn')->nullable(); 
+		$table->string('type',100);
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();   
+        $table->tinyInteger('status')->unsigned()->default(0);
 
         });
     }

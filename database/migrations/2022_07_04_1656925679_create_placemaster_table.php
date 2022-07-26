@@ -16,12 +16,12 @@ class CreatePlacemasterTable extends Migration
         $table->foreignId('dzongkhagId')->references('id')->on('dzongkhags');
         $table->foreignId('drungkhagId')->references('id')->on('drungkhagmaster');
         $table->foreignId('gewogId')->references('id')->on('gewogmaster');
-        $table->string('placeCategory');
-        $table->timestamp('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable();
-		$table->timestamp('modifiedBy')->nullable();
-		$table->timestamp('modifiedOn')->nullable();
-        $table->integer('status')->default(0);
+        $table->string('placeCategory',100);
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();   
+        $table->tinyInteger('status')->unsigned()->default(0);
 
 
 

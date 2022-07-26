@@ -91,7 +91,7 @@ class ImportMaster extends Command
     public function handle()
     {
         //
-        $this->importgrade('grade',new GradeMaster);  //csv,model name
+       // $this->importgrade('grade',new GradeMaster);  //csv,model name
         $this->importDzongkhags('dzongkhags',new Dzongkhags);
         $this->importDrungkhags('drungkhagmaster',new drungkhag);
         $this->importTown('townmaster',new town);

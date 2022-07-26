@@ -9,16 +9,16 @@ class CreatepayscalemasterTable extends Migration
     public function up()
     {
         Schema::create('payscalemaster', function (Blueprint $table) {
-            $table->id();
-		$table->string('grade');  
+        $table->id();
+		$table->string('grade',3);  
 		$table->integer('low'); 
 		$table->integer('increment');    
         $table->integer('high'); 
-        $table->integer('status')->default(0);
-        $table->integer('createdBy')->nullable();
-		$table->timestamp('createdOn')->nullable(); 
-		$table->integer('modifiedBy')->nullable(); 
-		$table->integer('modifiedOn')->nullable(); 
+        $table->integer('createdBy')->unsigned()->nullable();
+		$table->date('createdOn')->nullable();
+		$table->integer('modifiedBy')->unsigned()->nullable();
+		$table->date('modifiedOn')->nullable();   
+        $table->tinyInteger('status')->unsigned()->default(0);
         
 
         });

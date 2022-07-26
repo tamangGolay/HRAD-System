@@ -547,3 +547,9 @@ Route::resource('paymentreport', 'PaymentReportController');
 
 //welfare refund
 Route::post('Request_notesheet','NotesheetController@Request_notesheet')->name('Request_notesheet');
+
+//notesheet route to view
+Route::get('/selfghCancelBooking','NotesheetController@selfghCancelBooking');// 
+
+//notesheet route to CANCEL
+Route::post('/cancelNotesheet','NotesheetController@cancelNotesheet')->name('cancelNotesheet');

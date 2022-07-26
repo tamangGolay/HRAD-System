@@ -41,5 +41,48 @@ class NotesheetController extends Controller
     //      }
 
     }
+
+
+    public function selfghCancelBooking()
+{
+
+ $selfghCancelBooking= DB::table('notesheet')  
+->where( 'createdBy',Auth::user()->empId)
+//  ->where('status', '=', 'Processing')
+
+ ->select('*')
+                                    
+ ->latest('notesheet.noteId') //similar to orderby('roombed.id','desc')            
+  ->paginate(100000000);
+
+$rhtml = view('Notesheet.notesheetCancel')->with(['selfghCancelBooking' => $selfghCancelBooking])->render();
+return response()
+  ->json(array(
+  'success' => true,
+  'html' => $rhtml
+));
+}
+
+public function cancelNotesheet(Request $request)
+{
+
+    $id = DB::table('notesheet')->select('noteId')
+    ->where('noteId',$request->noteId)
+    ->first();
+ 
+
+    $conference1 = DB::table('notesheet')->where('noteId', $request->noteId);
+
+    // $request->status = 'Approved';
+    //     $request->update();   
+    $status = $request->status;
+    DB::update('update notesheet set status = "Approved" where noteId = ?', [$status, $id->noteId]);       
+
+        return redirect('home')->with('error','You have cancelled the Notesheet');
+
+}
+
+
+
 }
 

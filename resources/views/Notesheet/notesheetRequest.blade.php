@@ -47,31 +47,32 @@
 					</div>
 
                     
-					<div class="form-group row">
+					<!-- <div class="form-group row">
 						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Status:</label>
 						<div class="col-md-8">
 						<input type="number" class="form-control" name="status" autocomplete="off" id="status" readonly required> 
 						</div>
-					</div>							
+					</div>							 -->
 					
 
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
-							<button type="submit"  id="notes" class="btn btn-outline-success btn-lg">Submit</button>
-						</div>
-					
+							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
+						</div> 
+</form>
+    </div>
 
                     <!-- <div class="form-group row mb-0"> -->
-						<div class="col text-left col-form-label col-md-left col-sm-4 col-md-6 col-lg-6 ">
-							<button  id="notescancel" class="btn btn-outline-warning btn-lg">Cancel</button>
+						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
+							<button  id="notescancel" class="btn btn-info btn-lg" onclick="notesheetCancel();" style="color:black;">View Notesheet</button>
 						</div>
 					</div>
                 
-				</form>
+				
 				
 			</div>
 		</div> </div>
-		</div> </div>	
+		
 
 		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -190,4 +191,15 @@ function checkEmployee(val) {
 
     }
   }
+  
+function notesheetCancel()
+{
+ $.get('selfghCancelBooking',function(data){ 
+    $('#contentpage').empty();                  
+    $('#contentpage').append(data.html);
+ });
+
+}
+  
+
 		</script>

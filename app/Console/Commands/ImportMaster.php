@@ -79,48 +79,48 @@ class ImportMaster extends Command
     {
         //
        
-        $this->importDzongkhags('dzongkhags',new Dzongkhags);  //csv n  model
-        $this->importDrungkhags('drungkhagmaster',new drungkhag);
-        $this->importTown('townmaster',new town);
-        $this->importGewog('gewogmaster',new gewog);
-        $this->importVillage('villagemaster',new village);
-        $this->importPlace('placemaster',new place);
-        $this->importOrgUnit('OrgUnit',new OrgUnit);
-        $this->importRoles('roles',new Roles);
-        // $this->importUser('user',new User);
+        // $this->importDzongkhags('dzongkhags',new Dzongkhags);  //csv n  model
+        // $this->importDrungkhags('drungkhagmaster',new drungkhag);
+        // $this->importTown('townmaster',new town);
+        // $this->importGewog('gewogmaster',new gewog);
+        // $this->importVillage('villagemaster',new village);
+        // $this->importPlace('placemaster',new place);
+        // $this->importOrgUnit('OrgUnit',new OrgUnit);
+        // $this->importRoles('roles',new Roles);
+        // // $this->importUser('user',new User);
+        // // $this->importForms('forms',new Forms);
+        // // $this->importRoleForms('roleformaccess',new RoleFormMapping);        
+        // // $this->importUserRole('roleuser',new RoleUserMappings);
+        // $this->importuniform('uniformcount',new Uniform);
+        // $this->importQualiLevel('qualification',new QualificationLevel); 
+        // $this->importbank('bank',new bank);
+        
+        // $this->importdesignation('designation',new Designation);
+        // $this->importresignation('resignation',new Resignation);
+        // $this->importrelation('relationname',new Relationname);
+        // $this->importleavetype('leaveType',new Leavetype);
+        // $this->importofficename('officename',new officeName);// csv and model
+        // $this->importofficemaster('officeMaster',new Officem);
+        // $this->importUser('employeemaster',new EmployeeMaster);   // csv n modal name employee master
         // $this->importForms('forms',new Forms);
         // $this->importRoleForms('roleformaccess',new RoleFormMapping);        
-        // $this->importUserRole('roleuser',new RoleUserMappings);
-        $this->importuniform('uniformcount',new Uniform);
-        $this->importQualiLevel('qualification',new QualificationLevel); 
-        $this->importbank('bank',new bank);
+        // $this->importUserRole('roleuser',new RoleUserMappings);   // csv n modal name employee master
         
-        $this->importdesignation('designation',new Designation);
-        $this->importresignation('resignation',new Resignation);
-        $this->importrelation('relationname',new Relationname);
-        $this->importleavetype('leaveType',new Leavetype);
-        $this->importofficename('officename',new officeName);// csv and model
-        $this->importofficemaster('officeMaster',new Officem);
-        $this->importUser('employeemaster',new EmployeeMaster);   // csv n modal name employee master
-        $this->importForms('forms',new Forms);
-        $this->importRoleForms('roleformaccess',new RoleFormMapping);        
-        $this->importUserRole('roleuser',new RoleUserMappings);   // csv n modal name employee master
-        
-        $this->importcontractdetails('contractdetails',new ContractDetailMaster);
-        $this->importfield('field',new Field);
-        $this->importqualificationmaster('qualificationmaster',new Qualification);        
-        $this->importpayscale('payscale',new pay);
-        $this->importpostmaster('postmaster',new PostMaster);
-        $this->importemployeequalification('employeequalification',new EmployeeQualification);
-        $this->importpant('Pant',new Pant);
-        $this->importshirt('Shirt',new Shirt);
-        $this->importjacket('jacket',new JacketSize);
-        $this->importshoesize('shoesize',new Shoesize);
-        $this->importraincoatsize('raincoatsize',new RainCoatSize);
-        $this->importskillcategory('skillcategory',new SkillCategory);
-        $this->importskillsubcategory('skillsubcategory',new SubSkillCategory);  //csv n model
-        $this->importskillmaster('skillmaster',new Skillmaster);
-        $this->importofficeAdmin('officeAdmin',new officeAdmin);
+        // $this->importcontractdetails('contractdetails',new ContractDetailMaster);
+        // $this->importfield('field',new Field);
+        // $this->importqualificationmaster('qualificationmaster',new Qualification);        
+        // $this->importpayscale('payscale',new pay);
+        // $this->importpostmaster('postmaster',new PostMaster);
+        // $this->importemployeequalification('employeequalification',new EmployeeQualification);
+        // $this->importpant('Pant',new Pant);
+        // $this->importshirt('Shirt',new Shirt);
+        // $this->importjacket('jacket',new JacketSize);
+        // $this->importshoesize('shoesize',new Shoesize);
+        // $this->importraincoatsize('raincoatsize',new RainCoatSize);
+        // $this->importskillcategory('skillcategory',new SkillCategory);
+        // $this->importskillsubcategory('skillsubcategory',new SubSkillCategory);  //csv n model
+        // $this->importskillmaster('skillmaster',new Skillmaster);
+        // $this->importofficeAdmin('officeAdmin',new officeAdmin);
             
 
      }

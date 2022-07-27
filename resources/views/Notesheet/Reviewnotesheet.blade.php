@@ -22,6 +22,8 @@ hr{
       <!--/card-header-->
       <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
@@ -35,7 +37,8 @@ hr{
 			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>  
         <!-- <tr>   <th>Remarks</th> <td><input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required> -->
  <!-- </td>  </tr>   -->
-      <tr>   <th>Remarks</th> <td><input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Topic" >
+
+      <tr>   <th>Remarks</th> <td><input type="text"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
      </td>  </tr> 
                            
 			  <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
@@ -45,28 +48,35 @@ hr{
         <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
            
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-        <input type="hidden" name="status" id="status" value="a">
-
-
-        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        <input type="hidden" name="status" id="status" value="Recommended">
+        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
         Recommend
-        </button>  </form>
+        </button> 
+
+     </form>
 
         <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+
         <input type="hidden" name="status" id="status" value="Approved">
-
-        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to Approve?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to Approve?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
         Approve
-        </button> </form>
+        </button> 
+
+      </form>
 
         <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-        <input type="hidden" name="status" id="status" value="c">
+        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to Reject?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        <input type="hidden" name="status" id="status" value="Rejected">
+        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
+        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to Reject?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
         Reject
         </button>
 
-      </form> </td> 	                 
+      </form>
+     </td> 	                 
               </tr>
               
 		

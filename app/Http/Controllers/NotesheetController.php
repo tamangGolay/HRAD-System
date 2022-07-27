@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\notesheetRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
+use App\notesheetapprove;
 use DB;
 use Auth;
 
@@ -60,10 +61,35 @@ public function cancelNotesheet(Request $request)
 
 public function recommendnotesheet(Request $request)
 {
+    $id = DB::table('notesheet')->select('noteId')
+    ->where('noteId',$request->noteId)
+    ->first()
+    ;
+    $remarks = implode(',', $request->remarks);
 
-    dd($request);
-    $id = DB::table('noteapproval')->select('noteId')
-     ->where('id',$request->noteId);
+    $users = new notesheetapprove;//users is ModelName
+        $users->noteId = $id->noteId;//emp_id is from input name
+        $users->modifier =  $request->empId;//EmpName is from dB
+        $users->remarks = $remarks;
+        $users->save();
+
+     
+
+
+    // notesheetapprove::updateOrCreate(['noteId' => $id->noteId],
+    //     ['remarks' => $remarks,'modifier' => $request->empId]);    
+        
+// DB::update('update noteapproval set remarks = ? where noteId = ?', [$request->, $request->noteId]);       
+
+// dd($request);
+  
+
+    // $remarks = DB::table('notesheet')->select('noteId')
+    //  ->where('noteId',$request->noteId)
+    //  ->first()
+    //  ;
+
+
 
     // ->first();
  //DB::update('update notesheet set remarks = ? where noteId = ?', [$request->status, $request->noteId]);       

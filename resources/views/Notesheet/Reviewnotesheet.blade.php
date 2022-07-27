@@ -20,7 +20,7 @@ hr{
 						<a href="#"></a>
 				</p> -->
       <!--/card-header-->
-      <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+      <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
@@ -30,7 +30,7 @@ hr{
 			@foreach($notesheetRequest as $rv)
 			
               <tr class="text-nowrap">
-                     <th>Note Id</th>          <td> {{($rv->noteId)}} </td>      </tr>
+                     <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
               <tr>   <th>office Id</th>        <td> {{($rv->officeId)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
@@ -49,38 +49,46 @@ hr{
            
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <input type="hidden" name="status" id="status" value="Recommended">
-        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        
+        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-3 " > 
         Recommend
         </button> 
 
      </form>
 
+     <br>  <br>
+
         <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
         <input type="hidden" name="status" id="status" value="Approved">
-        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to Approve?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+    
+        <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-3" > 
         <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
         Approve
         </button> 
 
+
       </form>
+      <br>
 
         <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
         <input type="hidden" name="status" id="status" value="Rejected">
         <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-        <button type="submit" name="noteId[]" id="noteId" onclick="return confirm('Do you want to Reject?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        
+        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-3 " > 
         Reject
         </button>
 
       </form>
+    
      </td> 	                 
-              </tr>
+      </tr>
               
 		
-            </thead>          
+      </thead>          
              
                 
       
@@ -94,7 +102,7 @@ hr{
       
       <div>
         <!--/card-body-->
-        </form>
+       
       </div>
       </div>
     </div>

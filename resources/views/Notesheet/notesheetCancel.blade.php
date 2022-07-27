@@ -28,7 +28,7 @@ hr{
 			@foreach($selfghCancelBooking as $rv)
 			
               <tr class="text-nowrap">
-              <th>Note Id</th>         <td> {{($rv->noteId)}} </td>    </tr>
+              <th>Note Id</th>         <td> {{($rv->id)}} </td>    </tr>
               <tr>  <th>Topic</th>     <td> {{$rv->topic}} </td>       </tr>
 			  <tr>   <th>Justification</th> <td> {{$rv->justification}} </td>  </tr>                                  
 			  <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr>
@@ -38,7 +38,7 @@ hr{
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <input type="hidden" name="status" id="status" value="Cancel">
 
-        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to cancel?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 
         Cancel
         </button>
 

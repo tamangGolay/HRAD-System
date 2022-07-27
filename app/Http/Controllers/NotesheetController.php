@@ -23,7 +23,12 @@ class NotesheetController extends Controller
             $Request_notesheet->topic = $request->topic;     //database name n user input name
             $Request_notesheet->justification = $request->justification;
 
-            $Request_notesheet->save();           
+            $Request_notesheet->save();  
+            
+            $reqnote = DB::table('notesheet')
+            ->select('*')
+            ->where('status','=','Processing')            
+            ->first();
 
             return redirect('home')
                 ->with('success', 'Notesheet submitted successfully');
@@ -38,7 +43,7 @@ class NotesheetController extends Controller
 
  ->select('*')
                                     
- ->latest('notesheet.noteId') //similar to orderby('roombed.id','desc')            
+ ->latest('notesheet.id') //similar to orderby('roombed.id','desc')            
   ->paginate(100000000);
 
 $rhtml = view('Notesheet.notesheetCancel')->with(['selfghCancelBooking' => $selfghCancelBooking])->render();
@@ -53,7 +58,7 @@ public function cancelNotesheet(Request $request)
 {
 
 
-    DB::update('update notesheet set status = ? where noteId = ?', [$request->status, $request->noteId]);       
+    DB::update('update notesheet set status = ? where id = ?', [$request->status, $request->id]);       
 
   return redirect('home')->with('error','You have cancelled the Notesheet');
 
@@ -61,20 +66,68 @@ public function cancelNotesheet(Request $request)
 
 public function recommendnotesheet(Request $request)
 {
-    $id = DB::table('notesheet')->select('noteId')
-    ->where('noteId',$request->noteId)
-    ->first()
-    ;
+    //dd($request->status);
+    if($request->status == "Recommended"){
+    $id = DB::table('notesheet')->select('id')
+    ->where('id',$request->id)
+    ->first(); 
+    
+
     $remarks = implode(',', $request->remarks);
+    // $GM="GM";
 
     $users = new notesheetapprove;//users is ModelName
-        $users->noteId = $id->noteId;//emp_id is from input name
+        $users->noteId = $id->id;//emp_id is from input name
         $users->modifier =  $request->empId;//EmpName is from dB
         $users->remarks = $remarks;
+        $users->modiType = $request->status;//emp_id is from input name
         $users->save();
 
-     
+    notesheetRequest::updateOrCreate(['id' => $id->id],
+    ['status' =>$request->status]);//emp_id is from input name
+    }
 
+    if($request->status == "Rejected"){
+        $id = DB::table('notesheet')->select('id')
+        ->where('id',$request->id)
+        ->first(); 
+        
+    
+        $remarks = implode(',', $request->remarks);
+        // $GM="GM";
+    
+        $users = new notesheetapprove;//users is ModelName
+            $users->noteId = $id->id;//emp_id is from input name
+            $users->modifier =  $request->empId;//EmpName is from dB
+            $users->remarks = $remarks;
+            $users->modiType = $request->status;//emp_id is from input name
+            $users->save();
+    
+        notesheetRequest::updateOrCreate(['id' => $id->id],
+        ['status' =>$request->status]);//emp_id is from input name
+        }
+
+
+        if($request->status == "Approved"){
+            $id = DB::table('notesheet')->select('id')
+            ->where('id',$request->id)
+            ->first(); 
+            
+        
+            $remarks = implode(',', $request->remarks);
+            // $GM="GM";
+        
+            $users = new notesheetapprove;//users is ModelName
+                $users->noteId = $id->id;//emp_id is from input name
+                $users->modifier =  $request->empId;//EmpName is from dB
+                $users->remarks = $remarks;
+                $users->modiType = $request->status;//emp_id is from input name
+                $users->save();
+        
+            notesheetRequest::updateOrCreate(['id' => $id->id],
+            ['status' =>$request->status]);//emp_id is from input name
+            }
+    
 
     // notesheetapprove::updateOrCreate(['noteId' => $id->noteId],
     //     ['remarks' => $remarks,'modifier' => $request->empId]);    
@@ -92,9 +145,10 @@ public function recommendnotesheet(Request $request)
 
 
     // ->first();
- //DB::update('update notesheet set remarks = ? where noteId = ?', [$request->status, $request->noteId]);       
+ //DB::update('update notesheet set remarks = ? where noteId = ?', [$request->status, $request->noteId]);     
+   
 
-  return redirect('home')->with('error','You have recommended and forwarded the Notesheet');
+  return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
 
 }
 

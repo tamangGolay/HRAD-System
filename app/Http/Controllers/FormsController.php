@@ -4547,8 +4547,9 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->select('notesheet.*','officedetails.shortOfficeName','officedetails.Address')
 
-               ->latest('notesheet.noteId') //similar to orderby('id','desc')
+               ->latest('notesheet.id') //similar to orderby('id','desc')
                ->where('notesheet.officeId',Auth::user()->office)
+               ->where('status','=','Processing')
             //    ->orWhere('orgunit.office',Auth::user()->office)
                ->paginate(10000000);
 

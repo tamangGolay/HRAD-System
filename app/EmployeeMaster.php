@@ -30,7 +30,10 @@ class EmployeeMaster extends Authenticatable
 
 
 protected $fillable = [ 
-    'id','empName','empId','bloodGroup','cidNo','cidOther','dob','gender','appointmentDate','gradeId','designationId','office','basicPay','empStatus','lastDop','mobileNo','emailId','placeId','resignationTypeId','resignationDate','employmentType','incrementType','password',
+    'id','empName','empId','bloodGroup','cidNo','cidOther','dob','gender','appointmentDate','gradeId','designationId',
+    'office','basicPay','empStatus','lastDop','fixedNo','extension',
+    'mobileNo','emailId','placeId','resignationTypeId','resignationDate','employmentType','incrementType','password',
+
     'status','first_time_login','role_id'];
 
      /**

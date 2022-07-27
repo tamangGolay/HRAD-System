@@ -138,20 +138,20 @@
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                  <input type="text" name="name" class="form-control" id="nameid" placeholder="Name"  required>
+                  <input type="text" name="name" class="form-control" id="nameid" placeholder="Name" readonly required>
                 </div>
             </div> 
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="dob">&nbsp;&nbsp;&nbsp;DoB:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="dob" id="dob" placeholder="Date of birth" autocomplete="off"  required>                  
+                <input type="text" class="form-control" name="dob" id="dob" placeholder="Date of birth" autocomplete="off" readonly  required>                  
                 </div>
             </div>
           
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="cid">&nbsp;&nbsp;&nbsp;CID:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="cid" id="cid" placeholder="Cid no." autocomplete="off"  required>                  
+                <input type="text" class="form-control" name="cid" id="cid" placeholder="Cid no." autocomplete="off" readonly required>                  
                 </div>
             </div>
 
@@ -184,6 +184,21 @@
             </div>
 
 
+            <div class="form-group row"> 
+              <label class="col-md-4 col-form-label text-md-right" for="fixed">&nbsp;&nbsp;&nbsp;Fixed number:</label>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                <input type="text" class="form-control" name="fixed" id="fixed" placeholder="Fixed Number"  required>                  
+                </div>
+            </div>
+
+            
+            <div class="form-group row"> 
+              <label class="col-md-4 col-form-label text-md-right" for="extension">&nbsp;&nbsp;&nbsp;Extension:</label>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                <input type="text" class="form-control" name="extension" id="extension" placeholder="Extension Number"  required>                  
+                </div>
+            </div>
+
       
 
                 
@@ -199,7 +214,7 @@
                     <div class="form-group row">
 					<label class="col-md-4 col-form-label text-md-right" for="office">&nbsp;&nbsp;&nbsp;Place:</label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
-						<select name="office" id="office" value="" class="form-control" required>
+						<select name="office" id="office" value="" class="form-control" readonly required>
 												<option value="">Select Office address</option>
 												@foreach($officeaddress as $officeaddress)
 
@@ -412,6 +427,8 @@ function getEmployeeDetails(val)
                   
                     document.getElementById('nameid').value = '';                      
                     document.getElementById('contact_number').value = '';
+                    document.getElementById('fixed').value = '';
+                    document.getElementById('extension').value = '';
                     document.getElementById('division').value =  '';
                                 
                     document.getElementById('dob').value = '';                      
@@ -446,6 +463,8 @@ function getEmployeeDetails(val)
                            
                             document.getElementById('nameid').value = Employee.empName;                      
                                 document.getElementById('contact_number').value = Employee.mobileNo;
+                                document.getElementById('fixed').value = Employee.fixedNo;
+                                document.getElementById('extension').value = Employee.extension;
                                 document.getElementById('division').value =  Employee.shortOfficeName;
                                            
                                 document.getElementById('emp_id').innerHTML= Employee.empId;                    

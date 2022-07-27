@@ -51,6 +51,7 @@ use App\Qualificationview;
 use App\SkillCategory;
 use App\SubSkillCategory;
 use App\Skillmaster;
+use App\notesheetRequest;
 
 class FormsController extends Controller
 {
@@ -582,8 +583,7 @@ return response()
                ->join('officedetails', 'officedetails.id', '=', 'users.office')
 
             //    ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-               ->select('users.*','roles.name','officedetails.shortOfficeName'
-               ,'officedetails.Address'
+            ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.Address'
                )
 
                ->latest('users.id') //similar to orderby('id','desc')
@@ -4526,6 +4526,36 @@ if ($request->v == "employeeskillmap")  //form.csv
 
   $rhtml = view('Notesheet.notesheetRequest')->render(); 
   return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+ if ($request->v == "notesheetReview")  //form.csv
+ {    
+    // $roles = Roles::all();
+    $notesheetRequest = notesheetRequest::all();
+    $officedetails = Officedetails::all();
+
+    $orgunit = orgunit::all();
+    
+    $notesheetRequest = DB::table('notesheet')
+
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
+    // ->join('roles', 'users.role_id', '=', 'roles.id');
+
+    ->select('notesheet.*','officedetails.shortOfficeName','officedetails.Address')
+
+               ->latest('notesheet.noteId') //similar to orderby('id','desc')
+               ->where('notesheet.officeId',Auth::user()->office)
+            //    ->orWhere('orgunit.office',Auth::user()->office)
+               ->paginate(10000000);
+
+
+  $rhtml = view('Notesheet.Reviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'officedetails' => $officedetails])->render(); 
+  return response()
+  
      ->json(array(
       'success' => true,
       'html' => $rhtml

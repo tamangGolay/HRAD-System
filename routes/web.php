@@ -553,3 +553,7 @@ Route::get('/selfghCancelBooking','NotesheetController@selfghCancelBooking');//
 
 //notesheet route to CANCEL
 Route::post('/cancelNotesheet','NotesheetController@cancelNotesheet')->name('cancelNotesheet');
+
+Route::post('/recommendnotesheet','NotesheetController@recommendnotesheet')->name('recommendnotesheet');
+Route::post('/approvenotesheet','NotesheetController@approvenotesheet')->name('approvenotesheet');
+Route::post('/rejectnotesheet','NotesheetController@rejectnotesheet')->name('rejectnotesheet');

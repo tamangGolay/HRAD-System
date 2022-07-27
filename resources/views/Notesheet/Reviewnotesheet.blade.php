@@ -20,35 +20,57 @@ hr{
 						<a href="#"></a>
 				</p> -->
       <!--/card-header-->
-      <form method="POST" action="/" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+      <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-			@foreach($selfghCancelBooking as $rv)
+			@foreach($notesheetRequest as $rv)
 			
               <tr class="text-nowrap">
-              <th>Note Id</th>         <td> {{($rv->noteId)}} </td>    </tr>
-              <tr>  <th>Topic</th>     <td> {{$rv->topic}} </td>       </tr>
-			  <tr>   <th>Justification</th> <td> {{$rv->justification}} </td>  </tr>                                  
-			  <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr>
-			  <tr> <th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
-           <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-        
-        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-        <input type="hidden" name="status" id="status" value="Cancel">
+                     <th>Note Id</th>          <td> {{($rv->noteId)}} </td>      </tr>
+              <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
+              <tr>   <th>office Id</th>        <td> {{($rv->officeId)}} </td>    </tr>
+              <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
+			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>  
+        <!-- <tr>   <th>Remarks</th> <td><input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required> -->
+ <!-- </td>  </tr>   -->
+      <tr>   <th>Remarks</th> <td><input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Topic" >
+     </td>  </tr> 
+                           
+			  <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 
-        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to cancel?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
-        Cancel
+			  <tr><th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
+           
+        <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
+           
+        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+        <input type="hidden" name="status" id="status" value="a">
+
+
+        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        Recommend
+        </button>  </form>
+
+        <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+        <input type="hidden" name="status" id="status" value="Approved">
+
+        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to Approve?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        Approve
+        </button> </form>
+
+        <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+        <input type="hidden" name="status" id="status" value="c">
+
+        <button type="submit" name="noteId" id="noteId" onclick="return confirm('Do you want to Reject?');" value="{{$rv->noteId}}" class="btn btn-outline-danger text-dark" > 
+        Reject
         </button>
 
-		
-		
       </form> </td> 	                 
               </tr>
+              
 		
-            </thead>
-            
+            </thead>          
              
                 
       
@@ -56,11 +78,10 @@ hr{
 	  
 
         </tbody>
-      </table>
-	  
+      </table>	  
 
 
-      <div class="float-right"> {{$selfghCancelBooking->links()}} </div>
+      
       <div>
         <!--/card-body-->
         </form>
@@ -70,25 +91,7 @@ hr{
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     
 
-<!-- <script type="text/javascript">
-$(document).ready(function() {
 
-  
-  document.getElementById('linkid').innerHTML = '<button class="btn btn-outline-success  col-lg-2 col-sm-10  float-sm-right" onclick="bookGHouse();">Guest House Booking</button>';
-});
-
-function bookGHouse()
-{
-
-  $.get('getView?v=GuestHouseBooking',function(data){
-    $('#contentpage').empty();                  
-    $('#contentpage').append(data.html);
- })
-
-}
-
-</script> -->
-<!-- jquery-validation -->
 <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
     <!-- DataTables -->

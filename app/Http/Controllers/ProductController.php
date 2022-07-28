@@ -36,7 +36,12 @@ class ProductController extends Controller
 
 
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
-    $notesheet = notesheetRequest::find($id);
+    // $notesheet = notesheetRequest::find($id);
+    $notesheet = DB::table('notesheet')
+    ->join('officename','notesheet.officeId','=','officename.id')
+       ->select('notesheet.*','officename.longOfficeName')	
+        ->where('id',$id)
+        ->first();
         // view()->share ('products', $products);
         $pdf = PDF ::loadView ('Notesheet.index', array('notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
         return $pdf->download ('notesheet.pdf');

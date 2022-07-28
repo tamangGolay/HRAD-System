@@ -562,3 +562,7 @@ Route::post('/recommendnotesheet','NotesheetController@recommendnotesheet')->nam
 Route::post('/approvenotesheet','NotesheetController@approvenotesheet')->name('approvenotesheet');
 Route::post('/rejectnotesheet','NotesheetController@rejectnotesheet')->name('rejectnotesheet');
 Route::get('pdf-create','PdfController@create');
+
+Route::resource('notesheet', NotesheetController::class);
+
+Route::post('/supervisorApproval/{id}','NotesheetController@supervisorApproval')->name('supervisorApproval');// 

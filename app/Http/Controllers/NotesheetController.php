@@ -12,6 +12,19 @@ use Auth;
 class NotesheetController extends Controller
 {
 
+    public function supervisorApproval($id)
+    {
+
+    
+        $notesheetRemarks = notesheetapprove::all()
+        ->where('noteId',$id);
+ 
+   
+      
+        return view('Notesheet.approve',compact('notesheetRemarks'));
+    }
+
+
     public function Request_notesheet(Request $request)
     {
         

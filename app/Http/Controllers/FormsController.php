@@ -52,6 +52,7 @@ use App\SkillCategory;
 use App\SubSkillCategory;
 use App\Skillmaster;
 use App\notesheetRequest;
+use App\notesheetapprove;
 
 class FormsController extends Controller
 {
@@ -4571,6 +4572,31 @@ if ($request->v == "employeeskillmap")  //form.csv
       'html' => $rhtml
        ));
  }  //end
+ if ($request->v == "GMReview")  //form.csv
+ { 
+    
+ $notesheetRemarks = notesheetapprove::all();
+ 
+    $notesheetRequest = DB::table('notesheet')
+
+
+  ->select('*')
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    ->where('status','=','Processing')
+//    ->orWhere('orgunit.office',Auth::user()->office)
+    ->paginate(10000000);
+  
+    $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
+
 
  }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\notesheetRequest;
 use App\notesheetapprove;
+use DB;
 
 use PDF;
 // use Barryvdh\DomPDF\Facade\Pdf;
@@ -36,14 +37,17 @@ class ProductController extends Controller
 
 
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
-    // $notesheet = notesheetRequest::find($id);
-    $notesheet = DB::table('notesheet')
-    ->join('officename','notesheet.officeId','=','officename.id')
-       ->select('notesheet.*','officename.longOfficeName')	
-        ->where('id',$id)
+    $notesheet = notesheetRequest::find($id);
+    $date = DB::table('notesheet')
+    ->join('officedetails','officedetails.id','=','notesheet.officeId')
+       ->select('*')	
+        ->where('notesheet.id',$id)
         ->first();
+
+        dd($date);
+
         // view()->share ('products', $products);
-        $pdf = PDF ::loadView ('Notesheet.index', array('notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
+        $pdf = PDF ::loadView ('Notesheet.index', array('date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
         return $pdf->download ('notesheet.pdf');
     }
 }

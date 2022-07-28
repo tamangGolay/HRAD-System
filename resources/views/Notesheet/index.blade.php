@@ -82,7 +82,7 @@ div.table2 {
                       </tr>
                       <tr>
                         <th scope = "col" class="col1"> Office </th>
-                        <td class="col1"> {{$notesheet-> longOfficeName}} </td>
+                        <td class="col1"> {{$date-> longOfficeName}} </td>
 
                       </tr>
                     </thead>

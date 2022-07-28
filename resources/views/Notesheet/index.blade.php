@@ -37,7 +37,7 @@ div.notesheet {
     <div class = "container mt-4">
         <div class = "row">
 
-        <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
+        <img src="{{asset('/cd/images/header.jpg')}}" width="100" height="100px">
         <br>
         
 <!-- src="{{asset('/admin-lte/plugins/select2/js/select2.full.min.js')}}" -->

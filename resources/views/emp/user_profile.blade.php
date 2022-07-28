@@ -474,7 +474,7 @@ function getEmployeeDetails(val)
                     document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
                     document.getElementById('designation').value =  Employee.desisNameLong; 
                   
-                    document.getElementById('gradeId').value = Employee.gradeId; 
+                    document.getElementById('gradeId').value = Employee.grade; 
                     // document.getElementById('grade').value = Employee.grade; 
                     document.getElementById('empstatus').value = Employee.empStatus;    
    

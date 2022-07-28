@@ -49,7 +49,9 @@ div.table2 {
     <div class = "container mt-4">
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
-        <br>
+        <br><br><br>
+
+
         
             <div class = "col-md-8">
             <div class="notesheet">{{$notesheet->createdOn}}</div>

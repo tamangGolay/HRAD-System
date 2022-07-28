@@ -557,3 +557,4 @@ Route::post('/cancelNotesheet','NotesheetController@cancelNotesheet')->name('can
 Route::post('/recommendnotesheet','NotesheetController@recommendnotesheet')->name('recommendnotesheet');
 Route::post('/approvenotesheet','NotesheetController@approvenotesheet')->name('approvenotesheet');
 Route::post('/rejectnotesheet','NotesheetController@rejectnotesheet')->name('rejectnotesheet');
+Route::get('pdf-create','PdfController@create');

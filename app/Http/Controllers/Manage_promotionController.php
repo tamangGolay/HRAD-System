@@ -20,11 +20,9 @@ class Manage_promotionController extends Controller
         $promotion = DB::table('promotionhistorymaster')      
 
         ->join('users', 'users.id', '=', 'promotionhistorymaster.personalNo')
-        ->join('grademaster', 'grademaster.id', '=', 'promotionhistorymaster.gradeFrom')
-        // >join('grademaster as g', 'g.id', '=', 'promotionhistorymaster.gradeTo')
      ->select('promotionhistorymaster.id','promotionhistorymaster.promotionDate',
      'promotionhistorymaster.gradeFrom','promotionhistorymaster.gradeTo',
-     'promotionhistorymaster.nextDue', 'promotionhistorymaster.remarks','users.empId','grademaster.grade')
+     'promotionhistorymaster.nextDue', 'promotionhistorymaster.remarks','users.empId')
    ->where('promotionhistorymaster.status','0');
         
         if ($request->ajax()) {

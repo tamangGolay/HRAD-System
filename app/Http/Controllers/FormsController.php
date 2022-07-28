@@ -4170,16 +4170,14 @@ if ($request->v == "office_reporting")
     ));
 }
 
-//promotion history
-
 if ($request->v == "promotion_history")
 {
     // $promotion = EmployeeMaster::all();
     $promotion = User::all();
-    $grade= grademaster::all();
-    $gradeto= grademaster::all();
+    // $grade= grademaster::all();
+    // $gradeto= grademaster::all();
 
-    $rhtml = view('emp.promotion_history')->with(['promotion' => $promotion , 'grade' => $grade , 'gradeto' => $gradeto])->render();
+    $rhtml = view('emp.promotion_history')->with(['promotion' => $promotion  ])->render();
     return response()
         ->json(array(
         'success' => true,

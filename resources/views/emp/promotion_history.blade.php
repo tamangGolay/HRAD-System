@@ -80,30 +80,9 @@ a {
                         </div>
                     </div>           
 
-                    <div class="form-group">
-                        <label class="col-lg-12 col-sm-12 control-label">Grade</label>
-                        <div class="col-lg-12 col-sm-12">
-                                    <select class="col-sm-12 col-lg-12 col-sm-12 form-control" name="from" id="from" value="" required>
-                                             <option value="">Select Grade From.</option>
-                                             @foreach($grade as $grade)
-                                             <option value="{{$grade->id}}">{{$grade->grade}}</option>
-										@endforeach
-							        </select>
-                        </div>
-                    </div>
+                 
                     
-                    <div class="form-group">
-                    <label class="col-lg-12 col-sm-12 control-label">Grade To</label>
-                        <div class="col-lg-12 col-sm-12">
-                    <select class="col-lg-12 col-sm-12 form-control" name="to" id="to" value="" required>
-                                             <option value="">Select GradeTo.</option>
-                                             @foreach($gradeto as $gradeto)
-                    
-                                             <option value="{{$gradeto->id}}">{{$gradeto->grade}}</option>
-										@endforeach
-							</select>
-                        </div>
-                    </div>
+                  
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Next Due</label>
                         <div class="col-lg-12 col-sm-12">

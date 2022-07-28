@@ -107,7 +107,10 @@ class MasterDataController extends Controller
         $users->resignationDate = $request->resignationDate;
         $users->employmentType = $request->employmentType;
         $users->incrementCycle = $request->incrementCycle;
-               
+        $users->extension = $request->extension;
+        $users->fixedno = $request->fixedno;
+        $users->createdBy = Auth::id();
+
         // $user->password =  Hash::make($request->password);      
         // $user->org_unit_id = $request->orgunit;
         // $user->role_id = $request->role;
@@ -129,7 +132,6 @@ class MasterDataController extends Controller
        DB::transaction(function() use ($users,$roleuser)
        {
         $users->save();
-
         $roleuser->user_id = $users->id;
         $roleuser->save();
 

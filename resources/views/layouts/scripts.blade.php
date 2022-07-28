@@ -30,6 +30,7 @@ rap.bundle.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('/admin-lte/datatables/buttons.pdfmake.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
 <script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
@@ -46,7 +47,7 @@ $(function() {
 		"autoWidth": true,
 		"paging": true,
 		buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5'
-			// 'pdfHtml5'
+			'pdfHtml5'
 		]
 	});
 });

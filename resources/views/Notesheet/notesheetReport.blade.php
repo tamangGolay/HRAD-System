@@ -53,7 +53,7 @@
                             <td class="col1"> {{$notesheet->id}} </td>
                            <td class="col1"> {{$notesheet-> justification}} </td>
                             <td class="col1"> {{$notesheet-> office}} </td>
-                            <td class="col2"><a href="notesheetReport/{{$notesheet->id}}" class="btn btn-success">Download</a> </td>
+                            <td class="col2"><a href="http://127.0.0.1:8000/home/{{$notesheet->id}}" class="btn btn-success">Download</a> </td>
 
 
 

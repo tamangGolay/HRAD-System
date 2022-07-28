@@ -28,8 +28,14 @@
 <body>
     <div class = "container mt-4">
         <div class = "row">
+
+        <img src="{{asset('/cd/images/header.jpg')}}">
+        
+<!-- src="{{asset('/admin-lte/plugins/select2/js/select2.full.min.js')}}" -->
             <div class = "col-md-8">
                 <h2> NoteSheet </h2>
+
+
             </div>
 
             <div class = "row">

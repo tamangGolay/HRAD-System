@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14/03/2019, 12:44:40 PM
+    Author     : rinch
+*/
+*{
+  box-sizing: border-box;
+}
+
+.main{
+    max-width: 90%;
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#myInput {
+  background-image: url('../images/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 90%;
+  font-size: 20px;
+  padding: 12px 20px 12px 60px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-bottom: 50px;
+  margin-top: 60px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 4px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.input{
+    font-size: 16px;
+}
+
+.footer {
+   position: fixed;
+   left: 5%;
+   bottom: 0;
+   width: 90%;
+   background-color: green;
+   color: white;
+   text-align: center;
+   font-size: 16px;
+}
+
+.page-header {
+   position: fixed;
+   left: 5%;
+   top: 0;
+   width: 90%;
+   height: 60px;
+   background-color: green;
+   color: white;
+   text-align: center;
+   vertical-align: middle;
+   font-size: 35px;
+   font-weight: bold;
+}
+
+#searchlink{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    top: 50px;
+    font-size: 16px;
+}
+
+.tablehead{
+    background-color: #f1f1f1;
+    position: fixed;
+    top: 100px;
+    width: 90%;
+    font-size: 14px;
+}
+
+.tablebody{
+    width: 90%;
+    font-size: 14px;
+}
+
+#todayDate{
+	text-align: right;
+	margin-right: 100px;
+}
+
+#center{
+	text-align: center;
+}
+
+.bodytext{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+}
+
+#note{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+	width: 70%;
+}
+
+.images{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+#print{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 20%;
+}

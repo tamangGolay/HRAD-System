@@ -1,0 +1,12 @@
+{
+    "font awesome 5 brands": {
+        "normal": "font_awesome_5_brands_normal_5205f70765f78c1dbcc2129c275c2e96"
+    },
+    "font awesome 5 free": {
+        "normal": "C:\\xampp\\htdocs\\hrad\\storage\\fonts\/font_awesome_5_free_normal_9c293a201623f7bc2c333e0a72f05693",
+        "900": "font_awesome_5_free_900_db32d325f92b991565f1300202276bb0"
+    },
+    "summernote": {
+        "normal": "summernote_normal_8ab97cd78da2bd6a16d9b7a4ae1af6b0"
+    }
+}

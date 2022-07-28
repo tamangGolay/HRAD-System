@@ -28,7 +28,8 @@
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					
+					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
+
 									
 
 				<div class=" textfont form-group row"> 
@@ -84,6 +85,11 @@
 		
 		
 		
+		<script>
+    var today = new Date();
+	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	document.getElementById("notesheetDate").value = date;
+</script>
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">

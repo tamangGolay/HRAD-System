@@ -9,7 +9,7 @@ class Notesheetrequest extends Model
     //
     protected $table = 'notesheet1';
 
-    protected $fillable = ['createdBy','topic','justification','officeId','status'];
+    protected $fillable = ['createdBy','topic','justification','officeId','createdOn','status'];
 
     public $timestamps = false;
 

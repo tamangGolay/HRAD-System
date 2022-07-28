@@ -14,7 +14,9 @@ class NotesheetController extends Controller
 
     public function Request_notesheet(Request $request)
     {
-        // dd($request);
+        
+        // dd("hello");
+       
     
         
             $Request_notesheet = new notesheetRequest;
@@ -22,7 +24,7 @@ class NotesheetController extends Controller
             $Request_notesheet->officeId = $request->office;               
             $Request_notesheet->topic = $request->topic;     //database name n user input name
             $Request_notesheet->justification = $request->justification;
-
+            $Request_notesheet->createdOn = $request->notesheetDate;
             $Request_notesheet->save();  
             
             $reqnote = DB::table('notesheet1')

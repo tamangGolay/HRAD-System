@@ -38,13 +38,13 @@ class ProductController extends Controller
 
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
     $notesheet = notesheetRequest::find($id);
-    $date = DB::table('notesheet')
-    ->join('officedetails','officedetails.id','=','notesheet.officeId')
+    $date = DB::table('notesheet1')
+    ->join('officedetails','officedetails.id','=','notesheet1.officeId')
        ->select('*')	
-        ->where('notesheet.id',$id)
+        ->where('notesheet1.id',$id)
         ->first();
 
-        dd($date);
+        // dd($date);
 
         // view()->share ('products', $products);
         $pdf = PDF ::loadView ('Notesheet.index', array('date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));

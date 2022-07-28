@@ -23,35 +23,29 @@
    width:500px;;
 }
 
+div.notesheet {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 120px;
+  
+}
+
    </style>
 </head>
 <body>
     <div class = "container mt-4">
         <div class = "row">
 
-        <img src="{{asset('/cd/images/header.jpg')}}" width=100% height=30%>
+        <img src="{{asset('/cd/images/header.jpg')}}" width=100% height=20%>
+        <br>
         
 <!-- src="{{asset('/admin-lte/plugins/select2/js/select2.full.min.js')}}" -->
             <div class = "col-md-8">
                 <h2> NoteSheet </h2>
 
-               
-                <table class="text-right">
-           
-                    <thead>
-                      <tr>
-                        
-                        <td class="col1" > {{$notesheet->createdOn}} </td>
-
-
-                      </tr>
-                    </thead>
-                
-                  </table>
-
-
-
-            </div>
+            <div class="notesheet" > {{$notesheet->createdOn}} </div>
+        </div>
 
             <div class = "row">
             <div class = "col-md-12">

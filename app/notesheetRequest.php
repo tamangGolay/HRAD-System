@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notesheetrequest extends Model
 {
     //
-    protected $table = 'notesheet';
+    protected $table = 'notesheet1';
 
     protected $fillable = ['createdBy','topic','justification','officeId','status'];
 

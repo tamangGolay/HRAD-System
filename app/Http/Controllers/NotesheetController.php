@@ -14,7 +14,7 @@ class NotesheetController extends Controller
 
     public function Request_notesheet(Request $request)
     {
-        //dd($request);
+        // dd($request);
     
         
             $Request_notesheet = new notesheetRequest;
@@ -25,7 +25,7 @@ class NotesheetController extends Controller
 
             $Request_notesheet->save();  
             
-            $reqnote = DB::table('notesheet')
+            $reqnote = DB::table('notesheet1')
             ->select('*')
             ->where('status','=','Processing')            
             ->first();

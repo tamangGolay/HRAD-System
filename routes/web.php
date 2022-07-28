@@ -99,7 +99,11 @@ Route::post('/profileupdate','Manage_profileupdateController@store')->name('prof
 
 Route::get('getValues','GetMastersController@getValues');
 Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
+//pdf
 
+Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('ProductController.index');
+Route::get('/product/pdf/{id}', [App\Http\Controllers\ProductController::class, 'createPDF'])->name('product.pdf');
+Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);

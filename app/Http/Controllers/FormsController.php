@@ -4206,7 +4206,18 @@ if ($request->v == "user_profile")
 
 
 
+//notesheetreport
+if ($request->v == "notesheetReport")
+{
+     $notesheet = notesheetRequest::all();
 
+    $rhtml = view('Notesheet.notesheetReport')->with(['notesheet' => $notesheet])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
 
          //1. view for Qualificationleveltype (Tdee)
 

@@ -26,7 +26,7 @@
 
 div.notesheet {
   position: absolute;
-  right: 0;
+  right: 45;
   width: 100px;
   height: 120px;
 }

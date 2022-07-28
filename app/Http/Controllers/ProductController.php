@@ -34,6 +34,7 @@ class ProductController extends Controller
    
    public function createPDF ($id) {
 
+
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
     $notesheet = notesheetRequest::find($id);
         // view()->share ('products', $products);

@@ -102,8 +102,8 @@ Route::post('/conferencebook','ConferenceController@conference')->name('conferen
 //pdf
 
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('ProductController.index');
-Route::get('/product/pdf/{id}', [App\Http\Controllers\ProductController::class, 'createPDF'])->name('product.pdf');
-Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
+Route::get('/notesheetReport/{id}', [App\Http\Controllers\ProductController::class, 'createPDF'])->name('notesheet.pdf');
+// Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);

@@ -79,7 +79,16 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!-- called in bose.css -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
+<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet"> 
 
+<!-- user_profile -->
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+ 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
 <div class="row">  
    
     <div class="col">
@@ -283,11 +292,11 @@
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="gradeId" id="gradeId" placeholder="grade" autocomplete="off" readonly required>                  
+                <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off" readonly required>                  
                 </div>
             </div>
 
-            <!-- <input type="hidden" class="form-control" name="gradeId" id="gradeId" placeholder="grade" autocomplete="off" readonly required> --->                              
+            <input type="hidden" class="form-control" name="gradeId" id="gradeId" placeholder="grade" autocomplete="off" readonly required>      
             
              <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
@@ -450,7 +459,7 @@ function getEmployeeDetails(val)
                     document.getElementById('cid').value = '';
                     // document.getElementById('blood').value =  '';
                     document.getElementById('designation').value =  '';
-                    document.getElementById('gradeId').value = '';   
+                    document.getElementById('grade').value = '';   
                     document.getElementById('appointment').value = '';                      
                     document.getElementById('basicpay').value = '';
                     document.getElementById('empstatus').value =  '';
@@ -489,8 +498,8 @@ function getEmployeeDetails(val)
                     document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
                     document.getElementById('designation').value =  Employee.desisNameLong; 
                   
-                    document.getElementById('gradeId').value = Employee.grade; 
-                    // document.getElementById('grade').value = Employee.grade; 
+                    document.getElementById('grade').value = Employee.grade;
+                    document.getElementById('gradeId').value = Employee.gradeId; 
                     document.getElementById('empstatus').value = Employee.empStatus;    
    
 

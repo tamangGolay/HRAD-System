@@ -72,12 +72,23 @@ class Manage_profileupdateController extends Controller
 
 
         //  dd($request);
-        EmployeeMaster::updateOrCreate(['empId' => $request->emp_id],  ['empName' => $request->name,  'mobileNo' => $request->contact_number,
-        'division' => $request->office, 'dob' => $request->dob, 'cidNo' => $request->cid, 
-         'designation' => $request->designationId, 'gradeId' => $request->gradeId ,'empStatus' => $request->empstatus, 'appointmentDate' => $request->appointment,
-          'basicPay' => $request->basicpay,'lastDop' => $request->lastdop, 'emailId' => $request->emailid, 
-        'office' =>$request->office, 'fixedNo' => $request->fixed,'extension' => $request->extension,
-         'employmentType' => $request->employmenttype, 'incrementCycle' => $request->incrementcycle
+        EmployeeMaster::updateOrCreate(['empId' => $request->emp_id],  ['empName' => $request->name, 
+         'mobileNo' => $request->contact_number,
+        'division' => $request->office,
+         'dob' => $request->dob,
+          'cidNo' => $request->cid, 
+         'designation' => $request->designationId,
+          'gradeId' => $request->gradeId ,
+          'empStatus' => $request->empstatus, 
+         'appointmentDate' => $request->appointment,
+          'basicPay' => $request->basicpay,
+          'lastDop' => $request->lastdop, 
+          'emailId' => $request->emailid, 
+        'office' =>$request->office, 
+        'fixedNo' => $request->fixed,
+        'extension' => $request->extension,
+         'employmentType' => $request->employmenttype,
+          'incrementCycle' => $request->incrementcycle
     ]);        
  
 

@@ -17,16 +17,14 @@ class PdfController extends Controller
      public function createPDF ($id) {
 
 
-
-
-
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
-    $notesheet = notesheetRequest::find($id);
+    $notesheet = notesheetRequest::find($id)
+    ->join('users','users.empId','=','notesheet1.createdBy')
+    ->select('notesheet1.*','users.empName');
     //For officeName in the report(pdf)
-    $notesheet = DB::table('notesheet1')
+    $date = DB::table('notesheet1')
      ->join('officedetails','officedetails.id','=','notesheet1.officeId')
-     ->join('users','users.empId','=','notesheet1.createdBy')
-       ->select('notesheet1.*','users.empName')	
+       ->select('*')	
         ->where('notesheet1.id',$id)
         ->first();
 
@@ -36,7 +34,7 @@ class PdfController extends Controller
         ->where('notesheet1.id',$id)
         ->first();
 
-        $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
+        $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
         return $pdf->download ('notesheet.pdf');
     }
 }

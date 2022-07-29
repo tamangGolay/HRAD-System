@@ -9,6 +9,6 @@ class roleformmapping extends Model
     //
     protected $table='roleformmapping';
 
-    protected $fillable = ['role_id','form_id','created_by'];
+    protected $fillable = ['role_id','form_id','createdBy'];
     public $timestamps = false;
 }

@@ -17,16 +17,12 @@ class PdfController extends Controller
      public function createPDF ($id) {
 
 
-
-
-
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
     $notesheet = notesheetRequest::find($id);
     //For officeName in the report(pdf)
     $date = DB::table('notesheet1')
      ->join('officedetails','officedetails.id','=','notesheet1.officeId')
-     ->join('users','users.empId','=','notesheet1.createdBy')
-       ->select('notesheet1.*','users.empName')	
+       ->select('*')	
         ->where('notesheet1.id',$id)
         ->first();
 

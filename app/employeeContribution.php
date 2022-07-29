@@ -9,6 +9,7 @@ class employeeContribution extends Model
     //
     protected $table = 'wfcontribution';
 
-    protected $fillable = ['empId','contributionDate','year','month','amount','officeId'];
+    protected $fillable = ['empId','contributionDate','year','month','amount','officeId',
+'createdBy','createdOn','modifiedBy ','modifiedOn'];
     public $timestamps = false;
 }  

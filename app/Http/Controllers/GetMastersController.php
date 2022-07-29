@@ -123,12 +123,13 @@ if ($table == "paymentInfo")
 $emp = DB::table('users')
 ->join('designationmaster','designationmaster.id', 'users.designationId')
 ->join('officedetails','officedetails.id', 'users.office')
+->join('payscalemaster','payscalemaster.id', 'users.gradeId')
 // ->join('employeequalificationmaster','employeequalificationmaster.personalNo', 'users.id')
 // ->join('qualificationmaster','qualificationmaster.id', 'employeequalificationmaster.qualificationId')
 //  ->join('qualification','qualification.empId', 'users.id')
 
 ->select('users.*','designationmaster.desisNameLong','officedetails.id',
-'officedetails.Address','officedetails.shortOfficeName'
+'officedetails.Address','officedetails.shortOfficeName','payscalemaster.grade'
 )
 
 

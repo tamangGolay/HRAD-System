@@ -567,7 +567,7 @@ return response()
                $roles = Roles::all();
                $officedetails = Officedetails::all();
 
-               $orgunit = orgunit::all();
+            //    $orgunit = orgunit::all();
             //    $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
                $designation = Designation::all();
@@ -624,7 +624,7 @@ return response()
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,

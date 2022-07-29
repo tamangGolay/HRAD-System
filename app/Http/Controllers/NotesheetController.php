@@ -27,6 +27,14 @@ class NotesheetController extends Controller
 
     public function Request_notesheet(Request $request)
     {
+
+$officeHead= DB::table('employeesupervisor')  
+->where( 'supervisor',Auth::user()->empId);
+
+        if($officeHead == Auth::user()->empId)
+        {
+            
+        }
         
         // dd("hello");
        

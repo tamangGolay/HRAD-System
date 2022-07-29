@@ -20,24 +20,29 @@
    width:100px;
 }
 .col2{
-   width:500px;;
+   width:500px;
 }
-
+h1 {
+ color: #1a3300;
+};
    </style>
 </head>
 <body>
     <div class = "container mt-4">
         <div class = "row">
-            <div class = "col-md-8">
-                <h2> NoteSheet Report</h2>
+            <div class = "col-md-8 text-center">
+                <h1> NoteSheet Report</h1>
             </div>
-
+          
+            <br><br><br>
             <div class = "row">
             <div class = "col-md-12">
-                <table class = "table">
-                    <caption> NoteSheet  </caption>
+            <div class="card-body table-responsive p-0">
+					<table id="table5" class="table table-hover table-striped table-bordered">
+                <!-- <table class = "table"> -->
+                    <!-- <h2 class="headnote"> NoteSheet  </h2> -->
                     <thead>
-                      <tr>
+                      <tr class="text-nowrap">
                         <th scope = "col" class="col1"> Id </th>
                         <!-- <th scope = "col" class="col1"> Employee </th> -->
                         <th scope = "col" class="col1"> Justification </th>
@@ -63,6 +68,7 @@
                     </tbody>
                   </table>
             </div>
+</div>
         </div>
     </div>
 
@@ -74,7 +80,7 @@
             </div>
         </div>
              -->
-   
+             <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -82,5 +88,47 @@
 
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> </script>
    
+    <!-- jquery-validation -->
+		<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+		<!-- DataTables -->
+		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+		<!-- Script for export file from datatable -->
+		<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
+		<!-- <script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script> -->
+		<!-- <script src="{{asset('/admin-lte/datatables/buttons.flash.min.js')}}"></script> -->
+		<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
+		<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
+		<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
+		<!-- checkin form -->
+
+		
+		<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
+		<!-- called in bose.css -->
+
+		<script>
+	
+		$(function() {
+			$("#table5").DataTable({
+				"dom": 'Bfrtip',
+				"responsive": true,
+				"lengthChange": true,
+				"searching": true,
+				"ordering": false,
+				"info": true,
+				"autoWidth": false,
+				"paging": true,
+				"retrieve":true,
+				
+			});
+		});
+// buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
+		</script>
 </body>
 </html>

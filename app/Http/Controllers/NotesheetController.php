@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\notesheetRequest;
+use App\notesheetRequestSupervisor;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use App\notesheetapprove;
@@ -28,18 +29,12 @@ class NotesheetController extends Controller
     public function Request_notesheet(Request $request)
     {
 
-$officeHead= DB::table('employeesupervisor')  
-->where( 'supervisor',Auth::user()->empId);
+        $officeHead= DB::table('employeesupervisor')  
+        ->where( 'supervisor',Auth::user()->empId)
+        ->first();
 
-        if($officeHead == Auth::user()->empId)
+        if($officeHead == null)
         {
-            
-        }
-        
-        // dd("hello");
-       
-    
-        
             $Request_notesheet = new notesheetRequest;
             $Request_notesheet->createdBy = $request->empId;
             $Request_notesheet->officeId = $request->office;               
@@ -47,14 +42,80 @@ $officeHead= DB::table('employeesupervisor')
             $Request_notesheet->justification = $request->justification;
             $Request_notesheet->createdOn = $request->notesheetDate;
             $Request_notesheet->save();  
-            
-            $reqnote = DB::table('notesheet')
-            ->select('*')
-            ->where('status','=','Processing')            
-            ->first();
-
             return redirect('home')
-                ->with('success', 'Notesheet submitted successfully');
+            ->with('success', 'Notesheet submitted successfully');
+
+        }
+
+        if($officeHead->supervisor == Auth::user()->empId)
+        {
+            $officeType= DB::table('officedetails')
+            ->join('users','users.office','=','officedetails.id')
+            ->where( 'officedetails.id',Auth::user()->office)
+            ->select('officeType')
+            ->first();
+             //Manager
+            if($officeType->officeType == 'Division' || $officeType->officeType == 'Sub Division'
+            || $officeType->officeType == 'Unit' || $officeType->officeType == 'Substation'
+            ){
+                $Supervisorstatus = 'Recommended';
+                $Request_notesheet = new notesheetRequest;
+                $Request_notesheet->status = $Supervisorstatus;
+                $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->officeId = $request->office;               
+                $Request_notesheet->topic = $request->topic;     //database name n user input name
+                $Request_notesheet->justification = $request->justification;
+                $Request_notesheet->createdOn = $request->notesheetDate;
+                $Request_notesheet->save();  
+                // dd("Manager");
+            }
+            //GM
+
+        //    dd($officeType->officeType);
+            if($officeType->officeType == 'Department'){
+                $Supervisorstatus = 'GMRecommended';
+                $Request_notesheet = new notesheetRequest;
+                $Request_notesheet->status = $Supervisorstatus;
+                $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->officeId = $request->office;               
+                $Request_notesheet->topic = $request->topic;     //database name n user input name
+                $Request_notesheet->justification = $request->justification;
+                $Request_notesheet->createdOn = $request->notesheetDate;
+                $Request_notesheet->save();  
+                // dd("GM");
+            }
+            //Director
+            if($officeType->officeType == 'Services'){
+                $Supervisorstatus = 'DirectorRecommended';
+                $Request_notesheet = new notesheetRequest;
+                $Request_notesheet->status = $Supervisorstatus;
+                $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->officeId = $request->office;               
+                $Request_notesheet->topic = $request->topic;     //database name n user input name
+                $Request_notesheet->justification = $request->justification;
+                $Request_notesheet->createdOn = $request->notesheetDate;
+                $Request_notesheet->save();  
+                // dd("Director");
+
+            }
+        }
+        // else{
+
+        //     $Request_notesheet = new notesheetRequest;
+        //     $Request_notesheet->createdBy = $request->empId;
+        //     $Request_notesheet->officeId = $request->office;               
+        //     $Request_notesheet->topic = $request->topic;     //database name n user input name
+        //     $Request_notesheet->justification = $request->justification;
+        //     $Request_notesheet->createdOn = $request->notesheetDate;
+        //     $Request_notesheet->save();  
+            
+        //     // $reqnote = DB::table('notesheet')
+        //     // ->select('*')
+        //     // ->where('status','=','Processing')            
+        //     // ->first();
+        // }
+        return redirect('home')
+        ->with('success', 'Notesheet submitted successfully');
 
  }
  public function selfghCancelBooking()

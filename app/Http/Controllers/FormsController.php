@@ -4213,7 +4213,8 @@ if ($request->v == "notesheetReport")
     //  $notesheet = notesheetRequest::all();
     $notesheet = DB::table('notesheet1')
     ->join('officedetails','officedetails.id','=','notesheet1.officeId')
-       ->select('*','notesheet1.id as noteId','officedetails.longOfficeName')	
+    ->join('users','users.empId','=','notesheet1.createdBy')
+    ->select('notesheet1.*','notesheet1.id as noteId','officedetails.longOfficeName','users.empName')  
         ->where('notesheet1.status','=','approved')
         ->latest('notesheet1.id')
         ->get();

@@ -45,8 +45,10 @@ h1 {
                       <tr class="text-nowrap">
                         <th scope = "col" class="col1"> Id </th>
                         <!-- <th scope = "col" class="col1"> Employee </th> -->
-                        <th scope = "col" class="col1"> Justification </th>
+                        <th scope = "col" class="col1"> EmployeeId</th>
+                        <th scope = "col" class="col1"> Employee Name</th>
                         <th scope = "col" class="col1"> Office </th>
+                        <th scope = "col" class="col2"> Topic </th>
                         <th scope = "col" class="col2"> Download </th>
 
                       </tr>
@@ -56,8 +58,10 @@ h1 {
 
                         <tr>
                             <td class="col1"> {{$notesheet->noteId}} </td>
-                           <td class="col1"> {{$notesheet-> justification}} </td>
+                           <td class="col1"> {{$notesheet-> createdBy}} </td>
+                           <td class="col1"> {{$notesheet-> empName}} </td>
                             <td class="col1"> {{$notesheet-> longOfficeName}} </td>
+                            <td class="col1"> {{$notesheet-> topic}} </td>
                             <td class="col2"><a href="notesheetReport/{{$notesheet->noteId}}" class="btn btn-success">Download</a> </td>
 
 

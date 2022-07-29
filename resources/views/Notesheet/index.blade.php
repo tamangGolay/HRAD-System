@@ -75,6 +75,12 @@ div.table2 {
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
+                      
+                      <tr>
+                        <th scope = "col" class="col1"> Name </th>
+                        <td class="col1"> {{$notesheet->topic}} </td>
+
+                      </tr>
                       <tr>
                         <th scope = "col" class="col1"> Justification </th>
                         <td class="col1"> {{$notesheet-> justification}} </td>

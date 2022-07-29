@@ -72,7 +72,7 @@ div.table2 {
 
                       <tr>
                         <th scope = "col" class="col1"> Name </th>
-                        <td class="col1"> {{$notesheet->employee}} </td>
+                        <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
                       <tr>

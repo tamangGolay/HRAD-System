@@ -48,7 +48,7 @@ hr{
         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-3 " > 
         Recommend
         </button>
-        <input type="text"  name="remarks[]" class="form-control" id="remarks" placeholder="remarks">
+        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
     
          </form>
 
@@ -62,7 +62,7 @@ hr{
         <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-3" > 
         Approve
         </button>
-        <input type="text" name="remarks1[]" class="form-control" id="remarks1" placeholder="Remarks1">
+        <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
        </div>    
       </form> 
 
@@ -77,7 +77,7 @@ hr{
         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-3 " > 
         Reject
         </button>        
-        <input type="text"  name="remarks2[]" class="form-control" id="remarks2" placeholder="Remarks2" >
+        <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
         </div>
          </form>
     

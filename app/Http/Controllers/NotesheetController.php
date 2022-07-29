@@ -40,7 +40,7 @@ class NotesheetController extends Controller
             $Request_notesheet->createdOn = $request->notesheetDate;
             $Request_notesheet->save();  
             
-            $reqnote = DB::table('notesheet1')
+            $reqnote = DB::table('notesheet')
             ->select('*')
             ->where('status','=','Processing')            
             ->first();
@@ -81,20 +81,21 @@ public function cancelNotesheet(Request $request)
 
 public function recommendnotesheet(Request $request)
 {
-    // dd($request->status);
+//  dd($request);
+try{
     
-    if($request->status == "Recommended" && $request->remarks == ' '){
+    if($request->status == "Recommended" ){  //&& $request->remarks != ''
         $id = DB::table('notesheet')->select('id')
         ->where('id',$request->id)
         ->first();     
     
-        $remarks = implode(',', $request->remarks);
+        // $remarks = implode(',', $request->remarks);
         // $GM="GM";
     
         $users = new notesheetapprove;//users is ModelName
             $users->noteId = $id->id;//emp_id is from input name
             $users->modifier =  $request->empId;//EmpName is from dB
-            $users->remarks = $remarks;
+            $users->remarks = $request->remarks;
             $users->modiType = $request->status;//emp_id is from input name
             $users->save();
     
@@ -105,19 +106,19 @@ public function recommendnotesheet(Request $request)
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         }
     
-                if($request->status1 == "Approved" && $request->remarks == ' '){
+                if($request->status1 == "Approved" ){
                 $id = DB::table('notesheet')->select('id')
                 ->where('id',$request->id)
                 ->first(); 
                 
             
-                $remarks1 = implode(',', $request->remarks1);
+                // $remarks1 = implode(',', $request->remarks1);
                 // $GM="GM";
             
                 $users = new notesheetapprove;//users is ModelName
                     $users->noteId = $id->id;//emp_id is from input name
                     $users->modifier =  $request->empId;//EmpName is from dB
-                    $users->remarks = $remarks1;
+                    $users->remarks = $request->remarks1;
                     $users->modiType = $request->status1;//emp_id is from input name
                     $users->save();
             
@@ -127,37 +128,41 @@ public function recommendnotesheet(Request $request)
             }
 
     
-                if($request->status2 == "Rejected" && $request->remarks == ' '){
+                if($request->status2 == "Rejected"){
                     $id = DB::table('notesheet')->select('id')
                     ->where('id',$request->id)
                     ->first();         
                 
-                    $remarks2 = implode(',', $request->remarks2);
+                    // $remarks2 = implode(',', $request->remarks2);
                     // $GM="GM";
                 
                     $users = new notesheetapprove;//users is ModelName
                         $users->noteId = $id->id;//emp_id is from input name
                         $users->modifier =  $request->empId;//EmpName is from dB
-                        $users->remarks = $remarks2;
+                        $users->remarks = $request->remarks2;
                         $users->modiType = $request->status2;//emp_id is from input name
                         $users->save();
                 
                     notesheetRequest::updateOrCreate(['id' => $id->id],
                     ['status' =>$request->status2]);//emp_id is from input name
-            return redirect('home')->with('error','You have rejected the Notesheet');    
+                return redirect('home')->with('error','You have rejected the Notesheet');    
                 }
     
+      
                 else{
                     return redirect('home')->with('error','You cannot leave the remarks field empty!!');  
                 }
-          
-           
-          
-      
+                   
+             
     
+            }
+        
+        catch(\Illuminate\Database\QueryException $t) { 
+
+            return redirect('home')->with('error','You cannot leave the remarks field empty!!');  
+
+        }
     }
 
-
-
-}
+            }
 

@@ -8,7 +8,30 @@
 
 @endsection
 
-                    
+<style>
+    
+    a {
+        color: black !important;
+        text-decoration: none;
+    }
+    
+    .btn-primary {
+        color: #fff !important;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .success {
+        color: #fff !important;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    
+    </style>
+<link href="{{asset('css/bose.css')}}" rel="stylesheet">
+<!-- called in bose.css -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">                  
              
 @section('content')
 
@@ -52,17 +75,9 @@
 
  
  
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
-<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet"> 
-
-<!-- user_profile -->
-<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
- 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!-- called in bose.css -->
 
 <div class="row">  

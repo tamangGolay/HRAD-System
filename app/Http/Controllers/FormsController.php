@@ -446,7 +446,7 @@ if ($request->v == "userListHR")
  $roles = Roles::all();
  $officedetails = Officedetails::all();
 
- $orgunit = orgunit::all();
+//  $orgunit = orgunit::all();
 //  $grade = Grade::all();
  $dzongkhag = Dzongkhags::all();
  $designation = Designation::all();
@@ -502,7 +502,7 @@ $userLists = DB::table('users')
 
 // ->paginate(10000000);
 
-$rhtml = view('auth.userListHR')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
+$rhtml = view('auth.userListHR')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
 return response()
  ->json(array(
  'success' => true,

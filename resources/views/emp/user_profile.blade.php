@@ -375,14 +375,15 @@
            <div class="form-group row mb-0" >
               <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
                 <button type="submit" id="book" class="btn nSuccess btn-lg">Save details</button>
+                &nbsp;&nbsp;
+                <button type="submit" id="book" class="btn nSuccess btn-lg"><a href="cd/twimc.php?EID={{Auth::user()->empId}}" >Download</a></button>
               </div> 
               <br>
               <br>
               <br> <br>
               
-        </div>          
-         
-
+        </div>   
+       
            
           </form>
         

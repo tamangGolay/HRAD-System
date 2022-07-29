@@ -40,7 +40,7 @@ hr{
 
 			  <tr><th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
            
-        <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
+        <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
            
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <input type="hidden" name="status" id="status" value="Recommended">
@@ -79,7 +79,7 @@ hr{
         </button>        
         <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
         </div>
-         </form>
+         </form></form>
     
      </td> 	                 
       </tr>             

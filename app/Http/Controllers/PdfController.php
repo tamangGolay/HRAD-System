@@ -18,9 +18,7 @@ class PdfController extends Controller
 
 
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
-    $notesheet = notesheetRequest::find($id)
-    ->join('users','users.empId','=','notesheet1.createdBy')
-    ->select('notesheet1.*','users.empName');
+    $notesheet = notesheetRequest::find($id);
     //For officeName in the report(pdf)
     $date = DB::table('notesheet1')
      ->join('officedetails','officedetails.id','=','notesheet1.officeId')

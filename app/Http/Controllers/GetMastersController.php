@@ -306,6 +306,28 @@ $emp = DB::table('users')
              return response()->json($facilities);
          }
 
+         if ($table == "forgetPassword")
+        {
+
+            //check cid if already in database.
+            if (DB::table('users')->where('users.empId', $value)->exists())
+            {
+                $emp = DB::table('users')->where('users.empId', $value)
+                ->select('users.emailId')
+                    ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
+        }
+
         //For user add ; to check if the user already exist
         if ($table == 'useradd')
         {

@@ -86,7 +86,7 @@ function empty() {
 
     //pulling records using cid from checkin table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=C_Booking&info='+val+'&token='+csrftoken,function(data){              
+          $.get('/getValues?source=forgetPassword&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
                   
                     document.getElementById('email').value = '';                      
@@ -95,14 +95,14 @@ function empty() {
                 $.each(data, function(index, Employee){
 
 
-                          if(Employee.name != null)
+                          if(Employee.emailId != null)
                           {
-                              document.getElementById('email').value = Employee.email;                      
+                              document.getElementById('email').value = Employee.emailId;                      
                                 document.getElementById('empid').innerHTML='';
                           }
                             else {
                                 document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-								// document.getElementById('emp_id').value='';
+								document.getElementById('emp_id').value='';
                             }                       
                                                          
                 });

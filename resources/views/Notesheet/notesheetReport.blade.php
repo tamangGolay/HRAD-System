@@ -50,10 +50,10 @@
                     @foreach ($notesheet as $notesheet)
 
                         <tr>
-                            <td class="col1"> {{$notesheet->id}} </td>
+                            <td class="col1"> {{$notesheet->noteId}} </td>
                            <td class="col1"> {{$notesheet-> justification}} </td>
-                            <td class="col1"> {{$notesheet-> office}} </td>
-                            <td class="col2"><a href="notesheetReport/{{$notesheet->id}}" class="btn btn-success">Download</a> </td>
+                            <td class="col1"> {{$notesheet-> longOfficeName}} </td>
+                            <td class="col2"><a href="notesheetReport/{{$notesheet->noteId}}" class="btn btn-success">Download</a> </td>
 
 
 

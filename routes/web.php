@@ -101,8 +101,8 @@ Route::get('getValues','GetMastersController@getValues');
 Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');
 //pdf
 
-Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('ProductController.index');
-Route::get('/notesheetReport/{id}', [App\Http\Controllers\ProductController::class, 'createPDF'])->name('notesheet.pdf');
+// Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('ProductController.index');
+Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 'createPDF'])->name('notesheet.pdf');
 // Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
 //guesthouse leki

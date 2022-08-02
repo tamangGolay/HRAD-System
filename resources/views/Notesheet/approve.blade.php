@@ -51,7 +51,7 @@
               <tr>
                 <td>{{$rv->noteId}}</td>
                 <td>{{$rv->modifier}}</td>
-                <td>{{$rv->modiType}}</td>
+                <td>{{$rv->remarks}}</td>
               </tr>@endforeach
             </tbody>  
           </table>

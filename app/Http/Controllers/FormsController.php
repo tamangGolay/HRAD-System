@@ -4591,7 +4591,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    // ->where('notesheet.status','=','Processing')
+    ->where('notesheet.status','=','Recommended')
     
     ->where('notesheet.officeId',Auth::user()->office)
 

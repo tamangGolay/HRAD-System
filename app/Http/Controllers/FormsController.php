@@ -4623,9 +4623,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('notesheet.status','=','Recommended') 
-
-    // ->where('notesheet.status','=','GMRecommended') // 
+    ->where('notesheet.status','=','GMRecommended') // 
     
     ->where('notesheet.officeId',Auth::user()->office)
 
@@ -4656,12 +4654,9 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('notesheet.status','=','Recommended') 
+    ->where('notesheet.status','=','GMRecommended') 
 
-    // ->where('notesheet.status','=','GMRecommended') // 
-    
     ->where('notesheet.officeId',Auth::user()->office)
-
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
 //    ->orwhere('officeId','=',89)  //IT 
@@ -4691,10 +4686,8 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('notesheet.status','=','Recommended') 
-
-    // ->where('notesheet.status','=','GMRecommended') // 
-    
+    ->where('notesheet.status','=','GMRecommended') 
+      
     ->where('notesheet.officeId',Auth::user()->office)
 
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
@@ -4723,9 +4716,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('notesheet.status','=','Recommended') 
-
-    // ->where('notesheet.status','=','GMRecommended') // 
+    ->where('notesheet.status','=','GMRecommended')   
     
     ->where('notesheet.officeId',Auth::user()->office)
 
@@ -4757,9 +4748,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('notesheet.status','=','Recommended') 
-
-    // ->where('notesheet.status','=','GMRecommended') // 
+    ->where('notesheet.status','=','GMRecommended')     
     
     ->where('notesheet.officeId',Auth::user()->office)
 

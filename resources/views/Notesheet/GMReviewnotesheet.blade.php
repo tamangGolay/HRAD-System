@@ -41,9 +41,10 @@ hr{
                 <div class="container">
                   <div class="row">
                     <div class="col ">          
-                      <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
+                      <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
                           
-                        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+
                         <input type="hidden" name="status" id="status" value="Recommended">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center " > 
@@ -51,6 +52,7 @@ hr{
                         </button> 
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
                       </form>
+
                     </div>
 
                     <div class="col">
@@ -78,7 +80,7 @@ hr{
                         Reject
                         </button>
                         <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
-                      </form>
+                      </form> </form>
                     </div>
                     </div>
                   </div>         

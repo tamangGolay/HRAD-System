@@ -38,15 +38,15 @@ class EmployeeController extends Controller
 
             // dd($request);
 
-            $validator = Validator::make($request->all(), [
-                'file' => 'required|mimes:xls,xlsx,csv',
-            ]);
+            // $validator = Validator::make($request->all(), [
+            //     'file' => 'required|mimes:xls,xlsx,csv',
+            // ]);
      
-            if ($validator->fails()) {
-                return redirect('home')->with('page', 'allEmployeeContribution')
-                            ->withErrors($validator)
-                            ->withInput();
-            }
+            // if ($validator->fails()) {
+            //     return redirect('home')->with('page', 'allEmployeeContribution')
+            //                 ->withErrors($validator)
+            //                 ->withInput();
+            // }
     // $validator = $this->validate($request,
     //        [ 'file' =>'required|mimes:xls,xlsx,csv'
 
@@ -61,7 +61,7 @@ class EmployeeController extends Controller
  
 
 
-    else{
+    // else{
         try{
         
         
@@ -85,7 +85,7 @@ class EmployeeController extends Controller
         //   }
         
         return redirect('home')->with('page', 'allEmployeeContribution')
-                                    ->with('error',"The Records contain either duplicate or null values");
+                                    ->with('error',$e->getMessage());
         
         
         }
@@ -93,7 +93,7 @@ class EmployeeController extends Controller
 
 }
 
-}
+// }
            
         
     

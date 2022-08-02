@@ -21,7 +21,7 @@ hr{
 				</p> -->
       <!--/card-header-->
       <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
-        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+        <!-- <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> -->
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
         <div class="card-body table-responsive p-0">
@@ -32,12 +32,13 @@ hr{
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
-              <tr>   <th>office Name</th>        <td> {{($rv->officeId)}} </td>    </tr>
+              <tr>   <th>office Name</th>       <td> {{($rv->officeId)}} </td>    </tr>
 			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>                            
 			        <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 
         <tr><th colspan="2">Action</th> </tr>
-          <tr ><th colspan="2">
+
+          <tr><th colspan="2">
                 <div class="container">
                   <div class="row">
                     <div class="col ">          
@@ -52,32 +53,33 @@ hr{
                         </button> 
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
                       </form>
-
                     </div>
 
                     <div class="col">
                       <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+                      <div>
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
                         <input type="hidden" name="status" id="status" value="Approved">
                     
                         <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mb-4 btn-center " > 
-                        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
                         Approve
                         </button> 
                         <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
+                 </div>
                       </form>
                     </div>
+
      
                     <div class="col">  
                       <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
+                       <div>
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
                         <input type="hidden" name="status" id="status" value="Rejected">
-                        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-                        
+                                                
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
                         Reject
                         </button>
@@ -87,7 +89,7 @@ hr{
                     </div>
                   </div>         
                 </td> 	                 
-              </tr> 
+             <th> </tr> 
 
               <tr>
                 <th style="border-bottom:4px solid black;" colspan="2" > 
@@ -98,7 +100,7 @@ hr{
                       <input type="submit" value="View Details" class="btn btn-primary text-center col-lg-4 " >
 
                     <!-- <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
-                    </form>
+                    </form>  
 
 
                     <!-- Modal -->
@@ -138,9 +140,7 @@ hr{
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
                           </div>
-                        </div>
-                      </div>
-                    </div>
+                        
                     </th>
                   <!-- </td>   -->
               </tr>
@@ -151,18 +151,15 @@ hr{
 
         </tbody>
       </table>	  
-
+      </div>
+                      </div>
+                    </div>
 
       
       <div>
         <!--/card-body-->
        
-      </div>
-      </div>
-    </div>
-
-
-    
+      
 
 
 

@@ -26,6 +26,15 @@ a {
     background-color: #dc3545 !important;
     border-color: #dc3545 !important;
 }
+ img {
+	width: 70%;
+	height: 20%;
+    border-radius: 5px;
+    padding: 40% left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+
+}
 
 
 </style>
@@ -98,6 +107,15 @@ a {
         </div>
     </div>
 </div> 
+<br>
+<div class = "col-md-11 text-center">
+                <h4> Excel format sample</h4>
+            </div>
+            <br>
+
+        <div>
+        <img  class="img-responsive center-block d-block mx-auto" src="{{asset('/cd/images/sample.png')}}">
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

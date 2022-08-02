@@ -20,7 +20,7 @@ hr{
 						<a href="#"></a>
 				</p> -->
       <!--/card-header-->
-      <form method="POST" action="/" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+      <!-- <form method="POST" action="/" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf -->
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
@@ -37,12 +37,11 @@ hr{
         
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <input type="hidden" name="status" id="status" value="Cancel">
+        <input type="hidden" name="cancelled" id="cancelled" value="Yes">
 
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 
         Cancel
-        </button>
-
-		
+        </button>		
 		
       </form> </td> 	                 
               </tr>
@@ -63,7 +62,7 @@ hr{
       <div class="float-right"> {{$selfghCancelBooking->links()}} </div>
       <div>
         <!--/card-body-->
-        </form>
+        <!-- </form> -->
       </div>
       </div>
     </div>

@@ -363,9 +363,8 @@ public function GMrecommendnotesheet(Request $request)
     if($request->status == "Recommended" ){  //&& $request->remarks != ''
         $id = DB::table('notesheet')->select('id')
         ->where('id',$request->id)
-        ->first();
+        ->first();   
         
-        // $re="Recommended";        
     
            $users = new notesheetapprove;//users is ModelName
             $users->noteId = $id->id;//emp_id is from input name
@@ -378,110 +377,117 @@ public function GMrecommendnotesheet(Request $request)
         ['status' =>$request->status]); 
         
         //email from here
-        // $supervisorEmail= DB::table('employeesupervisor')  
-        // ->select('employeesupervisor.emailId')
-        // ->where( 'employee',Auth::user()->empId)
-        // ->first();
+        $supervisorEmail1= DB::table('employeesupervisor')  
+        ->select('employeesupervisor.emailId')
+        ->where( 'employee',Auth::user()->empId)
+        ->first();
 
        
-        // $userDetail= DB::table('users') 
-        // ->join('officedetails', 'officedetails.id', '=', 'users.office')
-        // ->select('users.*','officedetails.longOfficeName')
-        // ->where( 'users.empId',Auth::user()->empId)
-        // ->first();
+        $userDetail= DB::table('users') 
+        ->join('officedetails', 'officedetails.id', '=', 'users.office')
+        ->select('users.*','officedetails.longOfficeName')
+        ->where( 'users.empId',Auth::user()->empId)
+        ->first();
 
-        // $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 
+        'You have a request for notesheet from ' . $userDetail->empName . 
+        ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.',
+         'body2' => '', 'body3' => 'Please kindly do the necessary action,send by GM.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
        
-        // $userEmail = DB::table('notesheet')
-        // ->where('id',$id->id)
-        // ->first(); 
-        // // dd($userEmail);
+        $userEmail = DB::table('notesheet')
+        ->where('id',$id->id)
+        ->first(); 
+        // dd($userEmail);
 
-        // Mail::to($supervisorEmail->emailId) 
-        // ->cc($userEmail->emailId)
-        // ->send(new MyTestMail($supervisor)); 
+        Mail::to($supervisorEmail1->emailId) 
+        ->cc($userEmail->emailId)
+        ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         }
-
-        if($request->status1 == "Approved" ){
-            $id = DB::table('notesheet')->select('id')
-            ->where('id',$request->id)
-            ->first(); 
-                   
-            // $re="Approved";
-        
-            $users = new notesheetapprove;//users is ModelName
-                $users->noteId = $id->id;//emp_id is from input name
-                $users->modifier =  $request->empId;//EmpName is from dB
-                $users->remarks = $request->remarks1;
-                $users->modiType = $request->status;  //emp_id is from input name
-                $users->save();
-        
-            notesheetRequest::updateOrCreate(['id' => $id->id],
-            ['status' =>$request->status1]);//emp_id is from input name
-            
-            //email from here
-
-            // $userDetail= DB::table('users') 
-            // ->join('officedetails', 'officedetails.id', '=', 'users.office')
-            // ->select('users.*','officedetails.longOfficeName')
-            // ->where( 'users.empId',Auth::user()->empId)
-            // ->first();
-            
-            // $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-            
-            
-           
-            // $userEmail = DB::table('notesheet')
-            // ->where('id',$id->id)
-            // ->first(); 
-            // // dd($userEmail);
     
-            // Mail::to($userEmail->emailId) 
-            // // ->cc($userEmail->emailId)
-            // ->send(new MyTestMail($approve)); 
-        
-             return redirect('home')->with('success','You have Approved the Notesheet');   
-         }
-
-
-            if($request->status2 == "Rejected"){
+                if($request->status1 == "Approved" ){
                 $id = DB::table('notesheet')->select('id')
                 ->where('id',$request->id)
-                ->first();                      
+                ->first(); 
+                
             
-                // $re="Rejected";
+                // $remarks1 = implode(',', $request->remarks1);
+                // $GM="GM";
             
                 $users = new notesheetapprove;//users is ModelName
                     $users->noteId = $id->id;//emp_id is from input name
                     $users->modifier =  $request->empId;//EmpName is from dB
-                    $users->remarks = $request->remarks2;
-                    $users->modiType = $request->status;//emp_id is from input name
+                    $users->remarks = $request->remarks1;
+                    $users->modiType = $request->status1;//emp_id is from input name
                     $users->save();
             
                 notesheetRequest::updateOrCreate(['id' => $id->id],
-                ['status' =>$request->status2]);//emp_id is from input name
+                ['status' =>$request->status1]);//emp_id is from input name
                 
                 //email from here
-                // $userDetail= DB::table('users') 
-                // ->join('officedetails', 'officedetails.id', '=', 'users.office')
-                // ->select('users.*','officedetails.longOfficeName')
-                // ->where( 'users.empId',Auth::user()->empId)
-                // ->first();
 
-                // $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+                $userDetail= DB::table('users') 
+                ->join('officedetails', 'officedetails.id', '=', 'users.office')
+                ->select('users.*','officedetails.longOfficeName')
+                ->where( 'users.empId',Auth::user()->empId)
+                ->first();
+                
+                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+                
+                
                
-            
-               
-                // $userEmail = DB::table('notesheet')
-                // ->where('id',$id->id)
-                // ->first(); 
-                // // dd($userEmail);
+                $userEmail = DB::table('notesheet')
+                ->where('id',$id->id)
+                ->first(); 
+                // dd($userEmail);
         
-                // Mail::to($userEmail->emailId) 
-                // // ->cc($userEmail->emailId)
-                // ->send(new MyTestMail($reject));
+                Mail::to($userEmail->emailId) 
+                // ->cc($userEmail->emailId)
+                ->send(new MyTestMail($approve)); 
+            
+                return redirect('home')->with('success','You have Approved the Notesheet');   
+            }
+
+    
+                if($request->status2 == "Rejected"){
+                    $id = DB::table('notesheet')->select('id')
+                    ->where('id',$request->id)
+                    ->first();  
+                           
+                
+                    // $remarks2 = implode(',', $request->remarks2);
+                    // $GM="GM";
+                
+                    $users = new notesheetapprove;//users is ModelName
+                        $users->noteId = $id->id;//emp_id is from input name
+                        $users->modifier =  $request->empId;//EmpName is from dB
+                        $users->remarks = $request->remarks2;
+                        $users->modiType = $request->status2;//emp_id is from input name
+                        $users->save();
+                
+                    notesheetRequest::updateOrCreate(['id' => $id->id],
+                    ['status' =>$request->status2]);//emp_id is from input name
+                    
+                    //email from here
+                    $userDetail= DB::table('users') 
+                    ->join('officedetails', 'officedetails.id', '=', 'users.office')
+                    ->select('users.*','officedetails.longOfficeName')
+                    ->where( 'users.empId',Auth::user()->empId)
+                    ->first();
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+                   
+                
+                   
+                    $userEmail = DB::table('notesheet')
+                    ->where('id',$id->id)
+                    ->first(); 
+                    // dd($userEmail);
+            
+                    Mail::to($userEmail->emailId) 
+                    // ->cc($userEmail->emailId)
+                    ->send(new MyTestMail($reject));
            
                 return redirect('home')->with('error','You have rejected the Notesheet');    
             }

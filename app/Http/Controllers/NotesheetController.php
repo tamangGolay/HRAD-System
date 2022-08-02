@@ -377,12 +377,35 @@ public function GMrecommendnotesheet(Request $request)
         ['status' =>$request->status]); 
         
         //email from here
-        $supervisorEmail1= DB::table('employeesupervisor')  
+        $managerEmail= DB::table('employeesupervisor')  
         ->select('employeesupervisor.emailId')
+        ->where( 'employee',Auth::user()->empId)
+        ->first();
+       
+        $managerempid= DB::table('employeesupervisor') 
+        ->select('employeesupervisor.supervisor')
         ->where( 'employee',Auth::user()->empId)
         ->first();
 
        
+
+        $GmEmail= DB::table('employeesupervisor')  
+        ->select('employeesupervisor.emailId')
+        ->where( 'employee',$managerempid->supervisor)
+        ->first();
+
+        $Gmempid=DB::table('employeesupervisor') 
+        ->select('employeesupervisor.supervisor')
+        ->where( 'employee',$managerempid->supervisor)
+        ->first();
+
+
+        $DirectorEmail= DB::table('employeesupervisor')  
+        ->select('employeesupervisor.emailId')
+        ->where( 'employee', $Gmempid->supervisor)
+        ->first();
+
+    
         $userDetail= DB::table('users') 
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
         ->select('users.*','officedetails.longOfficeName')
@@ -399,8 +422,9 @@ public function GMrecommendnotesheet(Request $request)
         ->first(); 
         // dd($userEmail);
 
-        Mail::to($supervisorEmail1->emailId) 
-        ->cc($userEmail->emailId)
+        Mail::to($DirectorEmail->emailId) 
+        ->cc($managerEmail->emailId)
+        ->bcc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
@@ -443,7 +467,7 @@ public function GMrecommendnotesheet(Request $request)
                 // dd($userEmail);
         
                 Mail::to($userEmail->emailId) 
-                // ->cc($userEmail->emailId)
+                ->cc($managerEmail->emailId)
                 ->send(new MyTestMail($approve)); 
             
                 return redirect('home')->with('success','You have Approved the Notesheet');   

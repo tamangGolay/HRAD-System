@@ -4586,11 +4586,17 @@ if ($request->v == "employeeskillmap")  //form.csv
  
     $notesheetRequest = DB::table('notesheet')
 
+    ->join('officemaster','officemaster.id','=','notesheet.officeId')
+    ->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
-  ->select('*')
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-    ->where('status','=','Processing')
+    // ->where('notesheet.status','=','Processing')
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
 //    ->orWhere('orgunit.office',Auth::user()->office)
     ->paginate(10000000);
   

@@ -4607,9 +4607,37 @@ if ($request->v == "employeeskillmap")  //form.csv
       'html' => $rhtml
        ));
  }  //end
+ 
 
 
+ if ($request->v == "stsdirreview")  //form.csv
+ {    
+ $notesheetRemarks = notesheetapprove::all();
+$notesheetRequest = DB::table('notesheet')
 
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    // ->where('notesheet.status','=','Processing')
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+//    ->orWhere('orgunit.office',Auth::user()->office)
+    ->paginate(10000000);
+
+
+  $rhtml = view('Notesheet.STSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'officedetails' => $officedetails])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
 
  }
 }

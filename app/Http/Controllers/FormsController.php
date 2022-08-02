@@ -4607,7 +4607,7 @@ if ($request->v == "employeeskillmap")  //form.csv
       'html' => $rhtml
        ));
  }  //end
- 
+
 
 
  if ($request->v == "stsdirreview")  //form.csv
@@ -4630,7 +4630,7 @@ $notesheetRequest = DB::table('notesheet')
     ->paginate(10000000);
 
 
-  $rhtml = view('Notesheet.STSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'officedetails' => $officedetails])->render(); 
+    $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
   return response()
   
      ->json(array(

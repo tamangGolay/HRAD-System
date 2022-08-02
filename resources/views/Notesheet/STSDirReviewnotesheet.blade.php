@@ -45,8 +45,8 @@ hr{
                 <div class="row">
                   <div class="col ">        
                     <form method="POST" action="/directorrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-                        
-                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status" id="status" value="DirectorRecommended">
                       <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
                       <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mt-4 btn-center " > 
@@ -56,7 +56,8 @@ hr{
                   </div>
 
                   <div class="col "> 
-                    <form method="POST" action="/directorrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                    <form method="POST" action="/directorrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf   
+                    <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">      
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status" id="status" value="Approved">
                       <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
@@ -67,7 +68,8 @@ hr{
                   </div>
      
                   <div class="col ">
-                    <form method="POST" action="/directorrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                    <form method="POST" action="/directorrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+                    <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status" id="status" value="Rejected">                   
                       <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >

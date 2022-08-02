@@ -61,3 +61,15 @@
 
 
 </head>
+
+<!-- https://derekbliss.com/post/laravel-streamsocketenablecrypto-ssl-operation-failed-with-code-1 -->
+
+
+<!-- MAIL_MAILER=smtp
+MAIL_HOST=mail.bpc.bt
+MAIL_PORT=587 
+MAIL_USERNAME=do-not-reply@bpc.bt
+MAIL_PASSWORD=9CHVQxW7
+MAIL_ENCRYPTION=TLS
+MAIL_FROM_ADDRESS=do-not-reply@bpc.bt
+MAIL_FROM_NAME="HRIS Online System" -->

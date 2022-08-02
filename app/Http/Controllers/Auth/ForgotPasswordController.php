@@ -81,7 +81,7 @@ class ForgotPasswordController extends Controller
           $emp_id =  Crypt::decrypt($request->input('empid'));
 // dd($emp_id);
 
-          if(DB::table('users')->where('users.emp_id',$emp_id)
+          if(DB::table('users')->where('users.empId',$emp_id)
           ->exists()){
   
   
@@ -93,7 +93,7 @@ class ForgotPasswordController extends Controller
           $new_password=Hash::make($request->password);
   
    
-          DB::update('update users set password = ?  where emp_id = ?',[$new_password,$emp_id]);
+          DB::update('update users set password = ?  where empId = ?',[$new_password,$emp_id]);
    
         }
   

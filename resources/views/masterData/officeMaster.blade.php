@@ -39,6 +39,7 @@ a {
                 <th>Office Name</th>
                 <th>Office Address</th>
                 <th>Office Head</th>
+                <th>Report to</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -68,12 +69,10 @@ a {
                                              @foreach($officen as $officen)
                                              <option value="{{$officen->id}}">{{$officen->longOfficeName}}</option>
 										@endforeach
-							</select>
-                        
-                        <!-- <input type="text" class="form-control" id="officeName" name="officeName" placeholder="eg: CEO" value="" maxlength="50" required> -->
+							</select>                       
                         </div>
                     </div> 
-     
+      
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
                         <div class="col-lg-12 col-sm-12">
@@ -99,6 +98,19 @@ a {
 										@endforeach
 							</select>   
                         <!-- <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required> -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-lg-12 col-sm-2 control-label">Report to Office</label>
+                        <div class="col-lg-12 col-sm-12">
+                        <select class="col-lg-12 col-sm-12" name="reportToOffice" id="reportToOffice" value="" required>
+                                             <option value="">Select Office</option>
+                                             @foreach($reportto as $reportto)
+                                             <option value="{{$reportto->id}}">{{$reportto->shortOfficeName}}</option>
+										@endforeach
+							</select>
+                        
                         </div>
                     </div>
       
@@ -155,9 +167,10 @@ a {
         columns: [
             {data: 'id', name: 'id'},
             // {data: 'officeName', name: 'officeName'},
-            {data: 'longOfficeName', name: 'officename.longOfficeName', orderable: true, searchable: true},
+            {data: 'longOfficeName', name: 'A.longOfficeName', orderable: true, searchable: true},
             {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
             {data: 'HeadOfOffice', name: 'officeHead.HeadOfOffice',orderable: true, searchable: true},
+            {data: 'shortOfficeName', name: 'B.shortOfficeName',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -186,6 +199,7 @@ a {
           $('#officeName').val(data.officeName); //input id,database
           $('#officeAddress').val(data.officeAddress);
           $('#officeHead').val(data.officeHead);
+          $('#reportToOffice').val(data.reportToOffice);
       })
    });
 
@@ -247,6 +261,7 @@ a {
           $('#officeName').val(data.longOfficeName); //input id,database
           $('#officeAddress').val(data.Address);
           $('#officeHead').val(data.empId);
+          $('#reportToOffice').val(data.shortOfficeName);
       })
    });
    

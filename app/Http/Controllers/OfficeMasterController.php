@@ -15,16 +15,17 @@ class OfficeMasterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request) 
     {
  
         $b = DB::table('officemaster')
-        ->join('officename', 'officename.id', '=', 'officemaster.officeName')
+        ->join('officename AS A', 'A.id', '=', 'officemaster.officeName')
+        ->join('officename AS B', 'B.id', '=', 'officemaster.reportToOffice')
         ->join('users', 'users.empId', '=', 'officemaster.officeHead')
         ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
         ->join('officehead', 'officehead.OfficeId', '=', 'officemaster.id')
 
-       ->select('officehead.HeadOfOffice','office_address.Address','users.empId','officemaster.id','officename.longOfficeName','officemaster.officeHead')
+       ->select( 'officehead.HeadOfOffice','office_address.Address','users.empId','officemaster.id','A.longOfficeName','B.shortOfficeName','officemaster.officeHead')
        ->where('officemaster.status','0');
 
  
@@ -56,7 +57,7 @@ class OfficeMasterController extends Controller
 // dd($request);
        
         Officem::updateOrCreate(['id' => $request->id],
-        ['officeName' => $request->officeName, 'officeAddress' => $request->officeAddress, 'officeHead' => $request->officeHead]);    
+        ['officeName' => $request->officeName, 'officeAddress' => $request->officeAddress, 'officeHead' => $request->officeHead, 'reportToOffice' => $request->reportToOffice]);    
         
 
    

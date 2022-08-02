@@ -29,19 +29,46 @@ class NotesheetController extends Controller
     public function Request_notesheet(Request $request)
     {
 
+        $supervisorEmail= DB::table('employeesupervisor')  
+        ->select('employeesupervisor.emailId')
+        ->where( 'employee',Auth::user()->empId)
+        ->first();
+
+       
+        $userDetail= DB::table('users') 
+        ->join('officedetails', 'officedetails.id', '=', 'users.office')
+        ->select('users.*','officedetails.longOfficeName')
+        ->where( 'users.empId',Auth::user()->empId)
+        ->first();
+
+        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+
         $officeHead= DB::table('employeesupervisor')  
         ->where( 'supervisor',Auth::user()->empId)
         ->first();
 
         if($officeHead == null)
         {
+            $supervisorEmail= DB::table('employeesupervisor')  
+            ->select('employeesupervisor.emailId')
+            ->where( 'employee',Auth::user()->empId)
+            ->first();
+            
             $Request_notesheet = new notesheetRequest;
             $Request_notesheet->createdBy = $request->empId;
+            $Request_notesheet->emailId = $request->emailId;
             $Request_notesheet->officeId = $request->office;               
             $Request_notesheet->topic = $request->topic;     //database name n user input name
             $Request_notesheet->justification = $request->justification;
             $Request_notesheet->createdOn = $request->notesheetDate;
             $Request_notesheet->save();  
+
+           
+    
+            // dd($supervisorEmail->emailId);
+            Mail::to($supervisorEmail->emailId) 
+            ->send(new MyTestMail($supervisor));
+
             return redirect('home')
             ->with('success', 'Notesheet submitted successfully');
 
@@ -62,11 +89,14 @@ class NotesheetController extends Controller
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
                 $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->emailId = $request->emailId;
                 $Request_notesheet->officeId = $request->office;               
                 $Request_notesheet->topic = $request->topic;     //database name n user input name
                 $Request_notesheet->justification = $request->justification;
                 $Request_notesheet->createdOn = $request->notesheetDate;
                 $Request_notesheet->save();  
+                Mail::to($supervisorEmail->emailId) 
+                ->send(new MyTestMail($supervisor));
                 // dd("Manager");
             }
             //GM
@@ -77,11 +107,14 @@ class NotesheetController extends Controller
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
                 $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->emailId = $request->emailId;
                 $Request_notesheet->officeId = $request->office;               
                 $Request_notesheet->topic = $request->topic;     //database name n user input name
                 $Request_notesheet->justification = $request->justification;
                 $Request_notesheet->createdOn = $request->notesheetDate;
-                $Request_notesheet->save();  
+                $Request_notesheet->save(); 
+                Mail::to($supervisorEmail->emailId) 
+                ->send(new MyTestMail($supervisor)); 
                 // dd("GM");
             }
             //Director
@@ -90,11 +123,14 @@ class NotesheetController extends Controller
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
                 $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->emailId = $request->emailId;
                 $Request_notesheet->officeId = $request->office;               
                 $Request_notesheet->topic = $request->topic;     //database name n user input name
                 $Request_notesheet->justification = $request->justification;
                 $Request_notesheet->createdOn = $request->notesheetDate;
-                $Request_notesheet->save();  
+                $Request_notesheet->save(); 
+                Mail::to($supervisorEmail->emailId) 
+                ->send(new MyTestMail($supervisor)); 
                 // dd("Director");
 
             }
@@ -170,7 +206,30 @@ try{
     
         notesheetRequest::updateOrCreate(['id' => $id->id],
         ['status' =>$request->status]); 
-    
+        
+        //email from here
+        $supervisorEmail= DB::table('employeesupervisor')  
+        ->select('employeesupervisor.emailId')
+        ->where( 'employee',Auth::user()->empId)
+        ->first();
+
+       
+        $userDetail= DB::table('users') 
+        ->join('officedetails', 'officedetails.id', '=', 'users.office')
+        ->select('users.*','officedetails.longOfficeName')
+        ->where( 'users.empId',Auth::user()->empId)
+        ->first();
+
+        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+       
+        $userEmail = DB::table('notesheet')
+        ->where('id',$id->id)
+        ->first(); 
+        // dd($userEmail);
+
+        Mail::to($supervisorEmail->emailId) 
+        ->cc($userEmail->emailId)
+        ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         }
@@ -193,7 +252,29 @@ try{
             
                 notesheetRequest::updateOrCreate(['id' => $id->id],
                 ['status' =>$request->status1]);//emp_id is from input name
-            return redirect('home')->with('success','You have Approved the Notesheet');   
+                
+                //email from here
+
+                $userDetail= DB::table('users') 
+                ->join('officedetails', 'officedetails.id', '=', 'users.office')
+                ->select('users.*','officedetails.longOfficeName')
+                ->where( 'users.empId',Auth::user()->empId)
+                ->first();
+                
+                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+                
+                
+               
+                $userEmail = DB::table('notesheet')
+                ->where('id',$id->id)
+                ->first(); 
+                // dd($userEmail);
+        
+                Mail::to($userEmail->emailId) 
+                // ->cc($userEmail->emailId)
+                ->send(new MyTestMail($approve)); 
+            
+                return redirect('home')->with('success','You have Approved the Notesheet');   
             }
 
     
@@ -214,7 +295,28 @@ try{
                 
                     notesheetRequest::updateOrCreate(['id' => $id->id],
                     ['status' =>$request->status2]);//emp_id is from input name
-                return redirect('home')->with('error','You have rejected the Notesheet');    
+                    
+                    //email from here
+                    $userDetail= DB::table('users') 
+                    ->join('officedetails', 'officedetails.id', '=', 'users.office')
+                    ->select('users.*','officedetails.longOfficeName')
+                    ->where( 'users.empId',Auth::user()->empId)
+                    ->first();
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+                   
+                
+                   
+                    $userEmail = DB::table('notesheet')
+                    ->where('id',$id->id)
+                    ->first(); 
+                    // dd($userEmail);
+            
+                    Mail::to($userEmail->emailId) 
+                    // ->cc($userEmail->emailId)
+                    ->send(new MyTestMail($reject));
+               
+                    return redirect('home')->with('error','You have rejected the Notesheet');    
                 }
     
       

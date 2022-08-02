@@ -46,7 +46,7 @@ hr{
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="Recommended">
+                        <input type="hidden" name="status" id="status" value="GMRecommended">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center " > 
                         Recommend
@@ -79,7 +79,7 @@ hr{
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
                         <input type="hidden" name="status" id="status" value="Rejected">
-                                                
+
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
                         Reject
                         </button>

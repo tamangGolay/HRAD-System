@@ -365,12 +365,13 @@ public function GMrecommendnotesheet(Request $request)
         ->where('id',$request->id)
         ->first();   
         
+        $re="Recommended";
     
-           $users = new notesheetapprove;//users is ModelName
-            $users->noteId = $id->id;//emp_id is from input name
-            $users->modifier =  $request->empId;//EmpName is from dB
+           $users = new notesheetapprove;         //notesheetaprove is ModelName
+            $users->noteId = $id->id;                 
+            $users->modifier =  $request->empId;       //EmpId is from dB
             $users->remarks = $request->remarks;
-            $users->modiType = $request->status;//emp_id is from input name
+            $users->modiType = $re;         
             $users->save();
     
         notesheetRequest::updateOrCreate(['id' => $id->id],

@@ -420,11 +420,11 @@ public function GMrecommendnotesheet(Request $request)
         $userEmail = DB::table('notesheet')
         ->where('id',$id->id)
         ->first(); 
-        // dd($userEmail);
+     
 
         Mail::to($DirectorEmail->emailId) 
         ->cc($managerEmail->emailId)
-        ->bcc($userEmail->emailId)
+        ->cc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');

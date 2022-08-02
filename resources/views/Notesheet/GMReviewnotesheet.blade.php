@@ -11,7 +11,7 @@ hr{
       <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b> Note Sheet Review </b>
+                <b> GM Notesheet Review </b>
               </h5>
 			</div>
 		
@@ -33,119 +33,114 @@ hr{
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
               <tr>   <th>office Id</th>        <td> {{($rv->officeId)}} </td>    </tr>
-              <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
-			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>  
-        <!-- <tr>   <th>Remarks</th> <td><input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required> -->
- <!-- </td>  </tr>   -->
+			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>                            
+			        <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 
-      <tr>   <th>Remarks</th> <td><input type="text"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-     </td>  </tr> 
-                           
-			  <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
+        <tr><th colspan="2">Action</th> </tr>
+          <tr ><th colspan="2">
+                <div class="container">
+                  <div class="row">
+                    <div class="col ">          
+                      <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
+                          
+                        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                        <input type="hidden" name="status" id="status" value="Recommended">
+                        
+                        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center " > 
+                        Recommend
+                        </button> 
+                        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
+                      </form>
+                    </div>
 
-			  <tr><th>Action</th> <td>
-           
-        <!-- <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf          -->
-           
-        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-        <input type="hidden" name="status" id="status" value="Recommended">
-        
-        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark  col-lg-3 " > 
-        Recommend
-        </button> 
+                    <div class="col">
+                      <form method="POST" action="/recommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-     </form>
+                        <input type="hidden" name="status" id="status" value="Approved">
+                    
+                        <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mb-4 btn-center " > 
+                        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
+                        Approve
+                        </button> 
+                        <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
+                      </form>
+                    </div>
+     
+                    <div class="col">
+                      <form method="POST" action="/recommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-     <br>  <br>
+                        <input type="hidden" name="status" id="status" value="Rejected">
+                        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
+                        
+                        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
+                        Reject
+                        </button>
+                        <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
+                      </form>
+                    </div>
+                    </div>
+                  </div>         
+                </td> 	                 
+              </tr> 
 
-        <form method="POST" action="/recommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-
-        <input type="hidden" name="status" id="status" value="Approved">
-    
-        <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-3 " > 
-        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-        Approve
-        </button> 
-
-
-      </form>
-      <br>
-
-        <form method="POST" action="/recommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-
-        <input type="hidden" name="status" id="status" value="Rejected">
-        <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-        
-        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-3 " > 
-        Reject
-        </button>
-
-      </form>
-    
-     </td> 	                 
-      </tr>
-    <tr><th style="border-bottom:4px solid black;"></th> <td  style="border-bottom:4px solid black;"> 
-    <form method="POST" action="/supervisorApproval/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-@csrf
-<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-<input type="submit" value="View Details" class="btn btn-primary" >
-
-    <!-- <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
- 
-
-</form>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-
-        <h5 class="modal-title" id="exampleModalLabel">Remarks By Manager</h5>
-        <button type="submit" name="id" class="close"   data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <table class="table table-hover table-striped table-bordered" style="width:100%">
-          <thead>
-            <tr>
-          <th>Notesheet Id</th>
-              <th>Name</th>
-              <th>Remarks</th>
-            </tr>
-            </thead>
-						<tbody>
-              @foreach($notesheetRemarks as $rv)
               <tr>
-                <td>{{$rv->noteId}}</td>
-                <td>{{$rv->modifier}}</td>
-                <td>{{$rv->modiType}}</td>
+                <th style="border-bottom:4px solid black;" colspan="2" > 
+                  <!-- <td  style="border-bottom:4px solid black;">  -->
+                    <form method="POST" action="/supervisorApproval/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
+                      @csrf
+                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                      <input type="submit" value="View Details" class="btn btn-primary text-center col-lg-4 " >
 
-              </tr>@endforeach
+                    <!-- <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
+                    </form>
 
-            </tbody>  
-          </table>
-    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-</td>  </tr>
-  
 
-  
-  
- 
-      </thead>  
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+
+                            <h5 class="modal-title" id="exampleModalLabel">Remarks By Manager</h5>
+                            <button type="submit" name="id" class="close"   data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
+                          <div class="modal-body">
+                            <table class="table table-hover table-striped table-bordered" style="width:100%">
+                              <thead>
+                                <tr>
+                              <th>Notesheet Id</th>
+                                  <th>Name</th>
+                                  <th>Remarks</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach($notesheetRemarks as $rv)
+                                  <tr>
+                                    <td>{{$rv->noteId}}</td>
+                                    <td>{{$rv->modifier}}</td>
+                                    <td>{{$rv->modiType}}</td>
+
+                                  </tr>@endforeach
+
+                                </tbody>  
+                              </table>
+                        
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </th>
+                  <!-- </td>   -->
+              </tr>
+            </thead>  
     
        @endforeach
 	  

@@ -567,5 +567,8 @@ Route::resource('notesheet', NotesheetController::class);
 
 Route::post('/supervisorApproval/{id}','NotesheetController@supervisorApproval')->name('supervisorApproval');// 
 
-//gm route
+//gm notesheet route
 Route::post('/GMrecommendnotesheet','NotesheetController@GMrecommendnotesheet')->name('GMrecommendnotesheet');
+
+//director notesheet route
+Route::post('/directorrecommendnotesheet','NotesheetController@directorrecommendnotesheet')->name('directorrecommendnotesheet');

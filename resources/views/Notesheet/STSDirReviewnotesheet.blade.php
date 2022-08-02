@@ -47,7 +47,7 @@ hr{
                     <form method="POST" action="/directorrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
                         
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-                      <input type="hidden" name="status" id="status" value="Recommended">
+                      <input type="hidden" name="status" id="status" value="DirectorRecommended">
                       <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
                       <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mt-4 btn-center " > 
                       Recommend

@@ -235,32 +235,38 @@ class FormsController extends Controller
        //end of employee List.
 
 
-       //uniform view
+        //    uniform view
 
-    //    if ($request->v == "uniform")
-    //    {
-
-       
-         
-    //         $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-    //            ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-   
-           
-   
-    //            ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'orgunit.description','conference.Conference_Name'
-    //                    )
-    //            ->latest('id')
-    //            ->paginate(1000000000);
-
-    //            $rhtml = view('uniform.uniform')->with(['c_book' => $c_book])->render();
-    //            return response()
-    //                ->json(array(
-    //                'success' => true,
-    //                'html' => $rhtml
-    //            ));
-   
-    //     }
-       //end uniform view
+        if ($request->v == "uniform")
+        {
+ 
+        
+         $pant = Pant::all();
+         $shirt = Shirt::all();
+         $jacket = JacketSize::all();
+         $shoe = Shoesize::all()->where('id','<',27);;
+         $gumboot = Shoesize::all()->where('id','>=',27);
+         $raincoat = RaincoatSize::all();
+          
+             // $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
+             //    ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
+    
+            
+    
+             //    ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'conference.Conference_Name'
+             //            )
+             //    ->latest('id')
+             //    ->paginate(1000000000);
+ 
+                $rhtml = view('uniform.uniform')->with(['shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,'pant' => $pant])->render();
+                return response()
+                    ->json(array(
+                    'success' => true,
+                    'html' => $rhtml
+                ));
+    
+         }
+     //    end uniform view
 
        //uniform report for individual employee
        if ($request->v == "uniformReport") 

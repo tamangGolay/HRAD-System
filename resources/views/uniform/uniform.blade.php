@@ -36,12 +36,12 @@
                 </div> 
                 
                 <div class="form-group row"> 
-                <label class="col-md-4 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
+                <label class="col-md-4 col-form-label text-md-right" for="office">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" name="division" id="division" placeholder="Division" readonly required>                  
+                    <input type="text" class="form-control" name="office" id="office" placeholder="office" readonly required>                  
                     </div>
                 </div> 
-                <input type="hidden" class="form-control" name="divisionh" id="divisionh" placeholder="Division" readonly required>                  
+                <input type="hidden" class="form-control" name="officeId" id="officeId" readonly required>                  
             
             <div class="form-group row"> 
                 <label class="col-md-4 col-form-label text-md-right" for="contact_number">&nbsp;&nbsp;&nbsp;Contact number:</label>
@@ -54,17 +54,12 @@
                     <input type="hidden" class="form-control" value="1" name="pant_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Pant Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <select name="pant" id="" class="form-control"><option >Select Pant Size</option>
-                            <option >S</option>
-                            <option >M</option>
-                            <option >L</option>
-                            <option >XL</option>
-                            <option >2XL</option>
-                            <option >3XL</option>
-                            <option >4XL</option>
-                            <option >5XL</option>
-                            <option >6XL</option>
-                        </select>                 
+                    <select class="form-control" name="pant" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($pant as $pant)
+                            <option value="{{$pant->id}}">{{$pant->pantSizeName}}</option>
+                            @endforeach
+                    </select>                 
                     </div>
                 </div>
 
@@ -72,16 +67,12 @@
                     <input type="hidden" class="form-control" value="2" name="shirt_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Shirt Size:</label>
                         <div class="col-sm-10 col-md-6 col-lg-4">
-                            <select name="shirt" id="" class="form-control"><option >Select Shirt Size</option>
-                                <option >S</option>
-                                <option >M</option>
-                                <option >L</option>
-                                <option >XL</option>
-                                <option >2XL</option>
-                                <option >3XL</option>
-                                <option >4XL</option>
-                                <option >5XL</option>
-                            </select>                  
+                        <select class="form-control" name="shirt" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($shirt as $shirt)
+                            <option value="{{$shirt->id}}">{{$shirt->shirtSizeName}}</option>
+                            @endforeach
+                    </select>             
                         </div>
                 </div>
 
@@ -89,16 +80,12 @@
                     <input type="hidden" class="form-control" value="3" name="jacket_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Jacket Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <select name="jacket" id="" class="form-control"><option >Select Jacket Size</option>
-                            <option >S</option>
-                            <option >M</option>
-                            <option >L</option>
-                            <option >XL</option>
-                            <option >2XL</option>
-                            <option >3XL</option>
-                            <option >4XL</option>
-                            <option >5XL</option>
-                        </select>                 
+                    <select class="form-control" name="jacket" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($jacket as $jacket)
+                            <option value="{{$jacket->id}}">{{$jacket->sizeName}}</option>
+                            @endforeach
+                    </select>                
                     </div>
                 </div>
 
@@ -106,21 +93,12 @@
                     <input type="hidden" class="form-control" value="4" name="shoe_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Shoe Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <select name="shoe" id="" class="form-control"><option >Select Shoe Size</option>
-                            <option >3</option>
-                            <option >4</option>
-                            <option >5</option>
-                            <option >6</option>
-                            <option >7</option>
-                            <option >8</option>
-                            <option >9</option>
-                            <option >10</option>
-                            <option> 11</option>
-                            <option >12</option>
-                            <option >13</option>
-                            <option >14</option>
-                            <option >15</option>
-                        </select>                  
+                    <select class="form-control" name="shoe" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($shoe as $shoe)
+                            <option value="{{$shoe->id}}">{{$shoe->ukShoeSize}}</option>
+                            @endforeach
+                    </select>                     
                     </div>
                 </div>
 
@@ -128,21 +106,12 @@
                     <input type="hidden" class="form-control" value="5" name="jumboot_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Gumboot Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <select name="jumboot" id="" class="form-control"><option >Select Gumboot Size</option>
-                            <option >3</option>
-                            <option >4</option>
-                            <option >5</option>
-                            <option >6</option>
-                            <option >7</option>
-                            <option >8</option>
-                            <option >9</option>
-                            <option >10</option>
-                            <option> 11</option>
-                            <option >12</option>
-                            <option >13</option>
-                            <option >14</option>
-                            <option >15</option>
-                        </select>                  
+                    <select class="form-control" name="gumboot" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($gumboot as $gumboot)
+                            <option value="{{$gumboot->id}}">{{$gumboot->ukShoeSize}}</option>
+                            @endforeach
+                    </select>                   
                     </div>
                 </div>
 
@@ -150,16 +119,12 @@
                     <input type="hidden" class="form-control" value="6" name="raincoat_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Raincoat Size:</label>
                         <div class="col-sm-10 col-md-6 col-lg-4">
-                            <select name="raincoat" id="" class="form-control"><option >Select Raincoat Size</option>
-                                <option >S</option>
-                                <option >M</option>
-                                <option >L</option>
-                                <option >XL</option>
-                                <option >2XL</option>
-                                <option >3XL</option>
-                                <option >4XL</option>
-                                <option >5XL</option>
-                            </select>
+                        <select class="form-control" name="raincoat" id="officeName" required>
+                            <option value="">Select Size</option>
+                            @foreach($raincoat as $raincoat)
+                            <option value="{{$raincoat->id}}">{{$raincoat->sizeName}}</option>
+                            @endforeach
+                    </select>   
                         </div>
                 </div>
 
@@ -188,50 +153,146 @@ function nima()
 function getEmployeeDetails(val)
 {
 
+       
     //pulling records using emp_id from users table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=userdetails&info='+val+'&token='+csrftoken,function(data){              
-                    console.log(data);
-                    document.getElementById('nameid').value = '';                      
+          $.get('/getValues?source=user_profile&info='+val+'&token='+csrftoken,function(data){              
+                    console.log(data);         
+    document.getElementById('nameid').value = '';                      
                     document.getElementById('contact_number').value = '';
-                    document.getElementById('division').value =  '';
-                    document.getElementById('divisionh').value =  '';
-                    document.getElementById('empid').innerHTML = '';                        
-                
+                    // document.getElementById('fixed').value = '';
+                    // document.getElementById('extension').value = '';
+                    document.getElementById('office').value =  '';
+                                
+                    // document.getElementById('dob').value = '';                      
+                    // document.getElementById('cid').value = '';
+                    // // document.getElementById('blood').value =  '';
+                    // document.getElementById('designation').value =  '';
+                    // document.getElementById('grade').value = '';   
+                    // document.getElementById('appointment').value = '';                      
+                    // document.getElementById('basicpay').value = '';
+                    // document.getElementById('empstatus').value =  '';
+                    // document.getElementById('lastdop').value =  '';
+                    // document.getElementById('emailid').value = '';   
+                    // document.getElementById('office').value = '';                      
+                    // // document.getElementById('resignationtype').value =  '';
+                    // // document.getElementById('resignationdate').value = '';  
+                    // // document.getElementById('qualification').value = '';    
+                    // document.getElementById('employmenttype').value = '';                      
+                    // document.getElementById('incrementcycle').value = '';
+                    
+                   
+                    document.getElementById('empid').value = '';                        
+
+
+
+                    
                 $.each(data, function(index, Employee){
-                    if(Employee.name != null)
-                    {
-                        document.getElementById('nameid').value = Employee.name;                      
-                        document.getElementById('contact_number').value = Employee.contact_number;
-                        document.getElementById('division').value =  Employee.description;
-                        document.getElementById('divisionh').value =  Employee.org_unit_id;
-                        document.getElementById('emp_id').innerHTML='';
-                    }				
-                    else 
-                    {
-                        document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-				    }                       
+
+
+                          if(Employee.empId != null)
+                          {
+
+                           
+                            document.getElementById('nameid').value = Employee.empName;                      
+                                document.getElementById('contact_number').value = Employee.mobileNo;
+                    //             document.getElementById('fixed').value = Employee.fixedNo;
+                    //             document.getElementById('extension').value = Employee.extension;
+                                document.getElementById('office').value =  Employee.shortOfficeName;
+                                document.getElementById('officeId').value =  Employee.office;
+
+                    //             document.getElementById('emp_id').innerHTML= Employee.empId;                    
+                    // document.getElementById('dob').value = Employee.dob;                      
+                    // document.getElementById('cid').value = Employee.cidNo; 
+                    // // document.getElementById('blood').value =  Employee.bloodGroup; 
+                    // document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
+                    // document.getElementById('designation').value =  Employee.desisNameLong; 
+                  
+                    // document.getElementById('grade').value = Employee.grade;
+                    // document.getElementById('gradeId').value = Employee.gradeId; 
+                    // document.getElementById('empstatus').value = Employee.empStatus;    
+   
+
+                    // document.getElementById('appointment').value = Employee.appointmentDate;                       
+                    // document.getElementById('basicpay').value = Employee.basicPay; 
+                    // document.getElementById('lastdop').value =  Employee.lastDop; 
+                    // document.getElementById('emailid').value = Employee.emailId;    
+                    // //  document.getElementById('placeId').value = Employee.id;  //pulls id of officedetailss table
+                    // document.getElementById('office').value = Employee.office; //pulls id from users table                      
+                    // // document.getElementById('bankname').value = Employee.bankName; 
+                    // // document.getElementById('qualification').value = Employee.qualificationName;
+                    // // document.getElementById('accountnumber').value =  Employee.accountNumber; 
+                    // // document.getElementById('resignationtype').value =  Employee.resignationType; 
+                    // // document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 
+                    // // document.getElementById('resignationdate').value = Employee.resignationDate;    
+                    // document.getElementById('employmenttype').value = Employee.employmentType;                       
+                    // document.getElementById('incrementcycle').value = Employee.incrementCycle; 
+                 
+                        
+                        }				
+
+
+                            
+                            else {
+                                document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
+								// document.getElementById('emp_id').value='';
+  
+                            }                       
+                                                         
+                            
                 })
-            }); 
-
-
-	//pulling records using cid from checkin table 
-	var csrftoken = document.getElementById('tokenid').value;
-	$.get('/getValues?source=useruniformadd&info=' + val + '&token=' + csrftoken, function(data) {
-		console.log(data);
-		// document.getElementById('nameid').value =  '';
-		document.getElementById('empid').innerHTML = '';
-		$.each(data, function(index, Employee) {
-			if(Employee.emp_id != null) {                  
-				document.getElementById('empid').innerHTML = 'Record already exist for this employee!!';
-				document.getElementById('emp_id').value = '';
-			}
-		})
-	});
-
+        });
+      
+  
 
 }  
-$('div.alert').delay(4500).slideUp(300);// Session message  display time
+$('div.alert').delay(6500).slideUp(300);// Session message  display time
+
+
+//     //pulling records using emp_id from users table 
+//       var csrftoken =document.getElementById('tokenid').value;
+//           $.get('/getValues?source=useruniformadd&info='+val+'&token='+csrftoken,function(data){              
+//                     console.log(data);
+//                     document.getElementById('nameid').value = '';                      
+//                     document.getElementById('contact_number').value = '';
+//                     document.getElementById('division').value =  '';
+//                     document.getElementById('divisionh').value =  '';
+//                     document.getElementById('empid').innerHTML = '';                        
+                
+//                 $.each(data, function(index, Employee){
+//                     if(Employee.empName != null)
+//                     {
+//                         document.getElementById('nameid').value = Employee.empName;                      
+//                         // document.getElementById('contactNumber').value = Employee.contactNumber;
+//                         document.getElementById('division').value =  Employee.longOfficeName;
+//                         // document.getElementById('divisionh').value =  Employee.office;
+//                         // document.getElementById('emp_id').innerHTML='';
+//                     }				
+//                     else 
+//                     {
+//                         document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
+// 				    }                       
+//                 })
+//             }); 
+
+
+// 	// //pulling records using cid from checkin table 
+// 	// var csrftoken = document.getElementById('tokenid').value;
+// 	// $.get('/getValues?source=useruniformadd&info=' + val + '&token=' + csrftoken, function(data) {
+// 	// 	console.log(data);
+// 	// 	// document.getElementById('nameid').value =  '';
+// 	// 	document.getElementById('empid').innerHTML = '';
+// 	// 	$.each(data, function(index, Employee) {
+// 	// 		if(Employee.empId != null) {                  
+// 	// 			document.getElementById('empid').innerHTML = 'Record already exist for this employee!!';
+// 	// 			document.getElementById('emp_id').value = '';
+// 	// 		}
+// 	// 	})
+// 	// });
+
+
+// }  
+// $('div.alert').delay(4500).slideUp(300);// Session message  display time
 </script>
 
 <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
@@ -239,6 +300,8 @@ $('div.alert').delay(4500).slideUp(300);// Session message  display time
 		$(document).ready(function() {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
+
+        
 		</script>
 
 

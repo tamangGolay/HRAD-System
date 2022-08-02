@@ -11,12 +11,12 @@
 			<form method="POST" action="/" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 				<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 				<div class="card-body table-responsive p-0">
-					<table id="table1" class="table table-hover table-striped table-bordered">
+					<table id="report" class="table table-hover table-striped table-bordered">
 						<thead>
 							<tr class="text-nowrap">
 								<th>Sl.No</th>
 								<th>Emp Id</th>
-                                <th>Name</th>
+                                <!-- <th>Name</th> -->
 								<th>Wing/Dept/Div</th> 								
 								<th>Pant Size</th>
 								<th>Shirt Size</th>
@@ -30,15 +30,14 @@
 						</thead>
 						<tbody> @foreach($data1 as $rv)
 							<tr>
-								<td> {{$rv->id}} </td>
-								<td> {{$rv->emp_id}} </td>
-								<td> {{$rv->name}} </td>	
-                                <td> {{$rv->description}} </td>	
+							<td> {{$rv->uniformId}} </td>
+								<td> {{$rv->empId}} </td>
+                                <td> {{$rv->shortOfficeName}} </td>	
                                 <td> {{$rv->pant}} </td>
 								<td> {{$rv->shirt}} </td>
 								<td> {{$rv->jacket}} </td>
                                 <td> {{$rv->shoe}} </td>
-								<td> {{$rv->jumboot}}  </td>
+								<td> {{$rv->gumboot}}  </td>
 								<td> {{$rv->raincoat}}  </td>
 
 								 </form>
@@ -59,12 +58,10 @@
 				
 			</div>
 			</div>
-			
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 			<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>			
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
@@ -104,7 +101,7 @@
 		<script>
 	
 		$(function() {
-			$("#table1").DataTable({
+			$("#report").DataTable({
 				"dom": 'Bfrtip',
 				"responsive": true,
 				"lengthChange": true,
@@ -120,6 +117,57 @@
 
 	
 	
+	// $.ajaxSetup({
+	// 			headers: {
+	// 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	// 			}
+	// 		});
+	// 		$('body').on('click', '.edit', function() {
+	// 			var unifromId = $(this).data('id'); //pull uniform request id   
+	// 			$.get("{{ route('a_b.store') }}" + '/' + unifromId + '/edit', function(data) { //pass vehicleid means requestid here
+	// 				$('#modelHeading').html("Update your uniform size correctly!");
+	// 				$('#ajaxModel').modal('show'); //post data as $request in vehiclecontroller using ajaxcontroller
+	// 				$('#id').val(data.id);
+	// 				// $('#vehicle').val(data.vehicleId); //here its vehicle id only
+	// 				$('#pant').val(data.pant); //pulling data on modal is not handled here
+	// 			})
+	// 		});
+	// 		$('#saveBtn').click(function(e) {
+	// 			e.preventDefault();
+	// 			$(this).html('Save');
+	// 			$.ajax({
+	// 				data: $('#Form').serialize(),
+	// 				url: "{{ route('a_b.store') }}",
+	// 				type: "POST",
+	// 				dataType: 'json',
+	// 				success: function(data) {
+	// 					$('#Form').trigger("reset");
+	// 					$('#ajaxModel').modal('hide');
+	// 					//   table.draw();
+	// 					window.onload = callajaxOnPageLoad(page);
+	// 					var alt = document.createElement("div");
+	// 					alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
+	// 					alt.innerHTML = "Data Updated Successfully! ";
+	// 					setTimeout(function() {
+	// 						alt.parentNode.removeChild(alt);
+	// 					}, 4500);
+	// 					document.body.appendChild(alt);
+
+	// 					window.location.href = '/home';
+
+	// 					// $.get('/getView?v=/home', function(data) {
+	// 					// 	$('#contentpage').empty();
+	// 					// 	$('#contentpage').append(data.html);
+	// 					// });
+	// 					table.draw();
+	// 				},
+	// 				error: function(data) {
+	// 					console.log('Error:', data);
+	// 					$('#saveBtn').html('Save Changes');
+	// 				}
+	// 			});
+	// 		});
+
 			$('form').submit(function () {
     // Bail out if the form contains validation errors
     if ($.validator && !$(this).valid()) return;

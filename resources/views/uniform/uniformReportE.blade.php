@@ -30,15 +30,14 @@
 						</thead>
 						<tbody> @foreach($data1 as $rv)
 							<tr>
-								<td> {{$rv->id}} </td>
-								<td> {{$rv->emp_id}} </td>
-								<td> {{$rv->name}} </td>	
-                                <td> {{$rv->description}} </td>	
+								<td> {{$rv->uniformId}} </td>
+								<td> {{$rv->empId}} </td>
+                                <td> {{$rv->shortOfficeName}} </td>	
                                 <td> {{$rv->pant}} </td>
 								<td> {{$rv->shirt}} </td>
 								<td> {{$rv->jacket}} </td>
                                 <td> {{$rv->shoe}} </td>
-								<td> {{$rv->jumboot}}  </td>
+								<td> {{$rv->gumboot}}  </td>
 								<td> {{$rv->raincoat}}  </td>
 
 								 </form>

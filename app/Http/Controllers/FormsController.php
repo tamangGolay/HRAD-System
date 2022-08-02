@@ -4646,5 +4646,139 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+ if ($request->v == "fasdirreview")  //form.csv
+ {    
+ $notesheetRemarks = notesheetapprove::all();
+ $notesheetRequest = DB::table('notesheet')
+
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    ->where('notesheet.status','=','Recommended') 
+
+    // ->where('notesheet.status','=','GMRecommended') // 
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+//    ->orwhere('officeId','=',89)  //IT 
+//    ->orwhere('officeId','=',90) // Suit
+
+    ->paginate(10000000);
+
+
+    $rhtml = view('Notesheet.FASDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
+ if ($request->v == "dsdirreview")  //form.csv
+ {    
+
+ $notesheetRemarks = notesheetapprove::all();
+ $notesheetRequest = DB::table('notesheet')
+
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    ->where('notesheet.status','=','Recommended') 
+
+    // ->where('notesheet.status','=','GMRecommended') // 
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+//    ->orwhere('officeId','=',89)  //IT 
+//    ->orwhere('officeId','=',90) // Suit
+
+    ->paginate(10000000);
+
+
+    $rhtml = view('Notesheet.DSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+ if ($request->v == "tsdirreview")  //form.csv
+ {    
+ $notesheetRemarks = notesheetapprove::all();
+ $notesheetRequest = DB::table('notesheet')
+
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    ->where('notesheet.status','=','Recommended') 
+
+    // ->where('notesheet.status','=','GMRecommended') // 
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+//    ->orwhere('officeId','=',89)  //IT 
+//    ->orwhere('officeId','=',90) // Suit
+
+    ->paginate(10000000);
+
+
+    $rhtml = view('Notesheet.TSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+ 
+
+ if ($request->v == "hrdirreview")  //form.csv
+ {    
+ $notesheetRemarks = notesheetapprove::all();
+ $notesheetRequest = DB::table('notesheet')
+
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+
+    ->where('notesheet.status','=','Recommended') 
+
+    // ->where('notesheet.status','=','GMRecommended') // 
+    
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+//    ->orwhere('officeId','=',89)  //IT 
+//    ->orwhere('officeId','=',90) // Suit
+
+    ->paginate(10000000);
+
+
+    $rhtml = view('Notesheet.HRDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
  }
 }

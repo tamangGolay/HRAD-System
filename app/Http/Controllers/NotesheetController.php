@@ -357,22 +357,21 @@ public function recommendnotesheet(Request $request)
             
 
             
-public function GMrecommendnotesheet(Request $request)
+public function GMrecommendnotesheet(Request $request) 
 {
 
-    if($request->status == "GMRecommended" ){  //&& $request->remarks != ''
+    if($request->status == "Recommended" ){  //&& $request->remarks != ''
         $id = DB::table('notesheet')->select('id')
         ->where('id',$request->id)
         ->first();
         
-        $re="Recommended";
-        
+        // $re="Recommended";        
     
            $users = new notesheetapprove;//users is ModelName
             $users->noteId = $id->id;//emp_id is from input name
             $users->modifier =  $request->empId;//EmpName is from dB
             $users->remarks = $request->remarks;
-            $users->modiType = $re;//emp_id is from input name
+            $users->modiType = $request->status;//emp_id is from input name
             $users->save();
     
         notesheetRequest::updateOrCreate(['id' => $id->id],
@@ -410,13 +409,13 @@ public function GMrecommendnotesheet(Request $request)
             ->where('id',$request->id)
             ->first(); 
                    
-            $re="Recommended";
+            // $re="Approved";
         
             $users = new notesheetapprove;//users is ModelName
                 $users->noteId = $id->id;//emp_id is from input name
                 $users->modifier =  $request->empId;//EmpName is from dB
                 $users->remarks = $request->remarks1;
-                $users->modiType = $re;  //emp_id is from input name
+                $users->modiType = $request->status;  //emp_id is from input name
                 $users->save();
         
             notesheetRequest::updateOrCreate(['id' => $id->id],
@@ -443,22 +442,22 @@ public function GMrecommendnotesheet(Request $request)
             // // ->cc($userEmail->emailId)
             // ->send(new MyTestMail($approve)); 
         
-            return redirect('home')->with('success','You have Approved the Notesheet');   
-        }
+             return redirect('home')->with('success','You have Approved the Notesheet');   
+         }
 
 
-            if($request->status2 == "GMRejected"){
+            if($request->status2 == "Rejected"){
                 $id = DB::table('notesheet')->select('id')
                 ->where('id',$request->id)
                 ->first();                      
             
-                $re="Recommended";
+                // $re="Rejected";
             
                 $users = new notesheetapprove;//users is ModelName
                     $users->noteId = $id->id;//emp_id is from input name
                     $users->modifier =  $request->empId;//EmpName is from dB
                     $users->remarks = $request->remarks2;
-                    $users->modiType = $re;//emp_id is from input name
+                    $users->modiType = $request->status;//emp_id is from input name
                     $users->save();
             
                 notesheetRequest::updateOrCreate(['id' => $id->id],
@@ -487,8 +486,10 @@ public function GMrecommendnotesheet(Request $request)
                 return redirect('home')->with('error','You have rejected the Notesheet');    
             }
 
-
+            else{
+                return redirect('home')->with('error','You cannot leave the remarks field empty test!!');  
+            }
          
 
-}
+  }
 }

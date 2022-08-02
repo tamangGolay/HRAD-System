@@ -42,10 +42,10 @@ hr{
                   <div class="row">
                     <div class="col ">          
                       <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
-                          
+                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="GMRecommended">
+                        <input type="hidden" name="status" id="status" value="Recommended">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center " > 
                         Recommend
@@ -56,10 +56,11 @@ hr{
                     </div>
 
                     <div class="col">
-                      <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                      <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="GMApproved">
+                        <input type="hidden" name="status" id="status" value="Approved">
                     
                         <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mb-4 btn-center " > 
                         <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
@@ -69,11 +70,12 @@ hr{
                       </form>
                     </div>
      
-                    <div class="col">
-                      <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+                    <div class="col">  
+                      <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
+                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="GMRejected">
+                        <input type="hidden" name="status" id="status" value="Rejected">
                         <input type="hidden"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 

@@ -36,7 +36,7 @@ hr{
            <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
         
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-        <input type="hidden" name="status" id="status" value="Cancel">
+        <!-- <input type="hidden" name="status" id="status" value="Cancel"> -->
         <input type="hidden" name="cancelled" id="cancelled" value="Yes">
 
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 

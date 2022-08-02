@@ -4555,7 +4555,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     $notesheetRequest = notesheetRequest::all();
     $officedetails = Officedetails::all();
 
-    $orgunit = orgunit::all();
+    // $orgunit = orgunit::all();
     
     $notesheetRequest = DB::table('notesheet')
 

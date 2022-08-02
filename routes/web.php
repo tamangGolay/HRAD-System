@@ -566,3 +566,6 @@ Route::get('pdf-create','PdfController@create');
 Route::resource('notesheet', NotesheetController::class);
 
 Route::post('/supervisorApproval/{id}','NotesheetController@supervisorApproval')->name('supervisorApproval');// 
+
+//gm route
+Route::post('/GMrecommendnotesheet','NotesheetController@GMrecommendnotesheet')->name('GMrecommendnotesheet');

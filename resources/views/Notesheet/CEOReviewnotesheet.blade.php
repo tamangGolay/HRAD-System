@@ -29,13 +29,10 @@ hr{
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
-              <tr>   <th>office Id</th>        <td> {{($rv->officeId)}} </td>    </tr>
+              <tr>   <th>office Name</th>        <td> {{($rv->longOfficeName)}} </td>    </tr>
               <!-- <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr> -->
 			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>  
-        
 
-      <!-- <tr>   <th>Remarks</th> <td><input type="text"  name="remarks[]" class="form-control" id="remarks" placeholder="Topic">
-     </td>  </tr>  -->
                            
 			  <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 

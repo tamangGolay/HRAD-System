@@ -4674,17 +4674,11 @@ if ($request->v == "employeeskillmap")  //form.csv
  if ($request->v == "notesheetReview")  //form.csv
  {    
     // $roles = Roles::all();
-    $notesheetRequest = notesheetRequest::all();
-    $officedetails = Officedetails::all();
-
-    // $orgunit = orgunit::all();
-    
+    $notesheetRequest = notesheetRequest::all();    
+    $officedetails = Officedetails::all();     
     $notesheetRequest = DB::table('notesheet')
-
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
-    // ->join('roles', 'users.role_id', '=', 'roles.id');
-
-    ->select('notesheet.*','officedetails.shortOfficeName','officedetails.Address')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
+    ->select('notesheet.*','officedetails.longOfficeName')
 
                ->latest('notesheet.id') //similar to orderby('id','desc')
                ->where('notesheet.officeId',Auth::user()->office)
@@ -4706,12 +4700,13 @@ if ($request->v == "employeeskillmap")  //form.csv
  if ($request->v == "GMReview")  //form.csv
  { 
     
- $notesheetRemarks = notesheetapprove::all();
- 
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
     $notesheetRequest = DB::table('notesheet')
-
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
-    ->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4723,7 +4718,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 //    ->orWhere('orgunit.office',Auth::user()->office)
     ->paginate(10000000);
   
-    $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
      ->json(array(
       'success' => true,
@@ -4735,11 +4730,13 @@ if ($request->v == "employeeskillmap")  //form.csv
 
  if ($request->v == "stsdirreview")  //form.csv
  {    
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
-
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
+    ->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4748,13 +4745,18 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
-//    ->orwhere('officeId','=',89)  //IT 
-//    ->orwhere('officeId','=',90) // Suit
+    ->orwhere('officeId','=',89)  //IT 
+    ->orwhere('officeId','=',90) // Suit
+    ->orwhere('officeId','=',88)  //fnd (3 for ICD)
+    ->orwhere('officeId','=',72) // RDD
+    ->orwhere('officeId','=',86) // 
+    ->orwhere('officeId','=',88) // erd
+    ->orwhere('officeId','=',93) //spbd
+    ->orwhere('officeId','=',94) // spbd
 
     ->paginate(10000000);
 
-
-    $rhtml = view('Notesheet.STSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.STSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -4765,11 +4767,13 @@ if ($request->v == "employeeskillmap")  //form.csv
 
  if ($request->v == "fasdirreview")  //form.csv
  {    
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
-
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
+   ->join('officemaster','officemaster.id','=','notesheet.officeId')
+    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4778,13 +4782,11 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
-//    ->orwhere('officeId','=',89)  //IT 
-//    ->orwhere('officeId','=',90) // Suit
 
     ->paginate(10000000);
 
 
-    $rhtml = view('Notesheet.FASDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.FASDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -4797,11 +4799,14 @@ if ($request->v == "employeeskillmap")  //form.csv
  if ($request->v == "dsdirreview")  //form.csv
  {    
 
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
 
 ->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4809,14 +4814,29 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-
-//    ->orwhere('officeId','=',89)  //IT 
-//    ->orwhere('officeId','=',90) // Suit
+    ->orwhere('officeId','=',63) // 
+    ->orwhere('officeId','=',64) // 
+    ->orwhere('officeId','=',62) // 
+    ->orwhere('officeId','=',65) // 
+    ->orwhere('officeId','=',24)  ->orwhere('officeId','=',25)   ->orwhere('officeId','=',26)  //esd n essd
+    ->orwhere('officeId','=',27)   ->orwhere('officeId','=',28)     ->orwhere('officeId','=',29)    ->orwhere('officeId','=',30) 
+    ->orwhere('officeId','=',31)      ->orwhere('officeId','=',32)      ->orwhere('officeId','=',33) 
+    ->orwhere('officeId','=',34)     ->orwhere('officeId','=',35)      ->orwhere('officeId','=',36)  
+    ->orwhere('officeId','=',37)      ->orwhere('officeId','=',38)   ->orwhere('officeId','=',39)
+    ->orwhere('officeId','=',40)     ->orwhere('officeId','=',41)       ->orwhere('officeId','=',42)
+    ->orwhere('officeId','=',43) ->orwhere('officeId','=',44) ->orwhere('officeId','=',45)
+    ->orwhere('officeId','=',46) ->orwhere('officeId','=',47) ->orwhere('officeId','=',48)
+    ->orwhere('officeId','=',49) ->orwhere('officeId','=',50) ->orwhere('officeId','=',51)
+    ->orwhere('officeId','=',52) ->orwhere('officeId','=',53) ->orwhere('officeId','=',54)
+    ->orwhere('officeId','=',55) ->orwhere('officeId','=',56) ->orwhere('officeId','=',57)
+    ->orwhere('officeId','=',58)  ->orwhere('officeId','=',59)  ->orwhere('officeId','=',60)
+    ->orwhere('officeId','=',61) 
+    ->orwhere('officeId','=',16) ->orwhere('officeId','=',17) ->orwhere('officeId','=',18) 
 
     ->paginate(10000000);
 
 
-    $rhtml = view('Notesheet.DSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.DSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -4826,11 +4846,13 @@ if ($request->v == "employeeskillmap")  //form.csv
  }  //end
  if ($request->v == "tsdirreview")  //form.csv
  {    
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
-
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
 ->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4838,14 +4860,18 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->orwhere('officeId','=',137)  //
+  ->orwhere('officeId','=',156) ->orwhere('officeId','=',157) ->orwhere('officeId','=',158) ->orwhere('officeId','=',159) 
+  ->orwhere('officeId','=',160) ->orwhere('officeId','=',161)  
+  ->orwhere('officeId','=',130) ->orwhere('officeId','=',131) ->orwhere('officeId','=',132) ->orwhere('officeId','=',133) 
+  ->orwhere('officeId','=',138) 
 
-//    ->orwhere('officeId','=',89)  //IT 
-//    ->orwhere('officeId','=',90) // Suit
+
 
     ->paginate(10000000);
 
 
-    $rhtml = view('Notesheet.TSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.TSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -4857,11 +4883,14 @@ if ($request->v == "employeeskillmap")  //form.csv
 
  if ($request->v == "hrdirreview")  //form.csv
  {    
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
 
 ->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -4870,13 +4899,17 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
-//    ->orwhere('officeId','=',89)  //IT 
-//    ->orwhere('officeId','=',90) // Suit
+    ->orwhere('officeId','=',78)  //
+    ->orwhere('officeId','=',80) // 
+    ->orwhere('officeId','=',81) //
+    ->orwhere('officeId','=',76) // 
+    ->orwhere('officeId','=',74) // 
+    ->orwhere('officeId','=',75) // 
 
     ->paginate(10000000);
 
 
-    $rhtml = view('Notesheet.HRDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.HRDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -4888,11 +4921,14 @@ if ($request->v == "employeeskillmap")  //form.csv
  // for CEO notesheet approval n recom
  if ($request->v == "CEOreview")  //form.csv
  {    
- $notesheetRemarks = notesheetapprove::all();
- $notesheetRequest = DB::table('notesheet')
+    $notesheetRemarks = notesheetapprove::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $notesheetRequest = DB::table('notesheet')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
 
 ->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('notesheet.status','=','DirectorRecommended')  
@@ -4900,7 +4936,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->paginate(10000000);
 
-    $rhtml = view('Notesheet.CEOReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+    $rhtml = view('Notesheet.CEOReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
   
      ->json(array(

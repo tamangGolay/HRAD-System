@@ -371,6 +371,9 @@ Route::post('/delete','UniformController@delete')->name('delete');
 
 Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('destroy');
 
+//uniform shoes Report
+Route::resource('shoesreport', 'ShoesReportController');//refund report
+
 // for uniform deleting
 Route::delete('/nieuws/{id}', 'uniformController@destroy')->name('nieuws');
 

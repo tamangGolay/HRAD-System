@@ -376,6 +376,26 @@ class FormsController extends Controller
  
  //end for total shoe sizes;
 
+//uniform shoes report
+if ($request->v == "shoesReport")  //form.csv
+{   $shoerepo = Officedetails::all();   
+    $shoesizerepo = Shoesize::all();
+
+    $name = DB::table('employeeuniform')
+    ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+    ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+   
+    ->select('officedetails.longOfficeName','shoesize.ukShoeSize')
+    ->where('employeeuniform.status','=', 0);
+
+    $rhtml = view('uniform.shoeReport')->with(['shoerepo'=>$shoerepo,'shoesizerepo'=>$shoesizerepo])->render();
+    return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  
+//end
 
 //uniform shoe size
 if ($request->v == "shoesize")

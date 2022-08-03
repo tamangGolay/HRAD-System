@@ -573,6 +573,9 @@ Route::post('/GMrecommendnotesheet','NotesheetController@GMrecommendnotesheet')-
 //director notesheet route
 Route::post('/directorrecommendnotesheet','NotesheetController@directorrecommendnotesheet')->name('directorrecommendnotesheet');
 
+//CEO notesheet route
+Route::post('/ceorecommendnotesheet','NotesheetController@ceorecommendnotesheet')->name('ceorecommendnotesheet');
+
 
 //uniform shirt size report
 Route::resource('shirtSizeReport', 'ShirtSizeReportController');//refund report

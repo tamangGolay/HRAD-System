@@ -4794,6 +4794,30 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+ // for CEO notesheet approval n recom
+ if ($request->v == "CEOreview")  //form.csv
+ {    
+ $notesheetRemarks = notesheetapprove::all();
+ $notesheetRequest = DB::table('notesheet')
+
+->join('officemaster','officemaster.id','=','notesheet.officeId')
+->select('notesheet.id','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+   ->latest('notesheet.id') //similar to orderby('id','desc')
+    ->where('notesheet.status','=','DirectorRecommended')    
+    ->where('notesheet.officeId',Auth::user()->office)
+    ->paginate(10000000);
+
+    $rhtml = view('Notesheet.CEOReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
 
  // uniform shirt size report
  if ($request->v == "shirtReport")  //form.csv

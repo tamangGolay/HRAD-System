@@ -4798,8 +4798,42 @@ if ($request->v == "employeeskillmap")  //form.csv
  // uniform shirt size report
  if ($request->v == "shirtReport")  //form.csv
  {    
+    $officename = officedetails::all()
+                ->where('status',0);
+    $shirtsize = shirt::all()
+                ->where('status',0);
 
-  $rhtml = view('UniformReport.shirtSizeReport')->render(); 
+    $shirtsizes = DB::table('employeeuniform')
+                  ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+                  ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt') 
+                  ->select('officedetails.longOfficeName','employeeuniform.*','shirtmaster.shirtSizeName')
+                  ->where('employeeuniform.status',0);
+
+  $rhtml = view('UniformReport.shirtSizeReport')->with(['officename' => $officename,'shirtsize' => $shirtsize])->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
+ // uniform shirt size report
+ if ($request->v == "raincoatSizeReport")  //form.csv
+ {    
+    $officename = officedetails::all()
+                ->where('status',0);
+
+    $raincoat = RainCoatSize::all()
+                ->where('status',0);
+
+    $raincoatsizes = DB::table('employeeuniform')
+                  ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+                  ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat') 
+                  ->select('officedetails.longOfficeName','employeeuniform.*','raincoatsize.sizeName')
+                  ->where('employeeuniform.status',0);
+
+  $rhtml = view('UniformReport.raincoatSizeReport')->with(['officename' => $officename,'raincoat' => $raincoat])->render(); 
   return response()
      ->json(array(
       'success' => true,
@@ -4809,4 +4843,6 @@ if ($request->v == "employeeskillmap")  //form.csv
 
 }
 }
+ 
+
  

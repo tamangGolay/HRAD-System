@@ -601,8 +601,8 @@ public function recommendnotesheet(Request $request)
         ->first();    
 
         
-        dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,
-        $Driectorempid,$DirectorEmail,$CEOEmail);
+        // dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,
+        // $Driectorempid,$DirectorEmail,$CEOEmail);
 
         Mail::to($CEOEmail->emailId) 
          ->cc($GmEmail->emailId)

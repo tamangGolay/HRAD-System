@@ -53,6 +53,12 @@ use App\SubSkillCategory;
 use App\Skillmaster;
 use App\notesheetRequest;
 use App\notesheetapprove;
+use App\Pant;
+use App\Shirt;
+use App\RaincoatSize;
+
+
+
 
 class FormsController extends Controller
 {
@@ -273,10 +279,17 @@ class FormsController extends Controller
        {
            try{
 
+
         $data1 = DB::table('employeeuniform')
-        ->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
-                 
-           ->select('employeeuniform.id', 'employeeuniform.emp_id', 'orgunit.description','employeeuniform.name', 'employeeuniform.shirt', 'employeeuniform.pant', 'employeeuniform.jacket', 'employeeuniform.raincoat', 'employeeuniform.jumboot', 'employeeuniform.shoe')
+        ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+        ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+        ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+        ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+        ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
+        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+        ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+
+           ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName')
             ->paginate(10000);
             
 
@@ -290,9 +303,15 @@ class FormsController extends Controller
             catch(\Facade\Ignition\Exceptions\ViewException $e) {
 
                 $data1 = DB::table('employeeuniform')
-                ->join('orgunit', 'orgunit.id', '=', 'employeeuniform.org_unit_id')
-                         
-                   ->select('employeeuniform.id', 'employeeuniform.emp_id', 'orgunit.description','employeeuniform.name', 'employeeuniform.shirt', 'employeeuniform.pant', 'employeeuniform.jacket', 'employeeuniform.raincoat', 'employeeuniform.jumboot', 'employeeuniform.shoe')
+                ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+                ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+                ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+                ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+                ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
+                ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+                ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+          
+                   ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName')
                     ->paginate(10000);
                             
                        $rhtml = view('uniform.uniformReportE')->with(['data1' => $data1])->render();

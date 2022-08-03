@@ -20,12 +20,13 @@ class OfficeMasterController extends Controller
  
         $b = DB::table('officemaster')
         ->join('officename AS A', 'A.id', '=', 'officemaster.officeName')
-        ->join('officename AS B', 'B.id', '=', 'officemaster.reportToOffice')
+        // ->join('officename AS B', 'B.id', '=', 'officemaster.reportToOffice')
         ->join('users', 'users.empId', '=', 'officemaster.officeHead')
         ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
+        ->join('officedetails', 'officedetails.id', '=', 'officemaster.reportToOffice')
         ->join('officehead', 'officehead.OfficeId', '=', 'officemaster.id')
 
-       ->select( 'officehead.HeadOfOffice','office_address.Address','users.empId','officemaster.id','A.longOfficeName','B.shortOfficeName','officemaster.officeHead')
+       ->select( 'officehead.HeadOfOffice','office_address.Address','users.empId','officemaster.id','A.longOfficeName','officedetails.officeDetails','officemaster.officeHead')
        ->where('officemaster.status','0');
 
  

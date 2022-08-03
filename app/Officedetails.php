@@ -30,7 +30,7 @@ class Officedetails extends Authenticatable
 
 
 protected $fillable = [ 
-    'id','shortOfficeName','Address'];
+    'id','shortOfficeName','Address','officeDetails'];
 
      /**
      * The attributes that should be hidden for arrays.

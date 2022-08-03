@@ -3353,7 +3353,7 @@ if ($request->v == "vehicleReport")
  if ($request->v == "officemaster")
  {
     $officen = officeName::all();
-    $reportto = officeName::all();
+    $reportto = Officedetails::all();
     $placemastern = place::all();  
     //$dzongkhag = Dzongkhags::all(); 
     $offhead = User::all();
@@ -3362,13 +3362,13 @@ if ($request->v == "vehicleReport")
    
     $name = DB::table('officemaster')
     ->join('officename AS A', 'A.id', '=', 'officemaster.officeName')
-    ->join('officename AS B', 'B.id', '=', 'officemaster.reportToOffice')
+    // ->join('officename AS B', 'B.id', '=', 'officemaster.reportToOffice')
     ->join('users', 'users.empId', '=', 'officemaster.officeHead')
     ->join('office_address', 'office_address.placeId', '=', 'officemaster.officeAddress')
-   // ->join('placemaster', 'placemaster.id', '=', 'officemaster.officeAddress')
+    ->join('officedetails', 'officedetails.id', '=', 'officemaster.reportToOffice')
    ->join('officehead', 'officehead.id', '=', 'officemaster.officeAddress')
 
-   ->select('officehead.NameOfHead','A.longOfficeName','B.shortOfficeName','office_address.Address','users.empId')
+   ->select('officehead.NameOfHead','A.longOfficeName','officedetails.officeDetails','office_address.Address','users.empId')
    ->where('officemaster.status',0);
 
     $rhtml = view('masterData.officeMaster')->with(['officen'=>$officen,'placemastern'=>$placemastern, 'offhead'=>$offhead, 'offadd'=>$offadd, 'reportto'=>$reportto])->render();

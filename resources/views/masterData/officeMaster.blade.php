@@ -36,8 +36,8 @@ a {
             <tr>
 
                 <th>No</th> 
-                <th>Office Name</th>
-                <th>Office Address</th>
+                <th style="width:20%">Office Name</th>
+                <th >Office Address</th>
                 <th>Office Head</th>
                 <th>Report to</th>
                 <th>Action</th>
@@ -107,7 +107,7 @@ a {
                         <select class="col-lg-12 col-sm-12" name="reportToOffice" id="reportToOffice" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($reportto as $reportto)
-                                             <option value="{{$reportto->id}}">{{$reportto->shortOfficeName}}</option>
+                                             <option value="{{$reportto->id}}">{{$reportto->officeDetails}}</option>
 										@endforeach
 							</select>
                         
@@ -170,7 +170,7 @@ a {
             {data: 'longOfficeName', name: 'A.longOfficeName', orderable: true, searchable: true},
             {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
             {data: 'HeadOfOffice', name: 'officeHead.HeadOfOffice',orderable: true, searchable: true},
-            {data: 'shortOfficeName', name: 'B.shortOfficeName',orderable: true, searchable: true},
+            {data: 'officeDetails', name: 'officedetails.officeDetails',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -261,7 +261,7 @@ a {
           $('#officeName').val(data.longOfficeName); //input id,database
           $('#officeAddress').val(data.Address);
           $('#officeHead').val(data.empId);
-          $('#reportToOffice').val(data.shortOfficeName);
+          $('#reportToOffice').val(data.officeDetails);
       })
    });
    

@@ -583,3 +583,5 @@ Route::resource('shirtSizeReport', 'ShirtSizeReportController');//refund report
 //uniform raincoat size report
 Route::resource('raincoatSizeReport', 'RainCoatSizeReportController');//refund report
 
+//uniform jacket size report
+Route::resource('jacketreport', 'JacketReportController');

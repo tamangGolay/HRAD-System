@@ -4390,6 +4390,41 @@ if ($request->v == "notesheetReport")
                ));
          }  
          //end
+         
+
+        //jacket
+         if ($request->v == "jacketReport")  //form.csv
+         { 
+
+         $jacketsize = JacketSize::all()
+         ->where('status',0);  
+
+         $officename = Officedetails::all()
+         ->where('status',0);  
+
+
+         $data = DB::table('employeeuniform')
+         
+
+
+        // ->join('users', 'users.id', '=', 'employeeuniform.empId')
+        ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')  
+         ->select('employeeuniform.id','employeeuniform.empId','officedetails.longOfficeName','jacketmaster.sizeName')	
+         ->where('employeeuniform.status',0)  ;
+ 
+       
+        $rhtml = view('uniform.jacketReport')->with([ 'jacketsize' => $jacketsize,'officename' => $officename])->render(); 
+          return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+         }
+         //end
+
+
+
         //raincoat
 
          if ($request->v == "raincoatsize")  //form.csv

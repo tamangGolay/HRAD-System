@@ -53,7 +53,6 @@ class ShoeSizeMasterController extends Controller
             'euShoeSize' => $request->euShoeSize,
             'footLengthInches' => $request->footLengthInches,
             'footLengthCm' => $request->footLengthCm,
-            'gender' => $request->gender,
         ]);    
         
 

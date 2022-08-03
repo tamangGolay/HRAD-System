@@ -41,7 +41,6 @@ a {
                 <th>Shoe Size EU</th>
                 <th>Foot Length Inches</th>
                 <th>Foot Length Cm</th>
-                <!-- <th>gender</th> -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -99,12 +98,12 @@ a {
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Gender</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" id="gender" name="gender"  placeholder="eg: Male/Female" class="form-control" required>
                         </div>
-                    </div>
+                    </div> -->
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="shoesizeButton" value="create">Save changes
@@ -160,7 +159,6 @@ a {
             {data: 'euShoeSize', name: 'euShoeSize'},
             {data: 'footLengthInches', name: 'footLengthInches'},
             {data: 'footLengthCm', name: 'footLengthCm'},
-            // {data: 'gender', name: 'gender'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });
@@ -191,7 +189,6 @@ a {
           $('#euShoeSize').val(data.euShoeSize);
           $('#footLengthInches').val(data.footLengthInches);
           $('#footLengthCm').val(data.footLengthCm);
-          $('#gender').val(data.gender);
       })
    });
 
@@ -255,7 +252,6 @@ a {
           $('#euShoeSize').val(data.euShoeSize);
           $('#footLengthInches').val(data.footLengthInches);
           $('#footLengthCm').val(data.footLengthCm);
-          $('#gender').val(data.gender);
        })
    });
    

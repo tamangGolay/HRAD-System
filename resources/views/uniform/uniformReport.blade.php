@@ -33,15 +33,16 @@
 							<td> {{$rv->uniformId}} </td>
 								<td> {{$rv->empId}} </td>
                                 <td> {{$rv->shortOfficeName}} </td>	
-                                <td> {{$rv->pant}} </td>
-								<td> {{$rv->shirt}} </td>
+                                <td> {{$rv->pantSizeName}} </td>
+								<td> {{$rv->shirtSizeName}} </td>
 								<td> {{$rv->jacket}} </td>
-                                <td> {{$rv->shoe}} </td>
+                                <td> {{$rv->ukShoeSize}} </td>
 								<td> {{$rv->gumboot}}  </td>
-								<td> {{$rv->raincoat}}  </td>
+								<td> {{$rv->sizeName}}  </td>
 
 								 </form>
 								
+								 
 						        <td>  <form method="POST" action="{{ route('nieuws', [$rv->id]) }}">
     								{{ csrf_field() }}  {{ method_field('DELETE') }}
    								<button type="submit">Delete</button>

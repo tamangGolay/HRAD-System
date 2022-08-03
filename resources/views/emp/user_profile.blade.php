@@ -239,7 +239,6 @@
 						<select name="office" id="office" value="" class="form-control" readonly required>
 												<option value="">Select Office address</option>
 												@foreach($officeaddress as $officeaddress)
-
 												<option value="{{$officeaddress->id}}">{{$officeaddress->Address}}</option>
 											@endforeach
 								</select>

@@ -606,7 +606,7 @@ public function recommendnotesheet(Request $request)
 
        
 
-        dd($emailsend);
+        // dd($emailsend);
         Mail::to($CEOEmail->emailId) 
          ->cc([$GmEmail->emailId,$managerEmail->emailId,$userEmail->emailId])
         //  ->cc($managerEmail->emailId)

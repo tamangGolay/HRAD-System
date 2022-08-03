@@ -402,7 +402,8 @@ Route::post('user','MasterDataController@storeUser')->name('user');
 Route::resource('officeName', Manage_MasterController::class);
 Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destroyofficeName');
 Route::post('save', 'OneEmployeeController@saveRecord')->name('save');
-
+//Pant Report
+Route::post('pantReport', 'PantReportController@index')->name('pantReport');
 //golay end
 
 //start sonam 

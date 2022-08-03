@@ -240,6 +240,29 @@ class FormsController extends Controller
        }
        //end of employee List.
 
+       //Pant report.
+       if ($request->v == "pantReport")
+       {
+           $pant = Pant::all();
+           $officedetails = Officedetails::all();
+
+
+          $data = DB::table('employeeuniform')
+           ->select('*')
+           ->get();
+    
+
+       $rhtml = view('uniform.pantReport')->with(['data' => $data,
+       'pant' => $pant,'officedetails' => $officedetails
+       ])->render();
+       return response()
+           ->json(array(
+           'success' => true,
+           'html' => $rhtml
+       ));
+       }
+       //end Pant report.
+
 
         //    uniform view
 

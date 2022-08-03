@@ -604,9 +604,12 @@ public function recommendnotesheet(Request $request)
         // dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,
         // $Driectorempid,$DirectorEmail,$CEOEmail);
 
+       
+
+        dd($emailsend);
         Mail::to($CEOEmail->emailId) 
-         ->cc($GmEmail->emailId)
-         ->cc($managerEmail->emailId)
+         ->cc([$GmEmail->emailId,$managerEmail->emailId,$userEmail->emailId])
+        //  ->cc($managerEmail->emailId)
         // ->cc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 

@@ -576,3 +576,7 @@ Route::post('/directorrecommendnotesheet','NotesheetController@directorrecommend
 
 //uniform shirt size report
 Route::resource('shirtSizeReport', 'ShirtSizeReportController');//refund report
+
+//uniform raincoat size report
+Route::resource('raincoatSizeReport', 'RainCoatSizeReportController');//refund report
+

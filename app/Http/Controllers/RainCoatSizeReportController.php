@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class ShirtSizeReportController extends Controller
-{
+class RainCoatSizeReportController extends Controller
+
+  {
    
     function index(Request $request)
     {
@@ -21,12 +22,12 @@ class ShirtSizeReportController extends Controller
         $review = DB::table('employeeuniform')
        
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')   
-        ->join('shirtmaster','shirtmaster.id','=','employeeuniform.shirt')   
+        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')   
         ->join('users','users.empId','=','employeeuniform.empId')
-         ->select('officedetails.longOfficeName','employeeuniform.*','shirtmaster.shirtSizeName','users.empName')
+         ->select('officedetails.longOfficeName','employeeuniform.*','raincoatsize.sizeName','users.empName')
             
          ->where('employeeuniform.officeId','=',$request->officeId)
-         ->where('employeeuniform.shirt','=',$request->shirt)
+         ->where('employeeuniform.raincoat','=',$request->raincoat)
          ->where('employeeuniform.status','=', 0)
 
          ->get();
@@ -39,9 +40,9 @@ class ShirtSizeReportController extends Controller
         $review = DB::table('employeeuniform')           
 
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')   
-        ->join('shirtmaster','shirtmaster.id','=','employeeuniform.shirt')    
+        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')   
         ->join('users','users.empId','=','employeeuniform.empId')  
-         ->select('officedetails.longOfficeName','employeeuniform.*','shirtmaster.shirtSizeName','users.empName')
+         ->select('officedetails.longOfficeName','employeeuniform.*','raincoatsize.sizeName','users.empName')
 
        ->where('employeeuniform.status','=', 0)
        ->get();

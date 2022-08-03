@@ -22,9 +22,8 @@
 <div class="container-fluid"  style="margin-right:20%;width:95%;">    
  <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
-                <div class="form-group row col-sm-12 col-md-12">
-                    
-               
+                <div class="form-group row col-sm-12 col-md-12">                    
+              
                         <div class="col-lg-6 col-sm-12 col-md-6">
                         <label class="col-md-4 col-form-label text-md-left" for="stardate">Office Name</label>
                         <div class="col-sm-12">                          
@@ -40,13 +39,12 @@
                     </div>
 						                   
                     <div class="col-lg-6 col-sm-12 col-md-6">
-                      <label class="col-md-4 col-form-label text-md-left" for="stardate">Shirt Size</label>
+                      <label class="col-md-4 col-form-label text-md-left" for="stardate">Raincoat Size</label>
                         <div class="col-sm-12">                          
-                            <select name="shirt" id="shirt" value="" class="form-control" required>
-                                             <option value="">Select Shirtsize</option>
-                                             @foreach($shirtsize as $shirtsize)
-                                             <option value="{{$shirtsize->id}}">{{$shirtsize->shirtSizeName}}</option>
-										
+                            <select name="raincoat" id="raincoat" value="" class="form-control" required>
+                                             <option value="">Select RaincoatSize</option>
+                                             @foreach($raincoat as $raincoat)
+                                             <option value="{{$raincoat->id}}">{{$raincoat->sizeName}}</option>										
                                             @endforeach
 						</select>
                     
@@ -63,10 +61,10 @@
             </div>
             
             <br />
-<div class="card-header bg-green">
+            <div class="card-header bg-green">
 		<div class="col text-center">
 			<h5>
-            <b>Shirt Size Report</b>
+            <b>Raincoat Size Report</b>
             </h5>
         </div>
 	</div>   
@@ -80,7 +78,7 @@
             <th>EmpId</th>
             <th>Emp Name</th>
             <th>Office Name</th>
-            <th>Shirt Size</th>
+            <th>Raincoat Size</th>
             
                         
         </tr>
@@ -99,7 +97,7 @@ $(document).ready(function(){
 
     fill_datatable();
 
-    function fill_datatable(officeId = '', shirt = '')
+    function fill_datatable(officeId = '', raincoat = '')
     {
         var dataTable = $('#report_data').DataTable({
 
@@ -116,8 +114,8 @@ $(document).ready(function(){
             serverSide: true,
 
             ajax:{
-                url: "{{ route('shirtSizeReport.index') }}",
-                data:{officeId:officeId, shirt:shirt}
+                url: "{{ route('raincoatSizeReport.index') }}",
+                data:{officeId:officeId, raincoat:raincoat}
             },
             columns: [
 
@@ -140,8 +138,8 @@ $(document).ready(function(){
                     name:'longOfficeName'
                 },
                 {
-                    data:'shirtSizeName',
-                    name:'shirtSizeName'
+                    data:'sizeName',
+                    name:'sizeName'
                 }               
                 
 				
@@ -153,12 +151,12 @@ $(document).ready(function(){
 
     $('#filter').click(function(){
         var officeId = $('#officeId').val();
-        var shirt = $('#shirt').val();
+        var raincoat = $('#raincoat').val();
 
         if(officeId != '' &&  officeId != '')
         {
             $('#report_data').DataTable().destroy();
-            fill_datatable(officeId, shirt);
+            fill_datatable(officeId, raincoat);
         }
         else
         {
@@ -168,7 +166,7 @@ $(document).ready(function(){
 
     $('#reset').click(function(){
         $('#officeId').val('');
-        $('#shirt').val('');
+        $('#raincoat').val('');
         $('#report_data').DataTable().destroy();
         fill_datatable();
     });

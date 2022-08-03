@@ -520,6 +520,10 @@ Route::post('destroyShirt', 'Manage_ShirtController@delete')->name('destroyShirt
 Route::resource('jacket', Manage_MasterJacketSizeController::class);
 Route::post('destroyJacket', 'Manage_MasterJacketSizeController@delete')->name('destroyJacket');
 
+// gumboot size
+Route::resource('gumboot', Manage_MasterGumbootSizeController::class);
+Route::post('destroyGumboot', 'Manage_MasterGumbootSizeController@delete')->name('destroyGumboot');
+
 //uniform shoe size
 Route::resource('shoesize', ShoeSizeMasterController::class);
 Route::post('destroyshoesize', 'ShoeSizeMasterController@delete')->name('destroyshoesize');

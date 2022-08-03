@@ -4511,6 +4511,20 @@ if ($request->v == "notesheetReport")
                'html' => $rhtml
                 ));
           }  //end
+// gumboot size
+ 
+if ($request->v == "Gumboot")  //form.csv
+{    
+
+    $rhtml = view('uniform.gumbootSize')->render(); 
+    return response()
+    ->json(array(
+    'success' => true,
+    'html' => $rhtml
+     ));
+}  //end
+
+
 
 // for welfare payment
           if ($request->v == "welfarepayment")  //form.csv

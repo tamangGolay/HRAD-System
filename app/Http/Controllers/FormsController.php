@@ -4794,5 +4794,19 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
- }
+
+ // uniform shirt size report
+ if ($request->v == "shirtReport")  //form.csv
+ {    
+
+  $rhtml = view('UniformReport.shirtSizeReport')->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
 }
+}
+ 

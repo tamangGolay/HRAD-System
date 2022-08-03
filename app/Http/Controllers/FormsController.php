@@ -3822,7 +3822,7 @@ if ($request->v == "room_details")
             $user = Auth::user();
             // $grade = Grade::all();
             $dzongkhag = Dzongkhags::all();
-            $orgunit = orgunit::all();
+            // $orgunit = orgunit::all();
             $roles = roles::all();
             $bk = bank::all();
             $dg = Designation::all(); 
@@ -3863,7 +3863,7 @@ if ($request->v == "room_details")
                ->select('office_address.Address')
                ->where('employeemaster.status', '=', 0);
 
-            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag])->render();
+            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp,'dzongkhag' => $dzongkhag])->render();
             return response()
                 ->json(array(
                 'success' => true,

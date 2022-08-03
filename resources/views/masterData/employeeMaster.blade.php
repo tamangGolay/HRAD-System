@@ -66,7 +66,7 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Select Gender:') }}</label>
+						<label class="col-sm-4 text-md-right" for="gender">{{ __('Select Gender:') }}</label>
 						<div class="col-sm-4">
 						<select name="gender" id="gender" class="form-control" required> 
 							<option value=" ">Select Gender</option> 
@@ -261,82 +261,7 @@
 						</div>
 					</div>
 					
-<!-- 
-					<div class="form-group row">
-						<label for="designation" class="col-md-4 col-form-label text-md-right">{{ __('Designation:') }}</label>
-						<div class="col-md-4">
-							<input id="designation" type="text" autocomplete="off" placeholder="Designation" class="form-control" name="designation" required> </div>
-					</div>
 
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('Wing/Dept/Div:') }}</label>
-						<div class="col-sm-4">
-							<select name="orgunit" id="orgunit" class="form-control" required> @foreach($orgunit as $orgunit)
-								<option value="{{$orgunit->id}}">{{$orgunit->description}}</option> @endforeach </select>
-						</div>
-					</div>
-
-					
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="dzongkhag">{{ __('Select Gender:') }}</label>
-						<div class="col-sm-4">
-						<select class="form-select" name="dzongkhag"  id="dzongkhag" required>
-							<option value="">Select Dzongkhag</option>
-							@foreach($dzongkhag as $dzongkhags)
-								<option name="dzongkhag" value="{{$dzongkhags->id}}">{{$dzongkhags->Dzongkhag_Name}}</option>
-							@endforeach
-						</select>
-						</div>
-					</div>
-
-
-
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="role">{{ __('Role:') }}</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="role" id="role" required> @foreach($roles as $role)
-								<option value="{{$role->id}}">{{$role->name}}</option> @endforeach </select>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="conferenceuser" class="col-md-4 col-form-label text-md-right">{{ __('Conference User:') }}</label>
-						<div class="col-md-4">
-							<div class="input-group ">
-								<input type="text" class="form-control" name="conferenceuser" autocomplete="off" placeholder=" 1 = Conference User or 0 = other employee" required />
-								<div class="input-group-append"> </div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="password" class="col-md-4 col-form-label text-md-right">Password:</label>
-						<div class="col-md-4">
-							<div class="input-group ">
-								<input id="password" type="password" autocomplete="off" class="form-control @error('password') is-invalid @enderror" name="password" required />
-								<div class="input-group-append"> <span class="input-group-text"> <i id="pass-status1" class="fas fa-eye-slash my-1 mx-1" onclick="myFunction()"></i> </span> </div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="password_confirm" class="col-md-4 col-form-label text-md-right">Confirm Password:</label>
-						<div class="col-md-4">
-							<div class="input-group">
-								<input id="password_confirm" type="password" autocomplete="off" class="form-control" name="password_confirmation" required onFocusout="pwdMatching();">
-								<div class="input-group-append"> <span class="input-group-text"> <i id="pass-status" class="fas fa-eye-slash my-1 mx-1" onclick="myFunction1()"></i> </span> </div>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="orgunit">{{ __('BPC Email:') }}</label>
-						<div class="col-sm-4">
-
-						<div class="input-group">
-								<input id="email" type="email" autocomplete="off" class="form-control" name="email" required>
-								<div class="input-group-append"> </div>
-							</div>
-					
-						</div>
-					</div> -->
 
 					<!-- <div class="form-group row mb-0"> -->
 					<div class="form-group row mb-0"> 

@@ -4283,12 +4283,12 @@ if ($request->v == "user_profile")
 if ($request->v == "notesheetReport")
 {
     //  $notesheet = notesheetRequest::all();
-    $notesheet = DB::table('notesheet1')
-    ->join('officedetails','officedetails.id','=','notesheet1.officeId')
-    ->join('users','users.empId','=','notesheet1.createdBy')
-    ->select('notesheet1.*','notesheet1.id as noteId','officedetails.longOfficeName','users.empName')  
-        ->where('notesheet1.status','=','approved')
-        ->latest('notesheet1.id')
+    $notesheet = DB::table('notesheet')
+    ->join('officedetails','officedetails.id','=','notesheet.officeId')
+    ->join('users','users.empId','=','notesheet.createdBy')
+    ->select('notesheet.*','notesheet.id as noteId','officedetails.longOfficeName','users.empName')  
+        ->where('notesheet.status','=','approved')
+        ->latest('notesheet.id')
         ->get();
 
     $rhtml = view('Notesheet.notesheetReport')->with(['notesheet' => $notesheet])->render();

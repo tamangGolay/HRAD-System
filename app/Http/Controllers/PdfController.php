@@ -20,16 +20,16 @@ class PdfController extends Controller
     $notesheetapprove = notesheetapprove::all()->where('noteId',$id);
     $notesheet = notesheetRequest::find($id);
     //For officeName in the report(pdf)
-    $date = DB::table('notesheet1')
-     ->join('officedetails','officedetails.id','=','notesheet1.officeId')
+    $date = DB::table('notesheet')
+     ->join('officedetails','officedetails.id','=','notesheet.officeId')
        ->select('*')	
-        ->where('notesheet1.id',$id)
+        ->where('notesheet.id',$id)
         ->first();
 
-        $userName = DB::table('notesheet1')
-        ->join('users','users.empId','=','notesheet1.createdBy')
+        $userName = DB::table('notesheet')
+        ->join('users','users.empId','=','notesheet.createdBy')
        ->select('*')	
-        ->where('notesheet1.id',$id)
+        ->where('notesheet.id',$id)
         ->first();
 
         $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));

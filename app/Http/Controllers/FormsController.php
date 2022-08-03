@@ -312,8 +312,10 @@ class FormsController extends Controller
         ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
 
-           ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName')
-            ->paginate(10000);
+        ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+        'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
+        'shoesize.ukShoeSize','raincoatsize.sizeName')
+                    ->paginate(10000);
             
 
                $rhtml = view('uniform.uniformReport')->with(['data1' => $data1])->render();

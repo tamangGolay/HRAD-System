@@ -304,7 +304,7 @@
 
                    
          <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointmentdate:</label>
+              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointment date:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="appointment" id="appointment" placeholder="" autocomplete="off"  readonly required>                  
                 </div>
@@ -351,7 +351,7 @@
 
             
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="employmenttype">&nbsp;&nbsp;&nbsp;Employment Type Pay:</label>
+              <label class="col-md-4 col-form-label text-md-right" for="employmenttype">&nbsp;&nbsp;&nbsp;Employment Type:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="employmenttype" id="employmenttype" placeholder="employmenttype" autocomplete="off" readonly required>                  
                 </div>

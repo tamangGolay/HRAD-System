@@ -426,8 +426,7 @@ public function recommendnotesheet(Request $request)
 
 
         Mail::to($DirectorEmail->emailId) 
-        ->cc($managerEmail->emailId)
-        ->bcc($userEmail->emailId)
+        ->cc($managerEmail->emailId,$userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');

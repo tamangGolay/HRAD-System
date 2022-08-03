@@ -426,9 +426,8 @@ public function recommendnotesheet(Request $request)
 
 
         Mail::to($DirectorEmail->emailId) 
-                ->cc($userEmail->emailId)
-                ->bcc($managerEmail->emailId)
-        ->send(new MyTestMail($supervisor)); 
+                ->cc([$managerEmail->emailId,$userEmail->emailId])
+                ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         }
@@ -606,12 +605,10 @@ public function recommendnotesheet(Request $request)
 
        
 
-        // dd($emailsend);
+       
         Mail::to($CEOEmail->emailId) 
          ->cc([$GmEmail->emailId,$managerEmail->emailId,$userEmail->emailId])
-        //  ->cc($managerEmail->emailId)
-        // ->cc($userEmail->emailId)
-        ->send(new MyTestMail($supervisor)); 
+         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         }
@@ -652,9 +649,7 @@ public function recommendnotesheet(Request $request)
                 // dd($userEmail);
         
                 Mail::to($userEmail->emailId) 
-                ->cc($GmEmail->emailId)
-                   ->cc($managerEmail->emailId)
-                
+                ->cc([$GmEmail->emailId,$managerEmail->emailId])          
                 ->send(new MyTestMail($approve)); 
             
                 return redirect('home')->with('success','You have Approved the Notesheet');   
@@ -696,8 +691,7 @@ public function recommendnotesheet(Request $request)
                     // dd($userEmail);
             
                     Mail::to($userEmail->emailId) 
-                    ->cc($GmEmail->emailId)
-                    ->cc($managerEmail->emailId)
+                    ->cc([$GmEmail->emailId,$managerEmail->emailId])  
                     ->send(new MyTestMail($reject));
            
                 return redirect('home')->with('error','You have rejected the Notesheet');    

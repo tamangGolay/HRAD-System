@@ -360,7 +360,7 @@ public function recommendnotesheet(Request $request)
  public function GMrecommendnotesheet(Request $request) 
  {
 
-    if($request->status == "Recommended" ){  //&& $request->remarks != ''
+    if($request->status == "GMRecommended" ){  //&& $request->remarks != ''
         $id = DB::table('notesheet')->select('id')
         ->where('id',$request->id)
         ->first();   
@@ -422,10 +422,12 @@ public function recommendnotesheet(Request $request)
         ->where('id',$id->id)
         ->first(); 
      
+//   dd($userEmail,$managerEmail,$GmEmail,$DirectorEmail);
+
 
         Mail::to($DirectorEmail->emailId) 
         ->cc($managerEmail->emailId)
-        ->cc($userEmail->emailId)
+        ->bcc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');

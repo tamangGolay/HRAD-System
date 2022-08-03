@@ -57,6 +57,7 @@ use App\Pant;
 use App\Shirt;
 use App\RaincoatSize;
 use App\officeuniform;
+use App\GumbootSize;
 
 
 
@@ -273,8 +274,8 @@ class FormsController extends Controller
          $pant = Pant::all();
          $shirt = Shirt::all();
          $jacket = JacketSize::all();
-         $shoe = Shoesize::all()->where('id','<',27);;
-         $gumboot = Shoesize::all()->where('id','>=',27);
+         $shoe = Shoesize::all();
+         $gumboot = GumbootSize::all();
          $raincoat = RaincoatSize::all();
           
              // $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')

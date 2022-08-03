@@ -109,7 +109,7 @@
                     <select class="form-control" name="gumboot" id="officeName" required>
                             <option value="">Select Size</option>
                             @foreach($gumboot as $gumboot)
-                            <option value="{{$gumboot->id}}">{{$gumboot->ukShoeSize}}</option>
+                            <option value="{{$gumboot->id}}">{{$gumboot->uKSize}}</option>
                             @endforeach
                     </select>                   
                     </div>

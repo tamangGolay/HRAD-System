@@ -422,12 +422,12 @@ public function recommendnotesheet(Request $request)
         ->where('id',$id->id)
         ->first(); 
      
-//   dd($userEmail,$managerEmail,$GmEmail,$DirectorEmail);
+//  dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,$DirectorEmail);
 
 
         Mail::to($DirectorEmail->emailId) 
-        ->cc($managerEmail->emailId)
-        ->cc($userEmail->emailId)
+                ->cc($userEmail->emailId)
+                ->bcc($managerEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
@@ -583,8 +583,6 @@ public function recommendnotesheet(Request $request)
         ->first();
 
 
-        // dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,
-        // $Driectorempid,$DirectorEmail,$CEOEmail);
 
     
         $userDetail= DB::table('users') 
@@ -596,13 +594,18 @@ public function recommendnotesheet(Request $request)
         $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 
         'You have a request for notesheet from ' . $userDetail->empName . 
         ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.',
-         'body2' => '', 'body3' => 'Please kindly do the necessary action,send by GM.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+         'body2' => '', 'body3' => 'Please kindly do the necessary action,send by Director.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
        
         $userEmail = DB::table('notesheet')
         ->where('id',$id->id)
         ->first();    
 
-        Mail::to($DirectorEmail->emailId) 
+        
+        dd($userEmail,$managerempid,$managerEmail,$Gmempid,$GmEmail,
+        $Driectorempid,$DirectorEmail,$CEOEmail);
+
+        Mail::to($CEOEmail->emailId) 
+         ->cc($GmEmail->emailId)
         ->cc($managerEmail->emailId)
         ->cc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
@@ -646,7 +649,9 @@ public function recommendnotesheet(Request $request)
                 // dd($userEmail);
         
                 Mail::to($userEmail->emailId) 
-                ->cc($managerEmail->emailId)
+                ->cc($GmEmail->emailId)
+                   ->cc($managerEmail->emailId)
+                
                 ->send(new MyTestMail($approve)); 
             
                 return redirect('home')->with('success','You have Approved the Notesheet');   
@@ -688,6 +693,7 @@ public function recommendnotesheet(Request $request)
                     // dd($userEmail);
             
                     Mail::to($userEmail->emailId) 
+                    ->cc($GmEmail->emailId)
                     ->cc($managerEmail->emailId)
                     ->send(new MyTestMail($reject));
            

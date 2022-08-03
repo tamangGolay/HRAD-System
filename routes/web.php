@@ -588,8 +588,8 @@ Route::post('/ceorecommendnotesheet','NotesheetController@ceorecommendnotesheet'
 //uniform shirt size report
 Route::resource('shirtSizeReport', 'ShirtSizeReportController');//refund report
 
-//uniform raincoat size report
-Route::resource('raincoatSizeReport', 'RainCoatSizeReportController');//refund report
+///uniform officewise uniform  size report
+Route::resource('officewiseUniformSizeReport', 'OfficeWiseUniformSizeReportController');//refund report
 
 //uniform jacket size report
 Route::resource('jacketreport', 'JacketReportController');

@@ -56,7 +56,7 @@ use App\notesheetapprove;
 use App\Pant;
 use App\Shirt;
 use App\RaincoatSize;
-
+use App\officeuniform;
 
 
 
@@ -4933,22 +4933,16 @@ if ($request->v == "employeeskillmap")  //form.csv
  }  //end
 
 
- // uniform shirt size report
- if ($request->v == "raincoatSizeReport")  //form.csv
+ //  all office uniform report
+ if ($request->v == "officeWiseUniformSizeReport")  //form.csv
  {    
-    $officename = officedetails::all()
-                ->where('status',0);
+    $officename = officeuniform::all();     
 
-    $raincoat = RainCoatSize::all()
-                ->where('status',0);
+    $officenamez = DB::table('officeuniform')
+                //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+                ->select('*');                  
 
-    $raincoatsizes = DB::table('employeeuniform')
-                  ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
-                  ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat') 
-                  ->select('officedetails.longOfficeName','employeeuniform.*','raincoatsize.sizeName')
-                  ->where('employeeuniform.status',0);
-
-  $rhtml = view('UniformReport.raincoatSizeReport')->with(['officename' => $officename,'raincoat' => $raincoat])->render(); 
+  $rhtml = view('UniformReport.officeUniformSizeReport')->with(['officename' => $officename])->render(); 
   return response()
      ->json(array(
       'success' => true,

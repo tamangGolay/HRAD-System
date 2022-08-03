@@ -30,7 +30,7 @@
                             <select name="officeId" id="officeId" value="" class="form-control" required>
                                              <option value="">Select OfficeName</option>
                                              @foreach($officename as $officename)
-                                             <option value="{{$officename->id}}">{{$officename->longOfficeName}}</option>
+                                             <option value="{{$officename->Office}}">{{$officename->Office}}</option>
 										
                                             @endforeach
 							</select>
@@ -39,13 +39,17 @@
                     </div>
 						                   
                     <div class="col-lg-6 col-sm-12 col-md-6">
-                      <label class="col-md-4 col-form-label text-md-left" for="stardate">Raincoat Size</label>
+                      <label class="col-md-4 col-form-label text-md-left" for="stardate">Uniform Name</label>
                         <div class="col-sm-12">                          
-                            <select name="raincoat" id="raincoat" value="" class="form-control" required>
-                                             <option value="">Select RaincoatSize</option>
-                                             @foreach($raincoat as $raincoat)
-                                             <option value="{{$raincoat->id}}">{{$raincoat->sizeName}}</option>										
-                                            @endforeach
+                            <select name="cloths" id="cloths" value="" class="form-control" required>
+                            <option value="cloths">Select Uniform Name</option>
+                            <option value="Shirts">Shirts</option>
+                            <option value="Jackets">Jackets</option>
+                            <option value="Rain Coats">Rain Coats</option>
+                            <option value="Pants">Pants</option>
+                            <option value="Shoes">Shoes</option>  
+                            <option value="Gumboots">Gumboots</option>  
+                                                        
 						</select>
                     
                     </div>
@@ -64,7 +68,7 @@
             <div class="card-header bg-green">
 		<div class="col text-center">
 			<h5>
-            <b>Raincoat Size Report</b>
+            <b>Officewise Uniform Size Report</b>
             </h5>
         </div>
 	</div>   
@@ -74,12 +78,11 @@
         <thead>
          <tr class="text-nowrap">
 
-            <th>Sl No</th>
-            <th>EmpId</th>
-            <th>Emp Name</th>
-            <th>Office Name</th>
-            <th>Raincoat Size</th>
             
+            <th>Office Name</th>
+            <th>Uniform Name</th>
+            <th>Uniform Size</th>
+            <th>Uniform Count</th>
                         
         </tr>
          </thead>
@@ -97,7 +100,7 @@ $(document).ready(function(){
 
     fill_datatable();
 
-    function fill_datatable(officeId = '', raincoat = '')
+    function fill_datatable(officeId = '', cloths = '')
     {
         var dataTable = $('#report_data').DataTable({
 
@@ -114,32 +117,29 @@ $(document).ready(function(){
             serverSide: true,
 
             ajax:{
-                url: "{{ route('raincoatSizeReport.index') }}",
-                data:{officeId:officeId, raincoat:raincoat}
+                url: "{{ route('officewiseUniformSizeReport.index') }}",
+                data:{officeId:officeId, cloths:cloths}
             },
             columns: [
 
                 {
-                    data:'id',
-                    name:'id'
+                    data:'Office',
+                    name:'Office'
                 },
                 
                 {
-                    data:'empId',
-                    name:'empId'
+                    data:'cloths',
+                    name:'cloths'
                 },
                 {
-                    data:'empName',
-                    name:'empName'
+                    data:'size',
+                    name:'size'
                 },
 
+                
                 {
-                    data:'longOfficeName',
-                    name:'longOfficeName'
-                },
-                {
-                    data:'sizeName',
-                    name:'sizeName'
+                    data:'count(*)',
+                    name:'count(*)'
                 }               
                 
 				
@@ -151,12 +151,12 @@ $(document).ready(function(){
 
     $('#filter').click(function(){
         var officeId = $('#officeId').val();
-        var raincoat = $('#raincoat').val();
+        var cloths = $('#cloths').val();
 
         if(officeId != '' &&  officeId != '')
         {
             $('#report_data').DataTable().destroy();
-            fill_datatable(officeId, raincoat);
+            fill_datatable(officeId, cloths);
         }
         else
         {
@@ -166,7 +166,7 @@ $(document).ready(function(){
 
     $('#reset').click(function(){
         $('#officeId').val('');
-        $('#raincoat').val('');
+        $('#cloths').val('');
         $('#report_data').DataTable().destroy();
         fill_datatable();
     });

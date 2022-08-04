@@ -360,7 +360,7 @@ $(function() {
 	
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
-					$.get("{{ route('g.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
+					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
 						$('#modelHeading').html("Edit User");
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
@@ -381,7 +381,7 @@ $(function() {
 					$(this).html('Save');
 					$.ajax({
 						data: $('#Form').serialize(),
-						url: "{{ route('g.store') }}",
+						url: "{{ route('uniform.store') }}",
 						type: "POST",
 						dataType: 'json',
 						success: function(data) {
@@ -410,7 +410,7 @@ $(function() {
 
 				$('body').on('click', '.delete', function() {
 					var guestHouse_id = $(this).data('id');
-					$.get("{{ route('g.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
+					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
 						$('#modelUserHeading').html("Do you want to delete user?");
 						$('#saveUserBtn').val("edit-book");
 						$('#userModel').modal('show');

@@ -7,6 +7,10 @@ use App\Uniform;
 use App\UniformEmployee;
 use DB;
 use Auth;
+use App\User;
+use App\roleusermappings;
+use DataTables;
+
 
 class UniformController extends Controller
 {
@@ -52,57 +56,40 @@ class UniformController extends Controller
 
     public function store(Request $request)
     {
-     dd($request);
-    $uniform = new UniformEmployee;
-    $uniform->empId = $request->emp_id;
-    // $uniform->empName = $request->name;
-    // $uniform->contactNumber = $request->contact_number;
-    $uniform->officeId = $request->officeId;
-    $uniform->pant = $request->pant;
-    $uniform->shirt = $request->shirt;
-    $uniform->jacket = $request->jacket;
-    $uniform->shoe = $request->shoe;
-    $uniform->gumboot = $request->gumboot;
-    $uniform->raincoat = $request->raincoat;
-    $uniform->createdBy = $request->emp_id;
-
-    $uniform->save();  
-                    // dd($request);
+    //  dd($request);
 
 
-                    // CREATE TABLE `officepant` (
-                    //     `id` int(3) NOT NULL,
-                    //     `officeId` int(3) NOT NULL,
-                    //     `uniform_id` int(3) NOT NULL,
-                    //     `XS-Female` int(8)  NULL,
-                    //   `S-Female`int(8) NULL,
-                    //   `M-Female`int(8) NULL ,
-                    //   `L-Female`int(8) NULL,
-                    //    `XL-Female`int(8) NULL,
-                    //   `XXL-Female`int(8) NULL,
-                    //   `XXXL-Female`int(8) NULL,
-                    //   `XS`int(8) NULL,
-                    //    `S`int(8) NULL,
-                    //   `M`int(8) NULL,
-                    //   `L`int(8) NULL,
-                    //    `XL`int(8) NULL,
-                    //   `XXL`int(8) NULL,
-                    //   `XXXL`int(8) NULL,
-                    //   `createdBy` int(8) DEFAULT NULL,
-                    //   `createdOn` date DEFAULT NULL,
-                    //   `modifiedBy` int(8) DEFAULT NULL,
-                    //   `modifiedOn` date DEFAULT NULL
-                    //   );
-                      
-                               
+    UniformEmployee::updateOrCreate(['id' => $request->id], 
+     ['empId' => $request->emp_id, 
+     'officeId' => $request->office, 
+     'pant' => $request->pant,
+    'shirt' => $request->shirt,
+    'jacket' => $request->jacket,
+    'shoe' => $request->shoe,
+    'gumboot' => $request->gumboot,
+    'raincoat' => $request->raincoat,
+    'createdBy' => $request->emp_id
+
+
+]);        
+
+    return response()->json(['success'=>'New pay saved successfully.']);
+   
+      
 
      
-    return redirect('/home')->with('page', 'uniform')
-    ->with('success', 'Data inserted successfully!!!');
+    // return redirect('/home')->with('page', 'uniform')
+    // ->with('success', 'Data inserted successfully!!!');
     
     
     }
     //delte indivual record from database
+
+    public function edit($id)
+    {
+        $User = UniformEmployee::find($id);
+        return response()->json($User);
+    }
 
     public function destroy($id)
     {

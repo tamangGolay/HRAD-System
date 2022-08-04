@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+// use App\Http\Controllers\UniformController;
 
 
 
@@ -365,12 +366,13 @@ Route::get('/clash/{id}', 'GetMastersController@clashview')->name('/clash');
 
 //Uniform Routes
 Route::resource('g', Manage_UserController::class);
-//Route::resource('uni', UniformController::class);
- Route::post('uni','UniformController@store')->name('uni');
+Route::resource('uniform', UniformController::class);
+//Route::resource('i',[Manage_UniformController::class, 'store']);
+ //Route::post('uni','UniformController@store')->name('uni');
 
-Route::post('/delete','UniformController@delete')->name('delete');
+//Route::post('/delete','UniformController@delete')->name('delete');
 
-Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('destroy');
+//Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('destroy');
 
 //uniform shoes Report
 Route::resource('shoesreport', 'ShoesReportController');//refund report

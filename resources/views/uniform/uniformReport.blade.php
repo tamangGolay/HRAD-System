@@ -108,11 +108,8 @@ a {
 
 							<td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
-							<form method="POST" action="{{ route('nieuws', [$rv->id]) }}">
-    								{{ csrf_field() }}  {{ method_field('DELETE') }}
-   								<button type="submit">Delete</button>
-										
-									</form> 
+							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$rv->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
+
 					</td>
 						</tr> @endforeach </tbody>
 				</table>
@@ -422,7 +419,7 @@ $(function() {
 					$(this).html('Yes');
 					$.ajax({
 						data: $('#Form').serialize(),
-						url: "{{ route('deleteuser') }}",
+						url: "{{ route('deleteuniform') }}",
 						type: "POST",
 						dataType: 'json',
 						success: function(data) {
@@ -437,7 +434,7 @@ $(function() {
 								alt.parentNode.removeChild(alt);
 							}, 4500);
 							document.body.appendChild(alt);
-							$.get('/getView?v=userList', function(data) {
+							$.get('/getView?v=uniformReport', function(data) {
 								$('#contentpage').empty();
 								$('#contentpage').append(data.html);
 							});

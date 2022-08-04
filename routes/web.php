@@ -367,12 +367,9 @@ Route::get('/clash/{id}', 'GetMastersController@clashview')->name('/clash');
 //Uniform Routes
 Route::resource('g', Manage_UserController::class);
 Route::resource('uniform', UniformController::class);
-//Route::resource('i',[Manage_UniformController::class, 'store']);
- //Route::post('uni','UniformController@store')->name('uni');
+Route::post('/deleteuniform', 'UniformController@delete')->name('deleteuniform');
 
-//Route::post('/delete','UniformController@delete')->name('delete');
 
-//Route::post('destroy', 'Manage_UniformController@deleteuniformrecord')->name('destroy');
 
 //uniform shoes Report
 Route::resource('shoesreport', 'ShoesReportController');//refund report

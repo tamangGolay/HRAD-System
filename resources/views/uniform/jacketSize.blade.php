@@ -83,13 +83,7 @@ a {
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-8 col-sm-12 control-label">Gender</label>
-                        <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="gender" name="gender"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
-
+                    
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="jacketButton" value="create">Save changes
                      </button>
@@ -176,7 +170,7 @@ a {
           $('#sizeName').val(data.sizeName); //input id,database
           $('#usUkSize').val(data.usUkSize);
           $('#euSize').val(data.euSize);
-          $('#gender').val(data.gender);
+          
           
       })
    });
@@ -239,7 +233,7 @@ a {
           $('#sizeName').val(data.sizeName); //input id,database
           $('#usUkSize').val(data.usUkSize);
           $('#euSize').val(data.euSize);
-          $('#gender').val(data.gender);
+         
       })
    });
    
@@ -267,9 +261,8 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();                 
-       
-       
+			table.draw();             
+         
 
     
          

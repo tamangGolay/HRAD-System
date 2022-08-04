@@ -49,7 +49,7 @@ class Manage_ShirtController extends Controller
     public function store(Request $request)
     {
         Shirt::updateOrCreate(['id' => $request->id],
-                ['shirtSizeName' => $request->shirtSizeName,'gender' => $request->gender]);        
+                ['shirtSizeName' => $request->shirtSizeName]);        
    
         return response()->json(['success'=>'Shirt Size Name saved successfully.']);
     }

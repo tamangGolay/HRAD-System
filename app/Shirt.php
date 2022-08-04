@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Shirt extends Model
 {
     protected $table = 'shirtmaster';
-    protected $fillable = ['id','shirtSizeName','gender','status'];
+    protected $fillable = ['id','shirtSizeName','status'];
 
      public $timestamps = false;
 }
+ 

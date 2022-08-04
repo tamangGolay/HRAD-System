@@ -68,56 +68,51 @@ a {
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Rain Coat Size</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="sizeName" name="sizeName" value=""  required>
+                            <input type="text" class="form-control" id="sizeName" name="sizeName" value="" placeholder="XXS" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Shoulder Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="shouldersCm" name="shouldersCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="shouldersCm" name="shouldersCm"  placeholder="32.00" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Chest Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="chestCm" name="chestCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="chestCm" name="chestCm"  placeholder="30.00" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Waist Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="waistCm" name="waistCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="waistCm" name="waistCm"  placeholder="37.00" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Bottom Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="bottomCm" name="bottomCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="bottomCm" name="bottomCm"  placeholder="40.00" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Length Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="lengthCm" name="lengthCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="lengthCm" name="lengthCm"  placeholder="50.00" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-8 col-sm-12 control-label">Sleeve Cm</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="sleeveCm" name="sleeveCm"  placeholder="" class="form-control" required>
+                            <input type="text" id="sleeveCm" name="sleeveCm"  placeholder="45.00" class="form-control" required>
                         </div>
                      </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-8 col-sm-12 control-label">Gender</label>
-                        <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="gender" name="gender"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
+                    
 
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="rainCoatButton" value="create">Save changes
@@ -217,7 +212,7 @@ a {
           $('#bottomCm').val(data.bottomCm);
           $('#lengthCm').val(data.lengthCm);
           $('#sleeveCm').val(data.sleeveCm);
-          $('#gender').val(data.gender);
+         
          
         
 
@@ -286,7 +281,7 @@ a {
           $('#bottomCm').val(data.bottomCm);
           $('#lengthCm').val(data.lengthCm);
           $('#sleeveCm').val(data.sleeveCm);
-          $('#gender').val(data.gender);
+          
           
       })
    });

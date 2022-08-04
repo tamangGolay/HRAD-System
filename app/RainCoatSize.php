@@ -11,7 +11,7 @@ class RainCoatSize extends Model
     //
     protected $table = 'raincoatsize';
 
-    protected $fillable = ['id','sizeName','shouldersCm','chestCm','waistCm','bottomCm','lengthCm','sleeveCm','gender','status'];
+    protected $fillable = ['id','sizeName','shouldersCm','chestCm','waistCm','bottomCm','lengthCm','sleeveCm','status'];
     public $timestamps = false;
 
    }  

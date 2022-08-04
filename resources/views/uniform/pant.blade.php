@@ -36,8 +36,7 @@ a {
             <tr>
 
                 <th>No</th>
-                <th width=300px>Pant Size name</th>
-                <th>Gender</th>
+                <th>Pant Size name</th>                
                 <th>Action</th>
             </tr>
         </thead>
@@ -65,19 +64,7 @@ a {
                             <input type="text" class="form-control" id="pantSizeName" name="pantSizeName" value=""  required>
                         </div>
                     </div>
-
-                    
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gender</label>
-                        <div class="col-sm-12">
-                        <select name="gender" id="gender" class="form-control" required> 
-							<option value=" ">Select Gender</option> 
-							<option value="Male">Male</option>
-							<option value="Female">Female</option> 
-						</select> 
-						</div>					
-                    </div>               
-                                       
+                                                
                    	
       
                     <div class="col-sm-offset-2 col-sm-10">
@@ -135,8 +122,7 @@ a {
         ajax: "{{ route('pant.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'pantSizeName', name: 'pantSizeName', orderable: false, searchable: true},
-            {data: 'gender', name: 'gender', orderable: false, searchable: true},
+            {data: 'pantSizeName', name: 'pantSizeName', orderable: false, searchable: true},            
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -163,7 +149,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#pant_id').val(data.id);
           $('#pantSizeName').val(data.pantSizeName); //input id,database
-          $('#gender').val(data.gender);
+
       })
    });
 
@@ -223,7 +209,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),          
           $('#pant_id').val(data.id);
           $('#pantSizeName').val(data.pantSizeName); //input id,database
-          $('#gender').val(data.gender);
+          
       })
    });
    
@@ -251,11 +237,9 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();                 
-       
-       
-
-    
+			table.draw();          
+         
+  
          
           },
           error: function (data) {

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pant extends Model
 {
     protected $table = 'pantmaster';
-    protected $fillable = ['id','pantSizeName','gender','status'];
+    protected $fillable = ['id','pantSizeName','status'];
 
      public $timestamps = false;
 }

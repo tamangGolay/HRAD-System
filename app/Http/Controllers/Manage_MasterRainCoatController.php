@@ -58,12 +58,12 @@ class Manage_MasterRainCoatController extends Controller
     public function store(Request $request)
     {
         RainCoatSize::updateOrCreate(['id' => $request->id],
-                ['sizeName' => $request->sizeName,'shouldersCm'=>$request->shouldersCm,'chestCm'=>$request->chestCm,'waistCm'=>$request->waistCm,'bottomCm'=>$request->bottomCm,'lengthCm'=>$request->lengthCm,'sleeveCm'=>$request->sleeveCm,'gender'=>$request->gender]);        
+                ['sizeName' => $request->sizeName,'shouldersCm'=>$request->shouldersCm,'chestCm'=>$request->chestCm,'waistCm'=>$request->waistCm,'bottomCm'=>$request->bottomCm,'lengthCm'=>$request->lengthCm,'sleeveCm'=>$request->sleeveCm]);        
    
         return response()->json(['success'=>'bank saved successfully.']);
     }
 
-              //protected $fillable = ['id','sizeName','shouldersCm','chestCm','waistCm','bottomCm','lengthCm','sleeveCm','gender','status'];
+              
 
     /**
      * Show the form for editing the specified resource.

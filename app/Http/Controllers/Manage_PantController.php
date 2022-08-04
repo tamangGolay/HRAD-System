@@ -49,7 +49,7 @@ class Manage_PantController extends Controller
     public function store(Request $request)
     {
         Pant::updateOrCreate(['id' => $request->id],
-                ['pantSizeName' => $request->pantSizeName,'gender' => $request->gender]);        
+                ['pantSizeName' => $request->pantSizeName]);        
    
         return response()->json(['success'=>'PantSize Name saved successfully.']);
     }

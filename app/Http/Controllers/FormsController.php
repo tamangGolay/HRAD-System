@@ -309,13 +309,14 @@ class FormsController extends Controller
         ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
         ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
         ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
-        ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
+        // ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
+        ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
         ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
 
         ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
         'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
-        'shoesize.ukShoeSize','raincoatsize.sizeName')
+        'shoesize.ukShoeSize','gumboot.uKSize','raincoatsize.sizeName')
                     ->paginate(10000);
             
 

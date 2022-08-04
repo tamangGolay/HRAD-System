@@ -25,7 +25,7 @@
                                 <th> Gumboot Size </th>
                                 <th> Raincoat Size </th>								
 								
-								<th> Delete </th>
+								<th> Delete </th> 
 							</tr>
 						</thead>
 						<tbody> @foreach($data1 as $rv)
@@ -37,7 +37,7 @@
 								<td> {{$rv->shirtSizeName}} </td>
 								<td> {{$rv->jacket}} </td>
                                 <td> {{$rv->ukShoeSize}} </td>
-								<td> {{$rv->gumboot}}  </td>
+								<td> {{$rv->uKSize}}  </td>
 								<td> {{$rv->sizeName}}  </td>
 
 								 </form>
@@ -45,7 +45,7 @@
 								 
 						        <td>  <form method="POST" action="{{ route('nieuws', [$rv->id]) }}">
     								{{ csrf_field() }}  {{ method_field('DELETE') }}
-   								<button type="submit">Delete</button>
+   								<button type="submit" class="btn btn-outline-danger">Delete</button>
 										
 									</form> 
 								</td> 

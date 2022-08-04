@@ -11,7 +11,7 @@ hr{
       <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b> CEO Note Sheet Review </b>
+                <b>CEO Note Sheet Review </b>
           </h5>
 			</div>
 		
@@ -29,8 +29,8 @@ hr{
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
-              <tr>   <th>office Name</th>        <td> {{($rv->longOfficeName)}} </td>    </tr>
-              <!-- <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr> -->
+              <tr>   <th>office Name</th>        <td> {{($rv->longOfficeName)}} </td>  </tr>
+               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr> 
 			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>  
 
                            
@@ -40,25 +40,14 @@ hr{
               <tr ><th colspan="2" >
               <div class="container">
                 <div class="row">
-                  <div class="col ">        
-                    <form method="POST" action="/ceorecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
-                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-                      <input type="hidden" name="status" id="status" value="CEORecommended">
-                      <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
-                      <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mt-4 btn-center " > 
-                      Recommend
-                      </button> 
-                    </form>
-                  </div>
-
+                  
                   <div class="col "> 
                     <form method="POST" action="/ceorecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf   
                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">      
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-                      <input type="hidden" name="status" id="status" value="Approved">
+                      <input type="hidden" name="status1" id="status" value="Approved">
                       <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
-                      <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mt-4 btn-center " > 
+                      <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-3 mt-3 btn-center"> 
                       Approve
                       </button> 
                     </form>
@@ -68,9 +57,9 @@ hr{
                     <form method="POST" action="/ceorecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-                      <input type="hidden" name="status" id="status" value="Rejected">                   
+                      <input type="hidden" name="status2" id="status" value="Rejected">                   
                       <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
-                      <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mt-4 btn-center" > 
+                      <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-3 mt-4 btn-center" > 
                       Reject
                       </button>
                     </form>

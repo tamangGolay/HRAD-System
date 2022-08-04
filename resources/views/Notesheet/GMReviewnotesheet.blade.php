@@ -33,6 +33,7 @@ hr{
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
               <tr>   <th>office Name</th>       <td> {{($rv->longOfficeName)}} </td>    </tr>
+              <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
 			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>                            
 			        <tr>    <th>Status</th>             <td> {{$rv->status}} </td>  </tr>
 
@@ -61,7 +62,7 @@ hr{
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="Approved">
+                        <input type="hidden" name="status1" id="status" value="Approved">
                     
                         <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mb-4 btn-center " > 
                         Approve
@@ -78,8 +79,7 @@ hr{
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="Rejected">
-
+                        <input type="hidden" name="status2" id="status" value="Rejected">
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
                         Reject
                         </button>

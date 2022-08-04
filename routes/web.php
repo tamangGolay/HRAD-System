@@ -42,7 +42,7 @@ Route::get('/forgetPassword', function () {
 Route::post('destroyVehicle', 'Manage_VehicleController@delete')->name('destroyVehicle');
 Route::get('manage_vehicle', 'Manage_VehicleController@message')->name('manage_vehicle');
 
-Route::resource('g', Manage_UserController::class);
+
 
 
 //vehicle Report
@@ -364,8 +364,9 @@ Route::resource('conferenceReport', 'conferenceReportController');//conference r
 Route::get('/clash/{id}', 'GetMastersController@clashview')->name('/clash');
 
 //Uniform Routes
-
-Route::post('/uniform','UniformController@store')->name('uniform');
+Route::resource('g', Manage_UserController::class);
+//Route::resource('uni', UniformController::class);
+ Route::post('uni','UniformController@store')->name('uni');
 
 Route::post('/delete','UniformController@delete')->name('delete');
 

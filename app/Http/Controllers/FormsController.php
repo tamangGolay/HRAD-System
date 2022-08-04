@@ -299,59 +299,78 @@ class FormsController extends Controller
      //    end uniform view
 
        //uniform report for individual employee
-       if ($request->v == "uniformReport") 
-       {
-           try{
-
-
-        $data1 = DB::table('employeeuniform')
-        ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
-        ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
-        ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
-        ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
-        // ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
-        ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
-        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
-        ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
-
-        ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
-        'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
-        'shoesize.ukShoeSize','gumboot.uKSize','raincoatsize.sizeName')
-                    ->paginate(10000);
+        //uniform report for individual employee
+        if ($request->v == "uniformReport") 
+        {
             
-
-               $rhtml = view('uniform.uniformReport')->with(['data1' => $data1])->render();
-               return response()
-                   ->json(array(
-                   'success' => true,
-                   'html' => $rhtml
-               ));  
-            }
-            catch(\Facade\Ignition\Exceptions\ViewException $e) {
-
-                $data1 = DB::table('employeeuniform')
-                ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
-                ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
-                ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
-                ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
-                ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
-                ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
-                ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
-          
-                   ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName')
-                    ->paginate(10000);
-                            
-                       $rhtml = view('uniform.uniformReportE')->with(['data1' => $data1])->render();
-                       return response()
-                           ->json(array(
-                           'success' => true,
-                           'html' => $rhtml
-                       ));  
-
-
-            } 
-        }
-
+ 
+             $pant = Pant::all();
+             $shirt = Shirt::all();
+             $jacket = JacketSize::all();
+             $shoe = Shoesize::all();
+             $gumboot = GumbootSize::all();
+             $raincoat = RaincoatSize::all();
+ 
+ 
+         $data1 = DB::table('employeeuniform')
+         ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+         ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+         ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+         ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+         ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
+         ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+ 
+         ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+         'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
+         'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
+                     ->paginate(10000);
+             
+ 
+                $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
+                'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
+                'pant' => $pant])->render();
+                return response()
+                    ->json(array(
+                    'success' => true,
+                    'html' => $rhtml
+                ));  
+             }
+             // catch(\Facade\Ignition\Exceptions\ViewException $e) {
+             //     $pant = Pant::all();
+             //     $shirt = Shirt::all();
+             //     $jacket = JacketSize::all();
+             //     $shoe = Shoesize::all();
+             //     $gumboot = GumbootSize::all();
+             //     $raincoat = RaincoatSize::all();
+             //     $office = Officedetails::all();
+ 
+             //     $data1 = DB::table('employeeuniform')
+             //     ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+             //     ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+             //     ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+             //     ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+             //     ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
+             //     ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+             //     ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+           
+             //     ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+             //     'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
+             //     'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
+             //                 ->paginate(10000);
+                             
+             //  $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
+             // 'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
+             // 'pant' => $pant,'office' => $office])->render();       
+             //     return response()
+             //                ->json(array(
+             //                'success' => true,
+             //                'html' => $rhtml
+             //            ));  
+ 
+ 
+             // } 
+         //}
         //end of uniform report for individual employee
          //uniform report for offfice wise
 

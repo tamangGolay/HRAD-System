@@ -7,12 +7,52 @@ use App\Uniform;
 use App\UniformEmployee;
 use DB;
 use Auth;
+
 class UniformController extends Controller
 {
 
+
+
+    public function index(Request $request)
+    {
+        dd($request);
+        $pay = DB::table('employeeuniform')
+        ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+        ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+        ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+        ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+        ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
+        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+        ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
+        ->where('status', 0)
+        ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+        'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
+        'shoesize.ukShoeSize','raincoatsize.sizeName')
+                    ->paginate(10000);
+        
+        if ($request->ajax()) {
+            $data = $pay;
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                          
+
+
+
+    
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
+        return view('uniform.uniformReport',compact('pay'));
+    }
+
     public function store(Request $request)
     {
-    // dd($request);
+     dd($request);
     $uniform = new UniformEmployee;
     $uniform->empId = $request->emp_id;
     // $uniform->empName = $request->name;

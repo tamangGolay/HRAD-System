@@ -206,13 +206,17 @@ a {
              setTimeout(function(){
               alt.parentNode.removeChild(alt);
              },4500);
-            document.body.appendChild(alt);                 
-       
-        
-            window.location.href = '/home';
-            table.draw();
+            document.body.appendChild(alt);
+             
+            //to redirect page to same page 
 
-    
+         $.get('/getView?v=displinaryhistorymaster',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+        
+            // window.location.href = '/home';
+            table.draw();    
          
           },
           error: function (data) {
@@ -265,11 +269,16 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
-			table.draw();           
-       
 
-    
+        //*to redirect page to same page again
+
+        $.get('/getView?v=displinaryhistorymaster',function(data){        
+        $('#contentpage').empty();                          
+        $('#contentpage').append(data.html);
+         });
+            // window.location.href = '/home';
+			table.draw();  
+         
          
           },
           error: function (data) {

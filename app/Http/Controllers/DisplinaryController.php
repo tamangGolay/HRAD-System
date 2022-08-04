@@ -20,7 +20,7 @@ class DisplinaryController extends Controller
 
         // $quali = DB::table('displinaryhistorymaster')->where('status','0');   
         $quali = DB::table('displinaryhistorymaster')
-        ->join('users', 'users.id', '=', 'displinaryhistorymaster.personalNo')
+        ->join('users', 'users.empId', '=', 'displinaryhistorymaster.personalNo')
         ->select('displinaryhistorymaster.id','users.empId','displinaryhistorymaster.issueDate','displinaryhistorymaster.case','displinaryhistorymaster.actionTaken')
         ->where('displinaryhistorymaster.status','0');
 
@@ -72,6 +72,7 @@ class DisplinaryController extends Controller
 
         $conference = DisplinaryHistory::find($id);
         return response()->json($conference);
+        
     }
   
     /**
@@ -92,8 +93,8 @@ class DisplinaryController extends Controller
     //To redirect to the manage_quali page after the management of quali
     public function message(Request $request)
     {
-
         return redirect('home');
+    
     }
 
 }

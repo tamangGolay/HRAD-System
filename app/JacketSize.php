@@ -11,6 +11,6 @@ class JacketSize extends Model
 
     protected $table = 'jacketmaster';
 
-    protected $fillable = ['id','sizeName','usUkSize','euSize','gender','status'];
+    protected $fillable = ['id','sizeName','usUkSize','euSize','status'];
     public $timestamps = false;
 }

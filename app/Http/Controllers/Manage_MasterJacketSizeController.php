@@ -29,10 +29,7 @@ class Manage_MasterJacketSizeController extends Controller
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm editjacket">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
                            $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteJacket" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteJacket">Delete</a>';
 
-
-
-
-    
+   
                             return $btn;
                     })
                     ->rawColumns(['action'])
@@ -53,7 +50,7 @@ class Manage_MasterJacketSizeController extends Controller
     public function store(Request $request)
     {
         JacketSize::updateOrCreate(['id' => $request->id],
-                ['sizeName' => $request->sizeName,'usUkSize'=>$request->usUkSize,'euSize'=>$request->euSize,'gender'=>$request->gender]);        
+                ['sizeName' => $request->sizeName,'usUkSize'=>$request->usUkSize,'euSize'=>$request->euSize]);        
    
         return response()->json(['success'=>'bank saved successfully.']);
     }

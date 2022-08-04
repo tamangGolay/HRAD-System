@@ -36,8 +36,7 @@ a {
             <tr>
 
                 <th>No</th>
-                <th width=300px>Shirt Size name</th>
-                <th>Gender</th>
+                <th >Shirt Size name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -65,20 +64,6 @@ a {
                             <input type="text" class="form-control" id="shirtSizeName" name="shirtSizeName" value=""  required>
                         </div>
                     </div>
-
-                    
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 col-lg-8 control-label">Gender</label>
-                        <div class="col-sm-12">
-                        <select name="gender" id="gender" class="form-control" required> 
-							<option value=" ">Select Gender</option> 
-							<option value="Male">Male</option>
-							<option value="Female">Female</option> 
-						</select> 
-						</div>					
-                    </div>               
-                                       
-                   	
       
                     <div class="col-sm-offset-2 col-sm-10">
                      <button type="submit"  class="btn btn-primary" id="shirtButton" value="create">Save changes
@@ -136,7 +121,6 @@ a {
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
             {data: 'shirtSizeName', name: 'shirtSizeName', orderable: false, searchable: true},
-            {data: 'gender', name: 'gender', orderable: false, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -163,7 +147,6 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#shirt_id').val(data.id);
           $('#shirtSizeName').val(data.shirtSizeName); //input id,database
-          $('#gender').val(data.gender);
       })
    });
 
@@ -223,7 +206,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),          
           $('#shirt_id').val(data.id);
           $('#shirtSizeName').val(data.shirtSizeName); //input id,database
-          $('#gender').val(data.gender);
+        //   $('#gender').val(data.gender);
       })
    });
    

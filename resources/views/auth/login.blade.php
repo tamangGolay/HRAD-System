@@ -101,26 +101,21 @@ a:hover{
                           </div> -->
 						</div>
 						
-						<div class="row col-12 ml-4 mb-3">
-
-						<div class="col-4 ml-1">
-							<button class="btn btn-success">Login</button>
-
-							</div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
+						<div class="row col-12 ml-4 mb-3">							
 							<div class="col-4">
-								<button type="submit" class="btn btn-success"><a href="{{ route('register')}}" class="reg">Register</a></button>
+								<button type="submit" class="btn btn-success col-lg-12"><a href="{{ route('register')}}" class="reg">Register</a></button>
 								
                                 <!-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif -->     
-								                                 
 							</div>
-							
-
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div class="col-4 ml-1">
+								<button class="btn btn-success col-lg-12">Login</button>
+							</div>
 						</div>
 					</form>
 				</div>

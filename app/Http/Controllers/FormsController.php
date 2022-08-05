@@ -58,6 +58,7 @@ use App\Shirt;
 use App\RaincoatSize;
 use App\officeuniform;
 use App\GumbootSize;
+use App\promotionAll;
 
 
 
@@ -4280,7 +4281,24 @@ if ($request->v == "promotion_history")
     ));
 }
 
+// for promotion all
+if ($request->v == "promotionall")  //form.csv
+{    
+    $promo = User::all();
 
+    $b = DB::table('promotionall')
+    
+    ->join('users', 'users.empId', '=', 'promotionall.empId')
+    // ->select('users.empId');
+    ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate',);
+
+    $rhtml = view('promotion.promotionAll')->with(['promo'=>$promo])->render(); 
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+        ));
+}  //end
 
 //user_profile
 if ($request->v == "user_profile")

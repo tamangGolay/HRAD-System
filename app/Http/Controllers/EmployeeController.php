@@ -85,7 +85,7 @@ class EmployeeController extends Controller
         //   }
         
         return redirect('home')->with('page', 'allEmployeeContribution')
-                                    ->with('error',$e->getMessage());
+                                    ->with('error',"The Records contain either duplicate or null values");
         
         
         }

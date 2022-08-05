@@ -119,8 +119,6 @@ a {
 			</div>
 		</div>
 	</div>
-</div>
-
 
 
 
@@ -335,7 +333,22 @@ $(function() {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
+
+		// 		$table->id();
+
+		// $table->integer('empId');
+		// $table->string('empName');
+		// $table->string('bloodGroup')->nullable();
+		// $table->bigInteger('cidNo');
+		// $table->string('cidOther')->nullable();
+		
+        
+
+		
 	
+	
+	
+		
 		
 
 	

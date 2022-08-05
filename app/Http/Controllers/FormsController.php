@@ -5008,6 +5008,27 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+ // for increment all
+ 
+ if ($request->v == "incrementall")  //form.csv
+ {   
+
+    $usersemp = User::all(); 
+
+    $skills = DB::table('incrementall')    
+    ->join('users', 'users.empId', '=', 'incrementall.empId')
+    ->select('incrementall.id','users.empId','incrementall.lastIncrementDate','incrementall.incrementDueDate','incrementall.incrementCycle')
+    ->get(); 
+
+  $rhtml = view('Increment.increment')->with(['usersemp' => $usersemp])->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
 }
 }
  

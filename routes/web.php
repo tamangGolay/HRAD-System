@@ -593,3 +593,7 @@ Route::resource('officewiseUniformSizeReport', 'OfficeWiseUniformSizeReportContr
 
 //uniform jacket size report
 Route::resource('jacketreport', 'JacketReportController');
+
+//incrementall page
+Route::resource('incrementall', IncrementAllController::class);
+Route::post('destroyIncrement', 'IncrementAllController@delete')->name('destroyIncrement');//for deleting incremental

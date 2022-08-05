@@ -138,16 +138,17 @@ a {
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $data1[0]->empId; ?>" name="emp_id" id="empId" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $data1[0]->empId; ?>" name="emp_id" id="empId" >
 
 									</div>
+									
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="office">{{ __('Office:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $office[0]->shortOfficeName; ?>" name="office" id="office" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control" value="<?php echo $office[0]->shortOfficeName; ?>" name="office" id="office" >
 
 									</div>
 								</div>
@@ -232,10 +233,7 @@ a {
 								@endforeach </select>
 						</div>
 </div>	
-
-
-							
-																
+															
 					<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
 									<button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Save changes </button>
 									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>      
@@ -355,7 +353,7 @@ $(function() {
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
 					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
-						$('#modelHeading').html("Edit User");
+						$('#modelHeading').html("Edit uniform size");
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
 						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database

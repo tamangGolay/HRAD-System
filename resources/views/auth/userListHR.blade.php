@@ -140,64 +140,64 @@ a {
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->empId; ?>" name="emp_id" id="empId" >
+									<div class="col-sm-6">
+									<input type="text" class="form-control"  value="<?php echo $userList[0]->empId; ?>" name="emp_id" id="empId" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="empName">{{ __('Name:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->empName; ?>" name="empName" id="empName" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control" value="<?php echo $userList[0]->empName; ?>" name="empName" id="empName" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="cidNo">{{ __('Cid Number:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->cidNo; ?>" name="cidNo" id="cidNo" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->cidNo; ?>" name="cidNo" id="cidNo" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="dob">{{ __('Date of Birth:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->dob; ?>" name="dob" id="dob" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->dob; ?>" name="dob" id="dob" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="appointmentDate">{{ __('Appointment Date:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->appointmentDate; ?>" name="appointmentDate" id="appointmentDate" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->appointmentDate; ?>" name="appointmentDate" id="appointmentDate" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="gradeId">{{ __('Grade:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->gradeId; ?>" name="gradeId" id="gradeId" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->gradeId; ?>" name="gradeId" id="gradeId" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="lastDop">{{ __('Last Dop:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->lastDop; ?>" name="lastDop" id="lastDop" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->lastDop; ?>" name="lastDop" id="lastDop" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emailId">{{ __('Email:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->emailId; ?>" name="emailId" id="emailId" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->emailId; ?>" name="emailId" id="emailId" >
 
 									</div>
 								</div>
@@ -205,8 +205,8 @@ a {
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="basicPay">{{ __('Basic Pay:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->basicPay; ?>" name="basicPay" id="basicPay" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->basicPay; ?>" name="basicPay" id="basicPay" >
 
 									</div>
 								</div>
@@ -226,24 +226,24 @@ a {
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="mobileNo">{{ __('MobileNo:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->mobileNo; ?>" name="mobileNo" id="mobileNo" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->mobileNo; ?>" name="mobileNo" id="mobileNo" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('incrementCycle:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->incrementCycle; ?>" name="incrementCycle" id="incrementCycle" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->incrementCycle; ?>" name="incrementCycle" id="incrementCycle" >
 
 									</div>
 								</div>
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="gender">{{ __('Gender:') }}</label>
-									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
+									<div class="col-sm-6">
+									<input type="text"  class="form-control"  value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
 
 									</div>
 								</div>

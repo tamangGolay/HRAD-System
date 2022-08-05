@@ -62,7 +62,6 @@ a {
 			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-<div class="container">
 <div class="row">
 	<div class="col">
 		<div class="card">
@@ -122,7 +121,7 @@ a {
 	</div>
 </div>
 
-<div>
+
 
 
 
@@ -150,7 +149,7 @@ a {
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="office">{{ __('Office:') }}</label>
 									<div class="col-sm-4">
-									<input type="text" value="<?php echo $data1[0]->shortOfficeName; ?>" name="office" id="office" readonly>
+									<input type="text" value="<?php echo $office[0]->shortOfficeName; ?>" name="office" id="office" >
 
 									</div>
 								</div>
@@ -336,22 +335,7 @@ $(function() {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-
-		// 		$table->id();
-
-		// $table->integer('empId');
-		// $table->string('empName');
-		// $table->string('bloodGroup')->nullable();
-		// $table->bigInteger('cidNo');
-		// $table->string('cidOther')->nullable();
-		
-        
-
-		
 	
-	
-	
-		
 		
 
 	
@@ -362,7 +346,7 @@ $(function() {
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
 						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database
-						$('#emp').val(data.empId); //input id,database
+						$('#emp_id').val(data.empId); //input id,database
 						$('#office').val(data.officeId);
 						$('#pant').val(data.pant);
 						$('#shirt').val(data.shirt);

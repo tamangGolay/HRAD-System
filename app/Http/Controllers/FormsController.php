@@ -310,7 +310,7 @@ class FormsController extends Controller
              $shoe = Shoesize::all();
              $gumboot = GumbootSize::all();
              $raincoat = RaincoatSize::all();
- 
+            $office = Officedetails::all();
  
          $data1 = DB::table('employeeuniform')
          ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
@@ -330,7 +330,7 @@ class FormsController extends Controller
  
                 $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
                 'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
-                'pant' => $pant])->render();
+                'pant' => $pant, 'office' => $office])->render();
                 return response()
                     ->json(array(
                     'success' => true,

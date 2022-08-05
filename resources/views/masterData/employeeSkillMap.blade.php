@@ -34,12 +34,12 @@ a {
     @csrf
         <thead>
             <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>EmployeeId</th>
                 <th>Skills</th>
                 <th>Obtained On</th>
                 <th>Expiray Date On</th>
-                <th>action</th>     
+                <th>Action</th>     
             </tr>
         </thead>
         <tbody>
@@ -79,8 +79,7 @@ a {
                      <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Skills</label>
                         <div class="col-sm-12">
-                            <!-- <input type="text" class="form-control" id="skillId" name="skillId" placeholder="Enter Skills" value="" maxlength="50" required> -->
-                            <select name="skillId" id="skillId" value="" class="form-control" required>
+                             <select name="skillId" id="skillId" value="" class="form-control" required>
 
                                              <option value="">select Skills</option>
 
@@ -198,8 +197,7 @@ a {
     $('#skillcategoryButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
-        $(this).html('Save');
-
+        $(this).html('Saving...');
         
 
         $.ajax({
@@ -221,8 +219,14 @@ a {
              },4500);
             document.body.appendChild(alt);                 
        
-        
-            window.location.href = '/home';
+        //to redirect page to same page 
+
+       $.get('/getView?v=employeeskillmap',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+
+            // window.location.href = '/home';
         table.draw();
 
     
@@ -260,7 +264,7 @@ a {
   // after clicking yes in delete
     $('#skillCategoryDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -270,7 +274,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#employeeSkillCategoryModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -280,12 +284,18 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
-			table.draw();                 
-       
-       
 
-    
+            //to redirect page to same page 
+
+           $.get('/getView?v=employeeskillmap',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+
+            
+            // window.location.href = '/home';
+			table.draw();       
+               
          
           },
           error: function (data) {
@@ -293,9 +303,7 @@ a {
               $('#skillCategoryDeleteButton').html('Save Changes');
           }
       });
-    });
-    
-    
+    });      
      
      
 </script>

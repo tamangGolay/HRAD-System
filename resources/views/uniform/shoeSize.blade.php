@@ -197,7 +197,7 @@ a {
     $('#shoesizeButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -218,10 +218,16 @@ a {
              setTimeout(function(){
               alt.parentNode.removeChild(alt);
              },4500);
-            document.body.appendChild(alt);                 
-       
+            document.body.appendChild(alt);    
+                         
+        //to redirect page to same page 
+
+        $.get('/getView?v=shoesize',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
         
-            window.location.href = '/home';
+            // window.location.href = '/home';
         table.draw();
 
     
@@ -258,7 +264,7 @@ a {
   // after clicking yes in delete
     $('#shoesizeDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -268,7 +274,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#shoesizeModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -278,7 +284,13 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+
+            //to redirect page to same page 
+         $.get('/getView?v=shoesize',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+            // window.location.href = '/home';
 			table.draw();                          
           },
           error: function (data) {

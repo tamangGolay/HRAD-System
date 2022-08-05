@@ -104,10 +104,7 @@ a {
             <div class="modal-body">
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">
-
-
-                   
+                <input type="hidden"  value="{{ csrf_token() }}">                   
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
                     <button type="submit" class="btn btn-outline-success" id="subCatDeleteButton" value="create">Yes</button>
@@ -174,7 +171,7 @@ a {
     $('#subCatButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -197,8 +194,14 @@ a {
              },4500);
             document.body.appendChild(alt);                 
        
+            //to redirect page to same page 
+
+        $.get('/getView?v=subskillcategory',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
         
-            window.location.href = '/home';
+            // window.location.href = '/home';
         table.draw();
 
     
@@ -232,7 +235,7 @@ a {
   // after clicking yes in delete
     $('#subCatDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -242,7 +245,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#subCatModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -252,7 +255,14 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+
+            //to redirect page to same page 
+
+        $.get('/getView?v=subskillcategory',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+            // window.location.href = '/home';
 			table.draw();        
        
        

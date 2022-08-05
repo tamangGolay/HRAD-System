@@ -136,7 +136,7 @@ a {
       var skillcategory_id = $(this).data('id');
      
       $.get("{{ route('skillcategory.index') }}" +'/' + skillcategory_id +'/edit', function (data) {
-          $('#modelHeading').html("Edit Grade details");
+          $('#modelHeading').html("Edit skill category details");
           $('#skillcategoryButton').val("edit-grade");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
@@ -151,7 +151,7 @@ a {
     $('#skillcategoryButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
 
@@ -172,10 +172,16 @@ a {
              setTimeout(function(){
               alt.parentNode.removeChild(alt);
              },4500);
-            document.body.appendChild(alt);                 
+            document.body.appendChild(alt); 
+            //to redirect page to same page 
+
+        $.get('/getView?v=skillcategory',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });                
        
         
-            window.location.href = '/home';
+            // window.location.href = '/home';
         table.draw();
 
     
@@ -210,7 +216,7 @@ a {
   // after clicking yes in delete
     $('#skillCategoryDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -220,7 +226,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#skillCategoryModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -230,7 +236,14 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+
+            //to redirect page to same page 
+        $.get('/getView?v=skillcategory',function(data){        
+           $('#contentpage').empty();                          
+           $('#contentpage').append(data.html);
+            });
+
+            // window.location.href = '/home';
 			table.draw();                 
        
        

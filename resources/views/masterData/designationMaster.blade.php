@@ -185,8 +185,12 @@ a {
              },4500);
             document.body.appendChild(alt);                 
        
+            $.get('/getView?v=designationmaster',function(data){
         
-            window.location.href = '/home';
+        $('#contentpage').empty();                          
+        $('#contentpage').append(data.html);
+        }); 
+            // window.location.href = '/home';
         table.draw();
 
     
@@ -240,7 +244,12 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+            $.get('/getView?v=designationmaster',function(data){
+        
+        $('#contentpage').empty();                          
+        $('#contentpage').append(data.html);
+        }); 
+            // window.location.href = '/home';
 			table.draw();                          
           },
           error: function (data) {

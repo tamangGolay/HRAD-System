@@ -461,8 +461,12 @@ $(function() {
 								alt.parentNode.removeChild(alt);
 							}, 4500);
 							document.body.appendChild(alt);
+							$.get('/getView?v=employeeList',function(data){
+        					$('#contentpage').empty();                          
+							$('#contentpage').append(data.html);
+							}); 
 							
-							window.location.href = '/home';
+							// window.location.href = '/home';
 							table.draw();
 						},
 						error: function(data) {
@@ -502,10 +506,10 @@ $(function() {
 								alt.parentNode.removeChild(alt);
 							}, 4500);
 							document.body.appendChild(alt);
-							$.get('/getView?v=userList', function(data) {
-								$('#contentpage').empty();
-								$('#contentpage').append(data.html);
-							});
+							$.get('/getView?v=employeeList',function(data){
+        					$('#contentpage').empty();                          
+							$('#contentpage').append(data.html);
+							}); 
 							table.draw();
 						},
 						error: function(data) {

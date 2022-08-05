@@ -322,7 +322,7 @@ class FormsController extends Controller
          ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
          ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
  
-         ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+         ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
          'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
          'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
          ->where('employeeuniform.status',0)

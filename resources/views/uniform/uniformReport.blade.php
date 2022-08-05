@@ -93,7 +93,7 @@ a {
 						<tr>
 						<td> {{$rv->uniformId}} </td>
 								<td> {{$rv->empId}} </td>
-                                <td> {{$rv->shortOfficeName}} </td>	
+                                <td> {{$rv->officeDetails}} </td>	
                                 <td> {{$rv->pantSizeName}} </td>
 								<td> {{$rv->shirtSizeName}} </td>
 								<td> {{$rv->jacket}} </td>
@@ -148,8 +148,12 @@ a {
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="office">{{ __('Office:') }}</label>
 									<div class="col-sm-6">
-									<input type="text"  class="form-control" value="<?php echo $office[0]->shortOfficeName; ?>" name="office" id="office" >
-
+																		<select class="form-control" name="office" id="office" required> 
+							<option value="">Select Office</option>	
+							@foreach($office as $office)
+								<option value="{{$office->id}}" > {{$office->officeDetails}}
+								</option>
+								@endforeach </select>
 									</div>
 								</div>
 

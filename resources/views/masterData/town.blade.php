@@ -214,7 +214,12 @@ a {
             document.body.appendChild(alt);                 
        
         
-            window.location.href = '/home';
+            // window.location.href = '/home'
+            document.body.appendChild(alt);
+            $.get('/getView?v=townmaster',function(data){
+            $('#contentpage').empty();                          
+            $('#contentpage').append(data.html);
+            });
         table.draw();
 
     
@@ -269,7 +274,12 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+            document.body.appendChild(alt);
+            $.get('/getView?v=townmaster',function(data){
+            $('#contentpage').empty();                          
+            $('#contentpage').append(data.html);
+            });
+            // window.location.href = '/home';
 			table.draw();                 
        
        

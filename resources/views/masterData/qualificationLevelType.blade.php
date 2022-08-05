@@ -178,11 +178,14 @@ a {
              setTimeout(function(){
               alt.parentNode.removeChild(alt);
              },4500);
-            document.body.appendChild(alt);                 
-       
-        
-            window.location.href = '/home';
-        table.draw();
+            document.body.appendChild(alt); 
+            document.body.appendChild(alt);
+            $.get('/getView?v=qualificationmaster',function(data){
+            $('#contentpage').empty();                          
+            $('#contentpage').append(data.html);
+            });                
+            // window.location.href = '/home';
+            table.draw();
 
     
          
@@ -235,7 +238,11 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            window.location.href = '/home';
+            $.get('/getView?v=qualificationmaster',function(data){
+            $('#contentpage').empty();                          
+            $('#contentpage').append(data.html);
+            });
+            // window.location.href = '/home';
 			table.draw();           
        
 

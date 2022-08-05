@@ -86,7 +86,7 @@ a {
 </div>
 
 
-<div class="modal fade" id="designationModel" aria-hidden="true">
+<div class="modal fade" id="designationmodal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -213,7 +213,7 @@ a {
       $.get("{{ route('designation.index') }}" +'/' + designation_id +'/edit', function (data) {
           $('#designationHeading').html("Do you want to delete?");
           $('#designationDeleteButton').val("edit-room");
-          $('#designationModel').modal('show');
+          $('#designationmodal').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#designation_id').val(data.id);
           $('#desisNameShort').val(data.desisNameShort); //input id,database
@@ -234,10 +234,10 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#designationmodal').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
-        var alt = document.createElement("div");
+                var alt = document.createElement("div");
              alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
              alt.innerHTML = "Data Updated Successfully! ";
              setTimeout(function(){
@@ -245,16 +245,18 @@ a {
              },4500);
             document.body.appendChild(alt);
             $.get('/getView?v=designationmaster',function(data){
-        
-        $('#contentpage').empty();                          
-        $('#contentpage').append(data.html);
-        }); 
-            // window.location.href = '/home';
+            $('#contentpage').empty();                          
+             $('#contentpage').append(data.html);
+            }); 
+            // window.location.href = '/designationmaster';
+
 			table.draw();                          
           },
           error: function (data) {
               console.log('Error:', data);
               $('#designationDeleteButton').html('Save Changes');
+              alert("Cannot leave fields empty");
+
           }
       });
     });
@@ -299,6 +301,10 @@ a {
 		$(document).ready(function() {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
-		</script>
+
+       
+		
+        
+</script>
 
 

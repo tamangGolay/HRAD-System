@@ -204,7 +204,7 @@ a {
     $('#employeeButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -258,10 +258,7 @@ a {
           $('#number').val(data.reportsToOffice);
           $('#employee').val(data.reportsToEmployee);
           $('#start').val(data.fromDate);
-          $('#end').val(data.endDate);
-
-     
-
+          $('#end').val(data.endDate);   
 
 
       })
@@ -270,7 +267,7 @@ a {
   // after clicking yes in delete
     $('#employeeDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -280,7 +277,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#employeeModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");

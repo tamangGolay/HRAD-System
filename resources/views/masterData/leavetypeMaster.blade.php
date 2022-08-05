@@ -63,12 +63,7 @@ a {
                         </div>
                     </div>
      
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">Designation Long name</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="namelong" name="namelong"  placeholder="Vehicle number" class="form-control" required>
-                        </div>
-                    </div> -->
+                   
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="leaveButton" value="create">Save changes
@@ -159,7 +154,7 @@ a {
     $('#leaveButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -220,7 +215,7 @@ a {
   // after clicking yes in delete
     $('#leaveDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -230,7 +225,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#leaveModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -259,38 +254,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyleave') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_vehicle';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
-     
+    
      
 </script>
 

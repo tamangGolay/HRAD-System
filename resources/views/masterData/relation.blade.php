@@ -88,7 +88,7 @@ a {
 </div>
 
 
-<div class="modal fade" id="vehicleModel" aria-hidden="true">
+<div class="modal fade" id="relationModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -163,7 +163,7 @@ a {
     $('#relationButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -214,7 +214,7 @@ a {
       $.get("{{ route('relation.index') }}" +'/' + relationid +'/edit', function (data) {
           $('#relationHeading').html("Do you want to delete this relation?");
           $('#relationDeleteButton').val("edit-relation");
-          $('#vehicleModel').modal('show');
+          $('#relationModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#relationid').val(data.id); 
           $('#relationshipName').val(data.relationshipName); //input id,database
@@ -226,7 +226,7 @@ a {
   // after clicking yes in delete
     $('#relationDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -236,7 +236,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#relationModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");

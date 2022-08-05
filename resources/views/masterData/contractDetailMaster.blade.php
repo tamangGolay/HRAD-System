@@ -195,7 +195,7 @@ a {
     $('#contractdetailButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
     
         $.ajax({
@@ -260,7 +260,7 @@ a {
   // after clicking yes in delete
     $('#contractDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -270,7 +270,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#contractdetailModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");

@@ -34,14 +34,14 @@ a {
     @csrf
         <thead>
             <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>short Name</th>
                 <th>long Name</th>
                 <th>Position Specific Allowance</th>
                 <th>Contract Allowance</th>
                 <th>Communication Allowance</th>
                 <th>Type</th>
-                <th width="200px">action</th>
+                <th width="200px">Action</th>
 
                 
             </tr>
@@ -109,8 +109,8 @@ a {
                         </div>
                     </div>
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="postButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="postButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -122,7 +122,7 @@ a {
 </div>
 
 
-<div class="modal fade" id="gradeModel" aria-hidden="true">
+<div class="modal fade" id="postModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -132,8 +132,6 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
@@ -209,7 +207,7 @@ a {
     $('#postButton').click(function (e) {  //after clicking save changes
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
 
@@ -260,7 +258,7 @@ a {
       $.get("{{ route('postmaster.index') }}" +'/' + post_id +'/edit', function (data) {
           $('#postHeading').html("Do you want to delete the post master?");
           $('#gradeDeleteButton').val("edit-grade");
-          $('#gradeModel').modal('show');
+          $('#postModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#post_id').val(data.id);
           $('#shortName').val(data.shortName); //input id,database
@@ -275,7 +273,7 @@ a {
   // after clicking yes in delete
     $('#gradeDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -285,7 +283,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#postModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -314,38 +312,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deleteVehicle', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyVehicle') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_vehicle';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
-     
+       
      
 </script>
 

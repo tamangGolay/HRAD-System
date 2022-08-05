@@ -110,7 +110,7 @@ a {
 </div>
 
 
-<div class="modal fade" id="vehicleModel" aria-hidden="true">
+<div class="modal fade" id="promotionModel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -200,7 +200,7 @@ a {
     $('#vehicleButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -249,7 +249,7 @@ a {
       $.get("{{ route('promotion.index') }}" +'/' + vehicle_id +'/edit', function (data) {
           $('#vehicleHeading').html("Do you want to delete the Detail?");
           $('#vehicleDeleteButton').val("edit-room");
-          $('#vehicleModel').modal('show');
+          $('#promotionModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
            $('#vehicle_id').val(data.id);
           $('#name').val(data.personalNo); //input id,database
@@ -270,7 +270,7 @@ a {
   // after clicking yes in delete
     $('#vehicleDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -280,7 +280,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#promotionModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");

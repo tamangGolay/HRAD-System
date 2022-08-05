@@ -162,7 +162,7 @@ a {
     $('#designationButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -224,7 +224,7 @@ a {
   // after clicking yes in delete
     $('#designationDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),

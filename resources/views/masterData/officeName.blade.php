@@ -175,7 +175,7 @@ a {
     $('#officeNameButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -237,7 +237,7 @@ a {
   // after clicking yes in delete
     $('#officeNameDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -247,7 +247,7 @@ a {
           success: function (data) {
      
               $('#Form').trigger("reset");
-              $('#ajaxModel').modal('hide');
+              $('#officeNameModel').modal('hide');
               table.draw();
               window.onload = callajaxOnPageLoad(page);
         var alt = document.createElement("div");
@@ -262,12 +262,10 @@ a {
             $('#contentpage').append(data.html);
             }); 
             // window.location.href = '/home';
-			table.draw();                 
-       
-       
-
-    
-         
+			table.draw();           
+              
+   
+        
           },
           error: function (data) {
               console.log('Error:', data);
@@ -276,38 +274,7 @@ a {
       });
     });
     
-    // $('body').on('click', '.deleteofficeName', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyofficeName') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_officeName';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
-     
+    
      
 </script>
 

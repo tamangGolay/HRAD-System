@@ -20,8 +20,8 @@ class promotionAllController extends Controller
         // dd($request);
         $b = DB::table('promotionall')
         ->join('users', 'users.empId', '=', 'promotionall.empId')
-        ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason');
-
+        ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason')
+        ->where('promotionall.status','0');
         
         if ($request->ajax()) {
             $data = $b;
@@ -77,8 +77,8 @@ class promotionAllController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('promotionall')->where('id', $request->id);
-            
+        $query = DB::table('promotionall')->where('id', $request->id)
+        ->increment('status');
 
         return response()
             ->json(['success' => 'Deleted successfully.']);

@@ -4290,7 +4290,8 @@ if ($request->v == "promotionall")  //form.csv
     
     ->join('users', 'users.empId', '=', 'promotionall.empId')
     // ->select('users.empId');
-    ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason');
+    ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason')
+    ->where('promotionall.status',0);
 
     $rhtml = view('promotion.promotionAll')->with(['promo'=>$promo])->render(); 
     return response()
@@ -4298,6 +4299,18 @@ if ($request->v == "promotionall")  //form.csv
         'success' => true,
         'html' => $rhtml
         ));
+}  //end
+
+//promotion list
+if ($request->v == "promotionform")  //form.csv
+{    
+
+ $rhtml = view('promotion.promotionAllList')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
 }  //end
 
 //user_profile

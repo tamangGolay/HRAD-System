@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    $servername = "hris.bpc.bt";
+    $servername = "172.16.170.25:3306";
     $username = "hris";
     $password = "bpc@Bpc@2022"; //For web server
     //$password = ""; //For local server
@@ -26,3 +26,4 @@
             debug_to_console( "Connected to db");
     }
 ?>
+

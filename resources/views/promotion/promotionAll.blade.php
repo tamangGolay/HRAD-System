@@ -116,6 +116,13 @@ a {
                             <input type="date" id="promotionDueDate" name="promotionDueDate"  placeholder="eg: 2050-01-20" class="form-control" required>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-12 col-sm-12 control-label">Modification Reason</label>
+                        <div class="col-lg-12 col-sm-12">
+                            <input type="text" id="modificationReason" name="modificationReason"  placeholder="eg: Type text here" class="form-control" required>
+                        </div>
+                    </div>
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="promotionAllButton" value="create">Save changes
@@ -205,7 +212,8 @@ a {
           $('#yearsToPromote').val(data.yearsToPromote);
           $('#doJoining').val(data.doJoining);
 		  $('#doLastPromotion').val(data.doLastPromotion);
-		  $('#promotionDueDate').val(data.promotionDueDate);
+		  $('#promotionDueDate').val(data.promotionDueDate); 
+          $('#modificationReason').val(data.modificationReason);
       })
    });
 
@@ -275,6 +283,7 @@ a {
           $('#doJoining').val(data.doJoining);
 		  $('#doLastPromotion').val(data.doLastPromotion);
 		  $('#promotionDueDate').val(data.promotionDueDate);
+          $('#modificationReason').val(data.modificationReason);
       })
    });
    

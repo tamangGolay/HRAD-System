@@ -20,7 +20,7 @@ class promotionAllController extends Controller
         // dd($request);
         $b = DB::table('promotionall')
         ->join('users', 'users.empId', '=', 'promotionall.empId')
-        ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate',);
+        ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason');
 
         
         if ($request->ajax()) {
@@ -52,7 +52,7 @@ class promotionAllController extends Controller
  
         promotionAll::updateOrCreate(['id' => $request->id],
         ['empId' => $request->empId, 'grade' => $request->grade, 'gradeCeiling' => $request->gradeCeiling, 'yearsToPromote' => $request->yearsToPromote, 
-        'doJoining' => $request->doJoining, 'doLastPromotion' => $request->doLastPromotion, 'promotionDueDate' => $request->promotionDueDate]);    
+        'doJoining' => $request->doJoining, 'doLastPromotion' => $request->doLastPromotion, 'promotionDueDate' => $request->promotionDueDate, 'modificationReason'=>$request->modificationReason]);    
         
         return response()->json(['success'=>'saved successfully.']);
     }

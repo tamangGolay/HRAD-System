@@ -4290,7 +4290,7 @@ if ($request->v == "promotionall")  //form.csv
     
     ->join('users', 'users.empId', '=', 'promotionall.empId')
     // ->select('users.empId');
-    ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate',);
+    ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason');
 
     $rhtml = view('promotion.promotionAll')->with(['promo'=>$promo])->render(); 
     return response()

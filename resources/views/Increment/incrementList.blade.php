@@ -19,7 +19,10 @@
    
     <!-- <input type="text" name="filter" class="form-control searchIncrementList" placeholder="Search for filter Only..."> -->
 <div class="col-lg-12">
-    <input type="date" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="yyyy-mm-dd...">
+    <input type="number" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="Year..">
+    <br>
+    <input type="number" name="month" id="month" class="form-control searchIncrementListm col-lg-6" placeholder="Month..">
+
     <br>
    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-4">Filter</button>
    <button type="button" style="width:90px" name="" id="Reset" class="btn btn-success col-lg-4">Reset</button>
@@ -35,7 +38,7 @@
                 <th>EmpId</th>
                 <th>Basic Pay</th>
                 <th>Increment  Year</th>
-                
+                <th>Increment  Month</th>
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -56,6 +59,7 @@
           url: "{{ route('incrementlist.index') }}",
           data: function (d) {
                 d.filter = $('.searchIncrementList').val(),
+                d.month = $('.searchIncrementListm').val(),
                  d.search = $('input[type="search"]').val()
             }
         },
@@ -72,6 +76,10 @@
 
             {data: 'incrementDueDate', 
             name: 'incrementDueDate'},
+
+
+            {data: 'month', 
+            name: 'month'},
 
             {data: 'action', 
              name: 'action', 
@@ -90,6 +98,7 @@
 
 $('#Reset').click(function(){
     $('#filter').val('');
+    $('#month').val('');
     table.clear().draw();
 });
 

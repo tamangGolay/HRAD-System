@@ -27,7 +27,6 @@ class PromotionAllListController extends Controller
         $b = DB::table('promotionall')
             ->join('users', 'users.empId', '=', 'promotionall.empId')
             ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
-            ->where('promotionall.status','0')
             ->get();
 
          if ($request->ajax()) {

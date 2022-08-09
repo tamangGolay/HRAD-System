@@ -603,9 +603,9 @@ Route::resource('jacketreport', 'JacketReportController');
 
 //incrementall page
 Route::resource('incrementall', IncrementAllController::class);
-Route::post('destroyIncrement', 'IncrementAllController@delete')->name('destroyIncrement');//for deleting incremental
+// Route::post('destroyIncrement', 'IncrementAllController@delete')->name('destroyIncrement');//for deleting incremental
 // increment list
-// Route::resource('incrementlist', 'IncrementListController');
 
+// Route::resource('incrementlist', 'IncrementListController');
 Route::get('incrementlist', ['uses'=>'IncrementListsController@index', 'as'=>'incrementlist.index']);
 

@@ -159,7 +159,7 @@ a {
         ajax: "{{ route('incrementall.index') }}",
         columns: [
             {data: 'id', name:'id'},
-            {data: 'empId', name:'users.empId'},
+            {data: 'empId', name:'empId'},
             {data: 'lastIncrementDate', name: 'lastIncrementDate'},
 			{data: 'incrementDueDate', name: 'incrementDueDate'},
 			{data: 'incrementCycle', name: 'incrementCycle'},
@@ -250,64 +250,64 @@ a {
 
   //  After clicking delete it will trigger here
 
-    $('body').on('click', '.deleteIncrement', function () {
-      var increment_id = $(this).data('id');
+//     $('body').on('click', '.deleteIncrement', function () {
+//       var increment_id = $(this).data('id');
      
-      $.get("{{ route('incrementall.index') }}" +'/' + increment_id +'/edit', function (data) {
-          $('#incrementHeading').html("Do you want to delete Increment details?");
-          $('#incrementDeleteButton').val("edit-increment");
-          $('#incrementModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-          $('#increment_id').val(data.id);
-          $('#empId').val(data.empId);
-          $('#lastIncrementDate').val(data.lastIncrementDate); //input id,database
-		  $('#incrementDueDate').val(data.incrementDueDate);
-		  $('#incrementCycle').val(data.incrementCycle);
-		  $('#modificationReason').val(data.modificationReason);
+//       $.get("{{ route('incrementall.index') }}" +'/' + increment_id +'/edit', function (data) {
+//           $('#incrementHeading').html("Do you want to delete Increment details?");
+//           $('#incrementDeleteButton').val("edit-increment");
+//           $('#incrementModel').modal('show');
+//           $('meta[name="csrf-token"]').attr('content'),
+//           $('#increment_id').val(data.id);
+//           $('#empId').val(data.empId);
+//           $('#lastIncrementDate').val(data.lastIncrementDate); //input id,database
+// 		  $('#incrementDueDate').val(data.incrementDueDate);
+// 		  $('#incrementCycle').val(data.incrementCycle);
+// 		  $('#modificationReason').val(data.modificationReason);
           
-      })
-   });
+//       })
+//    });
    
-  // after clicking yes in delete
-    $('#incrementDeleteButton').click(function (e) {
-        e.preventDefault();
-        $(this).html('Deleting...');
+//   // after clicking yes in delete
+//     $('#incrementDeleteButton').click(function (e) {
+//         e.preventDefault();
+//         $(this).html('Deleting...');
     
-        $.ajax({
-          data: $('#Form').serialize(),
-          url: "{{ route('destroyIncrement') }}",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
+//         $.ajax({
+//           data: $('#Form').serialize(),
+//           url: "{{ route('destroyIncrement') }}",
+//           type: "POST",
+//           dataType: 'json',
+//           success: function (data) {
      
-              $('#Form').trigger("reset");
-              $('#incrementModel').modal('hide');
-              table.draw();
-              window.onload = callajaxOnPageLoad(page);
-        var alt = document.createElement("div");
-             alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-             alt.innerHTML = "Data Updated Successfully! ";
-             setTimeout(function(){
-              alt.parentNode.removeChild(alt);
-             },4500);
-            document.body.appendChild(alt);
-            //  window.location.href = '/home';
+//               $('#Form').trigger("reset");
+//               $('#incrementModel').modal('hide');
+//               table.draw();
+//               window.onload = callajaxOnPageLoad(page);
+//         var alt = document.createElement("div");
+//              alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
+//              alt.innerHTML = "Data Updated Successfully! ";
+//              setTimeout(function(){
+//               alt.parentNode.removeChild(alt);
+//              },4500);
+//             document.body.appendChild(alt);
+//             //  window.location.href = '/home';
 
-             $.get('/getView?v=incrementall',function(data){
-            $('#contentpage').empty();                          
-            $('#contentpage').append(data.html);
-            });
+//              $.get('/getView?v=incrementall',function(data){
+//             $('#contentpage').empty();                          
+//             $('#contentpage').append(data.html);
+//             });
        
 
-			table.draw();                 
+// 			table.draw();                 
     
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#incrementDeleteButton').html('Save Changes');
-          }
-      });
-    });
+//           },
+//           error: function (data) {
+//               console.log('Error:', data);
+//               $('#incrementDeleteButton').html('Save Changes');
+//           }
+//       });
+//     });
     
     
 </script>

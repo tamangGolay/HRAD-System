@@ -20,12 +20,18 @@ class IncrementListsController extends Controller
 
     {
 
+//         ->select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"),  DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+// ->groupby('year','month')
+// ->get();
+
         $b = DB::table('incrementall')
 
         ->join('users', 'users.empId', '=', 'incrementall.empId')
         // ->join('payscalemaster', 'users.empId', '=', 'incrementall.empId')
        
-       ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'))
+    //   ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'))
+
+->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'), DB::raw('Month(incrementDueDate) AS month'))
     
         ->get();
     
@@ -45,8 +51,12 @@ class IncrementListsController extends Controller
                                 return Str::contains($row['incrementDueDate'], $request->get('filter')) ? true : false;   
                             });
                         }
-
-            
+                        if (!empty($request->get('month'))) {
+                            $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                                return Str::contains($row['month'], $request->get('month')) ? true : false;   
+                            });
+                        }
+                        
                         if (!empty($request->get('search'))) {
                             $instance->collection = $instance->collection->filter(function ($row) use ($request) {
                                 if (Str::contains(Str::lower($row['incrementDueDate']), Str::lower($request->get('search')))){

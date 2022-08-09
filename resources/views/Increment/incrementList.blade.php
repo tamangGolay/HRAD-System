@@ -19,7 +19,7 @@
    
     <!-- <input type="text" name="filter" class="form-control searchIncrementList" placeholder="Search for filter Only..."> -->
 <div class="col-lg-12">
-    <input type="text" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="Search for Promotion List Only...">
+    <input type="date" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="yyyy-mm-dd...">
     <br>
    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-4">Filter</button>
    <button type="button" style="width:90px" name="" id="Reset" class="btn btn-success col-lg-4">Reset</button>
@@ -34,8 +34,8 @@
                 <th>No</th>
                 <th>EmpId</th>
                 <th>Basic Pay</th>
-                <th>Increment Due Date</th>
-                <th>Increment Cycle </th>
+                <th>Increment  Year</th>
+                
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -71,15 +71,12 @@
             name:'users.basicPay'},
 
             {data: 'incrementDueDate', 
-                name: 'incrementDueDate'},
-
-            {data: 'incrementCycle', 
-             name: 'incrementCycle'},
+            name: 'incrementDueDate'},
 
             {data: 'action', 
-                name: 'action', 
+             name: 'action', 
                 
-                orderable: false, searchable: true},
+             orderable: false, searchable: true},
         ]
     });
    

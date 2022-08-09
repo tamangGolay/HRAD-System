@@ -6,6 +6,7 @@ use App\Incrementall;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Str; 
     
 class IncrementListsController extends Controller
@@ -16,11 +17,16 @@ class IncrementListsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
+
     {
+
         $b = DB::table('incrementall')
+
         ->join('users', 'users.empId', '=', 'incrementall.empId')
         // ->join('payscalemaster', 'users.empId', '=', 'incrementall.empId')
-       ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementDueDate','incrementall.incrementCycle')
+       
+       ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'))
+    
         ->get();
     
         if ($request->ajax()) {  

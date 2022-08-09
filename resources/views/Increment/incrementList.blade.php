@@ -19,21 +19,23 @@
    
     <!-- <input type="text" name="filter" class="form-control searchIncrementList" placeholder="Search for filter Only..."> -->
 <div class="col-lg-12">
-    <input type="text" name="filter" class="form-control searchIncrementList col-lg-6" placeholder="Search for Promotion List Only...">
+    <input type="text" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="Search for Promotion List Only...">
     <br>
    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-4">Filter</button>
+   <button type="button" style="width:90px" name="" id="Reset" class="btn btn-success col-lg-4">Reset</button>
 
 </div>
 
     <br>
    
-    <table class="table table-bordered data-table" style="width:100%">
+    <table class="table table-bordered data-table"  id="tabb" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
                 <th>EmpId</th>
                 <th>Basic Pay</th>
                 <th>Increment Due Date</th>
+                <th>Increment Cycle </th>
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -71,6 +73,9 @@
             {data: 'incrementDueDate', 
                 name: 'incrementDueDate'},
 
+            {data: 'incrementCycle', 
+             name: 'incrementCycle'},
+
             {data: 'action', 
                 name: 'action', 
                 
@@ -85,7 +90,16 @@
     $('#btnFiterSubmitSearch').click(function(){
         table.draw();
 });
-  
-  });
+
+$('#Reset').click(function(){
+    $('#filter').val('');
+    table.clear().draw();
+});
+
+
+ 
+
+}); 
+ 
 </script>
 </html>

@@ -20,7 +20,7 @@ class IncrementListsController extends Controller
         $b = DB::table('incrementall')
         ->join('users', 'users.empId', '=', 'incrementall.empId')
         // ->join('payscalemaster', 'users.empId', '=', 'incrementall.empId')
-       ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementDueDate')
+       ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementDueDate','incrementall.incrementCycle')
         ->get();
     
         if ($request->ajax()) {  
@@ -36,7 +36,7 @@ class IncrementListsController extends Controller
                         
                         if (!empty($request->get('filter'))) {
                             $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                                return Str::contains($row['incrementDueDate'], $request->get('filter')) ? true : false;
+                                return Str::contains($row['incrementDueDate'], $request->get('filter')) ? true : false;   
                             });
                         }
 
@@ -46,6 +46,8 @@ class IncrementListsController extends Controller
                                 if (Str::contains(Str::lower($row['incrementDueDate']), Str::lower($request->get('search')))){
                                     return true;
                                 }else if (Str::contains(Str::lower($row['empId']), Str::lower($request->get('search')))) {
+                                    return true;
+                                }else if (Str::contains(Str::lower($row['incrementCycle']), Str::lower($request->get('search')))) {
                                     return true;
                                 }
    

@@ -37,8 +37,9 @@
  <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12 text-center">
         <div class="form-group row col-sm-12 col-md-12">        
-            <div class="col-lg-12 col-sm-12 col-md-12 text-center">
-                <input type="date" name="promotionDueDate" id="promotionDueDate" class="form-control searchEmail" placeholder="Search ...">                       
+            <div class="col-lg-6 col-sm-6 col-md-6 text-center">
+                <input type="number" name="promotionDueDate" id="promotionDueDate" class="form-control searchEmail" placeholder="Search ...">
+                <input type="number" name="month" id="month" class="form-control searchEmaile" placeholder="Search ...">                       
             </div>     
         </div>
         <button type="button" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-2 mt-3">Filter</button>
@@ -58,7 +59,8 @@
                 <th>Emp Id</th>
                 <th>Grade</th>
                 <th>Basic Pay</th>
-                <th>Promotion Due Date</th>
+                <th>Promotion Year</th>
+                <th>Promotion Month</th>
                 <th width="100px">Action</th>
 
             </tr>
@@ -99,6 +101,8 @@
 
                 d.promotionDueDate = $('.searchEmail').val(),
 
+                d.month = $('.searchEmaile').val(),
+
                 d.search = $('input[type="search"]').val()
 
             }
@@ -117,6 +121,8 @@
             {data: 'basicPay', name: 'basicPay'},
                         
             {data: 'promotionDueDate', name: 'promotionDueDate'},
+
+            {data: 'month', name: 'month'},
 
             {data: 'action', name: 'action', orderable: false, searchable: false},
 
@@ -141,6 +147,7 @@
 
     $('#Reset').click(function(){
         $('#promotionDueDate').val('');
+        $('#month').val('');
         table.clear().draw();
     });
 });

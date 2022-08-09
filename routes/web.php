@@ -435,6 +435,9 @@ Route::post('destroydepartment', 'DepartmentMasterController@delete')->name('des
 Route::resource('promotionAll', promotionAllController::class);
 Route::post('destroyPromotionAll','promotionAllController@delete')->name('destroyPromotionAll');
 
+// //promotion all list
+Route::get('promotionlistall', ['uses'=>'PromotionAllListController@index', 'as'=>'promotionlistall.index']);
+
 //manage skill master
 Route::resource('skillmaster', SkillMasterController::class);
 Route::post('destroyskillmaster', 'SkillMasterController@delete')->name('destroyskillmaster');

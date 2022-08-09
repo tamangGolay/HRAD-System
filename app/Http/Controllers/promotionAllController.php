@@ -21,7 +21,7 @@ class promotionAllController extends Controller
         $b = DB::table('promotionall')
         ->join('users', 'users.empId', '=', 'promotionall.empId')
         ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason')
-        ->where('promotionall.status','0');
+        ->get();
         
         if ($request->ajax()) {
             $data = $b;
@@ -30,7 +30,7 @@ class promotionAllController extends Controller
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deletePromotionAll" data-original-title="Delete" class="btn btn-outline-danger btn-sm deletePromotionAll">Delete</a>';    
+                        //    $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deletePromotionAll" data-original-title="Delete" class="btn btn-outline-danger btn-sm deletePromotionAll">Delete</a>';    
                             return $btn;
                     })
                     ->rawColumns(['action'])
@@ -75,14 +75,14 @@ class promotionAllController extends Controller
      * @param  
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request)
-    {
-        $query = DB::table('promotionall')->where('id', $request->id)
-        ->increment('status');
+    // public function delete(Request $request)
+    // {
+    //     $query = DB::table('promotionall')->where('id', $request->id)
+    //     ->increment('status');
 
-        return response()
-            ->json(['success' => 'Deleted successfully.']);
-    }
+    //     return response()
+    //         ->json(['success' => 'Deleted successfully.']);
+    // }
 
     //To redirect to the manage_vehicle page after the management of vehicle
     public function message(Request $request)

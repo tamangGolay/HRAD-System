@@ -26,7 +26,7 @@ class PromotionAllListController extends Controller
     {
         $b = DB::table('promotionall')
             ->join('users', 'users.empId', '=', 'promotionall.empId')
-            ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade', 'promotionall.promotionDueDate')
+            ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
             ->where('promotionall.status','0')
             ->get();
 
@@ -44,6 +44,16 @@ class PromotionAllListController extends Controller
                             $instance->collection = $instance->collection->filter(function ($row) use ($request) {
 
                                 return Str::contains($row['promotionDueDate'], $request->get('promotionDueDate')) ? true : false;
+
+                            });
+
+                        } 
+                        
+                        if (!empty($request->get('month'))) {
+
+                            $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+
+                                return Str::contains($row['month'], $request->get('month')) ? true : false;
 
                             });
 

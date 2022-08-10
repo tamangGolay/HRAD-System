@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-// use App\Http\Controllers\UniformController;
+use App\Http\Controllers\PromotionAllListController;
 
 
 
@@ -404,6 +404,15 @@ Route::post('destroyofficeName', 'Manage_MasterController@delete')->name('destro
 Route::post('save', 'OneEmployeeController@saveRecord')->name('save');
 //Pant Report
 Route::post('pantReport', 'PantReportController@index')->name('pantReport');
+
+Route::get('/countries-list',[CountriesController::class, 'index'])->name('countries.list');
+Route::post('/add-country',[CountriesController::class,'addCountry'])->name('add.country');
+Route::get('/getCountriesList',[CountriesController::class, 'getCountriesList'])->name('get.countries.list');
+Route::post('/getCountryDetails',[CountriesController::class, 'getCountryDetails'])->name('get.country.details');
+Route::post('/updateCountryDetails',[CountriesController::class, 'updateCountryDetails'])->name('update.country.details');
+Route::post('/deleteCountry',[CountriesController::class,'deleteCountry'])->name('delete.country');
+Route::post('/deleteSelectedCountries',[PromotionAllListController::class,'deleteSelectedCountries'])->name('delete.selected.countries');
+
 //golay end
 
 //start sonam 

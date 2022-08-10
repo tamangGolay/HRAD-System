@@ -59,6 +59,8 @@ use App\RaincoatSize;
 use App\officeuniform;
 use App\GumbootSize;
 use App\promotionAll;
+use App\Promotionduelist;
+
 
 
 

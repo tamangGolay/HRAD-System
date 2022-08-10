@@ -97,14 +97,9 @@ class PromotionAllListController extends Controller
                     })
 
                     ->addIndexColumn()
-                    ->addColumn('actions', function($row){
-                        return '<div class="btn-group">
-                                      <button class="btn btn-sm btn-primary" data-id="'.$row->id.'" id="editCountryBtn">Update</button>
-                                      <button class="btn btn-sm btn-danger" data-id="'.$row->id.'" id="deleteCountryBtn">Delete</button>
-                                </div>';
-                    })
+                   
                     ->addColumn('checkbox', function($row){
-                        return '<input id="checkboxColumn" type="checkbox" name="country_checkbox" data-id="'.$row->id.'"><label></label>';
+                        return '<input id="checkboxColumn" type="checkbox" name="checkboxColumn" data-id="'.$row->id.'"><label></label>';
                     })
                
                     ->rawColumns(['actions','checkbox'])
@@ -120,11 +115,11 @@ class PromotionAllListController extends Controller
 
     }
 
-    public function deleteSelectedCountries(Request $request){
+    public function insertSelectedCountries(Request $request){
 
         // dd($request->all());
 
-        $ids = count($request->countries_ids);//checkbox count
+        $ids = count($request->promotion_ids);//checkbox count
 
         // dd($ids);
 
@@ -132,24 +127,20 @@ class PromotionAllListController extends Controller
 
             $promotion[$i] = DB::table('promotionall')//promotionall table(incrementall)
             ->select('promotionDueDate',DB::raw('Year(promotionDueDate) AS year'),DB::raw('month(promotionDueDate) AS month'))
-            ->where('id',$request->countries_ids[$i])
+            ->where('id',$request->promotion_ids[$i])
             ->first();
-            // dd($promotion[$i]->year);
 
-
-
-            
-            // $id[$i] = implode(' ',  $request->countries_ids);
+            // $id[$i] = implode(' ',  $request->promotion_ids);
             $empId[$i] = DB::table('promotionall')//promotionall table(incrementall)
             ->select('empId')
-            ->where('id',$request->countries_ids[$i])
+            ->where('id',$request->promotion_ids[$i])
             ->first();
             // dd($empId[$i]->empId);
 
             $tempBasic[$i] = DB::table('users')//users table
             ->join('promotionall', 'promotionall.empId', '=', 'users.empId')
             ->select('users.basicPay')
-            ->where('promotionall.id',$request->countries_ids[$i])
+            ->where('promotionall.id',$request->promotion_ids[$i])
             ->first();
 
             // dd($tempBasic[$i]->basicPay);
@@ -157,7 +148,7 @@ class PromotionAllListController extends Controller
 
             // $fromGrade [$i]= DB::table('promotionall')//promotionall table
             // ->join('payscalemaster', 'payscalemaster.grade', '=', 'promotionall.grade')
-            // // ->where('payscalemaster.id',$request->countries_ids[$i])
+            // // ->where('payscalemaster.id',$request->promotion_ids[$i])
             // ->select('payscalemaster.id')
             // ->first();
 
@@ -169,7 +160,7 @@ class PromotionAllListController extends Controller
             $fromGrade[$i] = DB::table('users')//users table
             ->join('promotionall', 'promotionall.empId', '=', 'users.empId')
             ->select('users.gradeId')
-            ->where('promotionall.id',$request->countries_ids[$i])
+            ->where('promotionall.id',$request->promotion_ids[$i])
             ->first();
 
             // if($i == 0){
@@ -182,7 +173,7 @@ class PromotionAllListController extends Controller
 
 
             // $toGradeIncrement [$i]= DB::table('payscalemaster')//promotionall table
-            // ->where('id',$request->countries_ids[$i])
+            // ->where('id',$request->promotion_ids[$i])
             // ->select('grade')
             // ->first();
 
@@ -209,7 +200,7 @@ class PromotionAllListController extends Controller
             $office[$i] = DB::table('users')//users table
             ->join('promotionall', 'promotionall.empId', '=', 'users.empId')
             ->select('users.office')
-            ->where('promotionall.id',$request->countries_ids[$i])
+            ->where('promotionall.id',$request->promotion_ids[$i])
             ->first();
 
             // if($i == 0){
@@ -252,20 +243,28 @@ class PromotionAllListController extends Controller
 
            
 
-            $guestHouseBook = new Promotionduelist;
-             $guestHouseBook->promotionYear = $promotion[$i]->year;
-             $guestHouseBook->promotionMonth = $promotion[$i]->month;
-             $guestHouseBook->empId = $empId[$i]->empId;//new added
-             $guestHouseBook->fromGrade = $fromGrade[$i]->gradeId;
-             $guestHouseBook->toGrade = $toGrade[$i];
-             $guestHouseBook->oldBasic = $tempBasic[$i]->basicPay;
-             $guestHouseBook->newBasic = $newBasic[$i];
-             $guestHouseBook->office = $office[$i]->office;
-             $guestHouseBook->save();
+            $promotionAll = new Promotionduelist;
+            if ($promotion[$i]->month == 1){
+                $promotion[$i]->month = 'January';
+                $promotionAll->promotionMonth = $promotion[$i]->month;
 
-        // dd($request->countries_ids);
-        // $id = implode(' ', $request->countries_ids);
-        // foreach ($request->countries_ids as $id => $value){
+            }
+            elseif($promotion[$i]->month == 7){
+                $promotion[$i]->month = 'July';
+                $promotionAll->promotionMonth = $promotion[$i]->month;
+            }
+             $promotionAll->promotionYear = $promotion[$i]->year;
+             $promotionAll->empId = $empId[$i]->empId;//new added
+             $promotionAll->fromGrade = $fromGrade[$i]->gradeId;
+             $promotionAll->toGrade = $toGrade[$i];
+             $promotionAll->oldBasic = $tempBasic[$i]->basicPay;
+             $promotionAll->newBasic = $newBasic[$i];
+             $promotionAll->office = $office[$i]->office;
+             $promotionAll->save();
+
+        // dd($request->promotion_ids);
+        // $id = implode(' ', $request->promotion_ids);
+        // foreach ($request->promotion_ids as $id => $value){
         //     $tempBasic = 34860; //From payScale master old basicPay
         //     $newIncrement = 850; //New Increment of the latest grade A3
         //     $newMinimum = 34085; //Minimum basicPay of new grade

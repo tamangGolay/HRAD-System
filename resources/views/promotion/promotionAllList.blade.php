@@ -63,7 +63,7 @@
         <thead>
 
             <tr>
-                <th><button class="btn btn-sm btn-success d-none" id="deleteAllBtn">Insert</button>
+                <th><button class="btn btn-sm btn-success d-none" id="insertAllBtn">Insert</button>
                 <input type="checkbox" class="" id="checkbox" name="main_checkbox"><label></label></th>
                 <th>Sl No</th>
                 <th>Emp Id</th>
@@ -141,11 +141,11 @@
                     });
                 });
 
-                //GET ALL COUNTRIES
+                //GET ALL promotionAll
                var table =  $('#data-table').DataTable({
                      processing:true,
                      info:true,
-                     ajax:"{{ route('get.countries.list') }}",
+                     ajax:"{{ route('get.promotionAll.list') }}",
                      "pageLength":5,
                      "aLengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
                      columns:[
@@ -158,9 +158,9 @@
                          {data:'actions', name:'actions', orderable:false, searchable:false},
                      ]
                 }).on('draw', function(){
-                    $('input[name="country_checkbox"]').each(function(){this.checked = false;});
+                    $('input[name="checkboxColumn"]').each(function(){this.checked = false;});
                     $('input[name="main_checkbox"]').prop('checked', false);
-                    $('button#deleteAllBtn').addClass('d-none');
+                    $('button#insertAllBtn').addClass('d-none');
                 });
 
                 $(document).on('click','#editCountryBtn', function(){
@@ -242,57 +242,57 @@
 
            $(document).on('click','input[name="main_checkbox"]', function(){
                   if(this.checked){
-                    $('input[name="country_checkbox"]').each(function(){
+                    $('input[name="checkboxColumn"]').each(function(){
                         this.checked = true;
                     });
                   }else{
-                     $('input[name="country_checkbox"]').each(function(){
+                     $('input[name="checkboxColumn"]').each(function(){
                          this.checked = false;
                      });
                   }
-                  toggledeleteAllBtn();
+                  toggleinsertAllBtn();
            });
 
-           $(document).on('change','input[name="country_checkbox"]', function(){
+           $(document).on('change','input[name="checkboxColumn"]', function(){
 
-               if( $('input[name="country_checkbox"]').length == $('input[name="country_checkbox"]:checked').length ){
+               if( $('input[name="checkboxColumn"]').length == $('input[name="checkboxColumn"]:checked').length ){
                    $('input[name="main_checkbox"]').prop('checked', true);
                }else{
                    $('input[name="main_checkbox"]').prop('checked', false);
                }
-               toggledeleteAllBtn();
+               toggleinsertAllBtn();
            });
 
 
-           function toggledeleteAllBtn(){
-               if( $('input[name="country_checkbox"]:checked').length > 0 ){
-                   $('button#deleteAllBtn').text('Insert ('+$('input[name="country_checkbox"]:checked').length+')').removeClass('d-none');
+           function toggleinsertAllBtn(){
+               if( $('input[name="checkboxColumn"]:checked').length > 0 ){
+                   $('button#insertAllBtn').text('Insert ('+$('input[name="checkboxColumn"]:checked').length+')').removeClass('d-none');
                }else{
-                   $('button#deleteAllBtn').addClass('d-none');
+                   $('button#insertAllBtn').addClass('d-none');
                }
            }
 
 
-           $(document).on('click','button#deleteAllBtn', function(){
+           $(document).on('click','button#insertAllBtn', function(){
                 $.ajaxSetup({
                     headers:{
                  'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
                 }
                 });
-                $('button#deleteAllBtn').addClass('d-none');
+                $('button#insertAllBtn').addClass('d-none');
                 $('#checkbox').addClass('d-none');
 
 
-               var checkedCountries = [];
-               $('input[name="country_checkbox"]:checked').each(function(){
-                   checkedCountries.push($(this).data('id'));
+               var checkedpromotionAll = [];
+               $('input[name="checkboxColumn"]:checked').each(function(){
+                   checkedpromotionAll.push($(this).data('id'));
                });
 
-               var url = '{{ route("delete.selected.countries") }}';
-               if(checkedCountries.length > 0){
+               var url = '{{ route("insert.selected.promotionAll") }}';
+               if(checkedpromotionAll.length > 0){
                    swal.fire({
                        title:'Are you sure?',
-                       html:'You want to insert <b>('+checkedCountries.length+')</b> data',
+                       html:'You want to insert <b>('+checkedpromotionAll.length+')</b> data',
                        showCancelButton:true,
                        showCloseButton:true,
                        confirmButtonText:'Yes',
@@ -303,7 +303,7 @@
                        allowOutsideClick:false
                    }).then(function(result){
                        if(result.value){
-                           $.post(url,{countries_ids:checkedCountries},function(data){
+                           $.post(url,{promotion_ids:checkedpromotionAll},function(data){
                               if(data.code == 1){
                                   $('#data-table').DataTable().ajax.reload(null, true);
                                   toastr.success(data.msg);
@@ -373,9 +373,9 @@
         ]
 
     }).on('draw', function(){
-                    $('input[name="country_checkbox"]').each(function(){this.checked = false;});
+                    $('input[name="checkboxColumn"]').each(function(){this.checked = false;});
                     $('input[name="main_checkbox"]').prop('checked', false);
-                    $('button#deleteAllBtn').addClass('d-none');
+                    $('button#insertAllBtn').addClass('d-none');
     });
 
    

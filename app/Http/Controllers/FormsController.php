@@ -4765,7 +4765,9 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.status','=','Recommended')
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
+    
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('notesheet.status','=','Recommended')
 
 //    ->orWhere('orgunit.office',Auth::user()->office)
     ->paginate(10000000);

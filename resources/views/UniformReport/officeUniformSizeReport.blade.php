@@ -53,7 +53,8 @@
 						</select>
                     
                     </div>
-                  </div> </div>
+                  </div> 
+                </div>
                     
                     <div class="form-group textfont" align="center">
                         <button type="button" style="width:90px" name="filter" id="filter" class="btn btn-success">Filter</button>
@@ -65,8 +66,10 @@
             </div>
             
             <br />
+            
             <div class="card-header bg-green">
-		<div class="col text-center">
+		
+            <div class="col text-center">
 			<h5>
             <b>Officewise Uniform Size Report</b>
             </h5>

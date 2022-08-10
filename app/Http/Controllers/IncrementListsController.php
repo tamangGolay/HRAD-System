@@ -8,6 +8,7 @@ use DataTables;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Str; 
+use App\Duelist;
     
 class IncrementListsController extends Controller
 {
@@ -31,7 +32,7 @@ class IncrementListsController extends Controller
        
     //   ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'))
 
-->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'), DB::raw('Month(incrementDueDate) AS month'))
+     ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementCycle',DB::raw('Year(incrementDueDate) AS incrementDueDate'), DB::raw('Month(incrementDueDate) AS month'))
     
         ->get();
     
@@ -69,26 +70,104 @@ class IncrementListsController extends Controller
    
                                 return false;
                             });
-                        }
-   
+                        }   
                     })
-                    ->addColumn('action', function($row){
-  
-                           $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-  
-                            return $btn;
-                    })
+                    ->addColumn('checkbox', function($row){  
+                                                    
+                                return '<input type="checkbox" name="country_checkbox" data-id=" '.$row->id.'"><label></label>';
+                            })
 
-                    // ->addColumn('checkbox', function ($data) {
-                    //     return '<input id="'.$data->id.'" name="ids" type="checkbox" />';
-                    //   })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
+                            ->rawColumns(['checkbox'])
+                            ->make(true);
+                          }
     
         return view('Increment.incrementList');
     }
 
+    public function insertDuelist(Request $request){
+
+        // Incrementall
+        // Duelist
+        $ids = count($request->countries_ids);//checkbox count
+
+        for($i = 0; $i < $ids; ++$i){
+
+           // $id[$i] = implode(' ',  $request->countries_ids);
+            
+            $empId[$i] = DB::table('incrementall')    // table(incrementall)
+            ->select('empId')
+            ->where('id',$request->countries_ids[$i])
+            ->first();
+
+            $tempBasic[$i] = DB::table('users')                 //users table
+            ->join('incrementall', 'incrementall.empId', '=', 'users.empId')
+            ->select('users.basicPay')
+            ->where('incrementall.id',$request->countries_ids[$i])
+            ->first();
+
+            $fromGrade [$i]= DB::table('incrementall')              //incrementall n users  table
+            ->join('users', 'users.empId', '=', 'incrementall.empId')            
+            ->select('users.gradeId')
+            ->where('incrementall.id',$request->countries_ids[$i])
+            ->first();
+
+            $toGrade [$i]= $fromGrade[$i]->gradeId;
+
+            $newIncrement [$i]= DB::table('payscalemaster')
+            ->select('payscalemaster.increment')
+            ->where('payscalemaster.id','=',$toGrade [$i])
+            ->first();
+
+            $newMinimum [$i]= DB::table('payscalemaster')
+            ->select('payscalemaster.low')
+            ->where('payscalemaster.id','=',$toGrade [$i])
+            ->first();
+
+            $oldMaximum [$i]= DB::table('payscalemaster')
+            ->select('payscalemaster.high')
+            ->where('payscalemaster.id','=',$fromGrade[$i]->gradeId)
+            ->first();
+
+            // if($i == 0){
+            //     dd($oldMaximum[$i]);
+            // }
+
+            $promotionYear [$i] = 2023;
+            $promotionMonth [$i]= 'July';
+
+            if($tempBasic[$i]->basicPay + $newIncrement[$i]->increment < $newMinimum[$i]->low) {
+                $newBasic[$i] = $tempBasic[$i]->basicPay;
+        //    dd("hello");
+            }
+            else{
+
+               if($tempBasic[$i]->basicPay >  $oldMaximum[$i]->high){
+                   $tempBasic[$i]->basicPay = $oldMaximum[$i]->high;                  
+
+            }
+               $diffPay[$i] = $tempBasic[$i]->basicPay - $newMinimum[$i]->low;
+               $noOfIncrement[$i]= 1 + round($diffPay[$i]/$newIncrement[$i]->increment);
+               $newBasic[$i] = $newMinimum[$i]->low + $newIncrement[$i]->increment * $noOfIncrement[$i];
+
+            }      
+
+             $duelistrecord = new Duelist;
+             $duelistrecord->incrementYear = $promotionYear[$i];
+             $duelistrecord->incrementMonth = $promotionMonth[$i];
+             $duelistrecord->empId = $empId[$i]->empId;      //new added            
+             $duelistrecord->yearlyIncrement = $newIncrement[$i]->increment; 
+             $duelistrecord->oldBasic = $tempBasic[$i]->basicPay;
+             $duelistrecord->newBasic = $newBasic[$i];
+             $duelistrecord->save();          
+        
+        }
+        return response()
+        ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']); 
+    }      
+
+       
+
+        
 
     
 }

@@ -60,6 +60,7 @@ use App\officeuniform;
 use App\GumbootSize;
 use App\promotionAll;
 use App\Promotionduelist;
+use App\promotionRequest;
 
 
 
@@ -4314,6 +4315,28 @@ if ($request->v == "promotionform")  //form.csv
      'html' => $rhtml
       ));
 }  //end
+
+ // promotion Review Manager
+ if ($request->v == "promotionReview")  //form.csv
+ {    
+   $promotionRequest = promotionRequest::all();
+   $officedetails = Officedetails::all();     
+   $promotionRequest = DB::table('promotionduelist')
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
+    ->select('promotionduelist.*','officedetails.longOfficeName')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+    ->where('promotionduelist.office',Auth::user()->office)
+    ->where('status','=','Due')
+   //  ->where('cancelled','=','No') 
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.promotionManagerReview')->with(['promotionRequest' => $promotionRequest, 'officedetails' => $officedetails])->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
 
 //user_profile
 if ($request->v == "user_profile")

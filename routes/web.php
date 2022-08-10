@@ -618,3 +618,6 @@ Route::resource('incrementall', IncrementAllController::class);
 // Route::resource('incrementlist', 'IncrementListController');
 Route::get('incrementlist', ['uses'=>'IncrementListsController@index', 'as'=>'incrementlist.index']);
 
+//checkbox for insert incremental to duelist table
+Route::post('insertDuelist','IncrementListsController@insertDuelist')->name('insert.duelist');
+ 

@@ -621,3 +621,5 @@ Route::get('incrementlist', ['uses'=>'IncrementListsController@index', 'as'=>'in
 //checkbox for insert incremental to duelist table
 Route::post('insertDuelist','IncrementListsController@insertDuelist')->name('insert.duelist');
  
+//route for gm promotion
+Route::post('/GMrecommendpromotion','PromotionReviewController@GMrecommendpromotion')->name('GMrecommendpromotion');

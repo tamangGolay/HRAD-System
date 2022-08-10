@@ -5082,6 +5082,36 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  } 
 
+ if ($request->v == "gmPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Recommended')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Recommended')
+   ->paginate(10000000);
+    
+
+  $rhtml = view('promotion.GMReviewPromotion')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+
 }
 }
  

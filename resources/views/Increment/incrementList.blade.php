@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -22,19 +22,42 @@
 </head>
 <body>
   
-<div class="container">
-<h6>Filter Increment List Data</h6>   
-   
-<div class="col-lg-12">
-    <input type="number" name="filter" id="filter" class="form-control searchIncrementList col-lg-6" placeholder="Year..">
-    <br>
-    <input type="number" name="month" id="month" class="form-control searchIncrementListm col-lg-6" placeholder="Month..">
 
-    <br>
-   <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-4">Filter</button>
-   <button type="button" style="width:90px" name="" id="Reset" class="btn btn-success col-lg-4">Reset</button>
+<div class="container-fluid"  style="margin-right:20%;width:95%;">    
+ <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="form-group row col-sm-12 col-md-12">                    
+              
+                        <div class="col-lg-6 col-sm-12 col-md-6">
+                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Year</label>                        
+                         <input type="number" name="filter" id="filter" class="form-control searchIncrementList" placeholder="Year: 2023/ 2024/..">
+                         
+                      </div>
+
+                      <div class="col-lg-6 col-sm-12 col-md-6">
+                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Month</label>                        
+                        <input type="number" name="month" id="month" class="form-control searchIncrementListm " placeholder="Month: January or July">
+                        
+                      </div>                        
+                    </div> 
+
+    <div class="form-group textfont" align="center">
+    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success ">Filter</button>
+    <button type="button" style="width:90px" name="" id="Reset" class="btn btn-warning ">Reset</button>
+    </div>
 
 </div>
+
+   </div> 
+
+
+          <!-- <div class="card-header bg-green">		
+            <div class="col text-center">
+			<h5>
+            <b>Increment form list</b>
+            </h5>
+        </div>
+	</div>   -->
 
     <br>
    
@@ -198,13 +221,29 @@
        ]
    });
   
-   // $(".searchIncrementList").keyup(function(){
-   //     table.draw();
-   // });
+   
 
-   $('#btnFiterSubmitSearch').click(function(){
-       table.draw();
-});
+//    $('#btnFiterSubmitSearch').click(function(){
+//        table.draw();
+// });
+
+$('#btnFiterSubmitSearch').click(function(){
+        var filter = $('#filter').val();
+        var month = $('#month').val();
+
+        if(filter != '' &&  month != '')
+        {
+            
+            table.clear().draw();
+            
+             table.draw();
+        }
+        else
+        {
+            alert('Select Both filter option');
+        }
+    });
+
 
 $('#Reset').click(function(){
    $('#filter').val('');

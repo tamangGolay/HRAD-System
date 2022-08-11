@@ -59,6 +59,9 @@ use App\RaincoatSize;
 use App\officeuniform;
 use App\GumbootSize;
 use App\promotionAll;
+use App\Promotionduelist;
+use App\promotionRequest;
+
 
 
 
@@ -4313,6 +4316,28 @@ if ($request->v == "promotionform")  //form.csv
       ));
 }  //end
 
+ // promotion Review Manager
+ if ($request->v == "promotionReview")  //form.csv
+ {    
+   $promotionRequest = promotionRequest::all();
+   $officedetails = Officedetails::all();     
+   $promotionRequest = DB::table('promotionduelist')
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
+    ->select('promotionduelist.*','officedetails.longOfficeName')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+    ->where('promotionduelist.office',Auth::user()->office)
+    ->where('status','=','Due')
+   //  ->where('cancelled','=','No') 
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.promotionManagerReview')->with(['promotionRequest' => $promotionRequest, 'officedetails' => $officedetails])->render(); 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
 //user_profile
 if ($request->v == "user_profile")
 {
@@ -5081,6 +5106,36 @@ if ($request->v == "employeeskillmap")  //form.csv
       'html' => $rhtml
        ));
  } 
+
+ if ($request->v == "gmPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Recommended')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Recommended')
+   ->paginate(10000000);
+    
+
+  $rhtml = view('promotion.GMReviewPromotion')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
 
 }
 }

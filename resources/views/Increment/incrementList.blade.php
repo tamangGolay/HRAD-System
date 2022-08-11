@@ -29,37 +29,35 @@
                 <div class="form-group row col-sm-12 col-md-12">                    
               
                         <div class="col-lg-6 col-sm-12 col-md-6">
-                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Year</label>
-                        
+                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Year</label>                        
                          <input type="number" name="filter" id="filter" class="form-control searchIncrementList" placeholder="Year: 2023/ 2024/..">
                          
                       </div>
 
                       <div class="col-lg-6 col-sm-12 col-md-6">
-                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Month</label>
-                        
+                        <label class="col-md-4 col-form-label text-md-left" for="stardate">Increment Month</label>                        
                         <input type="number" name="month" id="month" class="form-control searchIncrementListm " placeholder="Month: January or July">
                         
                       </div>                        
                     </div> 
 
     <div class="form-group textfont" align="center">
-    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-4">Filter</button>
-    <button type="button" style="width:90px" name="" id="Reset" class="btn btn-warning col-lg-4">Reset</button>
-    </div> 
+    <button type="button" style="width:90px" name="" id="btnFiterSubmitSearch" class="btn btn-success ">Filter</button>
+    <button type="button" style="width:90px" name="" id="Reset" class="btn btn-warning ">Reset</button>
+    </div>
+
 </div>
 
    </div> 
 
 
-<div class="card-header bg-green">
-		
+          <!-- <div class="card-header bg-green">		
             <div class="col text-center">
 			<h5>
             <b>Increment form list</b>
             </h5>
         </div>
-	</div>  
+	</div>   -->
 
     <br>
    

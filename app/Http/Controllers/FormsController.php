@@ -4338,6 +4338,39 @@ if ($request->v == "promotionform")  //form.csv
        ));
  }  //end
 
+ // Promotion review FAS Dir
+ if ($request->v == "fasPromotionReview")  //form.csv
+ {    
+    $promotionRequestdir = promotionRequest::all(); 
+    $officedetails = Officedetails::all(); 
+     
+    $promotionRequestdir = DB::table('promotionduelist')
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
+   ->join('officemaster','officemaster.id','=','promotionduelist.office')
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+
+   ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+    ->where('promotionduelist.status','=','Proposed') 
+    // ->where('cancelled','=','No')
+    ->where('promotionduelist.office',Auth::user()->office)
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Proposed') 
+
+
+
+    ->paginate(10000000);
+
+
+    $rhtml = view('promotion.FASDirReviewpromotion')->with([ 'promotionRequestdir' => $promotionRequestdir,'officedetails'=>$officedetails])->render(); 
+  return response()
+  
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
 //user_profile
 if ($request->v == "user_profile")
 {

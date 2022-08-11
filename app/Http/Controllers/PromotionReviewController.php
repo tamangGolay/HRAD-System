@@ -60,7 +60,7 @@ public function GMrecommendpromotion(Request $request)
         Promotionduelist::updateOrCreate(['id' => $id->id],
         ['status' =>$request->status]); 
 
-        return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
+        return redirect('home')->with('success','You have recommended the promotion');
         
     }
 
@@ -83,25 +83,25 @@ public function GMrecommendpromotion(Request $request)
 
   public function directorrecommendpromotion(Request $request) 
   {
- 
-     if($request->status == "DirRecommended" ){  //&& $request->remarks != ''
+   
+     if($request->status == "DirRecommend" ){  //&& $request->remarks != ''
          $id = DB::table('promotionduelist')->select('id')
          ->where('id',$request->id)
          ->first();   
      
-         notesheetRequest::updateOrCreate(['id' => $id->id],
+         promotionRequest::updateOrCreate(['id' => $id->id],
          ['status' =>$request->status]); 
                  
          return redirect('home')->with('success','You have recommended the Promotion');
          }
 
          if($request->status2 == "Rejected"){
-                     $id = DB::table('notesheet')->select('id')
+                     $id = DB::table('promotionduelist')->select('id')
                      ->where('id',$request->id)
                      ->first();  
                  
-                     notesheetRequest::updateOrCreate(['id' => $id->id],
-                     ['status' =>$request->status2]);//emp_id is from input name
+                     promotionRequest::updateOrCreate(['id' => $id->id],
+                     ['status' =>$request->status2, 'rejectReason' =>$request->remarks2]);//emp_id is from input name
             
                  return redirect('home')->with('error','You have rejected the Promotion');    
              }

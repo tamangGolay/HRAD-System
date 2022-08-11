@@ -34,12 +34,12 @@ a {
     @csrf
         <thead>
             <tr>
-            <th>Id</th>   
+            <th>Sl.No</th>   
             <th>Employee Id</th>
             <th>Last Increment Date</th>
 			<th>Increment Due Date</th>
 			<th>Increment Cycle</th>
-			<th>action</th>      
+			<th>Action</th>      
             </tr>
         </thead>
         <tbody>

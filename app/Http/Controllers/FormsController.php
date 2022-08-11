@@ -4854,17 +4854,34 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->where('notesheet.status','=','GMRecommended') // 
     ->where('cancelled','=','No')
+
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
     ->orwhere('officeId','=',89)  //IT 
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',90) // Suit
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',88)  //fnd (3 for ICD)
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',72) // RDD
-    ->orwhere('officeId','=',86) // 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',86) //
+    ->where('notesheet.status','=','GMRecommended')
+ 
     ->orwhere('officeId','=',88) // erd
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',93) //spbd
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',94) // spbd
+    ->where('notesheet.status','=','GMRecommended')
+
 
     ->paginate(10000000);
 
@@ -4892,7 +4909,10 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.status','=','GMRecommended') 
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
+
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('notesheet.status','=','GMRecommended')
+
 
 
     ->paginate(10000000);
@@ -4925,25 +4945,145 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.status','=','GMRecommended') 
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
+
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('notesheet.status','=','GMRecommended')
+
+
     ->orwhere('officeId','=',63) // 
-    ->orwhere('officeId','=',64) // 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',64) //
+    ->where('notesheet.status','=','GMRecommended')
+ 
     ->orwhere('officeId','=',62) // 
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',65) // 
-    ->orwhere('officeId','=',24)  ->orwhere('officeId','=',25)   ->orwhere('officeId','=',26)  //esd n essd
-    ->orwhere('officeId','=',27)   ->orwhere('officeId','=',28)     ->orwhere('officeId','=',29)    ->orwhere('officeId','=',30) 
-    ->orwhere('officeId','=',31)      ->orwhere('officeId','=',32)      ->orwhere('officeId','=',33) 
-    ->orwhere('officeId','=',34)     ->orwhere('officeId','=',35)      ->orwhere('officeId','=',36)  
-    ->orwhere('officeId','=',37)      ->orwhere('officeId','=',38)   ->orwhere('officeId','=',39)
-    ->orwhere('officeId','=',40)     ->orwhere('officeId','=',41)       ->orwhere('officeId','=',42)
-    ->orwhere('officeId','=',43) ->orwhere('officeId','=',44) ->orwhere('officeId','=',45)
-    ->orwhere('officeId','=',46) ->orwhere('officeId','=',47) ->orwhere('officeId','=',48)
-    ->orwhere('officeId','=',49) ->orwhere('officeId','=',50) ->orwhere('officeId','=',51)
-    ->orwhere('officeId','=',52) ->orwhere('officeId','=',53) ->orwhere('officeId','=',54)
-    ->orwhere('officeId','=',55) ->orwhere('officeId','=',56) ->orwhere('officeId','=',57)
-    ->orwhere('officeId','=',58)  ->orwhere('officeId','=',59)  ->orwhere('officeId','=',60)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',24) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',25)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',26)  //esd n essd
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',27)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',28)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',29) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',30) 
+     ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',31)  
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',32)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',33) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',34) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',35) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',36) 
+    ->where('notesheet.status','=','GMRecommended')
+ 
+    ->orwhere('officeId','=',37) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',38) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',39)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',40)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',41)  
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',42)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',43)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',44)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',45)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',46)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',47)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',48)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',49)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',50)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',51)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',52)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',53)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',54)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',55) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',56)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',57)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',58) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',59) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',60)
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',61) 
-    ->orwhere('officeId','=',16) ->orwhere('officeId','=',17) ->orwhere('officeId','=',18) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',16) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',17) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',18) 
+    ->where('notesheet.status','=','GMRecommended')
 
     ->paginate(10000000);
 
@@ -4970,14 +5110,50 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->where('notesheet.status','=','GMRecommended')   
     ->where('cancelled','=','No')
-    ->where('notesheet.officeId',Auth::user()->office)
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->orwhere('officeId','=',137)  //
-  ->orwhere('officeId','=',156) ->orwhere('officeId','=',157) ->orwhere('officeId','=',158) ->orwhere('officeId','=',159) 
-  ->orwhere('officeId','=',160) ->orwhere('officeId','=',161)  
-  ->orwhere('officeId','=',130) ->orwhere('officeId','=',131) ->orwhere('officeId','=',132) ->orwhere('officeId','=',133) 
-  ->orwhere('officeId','=',138) 
 
+    ->where('notesheet.officeId',Auth::user()->office)
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',137)  //
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',156)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',157)
+    ->where('notesheet.status','=','GMRecommended')
+
+     ->orwhere('officeId','=',158)
+     ->where('notesheet.status','=','GMRecommended')
+
+     ->orwhere('officeId','=',159) 
+     ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',160)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',161)
+    ->where('notesheet.status','=','GMRecommended')
+  
+    ->orwhere('officeId','=',130)
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',131) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',132) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',133)
+    ->where('notesheet.status','=','GMRecommended')
+ 
+    ->orwhere('officeId','=',138) 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',96) 
+    ->where('notesheet.status','=','GMRecommended')
 
 
     ->paginate(10000000);
@@ -5211,6 +5387,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->orwhere('office','=',94) //cspd
     ->where('promotionduelist.status','=','Proposed')
+    ->paginate(10000000);
 
 
 // ->orwhere('office','>=',86 ||'office','<=',90  ||'office','=',72 ||'office','=',93 || 'office','=',94 ) //cspd
@@ -5219,7 +5396,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
 
 
-    ->paginate(10000000);
+    
 
   $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
   return response()
@@ -5489,7 +5666,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->orwhere('office','=',133) 
     ->where('promotionduelist.status','=','Proposed')
-    
+
     ->orwhere('office','=',138) 
     ->where('promotionduelist.status','=','Proposed')
     ->paginate(10000000);

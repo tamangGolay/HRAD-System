@@ -5184,7 +5184,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
    ->where('promotionduelist.status','=','Proposed')
    ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+//  ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
     ->where('promotionduelist.status','=','Proposed')
 
@@ -5195,7 +5195,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('promotionduelist.status','=','Proposed')
 
     ->orwhere('office','=',88)  //fnd (3 for ICD)
- ->where('promotionduelist.status','=','Proposed')
+    ->where('promotionduelist.status','=','Proposed')
 
     ->orwhere('office','=',72) // RDD
     ->where('promotionduelist.status','=','Proposed')
@@ -5203,14 +5203,22 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->orwhere('office','=',86) // 
     ->where('promotionduelist.status','=','Proposed')
 
-    ->orwhere('office','=',88) // erd
+    ->orwhere('office','=',87) // GIS
     ->where('promotionduelist.status','=','Proposed')
 
     ->orwhere('office','=',93) //spbd
     ->where('promotionduelist.status','=','Proposed')
 
-    ->orwhere('office','=',94) // spbd
+    ->orwhere('office','=',94) //cspd
     ->where('promotionduelist.status','=','Proposed')
+
+
+// ->orwhere('office','>=',86 ||'office','<=',90  ||'office','=',72 ||'office','=',93 || 'office','=',94 ) //cspd
+
+// ->where('promotionduelist.status','=','Proposed')
+
+
+
     ->paginate(10000000);
 
   $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
@@ -5222,6 +5230,277 @@ if ($request->v == "employeeskillmap")  //form.csv
  }//end
 
 
+ if ($request->v == "hrcsPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Proposed')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',78) 
+    ->where('promotionduelist.status','=','Proposed') 
+
+    ->orwhere('office','=',80) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',81) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',76) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',74) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',75)
+    ->where('promotionduelist.status','=','Proposed')
+
+    
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.HRCSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+ if ($request->v == "dsPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Proposed')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',16)  
+    ->where('promotionduelist.status','=','Proposed') 
+
+    ->orwhere('office','=',17) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',18) 
+ ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',63) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',64) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',62) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',65) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',24) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',27) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',31) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',34)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',37) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',40) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',43) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',46) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',49) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',52) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',55) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',58) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',61)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',25) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',26) 
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',28) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',29) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',32) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',33) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',35)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',36) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',39) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',41) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',42)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',44) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',45)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',48)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',47)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',50) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',51) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',54) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',56) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',57)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',59)
+
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',60) 
+
+    ->where('promotionduelist.status','=','Proposed')
+    
+    
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.DSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+
+
+ if ($request->v == "tsPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Proposed')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Proposed')
+    ->orwhere('office','=',96)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',137) 
+    ->where('promotionduelist.status','=','Proposed') 
+
+    ->orwhere('office','=',156)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',157) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',158) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',159) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',160)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',161)  
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',130) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',131) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',132) 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',133) 
+    ->where('promotionduelist.status','=','Proposed')
+    
+    ->orwhere('office','=',138) 
+    ->where('promotionduelist.status','=','Proposed')
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.TSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
 
 }
 }

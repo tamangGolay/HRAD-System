@@ -35,7 +35,7 @@ hr{
               <th>New Basic</th>
               <th>Office</th>
               <!-- <th>Reject Reason</th> -->
-              <th>Status</th>
+              <!-- <th>Status</th> -->
               <th >Recommend</th>
               <th >Reject</th>
               </tr>  
@@ -54,7 +54,7 @@ hr{
                   <td> {{$rv->newBasic}} </td>  
                   <td> {{$rv->longOfficeName}} </td> 
                   <!-- <td> {{$rv->rejectReason}} </td>      -->
-                  <td> {{$rv->status}} </td>
+                  <!-- <td> {{$rv->status}} </td> -->
                   <td >
                     <div class="container">
                       <div class="row">

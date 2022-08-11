@@ -86,14 +86,27 @@ class IncrementListsController extends Controller
 
     public function insertDuelist(Request $request){
 
-        // Incrementall
-        // Duelist
+        try{
+
         $ids = count($request->countries_ids);//checkbox count
 
         for($i = 0; $i < $ids; ++$i){
 
-           // $id[$i] = implode(' ',  $request->countries_ids);
+            $incrementYearnMonth[$i] = DB::table('incrementall')
+            ->select('incrementDueDate',DB::raw('Year(incrementDueDate) AS year'), DB::raw('Month(incrementDueDate) AS month'))
+            ->where('id',$request->countries_ids[$i])
+            ->first();
             
+            $date = Carbon::now()->toDateString(); // y-m-d   
+            $dateyear=date('Y');
+            $datemonth=date('m');   
+            
+            // if($dateyear ==  $incrementYearnMonth[$i]->year){
+            //     if($datemonth < $incrementYearnMonth[$i]->month){                
+
+
+            //     } }    
+                            
             $empId[$i] = DB::table('incrementall')    // table(incrementall)
             ->select('empId')
             ->where('id',$request->countries_ids[$i])
@@ -128,12 +141,7 @@ class IncrementListsController extends Controller
             ->where('payscalemaster.id','=',$fromGrade[$i]->gradeId)
             ->first();
 
-            // if($i == 0){
-            //     dd($oldMaximum[$i]);
-            // }
-
-            $promotionYear [$i] = 2023;
-            $promotionMonth [$i]= 'July';
+            
 
             if($tempBasic[$i]->basicPay + $newIncrement[$i]->increment < $newMinimum[$i]->low) {
                 $newBasic[$i] = $tempBasic[$i]->basicPay;
@@ -149,25 +157,80 @@ class IncrementListsController extends Controller
                $noOfIncrement[$i]= 1 + round($diffPay[$i]/$newIncrement[$i]->increment);
                $newBasic[$i] = $newMinimum[$i]->low + $newIncrement[$i]->increment * $noOfIncrement[$i];
 
-            }      
+            }
+            
+            $incrementYearnMonthz[$i] = 'July';
+            $incrementYearnMonths[$i] = 'January';  
 
-             $duelistrecord = new Duelist;
-             $duelistrecord->incrementYear = $promotionYear[$i];
-             $duelistrecord->incrementMonth = $promotionMonth[$i];
-             $duelistrecord->empId = $empId[$i]->empId;      //new added            
-             $duelistrecord->yearlyIncrement = $newIncrement[$i]->increment; 
-             $duelistrecord->oldBasic = $tempBasic[$i]->basicPay;
-             $duelistrecord->newBasic = $newBasic[$i];
-             $duelistrecord->save();          
+
+            if($dateyear ==  $incrementYearnMonth[$i]->year){  //same year before july
+                if($datemonth < $incrementYearnMonth[$i]->month){                          
+               
+              $incrementAll = new Duelist;
+              $incrementAll->incrementYear = $incrementYearnMonth[$i]->year;  
+              $incrementAll->incrementMonth = $incrementYearnMonthz[$i];
+              $incrementAll->empId = $empId[$i]->empId;                //new added            
+              $incrementAll->yearlyIncrement = $newIncrement[$i]->increment; 
+              $incrementAll->oldBasic = $tempBasic[$i]->basicPay;
+               $incrementAll->newBasic = $newBasic[$i];
+              $incrementAll->save();             
+          
+            //   return response()
+            //   ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);
+
+           } 
+          }
+          
+        else if(($dateyear + 1) ==  $incrementYearnMonth[$i]->year){
+                 if($datemonth > $incrementYearnMonth[$i]->month +5){                 
+            
+               $incrementAll = new Duelist;     
+               $incrementAll->incrementYear = $incrementYearnMonth[$i]->year;         
+               $incrementAll->incrementMonth = $incrementYearnMonths[$i];
+               $incrementAll->empId = $empId[$i]->empId;                //new added            
+               $incrementAll->yearlyIncrement = $newIncrement[$i]->increment; 
+               $incrementAll->oldBasic = $tempBasic[$i]->basicPay;
+               $incrementAll->newBasic = $newBasic[$i];
+               $incrementAll->save();     
+               
+        //        return response()
+        //   ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);
+
+            }
+        }
+
+            else{
+
+                return response()
+                ->json(['code' => 2, 'msg' => 'This employee(s) record are already in Increment Duelist.']);
+          
+            }
+
+            //  $duelistrecord = new Duelist;
+            //  $duelistrecord->incrementYear = $promotionYear[$i];
+            //  $duelistrecord->incrementMonth = $promotionMonth[$i];
+            //  $duelistrecord->empId = $empId[$i]->empId;      //new added            
+            //  $duelistrecord->yearlyIncrement = $newIncrement[$i]->increment; 
+            //  $duelistrecord->oldBasic = $tempBasic[$i]->basicPay;
+            //  $duelistrecord->newBasic = $newBasic[$i];
+            //  $duelistrecord->save();          
         
         }
-        return response()
-        ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']); 
-    }      
-
+        // return response()
+        // ->json(['code'=>3, 'msg'=>'Sorry!!.This employee(s) are not eligleble for this cycle increment.']); 
        
+        return response()
+           ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);
 
-        
+    } 
 
-    
+       catch(\Illuminate\Database\QueryException $e){        
+ 
+        return response()->json(['code'=>3, 'msg'=>'Increment not eligible / Duplicate data entry!!!']); 
+
+    }
+
 }
+}
+
+?>

@@ -16,7 +16,7 @@ class PromotionReviewController extends Controller
         //   dd($request);
         // try{
             
-            if($request->status == "Recommended" ){  //&& $request->remarks != ''
+            if($request->status == "Recommended" ){  
                 $id = DB::table('promotionduelist')->select('id')
                 ->where('id',$request->id)
                 ->first();   
@@ -84,30 +84,18 @@ public function GMrecommendpromotion(Request $request)
   public function directorrecommendpromotion(Request $request) 
   {
  
-     if($request->status == "DirectorRecommended" ){  //&& $request->remarks != ''
-         $id = DB::table('notesheet')->select('id')
+     if($request->status == "DirRecommended" ){  //&& $request->remarks != ''
+         $id = DB::table('promotionduelist')->select('id')
          ->where('id',$request->id)
          ->first();   
      
          notesheetRequest::updateOrCreate(['id' => $id->id],
          ['status' =>$request->status]); 
                  
-         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
+         return redirect('home')->with('success','You have recommended the Promotion');
          }
-     
-                 if($request->status1 == "Approved" ){
-                 $id = DB::table('notesheet')->select('id')
-                 ->where('id',$request->id)
-                 ->first(); 
-             
-                 notesheetRequest::updateOrCreate(['id' => $id->id],
-                 ['status' =>$request->status1]);//emp_id is from input name
-             
-                 return redirect('home')->with('success','You have Approved the Notesheet');   
-             }
- 
-     
-                 if($request->status2 == "Rejected"){
+
+         if($request->status2 == "Rejected"){
                      $id = DB::table('notesheet')->select('id')
                      ->where('id',$request->id)
                      ->first();  
@@ -115,7 +103,7 @@ public function GMrecommendpromotion(Request $request)
                      notesheetRequest::updateOrCreate(['id' => $id->id],
                      ['status' =>$request->status2]);//emp_id is from input name
             
-                 return redirect('home')->with('error','You have rejected the Notesheet');    
+                 return redirect('home')->with('error','You have rejected the Promotion');    
              }
  
              else{

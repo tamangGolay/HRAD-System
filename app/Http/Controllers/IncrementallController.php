@@ -34,7 +34,14 @@ class IncrementallController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['action'])
+
+                    ->addColumn('checkbox', function($row){  
+                                                    
+                        return '<input type="checkbox" name="country_checkbox" data-id=" '.$row->id.'"><label></label>';
+                    })
+
+                    
+                    ->rawColumns(['action','checkbox'])
                     ->make(true);
         }
       
@@ -75,14 +82,7 @@ class IncrementallController extends Controller
      * @param  
      * @return \Illuminate\Http\Response
      */
-    // public function delete(Request $request)
-    // {
-    //     $query = DB::table('incrementall')->where('id', $request->id);
-    //         // ->increment('status');
-
-    //     return response()
-    //         ->json(['success' => 'Skill Category deleted successfully.']);
-    // }
+   
 
     //To redirect to the manage_vehicle page after the management of vehicle
     public function message(Request $request)

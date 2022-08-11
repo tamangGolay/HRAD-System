@@ -4,7 +4,6 @@ a {
     color: black !important;
     text-decoration: none;
 }
-
 .btn-primary {
     color: #fff !important;
     background-color: #007bff;
@@ -15,25 +14,43 @@ a {
     background-color: #28a745;
     border-color: #28a745;
 }
-
 </style>
 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+      <!-- called in bose.css -->
+    <link href="{{asset('css/bose.css')}}" rel="stylesheet">
 
+    
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-<link href="{{asset('css/bose.css')}}" rel="stylesheet">
-<!-- called in bose.css -->
-
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}"> 
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
- 
+
+</head>
+  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageIncrement">Add new Increment Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
-    <table class="table table-bordered data-table" style="width:100%">
+    <a class="btn btn-success" href="javascript:void(0)" id="manageIncrement">Add new Increment Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+       <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
             <tr>
+            <th>
+            <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
+            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn  >Insert into Duelist</button>
             <th>Sl.No</th>   
             <th>Employee Id</th>
             <th>Last Increment Date</th>
@@ -142,29 +159,142 @@ a {
         </div>
     </div>
 </div>
-
     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>   -->
-<script type="text/javascript">
+    
+    <!-- //code from other site -->
+
+    <script src="{{ asset('jquery/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('datatable/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>     
+    <script>
+
+    toastr.options.preventDuplicates = true;
+
+    $(function () {
+
+$(document).on('click','input[name="main_checkbox"]', function(){
+      if(this.checked){
+        $('input[name="country_checkbox"]').each(function(){
+            this.checked = true;
+        });
+      }else{
+         $('input[name="country_checkbox"]').each(function(){
+             this.checked = false;
+         });
+      }
+      toggledeleteAllBtn();
+}); 
+
+$(document).on('change','input[name="country_checkbox"]', function(){
+
+   if( $('input[name="country_checkbox"]').length == $('input[name="country_checkbox"]:checked').length ){
+       $('input[name="main_checkbox"]').prop('checked', true);
+   }else{
+       $('input[name="main_checkbox"]').prop('checked', false);
+   }
+   toggledeleteAllBtn();
+});
+
+function toggledeleteAllBtn(){
+   if( $('input[name="country_checkbox"]:checked').length > 0 ){
+       $('button#deleteAllBtn').text('Insert into Duelist ('+$('input[name="country_checkbox"]:checked').length+')').removeClass('d-none');
+   }else{
+       $('button#deleteAllBtn').addClass('d-none');
+   }
+}
+
+$(document).on('click','button#deleteAllBtn', function(){
+   $.ajaxSetup({
+      headers:{
+     'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+     }
+    }); 
+
+    $('button#deleteAllBtn').addClass('d-none');
+    $('#checkbox').addClass('d-none');
+
+
+    var checkedCountries = [];            
+   $('input[name="country_checkbox"]:checked').each(function(){
+       checkedCountries.push($(this).data('id'));
+       
+   });               
+
+   var url = '{{ route("insert.duelist") }}';            
+
+   if(checkedCountries.length > 0){
+       swal.fire({
+           title:'Are you sure?',
+           html:'You want to insert <b>('+checkedCountries.length+')</b> data into Duelist table',                       
+           showCancelButton:true,
+           showCloseButton:true,
+           confirmButtonText:'Yes, Insert',
+           cancelButtonText:'Cancel',
+           confirmButtonColor:'#04b976',
+           cancelButtonColor:'#d33',
+           width:300,
+           allowOutsideClick:false
+       }).then(function(result){
+           if(result.value){
+               $.post(url,{countries_ids:checkedCountries},function(data){
+                  if(data.code == 1 || data.code == 2){                               
+    
+                // window.location.reload();                            
+                // toastr.options.preventDuplicates = true;
+                // $('#data-table').DataTable().ajax.reload(null, true); 
+                                                    
+                    toastr.success(data.msg);
+                    $.get('/getView?v=incrementall',function(data){        
+                    $('#contentpage').empty();                          
+                     $('#contentpage').append(data.html);
+                       });
+                    
+                  }
+                  else if(data.code == 3){
+                    toastr.error(data.msg);
+                    $.get('/getView?v=incrementall',function(data){        
+                    $('#contentpage').empty();                          
+                     $('#contentpage').append(data.html);
+                       });
+
+                  }
+               },
+               
+               'json');                                   
+
+           }
+       })
+   }
+});
+});
+
+$(function () {
 
   
     //Loading the contents of the Datatable from here
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
+        "aLengthMenu":[[10,50,500,-1],[10,50,500,"All"]],
         ajax: "{{ route('incrementall.index') }}",
         columns: [
+            {data: 'checkbox', name: 'checkbox',orderable: false, searchable: false},
             {data: 'id', name:'id'},
             {data: 'empId', name:'empId'},
             {data: 'lastIncrementDate', name: 'lastIncrementDate'},
 			{data: 'incrementDueDate', name: 'incrementDueDate'},
 			{data: 'incrementCycle', name: 'incrementCycle'},
 			// {data: 'modificationReason', name: 'modificationReason'},
-		  {data: 'action', name: 'action'}
+		    {data: 'action', name: 'action',orderable: false, searchable: false}
         ]
     });
 
@@ -234,7 +364,6 @@ a {
             }); 
 
         table.draw();
-
     
          
           },
@@ -245,20 +374,14 @@ a {
                 
           }
       });
-    });
+    }); 
+
+});
 
 
   //  After clicking delete it will trigger here
 
     
-    
-</script>
 
-<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-		<script type="text/javascript">
-		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
-		});
-		</script>
 
 

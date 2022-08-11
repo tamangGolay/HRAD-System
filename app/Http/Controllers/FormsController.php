@@ -5169,6 +5169,59 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }//end
 
+ if ($request->v == "stsPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Proposed')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',89)  //IT
+    ->where('promotionduelist.status','=','Proposed') 
+
+    ->orwhere('office','=',90) // Suit
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',88)  //fnd (3 for ICD)
+ ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',72) // RDD
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',86) // 
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',88) // erd
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',93) //spbd
+    ->where('promotionduelist.status','=','Proposed')
+
+    ->orwhere('office','=',94) // spbd
+    ->where('promotionduelist.status','=','Proposed')
+    ->paginate(10000000);
+
+  $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+
 
 }
 }

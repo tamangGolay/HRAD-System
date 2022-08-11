@@ -63,6 +63,17 @@ public function GMrecommendpromotion(Request $request)
         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
         
     }
+
+    if($request->status2 == "Rejected" ){  //&& $request->remarks != ''
+      $id = DB::table('promotionduelist')->select('id')
+      ->where('id',$request->id)
+      ->first();   
+
+      promotionRequest::updateOrCreate(['id' => $id->id],
+      ['status' =>$request->status2,'rejectReason' =>$request->rejectreason]); 
+              
+      return redirect('home')->with('success','You have Rejected the Promotion');
+  }
     else{
        return redirect('home')->with('Sorry','Recommendation Failed');  
     }

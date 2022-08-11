@@ -117,11 +117,7 @@ class PromotionAllListController extends Controller
 
     public function insertSelectedCountries(Request $request){
 
-        if($request->promotionYear == null){
-
-         return response()->json(['code'=>2, 'msg'=>'Promotion not eligible for some seleted employees!!!']); 
-
-        }
+        
 
         // dd($request->all());
         try{
@@ -137,6 +133,7 @@ class PromotionAllListController extends Controller
             ->where('id',$request->promotion_ids[$i])
             ->first();
 
+            
             // $id[$i] = implode(' ',  $request->promotion_ids);
             $empId[$i] = DB::table('promotionall')//promotionall table(incrementall)
             ->select('empId')
@@ -307,7 +304,14 @@ class PromotionAllListController extends Controller
         return response()->json(['code'=>1, 'msg'=>'Data inserted into promotion duelist!!!']); 
     }
     catch(\Illuminate\Database\QueryException $e){
-        return response()->json(['code'=>2, 'msg'=>'Duplicate data entry!!!']); 
+
+        // if($promotion[$i]->promotionDueDate == null){
+
+        //     return response()->json(['code'=>2, 'msg'=>'Promotion not eligible for some seleted employees!!!']); 
+   
+        // }
+ 
+        return response()->json(['code'=>2, 'msg'=>'Promotion not eligible / Duplicate data entry!!!']); 
 
 
     }

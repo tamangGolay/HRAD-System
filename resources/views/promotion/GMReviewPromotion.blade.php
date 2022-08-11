@@ -68,7 +68,7 @@
 			<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 			<input type="hidden" name="status2" id="status" value="Rejected">  
 
-			<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Reject</button>
+			<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
 				
 				<br>
 				<br>

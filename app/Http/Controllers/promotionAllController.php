@@ -27,13 +27,19 @@ class promotionAllController extends Controller
             $data = $b;
             return Datatables::of($data)
                     ->addIndexColumn()
+                    ->addColumn('checkbox', function($row){
+                        return '<input id="checkboxColumn" type="checkbox" name="checkboxColumn" data-id="'.$row->id.'"><label></label>';
+                    })
+               
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
                         //    $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deletePromotionAll" data-original-title="Delete" class="btn btn-outline-danger btn-sm deletePromotionAll">Delete</a>';    
                             return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->rawColumns(['action','checkbox'])
+
+                    // ->rawColumns(['action'])
                     ->make(true);
         }
       

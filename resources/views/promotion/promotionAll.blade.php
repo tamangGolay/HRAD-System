@@ -388,6 +388,15 @@ a {
                                   $('#contentpage').append(data.html);
                                   }); 
                               }
+                              else{
+                                $('#data-table').DataTable().ajax.reload(null, true);
+                                  toastr.error(data.msg);
+                                  $.get('/getView?v=promotionall',function(data){
+                                  $('#contentpage').empty();                          
+                                  $('#contentpage').append(data.html);
+                                  }); 
+
+                              }
                            },'json');
                        }
                    })

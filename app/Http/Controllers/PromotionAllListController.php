@@ -117,7 +117,14 @@ class PromotionAllListController extends Controller
 
     public function insertSelectedCountries(Request $request){
 
+        if($request->promotionYear == null){
+
+         return response()->json(['code'=>2, 'msg'=>'Promotion not eligible for some seleted employees!!!']); 
+
+        }
+
         // dd($request->all());
+        try{
 
         $ids = count($request->promotion_ids);//checkbox count
 
@@ -298,6 +305,13 @@ class PromotionAllListController extends Controller
 
         }
         return response()->json(['code'=>1, 'msg'=>'Data inserted into promotion duelist!!!']); 
+    }
+    catch(\Illuminate\Database\QueryException $e){
+        return response()->json(['code'=>2, 'msg'=>'Duplicate data entry!!!']); 
+
+
+    }
+
     }
 
 }

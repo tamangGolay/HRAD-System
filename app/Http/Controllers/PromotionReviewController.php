@@ -25,7 +25,18 @@ class PromotionReviewController extends Controller
                 ['status' =>$request->status]); 
                         
                 return redirect('home')->with('success','You have recommended the employee for Promotion');
-                }           
+                }
+
+              if($request->status2 == "Rejected" ){  //&& $request->remarks != ''
+                  $id = DB::table('promotionduelist')->select('id')
+                  ->where('id',$request->id)
+                  ->first();   
+  
+                  promotionRequest::updateOrCreate(['id' => $id->id],
+                  ['status' =>$request->status2, 'rejectReason' =>$request->remarks2]); 
+                          
+                  return redirect('home')->with('error','You have rejected the Promotion'); 
+                  }           
                 else{
                     return redirect('home')->with('error','Recommendation could not proceed');  
                 }         

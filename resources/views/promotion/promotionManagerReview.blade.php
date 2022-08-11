@@ -36,7 +36,8 @@ hr{
               <th>Office</th>
               <!-- <th>Reject Reason</th> -->
               <th>Status</th>
-              <th >Action</th>
+              <th >Recommend</th>
+              <th >Reject</th>
               </tr>  
             </thead>
             <tbody>
@@ -70,7 +71,24 @@ hr{
                         </div>
                       </div>
                     </div>   
-                  </td> 	
+                  </td> 
+                  <td>
+                  <div class="container">
+                      <div class="row">
+                        <div class="col">     
+                          <form method="POST" action="/recommendpromotion" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+                   
+                          <!-- <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" > -->
+                          <input type="hidden" name="status2" id="status" value="Rejected" required>                                 
+                          <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " > 
+                          Reject
+                          </button> </br>
+                          <textarea type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" required>        </textarea>
+                          </form>
+                        </div>
+                      </div>
+                  </div>
+                  </td>	
                 </tr>
             </tbody>
 			  <!-- <tr><th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;"> -->

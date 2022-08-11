@@ -450,6 +450,9 @@ Route::get('promotionlistall', ['uses'=>'PromotionAllListController@index', 'as'
 //promotion Review Manager
 Route::post('/recommendpromotion','PromotionReviewController@recommendpromotion')->name('recommendpromotion');
 
+//director promotion Review
+Route::post('/directorrecommendpromotion','PromotionReviewController@directorrecommendpromotion')->name('directorrecommendpromotion');
+
 //manage skill master
 Route::resource('skillmaster', SkillMasterController::class);
 Route::post('destroyskillmaster', 'SkillMasterController@delete')->name('destroyskillmaster');

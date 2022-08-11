@@ -73,12 +73,56 @@ public function GMrecommendpromotion(Request $request)
       ['status' =>$request->status2,'rejectReason' =>$request->rejectreason]); 
               
       return redirect('home')->with('success','You have Rejected the Promotion');
-  }
+    }
     else{
        return redirect('home')->with('Sorry','Recommendation Failed');  
     }
 
 
   }
+
+  public function directorrecommendpromotion(Request $request) 
+  {
+ 
+     if($request->status == "DirectorRecommended" ){  //&& $request->remarks != ''
+         $id = DB::table('notesheet')->select('id')
+         ->where('id',$request->id)
+         ->first();   
+     
+         notesheetRequest::updateOrCreate(['id' => $id->id],
+         ['status' =>$request->status]); 
+                 
+         return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
+         }
+     
+                 if($request->status1 == "Approved" ){
+                 $id = DB::table('notesheet')->select('id')
+                 ->where('id',$request->id)
+                 ->first(); 
+             
+                 notesheetRequest::updateOrCreate(['id' => $id->id],
+                 ['status' =>$request->status1]);//emp_id is from input name
+             
+                 return redirect('home')->with('success','You have Approved the Notesheet');   
+             }
+ 
+     
+                 if($request->status2 == "Rejected"){
+                     $id = DB::table('notesheet')->select('id')
+                     ->where('id',$request->id)
+                     ->first();  
+                 
+                     notesheetRequest::updateOrCreate(['id' => $id->id],
+                     ['status' =>$request->status2]);//emp_id is from input name
+            
+                 return redirect('home')->with('error','You have rejected the Notesheet');    
+             }
+ 
+             else{
+                 return redirect('home')->with('error','You cannot leave the remarks field empty test!!');  
+             }
+          
+ 
+   }  
 
 }

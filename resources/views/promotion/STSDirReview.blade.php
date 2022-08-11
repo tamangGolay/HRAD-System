@@ -27,25 +27,24 @@
 								<th>Old Basic</th>
 								<th>New Basic</th>	
 								<th>Office Name</th>
-								<th>Status</th>
-								
+								<!-- <th>Status</th> -->
 								<th style="width:10%">Recommend</th>
-                <th style="width:10%">Reject</th>
+                				<th style="width:10%">Reject</th>
 							</tr>
 						</thead>
 						<tbody>
 							 @foreach($promotiondue as $rv)
 							<tr>
 								<td> {{$rv->id}} </td>
-               <td> {{$rv->empId}} </td>
+               					<td> {{$rv->empId}} </td>
 								<td> {{$rv->promotionYear}} </td>
 								<td> {{$rv->promotionMonth}} </td>
-								 <td> {{$rv->fromGrade}} </td> 
+								<td> {{$rv->fromGrade}} </td> 
 								<td> {{$rv->toGrade}} </td>
 								<td> {{$rv->oldBasic}} </td>
 								<td> {{$rv->newBasic}} </td>
 								<td> {{$rv->longOfficeName}} </td>
-								<td> {{$rv->status}} </td>
+								<!-- <td> {{$rv->status}} </td> -->
 
 				<td>
 					

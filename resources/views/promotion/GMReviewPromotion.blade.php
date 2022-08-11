@@ -27,7 +27,7 @@
 								<th>Old Basic</th>
 								<th>New Basic</th>	
 								<th>Office Name</th>
-								<th>Status</th>
+								<!-- <th>Status</th> -->
 								
 								<th style="width:10%">Recommend</th>
 
@@ -46,7 +46,7 @@
 								<td> {{$rv->oldBasic}} </td>
 								<td> {{$rv->newBasic}} </td>
 								<td> {{$rv->longOfficeName}} </td>
-								<td> {{$rv->status}} </td>
+								<!-- <td> {{$rv->status}} </td> -->
 
 				<td>
 					

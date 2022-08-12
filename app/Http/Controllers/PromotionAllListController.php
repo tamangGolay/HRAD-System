@@ -20,100 +20,42 @@ class PromotionAllListController extends Controller
 
      * @return \Illuminate\Http\Response
 
-     */
-       
+     */       
 
-    public function index(Request $request)
+public function index(Request $request)
 
-    {
-        $b = DB::table('promotionall')
-            ->join('users', 'users.empId', '=', 'promotionall.empId')
-            ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
-            ->get();
+{
+    $b = DB::table('promotionduelist')
+//  ->join('users', 'users.empId', '=', 'promotionall.empId')
+ ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
 
-         if ($request->ajax()) {
-            $data=$b;
-            // $data = promotionAll::latest()->get();
-            return Datatables::of($data)
+//  ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
+        ->select('promotionduelist.*','officedetails.officeDetails')
+        ->where('promotionduelist.status','=','Approved') 
+        
+        ->get();
 
-                    // ->addIndexColumn()
+     if ($request->ajax()) {
+        $data=$b;
+        // $data = promotionAll::latest()->get();
+        return Datatables::of($data)
 
-                    ->filter(function ($instance) use ($request) {
-
-                        if (!empty($request->get('promotionDueDate'))) {
-
-                            $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-
-                                return Str::contains($row['promotionDueDate'], $request->get('promotionDueDate')) ? true : false;
-
-                            });
-
-                        } 
-                        
-                        if (!empty($request->get('month'))) {
-
-                            $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-
-                                return Str::contains($row['month'], $request->get('month')) ? true : false;
-
-                            });
-
-                        }
-
-   
-
-                        if (!empty($request->get('search'))) {
-
-                            $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-
-                                if (Str::contains(Str::lower($row['promotionDueDate']), Str::lower($request->get('search')))){
-
-                                    return true;
-
-                                }else if (Str::contains(Str::lower($row['grade']), Str::lower($request->get('search')))) {
-
-                                    return true;
-
-                                }else if (Str::contains(Str::lower($row['empId']), Str::lower($request->get('search')))) {
-
-                                    return true;
-
-                                }else if (Str::contains(Str::lower($row['basicPay']), Str::lower($request->get('search')))) {
-
-                                    return true;
-
-                                }
-
-   
-
-                                return false;
-
-                            });
-
-                        }
-
-   
-
-                    })
-
-                    ->addIndexColumn()
-                   
-                    ->addColumn('checkbox', function($row){
-                        return '<input id="checkboxColumn" type="checkbox" name="checkboxColumn" data-id="'.$row->id.'"><label></label>';
-                    })
+        ->addIndexColumn()
                
-                    ->rawColumns(['actions','checkbox'])
-                    ->make(true);
+        ->addColumn('checkbox', function($row){
+         return '<input id="checkboxColumn" type="checkbox" name="checkboxColumn" data-id="'.$row->id.'"><label></label>';
+         })
+           
+         ->rawColumns(['actions','checkbox'])
+        ->make(true);
 
-                   
-
-        }
-
-    
-
-        return view('promotion.promotionAllList');
+               
 
     }
+
+    return view('promotion.promotionAllList');
+
+}
 
     public function insertSelectedCountries(Request $request){
 

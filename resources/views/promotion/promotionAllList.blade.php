@@ -6,15 +6,6 @@
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -25,40 +16,28 @@
 
 
     <!-- <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"> -->
-    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sweetalert2/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}"> -->
 
 </head>
 
 <body>
-
-  
-
-<div class="container-fluid" style="margin-right:20%;width:95%;"> 
-
-    <h5 class="text-center">Filter Promotion List Data</h5>
-       
- <div class="row">
-    <div class="col-md-12 col-lg-12 col-sm-12 text-center">
-        <div class="form-group row col-sm-12 col-md-12">        
-            <div class="col-lg-6 col-sm-6 col-md-6 text-center">
-                <input type="number" name="promotionDueDate" id="promotionDueDate" class="form-control searchEmail" placeholder="Search ...">
-                <input type="number" name="month" id="month" class="form-control searchEmaile" placeholder="Search ...">                       
-            </div>     
-        </div>
-        <button type="button" name="" id="btnFiterSubmitSearch" class="btn btn-success col-lg-2 mt-3">Filter</button>
-        <button type="button" name="promotionDueDate" id="Reset" class="btn btn-success col-lg-2 mt-3">Reset</button>
- 
-    </div> 
-</div> 
+<div class="container-fluid" style="margin-right:20%;width:95%;" > 
+    <div class="card-header bg-green text-center">
+        
+            <h5>
+                <b> Promotion Due List </b>
+            </h5>
 </div>
-    <br>
+		
+      
 
-    <table class="table table-bordered data-table ">
+<br>
+ <table class="table table-bordered data-table table-striped ">
     @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">
+      <input type="hidden"  value="{{ csrf_token() }}">
 
         <thead>
 
@@ -67,34 +46,28 @@
                 <input type="checkbox" class="" id="checkbox" name="main_checkbox"><label></label></th>
                 <th>Sl No</th>
                 <th>Emp Id</th>
-                <th>Grade</th>
-                <th>Basic Pay</th>
                 <th>Promotion Year</th>
-                <th>Promotion Month
-                </th>
-                <!-- <th width="100px">Action</th> -->
-
+                <th>Promotion Month</th>
+                <th>From Grade</th>
+                <th>To Grade</th>
+                <th>Old Basic</th>
+                <th>New Basic</th>
+                <th>Office</th>
+                
             </tr>
 
         </thead>
 
-        <tbody>
-
-        </tbody>
+        <tbody></tbody>
 
     </table>
 
+   
 </div>
 
-  
 
 </body>
 
-  
-
-<!-- <script type="text/javascript"> -->
-
-<!-- //code from other site -->
 
 <script src="{{ asset('jquery/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
@@ -153,8 +126,13 @@
                          {data:'checkbox', name:'checkbox', orderable:false, searchable:false},
                          {data:'DT_RowIndex', name:'DT_RowIndex'},
                          {data:'empId', name:'empId'},
-                         {data:'basicPay', name:'basicPay'},
-                         {data:'grade', name:'grade'},
+                         {data:'promotionYear', name:'promotionYear'},
+                         {data:'promotionMonth', name:'promotionMonth'},
+                         {data:'fromGrade', name:'toGrade'},
+                         {data:'toGrade', name:'toGrade'},
+                         {data:'oldBasic', name:'oldBasic'},
+                         {data:'newBasic', name:'newBasic'},
+                         {data:'office', name:'office'},
                          {data:'actions', name:'actions', orderable:false, searchable:false},
                      ]
                 }).on('draw', function(){
@@ -336,21 +314,7 @@
 
         serverSide: true,
 
-        ajax: {
-
-          url: "{{ route('promotionlistall.index') }}",
-
-          data: function (d) {
-
-                d.promotionDueDate = $('.searchEmail').val(),
-
-                d.month = $('.searchEmaile').val(),
-
-                d.search = $('input[type="search"]').val()
-
-            }
-
-        },
+        ajax:"{{ route('promotionlistall.index') }}", 
 
         columns: [
 
@@ -358,16 +322,21 @@
 
             {data: 'id', name: 'id'},
 
-            {data: 'empId', name: 'empId'},
-            
-            {data: 'grade', name: 'grade'},
-            
-            {data: 'basicPay', name: 'basicPay'},
-                        
-            {data: 'promotionDueDate', name: 'promotionDueDate'},
+            {data:'empId', name:'empId'},
 
-            {data: 'month', name: 'month'},
+             {data:'promotionYear', name:'promotionYear'},
 
+             {data:'promotionMonth', name:'promotionMonth'},
+
+             {data:'fromGrade', name:'toGrade'},
+
+             {data:'toGrade', name:'toGrade'},
+
+             {data:'oldBasic', name:'oldBasic'},
+
+              {data:'newBasic', name:'newBasic'},
+
+            {data:'officeDetails', name:'officeDetails'},
             // {data: 'action', name: 'action', orderable: false, searchable: false},
 
         ]

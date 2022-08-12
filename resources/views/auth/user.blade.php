@@ -107,8 +107,8 @@ a {
 
 
 							<td>
-							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$ul->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
-							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$ul->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
+							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$ul->id}}" data-original-title="Edit" class="edit mt-1 col-lg-12 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
+							<!-- <a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$ul->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button> -->
 							</td>
 						</tr> @endforeach </tbody>
 				</table>

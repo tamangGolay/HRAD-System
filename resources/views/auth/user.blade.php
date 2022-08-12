@@ -291,8 +291,7 @@ a {
 						<label class="col-sm-4 text-md-right" for="role">{{ __('Role:') }}</label>
 						<div class="col-sm-6">
 							<select class="form-control" name="role" id="role_id" required> @foreach($roles as $role)
-								<option value="{{$role->id}}" 
-								@if($role->name == 'Super Admin' || $role->name == 'Admin') disabled @endif>
+								<option value="{{$role->id}}">
 								{{$role->name}}</option> 
 								@endforeach </select>
 						</div>

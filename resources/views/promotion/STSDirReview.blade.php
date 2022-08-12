@@ -71,7 +71,7 @@
 				<br>
 				<br>
 				<div>
-					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
+					<textarea name="remarks2" id="reason" placeholder="reason for rejection"  required></textarea>		
 			
 					</div>
 </td>

@@ -420,8 +420,9 @@ class PromotionAllListController extends Controller
     
             else{
                 // dd("other year");
+                if([$i] == [$ids-1]){
                 return response()->json(['code'=>2, 'msg'=>'Not eligilble for promotion right now!!!']); 
-
+                }
             }
 
             

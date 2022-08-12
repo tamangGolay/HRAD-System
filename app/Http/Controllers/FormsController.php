@@ -659,12 +659,9 @@ return response()
 
        if ($request->v == "employeeList")
        {
-        //  dd($request);
                $roles = Roles::all();
                $officedetails = Officedetails::all();
 
-            //    $orgunit = orgunit::all();
-            //    $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
                $designation = Designation::all();
               
@@ -672,55 +669,28 @@ return response()
 
 
             $userLists = DB::table('users')
-            // ->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
                ->join('roles', 'users.role_id', '=', 'roles.id')
-            //    ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-            //    ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-            //    ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
                ->join('officedetails', 'officedetails.id', '=', 'users.office')
+               ->join('officemaster','officemaster.id','=','users.office')
 
-            //    ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
             ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.Address'
                )
 
                ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.office',Auth::user()->office)
-            //    ->orWhere('orgunit.office',Auth::user()->office)
-
-
-               ->paginate(10000000);
-
-       
-
-        // if() {
-        //    $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-        //        ->join('roles', 'users.role_id', '=', 'roles.id')
-        //        ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-        //        ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-        //        ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-        //        ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-        //        ->latest('users.id') //similar to orderby('id','desc')
-        //        ->where('users.org_unit_id',Auth::user()->org_unit_id)
-        //        ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
-
-
-        //        ->paginate(10000000);
-            // }
-
-            // $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-            // ->join('roles', 'users.role_id', '=', 'roles.id')
-            // ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-            // ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-            // ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-            // ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-            // ->latest('users.id') //similar to orderby('id','desc')
-            // ->where('users.status',0)
-
-            // ->paginate(10000000);
-
-           $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
+            //    ->where('users.office',Auth::user()->office)
+            //    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+            ->whereIn('users.office', function($query){
+                $query->from('officeunder')
+                ->select('officeunder.office')
+                    ->whereIn('officeunder.head', function($query1){
+                    $query1->from('officemaster')
+                    ->join('users','officemaster.id' ,'=','users.office')
+                    ->select('officemaster.officehead')
+                    ->where('users.empId','=', Auth::user()->empId);
+                    });
+                })
+                ->paginate(10000000);
+            $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,

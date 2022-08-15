@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Duelist;
 use DataTables;
+use App\IncrementView;
 
 use DB;
 
@@ -57,7 +58,7 @@ class incrementReportController extends Controller
     public function createIncrementReport ($id) {
 
 
-    $increment = Duelist::all()->where('id',$id);
+    $increment = IncrementView::all()->where('id',$id);
 
 
     $increment = DB::table('viewincrementorder')
@@ -66,17 +67,9 @@ class incrementReportController extends Controller
             ->select('viewincrementorder.*')	
 
         // ->where('incrementduelist.id',$id)
-        ->first();
+        ->first();    
 
-
-      
-
-        // $userName = DB::table('incrementduelist')
-        
-        // ->select('incrementduelist.*')
-        // ->where('incrementduelist.status','=','Approved')
-        // ->latest('incrementduelist.id')
-        // ->get(); 
+       
 
         $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
         return $pdf->download ('increment.pdf');

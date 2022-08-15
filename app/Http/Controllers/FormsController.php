@@ -61,6 +61,7 @@ use App\GumbootSize;
 use App\promotionAll;
 use App\Promotionduelist;
 use App\promotionRequest;
+use App\IncrementView;
 
 
 
@@ -4362,7 +4363,7 @@ if ($request->v == "user_profile")
 //incrementreport
 if ($request->v == "incrementReport")
 {
-    //  $notesheet = notesheetRequest::all();
+      $increment = IncrementView::all();
     $increment = DB::table('viewincrementorder')
     // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
       ->select('viewincrementorder.*')

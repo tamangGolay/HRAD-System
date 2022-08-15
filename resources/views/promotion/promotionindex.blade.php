@@ -59,7 +59,7 @@ div.table2 {
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
                 @endforeach 
             </div>
-
+<br>
             <div class = "row">
             <div class = "col-md-12">
                 <table class = "table" width="93%">
@@ -106,18 +106,24 @@ div.table2 {
         </div>
 
 
-
+<br>
+<br>
 
         <div class = "row">
             <div class = "table2 col-md-6">
                 <table width="79%">
                     <h4> Subject:- Promotion Order </h4>
+                    <br>
+  <br> 
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Dear {{$promotion->empName}}  </th>
+                        <th scope = "col" class="col1"> Dear {{$promotion->empName}}, </th>
                         
                                              </tr>
                     </thead>
+
+ <br>
+  <br>
                     <tbody>
                         
                
@@ -125,14 +131,30 @@ div.table2 {
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
                               {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
-</th>
+                          </th>
+</tr>
+<br>
 <tr>
   <th>
                               Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
+  </th>
+</tr>
+<br>
+<tr>
+  <th>
                               Other service conditions remain unchanged.
-
+  </th>
+</tr>
+<br>
+<tr>
+  <th>
                               Yours sincerely,
-
+  </th>
+</tr>
+<br>
+<br>
+<tr>
+  <th>
                               Copies to:
                         1)	Director, <serviceName>, BPC, Thimphu for kind information.
                         2)	General Manager, <departmentName>, BPC, Thimphu for kind information.

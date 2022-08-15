@@ -66,7 +66,7 @@ class incrementReportController extends Controller
             ->join('incrementhistorymaster','incrementhistorymaster.personalNo','=','viewincrementorder.empId')
             
           // ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
-            ->select('viewincrementorder.id','viewincrementorder.officeAddress','viewincrementorder.longOfficeName','viewincrementorder.empId','viewincrementorder.empName','viewincrementorder.oldBasic','viewincrementorder.newBasic','viewincrementorder.increment','incrementhistorymaster.createdOn',DB::raw('Year(incrementDate) AS incrementDate'))	
+            ->select('viewincrementorder.id','viewincrementorder.officeAddress','viewincrementorder.longOfficeName','viewincrementorder.empId','viewincrementorder.empName','viewincrementorder.oldBasic','viewincrementorder.newBasic','viewincrementorder.increment','incrementhistorymaster.createdOn',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))	
 
         // ->where('incrementduelist.id',$id)
         ->first();          

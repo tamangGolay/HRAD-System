@@ -115,15 +115,20 @@ div.table2 {
                       <tr>
                         <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
                         
-</tr>
-                <tr>
-                  @foreach ($notesheetapprove as $notesheetapprove)
-                       
-                   <th scope = "col" class="col1"> I have the pleasure to inform you that you {{$notesheetapprove->fromGrade}}  </th>
-                   @endforeach
-                  </tr>
+                        <th scope = "col" class="col1"> Status </th>
+                      
+                        <th scope = "col" class="col1"> Remarks </th>
+                      </tr>
                     </thead>
-                   
+                    <tbody>
+                        @foreach ($notesheetapprove as $notesheetapprove)
+                        <tr>
+                            <th  class="col1"> {{$notesheetapprove->fromGrade}}  </th>
+                            <td class="col1" > {{$notesheetapprove->newBasic}}.  </td>
+                           
+                        </tr>
+                        @endforeach
+                    </tbody>
                   </table>
             </div>
         </div>

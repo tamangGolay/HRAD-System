@@ -37,11 +37,6 @@ div.table2 {
   
 }
 
-
-
-
-
-
    </style>
 </head>
 <body>
@@ -59,8 +54,8 @@ div.table2 {
             <div class = "row">
                 <div class = "col-md-12">
                     <p>{{$increment->empName}}</p>
-                    <!-- <p>{{$increment->oldBasic}}</p>
-                    <p>{{$increment->oldBasic}}</p> -->
+                    <p>{{$increment->longOfficeName}}</p>
+                    <p>{{$increment->officeAddress}}</p>
                 </div>
             </div>
             <br>
@@ -78,7 +73,7 @@ div.table2 {
             </div>
             <div class = "row">
                 <div class = "col-md-12 increment">
-                    <p> The final increment payout for the {{$increment->oldBasic}} Cycle {{$increment->oldBasic}} is circulated for kind information and necessary action. </p>
+                    <p> The final increment payout for the {{$increment->oldBasic}} Cycle {{$increment->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>
 
@@ -105,7 +100,7 @@ div.table2 {
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
-                            <td class="col1"> {{$increment-> oldBasic}} </td>
+                            <td class="col1"> {{$increment-> increment}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>
                         </tr>
                         </tbody>

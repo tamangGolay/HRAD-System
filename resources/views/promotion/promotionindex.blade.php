@@ -113,12 +113,10 @@ div.table2 {
                                              </tr>
                     </thead>
                     <tbody>
-                        @foreach ($notesheetapprove as $notesheetapprove)
                         <tr>
                             <td class="col1" > {{$notesheetapprove->newBasic}}.  </td>
                            
                         </tr>
-                        @endforeach
                     </tbody>
                   </table>
             </div>

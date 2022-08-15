@@ -69,7 +69,12 @@ div.table2 {
                         <th scope = "col" class="col1">{{$userName->empName}}</th>
                               </tr>
                      
-                      
+                      <tr>
+                      @foreach($notesheetapprove as $notesheetapprove)
+                        <th scope = "col" class="col1"> {{$notesheetapprove->fromGrade}} </th>
+                  
+                        @endforeach 
+                      </tr>
                       <tr>
                         <th scope = "col" class="col1">  {{$office->longOfficeName}}</th>
                         
@@ -113,10 +118,19 @@ div.table2 {
                                              </tr>
                     </thead>
                     <tbody>
+                        
                         <tr>
-                            <td class="col1" > {{$notesheetapprove->newBasic}}.  </td>
+                            <th  class="col1"> I have the pleasure to inform you that you have been promoted to
+                              {{$notesheetapprove->fromGrade}} Please accept my hearty congratulations on your promotion. </th>
+                            <td class="col1" > Your basic pay after the promotion shall be Nu. {{$notesheetapprove->newBasic}}  
+
+Other service conditions remain unchanged.
+
+Yours sincerely,
+  </td>
                            
                         </tr>
+                   
                     </tbody>
                   </table>
             </div>

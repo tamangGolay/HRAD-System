@@ -4380,6 +4380,29 @@ if ($request->v == "notesheetReport")
     ));
 }
 
+
+//promotionReport
+
+if ($request->v == "promotionReport")
+{
+    //  $notesheet = notesheetRequest::all();
+    $promotion = DB::table('promotionduelist')
+    ->join('users','users.empId','=','promotionduelist.empId')
+    ->join('officedetails','officedetails.id','=','promotionduelist.office')   
+    ->select('promotionduelist.*','users.empName','officedetails.longOfficeName')  
+        ->where('promotionduelist.status','=','Approved')
+        ->latest('promotionduelist.id')
+        ->get();
+
+    $rhtml = view('promotion.promotionReport')->with(['promotion' => $promotion])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+
          //1. view for Qualificationleveltype (Tdee)
 
          if ($request->v == "qualilevelmaster")  //form.csv

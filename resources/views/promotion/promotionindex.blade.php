@@ -118,7 +118,7 @@ div.table2 {
                         <th scope = "col" class="col1"> I have the pleasure to inform you that you have been promoted to
                         {{$notesheetapprove->fromGrade </th>
                         @endforeach
-                        <th scope = "col" class="col1"> Remarks </th>
+                        <th scope = "col" class="col1"> I have the pleasure to  </th>
                       </tr>
                     </thead>
                     

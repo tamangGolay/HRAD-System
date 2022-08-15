@@ -46,57 +46,73 @@ div.table2 {
 </head>
 <body>
 
-    <div class = "container mt-4">
+  <div class = "container-fluid mt-4">
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
 
-
         @foreach ($increment as $increment)
-            <div class = "col-md-8">
-            <div class="increment">{{$increment->createdOn}}</div>
-                <h2> NoteSheet </h2>
-
+        <div class = "col-md-6 text-center">
+                <p> BPC/HRAD/HRMD-05/</p>
             </div>
+            <div class = "col-md-6 text-right">      
+                <div class="increment"><p> Date: </p>{{$increment->createdOn}}</div>
+            </div>
+
+            <br>
+            <div class = "row">
+                <div class = "col-md-12">
+                    <p>headDesignation</p>
+                    <p>longOfficeName</p>
+                    <p>OfficeAddress</p>
+                </div>
+            </div>
+            <br>
+            <div class = "row">
+                <div class = "col-md-12">
+                    <p> <strong> Subject:</strong> </p>
+                    <p><u>--Increment Order</u></p>
+                </div>
+            </div>
+            <br>
+            <div class = "row">
+                <div class = "col-md-12">
+                    <p> Dear sir/madam, </p>
+                    <br>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-12">
+                    <p> The final increment payout for the <incrementCycle> Cycle -<year> is circulated for kind information and necessary action. </p>
+                </div>
+            </div>
+
+       
 
             <div class = "row">
             <div class = "col-md-12">
-                <table class = "table" width="93%">
-                    <caption> Increment </caption>
+              <div class="card-body table-responsive p-0">
+                <table id="table5" class="table table-hover table-striped table-bordered">
                     <thead>
-                      <tr>
-                        <th scope = "col" class="col1"> Sl no </th>
-                        <td class="col1"> {{$increment->id}} </td>
+                            <tr>
+                            <th scope="col">SN</th>
+                            <th scope="col">Name and Emp Id</th>
+                            <!-- <th scope="col">Designation and Grade</th> -->
+                            <th scope="col">Old Basic</th>
+                            <th scope="col">Increment</th>
+                            <th scope="col">New Basic</th>
+                            </tr>
+                        </thead>
 
-                      </tr>
-
-                      
-                      <tr>
-                        <th scope = "col" class="col1"> Employee Id </th>
-                        <td class="col1"> {{$increment-> empId}} </td>
-
-                      </tr>
-                      <tr>
-                        <th scope = "col" class="col1"> Old Basic </th>
-                        <td class="col1"> {{$increment-> oldBasic}} </td>
-
-                      </tr>
-                      <tr>
-                        <th scope = "col" class="col1"> New Basic </th>
-                        <td class="col1"> {{$increment-> newBasic}} </td>
-
-                      </tr>
-                      <tr>
-                        <th scope = "col" class="col1"> Increment </th>
-                        <td class="col1"> {{$increment-> yearlyIncrement}} </td>
-
-                      </tr>
-                    </thead>
-                    <!-- <tbody>
+                        <tbody>
                         <tr>
-
+                            <td class="col1"> {{$increment->id}} </td>
+                           <td class="col1"> {{$increment-> empId }} </td>
+                           <td class="col1"> {{$increment-> oldBasic}} </td>
+                            <td class="col1"> {{$increment-> yearlyIncrement}} </td>
+                            <td class="col1"> {{$increment-> newBasic}} </td>
                         </tr>
-                    </tbody> -->
+                        </tbody>
                   </table>
             </div>
         </div>
@@ -109,7 +125,7 @@ div.table2 {
                     <a class="btn btn-primary" href="http://127.0.0.1:8000/product/pdf"> Export to PDF </a>
                 </div>
             </div> -->
-        </div>
+  </div>
       
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

@@ -103,26 +103,29 @@ div.table2 {
                 </div>
             </div> -->
         </div>
+
+
+
+
         <div class = "row">
             <div class = "table2 col-md-6">
                 <table width="79%">
-                    <caption>Subject:- Promotion Order</caption>
+                    <caption> Subject:- Promotion Order </caption>
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Dear {{$userName->empName}} </th>
-                        
+                        <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
+                        @foreach ($notesheetapprove as $notesheetapprove)
+                        <th scope = "col" class="col1"> I have the pleasure to inform you that you have been promoted to
+                        {{$notesheetapprove->fromGrade </th>
+                        @endforeach
+                        <th scope = "col" class="col1"> Remarks </th>
                       </tr>
-
-                      <tr>
-                      @foreach ($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1"> hello {{$notesheetapprove->fromGrade}} 
-</th>
-@endforeach
- </tr>
-    </thead>       
- </table>
-   </div>
+                    </thead>
+                    
+                  </table>
+            </div>
         </div>
+
     </div>
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

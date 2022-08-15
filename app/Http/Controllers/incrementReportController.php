@@ -17,22 +17,28 @@ class incrementReportController extends Controller
 
 
     $increment = Duelist::all()->where('id',$id);
+
+  
     // $increment = Duelist::find($id);
     // $increment = Duelist::find($id);
     //For officeName in the report(pdf)
-    // $date = DB::table('notesheet')
-    //  ->join('officedetails','officedetails.id','=','notesheet.officeId')
-    //    ->select('*')	
-    //     ->where('notesheet.id',$id)
-    //     ->first();
+    $name = DB::table('promotionduelist')
+     ->join('viewincrementorder','viewincrementorder.empId','=','promotionduelist.empId')
+       ->select('*','viewincrementorder.designation','viewincrementorder.grade')	
+        // ->where('notesheet.id',$id)
+        ->first();
+
+
+      
 
         // $userName = DB::table('incrementduelist')
+        
         // ->select('incrementduelist.*')
         // ->where('incrementduelist.status','=','Approved')
         // ->latest('incrementduelist.id')
         // ->get(); 
 
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
+        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,'name'=>$name));
         return $pdf->download ('increment.pdf');
     }
 }

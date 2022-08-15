@@ -40,7 +40,7 @@ class PdfController extends Controller
     public function createpromotionPDF ($id) {
 
 
-      $notesheetapprove = Promotionduelist::all()->where('Id',$id);
+      $notesheetapprove = Promotionduelist::all()->where('id',$id);
       // $notesheet = notesheetRequest::find($id);
       //For officeName in the report(pdf)
       $office = DB::table('promotionduelist')

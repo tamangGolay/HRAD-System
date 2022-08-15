@@ -37,7 +37,7 @@ h1 {
                             <tr>
                             <th scope="col">SN</th>
                             <th scope="col">Name and Emp Id</th>
-                            <!-- <th scope="col">Designation and Grade</th> -->
+                            <th scope="col">Designation and Grade</th>
                             <th scope="col">Old Basic</th>
                             <th scope="col">Increment</th>
                             <th scope="col">New Basic</th>
@@ -49,7 +49,11 @@ h1 {
 
                         <tr>
                             <td class="col1"> {{$increment->id}} </td>
-                           <td class="col1"> {{$increment-> empId }} </td>
+                           <!-- <td class="col1"> {{$increment-> empId }} </td> -->
+
+                           <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
+                            <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
+
                            <!-- <td class="col1"> {{$increment-> empId }} </td> -->
                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> yearlyIncrement}} </td>

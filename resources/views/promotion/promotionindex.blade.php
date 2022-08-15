@@ -123,7 +123,7 @@ div.table2 {
                     <tbody>
                         @foreach ($notesheetapprove as $notesheetapprove)
                         <tr>
-                            <th  class="col1"> I have the pleasure to inform you that you have been promoted to {{$notesheetapprove->fromGrade}}  </th>
+                            <th  class="col1"> {{$notesheetapprove->fromGrade}}  </th>
                             <td class="col1" > {{$notesheetapprove->newBasic}}.  </td>
                            
                         </tr>

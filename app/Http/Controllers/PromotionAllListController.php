@@ -596,7 +596,7 @@ public function updateSelectedEmployees(Request $request){
             ->where('promotionyear.id','=', $grade[$i]->gradeId)
             ->first();
 
-            dd($yearsToPromote[$i]->noofYears);
+            // dd($yearsToPromote[$i]->noofYears);
 
             $DueDate[$i] = $promotionDate[$i]->year + 5;
             $promotionDueDate[$i] = $DueDate[$i] . '/' .$promotionDate[$i]->month.'/'. '01';

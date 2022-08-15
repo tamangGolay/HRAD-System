@@ -9,6 +9,6 @@ class Duelist extends Model
     //
     protected $table = 'incrementduelist';
 
-    protected $fillable = ['incrementYear', 'incrementMonth','empId','oldBasic','yearlyIncrement','newBasic','status'];    
+    protected $fillable = ['incrementYear', 'incrementMonth','empId','oldBasic','yearlyIncrement','newBasic','createdOn','status'];    
     public $timestamps = false;
 }

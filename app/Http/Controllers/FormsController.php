@@ -4359,6 +4359,23 @@ if ($request->v == "user_profile")
 }
 
 
+//incrementreport
+if ($request->v == "incrementReport")
+{
+    //  $notesheet = notesheetRequest::all();
+    $increment = DB::table('incrementduelist')
+    ->select('incrementduelist.*')
+    ->where('incrementduelist.status','=','Approved')
+    ->latest('incrementduelist.id')
+    ->get(); 
+
+    $rhtml = view('Increment.incrementReport')->with(['increment' => $increment])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
 
 //notesheetreport
 if ($request->v == "notesheetReport")

@@ -71,8 +71,8 @@ div.table2 {
                      
                       <tr>
                       @foreach($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1"> Gradefrom </th>
-                        <td class="col1"> {{$notesheetapprove->fromGrade}} </td>
+                        <th scope = "col" class="col1"> {{$notesheetapprove->fromGrade}} </th>
+                  
                         @endforeach 
                       </tr>
                       <tr>
@@ -112,24 +112,22 @@ div.table2 {
                         <th scope = "col" class="col1"> Dear {{$userName->empName}} </th>
                         
                       </tr>
-                    </thead>
-                    
-                        @foreach ($notesheetapprove as $notesheetapprove)
-                        <tr>
-                            <th  class="col11"> I have the pleasure to inform you that you have been promoted to {{$notesheetapprove->fromGrade}} in
-                              the <officeDetails> of the company.
+
+                      <tr>
+                      @foreach ($notesheetapprove as $notesheetapprove)
+                        <th scope = "col" class="col1">I have the pleasure to inform you that you have been promoted to {{$notesheetapprove->fromGrade}} in
+                               the <officeDetails> of the company.
                               You are promoted with effect from <promotionDate>. 
                               Please accept my hearty congratulations on your promotion.
                               Your basic pay after the promotion shall be Nu {{$notesheetapprove->newBasic}}. 
                               Other service conditions remain unchanged. 
                               Yours sincerely,
 </th>
-                           
-                          
-                        </tr>
-                        @endforeach
-                      </table>
-            </div>
+@endforeach
+ </tr>
+    </thead>       
+ </table>
+   </div>
         </div>
     </div>
    

@@ -77,7 +77,7 @@ div.table2 {
                         
                       </tr>
                       <tr>
-                        <th scope = "col" class="col1">  {{$promotion->OfficeName}}</th>
+                        <th scope = "col" class="col1">  {{$promotion->officeName}}</th>
                         
 
                       </tr>

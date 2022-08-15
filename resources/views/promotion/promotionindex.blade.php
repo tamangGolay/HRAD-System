@@ -70,10 +70,10 @@ div.table2 {
                               </tr>
                      
                       <tr>
-                      @foreach($notesheetapprove as $notesheetapprove)
+                 
                         <th scope = "col" class="col1"> {{$notesheetapprove->fromGrade}} </th>
                   
-                        @endforeach 
+                        
                       </tr>
                       <tr>
                         <th scope = "col" class="col1">  {{$office->longOfficeName}}</th>

@@ -4363,16 +4363,16 @@ if ($request->v == "user_profile")
 if ($request->v == "incrementReport")
 {
     //  $notesheet = notesheetRequest::all();
-    $increment = DB::table('incrementduelist')
-    ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
-      ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')
+    $increment = DB::table('viewincrementorder')
+    // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
+      ->select('viewincrementorder.*')
 
     // ->select('incrementduelist.*','users.empName')
-    ->where('incrementduelist.status','=','Approved')
-    ->latest('incrementduelist.id')
+    // ->where('incrementduelist.status','=','Approved')
+    // ->latest('incrementduelist.id')
     ->get(); 
 
-    $rhtml = view('Increment.incrementReport')->with(['increment' => $increment])->render();
+    $rhtml = view('Increment.incrementsReport')->with(['increment' => $increment])->render();
     return response()
         ->json(array(
         'success' => true,

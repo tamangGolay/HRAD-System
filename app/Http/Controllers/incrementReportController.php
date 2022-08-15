@@ -24,7 +24,7 @@ class incrementReportController extends Controller
     //For officeName in the report(pdf)
     $name = DB::table('promotionduelist')
      ->join('viewincrementorder','viewincrementorder.empId','=','promotionduelist.empId')
-       ->select('*','viewincrementorder.designation','viewincrementorder.grade')	
+       ->select('promotionduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
         // ->where('notesheet.id',$id)
         ->first();
 

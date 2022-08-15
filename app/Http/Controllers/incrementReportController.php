@@ -60,7 +60,7 @@ class incrementReportController extends Controller
     // $increment = Duelist::all()->where('id',$id);
 
 
-    $name = DB::table('viewincrementorder')
+    $increment = DB::table('viewincrementorder')
         //  ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
           // ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
             ->select('viewincrementorder.*')	
@@ -78,7 +78,7 @@ class incrementReportController extends Controller
         // ->latest('incrementduelist.id')
         // ->get(); 
 
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('name'=>$name));
+        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
         return $pdf->download ('increment.pdf');
     }
 }

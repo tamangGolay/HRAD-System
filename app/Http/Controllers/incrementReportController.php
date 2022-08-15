@@ -51,19 +51,21 @@ class incrementReportController extends Controller
                        ->make(true);
                      }    
    return view('Increment.incrementsReport');
-}
 
+  }
 
     public function createIncrementReport ($id) {
 
 
-    $increment = Duelist::all()->where('id',$id);
+    // $increment = Duelist::all()->where('id',$id);
 
 
-    $name = DB::table('incrementduelist')
-         ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
-          ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
-        ->where('incrementduelist.id',$id)
+    $name = DB::table('viewincrementorder')
+        //  ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+          // ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
+            ->select('incrementduelist.*')	
+
+        // ->where('incrementduelist.id',$id)
         ->first();
 
 
@@ -76,7 +78,7 @@ class incrementReportController extends Controller
         // ->latest('incrementduelist.id')
         // ->get(); 
 
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,'name'=>$name));
+        $pdf = PDF ::loadView ('Increment.indexIncrement', array('name'=>$name));
         return $pdf->download ('increment.pdf');
     }
 }

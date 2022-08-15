@@ -104,8 +104,8 @@ div.table2 {
                         <tbody>
                         <tr>
                           <td class="col1"> {{$increment->id}} </td>
-                          <td class="col1"> {{$name->empName }} ({{$increment->empId}}) </td>
-                          <td class="col1"> {{$name->designation}}({{$name->grade}}) </td>
+                          <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
+                          <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> yearlyIncrement}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>

@@ -64,24 +64,25 @@ div.table2 {
             <div class = "col-md-12">
                 <table class = "table" width="93%">
                     
+
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1">{{$userName->empName}}</th>
+                        <th scope = "col" class="col1">{{$promotion->empName}}</th>
                               </tr>
                      
                       <tr>
                  
-                        <th scope = "col" class="col1"> {{$notesheetapprove->fromGrade}} </th>
+                        <th scope = "col" class="col1"> {{$promotion->oldDesignation}} </th>
                   
                         
                       </tr>
                       <tr>
-                        <th scope = "col" class="col1">  {{$office->longOfficeName}}</th>
+                        <th scope = "col" class="col1">  {{$promotion->OfficeName}}</th>
                         
 
                       </tr>
                       <tr>
-                        <th scope = "col" class="col1"> {{$office-> Address}} </th>
+                        <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
                        
 
                       </tr>
@@ -113,21 +114,31 @@ div.table2 {
                     <caption> Subject:- Promotion Order </caption>
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
+                        <th scope = "col" class="col1"> Dear {{$promotion->empName}}  </th>
                         
                                              </tr>
                     </thead>
                     <tbody>
                         
+                'empId', 'empName','oldDesignation','newDesignation',
+    'officeName','officeAddress','officeDetails','newGrade','promotionDate','newBasic'
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
-                              {{$notesheetapprove->fromGrade}} Please accept my hearty congratulations on your promotion. </th>
-                            <td class="col1" > Your basic pay after the promotion shall be Nu. {{$notesheetapprove->newBasic}}  
+                              {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
+                              You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
+                              Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
+                              Other service conditions remain unchanged.
 
-Other service conditions remain unchanged.
+                              Yours sincerely,
 
-Yours sincerely,
-  </td>
+                              Copies to:
+                        1)	Director, <serviceName>, BPC, Thimphu for kind information.
+                        2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
+                        3)	<designation of officeHead>, <longOfficeName>, BPC, <officeAddress> for kind information.
+                        4)	Concerned HR Admin.
+
+
+
                            
                         </tr>
                    

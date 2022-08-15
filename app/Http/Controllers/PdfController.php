@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\notesheetRequest;
 use App\notesheetapprove;
-use App\Promotionduelist;
+use App\promotionorder;
 use DB;
 
 use PDF;
@@ -40,22 +40,10 @@ class PdfController extends Controller
     public function createpromotionPDF ($id) {
 
 
-      $notesheetapprove = Promotionduelist::all()->where('id',$id);
-      // $notesheet = notesheetRequest::find($id);
-      //For officeName in the report(pdf)
-      $office = DB::table('promotionduelist')
-       ->join('officedetails','officedetails.id','=','promotionduelist.office')
-         ->select('promotionduelist.*','officedetails.longOfficeName','officedetails.Address')	
-          ->where('promotionduelist.id',$id)
-          ->first();
+      $promotion = promotionorder::all()->where('id',$id);
+      
   
-          $userName = DB::table('promotionduelist')
-          ->join('users','users.empId','=','promotionduelist.empId')
-         ->select('users.*')	
-          ->where('promotionduelist.id',$id)
-          ->first();
-  
-          $pdf = PDF ::loadView ('promotion.promotionindex', array('userName'=>$userName,'office'=>$office,'notesheetapprove'=>$notesheetapprove));
+          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion));
           return $pdf->download ('notesheet.pdf');
       }
 }

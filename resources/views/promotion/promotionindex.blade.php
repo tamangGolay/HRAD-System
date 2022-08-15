@@ -115,7 +115,7 @@ div.table2 {
 
                       <tr>
                       @foreach ($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1">{{$notesheetapprove->fromGrade}} 
+                        <th scope = "col" class="col1"> hello {{$notesheetapprove->fromGrade}} 
 </th>
 @endforeach
  </tr>

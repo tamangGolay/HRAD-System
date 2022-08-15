@@ -57,7 +57,7 @@ class incrementReportController extends Controller
     public function createIncrementReport ($id) {
 
 
-    // $increment = Duelist::all()->where('id',$id);
+    $increment = Duelist::all()->where('id',$id);
 
 
     $increment = DB::table('viewincrementorder')

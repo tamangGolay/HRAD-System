@@ -59,7 +59,7 @@ h1 {
                            <td class="col1"> {{$promotion-> empId}} </td>
                            <td class="col1"> {{$promotion-> empName}} </td>
                             <td class="col1"> {{$promotion-> longOfficeName}} </td>
-                            <td class="col2"><a href="notesheetReport/{{$promotion->id}}" class="btn btn-success">Download</a> </td>
+                            <td class="col2"><a href="promotionReport/{{$promotion->id}}" class="btn btn-success">Download</a> </td>
 
 
 

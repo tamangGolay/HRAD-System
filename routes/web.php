@@ -106,6 +106,8 @@ Route::post('/conferencebook','ConferenceController@conference')->name('conferen
 Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 'createPDF'])->name('notesheet.pdf');
 // Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
+Route::get('/promotionReport/{id}', [App\Http\Controllers\PdfController::class, 'createpromotionPDF'])->name('notesheet.pdf');
+
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);
 Route::post('destroyGuesthouse', 'Manage_GuesthouseController@delete')->name('destroyGuesthouse');

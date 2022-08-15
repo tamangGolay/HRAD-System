@@ -11,7 +11,7 @@ class Promotionduelist extends Model
 
     protected $fillable = [ 'id','empId','fromGrade','toGrade'
     ,'promotionMonth','promotionYear'
-    ,'oldBasic','newBasic','office'];
+    ,'oldBasic','newBasic','office','createdOn'];
     public $timestamps = false;
 
 }

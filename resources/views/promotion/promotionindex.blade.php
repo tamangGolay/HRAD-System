@@ -121,13 +121,13 @@ div.table2 {
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($notesheetapprove as $notesheetapprove)
+                       
                         <tr>
                             <th  class="col1"> {{$notesheetapprove->fromGrade}}  </th>
                             <td class="col1" > {{$notesheetapprove->newBasic}}.  </td>
                            
                         </tr>
-                        @endforeach
+                     
                     </tbody>
                   </table>
             </div>

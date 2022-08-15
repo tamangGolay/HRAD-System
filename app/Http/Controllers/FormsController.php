@@ -4364,7 +4364,10 @@ if ($request->v == "incrementReport")
 {
     //  $notesheet = notesheetRequest::all();
     $increment = DB::table('incrementduelist')
-    ->select('incrementduelist.*')
+    ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+      ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')
+
+    // ->select('incrementduelist.*','users.empName')
     ->where('incrementduelist.status','=','Approved')
     ->latest('incrementduelist.id')
     ->get(); 

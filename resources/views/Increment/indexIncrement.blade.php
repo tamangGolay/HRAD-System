@@ -5,7 +5,7 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Laravel 8 PDF </title>
+    <title> Increment Order </title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -52,10 +52,10 @@ div.table2 {
         <br><br><br>
 
         @foreach ($increment as $increment)
-        <div class = "col-md-6 text-center">
+        <div class = "col-md-6 col-lg-6 text-left">
         <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->incrementYear}} / {{$increment->id}} </p> </div> 
             </div>
-            <div class = "col-md-6 text-right">      
+            <div class = "col-md-6 col-lg-6 text-right">      
                 <div class="increment"><p> Date: {{$increment->createdOn}} </p></div>
             </div>
 
@@ -70,8 +70,7 @@ div.table2 {
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p> <strong> Subject:</strong> </p>
-                    <p><u>--Increment Order</u></p>
+                    <p> <strong> Subject:</strong> <u>--Increment Order</u></p>
                 </div>
             </div>
             <br>
@@ -97,7 +96,7 @@ div.table2 {
                             <tr>
                             <th scope="col">SN</th>
                             <th scope="col">Name and Emp Id</th>
-                            <!-- <th scope="col">Designation and Grade</th> -->
+                            <th scope="col">Designation and Grade</th>
                             <th scope="col">Old Basic</th>
                             <th scope="col">Increment</th>
                             <th scope="col">New Basic</th>
@@ -107,7 +106,8 @@ div.table2 {
                         <tbody>
                         <tr>
                             <td class="col1"> {{$increment->id}} </td>
-                           <td class="col1"> {{$increment-> empId }} </td>
+                           <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
+                          <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> yearlyIncrement}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>
@@ -131,8 +131,8 @@ div.table2 {
                     <p> {{$increment-> empId }} </p>
                     <p> General Manager-HR </p>
                     </div>
-                </div>
-                <div class = "row">
+                </div> <br><br>
+                <br>                <div class = "row">
                    <div class = "col-md-12 increment">
                     <p> Copy to: </p>
                     <p> &nbsp; &nbsp; 1. {{$increment-> empId }}, PIAD, HRAD, BPC for further necessary action.  </p>

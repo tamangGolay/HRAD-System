@@ -67,9 +67,7 @@ class incrementReportController extends Controller
             ->select('viewincrementorder.*')	
 
         // ->where('incrementduelist.id',$id)
-        ->first();    
-
-       
+        ->first();          
 
         $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
         return $pdf->download ('increment.pdf');

@@ -51,18 +51,16 @@ div.table2 {
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
 
-        @foreach ($increment as $increment)
         <div class = "col-md-6 col-lg-6 text-left">
-        <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->oldBasic}} / {{$increment->id}} </p> </div> 
-        <span> <p> Date: {{$increment->empId}} </p> </span>     
+               <span> <p> Date: {{$increment->empId}} </p> </span>     
       </div>
 
             <br>
             <div class = "row">
                 <div class = "col-md-12">
                     <p>{{$increment->empName}}</p>
-                    <p>{{$increment->oldBasic}}</p>
-                    <p>{{$increment->oldBasic}}</p>
+                    <!-- <p>{{$increment->oldBasic}}</p>
+                    <p>{{$increment->oldBasic}}</p> -->
                 </div>
             </div>
             <br>
@@ -140,7 +138,7 @@ div.table2 {
             </div>
             </div>
         </div>
-        @endforeach
+      
     </div>
 
            

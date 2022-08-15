@@ -521,7 +521,7 @@ public function updateSelectedEmployees(Request $request){
         ->where('id',$request->promotion_ids[$i])
         ->first();
 
-        $promotionDate[$i] = DB::table('promotionall')//promotionall table(incrementall)
+        $promotionDateTogether[$i] = DB::table('promotionall')//promotionall table(incrementall)
         ->join('promotionduelist', 'promotionduelist.empId', '=', 'promotionall.empId')
         ->select('promotionall.promotionDueDate')
         ->where('promotionduelist.id',$request->promotion_ids[$i])
@@ -578,13 +578,13 @@ public function updateSelectedEmployees(Request $request){
             ->where('promotionyear.id','=', $grade[$i]->gradeId)
             ->first();
 
-            dd($yearsToPromote[$i]->noofYears);
+            // dd($yearsToPromote[$i]->noofYears);
 
            $DueDate[$i] = $promotionDate[$i]->year + 4;
             $promotionDueDate[$i] = $DueDate[$i] . '/' .$promotionDate[$i]->month.'/'. '01';
-            $yearsToPromote[$i] = 4;
+            // $yearsToPromote[$i] = 4;
 
-            DB::update('update promotionall set yearsToPromote = ? where empId = ?', [$yearsToPromote[$i], $empId[$i]->empId]);
+            DB::update('update promotionall set yearsToPromote = ? where empId = ?', [$yearsToPromote[$i]->noofYears, $empId[$i]->empId]);
             DB::update('update promotionall set promotionDueDate = ? where empId = ?', [promotionDueDate[$i], $empId[$i]->empId]);
 
         }
@@ -601,7 +601,7 @@ public function updateSelectedEmployees(Request $request){
             $DueDate[$i] = $promotionDate[$i]->year + 5;
             $promotionDueDate[$i] = $DueDate[$i] . '/' .$promotionDate[$i]->month.'/'. '01';
 
-            DB::update('update promotionall set yearsToPromote = ? where empId = ?', [$yearsToPromote[$i], $empId[$i]->empId]);
+            DB::update('update promotionall set yearsToPromote = ? where empId = ?', [$yearsToPromote[$i]->noofYears, $empId[$i]->empId]);
             DB::update('update promotionall set promotionDueDate = ? where empId = ?', [$promotionDueDate[$i], $empId[$i]->empId]);
 
 
@@ -610,7 +610,7 @@ public function updateSelectedEmployees(Request $request){
 
 
         DB::update('update promotionall set grade = ? where empId = ?', [$gradeTo[$i]->toGrade, $empId[$i]->empId]);
-        DB::update('update promotionall set doLastPromotion = ? where empId = ?', [$promotionDate[$i]->promotionDueDate, $empId[$i]->empId]);
+        DB::update('update promotionall set doLastPromotion = ? where empId = ?', [$promotionDateTogether[$i]->promotionDueDate, $empId[$i]->empId]);
 
         //End PromotionAll End 
 
@@ -618,7 +618,7 @@ public function updateSelectedEmployees(Request $request){
 
         $promotionHistoryMaster = new PromotionHistoryMaster;
       
-         $promotionHistoryMaster->promotionDate = $promotionDate[$i]->promotionDueDate;
+         $promotionHistoryMaster->promotionDate = $promotionDateTogether[$i]->promotionDueDate;
          $promotionHistoryMaster->personalNo = $empId[$i]->empId;//new added
          $promotionHistoryMaster->gradeTo = $gradeTo[$i]->toGrade;
          $promotionHistoryMaster->newBasicPay = $newBasicPay[$i]->newBasic;

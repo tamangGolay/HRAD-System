@@ -53,16 +53,16 @@ div.table2 {
 
         @foreach ($increment as $increment)
         <div class = "col-md-6 col-lg-6 text-left">
-        <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->incrementYear}} / {{$increment->id}} </p> </div> 
-        <span> <p> Date: {{$increment->createdOn}} </p> </span>     
+        <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->oldBasic}} / {{$increment->id}} </p> </div> 
+        <span> <p> Date: {{$increment->oldBasic}} </p> </span>     
       </div>
 
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p>{{$increment->createdOn}}</p>
-                    <p>{{$increment->longOfficeName}}</p>
-                    <p>{{$increment->officeAddress}}</p>
+                    <p>{{$increment->oldBasic}}</p>
+                    <p>{{$increment->oldBasic}}</p>
+                    <p>{{$increment->oldBasic}}</p>
                 </div>
             </div>
             <br>
@@ -80,7 +80,7 @@ div.table2 {
             </div>
             <div class = "row">
                 <div class = "col-md-12 increment">
-                    <p> The final increment payout for the {{$increment->incrementMonth}} Cycle {{$increment->incrementYear}} is circulated for kind information and necessary action. </p>
+                    <p> The final increment payout for the {{$increment->oldBasic}} Cycle {{$increment->oldBasic}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>
 
@@ -107,7 +107,7 @@ div.table2 {
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
-                            <td class="col1"> {{$increment-> yearlyIncrement}} </td>
+                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>
                         </tr>
                         </tbody>

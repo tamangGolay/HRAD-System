@@ -115,13 +115,7 @@ div.table2 {
 
                       <tr>
                       @foreach ($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1">I have the pleasure to inform you that you have been promoted to {{$notesheetapprove->fromGrade}} in
-                               the <officeDetails> of the company.
-                              You are promoted with effect from <promotionDate>. 
-                              Please accept my hearty congratulations on your promotion.
-                              Your basic pay after the promotion shall be Nu {{$notesheetapprove->newBasic}}. 
-                              Other service conditions remain unchanged. 
-                              Yours sincerely,
+                        <th scope = "col" class="col1">{{$notesheetapprove->fromGrade}} 
 </th>
 @endforeach
  </tr>

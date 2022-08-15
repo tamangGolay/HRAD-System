@@ -53,10 +53,10 @@ div.table2 {
 
         @foreach ($increment as $increment)
         <div class = "col-md-6 text-center">
-        <div class="increment"><p> BPC/HRAD/HRMD-05/</p> {{$increment->incrementYear}} <p>/</p> {{$increment->id}}</div> 
+        <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->incrementYear}} / {{$increment->id}} </p> </div> 
             </div>
             <div class = "col-md-6 text-right">      
-                <div class="increment"><p> Date: </p>{{$increment->createdOn}}</div>
+                <div class="increment"><p> Date: {{$increment->createdOn}} </p></div>
             </div>
 
             <br>
@@ -82,8 +82,8 @@ div.table2 {
                 </div>
             </div>
             <div class = "row">
-                <div class = "col-md-12">
-                    <p> The final increment payout for the <incrementCycle> Cycle -<year> is circulated for kind information and necessary action. </p>
+                <div class = "col-md-12 increment">
+                    <p> The final increment payout for the {{$increment->incrementMonth}} Cycle {{$increment->incrementYear}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>
 
@@ -114,6 +114,32 @@ div.table2 {
                         </tr>
                         </tbody>
                   </table>
+                  <br>
+                  <div class = "row">
+                   <div class = "col-md-12 ">
+                    <p> You are requested to inform the employees under their jurisdiction of the same and also to maintain a copy of the same in their personal file for record. </p> </div>
+                </div> 
+                <br>
+                <div class = "row">
+                   <div class = "col-md-12 ">
+                    <p> Yours Sincerely </p></div>
+                </div>
+                <br><br>
+                <div class = "row">
+                   <div class = "col-md-12 increment">
+                    <p> {{$increment-> empId }} </p>
+                    <p> {{$increment-> empId }} </p>
+                    <p> General Manager-HR </p>
+                    </div>
+                </div>
+                <div class = "row">
+                   <div class = "col-md-12 increment">
+                    <p> Copy to: </p>
+                    <p> &nbsp; &nbsp; 1. {{$increment-> empId }}, PIAD, HRAD, BPC for further necessary action.  </p>
+                    <p> &nbsp; &nbsp; 2. All HR Admin, {{$increment-> empId }}, {{$increment-> empId }} for necessary action. (If available </p>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
         @endforeach

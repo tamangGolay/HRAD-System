@@ -18,13 +18,10 @@ class incrementReportController extends Controller
 
     $increment = Duelist::all()->where('id',$id);
 
-  
-    // $increment = Duelist::find($id);
-    // $increment = Duelist::find($id);
-    //For officeName in the report(pdf)
-    $name = DB::table('promotionduelist')
-     ->join('viewincrementorder','viewincrementorder.empId','=','promotionduelist.empId')
-       ->select('promotionduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
+
+    $name = DB::table('incrementduelist')
+     ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+       ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
         // ->where('notesheet.id',$id)
         ->first();
 

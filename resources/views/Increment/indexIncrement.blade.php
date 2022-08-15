@@ -54,23 +54,21 @@ div.table2 {
         @foreach ($increment as $increment)
         <div class = "col-md-6 col-lg-6 text-left">
         <div class="increment"><p> BPC/HRAD/HRMD-05/{{$increment->incrementYear}} / {{$increment->id}} </p> </div> 
-            </div>
-            <div class = "col-md-6 col-lg-6 text-right">      
-                <div class="increment"><p> Date: {{$increment->createdOn}} </p></div>
-            </div>
+        <span> <p> Date: {{$increment->createdOn}} </p> </span>     
+      </div>
 
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p>headDesignation</p>
-                    <p>longOfficeName</p>
-                    <p>OfficeAddress</p>
+                    <p>{{$increment->createdOn}}</p>
+                    <p>{{$increment->longOfficeName}}</p>
+                    <p>{{$increment->officeAddress}}</p>
                 </div>
             </div>
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p> <strong> Subject:</strong> <u>--Increment Order</u></p>
+                    <p> <strong> Subject:</strong> <u>Increment Order</u></p>
                 </div>
             </div>
             <br>
@@ -105,9 +103,9 @@ div.table2 {
 
                         <tbody>
                         <tr>
-                            <td class="col1"> {{$increment->id}} </td>
-                           <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
-                          <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
+                          <td class="col1"> {{$increment->id}} </td>
+                          <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
+                          <td class="col1"> {{$increment-> designation }}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> yearlyIncrement}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>

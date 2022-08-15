@@ -71,8 +71,8 @@ div.table2 {
                      
                       <tr>
                       @foreach($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1"> Gradefrom </th>
-                        <td class="col1"> {{$notesheetapprove->fromGrade}} </td>
+                        <th scope = "col" class="col1"> {{$notesheetapprove->fromGrade}} </th>
+                  
                         @endforeach 
                       </tr>
                       <tr>
@@ -103,34 +103,29 @@ div.table2 {
                 </div>
             </div> -->
         </div>
+
+
+
+
         <div class = "row">
             <div class = "table2 col-md-6">
                 <table width="79%">
-                    <caption>Subject:- Promotion Order</caption>
+                    <caption> Subject:- Promotion Order </caption>
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Dear {{$userName->empName}} </th>
-                        
+                        <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
+                        @foreach ($notesheetapprove as $notesheetapprove)
+                        <th scope = "col" class="col1"> I have the pleasure to inform you that you have been promoted to
+                        {{$notesheetapprove->fromGrade </th>
+                        @endforeach
+                        <th scope = "col" class="col1"> Remarks </th>
                       </tr>
                     </thead>
                     
-                        @foreach ($notesheetapprove as $notesheetapprove)
-                        <tr>
-                            <th  class="col11"> I have the pleasure to inform you that you have been promoted to {{$notesheetapprove->fromGrade}} in
-                              the <officeDetails> of the company.
-                              You are promoted with effect from <promotionDate>. 
-                              Please accept my hearty congratulations on your promotion.
-                              Your basic pay after the promotion shall be Nu {{$notesheetapprove->newBasic}}. 
-                              Other service conditions remain unchanged. 
-                              Yours sincerely,
-</th>
-                           
-                          
-                        </tr>
-                        @endforeach
-                      </table>
+                  </table>
             </div>
         </div>
+
     </div>
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

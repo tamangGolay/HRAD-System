@@ -85,7 +85,7 @@ class IncrementListsController extends Controller
             ->where('id',$request->countries_ids[$i])
             ->first();
             
-            $date = Carbon::now()->toDateString(); // y-m-d   
+            // y-m-d   
             $dateyear=date('Y');
             $datemonth=date('m');   
                                                     
@@ -210,98 +210,59 @@ class IncrementListsController extends Controller
             ->where('id',$request->update_ids[$i])
             ->first();
 
-            $newBasicz[$i] = DB::table('incrementduelist')    // table(incrementduelist)
+            $newBasic[$i] = DB::table('incrementduelist')    // table(incrementduelist)
             ->select('newBasic')
             ->where('id',$request->update_ids[$i])
             ->first();
 
             User::updateOrCreate(['empId' => $empId[$i]->empId],
-                                 ['basicPay' =>$newBasicz[$i]->newBasic]);
+                                 ['basicPay' =>$newBasic[$i]->newBasic]);
             
             //1. end for users table
 
-            $incrementDate [$i]= DB::table('incrementduelist')
+            $incrementDate[$i]= DB::table('incrementduelist')
             ->join('incrementall','incrementall.empId','=','incrementduelist.empId')
             ->select('incrementall.incrementDueDate')
             ->where('incrementduelist.id',$request->update_ids[$i])
-            ->first();
-
-            $fromGrade [$i]= DB::table('incrementduelist')              //incrementall n users  table
-            ->join('users', 'users.empId', '=', 'incrementduelist.empId')            
-            ->select('users.gradeId')
-            ->where('incrementduelist.id',$request->update_ids[$i])
-            ->first();
-
-            $toGrade [$i]= $fromGrade[$i]->gradeId;
-
-            $newIncrement [$i]= DB::table('payscalemaster')
-            ->select('payscalemaster.increment')
-            ->where('payscalemaster.id','=',$toGrade [$i])
-            ->first();
-
-            $newMinimum [$i]= DB::table('payscalemaster')
-            ->select('payscalemaster.low')
-            ->where('payscalemaster.id','=',$toGrade [$i])
-            ->first();
-
-            $oldMaximum [$i]= DB::table('payscalemaster')
-            ->select('payscalemaster.high')
-            ->where('payscalemaster.id','=',$fromGrade[$i]->gradeId)
-            ->first(); 
-
-            $tempBasic[$i] = DB::table('users')                 //users table
-            ->join('incrementduelist', 'incrementduelist.empId', '=', 'users.empId')
-            ->select('users.basicPay')
-            ->where('incrementduelist.id',$request->update_ids[$i])
-            ->first();
-
-            if($tempBasic[$i]->basicPay + $newIncrement[$i]->increment < $newMinimum[$i]->low) {
-                $newBasic[$i] = $tempBasic[$i]->basicPay;
-        
-            }
-            else{
-
-               if($tempBasic[$i]->basicPay >  $oldMaximum[$i]->high){
-                   $tempBasic[$i]->basicPay = $oldMaximum[$i]->high;                
-            }
-               $diffPay[$i] = $tempBasic[$i]->basicPay - $newMinimum[$i]->low;
-               $noOfIncrement[$i]= 1 + round($diffPay[$i]/$newIncrement[$i]->increment);
-               $newBasic[$i] = $newMinimum[$i]->low + $newIncrement[$i]->increment * $noOfIncrement[$i];
-            }
-
-            $updateIncrementHistory = new increment;
-            $updateIncrementHistory->personalNo = $empId[$i]->empId;
-            $updateIncrementHistory->increment = $newIncrement[$i]->increment;
-            $updateIncrementHistory->incrementDate = $incrementDate[$i]->incrementDueDate;
-            $updateIncrementHistory->newBasic = $newBasic[$i];
-            $updateIncrementHistory->save();  
-
-            //2. end for incremnethistroy master data
-
-            $newIncrementDate[$i] = DB::table('incrementall')
-            ->select('incrementDueDate',DB::raw('Year(incrementDueDate) AS year'), DB::raw('Month(incrementDueDate) AS month'))
-            ->where('id',$request->countries_ids[$i])
-            ->first();
-
-            $newDate[$i] = $newIncrementDate[$i]->year + 1; //for new year
-
-            //new date for incremental table for update
+            ->first();       
+            
             
 
+            $newIncrement[$i]= DB::table('incrementduelist')
+            ->select('yearlyIncrement')
+            ->where('id',$request->update_ids[$i])
+            ->first();  
+            
+            increment::updateOrCreate(['personalNo' => $empId[$i]->empId],
+                                    ['increment' => $newIncrement[$i]->yearlyIncrement,
+                                    'incrementDate' => $incrementDate[$i]->incrementDueDate,
+                                    'newBasic' => $newBasic[$i]->newBasic]);
+           
+            
+
+            //2. end for incrementhistroy master data
+
+            $newIncrementDate[$i] = DB::table('incrementduelist')
+            ->join('incrementall','incrementall.empId','=','incrementduelist.empId')
+            ->select('incrementall.incrementDueDate',DB::raw('Year(incrementDueDate) AS year'), DB::raw('Month(incrementDueDate) AS month'))
+            ->where('incrementduelist.id',$request->update_ids[$i])
+            ->first();
+            
+            $newYear[$i]=$newIncrementDate[$i]->year + 1;
+            $newDate[$i] = $newYear[$i] . '/' .$newIncrementDate[$i]->month.'/'. '01';         
+                   
+            // dd( $newDate[$i]);
+
             Incrementall::updateOrCreate(['empId' => $empId[$i]->empId],
-                                         ['lastIncrementDate' =>$incrementDate[$i]->incrementDueDate],
-                                         ['incrementDate' => $newDate[$i]],);
-
+                                         ['lastIncrementDate' =>$incrementDate[$i]->incrementDueDate,
+                                          'incrementDueDate' => $newDate[$i] ] );
                     }
-
-
     return response()
     ->json(['code'=>1, 'msg'=>'Successfull updated the data(s) into 3 tables: users, incrementhistroymaster,& incrementall']);
 
  
- }
-
-
+   }
+   
 }
 
 ?>

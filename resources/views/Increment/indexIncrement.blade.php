@@ -53,7 +53,7 @@ div.table2 {
 
         @foreach ($increment as $increment)
         <div class = "col-md-6 text-center">
-                <p> BPC/HRAD/HRMD-05/</p>
+        <div class="increment"><p> BPC/HRAD/HRMD-05/</p> {{$increment->incrementYear}} <p>/</p> {{$increment->id}}</div> 
             </div>
             <div class = "col-md-6 text-right">      
                 <div class="increment"><p> Date: </p>{{$increment->createdOn}}</div>

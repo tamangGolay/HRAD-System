@@ -629,4 +629,7 @@ Route::get('incrementlist', ['uses'=>'IncrementListsController@index', 'as'=>'in
 
 //checkbox for insert incremental to duelist table
 Route::post('insertDuelist','IncrementListsController@insertDuelist')->name('insert.duelist');
+
+//checkbox for update data to all master data from duelist table
+Route::post('updateDuelist','IncrementListsController@updateDuelist')->name('update.duelist');
  

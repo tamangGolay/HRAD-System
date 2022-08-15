@@ -9,7 +9,7 @@ class increment extends Model
     //
     protected $table = 'incrementhistorymaster';
 
-    protected $fillable = ['personalNo', 'incrementDate','oldBasic','newBasic','nextDue','remarks'];
+    protected $fillable = ['personalNo', 'incrementDate','increment','newBasic'];
     
     public $timestamps = false;
 }

@@ -5268,15 +5268,9 @@ if ($request->v == "employeeskillmap")  //form.csv
  if ($request->v == "incrementform")  //form.csv
  {  
     $usersemp = User::all(); 
-    $subCat = DB::table('incrementall')
-
-      ->join('users', 'users.empId', '=', 'incrementall.empId')
-   //   ->join('payscalemaster', 'payscalemaster.id', '=', 'incrementall.skillId')
-      //   ->select('employeeskillmap.id','users.empId','skillmaster.skillName','obtainedOn','expiryDate')
-      
-      ->select('incrementall.id','users.empId','users.basicPay','incrementall.incrementDueDate')
-      ; 
-
+    $subCat = DB::table('incrementalduelist')      
+   
+    ->select('*');    
    
   $rhtml = view('Increment.incrementList')->with(['usersemp' => $usersemp])->render();
   return response()

@@ -50,7 +50,7 @@ a {
             <tr>
             <th>
             <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
-            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn  >Insert into Duelist</button>
+            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Duelist</button>
             <th>Sl.No</th>   
             <th>Employee Id</th>
             <th>Last Increment Date</th>
@@ -206,7 +206,7 @@ $(document).on('change','input[name="country_checkbox"]', function(){
 
 function toggledeleteAllBtn(){
    if( $('input[name="country_checkbox"]:checked').length > 0 ){
-       $('button#deleteAllBtn').text('Insert into Duelist ('+$('input[name="country_checkbox"]:checked').length+')').removeClass('d-none');
+       $('button#deleteAllBtn').text('Generate Increment Duelist ('+$('input[name="country_checkbox"]:checked').length+')').removeClass('d-none');
    }else{
        $('button#deleteAllBtn').addClass('d-none');
    }
@@ -234,10 +234,10 @@ $(document).on('click','button#deleteAllBtn', function(){
    if(checkedCountries.length > 0){
        swal.fire({
            title:'Are you sure?',
-           html:'You want to insert <b>('+checkedCountries.length+')</b> data into Duelist table',                       
+           html:'You want to generate <b>('+checkedCountries.length+')</b> increment Duelist records',                       
            showCancelButton:true,
            showCloseButton:true,
-           confirmButtonText:'Yes, Insert',
+           confirmButtonText:'Yes, Generate',
            cancelButtonText:'Cancel',
            confirmButtonColor:'#04b976',
            cancelButtonColor:'#d33',

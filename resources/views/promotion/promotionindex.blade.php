@@ -114,7 +114,10 @@ div.table2 {
                     <thead>
                       <tr>
                         <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
-                        @foreach ($notesheetapprove as $notesheetapprove)
+                        
+</tr>
+                <tr>
+                  @foreach ($notesheetapprove as $notesheetapprove)
                        
                    <th scope = "col" class="col1"> I have the pleasure to inform you that you {{$notesheetapprove->fromGrade}}  </th>
                    @endforeach

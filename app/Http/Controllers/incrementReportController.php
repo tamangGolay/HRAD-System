@@ -20,9 +20,9 @@ class incrementReportController extends Controller
 
 
     $name = DB::table('incrementduelist')
-     ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
-       ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
-        // ->where('notesheet.id',$id)
+         ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+          ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
+        ->where('incrementduelist.id',$id)
         ->first();
 
 

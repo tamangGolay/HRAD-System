@@ -111,7 +111,7 @@ div.table2 {
         <div class = "row">
             <div class = "table2 col-md-6">
                 <table width="79%">
-                    <caption> Subject:- Promotion Order </caption>
+                    <h4> Subject:- Promotion Order </h4>
                     <thead>
                       <tr>
                         <th scope = "col" class="col1"> Dear {{$promotion->empName}}  </th>
@@ -125,6 +125,9 @@ div.table2 {
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
                               {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
+</th>
+<tr>
+  <th>
                               Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
                               Other service conditions remain unchanged.
 
@@ -137,7 +140,7 @@ div.table2 {
                         4)	Concerned HR Admin.
 
 
-
+</th>
                            
                         </tr>
                    

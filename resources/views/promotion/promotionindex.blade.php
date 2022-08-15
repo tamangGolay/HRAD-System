@@ -115,13 +115,19 @@ div.table2 {
                       <tr>
                         <th scope = "col" class="col1"> Dear {{$userName->empName}}  </th>
                         @foreach ($notesheetapprove as $notesheetapprove)
-                        <th scope = "col" class="col1"> I have the pleasure to inform you that you have been promoted to
-                        {{$notesheetapprove->fromGrade </th>
-                        @endforeach
-                        <th scope = "col" class="col1"> I have the pleasure to  </th>
+                       
                       </tr>
                     </thead>
-                    
+                    <tbody>
+                        @foreach ($notesheetapprove as $approve)
+                        <tr>
+                            <th  class="col1"> I have the pleasure to inform you that you have been promoted to
+                        {{$notesheetapprove->fromGrade}} </th>
+                            
+                          
+                        </tr>
+                        @endforeach
+                    </tbody>
                   </table>
             </div>
         </div>

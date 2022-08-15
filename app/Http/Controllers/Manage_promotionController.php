@@ -30,7 +30,7 @@ class Manage_promotionController extends Controller
 //   'promotionhistorymaster.gradeTo',
 //      'promotionhistorymaster.empId')
 
-->select('designationmaster.id as oldDesignation','d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
+->select('promotionhistorymaster.newDesignation','designationmaster.id as oldDesignation','d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
   'promotionhistorymaster.gradeTo','promotionhistorymaster.id','designationmaster.desisNameLong')
    ->where('promotionhistorymaster.status',0);
         

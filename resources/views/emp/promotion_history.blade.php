@@ -188,7 +188,7 @@ a {
         //   $('#name').val(data.personalNo); //input id,database
         //   $('#number').val(data.promotionDate);
         //   $('#to').val(data.gradeTo);
-          $('#newDesignation').val(data.oldDesignation);
+          $('#newDesignation').val(data.newDesignation);
 
 
           

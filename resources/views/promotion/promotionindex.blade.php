@@ -54,9 +54,10 @@ div.table2 {
 
         
             <div class = "col-md-8">
-          
+            @foreach($notesheetapprove as $notesheetapprove)
+            <div class="notesheet">{{$notesheetapprove->createdOn}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$notesheetapprove->id}} </h2>
-
+                @endforeach 
             </div>
 
             <div class = "row">
@@ -69,11 +70,12 @@ div.table2 {
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
-
+                     
                       <tr>
+                      @foreach($notesheetapprove as $notesheetapprove)
                         <th scope = "col" class="col1"> Gradefrom </th>
                         <td class="col1"> {{$notesheetapprove->fromGrade}} </td>
-
+                        @endforeach 
                       </tr>
                       <tr>
                         <th scope = "col" class="col1"> office </th>

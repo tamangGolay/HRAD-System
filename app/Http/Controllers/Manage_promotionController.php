@@ -6,6 +6,7 @@ use App\promotion;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use App\PromotionHistoryMaster;
         
 class Manage_promotionController extends Controller
 {
@@ -19,11 +20,19 @@ class Manage_promotionController extends Controller
 
         $promotion = DB::table('promotionhistorymaster')      
 
-        ->join('users', 'users.id', '=', 'promotionhistorymaster.personalNo')
-     ->select('promotionhistorymaster.id','promotionhistorymaster.promotionDate',
-     'promotionhistorymaster.gradeFrom','promotionhistorymaster.gradeTo',
-     'promotionhistorymaster.nextDue', 'promotionhistorymaster.remarks','users.empId')
-   ->where('promotionhistorymaster.status','0');
+        ->join('designationmaster', 'designationmaster.id', '=', 'promotionhistorymaster.oldDesignation')
+        ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionhistorymaster.gradeTo')
+        ->join('designationmaster as d', 'd.id', '=', 'promotionhistorymaster.newDesignation')
+
+        //   'promotionhistorymaster.gradeTo',
+//      'users.empId')
+// ->select('promotionhistorymaster.id','promotionhistorymaster.promotionDate',
+//   'promotionhistorymaster.gradeTo',
+//      'promotionhistorymaster.empId')
+
+->select('d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
+  'promotionhistorymaster.gradeTo','promotionhistorymaster.id','designationmaster.desisNameLong')
+   ->where('promotionhistorymaster.status',0);
         
         if ($request->ajax()) {
             $data = $promotion;
@@ -32,7 +41,7 @@ class Manage_promotionController extends Controller
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteVehicle" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteVehicle">Delete</a>';
+                        //    $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteVehicle" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteVehicle">Delete</a>';
 
 
 
@@ -55,14 +64,12 @@ class Manage_promotionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->id);
-        promotion::updateOrCreate(['personalNo' => $request->name],  ['promotionDate' => $request->number,  'gradeFrom' => $request->from,
-        'gradeTo' => $request->to, 'nextDue' => $request->next, 'remarks' => $request->remarks
-    
-      
-    ]);        
+        // dd($request->all());
+        PromotionHistoryMaster::updateOrCreate(['id' => $request->id],  
+        ['newDesignation' => $request->newDesignation
+        ]);        
    
-        return response()->json(['success'=>'Promotion details saved successfully.']);
+        return response()->json(['success'=>'Promotion details updated successfully.']);
     }
     /**
      * Show the form for editing the specified resource.

@@ -413,8 +413,8 @@ Route::get('/getpromotionAllList',[CountriesController::class, 'getCountriesList
 Route::post('/getCountryDetails',[CountriesController::class, 'getCountryDetails'])->name('get.country.details');
 Route::post('/updateCountryDetails',[CountriesController::class, 'updateCountryDetails'])->name('update.country.details');
 Route::post('/deleteCountry',[CountriesController::class,'deleteCountry'])->name('delete.country');
-Route::post('/insertSelectedCountries',[PromotionAllListController::class,'insertSelectedCountries'])->name('insert.selected.promotionAll');
-
+Route::post('/insertSelectedEmployees',[PromotionAllListController::class,'insertSelectedEmployees'])->name('insert.selected.promotionAll');
+Route::post('/updateSelectedEmployees',[PromotionAllListController::class,'updateSelectedEmployees'])->name('update.selected.promotionAll');
 //golay end
 
 //start sonam 

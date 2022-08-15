@@ -46,9 +46,10 @@ div.table2 {
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
 
-        <div class = "col-md-6 col-lg-6 text-left">
-               <span> <p> Date: {{$increment->createdOn}} </p> </span>     
-      </div>
+        <div class = "row">
+            <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
+            <span class="col-sm-4"> Date: {{$increment->createdOn}}</span>            
+        </div>
 
             <br>
             <div class = "row">

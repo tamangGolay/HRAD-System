@@ -62,9 +62,12 @@ class incrementReportController extends Controller
 
 
     $increment = DB::table('viewincrementorder')
-        //  ->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+         //->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
+      ->join('incrementhistorymaster','incrementhistorymaster.empId','=','viewincrementorder.empId')
+
+
           // ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
-            ->select('viewincrementorder.*')	
+            ->select('viewincrementorder.*','incrementhistorymaster.createdOn')	
 
         // ->where('incrementduelist.id',$id)
         ->first();          

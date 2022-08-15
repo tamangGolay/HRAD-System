@@ -47,7 +47,7 @@ div.table2 {
         <br><br><br>
 
         <div class = "col-md-6 col-lg-6 text-left">
-               <span> <p> Date: {{$increment->empId}} </p> </span>     
+               <span> <p> Date: {{$increment->createdOn}} </p> </span>     
       </div>
 
             <br>

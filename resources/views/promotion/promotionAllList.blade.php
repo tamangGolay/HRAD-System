@@ -15,11 +15,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 
-    <!-- <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"> --> -->
+    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sweetalert2/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}"> 
 
 </head>
 
@@ -42,7 +42,7 @@
         <thead>
 
             <tr>
-                <th><button class="btn btn-sm btn-success d-none" id="insertAllBtn">Insert</button>
+                <th><button class="btn btn-sm btn-success d-none" id="updateAllBtn">update</button>
                 <input type="checkbox" class="" id="checkbox" name="main_checkbox"><label></label></th>
                 <th>Sl No</th>
                 <th>Emp Id</th>
@@ -138,7 +138,7 @@
                 }).on('draw', function(){
                     $('input[name="checkboxColumn"]').each(function(){this.checked = false;});
                     $('input[name="main_checkbox"]').prop('checked', false);
-                    $('button#insertAllBtn').addClass('d-none');
+                    $('button#updateAllBtn').addClass('d-none');
                 });
 
                 $(document).on('click','#editCountryBtn', function(){
@@ -191,7 +191,7 @@
 
                     swal.fire({
                          title:'Are you sure?',
-                         html:'You want to <b>insert</b> the data',
+                         html:'You want to <b>update</b> the data',
                          showCancelButton:true,
                          showCloseButton:true,
                          cancelButtonText:'Cancel',
@@ -228,7 +228,7 @@
                          this.checked = false;
                      });
                   }
-                  toggleinsertAllBtn();
+                  toggleupdateAllBtn();
            });
 
            $(document).on('change','input[name="checkboxColumn"]', function(){
@@ -238,26 +238,26 @@
                }else{
                    $('input[name="main_checkbox"]').prop('checked', false);
                }
-               toggleinsertAllBtn();
+               toggleupdateAllBtn();
            });
 
 
-           function toggleinsertAllBtn(){
+           function toggleupdateAllBtn(){
                if( $('input[name="checkboxColumn"]:checked').length > 0 ){
-                   $('button#insertAllBtn').text('Insert ('+$('input[name="checkboxColumn"]:checked').length+')').removeClass('d-none');
+                   $('button#updateAllBtn').text('update ('+$('input[name="checkboxColumn"]:checked').length+')').removeClass('d-none');
                }else{
-                   $('button#insertAllBtn').addClass('d-none');
+                   $('button#updateAllBtn').addClass('d-none');
                }
            }
 
 
-           $(document).on('click','button#insertAllBtn', function(){
+           $(document).on('click','button#updateAllBtn', function(){
                 $.ajaxSetup({
                     headers:{
                  'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
                 }
                 });
-                $('button#insertAllBtn').addClass('d-none');
+                $('button#updateAllBtn').addClass('d-none');
                 $('#checkbox').addClass('d-none');
 
 
@@ -266,11 +266,11 @@
                    checkedpromotionAll.push($(this).data('id'));
                });
 
-               var url = '{{ route("insert.selected.promotionAll") }}';
+               var url = '{{ route("update.selected.promotionAll") }}';
                if(checkedpromotionAll.length > 0){
                    swal.fire({
                        title:'Are you sure?',
-                       html:'You want to insert <b>('+checkedpromotionAll.length+')</b> data',
+                       html:'You want to update <b>('+checkedpromotionAll.length+')</b> data',
                        showCancelButton:true,
                        showCloseButton:true,
                        confirmButtonText:'Yes',
@@ -344,7 +344,7 @@
     }).on('draw', function(){
                     $('input[name="checkboxColumn"]').each(function(){this.checked = false;});
                     $('input[name="main_checkbox"]').prop('checked', false);
-                    $('button#insertAllBtn').addClass('d-none');
+                    $('button#updateAllBtn').addClass('d-none');
     });
 
    

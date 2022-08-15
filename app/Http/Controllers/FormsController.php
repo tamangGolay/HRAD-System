@@ -4406,13 +4406,10 @@ if ($request->v == "notesheetReport")
 if ($request->v == "promotionReport")
 {
     //  $notesheet = notesheetRequest::all();
-    $promotion = DB::table('promotionduelist')
-    ->join('users','users.empId','=','promotionduelist.empId')
-    ->join('officedetails','officedetails.id','=','promotionduelist.office')   
-    ->select('promotionduelist.*','users.empName','officedetails.longOfficeName')  
-        ->where('promotionduelist.status','=','Approved')
-        ->latest('promotionduelist.id')
-        ->get();
+    $promotion = DB::table('viewpromotionorder')
+    ->select('*')  
+     ->latest('viewpromotionorder.id')
+     ->get();
 
     $rhtml = view('promotion.promotionReport')->with(['promotion' => $promotion])->render();
     return response()

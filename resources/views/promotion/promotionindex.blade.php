@@ -54,9 +54,9 @@ div.table2 {
 
         
             <div class = "col-md-8">
-            @foreach($notesheetapprove as $notesheetapprove)
-            <div class="notesheet">{{$notesheetapprove->createdOn}}</div>
-                <h2> BPC/HRA/HR-04/<year>/{{$notesheetapprove->id}} </h2>
+            @foreach($promotion as $promotion)
+            <div class="notesheet">{{$promotion->createdOn}}</div>
+                <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
                 @endforeach 
             </div>
 
@@ -120,8 +120,7 @@ div.table2 {
                     </thead>
                     <tbody>
                         
-                'empId', 'empName','oldDesignation','newDesignation',
-    'officeName','officeAddress','officeDetails','newGrade','promotionDate','newBasic'
+               
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
                               {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 

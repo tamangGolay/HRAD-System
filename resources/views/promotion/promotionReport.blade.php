@@ -58,7 +58,7 @@ h1 {
                             <td class="col1"> {{$promotion->id}} </td>
                            <td class="col1"> {{$promotion-> empId}} </td>
                            <td class="col1"> {{$promotion-> empName}} </td>
-                            <td class="col1"> {{$promotion-> longOfficeName}} </td>
+                            <td class="col1"> {{$promotion->officeName}} </td>
                             <td class="col2"><a href="promotionReport/{{$promotion->id}}" class="btn btn-success">Download</a> </td>
 
 

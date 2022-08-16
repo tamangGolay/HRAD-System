@@ -62,6 +62,8 @@ class incrementReportController extends Controller
 
   public function createIncrementReport (Request $request){
 
+    dd($request->all());
+
     //  $ids = $request->update_ids; 
      $ids = count($request->update_ids);
     //  dd($ids);

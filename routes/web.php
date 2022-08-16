@@ -106,8 +106,6 @@ Route::post('/conferencebook','ConferenceController@conference')->name('conferen
 Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 'createPDF'])->name('notesheet.pdf');
 // Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
-//promotionreport
-
 Route::get('/promotionReport/{id}', [App\Http\Controllers\PdfController::class, 'createpromotionPDF'])->name('notesheet.pdf');
 
 //guesthouse leki
@@ -586,7 +584,7 @@ Route::resource('refundReport', 'RefundReportController');//refund report
 //welfare payment report
 Route::resource('paymentreport', 'PaymentReportController');
 
-//welfare refund
+//request notesheet
 Route::post('Request_notesheet','NotesheetController@Request_notesheet')->name('Request_notesheet');
 
 //notesheet route to view
@@ -648,3 +646,5 @@ Route::get('createIncrementReport','incrementReportController@createIncrementRep
 Route::get('/download','incrementReportController@createIncrementReport');
 
  
+//Transfer Request
+Route::post('Request_transfer','TransferRequestController@Request_transfer')->name('Request_transfer');

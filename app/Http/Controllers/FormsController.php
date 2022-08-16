@@ -62,6 +62,7 @@ use App\promotionAll;
 use App\Promotionduelist;
 use App\promotionRequest;
 use App\IncrementView;
+use App\empSupervisor;
 
 
 
@@ -5685,8 +5686,32 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }//end
 
+
+//Transfer Request
+if ($request->v == "transferRequest")  //form.csv
+{    
+   $userdeta =empSupervisor::all();   //DISTINCT 
+   $officedeta = Officedetails::all();
+   $officedetas = Officedetails::all();
+
+  
+   $b= DB::table('transferrequest') 
+   ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
+   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')
+   ->join('employeesupervisor', 'employeesupervisor.employee', '=', 'transferrequest.createdBy')    
+   ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.*')
+   ->get();
+
+ $rhtml = view('Transfer.transferRequest')->with(['userdeta' => $userdeta,'officedeta' => $officedeta,'officedetas' => $officedetas])->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
 }
 }
- 
 
  

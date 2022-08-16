@@ -46,6 +46,7 @@ class PdfController extends Controller
       ->select('payscalemaster.grade') 
      ->get();
   
+     
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
         'grade'=>$grade));
           return $pdf->download ('notesheet.pdf');

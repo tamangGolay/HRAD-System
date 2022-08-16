@@ -50,7 +50,7 @@ h4{
         
             <div class = "col-md-8">
             @foreach($promotion as $promotion)
-            <div class="notesheet">{{$promotion->date}}</div>
+            <div class="notesheet">{{$promotion->createdOn}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
                 @endforeach 
             </div>

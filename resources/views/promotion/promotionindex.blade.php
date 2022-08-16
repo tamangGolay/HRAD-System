@@ -130,19 +130,21 @@ h4{
                                         </tr>
 <br>
 <br>
+<br>
+<br>
                                                 <tr>
                                                  <th>
                               Copies to:
                         1)	Director, <serviceName>, BPC, Thimphu for kind information.
-                        2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
-                        3)	<designation of officeHead>, <longOfficeName>, BPC, <officeAddress> for kind information.
-                        4)	Concerned HR Admin.
-
+                       <br> 2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
+                        <br>3)	<designation of officeHead>, <longOfficeName>, BPC, <officeAddress> for kind information.
+                        <br>4)	Concerned HR Admin.
+<br>
 
                                                       </th>
                            
                         </tr>
-                   
+                        <img src="{{asset('/cd/images/promofooter.jpg')}}" width="100%" height="40px">
                     </tbody>
                   </table>
             </div>

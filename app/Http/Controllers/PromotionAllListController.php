@@ -623,7 +623,7 @@ public function updateSelectedEmployees(Request $request){
          $promotionHistoryMaster->gradeTo = $gradeTo[$i]->toGrade;
          $promotionHistoryMaster->newBasicPay = $newBasicPay[$i]->newBasic;
          $promotionHistoryMaster->oldDesignation = $oldDesignation[$i]->designationId;
-        //  $promotionHistoryMaster->newBasic = $newBasic[$i];
+         $promotionHistoryMaster->newBasic = $oldDesignation[$i]->designationId;
         //  $promotionHistoryMaster->office = $office[$i]->office;
          $promotionHistoryMaster->save();
          //PromotionHistoryMaster End

@@ -48,8 +48,8 @@ div.table2 {
         <br><br><br>
 
         <div class = "row">
-            <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
-            <div class="col-sm-4">{{$increment1->incrementDate}}</div>            
+            <div class="col-sm-8 col-lg-8">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
+            <div class="col-sm-4 col-lg-2">{{$increment1->incrementDate}}</div>            
         </div>
 
             <br>
@@ -78,11 +78,10 @@ div.table2 {
             </div>
             <div class = "row">
                 <div class = "col-md-12 increment1">
+                <p> The final increment payout for the {{$increment1->incrementCycle}} Cycle {{$increment1->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>
-
-       
-
+        
             <div class = "row">
             <div class = "col-md-12">
               <div class="card-body table-responsive p-0">
@@ -91,8 +90,8 @@ div.table2 {
                 <thead>
                             <tr>
                             <th scope="col">SN</th>
-                            <th scope="col">Name and Emp Id</th>
-                            <th scope="col">Designation and Grade</th>
+                            <th scope="col">Name(Employee Id)</th>
+                            <th scope="col">Designation(Grade)</th>
                             <th scope="col">Old Basic</th>
                             <th scope="col">increment</th>
                             <th scope="col">New Basic</th>

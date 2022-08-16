@@ -5,7 +5,7 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Increment Order </title>
+    <title> increment Order </title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -42,28 +42,31 @@ div.table2 {
 <body>
 
   <div class = "container-fluid mt-4">
+
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
-        @foreach ($increment as $increment)
 
         <div class = "row">
-            <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
-            <div class="col-sm-4">{{$increment->createdOn}}</div>            
+            <div class="col-sm-8">BPC/HRAD/HRMD-05/{$increment1->incrementDate} / {$increment1->id}</div>
+            <div class="col-sm-4">{$increment1->createdOn}</div>            
         </div>
 
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p>{{$increment->empName}}</p>
-                    <p>{{$increment->longOfficeName}}</p>
-                    <p>{{$increment->officeAddress}}</p>
+
+                    <p>{$increment1->empName}</p>
+                    <p>{$increment1->longOfficeName}</p>
+                    <p>{$increment1->officeAddress}</p>
+
+
                 </div>
             </div>
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p> <strong> Subject:</strong> <u>Increment Order</u></p>
+                    <p> <strong> Subject:</strong> <u>increment1 Order</u></p>
                 </div>
             </div>
             <br>
@@ -74,7 +77,7 @@ div.table2 {
                 </div>
             </div>
             <div class = "row">
-                <div class = "col-md-12 increment">
+                <div class = "col-md-12 increment1">
                 </div>
             </div>
 
@@ -84,27 +87,32 @@ div.table2 {
             <div class = "col-md-12">
               <div class="card-body table-responsive p-0">
                 <table id="table5" class="table table-hover table-striped table-bordered">
-                    <thead>
+
+                <thead>
                             <tr>
                             <th scope="col">SN</th>
                             <th scope="col">Name and Emp Id</th>
                             <th scope="col">Designation and Grade</th>
                             <th scope="col">Old Basic</th>
-                            <th scope="col">Increment</th>
+                            <th scope="col">increment</th>
                             <th scope="col">New Basic</th>
                             </tr>
                         </thead>
 
                         <tbody>
                         <tr>
+                        @foreach ($increment as $increment)
+
                           <td class="col1"> {{$increment->id}} </td>
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
-                            <td class="col1"> {{$increment-> increment}} </td>
+                            <td class="col1"> {{$increment-> increment1}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>
                         </tr>
                         </tbody>
+                        @endforeach
+
                   </table>
                   <br>
                   <div class = "row">
@@ -117,29 +125,35 @@ div.table2 {
                     <p> Yours Sincerely </p></div>
                 </div>
                 <br><br>
+
                 <div class = "row">
-                   <div class = "col-md-12 increment">
-                    <p> {{$increment-> empId }} </p>
-                    <p> {{$increment-> empId }} </p>
+                   <div class = "col-md-12 increment1">
+                    <p> {$increment1-> empId } </p>
+                    <p> {$increment1-> empId } </p>
                     <p> General Manager-HR </p>
                     </div>
                 </div> <br><br>
                 <br>                <div class = "row">
-                   <div class = "col-md-12 increment">
+                   <div class = "col-md-12 increment1">
                     <p> Copy to: </p>
-                    <p> &nbsp; &nbsp; 1. {{$increment-> empId }}, PIAD, HRAD, BPC for further necessary action.  </p>
-                    <p> &nbsp; &nbsp; 2. All HR Admin, {{$increment-> empId }}, {{$increment-> empId }} for necessary action. (If available </p>
+                    <p> &nbsp; &nbsp; 1. {$increment1-> empId }, PIAD, HRAD, BPC for further necessary action.  </p>
+                    <p> &nbsp; &nbsp; 2. All HR Admin, {$increment1-> empId }, {$increment1-> empId } for necessary action. (If available </p>
                     </div>
                 </div>
             </div>
             </div>
         </div>
-      @endforeach
+
     </div>
   </div>
   <div class = "row">
-        <img src="{{asset('/cd/images/footer.jpg')}}" width="100%" height="100px">
+        <!-- <img src="{{asset('/cd/images/footer.jpg')}}" width="40%" height="100px"> -->
+        <img src="{{asset('/cd/images/footer.png')}}" width="100%" height="40px">
+
 </div>
+<div style="page-break-before:always;">
+
+
       
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

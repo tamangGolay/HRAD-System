@@ -69,12 +69,24 @@ class incrementReportController extends Controller
     //  $ids = count($request->update_ids);
     // //  dd($ids);
     // for($i = 0; $i < $ids; ++$i){
+
+      // $products = Product::where('user_id', $user_id->id)->get();
+
   
-      $increment = IncrementView::all()
-                      ->where('id',$id);      
+       
+                      
+      $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
+     ->select('officeId')
+     ->where('id',$id)
+     ->first();
+
+     $increment1 = IncrementView::where('officeId', $officeId->officeId)->get(); 
+
+    $increment = IncrementView::all()
+                      ->where('officeId', $officeId->officeId); 
                           
                        
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,'increment1'=>$increment1));
           return $pdf->download ('increment.pdf');
       }
     }

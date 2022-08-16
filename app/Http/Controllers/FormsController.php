@@ -4364,9 +4364,10 @@ if ($request->v == "user_profile")
 if ($request->v == "incrementReport")
 {
       $increment = IncrementView::all();
+
     $increment = DB::table('viewincrementorder')
-    // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
-      ->select('viewincrementorder.*')
+    ->join('officedetails','officedetails.id','=','viewincrementorder.officeId')
+      ->select('viewincrementorder.*','officedetails.officeDetails')
 
     // ->select('incrementduelist.*','users.empName')
     // ->where('incrementduelist.status','=','Approved')

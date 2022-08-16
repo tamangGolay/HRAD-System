@@ -41,6 +41,7 @@ h1 {
                             <th scope="col">Old Basic</th>
                             <!-- <th scope="col">Increment</th> -->
                             <th scope="col">New Basic</th>
+                            <th scope="col">Office Address</th>
                             <th scope="col">Action 
                             <!-- <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label> -->
                             <!-- <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Order</button> -->
@@ -57,10 +58,12 @@ h1 {
                            <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
                             <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
 
-                           <!-- <td class="col1"> {{$increment-> empId }} </td> -->
+                           
                             <td class="col1"> {{$increment-> oldBasic}} </td>
                             
                             <td class="col1"> {{$increment-> newBasic}} </td>
+                            <td class="col1"> {{$increment-> officeDetails}} </td>
+
                             <td class="col2">
                                  <a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a> 
                                  

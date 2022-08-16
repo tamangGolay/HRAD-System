@@ -52,7 +52,6 @@ h4{
             @foreach($promotion as $promotion)
             <div class="notesheet">{{$promotion->date}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
-                @endforeach 
             </div>
 <br>
  <div class = "row">
@@ -147,6 +146,8 @@ h4{
                         <img src="{{asset('/cd/images/promofooter.png')}}" width="100%" height="40px">
                     </tbody>
                   </table>
+                  @endforeach 
+
             </div>
         </div>
 

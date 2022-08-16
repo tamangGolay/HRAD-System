@@ -40,6 +40,7 @@ h4{
 </style>
 </head>
 <body>
+@foreach($promotion as $promotion)
 
     <div class = "container mt-4">
         <div class = "row">
@@ -49,7 +50,6 @@ h4{
 
         
             <div class = "col-md-8">
-            @foreach($promotion as $promotion)
             <div class="notesheet">{{$promotion->date}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
             </div>
@@ -146,12 +146,15 @@ h4{
                         <img src="{{asset('/cd/images/promofooter.png')}}" width="100%" height="40px">
                     </tbody>
                   </table>
-                  @endforeach 
 
             </div>
         </div>
 
     </div>
+    <div style="page-break-before:always;">
+
+    @endforeach 
+
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -4408,7 +4408,7 @@ if ($request->v == "promotionReport")
 {
     //  $notesheet = notesheetRequest::all();
     $promotion = DB::table('viewpromotionorder')
-    ->select('viewpromotionorder.*','populateReportingStructure(empId)')  
+    ->select('*')  
      ->latest('viewpromotionorder.id')
      ->get();
 

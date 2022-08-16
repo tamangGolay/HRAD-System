@@ -151,7 +151,6 @@ div.table2 {
         <img src="{{asset('/cd/images/footer.png')}}" width="100%" height="40px">
 
 </div>
-<div style="page-break-before:always;">
 
 
       

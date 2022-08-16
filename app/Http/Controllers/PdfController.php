@@ -40,10 +40,15 @@ class PdfController extends Controller
     public function createpromotionPDF ($id) {
 
 
-      $promotion = promotionorder::all()->where('id',$id);
+      $officeId = DB::table('viewpromotionorder')
+      ->select('officeId') 
+      ->where('id',$id)
+     ->first();
+
+      $promotion = promotionorder::all()->where('officeId',$officeId->officeId);
       
   
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion));
-          return $pdf->download ('notesheet.pdf');
+          return $pdf->download ('promotion.pdf');
       }
 }

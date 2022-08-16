@@ -31,7 +31,7 @@ h1 {
     <div class = "container mt-4">
         <div class = "row">
             <div class = "col-md-8 text-center">
-                <h1> NoteSheet Report</h1>
+                <h1> NoteSheet ReportS</h1>
             </div>
           
             <br><br><br>

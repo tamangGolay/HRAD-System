@@ -50,10 +50,11 @@ a {
             <th scope="col">Old Basic</th>
             <th scope="col">Increment</th>
             <th scope="col">New Basic</th>
-            <th scope="col">Action</th>
-            <!-- <th><input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
-            <button class="btn btn-sm btn-success d-none" id=updateAllBtn >Update data in master data</button>
-            </th> -->
+            <th scope="col">Action
+            <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
+            <button class="btn btn-sm btn-success d-none" id=updateAllBtn >download</button>
+            </th>
+
             </tr>
         </thead>
         <tbody>
@@ -103,7 +104,7 @@ a {
 
            function toggleupdateAllBtn(){
                if( $('input[name="update_checkbox"]:checked').length > 0 ){
-                   $('button#updateAllBtn').text('Update data('+$('input[name="update_checkbox"]:checked').length+')').removeClass('d-none');
+                   $('button#updateAllBtn').text('Download('+$('input[name="update_checkbox"]:checked').length+')').removeClass('d-none');
                }else{
                    $('button#updateAllBtn').addClass('d-none');
                }
@@ -126,15 +127,16 @@ a {
                    
                });               
 
-               var url = '{{ route("update.duelist") }}';            
+               var url = '{{ route("download.duelist") }}';  
+               type: "GET"      
             
                if(updateDuelist.length > 0){
                    swal.fire({
                        title:'Are you sure?',
-                       html:'You want to Update <b>('+updateDuelist.length+')</b> data in master data records',                       
+                       html:'You want to Download <b>('+updateDuelist.length+')</b> employess incrment order',                       
                        showCancelButton:true,
                        showCloseButton:true,
-                       confirmButtonText:'Yes, Update',
+                       confirmButtonText:'Yes, Download',
                        cancelButtonText:'Cancel',
                        confirmButtonColor:'#04b976',
                        cancelButtonColor:'#d33',
@@ -142,7 +144,7 @@ a {
                        allowOutsideClick:false
                    }).then(function(result){
                        if(result.value){
-                           $.post(url,{update_ids:updateDuelist},function(data){
+                           $.get(url,{update_ids:updateDuelist},function(data){
                               if(data.code == 1){                               
                 
                             // window.location.reload();                            
@@ -195,7 +197,7 @@ a {
            {data: 'newBasic', 
            name: 'newBasic'},
 
-           {data: 'action', name: 'action', orderable: false, searchable: false},
+           {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                
 
        ]

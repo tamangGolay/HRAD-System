@@ -41,39 +41,43 @@ class incrementReportController extends Controller
               //              return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
               //          })
 
-              ->addColumn('action', function($row){
+            //   ->addColumn('action', function($row){
 
-              $btn = '<a href="incrementReport/{{$increment->id}}" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Download</a>&nbsp;&nbsp;&nbsp;&nbsp';
-              // $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteraincoat" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteraincoat">Delete</a>';
+            //   $btn = '<a href="incrementReport/{{$increment->id}}" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Download</a>&nbsp;&nbsp;&nbsp;&nbsp';
+            //   // $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteraincoat" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteraincoat">Delete</a>';
 
-              return $btn;
-            })
-                       ->rawColumns(['action'])
-                       ->make(true);
-                     }    
+            //   return $btn;
+            // })
+
+            ->addColumn('checkbox', function($row){                                                      
+              return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
+          })
+
+          ->rawColumns(['action','checkbox'])
+          ->make(true);
+             }   
    return view('Increment.incrementsReport');
 
   }
 
-    public function createIncrementReport ($id) {
+  public function createIncrementReport (Request $request){
 
-
-    $increment = IncrementView::all()->where('id',$id);
+    //  $ids = $request->update_ids; 
+     $ids = count($request->update_ids);
+    //  dd($ids);
+    for($i = 0; $i < $ids; ++$i){
+  
+      $increment = IncrementView::all()->where('id',$request->update_ids[$i]);
       
-    $increment = DB::table('viewincrementorder')
-
-         //->join('viewincrementorder','viewincrementorder.empId','=','incrementduelist.empId')
-            ->join('incrementhistorymaster','incrementhistorymaster.personalNo','=','viewincrementorder.empId')
-            
-          // ->select('incrementduelist.*','viewincrementorder.designation','viewincrementorder.grade','viewincrementorder.empName')	
-            ->select('viewincrementorder.*','incrementhistorymaster.createdOn',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))	
-
-        // ->where('incrementduelist.id',$id)
-        ->first();          
-
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
-        return $pdf->download ('increment.pdf');
-    }
-}
-
-// $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'date'=>$date,'increment'=>$increment,'notesheetapprove'=>$notesheetapprove));
+      $increment = DB::table('viewincrementorder')
+          
+                       ->select('viewincrementorder.*')	
+  
+                       ->where('viewincrementorder.id',$request->update_ids[$i])
+                       ->first();                     
+                       
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
+          return $pdf->download ('increment.pdf');
+      }
+  }
+  }

@@ -48,7 +48,7 @@ div.table2 {
 
         <div class = "row">
             <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
-            <div class="col-sm-4"> Date: {{$increment->createdOn}}</div>            
+                     
         </div>
 
             <br>

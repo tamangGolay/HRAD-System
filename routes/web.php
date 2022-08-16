@@ -635,10 +635,14 @@ Route::get('/incrementReport/{id}', [App\Http\Controllers\incrementReportControl
 
 Route::get('incrementreport', ['uses'=>'incrementReportController@index', 'as'=>'incrementreport.index']);
 
-
 //checkbox for insert incremental to duelist table
 Route::post('insertDuelist','IncrementListsController@insertDuelist')->name('insert.duelist');
 
 //checkbox for update data to all master data from duelist table
 Route::post('updateDuelist','IncrementListsController@updateDuelist')->name('update.duelist');
+
+Route::get('createIncrementReport','incrementReportController@createIncrementReport')->name('download.duelist');
+
+Route::get('/download','incrementReportController@createIncrementReport');
+
  

@@ -125,7 +125,7 @@ a {
                    
                });               
 
-               var url = '{{ route("downloadpromotion") }}';  
+               var url = '{{ route("downloadpromotion.duelist") }}';  
                type: "GET"      
             
                if(updateDuelist.length > 0){

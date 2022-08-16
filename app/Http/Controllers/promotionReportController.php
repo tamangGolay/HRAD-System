@@ -60,7 +60,7 @@ class promotionReportController extends Controller
 
   }
 
-  public function createIncrementReport (Request $request){
+  public function createPromotionReport (Request $request){
 
    
      $ids = count($request->update_ids);

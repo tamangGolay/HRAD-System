@@ -111,7 +111,16 @@ Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 
 Route::get('promotionreport', ['uses'=>'promotionReportController@index', 'as'=>'promotionreport.index']);
 
 Route::get('/promotionReport/{id}', [App\Http\Controllers\promotionReportController::class, 'createpromotionPDF'])->name('promotion.pdf');
-Route::get('/downloadpromotion','promotionReportController@createIncrementReport');
+
+//checkbox promotion
+Route::post('updatepromotion','promotionReportController@updateDuelist')->name('update.duelist');
+
+Route::get('createPromotionReport','promotionReportController@createPromotionReport')->name('downloadpromotion.duelist');
+
+// Route::get('/download','incrementReportController@createIncrementReport');
+
+
+Route::get('/downloadpromotion','promotionReportController@createPromotionReport');
 
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);

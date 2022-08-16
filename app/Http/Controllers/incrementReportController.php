@@ -62,22 +62,24 @@ class incrementReportController extends Controller
 
   public function createIncrementReport (Request $request){
 
+    // dd($request->all());
+
     //  $ids = $request->update_ids; 
      $ids = count($request->update_ids);
     //  dd($ids);
     for($i = 0; $i < $ids; ++$i){
   
-      $increment = IncrementView::all()->where('id',$request->update_ids[$i]);
+      $increment[$i] = IncrementView::all()->where('id',$request->update_ids[$i]);
       
-      $increment = DB::table('viewincrementorder')
+      $increment[$i] = DB::table('viewincrementorder')
           
                        ->select('viewincrementorder.*')	
   
                        ->where('viewincrementorder.id',$request->update_ids[$i])
                        ->first();                     
                        
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
-          return $pdf->download ('increment.pdf');
+          $pdf[$i] = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment[$i]));
+          return $pdf[$i]->download ('increment.pdf');
       }
   }
   }

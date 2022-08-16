@@ -48,8 +48,8 @@ div.table2 {
         <br><br><br>
 
         <div class = "row">
-            <div class="col-sm-8 col-lg-8">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
-            <div class="col-sm-4 col-lg-2">{{$increment1->incrementDate}}</div>            
+            <div class="col">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
+            <div class="col">{{$increment1->incrementDate}}</div>            
         </div>
 
             <br>

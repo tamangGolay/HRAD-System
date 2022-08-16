@@ -4381,7 +4381,6 @@ if ($request->v == "incrementReport")
     ));
 }
 
-
 //notesheetreport
 if ($request->v == "notesheetReport")
 {
@@ -4409,7 +4408,7 @@ if ($request->v == "promotionReport")
 {
     //  $notesheet = notesheetRequest::all();
     $promotion = DB::table('viewpromotionorder')
-    ->select('*')  
+    ->select('viewpromotionorder.*','populateReportingStructure(empId)')  
      ->latest('viewpromotionorder.id')
      ->get();
 
@@ -5199,24 +5198,12 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
-    ->orwhere('officeId','=',78) //
-    ->where('notesheet.status','=','GMRecommended')
-
+    ->orwhere('officeId','=',78)  //
     ->orwhere('officeId','=',80) // 
-    ->where('notesheet.status','=','GMRecommended')
-
     ->orwhere('officeId','=',81) //
-    ->where('notesheet.status','=','GMRecommended')
-
     ->orwhere('officeId','=',76) // 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',74) //
-    ->where('notesheet.status','=','GMRecommended')
- 
-    ->orwhere('officeId','=',75) //
-    ->where('notesheet.status','=','GMRecommended')
- 
+    ->orwhere('officeId','=',74) // 
+    ->orwhere('officeId','=',75) // 
 
     ->paginate(10000000);
 

@@ -69,17 +69,13 @@ class incrementReportController extends Controller
     //  dd($ids);
     for($i = 0; $i < $ids; ++$i){
   
-      $increment[$i] = IncrementView::all()->where('id',$request->update_ids[$i]);
-      
-      $increment[$i] = DB::table('viewincrementorder')
-          
-                       ->select('viewincrementorder.*')	
-  
-                       ->where('viewincrementorder.id',$request->update_ids[$i])
-                       ->first();                     
+      $increment[$i] = IncrementView::all()
+                      ->where('id',$request->update_ids[$i]);      
+                          
                        
           $pdf[$i] = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment[$i]));
           return $pdf[$i]->download ('increment.pdf');
       }
-  }
+    }
+
   }

@@ -45,7 +45,7 @@ div.table2 {
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
-
+        @foreach ($increment as $increment)
         <div class = "row">
             <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
                      
@@ -134,7 +134,7 @@ div.table2 {
             </div>
             </div>
         </div>
-      
+      @endforeach
     </div>
 
            

@@ -78,8 +78,8 @@ class incrementReportController extends Controller
                        ->where('viewincrementorder.id',$request->update_ids[$i])
                        ->first();                     
                        
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment[$i]));
-          return $pdf->download ('increment.pdf');
+          $pdf[$i] = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment[$i]));
+          return $pdf[$i]->download ('increment.pdf');
       }
   }
   }

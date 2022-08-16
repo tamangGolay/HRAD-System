@@ -46,10 +46,9 @@ div.table2 {
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
-
-        <div class = "form-group row">
-            <div class="col-sm-8 col-lg-8">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
-            <div class="col-sm-4 col-lg-2">{{$increment1->incrementDate}}</div>            
+        <div class = "row">
+            <div class="col">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
+            <div class="col">{{$increment->incrementDate}}</div>
         </div>
 
             <br>

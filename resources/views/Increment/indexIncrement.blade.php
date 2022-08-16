@@ -47,8 +47,8 @@ div.table2 {
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
         <div class = "row">
-            <div class="col">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
-            <div class="col">{{$increment->incrementDate}}</div>
+            <div class="col">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
+            <div class="col">{{$increment1->incrementDate}}</div>
         </div>
 
             <br>

@@ -73,14 +73,16 @@ class incrementReportController extends Controller
       // $products = Product::where('user_id', $user_id->id)->get();
 
   
-       
+      $increment1 = DB::table('viewincrementorder')
+        ->select('*')	
+         ->where('id',$id)
+         ->first();
                       
       $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
      ->select('officeId')
      ->where('id',$id)
      ->first();
 
-     $increment1 = IncrementView::where('officeId', $officeId->officeId)->get(); 
 
     $increment = IncrementView::all()
                       ->where('officeId', $officeId->officeId); 

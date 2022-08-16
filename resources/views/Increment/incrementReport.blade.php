@@ -36,14 +36,14 @@ h1 {
                         <thead>
                             <tr>
                             <th scope="col">SN</th>
-                            <th scope="col">Name and Emp Id</th>
-                            <th scope="col">Designation and Grade</th>
+                            <th scope="col">Name(Employee ID)</th>
+                            <th scope="col">Designation(Grade)</th>
                             <th scope="col">Old Basic</th>
-                            <th scope="col">Increment</th>
+                            <!-- <th scope="col">Increment</th> -->
                             <th scope="col">New Basic</th>
                             <th scope="col">Action 
-                            <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
-                            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Order</button>
+                            <!-- <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label> -->
+                            <!-- <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Order</button> -->
                             </th>
                             </tr>
                         </thead>
@@ -59,10 +59,10 @@ h1 {
 
                            <!-- <td class="col1"> {{$increment-> empId }} </td> -->
                             <td class="col1"> {{$increment-> oldBasic}} </td>
-                            <td class="col1"> {{$increment-> yearlyIncrement}} </td>
+                            
                             <td class="col1"> {{$increment-> newBasic}} </td>
                             <td class="col2">
-                                 <!-- <a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a>  -->
+                                 <a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a> 
                                  
                                 </td>
 
@@ -78,15 +78,7 @@ h1 {
         </div>
     </div>
 
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" > Export to PDF </a>
-                </div>
-            </div>
-        </div>
-             -->
-             <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -4373,7 +4373,7 @@ if ($request->v == "incrementReport")
     // ->latest('incrementduelist.id')
     ->get(); 
 
-    $rhtml = view('Increment.incrementsReport')->with(['increment' => $increment])->render();
+    $rhtml = view('Increment.incrementReport')->with(['increment' => $increment])->render();
     return response()
         ->json(array(
         'success' => true,

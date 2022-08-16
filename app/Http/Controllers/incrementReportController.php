@@ -21,13 +21,14 @@ class incrementReportController extends Controller
 
 
    $increment = DB::table('viewincrementorder')
-  // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
-    ->select('viewincrementorder.*')
+  // // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
+  //   ->select('viewincrementorder.*')
 
-  // ->select('incrementduelist.*','users.empName')
-  // ->where('incrementduelist.status','=','Approved')
-  // ->latest('incrementduelist.id')
-       ->get(); 
+    ->join('incrementhistorymaster','incrementhistorymaster.personalNo','=','viewincrementorder.empId')
+    ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
+    ->select('viewincrementorder.*','incrementhistorymaster.createdOn','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))	
+    ->first();  
+    
 
    if ($request->ajax()) {              
        $data = $increment;           
@@ -41,41 +42,41 @@ class incrementReportController extends Controller
               //              return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
               //          })
 
-            //   ->addColumn('action', function($row){
+              ->addColumn('action', function($row){
 
-            //   $btn = '<a href="incrementReport/{{$increment->id}}" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Download</a>&nbsp;&nbsp;&nbsp;&nbsp';
-            //   // $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteraincoat" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteraincoat">Delete</a>';
+              $btn = '<a href="incrementReport/{{$increment->id}}" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Download</a>&nbsp;&nbsp;&nbsp;&nbsp';
+              // $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteraincoat" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteraincoat">Delete</a>';
 
-            //   return $btn;
-            // })
+              return $btn;
+            })
 
-            ->addColumn('checkbox', function($row){                                                      
-              return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
-          })
+          //   ->addColumn('checkbox', function($row){                                                      
+          //     return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
+          // })
 
           ->rawColumns(['action','checkbox'])
           ->make(true);
              }   
-   return view('Increment.incrementsReport');
+   return view('Increment.incrementReport');
 
   }
 
-  public function createIncrementReport (Request $request){
+  public function createIncrementReport ($id){
 
     // dd($request->all());
 
     //  $ids = $request->update_ids; 
-     $ids = count($request->update_ids);
-    //  dd($ids);
-    for($i = 0; $i < $ids; ++$i){
+    //  $ids = count($request->update_ids);
+    // //  dd($ids);
+    // for($i = 0; $i < $ids; ++$i){
   
-      $increment[$i] = IncrementView::all()
-                      ->where('id',$request->update_ids[$i]);      
+      $increment = IncrementView::all()
+                      ->where('id',$id);      
                           
                        
-          $pdf[$i] = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment[$i]));
-          return $pdf[$i]->download ('increment.pdf');
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment));
+          return $pdf->download ('increment.pdf');
       }
     }
 
-  }
+  

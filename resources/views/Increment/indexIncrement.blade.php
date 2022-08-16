@@ -46,9 +46,10 @@ div.table2 {
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
         @foreach ($increment as $increment)
+
         <div class = "row">
             <div class="col-sm-8">BPC/HRAD/HRMD-05/{{$increment->incrementDate}} / {{$increment->id}}</div>
-                     
+            <div class="col-sm-4">{{$increment->createdOn}}</div>            
         </div>
 
             <br>
@@ -74,7 +75,6 @@ div.table2 {
             </div>
             <div class = "row">
                 <div class = "col-md-12 increment">
-                    <p> The final increment payout for the {{$increment->oldBasic}} Cycle {{$increment->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>
 
@@ -136,14 +136,10 @@ div.table2 {
         </div>
       @endforeach
     </div>
-
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" href="http://127.0.0.1:8000/product/pdf"> Export to PDF </a>
-                </div>
-            </div> -->
   </div>
+  <div class = "row">
+        <img src="{{asset('/cd/images/footer.jpg')}}" width="100%" height="100px">
+</div>
       
    
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

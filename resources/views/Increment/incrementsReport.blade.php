@@ -121,19 +121,19 @@ a {
                 $('#checkbox').addClass('d-none');
 
             
-                var updatepromotion = [];            
+                var updateDuelist = [];            
                $('input[name="update_checkbox"]:checked').each(function(){
-                   updatepromotion.push($(this).data('id'));
+                   updateDuelist.push($(this).data('id'));
                    
                });               
 
                var url = '{{ route("download.duelist") }}';  
                type: "GET"      
             
-               if(updatepromotion.length > 0){
+               if(updateDuelist.length > 0){
                    swal.fire({
                        title:'Are you sure?',
-                       html:'You want to Download <b>('+updatepromotion.length+')</b> employess incrment order',                       
+                       html:'You want to Download <b>('+updateDuelist.length+')</b> employess incrment order',                       
                        showCancelButton:true,
                        showCloseButton:true,
                        confirmButtonText:'Yes, Download',
@@ -144,7 +144,7 @@ a {
                        allowOutsideClick:false
                    }).then(function(result){
                        if(result.value){
-                           $.get(url,{update_ids:updatepromotion},function(data){
+                           $.get(url,{update_ids:updateDuelist},function(data){
                               if(data.code == 1){                               
                 
                             // window.location.reload();                            

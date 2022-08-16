@@ -38,12 +38,19 @@ class PdfController extends Controller
     }
 
     public function createpromotionPDF ($id) {
+      
 
 
       $officeId = DB::table('viewpromotionorder')
       ->select('officeId') 
       ->where('id',$id)
      ->first();
+
+     $empId= DB::table('viewpromotionorder')
+     ->select('viewpromotionorder.empId')  
+      ->get();
+
+     $promotion=DB::select('call populateReportingStructure(?)',array($empId));
 
       $promotion = promotionorder::all()->where('officeId',$officeId->officeId);
       

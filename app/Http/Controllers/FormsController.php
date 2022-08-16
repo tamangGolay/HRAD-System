@@ -4381,6 +4381,7 @@ if ($request->v == "incrementReport")
     ));
 }
 
+
 //notesheetreport
 if ($request->v == "notesheetReport")
 {
@@ -5198,12 +5199,24 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 
-    ->orwhere('officeId','=',78)  //
+    ->orwhere('officeId','=',78) //
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',80) // 
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',81) //
+    ->where('notesheet.status','=','GMRecommended')
+
     ->orwhere('officeId','=',76) // 
-    ->orwhere('officeId','=',74) // 
-    ->orwhere('officeId','=',75) // 
+    ->where('notesheet.status','=','GMRecommended')
+
+    ->orwhere('officeId','=',74) //
+    ->where('notesheet.status','=','GMRecommended')
+ 
+    ->orwhere('officeId','=',75) //
+    ->where('notesheet.status','=','GMRecommended')
+ 
 
     ->paginate(10000000);
 

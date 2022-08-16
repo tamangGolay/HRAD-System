@@ -1,208 +1,135 @@
-<style>
-    
-a {
-    color: black !important;
-    text-decoration: none;
-}
-
-.btn-primary {
-    color: #fff !important;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-.success {
-    color: #fff !important;
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-</style>
-</style>
+<! DOCTYPE html>
+<html lang = "en">
 <head>
-    
-<link href="{{asset('css/bose.css')}}" rel="stylesheet">
-<!-- called in bose.css -->
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title> Laravel 8 PDF </title>
+    <! - Bootstrap5 CSS ->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('sweetalert2/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}"> 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+   <style>
+   table, th, td {
+  border: 1px solid black;
+}
+ th, td {
+  border-color: #96D4D4;
+ 
+}
+.col1{
+   width:100px;
+}
+.col2{
+   width:500px;
+}
+h1 {
+ color: #1a3300;
+};
+   </style>
 </head>
- 
-<div class="container">   
-    <table class="table table-bordered data-table" style="width:100%">
-        <thead>
-            <tr>
-            <th scope="col">SN</th>
-            <th scope="col">EmployeeId</th>
-            <th scope="col">Employee Name</th>
-            <th scope="col">Office</th>
-            <th scope="col">Download
-            <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
-            <button class="btn btn-sm btn-success d-none" id=updateAllBtn >download</button>
-            </th>
+<body>
+    <div class = "container mt-4">
+        <div class = "row">
+            <div class = "col-md-8 text-center">
+                <h1> Promotion Report</h1>
+            </div>
+          
+            <br><br><br>
+            <div class = "row">
+            <div class = "col-md-12">
+            <div class="card-body table-responsive p-0">
+					<table id="table5" class="table table-hover table-striped table-bordered">
+                <!-- <table class = "table"> -->
+                    <!-- <h2 class="headnote"> NoteSheet  </h2> -->
+                    <thead>
+                      <tr class="text-nowrap">
+                        <th scope = "col" class="col1"> Id </th>
+                        <th scope = "col" class="col1"> EmployeeId</th>
+                        <th scope = "col" class="col1"> Employee Name</th>
+                        <th scope = "col" class="col1"> Office </th>
+                        <th scope = "col" class="col2"> Download </th>
 
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-  </div>  
-</body>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($promotion as $promotion)
 
-<!-- //code from other site -->
+                        <tr>
+                            <td class="col1"> {{$promotion->id}} </td>
+                           <td class="col1"> {{$promotion-> empId}} </td>
+                           <td class="col1"> {{$promotion-> empName}} </td>
+                            <td class="col1"> {{$promotion->officeName}} </td>
+                            <td class="col2"><a href="promotionReport/{{$promotion->id}}" class="btn btn-success">Download</a> </td>
 
-   <script src="{{ asset('jquery/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('datatable/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('toastr/toastr.min.js') }}"></script>     
-    <script>
 
-    toastr.options.preventDuplicates = true;
-// for checkbox from here....
- 
-        $(function () {
 
-            $(document).on('click','input[name="main_checkbox"]', function(){
-                  if(this.checked){
-                    $('input[name="update_checkbox"]').each(function(){
-                        this.checked = true;
-                    });
-                  }else{
-                     $('input[name="update_checkbox"]').each(function(){
-                         this.checked = false;
-                     });
-                  }
-                  toggleupdateAllBtn();
-           }); 
+                        </tr>
+                    @endforeach
 
-           $(document).on('change','input[name="update_checkbox"]', function(){
-
-               if( $('input[name="update_checkbox"]').length == $('input[name="update_checkbox"]:checked').length ){
-                   $('input[name="main_checkbox"]').prop('checked', true);
-               }else{
-                   $('input[name="main_checkbox"]').prop('checked', false);
-               }
-               toggleupdateAllBtn();
-           });
-
-           function toggleupdateAllBtn(){
-               if( $('input[name="update_checkbox"]:checked').length > 0 ){
-                   $('button#updateAllBtn').text('Download('+$('input[name="update_checkbox"]:checked').length+')').removeClass('d-none');
-               }else{
-                   $('button#updateAllBtn').addClass('d-none');
-               }
-           }
-
-           $(document).on('click','button#updateAllBtn', function(){
-               $.ajaxSetup({
-                  headers:{
-                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-                 }
-                }); 
-
-                $('button#updateAllBtn').addClass('d-none');
-                $('#checkbox').addClass('d-none');
-
-            
-                var updateDuelist = [];            
-               $('input[name="update_checkbox"]:checked').each(function(){
-                   updateDuelist.push($(this).data('id'));
-                   
-               });               
-
-               var url = '{{ route("downloadpromotion.duelist") }}';  
-               type: "GET"      
-            
-               if(updateDuelist.length > 0){
-                   swal.fire({
-                       title:'Are you sure?',
-                       html:'You want to Download <b>('+updateDuelist.length+')</b> employees promotion order',                       
-                       showCancelButton:true,
-                       showCloseButton:true,
-                       confirmButtonText:'Yes,Download',
-                       cancelButtonText:'Cancel',
-                       confirmButtonColor:'#04b976',
-                       cancelButtonColor:'#d33',
-                       width:300,
-                       allowOutsideClick:false
-                   }).then(function(result){
-                       if(result.value){
-                           $.get(url,{update_ids:updateDuelist},function(data){
-                              if(data.code == 1){                               
-                
-                            // window.location.reload();                            
-                            // toastr.options.preventDuplicates = true;
-                            // $('#data-table').DataTable().ajax.reload(null, true); 
-                                                                
-                                toastr.success(data.msg);
-                                $.get('/getView?v=promotionform',function(data){     //redirect to same page    
-                                $('#contentpage').empty();                          
-                                 $('#contentpage').append(data.html);
-                                   });
-                                
-                              }
-                           },
-                           
-                           'json');                                   
-            
-                       }
-                   })
-               }
-           });
-        });
-  
-
- $(function () {
-   
-   var table = $('.data-table').DataTable({
-       processing: true,
-       serverSide: true,
-       "aLengthMenu":[[10,25,50,-1],[10,25,50,"All"]],
-       ajax: {
-         url: "{{ route('promotionreport.index') }}",
-                },
-       columns: [
-           {data: 'id', 
-           name: 'id', orderable: false, searchable: false},
-
-           {data: 'empId', 
-           name: 'empId'},
-
-           {data: 'empName', 
-           name:'empName'},
-
-           {data: 'officeName', 
-           name: 'officeName'},
+                    </tbody>
+                  </table>
+            </div>
+</div>
+        </div>
+    </div>
 
            
+            <!-- <div class = "col-md-4">
+                <div class = "mb-4 d-flex justify-content-end">
+                    <a class="btn btn-primary" > Export to PDF </a>
+                </div>
+            </div>
+        </div>
+             -->
+             <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+    <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-           {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
-               
 
-       ]
-   });
-});
-  
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> </script>
    
+    <!-- jquery-validation -->
+		<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+		<!-- DataTables -->
+		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+		<!-- Script for export file from datatable -->
+		<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
+		<!-- <script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
+		<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script> -->
+		<!-- <script src="{{asset('/admin-lte/datatables/buttons.flash.min.js')}}"></script> -->
+		<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
+		<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
+		<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
+		<!-- checkin form -->
 
-//    $('#btnFiterSubmitSearch').click(function(){
-//        table.draw();
-// });
-    
- 
-</script>
+		
+		<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
+		<!-- called in bose.css -->
+
+		<script>
+	
+		$(function() {
+			$("#table5").DataTable({
+				"dom": 'Bfrtip',
+				"responsive": true,
+				"lengthChange": true,
+				"searching": true,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false,
+				"paging": true,
+				"retrieve":true,
+				
+			});
+		});
+// buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
+		</script>
+</body>
 </html>

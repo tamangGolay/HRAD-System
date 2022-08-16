@@ -37,20 +37,13 @@ class PdfController extends Controller
         return $pdf->download ('notesheet.pdf');
     }
 
-    public function createPromotionReport (Request $request) {
+    public function createpromotionPDF ($id) {
 
 
-      $ids = count($request->update_ids);
-      //  dd($ids);
-      for($i = 0; $i < $ids; ++$i){
-    
-        $promotion[$i] = promotionorder::all()
-                        ->where('id',$request->update_ids[$i]);      
-                            
-                         
-            $pdf[$i] = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion[$i]));
-            return $pdf[$i]->download ('promotion.pdf');
-        
+      $promotion = promotionorder::all()->where('id',$id);
+      
+  
+          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion));
+          return $pdf->download ('notesheet.pdf');
       }
-}
 }

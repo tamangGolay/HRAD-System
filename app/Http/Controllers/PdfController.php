@@ -41,9 +41,13 @@ class PdfController extends Controller
 
 
       $promotion = promotionorder::all()->where('id',$id);
-      
+      $grade= DB::table('viewpromotionorder')
+      ->join('payscalemaster','payscalemaster.id','=','viewpromotionorder.newGrade')
+      ->select('payscalemaster.grade') 
+     ->get();
   
-          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion));
+          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
+        'grade'=>$grade));
           return $pdf->download ('notesheet.pdf');
       }
 }

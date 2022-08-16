@@ -4408,7 +4408,8 @@ if ($request->v == "promotionReport")
 {
     //  $notesheet = notesheetRequest::all();
     $promotion = DB::table('viewpromotionorder')
-    ->select('*')  
+    ->join('payscalemaster','payscalemaster.id','=','viewpromotionorder.newGrade')
+    ->select('*','payscalemaster.grade')  
      ->latest('viewpromotionorder.id')
      ->get();
 

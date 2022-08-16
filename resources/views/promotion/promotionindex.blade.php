@@ -37,12 +37,7 @@ div.table2 {
 h4{
   text-decoration: underline; 
 }
-
-
-
-
-
-   </style>
+</style>
 </head>
 <body>
 
@@ -55,38 +50,28 @@ h4{
         
             <div class = "col-md-8">
             @foreach($promotion as $promotion)
-            <div class="notesheet">{{$promotion->createdOn}}</div>
+            <div class="notesheet">{{$promotion->date}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
                 @endforeach 
             </div>
 <br>
-            <div class = "row">
-            <div class = "col-md-12">
-                <table class = "table" width="93%">
-                    
-
-                    <thead>
-                      <tr>
-                        <th scope = "col" class="col1">{{$promotion->empName}}</th>
-                              </tr>
-                     
-                      <tr>
-                 
-                        <th scope = "col" class="col1"> {{$promotion->oldDesignation}} </th>
-                  
-                        
-                      </tr>
+ <div class = "row">
+    <div class = "col-md-12">
+        <table class = "table" width="93%">      
+            <thead>
+                <tr>
+                    <th scope = "col" class="col1">{{$promotion->empName}}</th>                              
+                </tr>
+                  <tr>
+                      <th scope = "col" class="col1"> {{$promotion->oldDesignation}} </th>            
+                  </tr>
                       <tr>
                         <th scope = "col" class="col1">  {{$promotion->officeName}}</th>
-                        
-
                       </tr>
-                      <tr>
-                        <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
-                       
-
-                      </tr>
-                    </thead>
+                          <tr>
+                              <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
+                          </tr>
+                </thead>
                     <!-- <tbody>
                         <tr>
 
@@ -97,64 +82,56 @@ h4{
         </div>
     </div>
 
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" href="http://127.0.0.1:8000/product/pdf"> Export to PDF </a>
-                </div>
-            </div> -->
+       
         </div>
 
 
 <br>
 <br>
 
-        <div class = "row">
-            <div class = "table2 col-md-6">
-                <table width="79%">
-                    <h4> Subject:- Promotion Order </h4>
-                    <br>
+  <div class = "row">
+       <div class = "table2 col-md-6">
+            <table width="79%">
+                 <h4> Subject:- Promotion Order </h4>
+  <br>
   <br> 
-                    <thead>
+                   <thead>
                       <tr>
                         <th scope = "col" class="col1"> Dear {{$promotion->empName}}, </th>
                         
-                                             </tr>
+                      </tr>
                     </thead>
-
  <br>
-  
-                    <tbody>
-                        
-               
+ 
+                      <tbody>         
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
-                              {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
+                              {{$promotion->newDesignation}} ({{$grade->grade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
                           </th>
-</tr>
+                        </tr>
 <br>
-<tr>
-  <th>
+                          <tr>
+                            <th>
                               Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
-  </th>
-</tr>
+                           </th>
+                            </tr>
 <br>
-<tr>
-  <th>
+                                  <tr>
+                                          <th>
                               Other service conditions remain unchanged.
-  </th>
-</tr>
+                                          </th>
+                                  </tr>
 <br>
-<tr>
-  <th>
+                                        <tr>
+                                            <th>
                               Yours sincerely,
-  </th>
-</tr>
+                                            </th>
+                                        </tr>
 <br>
 <br>
-<tr>
-  <th>
+                                                <tr>
+                                                 <th>
                               Copies to:
                         1)	Director, <serviceName>, BPC, Thimphu for kind information.
                         2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
@@ -162,7 +139,7 @@ h4{
                         4)	Concerned HR Admin.
 
 
-</th>
+                                                      </th>
                            
                         </tr>
                    

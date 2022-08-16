@@ -41,7 +41,10 @@ h1 {
                             <th scope="col">Old Basic</th>
                             <th scope="col">Increment</th>
                             <th scope="col">New Basic</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Action 
+                            <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
+                            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Order</button>
+                            </th>
                             </tr>
                         </thead>
                     <tbody>
@@ -55,10 +58,13 @@ h1 {
                             <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
 
                            <!-- <td class="col1"> {{$increment-> empId }} </td> -->
-                           <td class="col1"> {{$increment-> oldBasic}} </td>
+                            <td class="col1"> {{$increment-> oldBasic}} </td>
                             <td class="col1"> {{$increment-> yearlyIncrement}} </td>
                             <td class="col1"> {{$increment-> newBasic}} </td>
-                            <td class="col2"><a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a> </td>
+                            <td class="col2">
+                                 <!-- <a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a>  -->
+                                 
+                                </td>
 
 
 

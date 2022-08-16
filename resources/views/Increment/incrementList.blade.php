@@ -136,7 +136,7 @@ a {
                        showCloseButton:true,
                        confirmButtonText:'Yes, Update',
                        cancelButtonText:'Cancel',
-                       confirmButtonColor:'#04b976',
+                       confirmButtonColor:'#008000',
                        cancelButtonColor:'#d33',
                        width:300,
                        allowOutsideClick:false
@@ -205,12 +205,7 @@ a {
    });
 });
   
-   
-
-//    $('#btnFiterSubmitSearch').click(function(){
-//        table.draw();
-// });
-    
  
 </script>
+
 </html>

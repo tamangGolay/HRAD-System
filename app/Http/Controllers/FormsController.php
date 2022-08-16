@@ -4363,7 +4363,7 @@ if ($request->v == "user_profile")
 //incrementreport
 if ($request->v == "incrementReport")
 {
-      $increment = IncrementView::all();
+    $increment = IncrementView::all();
     $increment = DB::table('viewincrementorder')
     // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
       ->select('viewincrementorder.*')

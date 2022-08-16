@@ -50,7 +50,7 @@ a {
             <tr>
             <th>
             <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label>
-            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Duelist</button>
+            <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Duelist</button> </th>
             <th>Sl.No</th>   
             <th>Employee Id</th>
             <th>Last Increment Date</th>
@@ -239,19 +239,15 @@ $(document).on('click','button#deleteAllBtn', function(){
            showCloseButton:true,
            confirmButtonText:'Yes, Generate',
            cancelButtonText:'Cancel',
-           confirmButtonColor:'#04b976',
+           confirmButtonColor:'#008000',
            cancelButtonColor:'#d33',
            width:300,
            allowOutsideClick:false
        }).then(function(result){
            if(result.value){
                $.post(url,{countries_ids:checkedCountries},function(data){
-                  if(data.code == 1 || data.code == 2){                               
-    
-                // window.location.reload();                            
-                // toastr.options.preventDuplicates = true;
-                // $('#data-table').DataTable().ajax.reload(null, true); 
-                                                    
+                  if(data.code == 1 ){                 
+                    $('#data-table').DataTable().ajax.reload(null, true);                             
                     toastr.success(data.msg);
                     $.get('/getView?v=incrementall',function(data){        
                     $('#contentpage').empty();                          
@@ -259,7 +255,8 @@ $(document).on('click','button#deleteAllBtn', function(){
                        });
                     
                   }
-                  else if(data.code == 3){
+                  else{
+                    $('#data-table').DataTable().ajax.reload(null, true);
                     toastr.error(data.msg);
                     $.get('/getView?v=incrementall',function(data){        
                     $('#contentpage').empty();                          
@@ -377,9 +374,11 @@ $(function () {
     }); 
 
 });
+</script>
 
 
-  //  After clicking delete it will trigger here
+
+ <!-- After clicking delete it will trigger here -->
 
     
 

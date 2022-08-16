@@ -87,7 +87,12 @@ class IncrementListsController extends Controller
             
             // y-m-d   
             $dateyear=date('Y');
-            $datemonth=date('m');   
+            $datemonth=date('m'); 
+
+            if($dateyear ==  $incrementYearnMonth[$i]->year){  //same year before july
+                if($datemonth < $incrementYearnMonth[$i]->month){                      
+               
+
                                                     
             $empId[$i] = DB::table('incrementall')    // table(incrementall)
             ->select('empId')
@@ -140,9 +145,7 @@ class IncrementListsController extends Controller
             $incrementYearnMonthz[$i] = 'July';
             $incrementYearnMonths[$i] = 'January';  
 
-            if($dateyear ==  $incrementYearnMonth[$i]->year){  //same year before july
-                if($datemonth < $incrementYearnMonth[$i]->month){                          
-               
+           
               $incrementAll = new Duelist;
               $incrementAll->incrementYear = $incrementYearnMonth[$i]->year;  
               $incrementAll->incrementMonth = $incrementYearnMonthz[$i];  //july
@@ -154,13 +157,69 @@ class IncrementListsController extends Controller
           
             //   return response()
             //   ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);
+            if([$i] == [$ids-1])
+            return response()->json(['code'=>1, 'msg'=>'Data inserted into Increment duelist!!!']); 
+
 
            } 
           }
           
-        else if(($dateyear + 1) ==  $incrementYearnMonth[$i]->year){
-                 if($datemonth > $incrementYearnMonth[$i]->month +5){                 
-            
+        if(($dateyear + 1) ==  $incrementYearnMonth[$i]->year){
+                 if($datemonth > $incrementYearnMonth[$i]->month +5){     
+                               
+                                                    
+                    $empId[$i] = DB::table('incrementall')    // table(incrementall)
+                    ->select('empId')
+                    ->where('id',$request->countries_ids[$i])
+                    ->first();
+        
+                    $tempBasic[$i] = DB::table('users')                 //users table
+                    ->join('incrementall', 'incrementall.empId', '=', 'users.empId')
+                    ->select('users.basicPay')
+                    ->where('incrementall.id',$request->countries_ids[$i])
+                    ->first();
+        
+                    $fromGrade [$i]= DB::table('incrementall')              //incrementall n users  table
+                    ->join('users', 'users.empId', '=', 'incrementall.empId')            
+                    ->select('users.gradeId')
+                    ->where('incrementall.id',$request->countries_ids[$i])
+                    ->first();
+        
+                    $toGrade [$i]= $fromGrade[$i]->gradeId;
+        
+                    $newIncrement [$i]= DB::table('payscalemaster')
+                    ->select('payscalemaster.increment')
+                    ->where('payscalemaster.id','=',$toGrade [$i])
+                    ->first();
+        
+                    $newMinimum [$i]= DB::table('payscalemaster')
+                    ->select('payscalemaster.low')
+                    ->where('payscalemaster.id','=',$toGrade [$i])
+                    ->first();
+        
+                    $oldMaximum [$i]= DB::table('payscalemaster')
+                    ->select('payscalemaster.high')
+                    ->where('payscalemaster.id','=',$fromGrade[$i]->gradeId)
+                    ->first();            
+        
+                    if($tempBasic[$i]->basicPay + $newIncrement[$i]->increment < $newMinimum[$i]->low) {
+                        $newBasic[$i] = $tempBasic[$i]->basicPay;
+                
+                    }
+                    else{
+        
+                       if($tempBasic[$i]->basicPay >  $oldMaximum[$i]->high){
+                           $tempBasic[$i]->basicPay = $oldMaximum[$i]->high;                
+                    }
+                       $diffPay[$i] = $tempBasic[$i]->basicPay - $newMinimum[$i]->low;
+                       $noOfIncrement[$i]= 1 + round($diffPay[$i]/$newIncrement[$i]->increment);
+                       $newBasic[$i] = $newMinimum[$i]->low + $newIncrement[$i]->increment * $noOfIncrement[$i];
+                    }
+
+                 $incrementYearnMonthz[$i] = 'July';
+                 $incrementYearnMonths[$i] = 'January'; 
+                    
+                               
                $incrementAll = new Duelist;     
                $incrementAll->incrementYear = $incrementYearnMonth[$i]->year;         
                $incrementAll->incrementMonth = $incrementYearnMonths[$i];
@@ -172,20 +231,23 @@ class IncrementListsController extends Controller
                
         //        return response()
         //   ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);
+        if([$i] == [$ids-1])
+        return response()->json(['code'=>1, 'msg'=>'Data inserted into Increment duelist!!!']); 
+
 
             }
         }
 
             else{
 
+                if([$i] == [$ids-1]){
                 return response()
-                ->json(['code' => 2, 'msg' => 'This employee(s) are not eligleble for this cycle increment.']);
-             }
+                ->json(['code' =>3, 'msg' => 'This employee(s) are not eligleble for this cycle increment.']);
+             } 
+            }
 
                   
         }
-        // return response()
-        // ->json(['code'=>3, 'msg'=>'Sorry!!.This employee(s) are not eligleble for this cycle increment.']); 
        
         return response()
            ->json(['code'=>1, 'msg'=>'Successfull inserted the data(s) into Increment DueList Record!']);

@@ -50,7 +50,7 @@ h4{
         
             <div class = "col-md-8">
             @foreach($promotion as $promotion)
-            <div class="notesheet">{{$promotion->date}}</div>
+            <div class="notesheet">{{$promotion->createdOn}}</div>
                 <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
                 @endforeach 
             </div>
@@ -106,7 +106,7 @@ h4{
                       <tbody>         
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
-                              {{$promotion->newDesignation}} ({{$grade->grade}}) in the {{$promotion->officeDetails}} of the company. 
+                              {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
                           </th>
                         </tr>

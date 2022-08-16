@@ -4363,7 +4363,7 @@ if ($request->v == "user_profile")
 //incrementreport
 if ($request->v == "incrementReport")
 {
-    $increment = IncrementView::all();
+      $increment = IncrementView::all();
     $increment = DB::table('viewincrementorder')
     // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
       ->select('viewincrementorder.*')
@@ -4408,8 +4408,7 @@ if ($request->v == "promotionReport")
 {
     //  $notesheet = notesheetRequest::all();
     $promotion = DB::table('viewpromotionorder')
-    ->join('payscalemaster','payscalemaster.id','=','viewpromotionorder.newGrade')
-    ->select('*','payscalemaster.grade')  
+    ->select('*')  
      ->latest('viewpromotionorder.id')
      ->get();
 

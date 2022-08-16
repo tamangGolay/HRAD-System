@@ -125,16 +125,16 @@ a {
                    
                });               
 
-               var url = '{{ route("download.duelist") }}';  
+               var url = '{{ route("downloadpromotion") }}';  
                type: "GET"      
             
                if(updateDuelist.length > 0){
                    swal.fire({
                        title:'Are you sure?',
-                       html:'You want to Download <b>('+updateDuelist.length+')</b> employess incrment order',                       
+                       html:'You want to Download <b>('+updateDuelist.length+')</b> employees promotion order',                       
                        showCancelButton:true,
                        showCloseButton:true,
-                       confirmButtonText:'Yes, Download',
+                       confirmButtonText:'Yes,Download',
                        cancelButtonText:'Cancel',
                        confirmButtonColor:'#04b976',
                        cancelButtonColor:'#d33',
@@ -150,7 +150,7 @@ a {
                             // $('#data-table').DataTable().ajax.reload(null, true); 
                                                                 
                                 toastr.success(data.msg);
-                                $.get('/getView?v=incrementform',function(data){     //redirect to same page    
+                                $.get('/getView?v=promotionform',function(data){     //redirect to same page    
                                 $('#contentpage').empty();                          
                                  $('#contentpage').append(data.html);
                                    });

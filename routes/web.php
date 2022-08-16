@@ -111,6 +111,7 @@ Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 
 Route::get('promotionreport', ['uses'=>'promotionReportController@index', 'as'=>'promotionreport.index']);
 
 Route::get('/promotionReport/{id}', [App\Http\Controllers\promotionReportController::class, 'createpromotionPDF'])->name('promotion.pdf');
+Route::get('/downloadpromotion','promotionReportController@createIncrementReport');
 
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);

@@ -20,7 +20,7 @@ class promotionReportController extends Controller
   {
 
 
-   $increment = DB::table('viewpromotionorder')
+   $promotion = DB::table('viewpromotionorder')
   // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
     ->select('viewpromotionorder.*')
 
@@ -30,7 +30,7 @@ class promotionReportController extends Controller
        ->get(); 
 
    if ($request->ajax()) {              
-       $data = $increment;           
+       $data = $promotion;           
 
        return Datatables::of($data)
 
@@ -62,7 +62,7 @@ class promotionReportController extends Controller
 
   public function createIncrementReport (Request $request){
 
-    
+   
      $ids = count($request->update_ids);
     //  dd($ids);
     for($i = 0; $i < $ids; ++$i){

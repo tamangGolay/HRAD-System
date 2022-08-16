@@ -59,10 +59,7 @@ h4{
     <div class = "col-md-12">
         <table class = "table" width="93%">      
             <thead>
-                
-            @foreach($promotion as $promotion)
-            <tr>
-                
+                <tr>
                     <th scope = "col" class="col1">{{$promotion->empName}}</th>                              
                 </tr>
                   <tr>
@@ -74,7 +71,6 @@ h4{
                           <tr>
                               <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
                           </tr>
-                          @endforeach
                 </thead>
                     <!-- <tbody>
                         <tr>
@@ -100,31 +96,26 @@ h4{
   <br>
   <br> 
                    <thead>
-                 
                       <tr>
-                      @foreach($promotion as $promotion)
                         <th scope = "col" class="col1"> Dear {{$promotion->empName}}, </th>
-                        @endforeach
+                        
                       </tr>
-                    
                     </thead>
  <br>
  
-                      <tbody> @foreach($promotion as $promotion)        
+                      <tbody>         
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
                               {{$promotion->newDesignation}} ({{$grade->grade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
                           </th>
                         </tr>
-                        
 <br>
                           <tr>
                             <th>
                               Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
                            </th>
                             </tr>
-                            @endforeach
 <br>
                                   <tr>
                                           <th>

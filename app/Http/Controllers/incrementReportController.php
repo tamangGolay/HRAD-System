@@ -77,7 +77,7 @@ class incrementReportController extends Controller
       ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
         ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
         // ->select('*')	
-         ->where('id',$id)
+         ->where('viewincrementorder.id',$id)
          ->first();
                       
       $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)

@@ -144,7 +144,7 @@ h4{
                                                       </th>
                            
                         </tr>
-                        <img src="{{asset('/cd/images/promofooter.jpg')}}" width="100%" height="40px">
+                        <img src="{{asset('/cd/images/promofooter.png')}}" width="100%" height="40px">
                     </tbody>
                   </table>
             </div>

@@ -22,7 +22,7 @@ class TransferRequestController extends Controller
         //   dd($request);
 
             $Request_notesheet = new transferRequest;
-
+            $Request_notesheet->requestDate = $request->requestDate;
             $Request_notesheet->fromOffice = $request->fromOffice;
             $Request_notesheet->toOffice = $request->toOffice;               
             $Request_notesheet->requestToEmp = $request->requestToEmp;     //database name n user input name
@@ -106,6 +106,7 @@ class TransferRequestController extends Controller
         //   dd($request);
 
             $Request_notesheet = new transferRequest;
+            $Request_notesheet->requestDate = $request->requestDate;
             $Request_notesheet->fromOffice = $request->fromOffice;
             $Request_notesheet->toOffice = $request->toOffice;               
             $Request_notesheet->requestToEmp = $request->requestToEmp;     //database name n user input name

@@ -28,9 +28,8 @@
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
+
 					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
-
-
 				
 				  
 				  <div class=" textfont form-group row col-lg-12"> 

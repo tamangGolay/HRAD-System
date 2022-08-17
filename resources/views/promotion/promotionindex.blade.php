@@ -122,6 +122,7 @@ h4{
                                           </th>
                                   </tr>
 <br>
+<br>
                                         <tr>
                                             <th>
                               Yours sincerely,
@@ -146,8 +147,9 @@ h4{
 <br>
                                                 <tr>
                                                  <th>
-                              Copies to:
-                        Director,{{$copy->copies}}, BPC, Thimphu for kind information.
+                              Copies to: <br>
+                              {{$scripts[0]}}
+                       
                        
                         <br>Concerned HR Admin.
 <br>

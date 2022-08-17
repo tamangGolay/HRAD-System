@@ -39,7 +39,8 @@ h1 {
               </h5>
 			</div>
 		
-      </div
+</div>
+      <br>
 
                 <div class = "col-md-12">
                     <div class="card-body table-responsive p-0">

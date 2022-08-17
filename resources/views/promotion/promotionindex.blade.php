@@ -134,10 +134,9 @@ h4{
                                                 <tr>
                                                  <th>
                               Copies to:
-                        1)	Director,{{$copy->copies}}, BPC, Thimphu for kind information.
-                       <br> 2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
-                        <br>3)	<designation of officeHead>, <longOfficeName>, BPC, <officeAddress> for kind information.
-                        <br>4)	Concerned HR Admin.
+                        Director,{{$copy->copies}}, BPC, Thimphu for kind information.
+                       
+                        <br>Concerned HR Admin.
 <br>
 
                                                       </th>

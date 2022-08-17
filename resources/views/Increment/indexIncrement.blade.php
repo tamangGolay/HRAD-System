@@ -55,7 +55,7 @@ div.table2 {
             <div class ="row">
                 <div class = "col-md-12">
 
-                    <p>{{$increment1->empName}}</p>
+                    <p>{{$headDesignation->designation}}</p>
                     <p>{{$increment1->longOfficeName}}</p>
                     <p>{{$increment1->officeAddress}}</p>
 

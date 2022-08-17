@@ -71,6 +71,16 @@ class incrementReportController extends Controller
     // for($i = 0; $i < $ids; ++$i){
 
       // $products = Product::where('user_id', $user_id->id)->get();
+      $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
+      ->select('officeId')
+      ->where('id',$id)
+      ->first();
+ 
+      $headDesignation = DB::table('officehead')
+      ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
+        ->select('officehead.designation')
+         ->where('officeId', $officeId->officeId)
+         ->first();
 
   
       $increment1 = DB::table('viewincrementorder')
@@ -80,17 +90,15 @@ class incrementReportController extends Controller
          ->where('viewincrementorder.id',$id)
          ->first();
                       
-      $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
-     ->select('officeId')
-     ->where('id',$id)
-     ->first();
-
+    
 
     $increment = IncrementView::all()
                       ->where('officeId', $officeId->officeId); 
                           
                        
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,'increment1'=>$increment1));
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
+          
+          'increment1'=>$increment1,'headDesignation'=>$headDesignation));
           return $pdf->download ('increment.pdf');
       }
     }

@@ -30,7 +30,6 @@ class TransferRequestController extends Controller
             $Request_notesheet->createdBy = $request->empId;
             $Request_notesheet->save();  
 
-
             return redirect('home')->with('page', 'transferRequest')
             ->with('success', 'Transfer request submitted successfully!');
 
@@ -39,23 +38,62 @@ class TransferRequestController extends Controller
 
    public function recommendTransfer(Request $request)
     {
+       
+        if($request->status == "Request" ){    
 
-        if($request->status == "recommended" ){  //&& $request->remarks != ''
             $id = DB::table('transferrequest')->select('id')
             ->where('id',$request->id)
-            ->first();    
+            ->first(); 
+            
+            $empId = DB::table('transferrequest')->select('createdBy')
+            ->where('id',$request->id)
+            ->first();
+            
+            $fromOffice = DB::table('transferrequest')->select('fromOffice')
+            ->where('id',$request->id)
+            ->first();  
+
+            $toOffice = DB::table('transferrequest')->select('toOffice')
+            ->where('id',$request->id)
+            ->first();  
+            $requestDate = DB::table('transferrequest')->select('requestDate')
+            ->where('id',$request->id)
+            ->first();  
         
-                $a = new transferProposal;// is ModelName
-                $a->requestId = $id->id;//
-                $a->empId =  $request->createdBy;//
-                $a->proposedDate = $request->requestDate;
-                $a->fromOffice = $request->fromOffice;//
-                $a->toOffice = $request->toOffice;//
-                $a->transferType = $request->status;//
-                $a->save();      
-           
+           // dd($toOffice->toOffice);
+
+                $a = new transferProposal;   // is ModelName
+                $a->requestId = $id->id;
+                $a->empId =  $empId->createdBy;
+                $a->proposedDate = $requestDate->requestDate;
+                $a->fromOffice = $fromOffice->fromOffice;
+                $a->toOffice = $toOffice->toOffice;
+                $a->transferType = $request->status;
+                $a->save();                
+                
+            return redirect('home')->with('page', 'transferRequestReview')
+            ->with('success', 'Recommended and forwarded the transfer request successfully!');
+
+    }  
+
+      
+      if($request->status2 == "rejected" ){    
+
+        $id = DB::table('transferrequest')->select('id')
+        ->where('id',$request->id)
+        ->first(); 
+        
+        transferRequest::updateOrCreate(['id' => $id->id],
+        ['status' =>$request->status2]);                  
+            
+        //mail to user with reason of rejection
+            
+        return redirect('home')->with('page', 'transferRequestReview')
+        ->with('error', 'This transfer request have been rejected!');
+
+}
 
      }
 
 
-}}
+}

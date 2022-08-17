@@ -5716,7 +5716,14 @@ if ($request->v == "transferRequest")  //form.csv
 //Transfer Request
 if ($request->v == "transferRequestReview")  //form.csv
 {       
-    $transferRequest=transferRequest::all();  
+
+$transferRequest=transferRequest::all();
+
+$transferRequest= DB::table('transferrequest') 
+->select('*')
+->where('status','=','requested')
+->orWhere('status','=','normal')
+->get();  
    
  $rhtml = view('Transfer.transferRequestReview')->with(['transferRequest' => $transferRequest])->render(); 
  return response()

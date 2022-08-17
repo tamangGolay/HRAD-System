@@ -52,17 +52,27 @@ class PdfController extends Controller
       ->first();
       
 
-     $promotion=DB::select('call populateReportingStructure(?)',array($empId->empId));
+     $structure=DB::select('call populateReportingStructure(?)',array($empId->empId));
 
-     $promotion= DB::table('empreportingoffices')
-     ->select('*')  
-     ->where('empId',$empId->empId)
-      ->first();
+
+    //   $promotion= DB::table('viewpromotionorder')
+    //   ->join('promotioncopies','promotioncopies.empId','=','viewpromotionorder.empId')
+    //  ->select('promotioncopies.copies','viewpromotionorder.*')  
+    //  ->where('viewpromotionorder.empId',$empId->empId)
+    //  ->orWhere('viewpromotionorder.officeId',$officeId->officeId)
+    //   ->first();
 
       $promotion = promotionorder::all()->where('officeId',$officeId->officeId);
+
+         $copy= DB::table('viewpromotionorder')
+      ->join('promotioncopies','promotioncopies.empId','=','viewpromotionorder.empId')
+     ->select('promotioncopies.copies')  
+     ->where('viewpromotionorder.empId',$empId->empId)
+     ->first();
       
   
-          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion));
+          $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
+          'copy'=>$copy));
           return $pdf->download ('promotion.pdf');
       }
 }

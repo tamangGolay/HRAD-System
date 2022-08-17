@@ -133,10 +133,8 @@ h4{
 <br>
                                                 <tr>
                                                  <th>
-                    
                               Copies to:
-                              @if($promotion->officeType == 'Services')
-                        1)	Director,{{$promotion->shortOfficeName}} @endif, BPC, Thimphu for kind information.
+                        1)	Director,{{$promotion->copies}}, BPC, Thimphu for kind information.
                        <br> 2)	General Manager, <departmentName>, BPC, Thimphu for kind information.
                         <br>3)	<designation of officeHead>, <longOfficeName>, BPC, <officeAddress> for kind information.
                         <br>4)	Concerned HR Admin.

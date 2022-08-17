@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Duelist;
 use DataTables;
 use App\IncrementView;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyTestMail;
 
 use DB;
 
@@ -76,6 +78,10 @@ class incrementReportController extends Controller
       ->where('id',$id)
       ->first();
 
+      $empId = DB::table('viewincrementorder')//promotionall table(incrementall)
+      ->select('empId')
+      ->where('id',$id)
+      ->first();
 
       $officeAddress = DB::table('viewincrementorder')//promotionall table(incrementall)
       ->join('officedetails','officedetails.id','=','viewincrementorder.officeId')
@@ -90,6 +96,10 @@ class incrementReportController extends Controller
         ->select('officehead.designation')
          ->where('officehead.officeId', $officeId->officeId)
          ->first();
+
+
+
+      
 
       
          $GmName = DB::table('users')
@@ -138,6 +148,60 @@ class incrementReportController extends Controller
           
           'increment1'=>$increment1,'headDesignation'=>$headDesignation));
           return $pdf->download ('increment.pdf');
+
+          //email
+    $userDetail= DB::table('users') 
+    ->join('officedetails', 'officedetails.id', '=', 'users.office')
+    ->select('users.*','officedetails.longOfficeName')
+    ->where( 'users.empId',$empId->empId)
+    ->first();
+
+      $OfficeHead = DB::table('employeesupervisor')
+        ->join('viewincrementorder','viewincrementorder.empId','=','employeesupervisor.employee')
+        ->select('employeesupervisor.emailId')
+        ->where('employeesupervisor.employee',$empId->empId)
+         ->first();
+
+      $PiadEmail = DB::table('users')
+         ->select('users.emailId')
+         ->where('users.empid', '=', function($query){
+          $query->from('officemaster')
+          ->select('officemaster.officehead')
+          ->where('officemaster.id', '=', 75);
+        })
+        ->first();
+
+      $HrAdmin = DB::table('users')
+          ->select('users.emailId')
+           ->where('users.office', $officeId->officeId)
+          //  ->where('users.empId',$empId->empId)
+          ->where('users.role_id',8)
+           ->first();
+
+
+            // dd($OfficeHead,$PiadEmail);
+
+            if($HrAdmin == null){
+              // dd("oops");
+
+              $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+              Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
+                      ->send(new MyTestMail($email)); 
+            }
+
+            else{
+              // dd("hehe");
+
+                $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+
+                  // Mail::to($supervisorEmail->emailId) 
+                  // ->send(new MyTestMail($supervisor));
+
+                  Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
+                      ->send(new MyTestMail($email)); 
+
+            }
+      //email end
       }
     }
 

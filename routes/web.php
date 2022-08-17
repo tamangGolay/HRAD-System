@@ -649,6 +649,9 @@ Route::get('/download','incrementReportController@createIncrementReport');
 //Transfer Request
 Route::post('Request_transfer','TransferRequestController@Request_transfer')->name('Request_transfer');
 
+//Transfer By HR Admin
+Route::post('Admin_transfer','TransferRequestController@Admin_transfer')->name('Admin_transfer');
+
 
 //route for transfer request review manager
 Route::post('/recommendTransfer','TransferRequestController@recommendTransfer')->name('recommendTransfer');

@@ -5712,6 +5712,30 @@ if ($request->v == "transferRequest")  //form.csv
       ));
 }  //end
 
+//Transfer By Admin
+if ($request->v == "normalTransfer")  //form.csv
+{    
+   $userrr =empSupervisor::all();   //DISTINCT 
+   $officedd = Officedetails::all();
+   $officett = Officedetails::all();
+
+//    $transferRequest=transferRequest::all();
+  
+   $b= DB::table('transferrequest') 
+   ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
+   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')
+   ->join('employeesupervisor', 'employeesupervisor.employee', '=', 'transferrequest.createdBy')    
+   ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.*')
+   ->get();
+
+
+ $rhtml = view('Transfer.transferByAdmin')->with(['userrr' => $userrr,'officedd' => $officedd,'officett' => $officett])->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
 
 //Transfer Request
 if ($request->v == "transferRequestReview")  //form.csv

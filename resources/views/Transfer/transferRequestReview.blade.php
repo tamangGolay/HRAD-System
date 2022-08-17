@@ -8,7 +8,7 @@
               </h5> </div>
 			</div>
 			
-			<form method="POST" action="/" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
+			<form method="POST" action="/recommendTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
@@ -39,12 +39,12 @@
 				<td>
 					
 					<form method="POST" action="/recommendTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">    
-                                                
+					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
+                                                         
 					 <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
 					<input type="hidden" name="status" id="status" value="recommended">  
 					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
-		    	</form>
+		    	</form></form>
 			</td>
 
 			<td>

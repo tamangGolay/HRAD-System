@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\transferRequest;
 use DB;
 use Auth;
+use App\transferProposal;
 
 class TransferRequestController extends Controller
 {
@@ -34,4 +35,27 @@ class TransferRequestController extends Controller
             ->with('success', 'Transfer request submitted successfully!');
 
 }
-}
+
+
+   public function recommendTransfer(Request $request)
+    {
+
+        if($request->status == "recommended" ){  //&& $request->remarks != ''
+            $id = DB::table('transferrequest')->select('id')
+            ->where('id',$request->id)
+            ->first();    
+        
+                $a = new transferProposal;// is ModelName
+                $a->requestId = $id->id;//
+                $a->empId =  $request->createdBy;//
+                $a->proposedDate = $request->requestDate;
+                $a->fromOffice = $request->fromOffice;//
+                $a->toOffice = $request->toOffice;//
+                $a->transferType = $request->status;//
+                $a->save();      
+           
+
+     }
+
+
+}}

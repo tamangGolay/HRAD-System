@@ -128,7 +128,7 @@ h4{
                                             </th>
                                         </tr>
 
-                                        @if($gradeId->newGrade <= 17)
+                                        @if($gradeId->newGrade <= 1)
                                         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="10px">
                                         @endif
 <br>

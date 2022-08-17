@@ -28,15 +28,10 @@
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
+					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
 
-					
 
-				<div class=" textfont form-group row col-lg-12"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">Request Date:</label>
-                      <div class="col-md-8 ">
-                        <input type="date" name="requestDate" class="form-control" id="requestDate" required>
-                      </div>
-                  </div>
+				
 				  
 				  <div class=" textfont form-group row col-lg-12"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">From Office:</label>
@@ -119,7 +114,11 @@
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script> 
 
-		
+		<script>
+		var today = new Date();
+		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+		document.getElementById("requestDate").value = date;
+		</script>
 		
 		
 		

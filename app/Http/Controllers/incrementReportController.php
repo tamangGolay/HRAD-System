@@ -126,31 +126,6 @@ class incrementReportController extends Controller
 
                     // dd($PiadDesignation->desisnamelong);
 
-
-        
-
-
-
-  
-      $increment1 = DB::table('viewincrementorder')
-      ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
-        ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
-        // ->select('*')	
-         ->where('viewincrementorder.id',$id)
-         ->first();
-                      
-    
-
-    $increment = IncrementView::all()
-                      ->where('officeId', $officeId->officeId); 
-                          
-                       
-         
-          // return $pdf->download ('increment.pdf');
-
-
-
-          
                       //email
     $userDetail= DB::table('users') 
     ->join('officedetails', 'officedetails.id', '=', 'users.office')
@@ -186,72 +161,50 @@ class incrementReportController extends Controller
             if($HrAdmin == null){
               // dd("oops");
 
-
-              $data["email"] = "nimawtamang@bpc.bt";
-        $data["title"] = "From HRIS System";
-        $data["body"] = "This is the email body.";
-
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
-          
-        'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
-        'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
-      
-      ));
-
-
-        Mail::send('mail', $data, function ($message) use ($data, $pdf) {
-            $message->to($data["email"], $data["email"])
-                ->subject($data["title"])
-                ->attachData($pdf->output(), "increment.pdf");
-        });
-
-        dd('Email has been sent successfully');
-
-         
-
-              // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-              // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
-              //         ->send(new MyTestMail($email))
-              //         ->attachData($pdf->output(), "increment.pdf"); 
+              $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+              Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
+                      ->send(new MyTestMail($email)); 
             }
 
             else{
               // dd("hehe");
 
-              $data["email"] = "nimawtamang@bpc.bt";
-              $data["title"] = "From HRIS System";
-              $data["body"] = "This is the email body.";
+                $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
 
-              
-        $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
-          
-        'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
-        'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
-      
-      ));
+                  // Mail::to($supervisorEmail->emailId) 
+                  // ->send(new MyTestMail($supervisor));
 
-
-        Mail::send('mail', $data, function ($message) use ($data, $pdf) {
-            $message->to($data["email"], $data["email"])
-                ->subject($data["title"])
-                ->attachData($pdf->output(), "increment.pdf");
-        });
-
-                // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-
-                //   // Mail::to($supervisorEmail->emailId) 
-                //   // ->send(new MyTestMail($supervisor));
-
-                //   Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
-                //       ->send(new MyTestMail($email))
-                //       ->attachData($pdf->output(), "increment.pdf");
+                  Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
+                      ->send(new MyTestMail($email)); 
 
             }
       //email end
 
+        
 
 
 
+  
+      $increment1 = DB::table('viewincrementorder')
+      ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
+        ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
+        // ->select('*')	
+         ->where('viewincrementorder.id',$id)
+         ->first();
+                      
+    
+
+    $increment = IncrementView::all()
+                      ->where('officeId', $officeId->officeId); 
+                          
+                       
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
+          
+          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
+          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
+        
+        ));
+          return $pdf->download ('increment.pdf');
 
         
       }

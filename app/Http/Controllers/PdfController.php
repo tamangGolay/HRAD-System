@@ -54,6 +54,11 @@ class PdfController extends Controller
 
      $promotion=DB::select('call populateReportingStructure(?)',array($empId->empId));
 
+     $promotion= DB::table('empreportingoffices')
+     ->select('*')  
+     ->where('empId',$empId->empId)
+      ->first();
+
       $promotion = promotionorder::all()->where('officeId',$officeId->officeId);
       
   

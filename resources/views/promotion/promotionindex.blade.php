@@ -51,7 +51,7 @@ h4{
         
             <div class = "col-md-8">
             <div class="notesheet">{{$promotion->date}}</div>
-                <h2> BPC/HRA/HR-04/<year>/{{$promotion->id}} </h2>
+                <h6> BPC/HRA/HR-04/{{$year}}/{{$promotion->id}} </h6>
             </div>
 <br>
  <div class = "row">

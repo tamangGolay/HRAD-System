@@ -76,8 +76,15 @@ class PdfController extends Controller
  ->where('viewpromotionorder.empId',$empId->empId)
  ->first();
 
+ $year=DB::table('viewpromotionorder')
+  ->select(DB::raw('Year(viewpromotionorder.promotionDate) AS promotionDate'))  
+ ->where('viewpromotionorder.empId',$empId->empId)
+ ->first();
+
+
+
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
-          'copy'=>$copy,'grade'=>$grade));
+          'copy'=>$copy,'grade'=>$grade ,'year'=>$year));
           return $pdf->download ('promotion.pdf');
       }
 }

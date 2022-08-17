@@ -105,7 +105,7 @@ h4{
                       <tbody>         
                         <tr>
                             <th  class="col1"> I have the pleasure to inform you that you have been promoted to
-                              {{$promotion->newDesignation}} ({{$promotion->newGrade}}) in the {{$promotion->officeDetails}} of the company. 
+                              {{$promotion->newDesignation}} ({{$grade->grade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
                           </th>
                         </tr>

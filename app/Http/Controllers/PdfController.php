@@ -70,9 +70,14 @@ class PdfController extends Controller
      ->where('viewpromotionorder.empId',$empId->empId)
      ->first();
       
-  
+  $grade=DB::table('viewpromotionorder')
+  ->join('payscalemaster','payscalemaster.id','=','viewpromotionorder.newGrade')
+ ->select('payscalemaster.grade')  
+ ->where('viewpromotionorder.empId',$empId->empId)
+ ->first();
+
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
-          'copy'=>$copy));
+          'copy'=>$copy,'grade'=>$grade));
           return $pdf->download ('promotion.pdf');
       }
 }

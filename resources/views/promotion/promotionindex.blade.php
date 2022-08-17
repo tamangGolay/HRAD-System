@@ -128,10 +128,19 @@ h4{
                                             </th>
                                         </tr>
 
-                                        @if($gradeId->newGrade <= 1)
-                                        <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="10px">
+                                        @if($gradeId->newGrade <= 7)
+                                        <img src="{{asset('/cd/images/ceosign.png')}}" width="100%" height="10px">
+                                        <br>
+                                        Sonam Tobgey
+                                        <br>
+                                        Chief Executive Officer
                                         @endif
-<br>
+
+                                        @if($gradeId->newGrade > 7)
+                                        <img src="{{asset('/cd/images/hrsign.jpg')}}" width="100%" height="10px">
+<br>                                 Rinchen wangdi
+                            <br>      Hr,General Manager
+                                          @endif
 <br>
 <br>
 <br>

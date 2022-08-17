@@ -129,7 +129,7 @@ h4{
                                         </tr>
 
                                         @if($gradeId->newGrade <= 7)
-                                        <img src="{{asset('/cd/images/ceosign.png')}}" width="100%" height="10px">
+                                        <img src="{{asset('/cd/images/ceosign.png')}}" width="40%" height="50px">
                                         <br>
                                         Sonam Tobgey
                                         <br>
@@ -137,7 +137,7 @@ h4{
                                         @endif
 
                                         @if($gradeId->newGrade > 7)
-                                        <img src="{{asset('/cd/images/hrsign.jpg')}}" width="100%" height="10px">
+                                        <img src="{{asset('/cd/images/hrsign.jpg')}}" width="40%" height="50px">
 <br>                                 Rinchen wangdi
                             <br>      Hr,General Manager
                                           @endif

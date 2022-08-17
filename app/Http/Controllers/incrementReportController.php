@@ -75,12 +75,50 @@ class incrementReportController extends Controller
       ->select('officeId')
       ->where('id',$id)
       ->first();
+
+
+      $officeAddress = DB::table('viewincrementorder')//promotionall table(incrementall)
+      ->join('officedetails','officedetails.id','=','viewincrementorder.officeId')
+      ->select('officedetails.officeDetails')
+      ->where('viewincrementorder.officeId',$officeId->officeId)
+      ->first();
+
+      // dd($officeAddress->officeDetails);
  
       $headDesignation = DB::table('officehead')
       ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
         ->select('officehead.designation')
-         ->where('officeId', $officeId->officeId)
+         ->where('officehead.officeId', $officeId->officeId)
          ->first();
+
+      
+         $GmName = DB::table('users')
+         ->select('users.empName')
+         ->whereIn('users.empId', function($query){
+          $query->from('officemaster')
+          ->select('officemaster.officeHead')
+              ->where('officemaster.id', 9);
+              })->first();
+
+              
+
+
+              $PiadDesignation = DB::table('designationmaster')
+                  ->join('users','designationmaster.id','=','users.designationid')
+                    ->select('designationmaster.desisnamelong')
+                    // ->where('users.designationid', '=', 'designationmaster.id')
+                    ->where('users.empid', '=', function($query){
+                      $query->from('officemaster')
+                      ->select('officemaster.officehead')
+                      ->where('officemaster.id', '=', 75);
+                    })
+                    ->first();
+
+                    // dd($PiadDesignation->desisnamelong);
+
+        
+
+
 
   
       $increment1 = DB::table('viewincrementorder')

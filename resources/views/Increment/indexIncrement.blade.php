@@ -127,15 +127,15 @@ div.table2 {
                 <div class = "row">
                    <div class = "col-md-12 increment1">
                     <p> {{$increment1-> empId }} </p>
-                    <p> {{$increment1-> empId }} </p>
+                    <p> {{$GmName-> empName }} </p>
                     <p> General Manager-HR </p>
                     </div>
                 </div> <br><br>
                 <br>                <div class = "row">
                    <div class = "col-md-12 increment1">
                     <p> Copy to: </p>
-                    <p> &nbsp; &nbsp; 1. {{$increment1-> empId }}, PIAD, HRAD, BPC for further necessary action.  </p>
-                    <p> &nbsp; &nbsp; 2. All HR Admin, {{$increment1-> empId }}, {{$increment1-> empId }} for necessary action. (If available </p>
+                    <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisNameLong }}, PIAD, HRAD, BPC for further necessary action.  </p>
+                    <p> &nbsp; &nbsp; 2. All HR Admin, {{$officeAddress->officeDetails }} for necessary action. </p>
                     </div>
                 </div>
             </div>

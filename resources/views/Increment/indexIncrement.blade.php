@@ -134,7 +134,7 @@ div.table2 {
                 <br>                <div class = "row">
                    <div class = "col-md-12 increment1">
                     <p> Copy to: </p>
-                    <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisNameLong }}, PIAD, HRAD, BPC for further necessary action.  </p>
+                    <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisnameLong }}, PIAD, HRAD, BPC for further necessary action.  </p>
                     <p> &nbsp; &nbsp; 2. All HR Admin, {{$officeAddress->officeDetails }} for necessary action. </p>
                     </div>
                 </div>

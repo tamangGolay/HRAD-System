@@ -146,7 +146,10 @@ class incrementReportController extends Controller
                        
           $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
           
-          'increment1'=>$increment1,'headDesignation'=>$headDesignation));
+          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
+          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
+        
+        ));
           return $pdf->download ('increment.pdf');
 
           //email

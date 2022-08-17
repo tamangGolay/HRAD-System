@@ -63,6 +63,7 @@ use App\Promotionduelist;
 use App\promotionRequest;
 use App\IncrementView;
 use App\empSupervisor;
+use App\transferRequest;
 
 
 
@@ -5694,6 +5695,7 @@ if ($request->v == "transferRequest")  //form.csv
    $officedeta = Officedetails::all();
    $officedetas = Officedetails::all();
 
+//    $transferRequest=transferRequest::all();
   
    $b= DB::table('transferrequest') 
    ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
@@ -5709,6 +5711,21 @@ if ($request->v == "transferRequest")  //form.csv
      'html' => $rhtml
       ));
 }  //end
+
+
+//Transfer Request
+if ($request->v == "transferRequestReview")  //form.csv
+{       
+    $transferRequest=transferRequest::all();  
+   
+ $rhtml = view('Transfer.transferRequestReview')->with(['transferRequest' => $transferRequest])->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
 
 
 }

@@ -25,8 +25,7 @@
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="empName" id="empName" >
 					<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId">
 					<input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="office" id="office">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-					
+					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
 

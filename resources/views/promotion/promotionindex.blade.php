@@ -127,6 +127,10 @@ h4{
                               Yours sincerely,
                                             </th>
                                         </tr>
+
+                                        @if($gradeId->newGrade <= 7)
+                                        <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="10px">
+                                        @endif
 <br>
 <br>
 <br>

@@ -81,10 +81,13 @@ class PdfController extends Controller
  ->where('viewpromotionorder.empId',$empId->empId)
  ->first();
 
-
+ $gradeId=DB::table('viewpromotionorder')
+->select('viewpromotionorder.newGrade')  
+->where('viewpromotionorder.empId',$empId->empId)
+->first();
 
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
-          'copy'=>$copy,'grade'=>$grade ,'year'=>$year));
+          'copy'=>$copy,'grade'=>$grade ,'year'=>$year,'gradeId'=>$gradeId));
           return $pdf->download ('promotion.pdf');
       }
 }

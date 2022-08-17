@@ -126,33 +126,7 @@ class incrementReportController extends Controller
 
                     // dd($PiadDesignation->desisnamelong);
 
-        
-
-
-
-  
-      $increment1 = DB::table('viewincrementorder')
-      ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
-        ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
-        // ->select('*')	
-         ->where('viewincrementorder.id',$id)
-         ->first();
-                      
-    
-
-    $increment = IncrementView::all()
-                      ->where('officeId', $officeId->officeId); 
-                          
-                       
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
-          
-          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
-          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
-        
-        ));
-          return $pdf->download ('increment.pdf');
-
-          //email
+                      //email
     $userDetail= DB::table('users') 
     ->join('officedetails', 'officedetails.id', '=', 'users.office')
     ->select('users.*','officedetails.longOfficeName')
@@ -205,6 +179,34 @@ class incrementReportController extends Controller
 
             }
       //email end
+
+        
+
+
+
+  
+      $increment1 = DB::table('viewincrementorder')
+      ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
+        ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
+        // ->select('*')	
+         ->where('viewincrementorder.id',$id)
+         ->first();
+                      
+    
+
+    $increment = IncrementView::all()
+                      ->where('officeId', $officeId->officeId); 
+                          
+                       
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
+          
+          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
+          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
+        
+        ));
+          return $pdf->download ('increment.pdf');
+
+        
       }
     }
 

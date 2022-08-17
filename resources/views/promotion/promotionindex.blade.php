@@ -131,17 +131,17 @@ h4{
                                         @if($gradeId->newGrade <= 7)
                                         <img src="{{asset('/cd/images/ceosign.png')}}" width="40%" height="50px">
                                         <br>
-                                        <h6>Sonam Tobgey</h6>
+                                        <h6>{{$ceo->HeadOfOffice}},</h6>
                                         <br>
-                                        <h6> Chief Executive Officer</h6>
+                                        <h6>{{$ceo->designation}}</h6>
                                         @endif
 
                                         @if($gradeId->newGrade > 7)
                                         <img src="{{asset('/cd/images/hrsign.jpg')}}" width="40%" height="50px">
-<br>                                 <h6>Rinchen wangdi</h6>
-                            <br>      <h6>Hr,General Manager</h6>
+                            <br>         <h6>{{$hrGM->HeadOfOffice}}</h6>
+                            <br>      <h6>{{$hrGM->designation}}</h6>
                                           @endif
-<br>
+
 <br>
 <br>
                                                 <tr>

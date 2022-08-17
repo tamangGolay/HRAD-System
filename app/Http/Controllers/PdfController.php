@@ -86,8 +86,22 @@ class PdfController extends Controller
 ->where('viewpromotionorder.empId',$empId->empId)
 ->first();
 
+$ceo = DB::table('officehead') 
+->Where('officehead.officeId','=','1')
+->select('officehead.HeadOfOffice','officehead.designation')  
+->first();
+
+
+$hrGM =DB::table('officehead') 
+->Where('officehead.officeId','=','9')
+->select('officehead.HeadOfOffice','officehead.designation')  
+->first();
+
+
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
-          'copy'=>$copy,'grade'=>$grade ,'year'=>$year,'gradeId'=>$gradeId));
+          'copy'=>$copy,'grade'=>$grade ,'year'=>$year,'gradeId'=>$gradeId,
+          'ceo'=>$ceo,'hrGM'=>$hrGM,
+        ));
           return $pdf->download ('promotion.pdf');
       }
 }

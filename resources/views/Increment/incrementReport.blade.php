@@ -28,8 +28,19 @@ h1 {
    </style>
 </head>
 <body>
-    <div class = "container mt-4">
+    <div class = "container">
             <div class = "row">
+            <div class = "col">
+            <div class="card ">
+         <div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b> Incrment Due List Form</b>
+              </h5>
+			</div>
+		
+      </div
+
                 <div class = "col-md-12">
                     <div class="card-body table-responsive p-0">
 					    <table id="table5" class="table table-hover table-striped table-bordered">
@@ -78,6 +89,8 @@ h1 {
                   </table>
             </div>
             </div>
+</div>
+</div>
         </div>
     </div>
 

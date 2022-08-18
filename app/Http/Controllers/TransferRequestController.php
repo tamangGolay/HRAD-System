@@ -38,7 +38,7 @@ class TransferRequestController extends Controller
 
    public function recommendTransfer(Request $request)
     {
-       
+
         if($request->status == "Request" ){    
 
             $id = DB::table('transferrequest')->select('id')
@@ -162,10 +162,8 @@ transferProposal::updateOrCreate(['id' => $id->id],
 }
 
  else{
-          return redirect('home')->with('Sorry','Recommendation Failed');  
+    return redirect('home')->with('Sorry','Recommendation Failed');  
  }
-
-
 
 }
 
@@ -179,21 +177,20 @@ public function dirReviewTransfer(Request $request)
         ->where('id',$request->id)
         ->first();
 
-        $status='dirrecommended'; 
-     
+        $status='dirrecommended';      
 
     transferProposal::updateOrCreate(['id' => $id->id],
                        ['fromDirectorAction' =>$request->remarks,
                        'fromDirector' =>$request->empId,
                        'status' =>$status,
-                       'fromDirectorRemarks' =>$request->rejectreason]);   
+                       'fromDirectorRemarks' =>$request->rejectreason]);  
+
      return redirect('home')
      ->with('success','You have recommended the Transfer Request');
 
 }
 if($request->remarks2 == "rejected" ){    
-    //&& $request->remarks != ''
-//  dd($request);
+    
 
     $id = DB::table('transferproposal')->select('id')
     ->where('id',$request->id)
@@ -239,13 +236,11 @@ $viewRequest = DB::table('transferproposal')
    ));
   }
 
-
-
 public function toManagerTransfer(Request $request)
 {
     // dd($request);
 
-    if($request->remarks == "proposed" ){                        //&& $request->remarks != ''
+    if($request->remarks == "proposed" ){                        
        
         $id = DB::table('transferproposal')->select('id')
         ->where('id',$request->id)
@@ -266,11 +261,10 @@ public function toManagerTransfer(Request $request)
      ->first();  
 
        transferProposal::updateOrCreate(['id' => $id->id],
-               ['status' =>$request->remarks2]);   
+        ['status' =>$request->remarks2]);   
 
     return redirect('home')
      ->with('error','You have rejectd the Transfer Request!');
-
    }
 
    else{

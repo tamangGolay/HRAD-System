@@ -158,6 +158,39 @@ class incrementReportController extends Controller
 
             // dd($OfficeHead,$PiadEmail);
 
+            $increment1 = DB::table('viewincrementorder')
+            ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
+              ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
+              // ->select('*')	
+               ->where('viewincrementorder.id',$id)
+               ->first();
+
+            $increment = IncrementView::all()
+                      ->where('officeId', $officeId->officeId); 
+                          
+                       
+          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
+          
+          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
+          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
+        
+        ));
+
+
+        // $data["email"] = "aatmaninfotech@gmail.com";
+        // $data["title"] = "From ItSolutionStuff.com";
+        // $data["body"] = "This is Demo";
+  
+        // $pdf = PDF::loadView('emails.myTestMail', $data);
+  
+        // Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
+        //     $message->to($data["email"], $data["email"])
+        //             ->subject($data["title"])
+        //             ->attachData($pdf->output(), "text.pdf");
+        // });
+  
+        // dd('Mail sent successfully');
+
             if($HrAdmin == null){
               // dd("oops");
 
@@ -175,7 +208,8 @@ class incrementReportController extends Controller
                   // ->send(new MyTestMail($supervisor));
 
                   Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
-                      ->send(new MyTestMail($email)); 
+                  ->attachData($pdf->output(), "increment.pdf")
+                  ->send(new MyTestMail($email)); 
 
             }
       //email end
@@ -185,25 +219,11 @@ class incrementReportController extends Controller
 
 
   
-      $increment1 = DB::table('viewincrementorder')
-      ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
-        ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
-        // ->select('*')	
-         ->where('viewincrementorder.id',$id)
-         ->first();
+   
                       
     
 
-    $increment = IncrementView::all()
-                      ->where('officeId', $officeId->officeId); 
-                          
-                       
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
-          
-          'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
-          'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
-        
-        ));
+    
           return $pdf->download ('increment.pdf');
 
         

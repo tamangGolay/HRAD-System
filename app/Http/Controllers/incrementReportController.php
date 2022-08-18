@@ -180,7 +180,8 @@ class incrementReportController extends Controller
 
           }
     //email end
-    return $pdf->download ('increment.pdf');
+    return redirect('home')->with('page', 'incrementReport')
+    ->with('success','Mail has been sent!!!!');
 
       }
     }

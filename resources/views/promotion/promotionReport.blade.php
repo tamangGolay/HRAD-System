@@ -4,7 +4,7 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Laravel 8 PDF </title>
+    <title> Promotion Order </title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -14,8 +14,9 @@
 }
  th, td {
   border-color: #96D4D4;
- 
+  
 }
+/*
 .col1{
    width:100px;
 }
@@ -24,15 +25,21 @@
 }
 h1 {
  color: #1a3300;
-};
+}; */
    </style>
 </head>
 <body>
-    <div class = "container mt-4">
+    <div class = "container ">
+    <div class = "col">
+        <div class="card ">
         <div class = "row">
-            <div class = "col-md-8 text-center">
-                <h1> Promotion Report</h1>
-            </div>
+        <div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b> Promotion Order</b>
+              </h5>
+			</div>		
+        </div>
           
             <br><br><br>
             <div class = "row">
@@ -60,28 +67,19 @@ h1 {
                            <td class="col1"> {{$promotion-> empName}} </td>
                             <td class="col1"> {{$promotion->officeName}} </td>
                             <td class="col2"><a href="promotionReport/{{$promotion->id}}" class="btn btn-success">Download</a> </td>
-
-
-
                         </tr>
                     @endforeach
 
                     </tbody>
                   </table>
             </div>
-</div>
-        </div>
-    </div>
-
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" > Export to PDF </a>
-                </div>
             </div>
         </div>
-             -->
-             <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+    </div>
+</div>
+        
+            
+    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

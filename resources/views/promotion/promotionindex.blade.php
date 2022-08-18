@@ -148,7 +148,8 @@ h4{
                                                 <tr>
                                                  <th>
                               Copies to: <br>
-                              {{$scripts}}
+                             
+                              {{$copy->copies}}
 
                        
                        

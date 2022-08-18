@@ -4350,7 +4350,7 @@ if ($request->v == "user_profile")
     $place= place::all();
   $bank= bank::all();
   $officeaddress=Officedetails::all();
-  $qualification=Qualificationview::all()->where('empId',Auth::user()->id);
+  $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
 
     $rhtml = view('emp.user_profile')->with(['place' => $place, 'bank' =>$bank, 'officeaddress' =>$officeaddress,
      'qualification' =>$qualification ])->render();

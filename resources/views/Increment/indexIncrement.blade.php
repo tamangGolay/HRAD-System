@@ -5,7 +5,7 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> increment Order </title>
+    <title> Increment Order </title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -70,7 +70,7 @@ div.table2 {
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p> <strong> Subject:</strong> <u>increment1 Order</u></p>
+                    <p> <strong> Subject:</strong> <u>incremental Order</u></p>
                 </div>
             </div>
             <br>

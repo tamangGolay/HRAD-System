@@ -218,6 +218,26 @@ return redirect('home')->with('Sorry','Recommendation Failed');
 }
 
 
+}
 
+public function viewRequest()
+{
+    
+$viewRequest = DB::table('transferproposal')
+->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
+->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
+->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+ 
+->where('status','=','dirrecommended')     
+->where('transferproposal.tooffice','=',Auth::user()->office)                             
+ ->latest('id') //similar to orderby('roombed.id','desc')            
+  ->paginate(100000000);
+
+$rhtml = view('Transfer.viewrequest')->with(['viewRequest' => $viewRequest])->render();
+return response()
+  ->json(array(
+  'success' => true,
+  'html' => $rhtml
+));
 }
 }

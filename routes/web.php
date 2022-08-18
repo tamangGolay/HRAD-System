@@ -662,3 +662,7 @@ Route::post('/gmReviewTransfer','TransferRequestController@gmReviewTransfer')->n
 
 //route for transfer request review Director
 Route::post('/dirReviewTransfer','TransferRequestController@dirReviewTransfer')->name('dirReviewTransfer');
+
+
+//transfer request mangaer view route to view
+Route::get('/viewRequest','TransferRequestController@viewRequest');// 

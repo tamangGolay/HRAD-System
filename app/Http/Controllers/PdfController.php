@@ -70,8 +70,8 @@ class PdfController extends Controller
      ->where('viewpromotionorder.empId',$empId->empId)
      ->first();
  
-     $scripts1 = explode(',', $copy->copies);
-     $scripts = implode(',', $scripts1);  
+    //  $scripts = explode(',', $copy->copies);
+    //  $scripts = implode(',', $scripts1);  
      
  
 
@@ -105,7 +105,7 @@ $hrGM =DB::table('officehead')
 
           $pdf = PDF ::loadView ('promotion.promotionindex', array('promotion'=>$promotion,
           'copy'=>$copy,'grade'=>$grade ,'year'=>$year,'gradeId'=>$gradeId,
-          'ceo'=>$ceo,'hrGM'=>$hrGM,'scripts'=>$scripts,
+          'ceo'=>$ceo,'hrGM'=>$hrGM
         ));
           return $pdf->download ('promotion.pdf');
       }

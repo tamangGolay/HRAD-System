@@ -65,13 +65,6 @@ class incrementReportController extends Controller
 
   public function createIncrementReport ($id){
 
-    // dd($request->all());
-
-    //  $ids = $request->update_ids; 
-    //  $ids = count($request->update_ids);
-    // //  dd($ids);
-    // for($i = 0; $i < $ids; ++$i){
-
       // $products = Product::where('user_id', $user_id->id)->get();
       $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
       ->select('officeId')
@@ -97,12 +90,7 @@ class incrementReportController extends Controller
          ->where('officehead.officeId', $officeId->officeId)
          ->first();
 
-
-
-      
-
-      
-         $GmName = DB::table('users')
+      $GmName = DB::table('users')
          ->select('users.empName')
          ->whereIn('users.empId', function($query){
           $query->from('officemaster')
@@ -110,10 +98,7 @@ class incrementReportController extends Controller
               ->where('officemaster.id', 9);
               })->first();
 
-              
-
-
-              $PiadDesignation = DB::table('designationmaster')
+      $PiadDesignation = DB::table('designationmaster')
                   ->join('users','designationmaster.id','=','users.designationid')
                     ->select('designationmaster.desisnamelong')
                     // ->where('users.designationid', '=', 'designationmaster.id')
@@ -126,11 +111,6 @@ class incrementReportController extends Controller
 
                     // dd($PiadDesignation->desisnamelong);
 
-        
-
-
-
-  
       $increment1 = DB::table('viewincrementorder')
       ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
         ->select('viewincrementorder.*','incrementall.incrementCycle',DB::raw('Year(viewincrementorder.incrementDate) AS incrementDate'))
@@ -143,26 +123,26 @@ class incrementReportController extends Controller
     $increment = IncrementView::all()
                       ->where('officeId', $officeId->officeId); 
                           
-                       
-          $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
+                      $pdf = PDF ::loadView ('Increment.indexIncrement', array('increment'=>$increment,
           
-          'increment1'=>$increment1,'headDesignation'=>$headDesignation));
-          return $pdf->download ('increment.pdf');
-
-          //email
+                      'increment1'=>$increment1,'headDesignation'=>$headDesignation,'GmName'=>$GmName,
+                      'officeAddress'=>$officeAddress,'PiadDesignation'=>$PiadDesignation
+                    
+                    ));
+    //email
     $userDetail= DB::table('users') 
     ->join('officedetails', 'officedetails.id', '=', 'users.office')
     ->select('users.*','officedetails.longOfficeName')
     ->where( 'users.empId',$empId->empId)
     ->first();
 
-      $OfficeHead = DB::table('employeesupervisor')
+    $OfficeHead = DB::table('employeesupervisor')
         ->join('viewincrementorder','viewincrementorder.empId','=','employeesupervisor.employee')
         ->select('employeesupervisor.emailId')
         ->where('employeesupervisor.employee',$empId->empId)
          ->first();
 
-      $PiadEmail = DB::table('users')
+    $PiadEmail = DB::table('users')
          ->select('users.emailId')
          ->where('users.empid', '=', function($query){
           $query->from('officemaster')
@@ -171,17 +151,15 @@ class incrementReportController extends Controller
         })
         ->first();
 
-      $HrAdmin = DB::table('users')
+    $HrAdmin = DB::table('users')
           ->select('users.emailId')
            ->where('users.office', $officeId->officeId)
           //  ->where('users.empId',$empId->empId)
           ->where('users.role_id',8)
            ->first();
+    // dd($OfficeHead,$PiadEmail);
 
-
-          // dd($OfficeHead,$PiadEmail);
-
-          if($HrAdmin == null){
+        if($HrAdmin == null){
             // dd("oops");
 
             $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];

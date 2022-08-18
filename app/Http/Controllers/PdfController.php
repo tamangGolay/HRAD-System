@@ -7,7 +7,8 @@ use App\notesheetRequest;
 use App\notesheetapprove;
 use App\promotionorder;
 use DB;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyTestMail;
 use PDF;
 // use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
@@ -107,6 +108,53 @@ $hrGM =DB::table('officehead')
           'copy'=>$copy,'grade'=>$grade ,'year'=>$year,'gradeId'=>$gradeId,
           'ceo'=>$ceo,'hrGM'=>$hrGM
         ));
-          return $pdf->download ('promotion.pdf');
+        $empId = DB::table('viewpromotionorder')//promotionall table(incrementall)
+        ->select('empId')
+        ->where('id',$id)
+        ->first();
+        $officeAdmin = DB::table('users')
+          ->select('users.emailId')
+           ->where('users.office', $officeId->officeId)
+          //  ->where('users.empId',$empId->empId)
+          ->where('users.role_id',8)
+           ->first();
+           $OfficeHead = DB::table('employeesupervisor')
+           ->join('viewpromotionorder','viewpromotionorder.empId','=','employeesupervisor.employee')
+           ->select('employeesupervisor.emailId')
+           ->where('employeesupervisor.employee',$empId->empId)
+            ->first();
+
+
+             //email
+    $userDetail= DB::table('users') 
+    ->join('officedetails', 'officedetails.id', '=', 'users.office')
+    ->select('users.*','officedetails.longOfficeName')
+    ->where( 'users.empId',$empId->empId)
+    ->first();
+
+        if($officeAdmin == null){
+          // dd("oops");
+
+          $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'http://hris.bpc.bt/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
+          Mail::to($OfficeHead->emailId) 
+                  ->send(new MyTestMail($email)); 
+        }
+
+        else{
+          // dd("hehe");
+
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' =>'http://hris.bpc.bt/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
+
+              // Mail::to($supervisorEmail->emailId) 
+              // ->send(new MyTestMail($supervisor));
+
+              Mail::to([$OfficeHead->emailId,$officeAdmin->emailId]) 
+                  ->send(new MyTestMail($email)); 
+
+        }
+  
+          // return $pdf->download ('promotion.pdf');
+          return redirect('home')->with('page', 'promotionReport')
+    ->with('success','Mail has been sent!!!!');
       }
 }

@@ -12,7 +12,6 @@ class MyTestMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
   
     public $details;
-    public $pdf;
   
     /**
      * Create a new message instance.
@@ -33,7 +32,6 @@ class MyTestMail extends Mailable implements ShouldQueue
     {
 
         return $this->subject('Mail From BPC System')
-                    ->view('emails.myTestMail')
-                    ->attachData($this->pdf->output(), "increment.pdf");
-    }
+                    ->view('emails.myTestMail');
+                    }
 }

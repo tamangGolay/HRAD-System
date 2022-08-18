@@ -192,24 +192,42 @@ class incrementReportController extends Controller
         // dd('Mail sent successfully');
 
             if($HrAdmin == null){
+
+              $data["email"] = "nimawtamang@bpc.bt";
+              $data = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+
+
+        Mail::send(new MyTestMail($data,$pdf), $data, function ($message) use ($data, $pdf) {
+            $message->to($data["email"], $data["email"])
+                ->attachData($pdf->output(), "increment.pdf");
+        });
               // dd("oops");
 
-              $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-              Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
-                      ->send(new MyTestMail($email)); 
+              // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+              // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
+              //         ->send(new MyTestMail($email)); 
             }
 
             else{
               // dd("hehe");
 
-                $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+              $data["email"] = "nimawtamang@bpc.bt";
+              $data = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+
+
+              Mail::send(new MyTestMail($data,$pdf), $data, function ($message) use ($data, $pdf) {
+                $message->to($data["email"], $data["email"])
+                    ->attachData($pdf->output(), "increment.pdf");
+            });
+
+                // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
 
                   // Mail::to($supervisorEmail->emailId) 
                   // ->send(new MyTestMail($supervisor));
 
-                  Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
-                  ->attachData($pdf->output(), "increment.pdf")
-                  ->send(new MyTestMail($email)); 
+                  // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
+                  // ->attachData($pdf->output(), "increment.pdf")
+                  // ->send(new MyTestMail($email)); 
 
             }
       //email end

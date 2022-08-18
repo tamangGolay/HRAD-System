@@ -24,27 +24,15 @@
 				<form method="POST" action="{{ route('Request_transfer') }}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="empName" id="empName" >
 					<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="office" id="office">
+					
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
 
 					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
-				
-				  
-				  <div class=" textfont form-group row col-lg-12"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">From Office:</label>
-                      <div class="col-md-8 ">
-					  <select class="col-lg-12 col-sm-12 form-control" name="fromOffice" id="fromOffice" value="" required>
-                                             <option value="">Select Office From</option>
-                                             @foreach($officedeta as $officedeta)
-                                             <option value="{{$officedeta->id}}">{{$officedeta->officeDetails}}</option>
-										@endforeach
-							</select>    
+     			    <input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="fromOffice" id="fromOffice">  
 					 
-					  <!-- <input type="text" name="fromOffice" class="form-control" id="fromOffice" placeholder="Information Communication Department" required> -->
-                      </div>
-                  </div>
+					
 
 				 
 				  <div class=" textfont form-group row col-lg-12"> 
@@ -63,14 +51,11 @@
 
 				  <div class=" textfont form-group row col-lg-12"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">Request to Employee:</label>
-                      <div class="col-md-8 ">
-					  <select class="col-lg-12 col-sm-12 form-control" name="requestToEmp" id="requestToEmp" value="" required>
-                                             <option value="">Select Office From</option>
-                                             @foreach($userdeta as $userdeta)               
-											 <option>{{$userdeta->supervisor}}</option>
-										@endforeach
-							</select>  
+                      <div class="col-md-8 "> 
+					  @foreach($b as $rv)
 					 
+					  <input type="text" class="form-control" value="{{($rv->supervisor)}}" name="requestToEmp" id="requestToEmp">  
+					 @endforeach
 					  <!-- <input type="text" name="requestToEmp" class="form-control" id="requestToEmp" placeholder="Pema" required> -->
                       </div>
                   </div>

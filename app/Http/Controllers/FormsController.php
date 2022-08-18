@@ -5704,7 +5704,7 @@ if ($request->v == "transferRequest")  //form.csv
    ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.*')
    ->get();
 
- $rhtml = view('Transfer.transferRequest')->with(['userdeta' => $userdeta,'officedeta' => $officedeta,'officedetas' => $officedetas])->render(); 
+ $rhtml = view('Transfer.transferRequest')->with(['userdeta' => $userdeta,'b' => $b,'officedeta' => $officedeta,'officedetas' => $officedetas])->render(); 
  return response()
     ->json(array(
      'success' => true,

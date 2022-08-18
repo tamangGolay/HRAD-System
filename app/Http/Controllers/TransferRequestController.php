@@ -192,27 +192,29 @@ public function dirReviewTransfer(Request $request)
      ->with('success','You have recommended the Transfer Request');
 
 }
-//  if($request->remarks2 == "rejected" ){                        //&& $request->remarks != ''
-       
-//     $id = DB::table('transferproposal')->select('id')
-//     ->where('id',$request->id)
-//     ->first();
+if($request->remarks2 == "rejected" ){    
+    //&& $request->remarks != ''
+//  dd($request);
 
-//     $status1='rejected'; 
- 
+    $id = DB::table('transferproposal')->select('id')
+    ->where('id',$request->id)
+    ->first();
 
-// transferProposal::updateOrCreate(['id' => $id->id],
-//                    ['fromGMAction' =>$request->remarks2,
-//                    'fromGM' =>$request->empId,
-//                    'status' =>$status1,
-//                    'fromGMRemarks' =>$request->rejectreason]);   
-//  return redirect('home')
-//  ->with('error','You have rejectd the Transfer Request');
+    $status1='rejected'; 
 
-// }
+
+transferProposal::updateOrCreate(['id' => $id->id],
+                        ['fromDirectorAction' =>$request->remarks2,
+                        'fromDirector' =>$request->empId,
+                        'status' =>$status1,
+                        'fromDirectorRemarks' =>$request->rejectreason]);   
+                        return redirect('home')
+                        ->with('error','You have rejectd the Transfer Request');
+
+                    }
 
 else{
-      return redirect('home')->with('Sorry','Recommendation Failed');  
+return redirect('home')->with('Sorry','Recommendation Failed');  
 }
 
 

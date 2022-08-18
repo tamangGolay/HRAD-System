@@ -10,8 +10,6 @@
 	<form method="POST" action="/dirReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-	 <input type="hidden" name="remarks" id="remarks" value="recommended">
-	 <input type="hidden" name="remarks2" id="remarks2" value="rejected">
 
 		<div class="card-body table-responsive p-0">
 					<table id="table1" class="table table-hover table-striped table-bordered" style="width:95%;">
@@ -23,7 +21,8 @@
 								<th>To Office</th>
 								<th>Reason</th>															
 								<!-- <th style="width:3%">Recommend</th> -->
-								<th style="width:3%">Action</th>
+								<th style="width:3%">Approve</th>
+								<th style="width:3%">Reject</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -35,37 +34,36 @@
                  			<td>{{$rv->f}}</td>
                  			<td>{{$rv->tff}}</td>                 
                   			<td>{{$rv->reasonForTransfer}}</td>
+							<td>
+								<form method="POST" action="/dirReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+									<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
+									<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
+									<input type="hidden" name="remarks" id="remarks" value="recommended">
+									<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
+						
+									<div>
+									<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
+									</div>
 
-					<td>
-					<!-- <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
-                    <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
-					<input type="hidden" name="remarks" id="remarks" value="recommended"> -->
+								</form> 
+							</td>
 
-					<div>
-					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
-					</div>
+							<td>
 
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
+								<form method="POST" action="/dirReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+									<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+								<input type="hidden" name="remarks2" id="remarks2" value="rejected">  
+								<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
+								<div>
+									<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
+									</div>
+									</form> 
+							</td>			
+     					</tr>
+							@endforeach 
+    					</tbody>
 
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
-
-		    		<!-- </form> -->
-					</td>
-
-					<!-- <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-				<input type="hidden" name="status2" id="status" value="rejected">  
-
-				<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
-				
-          </form> </td> -->
-			
-      </tr>
-	@endforeach 
-    </tbody>
-
-			</table>
+					</table>
 			
 			<div>				
 

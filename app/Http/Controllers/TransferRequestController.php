@@ -6,6 +6,8 @@ use App\transferRequest;
 use DB;
 use Auth;
 use App\transferProposal;
+use App\Officedetails;
+use App\Officem;
 
 class TransferRequestController extends Controller
 {
@@ -272,4 +274,37 @@ public function toManagerTransfer(Request $request)
    }
 
 }
+
+public function toGMtransferrequest()
+{
+    $fromoffice = Officedetails::all();
+    $tooffice = Officedetails::all();
+ 
+    $toGMtransferrequest = DB::table('transferproposal')
+    ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
+   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
+   ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
+
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+    ->where('transferproposal.toOffice','=',Auth::user()->office) 
+  ->where('transferproposal.status','=','proposed')
+  ->where('transferproposal.toGM',)
+
+ ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+  ->where('transferproposal.status','=','proposed')
+  ->where('transferproposal.toGM',)
+    
+    
+    ->paginate(10000000);
+
+
+$rhtml = view('transfer.transferReviewToGM')->with(['toGMtransferrequest' => $toGMtransferrequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice])->render();
+return response()
+  ->json(array(
+  'success' => true,
+  'html' => $rhtml
+));
+} //end
+
 }

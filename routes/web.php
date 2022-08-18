@@ -668,3 +668,6 @@ Route::post('/toManagerTransfer','TransferRequestController@toManagerTransfer')-
 
 //transfer request mangaer view route to view
 Route::get('/viewRequest','TransferRequestController@viewRequest');// 
+
+// to gm transfer request
+Route::get('/toGMtransferrequest','TransferRequestController@toGMtransferrequest');// 

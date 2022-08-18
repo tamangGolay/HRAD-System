@@ -4,13 +4,13 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Transfer Request Review</b>
+                <b>Transfer Request from other Offices</b>
               </h5> </div>
-			</div>
-<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
+			</div>	
+
+	<!-- <div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
 <button  id="notescancel" class="btn btn-info btn" onclick="othertransferrequest();" style="color:black;">View Transfer Request</button>
-	</div		
-			
+	</div -->
 	<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
@@ -21,24 +21,27 @@
 					<table id="table1" class="table table-hover table-striped table-bordered" style="width:95%;">
 						<thead>
 							<tr class="text-nowrap">
-								<th>Sl No</th>
+								<th>Request Id</th>
                 				<th>Emp Id </th>
 								<th>From Office</th>
-								<th>To Office</th>
-								<th>Reason</th>															
-								<!-- <th style="width:3%">Recommend</th> -->
+								<th>Transfer Type</th>
+								<th>From Director</th>
+								<th>From Director Remarks</th>	
+								<th>Reason For transfer</th>													
 								<th style="width:3%">Approve</th>
 								<th style="width:3%">Reject</th>
 							</tr>
 						</thead>
 						<tbody>
-							 @foreach($transferRequest as $rv)
+						 @foreach($toGMtransferrequest as $rv)
 						<tr>
 								
                   			<td>{{$rv->id}}</td>
                  			<td>{{$rv->empId}}</td>
-                 			<td>{{$rv->f}}</td>
-                 			<td>{{$rv->tff}}</td>                 
+                 			<td>{{$rv->tff}}</td> 
+							 <td>{{$rv->transferType}}</td>
+							 <td>{{$rv->fromDirector}}</td>
+							 <td>{{$rv->fromDirectorRemarks}}</td>                
                   			<td>{{$rv->reasonForTransfer}}</td>
 
 					<td>
@@ -53,7 +56,7 @@
 					</div>
 
 		    		</form> 
-					</td>
+					 </td>
 
 				<td>
 
@@ -85,9 +88,8 @@
 		<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
 		});
-		
 		</script>
 		<!-- jquery-validation -->
 		<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
@@ -131,15 +133,4 @@
 		});
 
 		</script>
-		
-<script type="text/javascript">
 
-function othertransferrequest()
-{
- $.get('toGMtransferrequest',function(data){ 
-    $('#contentpage').empty();                  
-    $('#contentpage').append(data.html);
- });
-
-}
-</script>

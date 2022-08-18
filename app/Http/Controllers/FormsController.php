@@ -5761,6 +5761,41 @@ if ($request->v == "gmTransferReview")  //form.csv
       ));
 }  //end
 
+if ($request->v == "gmTransferReview")  //form.csv
+{       
+    // $transferRequest=transferProposal::all();
+    $fromoffice = Officedetails::all();
+    $tooffice = Officedetails::all();
+ 
+    $transferRequest = DB::table('transferproposal')
+    ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
+    ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
+   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+//    ->where('transferproposal.status','=','proposed')
+//    ->orwhere('transferproposal.fromOffice',Auth::user()->office) 
+//     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+
+
+    ->where('transferproposal.fromOffice','=',Auth::user()->office) 
+       ->where('transferproposal.status','=','proposed')
+
+       ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+      ->where('transferproposal.status','=','proposed')
+
+
+
+    ->paginate(10000000);
+    
+   $rhtml = view('Transfer.transferReviewGM')->with(['transferRequest' => $transferRequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice])->render(); 
+    return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
 if ($request->v == "dirReview")  //form.csv
 {       
     // $transferRequest=transferProposal::all();

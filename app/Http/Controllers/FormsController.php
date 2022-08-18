@@ -4862,41 +4862,19 @@ if ($request->v == "employeeskillmap")  //form.csv
     $notesheetRequest = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->join('officeunder','officeunder.office','=','notesheet.officeId')
+    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
-   ->latest('notesheet.id') //similar to orderby('id','desc')
+    ->latest('notesheet.id') //similar to orderby('id','desc')
 
     ->where('notesheet.status','=','GMRecommended') // 
     ->where('cancelled','=','No')
 
-    ->where('notesheet.officeId',Auth::user()->office)
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-
-    ->orwhere('officeId','=',89)  //IT 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',90) // Suit
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',88)  //fnd (3 for ICD)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',72) // RDD
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',86) //
-    ->where('notesheet.status','=','GMRecommended')
- 
-    ->orwhere('officeId','=',88) // erd
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',93) //spbd
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',94) // spbd
-    ->where('notesheet.status','=','GMRecommended')
-
-
+    // ->where('notesheet.officeId',Auth::user()->office)
+    // ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    
+    ->where('officeunder.head',Auth::user()->empId)  
+    
     ->paginate(10000000);
 
     $rhtml = view('Notesheet.STSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
@@ -4926,8 +4904,6 @@ if ($request->v == "employeeskillmap")  //form.csv
 
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
     ->where('notesheet.status','=','GMRecommended')
-
-
 
     ->paginate(10000000);
 
@@ -5117,8 +5093,8 @@ if ($request->v == "employeeskillmap")  //form.csv
      
     $notesheetRequest = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+     ->join('officemaster','officemaster.id','=','notesheet.officeId')
+     ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
    ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -5744,7 +5720,9 @@ if ($request->v == "transferRequestReview")  //form.csv
 $transferRequest=transferRequest::all();
 
 $transferRequest= DB::table('transferrequest') 
-->select('*')
+->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
+->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')   
+->select('transferrequest.*','officedetails.officeDetails as fromOff','B.officeDetails as toOff')
 ->where('status','=','requested')
 ->orWhere('status','=','normal')
 ->get();  
@@ -5766,8 +5744,8 @@ if ($request->v == "gmTransferReview")  //form.csv
  
     $transferRequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
-   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
+    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
     ->where('transferproposal.status','=','proposed')
     ->paginate(10000000);
     

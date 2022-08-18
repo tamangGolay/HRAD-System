@@ -23,7 +23,8 @@
 								<th>To Office</th>
 								<th>Reason</th>															
 								<!-- <th style="width:3%">Recommend</th> -->
-								<th style="width:3%">Action</th>
+								<th style="width:3%">Approve</th>
+								<th style="width:3%">Reject</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,33 +42,33 @@
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
 					<input type="hidden" name="remarks" id="remarks" value="recommended">
-					<input type="hidden" name="remarks2" id="remarks2" value="rejected">
-
-
+					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
+		
 					<div>
 					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
 					</div>
 
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
+		    		</form> 
+					 </td>
 
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
+				<td>
 
-		    		<!-- </form> -->
-					</td>
-
-					<!-- <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+				 <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-				<input type="hidden" name="status2" id="status" value="rejected">  
-
+				<input type="hidden" name="remarks2" id="remarks2" value="rejected">  
 				<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
-				
-          </form> </td> -->
+				<div>
+					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
+					</div>
+           </form> 
+		</td>
 			
       </tr>
 	@endforeach 
     </tbody>
 
 			</table>
+			</form>
 			
 			<div>				
 

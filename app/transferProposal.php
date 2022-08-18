@@ -9,7 +9,7 @@ class transferProposal extends Model
     //
     protected $table = 'transferproposal';
 
-    protected $fillable = ['id', 'requestId', 'empId ','proposedDate ', 'fromOffice ','toOffice', 'transferType','status'];
+    protected $fillable = ['id', 'requestId', 'empId ','proposedDate ', 'fromOffice ','toOffice','fromGMAction','fromGM','fromGMRemarks','transferType','status'];
 
     public $timestamps = false;
 

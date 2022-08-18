@@ -120,5 +120,52 @@ class TransferRequestController extends Controller
             ->with('success', 'Transfer  submitted successfully!');
     }
 
+    public function gmReviewTransfer(Request $request)
+    {
+        // dd($request);
 
+        if($request->remarks == "recommended" ){                        //&& $request->remarks != ''
+           
+            $id = DB::table('transferproposal')->select('id')
+            ->where('id',$request->id)
+            ->first();
+
+            $status='recommended'; 
+             
+
+        transferProposal::updateOrCreate(['id' => $id->id],
+                           ['fromGMAction' =>$request->remarks,
+                           'fromGM' =>$request->empId,
+                           'status' =>$status,
+                           'fromGMRemarks' =>$request->rejectreason]);   
+         return redirect('home')
+         ->with('success','You have recommended the Transfer Request');
+
+ }
+//  if($request->remarks2 == "rejected" ){                        //&& $request->remarks != ''
+           
+//     $id = DB::table('transferproposal')->select('id')
+//     ->where('id',$request->id)
+//     ->first();
+
+//     $status1='rejected'; 
+     
+
+// transferProposal::updateOrCreate(['id' => $id->id],
+//                    ['fromGMAction' =>$request->remarks2,
+//                    'fromGM' =>$request->empId,
+//                    'status' =>$status1,
+//                    'fromGMRemarks' =>$request->rejectreason]);   
+//  return redirect('home')
+//  ->with('error','You have rejectd the Transfer Request');
+
+// }
+
+ else{
+          return redirect('home')->with('Sorry','Recommendation Failed');  
+ }
+
+
+
+}
 }

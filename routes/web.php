@@ -659,3 +659,6 @@ Route::post('/recommendTransfer','TransferRequestController@recommendTransfer')-
 
 //route for transfer request review General Manager
 Route::post('/gmReviewTransfer','TransferRequestController@gmReviewTransfer')->name('gmReviewTransfer');
+
+//route for transfer request review Director
+Route::post('/dirReviewTransfer','TransferRequestController@dirReviewTransfer')->name('dirReviewTransfer');

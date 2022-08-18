@@ -10,8 +10,8 @@
 	<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-	 <input type="hidden" name="remarks" id="remarks" value="recommended">
-	 <input type="hidden" name="remarks2" id="remarks2" value="rejected">
+	 <!-- <input type="hidden" name="remarks" id="remarks" value="recommended">
+	 <input type="hidden" name="remarks2" id="remarks2" value="rejected"> -->
 
 		<div class="card-body table-responsive p-0">
 					<table id="table1" class="table table-hover table-striped table-bordered" style="width:95%;">
@@ -37,10 +37,12 @@
                   			<td>{{$rv->reasonForTransfer}}</td>
 
 					<td>
-					<!-- <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+					<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
-					<input type="hidden" name="remarks" id="remarks" value="recommended"> -->
+					<input type="hidden" name="remarks" id="remarks" value="recommended">
+					<input type="hidden" name="remarks2" id="remarks2" value="rejected">
+
 
 					<div>
 					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		

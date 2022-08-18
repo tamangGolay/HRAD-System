@@ -5723,9 +5723,13 @@ $transferRequest= DB::table('transferrequest')
 ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
 ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')   
 ->select('transferrequest.*','officedetails.officeDetails as fromOff','B.officeDetails as toOff')
-->where('status','=','requested')
-->orWhere('status','=','normal')
-->get();  
+
+  ->where('transferrequest.fromOffice','=',Auth::user()->office) 
+  ->where('transferrequest.status','=','requested')
+  ->orwhere('transferrequest.fromOffice','=',Auth::user()->office) 
+  ->where('transferrequest.status','=','normal')
+  
+  ->get();  
    
  $rhtml = view('Transfer.transferRequestReview')->with(['transferRequest' => $transferRequest])->render(); 
  return response()

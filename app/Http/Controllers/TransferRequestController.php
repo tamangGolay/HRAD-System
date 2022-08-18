@@ -93,7 +93,7 @@ class TransferRequestController extends Controller
 
 }
 
-     }
+ }
      public function Admin_transfer(Request $request)
     {
         $b= DB::table('transferrequest') 
@@ -143,9 +143,7 @@ class TransferRequestController extends Controller
 
  }
  if($request->remarks2 == "rejected" ){    
-                        //&& $request->remarks != ''
-//  dd($request);
-           
+                       
     $id = DB::table('transferproposal')->select('id')
     ->where('id',$request->id)
     ->first();
@@ -170,6 +168,7 @@ transferProposal::updateOrCreate(['id' => $id->id],
 
 
 }
+
 public function dirReviewTransfer(Request $request)
 {
     // dd($request);
@@ -202,8 +201,7 @@ if($request->remarks2 == "rejected" ){
 
     $status1='rejected'; 
 
-
-transferProposal::updateOrCreate(['id' => $id->id],
+    transferProposal::updateOrCreate(['id' => $id->id],
                         ['fromDirectorAction' =>$request->remarks2,
                         'fromDirector' =>$request->empId,
                         'status' =>$status1,
@@ -228,16 +226,56 @@ $viewRequest = DB::table('transferproposal')
 ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
 ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
  
-->where('status','=','dirrecommended')     
-->where('transferproposal.tooffice','=',Auth::user()->office)                             
- ->latest('id') //similar to orderby('roombed.id','desc')            
-  ->paginate(100000000);
+ ->where('status','=','dirrecommended')     
+ ->where('transferproposal.toOffice','=',Auth::user()->office)                             
+          
+  ->paginate(10000000);
 
-$rhtml = view('Transfer.viewrequest')->with(['viewRequest' => $viewRequest])->render();
-return response()
-  ->json(array(
-  'success' => true,
-  'html' => $rhtml
-));
+  $rhtml = view('Transfer.viewRequest')->with(['viewRequest' => $viewRequest])->render();
+  return response()
+    ->json(array(
+    'success' => true,
+    'html' => $rhtml
+   ));
+  }
+
+
+
+public function toManagerTransfer(Request $request)
+{
+    // dd($request);
+
+    if($request->remarks == "proposed" ){                        //&& $request->remarks != ''
+       
+        $id = DB::table('transferproposal')->select('id')
+        ->where('id',$request->id)
+        ->first();      
+
+    transferProposal::updateOrCreate(['id' => $id->id],
+                       ['status' =>$request->remarks]);   
+
+     return redirect('home')
+     ->with('success','You have recommended the Transfer Request.');
+     
+    }
+
+    if($request->remarks2 == "rejected" ){    
+                          
+     $id = DB::table('transferproposal')->select('id')
+     ->where('id',$request->id)
+     ->first();  
+
+       transferProposal::updateOrCreate(['id' => $id->id],
+               ['status' =>$request->remarks2]);   
+
+    return redirect('home')
+     ->with('error','You have rejectd the Transfer Request!');
+
+   }
+
+   else{
+         return redirect('home')->with('Sorry','Recommendation Failed');  
+   }
+
 }
 }

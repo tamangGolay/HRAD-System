@@ -7,7 +7,7 @@
                 <b>Transfer Request from Other Office</b>
               </h5> </div>
 			</div>	
-	<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
+	<form method="POST" action="/toManagerTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 	 <!-- <input type="hidden" name="remarks" id="remarks" value="recommended">
@@ -41,24 +41,20 @@
                   			<td>{{$rv->reasonForTransfer}}</td>
 
 					<td>
-					<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+					<form method="POST" action="/toManagerTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
-					<input type="hidden" name="remarks" id="remarks" value="recommended">
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
-		
-					<div>
-					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
-					</div>
-
+					<input type="hidden" name="remarks" id="remarks" value="proposed">
+					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center">Recommend</button>
+							
 		    		</form> 
 					</td>
 
 				<td>
 
-				 <form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-				<input type="hidden" name="remarks2" id="remarks2" value="rejected">  
+				 <form method="POST" action="/toManagerTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+				<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+				<input type="hidden" name="remarks2" id="remarks2" value="rejected"> 				
 				<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
 				<div>
 					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		

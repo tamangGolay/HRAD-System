@@ -46,10 +46,15 @@ div.table2 {
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
-        <div class = "row">
+        <div class = "col-md-8">
+            <div class="notesheet">{{$increment1->createdOn}}</div>
+                <h6> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </h6>
+            </div>
+
+        <!-- <div class = "row">
             <div class="col">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
-            <div class="col">{{$increment1->createdOn}}</div>
-        </div>
+            <div class="col ">{{$increment1->createdOn}}</div>
+        </div> -->
 
             <br>
             <div class ="row">

@@ -48,7 +48,7 @@ div.table2 {
         <br><br><br>
         <div class = "col-md-8">
             <div class="notesheet">{{$increment1->createdOn}}</div>
-                <h6> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </h6>
+                <p> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </p>
             </div>
 
         <!-- <div class = "row">

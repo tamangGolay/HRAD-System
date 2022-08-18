@@ -16,7 +16,7 @@
   border-color: #96D4D4;
  
 }
-.col1{
+/* .col1{
    width:100px;
 }
 .col2{
@@ -24,7 +24,7 @@
 }
 h1 {
  color: #1a3300;
-};
+}; */
    </style>
 </head>
 <body>
@@ -35,7 +35,7 @@ h1 {
          <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b> Incrment Due List Form</b>
+                <b> Incrment Order</b>
               </h5>
 			</div>
 		
@@ -68,14 +68,10 @@ h1 {
                            <!-- <td class="col1"> {{$increment-> empId }} </td> -->
 
                            <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
-                            <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>
-
-                           
-                            <td class="col1"> {{$increment-> oldBasic}} </td>
-                            
+                            <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>                     
+                            <td class="col1"> {{$increment-> oldBasic}} </td>                           
                             <td class="col1"> {{$increment-> newBasic}} </td>
                             <td class="col1"> {{$increment-> officeDetails}} </td>
-
                             <td class="col2">
                                  <a href="incrementReport/{{$increment->id}}" class="btn btn-success">Download</a> 
                                  
@@ -85,6 +81,7 @@ h1 {
 
                         </tr>
                     @endforeach
+
 
                     </tbody>
                   </table>

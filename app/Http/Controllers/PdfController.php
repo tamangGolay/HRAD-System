@@ -70,9 +70,11 @@ class PdfController extends Controller
      ->where('viewpromotionorder.empId',$empId->empId)
      ->first();
  
-     $scripts = explode(',', $copy->copies);
-    
-      
+     $scripts1 = explode(',', $copy->copies);
+     $scripts = implode(',', $scripts1);  
+     
+ 
+
   $grade=DB::table('viewpromotionorder')
   ->join('payscalemaster','payscalemaster.id','=','viewpromotionorder.newGrade')
  ->select('payscalemaster.grade')  

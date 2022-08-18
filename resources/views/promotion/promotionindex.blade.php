@@ -148,10 +148,7 @@ h4{
                                                 <tr>
                                                  <th>
                               Copies to: <br>
-                              {{$scripts[0]}},{{$scripts[1]}},{{$scripts[2]}},{{$scripts[3]}} 
-                              <br>
-                             {{$scripts[4]}},{{$scripts[5]}},{{$scripts[6]}},{{$scripts[7]}}
-                              <br>{{$scripts[8]}},{{$scripts[9]}},{{$scripts[10]}},{{$scripts[11]}}
+                              {{$scripts}}
 
                        
                        

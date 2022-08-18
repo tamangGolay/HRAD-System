@@ -198,10 +198,9 @@ class incrementReportController extends Controller
 
 
         Mail::send(new MyTestMail($data,$pdf), $data, function ($message) use ($data, $pdf) {
-            $message->to($data["email"], $data["email"])
-                ->attachData($pdf->output(), "increment.pdf");
+            $message->to($data["email"], $data["email"]);
         });
-              // dd("oops");
+              dd("oops");
 
               // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
               // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
@@ -209,16 +208,15 @@ class incrementReportController extends Controller
             }
 
             else{
-              // dd("hehe");
 
               $data["email"] = "nimawtamang@bpc.bt";
               $data = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
 
 
               Mail::send(new MyTestMail($data,$pdf), $data, function ($message) use ($data, $pdf) {
-                $message->to($data["email"], $data["email"])
-                    ->attachData($pdf->output(), "increment.pdf");
+                $message->to($data["email"], $data["email"]);
             });
+              dd("hehe");
 
                 // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
 
@@ -242,7 +240,7 @@ class incrementReportController extends Controller
     
 
     
-          return $pdf->download ('increment.pdf');
+          // return $pdf->download ('increment.pdf');
 
         
       }

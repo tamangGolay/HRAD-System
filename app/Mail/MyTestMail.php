@@ -32,6 +32,7 @@ class MyTestMail extends Mailable implements ShouldQueue
     {
 
         return $this->subject('Mail From BPC System')
-                    ->view('emails.myTestMail');
+                    ->view('emails.myTestMail')
+                    ->attachData($pdf->output(), "increment.pdf");
                     }
 }

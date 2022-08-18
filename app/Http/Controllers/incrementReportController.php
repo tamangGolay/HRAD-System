@@ -162,7 +162,7 @@ class incrementReportController extends Controller
         if($HrAdmin == null){
             // dd("oops");
 
-            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here:http://hris.bpc.bt/incrementReport/'.$id. '.','body5' => '','body6' => '', ];
             Mail::to([$OfficeHead->emailId,$PiadEmail->emailId]) 
                     ->send(new MyTestMail($email)); 
           }
@@ -170,7 +170,7 @@ class incrementReportController extends Controller
           else{
             // dd("hehe");
 
-              $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
+              $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here:http://hris.bpc.bt/incrementReport/'.$id. '.','body5' => '','body6' => '', ];
 
                 // Mail::to($supervisorEmail->emailId) 
                 // ->send(new MyTestMail($supervisor));
@@ -180,6 +180,8 @@ class incrementReportController extends Controller
 
           }
     //email end
+    return $pdf->download ('increment.pdf');
+
       }
     }
 

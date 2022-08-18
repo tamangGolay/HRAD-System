@@ -148,7 +148,11 @@ h4{
                                                 <tr>
                                                  <th>
                               Copies to: <br>
-                              {{$scripts[0]}}
+                              {{$scripts[0]}}{{$scripts[1]}}{{$scripts[2]}}
+                              <br>
+                              {{$scripts[3]}} {{$scripts[4]}}{{$scripts[5]}}
+                              <br>{{$scripts[6]}}{{$scripts[7]}}{{$scripts[8]}}{{$scripts[9]}}
+
                        
                        
                         <br>Concerned HR Admin.

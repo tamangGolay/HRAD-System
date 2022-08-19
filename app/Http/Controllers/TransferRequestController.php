@@ -307,4 +307,54 @@ return response()
 ));
 } //end
 
+public function toGMReviewTransfer(Request $request)
+ {
+    // dd($request);
+    
+        if($request->remarks == "recommended" ){                        //&& $request->remarks != ''
+           
+            $id = DB::table('transferproposal')->select('id')
+            ->where('id',$request->id)
+            ->first();
+
+            $status='recommended'; 
+             
+
+        transferProposal::updateOrCreate(['id' => $id->id],
+                           ['toGMAction' =>$request->remarks,
+                           'toGM' =>$request->empId,
+                           'status' =>$status,
+                           'toGMRemarks' =>$request->rejectreason]);   
+         return redirect('home')
+         ->with('success','You have recommended the Transfer Request');
+
+ }
+
+ if($request->remarks2 == "rejected" ){    
+                       
+    $id = DB::table('transferproposal')->select('id')
+    ->where('id',$request->id)
+    ->first();
+
+    $status1='rejected'; 
+     
+
+transferProposal::updateOrCreate(['id' => $id->id],
+                   ['toGMAction' =>$request->remarks2,
+                   'toGM' =>$request->empId,
+                   'status' =>$status1,
+                   'toGMRemarks' =>$request->rejectreason]);  
+
+ return redirect('home')
+ ->with('error','You have rejectd the Transfer Request');
+
+}
+
+ else{
+    return redirect('home')->with('Sorry','Recommendation Failed');  
+ }
+
+}
+
+
 }

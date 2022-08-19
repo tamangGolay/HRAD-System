@@ -49,7 +49,7 @@
 					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
 		
 					<div>
-					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
+					<textarea name="rejectreason" id="reason" placeholder="Recommendation Remarks"  required></textarea>		
 					</div>
 
 		    		</form> 

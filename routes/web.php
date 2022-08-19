@@ -671,3 +671,6 @@ Route::get('/viewRequest','TransferRequestController@viewRequest');//
 
 // to gm transfer request
 Route::get('/toGMtransferrequest','TransferRequestController@toGMtransferrequest');// 
+
+//route for transfer request review GM
+Route::post('/toGMReviewTransfer','TransferRequestController@toGMReviewTransfer')->name('toGMReviewTransfer');

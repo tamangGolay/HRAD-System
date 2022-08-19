@@ -118,7 +118,7 @@ class TransferRequestController extends Controller
             $Request_notesheet->save();  
 
 
-            return redirect('home')->with('page', 'transferByAdmin')
+            return redirect('home')
             ->with('success', 'Transfer request submitted successfully!');
     }
 

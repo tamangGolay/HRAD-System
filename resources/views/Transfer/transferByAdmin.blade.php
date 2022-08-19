@@ -25,8 +25,7 @@
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="empName" id="empName" >
 					<input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="office" id="office">
 									
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate">				
+					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">			
 					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
 				    <input type="hidden" class="form-control" value="normal" name="status" id="status">	
 				  
@@ -102,12 +101,6 @@
 								
 			</div>
 		</div> </div>
-		
-
-		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script> 
 
 		<script>
 		var today = new Date();
@@ -115,14 +108,6 @@
 		document.getElementById("requestDate").value = date;
 		</script>
 		
-		
-		
-		<script>
-    var today = new Date();
-	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	document.getElementById("notesheetDate").value = date;
-</script>
-
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">

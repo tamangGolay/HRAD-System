@@ -25,46 +25,44 @@
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="empName" id="empName" >
 					<input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="office" id="office">
 									
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">			
+					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
-				    <input type="hidden" class="form-control" value="normal" name="status" id="status">	
-				  
+				    
 				 
 					<div class=" textfont form-group row col-lg-12"> 
-                <label class="col-md-2 col-form-label text-md-right" for="empId">Emp Id:</label>
+                 <label class="col-md-2 col-form-label text-md-right" for="empId">Emp Id:</label>
                       <div class="col-md-8 ">
 					  <select class="col-lg-12 col-sm-12 form-control" name="empId" id="empId" value="" required>
                                              <option value="">Select emp Id</option>
-                                             @foreach($otherEmp as $otherEmp)
-                                             <option value="{{$otherEmp->empId}}">{{$otherEmp->empId}}</option>
+                                             @foreach($officedd as $officedd)
+                                             <option value="{{$officedd->empId}}">{{$officedd->empId}}</option>
 										@endforeach
 							</select> 				 
 					</div>
-                  </div>			
-					
-					
-					
-					<div class=" textfont form-group row col-lg-12"> 
+                  </div>				
+			
+							 
+				  <div class=" textfont form-group row col-lg-12"> 
                 <label class="col-md-2 col-form-label text-md-right" for="fromOffice">From Office:</label>
                       <div class="col-md-8 ">
 					  <select class="col-lg-12 col-sm-12 form-control" name="fromOffice" id="fromOffice" value="" required>
-                                             <option value="">Select Office From</option>
-                                             @foreach($officedd as $officedd)
-                                             <option value="{{$officedd->id}}">{{$officedd->officeDetails}}</option>
-										@endforeach
-							</select> 				 
-					</div>
+                                            
+										      	<option value="">Select Office From</option>
+																 @foreach($officett as $officett)
+																 <option value="{{$officett->office}}">{{$officett->officeDetails}}</option>
+															@endforeach
+												</select>  
+					 </div>
                   </div>
 
-				 
 				  <div class=" textfont form-group row col-lg-12"> 
                 <label class="col-md-2 col-form-label text-md-right" for="toOffice">To Office:</label>
                       <div class="col-md-8 ">
 					  <select class="col-lg-12 col-sm-12 form-control" name="toOffice" id="toOffice" value="" required>
                                             
 											<option value="">Select Office From</option>
-																 @foreach($officett as $officett)
-																 <option value="{{$officett->id}}">{{$officett->officeDetails}}</option>
+																 @foreach($officedds as $officedds)
+																 <option value="{{$officedds->id}}">{{$officedds->officeDetails}}</option>
 															@endforeach
 												</select>  
 					  <!-- <input type="text" name="toOffice" class="form-control" id="toOffice" placeholder="Engineering and Research Department" required> -->
@@ -100,14 +98,15 @@
          
 								
 			</div>
-		</div> </div>
+		</div> </div>		
 
+		
 		<script>
 		var today = new Date();
 		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 		document.getElementById("requestDate").value = date;
-		</script>
-		
+		</script>	
+
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">

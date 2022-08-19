@@ -5692,22 +5692,34 @@ if ($request->v == "transferRequest")  //form.csv
 //Transfer By Admin
 if ($request->v == "normalTransfer")  //form.csv
 {    
-   
-   $officedd = Officedetails::all();
-   $officett = Officedetails::all();
-   $userdeta =empSupervisor::all()->where('employee',Auth::user()->empId);
-   $otherEmp =User::all();
-//    ->where('office',Auth::user()->office);       //same office id baymi pull bayee 
-//    $otherEmp =Officedetails::all()->where('reportToOffice',Auth::user()->office);
+    $officedd =  DB::table('users')
+    ->whereIn('users.office', function($query){
+        $query->from('officeunder')
+        ->select('officeunder.office')
+        ->where('officeunder.head', '=', Auth::user()->empId);
+    })
+    ->get();  // emp id for his underoffice
+
+    $officett =  DB::table('officeunder')
+        ->join('officedetails','officedetails.id','=','officeunder.office')   
+        ->select('officedetails.officeDetails','officeunder.office')
+        ->where('officeunder.head', '=', Auth::user()->empId)            
+    ->get();  //only his under office
+     
+
+   $userdeta =empSupervisor::all()->where('employee',Auth::user()->empId); //supervisor name 
+
+   $officedds = Officedetails::all();  //office name 
 
    $b= DB::table('transferrequest') 
+   
    ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice') 
-   ->join('employeesupervisor', 'employeesupervisor.supervisor', '=', 'transferrequest.requestToEmp') 
-   ->select('employeesupervisor.supervisor','transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff')
+   ->join('employeesupervisor', 'employeesupervisor.supervisor', '=', 'transferrequest.requestToEmp')    
+   ->select('employeesupervisor.supervisor','transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff')   
    ->get();
 
- $rhtml = view('Transfer.transferByAdmin')->with(['otherEmp'=> $otherEmp, 'userdeta' => $userdeta,'officedd' => $officedd,'officett' => $officett])->render(); 
+ $rhtml = view('Transfer.transferByAdmin')->with(['officedds'=>$officedds,'userdeta' => $userdeta,'officedd' => $officedd,'officett' => $officett])->render(); 
  return response()
     ->json(array(
      'success' => true,
@@ -5716,7 +5728,7 @@ if ($request->v == "normalTransfer")  //form.csv
 }  //end
 
 //Transfer Request manager review
-if ($request->v == "transferRequestReview")  //form.csv
+if ($request->v == "transferRequestReview") 
 {       
 $transferRequest=transferRequest::all();
 
@@ -5741,8 +5753,6 @@ $transferRequest= DB::table('transferrequest')
 }  //end
 
 
-
-
 if ($request->v == "gmTransferReview")  //form.csv
 {       
     // $transferRequest=transferProposal::all();
@@ -5760,9 +5770,6 @@ if ($request->v == "gmTransferReview")  //form.csv
 
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
     ->where('transferproposal.status','=','proposed')
-
-
-
     ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewGM')->with(['transferRequest' => $transferRequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice])->render(); 

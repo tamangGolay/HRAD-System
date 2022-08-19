@@ -417,7 +417,7 @@ $(function () {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        "aLengthMenu":[[50,-1],[50,"All"]],
+        "aLengthMenu":[[10,25,50,-1],[10,25,50,"All"]],
         ajax: "{{ route('promotionAll.index') }}",
         columns: [
             {data:'checkbox', name:'checkbox', orderable:false, searchable:false},

@@ -674,3 +674,9 @@ Route::get('/toGMtransferrequest','TransferRequestController@toGMtransferrequest
 
 //route for transfer request review GM
 Route::post('/toGMReviewTransfer','TransferRequestController@toGMReviewTransfer')->name('toGMReviewTransfer');
+
+// to Dir transfer request
+Route::get('/toDirtransferrequest','TransferRequestController@toDirtransferrequest');// 
+
+//route for transfer request review Director
+Route::post('/toDirReviewTransfer','TransferRequestController@toDirReviewTransfer')->name('toDirReviewTransfer');

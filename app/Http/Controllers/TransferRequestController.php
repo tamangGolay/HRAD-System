@@ -356,5 +356,84 @@ transferProposal::updateOrCreate(['id' => $id->id],
 
 }
 
+public function toDirtransferrequest()
+{
+    $fromoffice = Officedetails::all();
+    $tooffice = Officedetails::all();
+ 
+    $toDirtransferrequest = DB::table('transferproposal')
+    ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
+   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
+   ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
+
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+    ->where('transferproposal.toOffice','=',Auth::user()->office) 
+  ->where('transferproposal.status','=','recommended')
+  ->where('transferproposal.toDirector',)
+
+ ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+  ->where('transferproposal.status','=','recommended')
+  ->where('transferproposal.toDirector',)
+    
+    
+    ->paginate(10000000);
+
+$rhtml = view('transfer.transferReviewToDir')->with(['toDirtransferrequest' => $toDirtransferrequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice])->render();
+return response()
+  ->json(array(
+  'success' => true,
+  'html' => $rhtml
+));
+} //end
+
+public function toDirReviewTransfer(Request $request)
+ {
+    // dd($request);
+    
+        if($request->remarks == "recommended" ){                        //&& $request->remarks != ''
+           
+            $id = DB::table('transferproposal')->select('id')
+            ->where('id',$request->id)
+            ->first();
+
+            $status='dirrecommended'; 
+             
+
+        transferProposal::updateOrCreate(['id' => $id->id],
+                           ['toDirectorAction' =>$request->remarks,
+                           'toDirector' =>$request->empId,
+                           'status' =>$status,
+                           'toDirectorRemarks' =>$request->rejectreason]);   
+         return redirect('home')
+         ->with('success','You have recommended the Transfer Request');
+
+ }
+
+ if($request->remarks2 == "rejected" ){    
+                       
+    $id = DB::table('transferproposal')->select('id')
+    ->where('id',$request->id)
+    ->first();
+
+    $status1='rejected'; 
+     
+
+transferProposal::updateOrCreate(['id' => $id->id],
+                   ['toDirectorAction' =>$request->remarks2,
+                   'toDirector' =>$request->empId,
+                   'status' =>$status1,
+                   'toDirectorRemarks' =>$request->rejectreason]);  
+
+ return redirect('home')
+ ->with('error','You have rejectd the Transfer Request');
+
+}
+
+ else{
+    return redirect('home')->with('Sorry','Recommendation Failed');  
+ }
+
+}
 
 }

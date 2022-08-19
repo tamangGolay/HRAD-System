@@ -5782,8 +5782,16 @@ if ($request->v == "dirReview")  //form.csv
     $transferRequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
+   ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+   ->where('transferproposal.fromOffice','=',Auth::user()->office) 
     ->where('transferproposal.status','=','recommended')
+
+    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('transferproposal.status','=','recommended')
+
+   
     ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewDir')->with(['transferRequest' => $transferRequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 

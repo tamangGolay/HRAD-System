@@ -4413,6 +4413,7 @@ if ($request->v == "promotionReport")
     $promotion = DB::table('viewpromotionorder')
     ->select('*')  
      ->latest('viewpromotionorder.id')
+     ->where('newDesignation','!=','Designation Not Found')
      ->get();
 
     $rhtml = view('promotion.promotionReport')->with(['promotion' => $promotion])->render();

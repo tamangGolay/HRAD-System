@@ -39,7 +39,7 @@ class PdfController extends Controller
     }
 
     public function createpromotionPDF ($id) {
-      
+
 
 
       $officeId = DB::table('viewpromotionorder')

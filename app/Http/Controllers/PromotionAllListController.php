@@ -544,6 +544,13 @@ public function updateSelectedEmployees(Request $request){
         ->where('promotionduelist.id',$request->promotion_ids[$i])
         ->first();
 
+        $newDesignation[$i] = DB::table('designationmaster')//users table
+        ->select('designationmaster.id')
+        ->where('id',349)
+        ->first();
+
+        // dd($newDesignation[$i]->id);
+
         $office[$i] = DB::table('users')//users table
         ->join('promotionduelist', 'promotionduelist.empId', '=', 'users.empId')
         ->select('users.office')
@@ -623,7 +630,7 @@ public function updateSelectedEmployees(Request $request){
          $promotionHistoryMaster->gradeTo = $gradeTo[$i]->toGrade;
          $promotionHistoryMaster->newBasicPay = $newBasicPay[$i]->newBasic;
          $promotionHistoryMaster->oldDesignation = $oldDesignation[$i]->designationId;
-         $promotionHistoryMaster->newBasic = $oldDesignation[$i]->designationId;
+         $promotionHistoryMaster->newDesignation = $newDesignation[$i]->id;
         //  $promotionHistoryMaster->office = $office[$i]->office;
          $promotionHistoryMaster->save();
          //PromotionHistoryMaster End

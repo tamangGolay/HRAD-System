@@ -119,7 +119,7 @@ class TransferRequestController extends Controller
 
 
             return redirect('home')->with('page', 'transferByAdmin')
-            ->with('success', 'Transfer  submitted successfully!');
+            ->with('success', 'Transfer request submitted successfully!');
     }
 
     public function gmReviewTransfer(Request $request)

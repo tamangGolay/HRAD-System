@@ -5692,21 +5692,22 @@ if ($request->v == "transferRequest")  //form.csv
 //Transfer By Admin
 if ($request->v == "normalTransfer")  //form.csv
 {    
-   $userrr =empSupervisor::all();   //DISTINCT 
+   
    $officedd = Officedetails::all();
    $officett = Officedetails::all();
+   $userdeta =empSupervisor::all()->where('employee',Auth::user()->empId);
+   $otherEmp =User::all();
+//    ->where('office',Auth::user()->office);       //same office id baymi pull bayee 
+//    $otherEmp =Officedetails::all()->where('reportToOffice',Auth::user()->office);
 
-//    $transferRequest=transferRequest::all();
-  
    $b= DB::table('transferrequest') 
    ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
-   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')
-   ->join('employeesupervisor', 'employeesupervisor.employee', '=', 'transferrequest.createdBy')    
-   ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.*')
+   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice') 
+   ->join('employeesupervisor', 'employeesupervisor.supervisor', '=', 'transferrequest.requestToEmp') 
+   ->select('employeesupervisor.supervisor','transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff')
    ->get();
 
-
- $rhtml = view('Transfer.transferByAdmin')->with(['userrr' => $userrr,'officedd' => $officedd,'officett' => $officett])->render(); 
+ $rhtml = view('Transfer.transferByAdmin')->with(['otherEmp'=> $otherEmp, 'userdeta' => $userdeta,'officedd' => $officedd,'officett' => $officett])->render(); 
  return response()
     ->json(array(
      'success' => true,
@@ -5714,10 +5715,9 @@ if ($request->v == "normalTransfer")  //form.csv
       ));
 }  //end
 
-//Transfer Request
+//Transfer Request manager review
 if ($request->v == "transferRequestReview")  //form.csv
 {       
-
 $transferRequest=transferRequest::all();
 
 $transferRequest= DB::table('transferrequest') 

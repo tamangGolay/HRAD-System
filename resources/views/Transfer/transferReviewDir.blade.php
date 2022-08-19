@@ -4,7 +4,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Transfer Request Review Dir</b>
+                <b>Transfer Request Review (Director Page)</b>
               </h5> </div>
 			</div>
 			<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
@@ -80,7 +80,7 @@
 		<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
 		</script>
 		<!-- jquery-validation -->

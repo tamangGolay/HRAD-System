@@ -8,6 +8,7 @@ use Auth;
 use App\transferProposal;
 use App\Officedetails;
 use App\Officem;
+use App\transferHistory;
 
 class TransferRequestController extends Controller
 {
@@ -435,5 +436,88 @@ transferProposal::updateOrCreate(['id' => $id->id],
  }
 
 }
+public function HRReviewTransfer(Request $request)
+{
+
+    if($request->remarks == "Open" ){    
+
+        $id = DB::table('transferproposal')->select('id')
+        ->where('id',$request->id)
+        ->first(); 
+        
+        $empId = DB::table('transferproposal')->select('empId')
+        ->where('id',$request->id)
+        ->first();
+        
+        $fromOffice = DB::table('transferproposal')->select('fromOffice')
+        ->where('id',$request->id)
+        ->first();  
+
+        $toOffice = DB::table('transferproposal')->select('toOffice')
+        ->where('id',$request->id)
+        ->first();  
+
+        $proposalId = DB::table('transferproposal')  
+        ->select('id')
+        ->where('id',$request->id)
+        ->first();  
+
+        $transferType = DB::table('transferproposal')->select('transferType')
+        ->where('id',$request->id)
+        ->first();  
+        
+        $transferBenefit = DB::table('transferproposal')->select('transferBenefits')
+        ->where('id',$request->id)
+        ->first();
+
+        // $requestDate = DB::table('transferrequest')->select('requestDate')
+        // ->where('id',$request->id)
+        // ->first();  
+    
+    
+       // dd($toOffice->toOffice);
+    //    id,proposalId,empId,transferDate,transferFrom,transferTo,transferType,TransferBenefit,orderReleasedBy,OrderReleasedOn,relievedBy,relievedOn,joinedOn,joiningAcceptedBy,joiningAcceptedOn,status
+
+            $a = new transferHistory;   // is ModelName
+            $a->id = $id->id;
+            $a->empId =  $empId->empId;
+            $a->transferFrom = $fromOffice->fromOffice;
+            $a->transferTo = $toOffice->toOffice;
+            $a->proposalId = $proposalId->id;
+            $a->transferType = $transferType->transferType;
+            $a->transferBenefit = $transferBenefit->transferBenefits;
+            $a->status = $request->remarks; 
+            $a->transferDate = $request->requestDate;
+            $a->orderReleasedBy =  $request->empId;
+            $a->orderReleasedOn = $request->requestDate;
+            $a->save();   
+            
+    transferProposal::updateOrCreate(['id' => $id->id],
+    ['status' =>$request->remarks]);              
+                   
+            
+        return redirect('home')->with('page', 'transferReviewHR')
+        ->with('success', 'Approved the transfer request successfully!');
+
+}  
+
+  if($request->remarks2 == "rejected" ){    
+
+    $id = DB::table('transferproposal')->select('id')
+    ->where('id',$request->id)
+    ->first(); 
+    
+    transferProposal::updateOrCreate(['id' => $id->id],
+    ['status' =>$request->remarks2]);                  
+        
+    //mail to user with reason of rejection
+        
+    return redirect('home')->with('page', 'transferReviewHR')
+    ->with('error', 'This transfer request have been rejected!');
+
+}
+
+}
+
 
 }

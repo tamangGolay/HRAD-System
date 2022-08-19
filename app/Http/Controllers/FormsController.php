@@ -5819,9 +5819,15 @@ if ($request->v == "hrTransferReview")  //form.csv
  
     $employeeTransfer = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
-   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
-    ->where('transferproposal.status','=','recommended')
+   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')  
+//    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
+    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+    ->where('transferproposal.status','=','dirrecommended')
+    ->where('transferproposal.toDirectorAction','=','recommended')
+   
+
+
     ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewHR')->with(['employeeTransfer' => $employeeTransfer,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 
@@ -5831,8 +5837,6 @@ if ($request->v == "hrTransferReview")  //form.csv
      'html' => $rhtml
       ));
 }  //end
-
-
 
 }
 }

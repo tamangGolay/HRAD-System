@@ -8,7 +8,7 @@
               </h5> </div>
 			</div>	
 
-	<form method="POST" action="/toGMReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
+	<form method="POST" action="/HRReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 	
@@ -42,12 +42,14 @@
                   			<td>{{$rv->reasonForTransfer}}</td>
 
 					<td>
-					<form method="POST" action="/toGMReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
+					<form method="POST" action="/HRReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
+
 					
-					<input type="hidden" name="remarks" id="remarks" value="recommended">
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Recommend</button>
+					<input type="hidden" name="remarks" id="remarks" value="Open">
+					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Approve</button>
 		
 					<div>
 					<textarea name="rejectreason" id="reason" placeholder="Recommendation Remarks"  required></textarea>		
@@ -58,9 +60,10 @@
 
 				<td>
 
-				 <form method="POST" action="/toGMReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+				 <form method="POST" action="/HRReviewTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
+					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
 				<input type="hidden" name="remarks2" id="remarks2" value="rejected">  
 				<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
 				<div>
@@ -131,5 +134,11 @@
 			});
 		});
 
+		</script>
+
+		<script>
+		var today = new Date();
+		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+		document.getElementById("requestDate").value = date;
 		</script>
 

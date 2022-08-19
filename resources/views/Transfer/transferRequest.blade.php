@@ -28,11 +28,29 @@
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
-
-					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
+				     <input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
      			    <input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="fromOffice" id="fromOffice">  
-					 
+					 					
 					
+					<div class=" textfont form-group row col-lg-12">
+					<label class="col-md-2 col-form-label text-md-right" for="nameid">Emp Id:</label>              
+                    <div class="col-md-8 ">
+                    <input type="number" onKeyPress="if(this.value.length==8) return false;                    
+                    
+                    if( isNaN(String.fromCharCode(event.keyCode))) return false;"                 
+                    
+                    class="form-control"  value="{{Auth::user()->empId}}" autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
+					 
+					 onKeyup="if(this.value.length==8 || this.value[0] != 3)
+					 getEmployeeDetails(this.value)
+					 if(this.value[0] == 3)
+					 nima (this.value);" onload readonly required>       
+
+                </div>
+                <div class="col-sm-2">
+                    <span id="empid" class="text-danger"></span>
+                </div>
+            </div>
 
 				 
 				  <div class=" textfont form-group row col-lg-12"> 
@@ -45,21 +63,20 @@
 											 <option value="{{$officedetas->id}}">{{$officedetas->officeDetails}}</option>
 										@endforeach
 							</select>  
-					  <!-- <input type="text" name="toOffice" class="form-control" id="toOffice" placeholder="Engineering and Research Department" required> -->
-                      </div>
+					 </div>
                   </div>
 
+				  
 				  <div class=" textfont form-group row col-lg-12"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">Request to Employee:</label>
-                      <div class="col-md-8 "> 
-					  @foreach($b as $rv)
-					 
-					  <input type="text" class="form-control" value="{{($rv->supervisor)}}" name="requestToEmp" id="requestToEmp">  
-					 @endforeach
-					  <!-- <input type="text" name="requestToEmp" class="form-control" id="requestToEmp" placeholder="Pema" required> -->
-                      </div>
+                 <label class="col-md-2 col-form-label text-md-right" for="nameid">Request To supervisor:</label>
+                      <div class="col-md-8 ">
+					  <select class="col-lg-12 col-sm-12 form-control" name="requestToEmp" id="requestToEmp" value="" required>                                    
+					                         @foreach($userdeta as $userdeta)
+											 <option value="{{$userdeta->supervisor}}">{{$userdeta->supervisor}}</option>
+										@endforeach
+							</select>  
+					  </div>
                   </div>
-
 					
 					 
 					<div class="textfont form-group row col-lg-12">
@@ -70,24 +87,16 @@
 					</div>
 
                     
-					<!-- <div class="form-group row">
-						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Status:</label>
-						<div class="col-md-8">
-						<input type="number" class="form-control" name="status" autocomplete="off" id="status" readonly required> 
-						</div>
-					</div>							 -->
 					
-
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
 							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
 						</div> 
-</form>
+      </form>
     </div>
-
-                    
                 
-				
+             
+ 	
 				
 			</div>
 		</div> </div>
@@ -103,14 +112,30 @@
 		var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 		document.getElementById("requestDate").value = date;
 		</script>
-		
-		
-		
+
+          
+	
 		<script>
     var today = new Date();
 	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 	document.getElementById("notesheetDate").value = date;
-</script>
+
+    </script>
+
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+	$a= document.getElementById('emp_id').value;
+	getEmployeeDetails($a); 
+
+	  $('#myTable').DataTable( {
+		  "pagingType": "simple_numbers",
+		  "ordering": false  
+  
+	  } );
+  
+  
+  } );</script>
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">
@@ -120,6 +145,8 @@
 		document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 
 		});
+
+		
 
 function checkEmployee(val) {
 	
@@ -137,6 +164,7 @@ function checkEmployee(val) {
 	});
   }
 
+  
   function getEmployeeDetails(val)
 {
     //pulling records using cid from checkin table
@@ -148,14 +176,16 @@ function checkEmployee(val) {
                   
                     document.getElementById('empName').value = '';                      
                     
-                    document.getElementById('empid').innerHTML = '';              
+                    document.getElementById('empid').innerHTML = '';  
+
+        
                     
                    $.each(data, function(index, Employee){
 
 
                           if(Employee.empName != null)
                           {
-                            document.getElementById('empName').value = Employee.empName;                  
+                            document.getElementById('empName').value = Employee.empName;               
                                 
                             document.getElementById('empId').innerHTML='';
                         }  

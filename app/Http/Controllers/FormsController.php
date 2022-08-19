@@ -5667,17 +5667,16 @@ if ($request->v == "employeeskillmap")  //form.csv
 //Transfer Request
 if ($request->v == "transferRequest")  //form.csv
 {    
-   $userdeta =empSupervisor::all();   //DISTINCT 
+      
    $officedeta = Officedetails::all();
    $officedetas = Officedetails::all();
-
-//    $transferRequest=transferRequest::all();
-  
+   $userdeta =empSupervisor::all()->where('employee',Auth::user()->empId);   
+ 
    $b= DB::table('transferrequest') 
    ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
-   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')
-   ->join('employeesupervisor', 'employeesupervisor.employee', '=', 'transferrequest.createdBy')    
-   ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.*')
+   ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice') 
+   ->join('employeesupervisor', 'employeesupervisor.supervisor', '=', 'transferrequest.requestToEmp') 
+   ->select('employeesupervisor.supervisor','transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff')
    ->get();
 
  $rhtml = view('Transfer.transferRequest')->with(['userdeta' => $userdeta,'b' => $b,'officedeta' => $officedeta,'officedetas' => $officedetas])->render(); 
@@ -5687,6 +5686,8 @@ if ($request->v == "transferRequest")  //form.csv
      'html' => $rhtml
       ));
 }  //end
+
+
 
 //Transfer By Admin
 if ($request->v == "normalTransfer")  //form.csv

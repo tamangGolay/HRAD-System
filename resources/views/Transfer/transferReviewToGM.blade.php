@@ -38,7 +38,7 @@
 								
                   			<td>{{$rv->id}}</td>
                  			<td>{{$rv->empId}}</td>
-                 			<td>{{$rv->tff}}</td> 
+                 			<td>{{$rv->f}}</td> 
 							 <td>{{$rv->transferType}}</td>
 							 <td>{{$rv->fromDirector}}</td>
 							 <td>{{$rv->fromDirectorRemarks}}</td>                

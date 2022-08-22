@@ -108,6 +108,9 @@ Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 
 
 Route::get('/promotionReport/{id}', [App\Http\Controllers\PdfController::class, 'createpromotionPDF'])->name('notesheet.pdf');
 
+//jobdescription
+Route::post('/jobdescription','Manage_jobDescriptionController@store')->name('jobdescription');
+
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);
 Route::post('destroyGuesthouse', 'Manage_GuesthouseController@delete')->name('destroyGuesthouse');

@@ -132,17 +132,18 @@ $emp = DB::table('users')
             {
                
 
-$emp = DB::table('jobdescription')
-->join('users', 'users.empId', '=', 'jobdescription.empId') 
+$emp = DB::table('users')
+->where('users.empId', $value)
+->join('jobdescription', 'jobdescription.empId', '=', 'users.empId') 
 // ->join('designationmaster','designationmaster.id', 'users.designationId')
 ->join('officedetails','officedetails.id', 'users.office')
 
 ->select('jobdescription.*','users.empName','officedetails.longOfficeName'
 )
-->where('users.empId', $value)->get();  
+->get();  
                 return response()
                     ->json($emp);
-                   
+              dd($emp);     
             }
             else
             {

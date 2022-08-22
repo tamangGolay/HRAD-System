@@ -119,7 +119,7 @@
 
 
 
-      <form method="POST" action="/profileupdate" enctype="multipart/form-data" accept-charset="UTF-8" >
+      <form method="POST" action="/jobdescription" enctype="multipart/form-data" accept-charset="UTF-8" >
             @csrf
 
         
@@ -130,8 +130,9 @@
             <!-- <input type="hidden" id="did" name="frId"> -->
             <div class="cardbody">
 
+            
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right"  for="user">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
+              <label class="col-md-4 col-form-label text-md-right"  for="emp_id">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
                 <div class="col-sm-10 col-md-6 col-lg-4">
                     <input type="number" onKeyPress="if(this.value.length==8) return false; 
                     
@@ -139,7 +140,7 @@
                     if( isNaN(String.fromCharCode(event.keyCode))) return false;"
                     
                     
-                     class="form-control"  value="{{Auth::user()->empId}}" autocomplete="off" name="emp_id" id="emp_id" placeholder="Enter your Employee Id" 
+                     class="form-control" value="{{ old('empId') }}"  autocomplete="off" name="emp_id" id="emp_id" placeholder="Employee Id" 
 					 
 					 onKeyup="
 
@@ -148,7 +149,7 @@
 					 if(this.value[0] == 3)
 					 nima (this.value)
 
-					 ;" onload required>
+					 ;" required>
           
 
                 </div>
@@ -194,9 +195,7 @@
            <div class="form-group row mb-0" >
               <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
                 <button type="submit" id="book" class="btn nSuccess btn-lg">Save details</button>
-                &nbsp;&nbsp;
-                <button type="submit" id="book" class="btn nSuccess btn-lg"><a href="cd/twimc.php?EID={{Auth::user()->empId}}" >Download</a></button>
-              </div> 
+                              </div> 
               <br>
               <br>
               <br> <br>
@@ -225,22 +224,22 @@
   
 
 
-$(document).ready(function() {
-  $a= document.getElementById('emp_id').value;
-  getEmployeeDetails($a);
+// $(document).ready(function() {
+//   $a= document.getElementById('emp_id').value;
+//   getEmployeeDetails($a);
 
 
 
 
-    $('#myTable').DataTable( {
-        "pagingType": "simple_numbers",
-        "ordering": false
+//     $('#myTable').DataTable( {
+//         "pagingType": "simple_numbers",
+//         "ordering": false
 
 
-    } );
+//     } );
 
 
-} );
+// } );
 
        
 
@@ -269,10 +268,7 @@ function getEmployeeDetails(val)
                   
                     document.getElementById('nameid').value = '';                      
                     document.getElementById('division').value =  '';
-                  //  document.getElementById('designation').value =  '';
-                  //   document.getElementById('grade').value = '';   
-                                    
-                  //   document.getElementById('office').value = '';                      
+                                 
                     document.getElementById('empid').value = '';                        
 
 
@@ -288,10 +284,6 @@ function getEmployeeDetails(val)
                           document.getElementById('division').value =  Employee.longOfficeName;
                           document.getElementById('emp_id').innerHTML= Employee.empId;                    
             
-                    // document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
-                    // document.getElementById('designation').value =  Employee.desisNameLong; 
-                  
-                 
                         
                         }				
 

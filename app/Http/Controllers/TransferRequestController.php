@@ -80,7 +80,14 @@ class TransferRequestController extends Controller
                 $a->transferType = $request->status;
                 $a->reasonForTransfer = $reasonForTransfer->reason;
 
-                $a->save();                
+                $a->save(); 
+                
+                $approvestatus='recommended';
+                
+                transferRequest::updateOrCreate(['id' => $id->id],
+                ['status' =>$approvestatus]);       
+                
+                
                 
             return redirect('home')->with('page', 'transferRequestReview')
             ->with('success', 'Recommended and forwarded the transfer request successfully!');

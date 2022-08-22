@@ -240,7 +240,7 @@ $(function() {
 	
 				$('body').on('click', '.edit', function() {
 					var knowledge_id = $(this).data('id');
-					$.get("{{ route('knowledge.store') }}" + '/' + knowledge_id + '/edit', function(data) {
+					$.get("{{ route('knowledgeReview.store') }}" + '/' + knowledge_id + '/edit', function(data) {
 						$('#modelHeading').html("Edit Knowledge");
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
@@ -257,7 +257,7 @@ $(function() {
 					$(this).html('Save');
 					$.ajax({
 						data: $('#Form').serialize(),
-						url: "{{ route('knowledge.store') }}",
+						url: "{{ route('knowledgeReview.store') }}",
 						type: "POST",
 						dataType: 'json',
 						success: function(data) {

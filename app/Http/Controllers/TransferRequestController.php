@@ -148,20 +148,38 @@ class TransferRequestController extends Controller
             ->where('id',$request->id)
             ->first();
 
-            $status='recommended'; 
-             
+            $status='recommended';              
 
         transferProposal::updateOrCreate(['id' => $id->id],
                            ['fromGMAction' =>$request->remarks,
                            'fromGM' =>$request->empId,
                            'status' =>$status,
-                           'fromGMRemarks' =>$request->rejectreason]);  
+                           'fromGMRemarks' =>$request->rejectreason]);           
 
-        //  return redirect('home')
-        //  ->with('success','You have recommended the Transfer Request');
+         $toOffice = DB::table('transferproposal')
+         ->join('officeunder','officeunder.office','transferproposal.toOffice')
+         ->select('transferproposal.toOffice','officeunder.head') 
+         ->where('transferproposal.id',$request->id)
+         ->where('officeunder.head',Auth::user()->empId)
+         ->first();
+        
+       if($toOffice == NULL){
+            return redirect('home')
+                ->with('success','You have recommended the Transfer Request');
+         }
 
-        return redirect('home')->with('page', 'gmTransferReview')
-            ->with('success', 'You have recommended the Transfer Request!');
+         if($toOffice->toOffice != " "){
+
+        transferProposal::updateOrCreate(['id' => $id->id],
+                           ['toGMAction' =>$request->remarks,
+                           'toGM' =>$request->empId,
+                           'status' =>$status,
+                           'toGMRemarks' =>$request->rejectreason]);
+         }
+         
+         return redirect('home')
+         ->with('success','You have recommended the Transfer Request');
+
 
  }
  if($request->remarks2 == "rejected" ){    
@@ -177,13 +195,9 @@ transferProposal::updateOrCreate(['id' => $id->id],
                    ['fromGMAction' =>$request->remarks2,
                    'fromGM' =>$request->empId,
                    'status' =>$status1,
-                   'fromGMRemarks' =>$request->rejectreason]); 
-
-//  return redirect('home')
-//  ->with('error','You have rejectd the Transfer Request');
-
-return redirect('home')->with('page', 'gmTransferReview')
-->with('error', 'You have rejectd the Transfer Request!');
+                   'fromGMRemarks' =>$request->rejectreason]);   
+ return redirect('home')
+ ->with('error','You have rejectd the Transfer Request');
 
 }
 
@@ -193,10 +207,9 @@ return redirect('home')->with('page', 'gmTransferReview')
 
 }
 
-
 public function dirReviewTransfer(Request $request)
 {
-    // dd($request);
+
 
     if($request->remarks == "recommended" ){                        //&& $request->remarks != ''
        
@@ -210,13 +223,41 @@ public function dirReviewTransfer(Request $request)
                        ['fromDirectorAction' =>$request->remarks,
                        'fromDirector' =>$request->empId,
                        'status' =>$status,
-                       'fromDirectorRemarks' =>$request->rejectreason]);  
+                       'fromDirectorRemarks' =>$request->rejectreason]); 
+                       
 
-    //  return redirect('home')
-    //  ->with('success','You have recommended the Transfer Request');
+// $fromOffice1 = DB::table('transferproposal')
+// ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
+// ->select('transferproposal.fromOffice','officeunder.head')         
+// ->where('transferproposal.id',$request->id)
+// ->get();
 
-     return redirect('home')->with('page', 'dirReview')
-     ->with('success', 'You have recommended the Transfer Request!');
+// dd($fromOffice1[]->head);
+
+$toOffice1 = DB::table('transferproposal')
+         ->join('officeunder','officeunder.office','transferproposal.toOffice')
+         ->select('transferproposal.toOffice','officeunder.head')         
+         ->where('transferproposal.id',$request->id)
+         ->where('officeunder.head',Auth::user()->empId)
+         ->first();
+
+if($toOffice1 == NULL){
+            return redirect('home')
+                ->with('success','You have recommended the Transfer Request');
+}
+
+ if($toOffice1->toOffice != " "){   
+
+                        transferProposal::updateOrCreate(['id' => $id->id],
+                        ['toDirectorAction' =>$request->remarks,
+                        'toDirector' =>$request->empId,
+                        'status' =>$status,
+                        'toDirectorRemarks' =>$request->rejectreason]); 
+    }
+                     
+
+     return redirect('home')
+     ->with('success','You have recommended the Transfer Request');
 
 }
 if($request->remarks2 == "rejected" ){    
@@ -241,7 +282,6 @@ if($request->remarks2 == "rejected" ){
 else{
 return redirect('home')->with('Sorry','Recommendation Failed');  
 }
-
 
 }
 

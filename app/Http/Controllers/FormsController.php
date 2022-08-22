@@ -5896,6 +5896,7 @@ if ($request->v == "gmTransferReview")  //form.csv
       ));
 }  //end
 
+
 if ($request->v == "dirReview")  //form.csv
 {       
     // $transferRequest=transferProposal::all();
@@ -5907,21 +5908,11 @@ if ($request->v == "dirReview")  //form.csv
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
    ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
    ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
-
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
-   ->where('transferproposal.fromOffice','=',Auth::user()->office) 
+   ->where('officeunder.head',Auth::user()->empId)  
     ->where('transferproposal.status','=','recommended')
 
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('transferproposal.status','=','recommended')
-
- ->orwhere('officeunder.head',Auth::user()->empId)  
-  ->where('transferproposal.status','=','recommended')
-  
-
-
-   
     ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewDir')->with(['transferRequest' => $transferRequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 
@@ -5947,10 +5938,7 @@ if ($request->v == "hrTransferReview")  //form.csv
 
     ->where('transferproposal.status','=','dirrecommended')
     ->where('transferproposal.toDirectorAction','=','recommended')
-   
-
-
-    ->paginate(10000000);
+ ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewHR')->with(['employeeTransfer' => $employeeTransfer,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 
     return response()

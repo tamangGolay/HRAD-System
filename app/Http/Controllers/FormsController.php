@@ -4375,6 +4375,21 @@ if ($request->v == "user_profile")
      ));
 }
 
+//jobDescription
+if ($request->v == "jobDescription")
+{
+   
+  $job=jobDescription::all();
+  $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
+
+    $rhtml = view('emp.jobDescription')->with(['job' => $job])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+     ));
+}
+
 
 //incrementreport
 if ($request->v == "incrementReport")

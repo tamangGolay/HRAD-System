@@ -464,6 +464,20 @@ if ($request->v == "shoesize")
 
 
 
+// Knowledge Request
+if ($request->v == "knowledgeRequest")  //form.csv
+{    
+
+ $rhtml = view('knowledge.knowledgeRequest')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //Knowledge Request end
+
+
+
         //Contribution report List.
         if ($request->v == "contributionReport")
         {

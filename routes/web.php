@@ -415,6 +415,10 @@ Route::post('/updateCountryDetails',[CountriesController::class, 'updateCountryD
 Route::post('/deleteCountry',[CountriesController::class,'deleteCountry'])->name('delete.country');
 Route::post('/insertSelectedEmployees',[PromotionAllListController::class,'insertSelectedEmployees'])->name('insert.selected.promotionAll');
 Route::post('/updateSelectedEmployees',[PromotionAllListController::class,'updateSelectedEmployees'])->name('update.selected.promotionAll');
+
+//route for knowledge
+Route::post('requestKnowledge','KnowledgeController@requestKnowledge')->name('requestKnowledge');
+
 //golay end
 
 //start sonam 

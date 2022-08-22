@@ -85,11 +85,7 @@
 		
 		
 		
-		<script>
-    var today = new Date();
-	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	document.getElementById("notesheetDate").value = date;
-</script>
+	
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">

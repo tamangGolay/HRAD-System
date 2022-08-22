@@ -18,43 +18,43 @@
 			<div class="card">
 	
 		<!-- <div class="card card-outline"> -->
-			<div class="welfarerefund card-header bg-green  d-flex justify-content-center"> <strong>Note Sheet</strong> </div>
+			<div class="welfarerefund card-header bg-green  d-flex justify-content-center"> <strong>Knowledge</strong> </div>
 			<!--/card-header-->
 			<div class="textfont card-body">
-				<form method="POST" action="{{ route('Request_notesheet') }}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+				<form method="POST" action="{{ route('requestKnowledge') }}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
                     <input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="empName" id="empName" >
-					<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId">
 					<input type="hidden" class="form-control" value="{{ Auth::user()->office}}" name="office" id="office">
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-					
+                    <input type="hidden" class="form-control" name="knowledgeDate" id="knowledgeDate" >
+
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					<input type="hidden" class="form-control" name="notesheetDate" id="notesheetDate" >
 
-									
-
+                    
+<!-- 
 				<div class=" textfont form-group row"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Topic:</label>
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;EmpId:</label>
                       <div class="col-md-8 ">
-                        <input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required>
+                        <input type="number" name="empId" class="form-control" id="empId" placeholder="empId" required>
                       </div>
-                  </div>               
+                  </div>                -->
+
+					
+					 
+                  <div class="form-group row">
+						<label class="col-md-2 col-form-label text-md-right" for="problem">&nbsp;&nbsp;&nbsp;Problem:</label>
+						<div class="col-md-8 ">
+						<textarea input type="text" rows="14" class="form-control" name="problem" autocomplete="off" id="problem" required> 
+                         </textarea></div>
+					</div>              
 
 					
 					 
 					<div class="form-group row">
-						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Justication:</label>
+						<label class="col-md-2 col-form-label text-md-right" for="solution">&nbsp;&nbsp;&nbsp;Solution:</label>
 						<div class="col-md-8 ">
-						<textarea input type="text" rows="18" class="form-control" name="justification" autocomplete="off" id="justification" required> 
+						<textarea input type="text" rows="14" class="form-control" name="solution" autocomplete="off" id="solution" required> 
                          </textarea></div>
 					</div>
-
-                    
-					<!-- <div class="form-group row">
-						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Status:</label>
-						<div class="col-md-8">
-						<input type="number" class="form-control" name="status" autocomplete="off" id="status" readonly required> 
-						</div>
-					</div>							 -->
 					
 
 					<div class="form-group row mb-0">
@@ -85,10 +85,10 @@
 		
 		
 		
-		<script>
+<script>
     var today = new Date();
 	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	document.getElementById("notesheetDate").value = date;
+	document.getElementById("knowledgeDate").value = date;
 </script>
 
    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
@@ -210,3 +210,5 @@ function notesheetCancel()
   
 
 		</script>
+
+    

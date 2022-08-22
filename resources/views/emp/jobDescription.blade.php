@@ -111,7 +111,7 @@
       <div class="card card-green ">
        <div class="card-header bg-green">
         
-        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>Employee details</h4></div>
+        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>Job Description</h4></div>
       </div><!--/card-header-->
       <br>
 
@@ -148,7 +148,7 @@
 					 if(this.value[0] == 3)
 					 nima (this.value)
 
-					 ;" onload readonly required>
+					 ;" onload required>
           
 
                 </div>
@@ -164,7 +164,7 @@
                 </div>
             </div> 
    
-
+<!-- 
 
             
              <div class="form-group row"> 
@@ -172,18 +172,18 @@
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="division" id="division" placeholder="Division" readonly required>                  
                 </div>
-            </div> 
+            </div>  -->
 
-        
-
+       
+           
 
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="jobdescription">&nbsp;&nbsp;&nbsp;Job Description:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="jobdescription" id="jobdescription" placeholder="jobdescription" autocomplete="off"  required>                  
-                </div>
+                <div class="col-sm-10 col-md-8 col-lg-4">
+                <textarea input type="text" rows="14" class="form-control" name="jobdescription" autocomplete="off" id="jobdescription" required> 
+                         </textarea></div>
             </div>
-
+ 
 
 
     
@@ -264,33 +264,16 @@ function getEmployeeDetails(val)
 
     //pulling records using cid from checkin table 
       var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=user_profile&info='+val+'&token='+csrftoken,function(data){              
+          $.get('/getValues?source=jobDescription&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
                   
                     document.getElementById('nameid').value = '';                      
-                    document.getElementById('contact_number').value = '';
-                    document.getElementById('fixed').value = '';
-                    document.getElementById('extension').value = '';
-                    document.getElementById('division').value =  '';
-                                
-                    document.getElementById('dob').value = '';                      
-                    document.getElementById('cid').value = '';
-                    // document.getElementById('blood').value =  '';
-                    document.getElementById('designation').value =  '';
-                    document.getElementById('grade').value = '';   
-                    document.getElementById('appointment').value = '';                      
-                    document.getElementById('basicpay').value = '';
-                    document.getElementById('empstatus').value =  '';
-                    document.getElementById('lastdop').value =  '';
-                    document.getElementById('emailid').value = '';   
-                    document.getElementById('office').value = '';                      
-                    // document.getElementById('resignationtype').value =  '';
-                    // document.getElementById('resignationdate').value = '';  
-                    // document.getElementById('qualification').value = '';    
-                    document.getElementById('employmenttype').value = '';                      
-                    document.getElementById('incrementcycle').value = '';
-                    
-                   
+                 
+                  //   document.getElementById('division').value =  '';
+                  //  document.getElementById('designation').value =  '';
+                  //   document.getElementById('grade').value = '';   
+                                    
+                  //   document.getElementById('office').value = '';                      
                     document.getElementById('empid').value = '';                        
 
 
@@ -298,43 +281,18 @@ function getEmployeeDetails(val)
                     
                 $.each(data, function(index, Employee){
 
-
-                          if(Employee.empId != null)
+                               if(Employee.empId != null)
                           {
 
                            
                             document.getElementById('nameid').value = Employee.empName;                      
-                                document.getElementById('contact_number').value = Employee.mobileNo;
-                                document.getElementById('fixed').value = Employee.fixedNo;
-                                document.getElementById('extension').value = Employee.extension;
-                                document.getElementById('division').value =  Employee.shortOfficeName;
+                          // document.getElementById('division').value =  Employee.shortOfficeName;
                                            
                                 document.getElementById('emp_id').innerHTML= Employee.empId;                    
-                    document.getElementById('dob').value = Employee.dob;                      
-                    document.getElementById('cid').value = Employee.cidNo; 
-                    // document.getElementById('blood').value =  Employee.bloodGroup; 
-                    document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
-                    document.getElementById('designation').value =  Employee.desisNameLong; 
+            
+                    // document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
+                    // document.getElementById('designation').value =  Employee.desisNameLong; 
                   
-                    document.getElementById('grade').value = Employee.grade;
-                    document.getElementById('gradeId').value = Employee.gradeId; 
-                    document.getElementById('empstatus').value = Employee.empStatus;    
-   
-
-                    document.getElementById('appointment').value = Employee.appointmentDate;                       
-                    document.getElementById('basicpay').value = Employee.basicPay; 
-                    document.getElementById('lastdop').value =  Employee.lastDop; 
-                    document.getElementById('emailid').value = Employee.emailId;    
-                    //  document.getElementById('placeId').value = Employee.id;  //pulls id of officedetailss table
-                    document.getElementById('office').value = Employee.office; //pulls id from users table                      
-                    // document.getElementById('bankname').value = Employee.bankName; 
-                    // document.getElementById('qualification').value = Employee.qualificationName;
-                    // document.getElementById('accountnumber').value =  Employee.accountNumber; 
-                    // document.getElementById('resignationtype').value =  Employee.resignationType; 
-                    // document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 
-                    // document.getElementById('resignationdate').value = Employee.resignationDate;    
-                    document.getElementById('employmenttype').value = Employee.employmentType;                       
-                    document.getElementById('incrementcycle').value = Employee.incrementCycle; 
                  
                         
                         }				

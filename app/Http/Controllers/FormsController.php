@@ -65,7 +65,10 @@ use App\IncrementView;
 use App\empSupervisor;
 use App\transferRequest;
 use App\jobDescription;
-use App\transferHistory;
+
+
+
+
 
 class FormsController extends Controller
 {
@@ -733,37 +736,6 @@ return response()
            ));
        }
        //end of oneEmployee .
-
-
-
-       //KnowledgeReview for Supervisor
-       if ($request->v == "knowledgeReview")
-       {
-            //    $officedetails = Officedetails::all();
-
-              
-
-
-            $userLists = DB::table('knowledgerepository')
-               ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
-               ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
-            //    ->join('officemaster','officemaster.id','=','users.office')
-
-            ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
-               )
-
-               ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.office',Auth::user()->office)
-          
-                ->paginate(10000000);
-            $rhtml = view('knowledge.knowledgeReview')->with(['userList' => $userLists])->render();
-           return response()
-               ->json(array(
-               'success' => true,
-               'html' => $rhtml
-           ));
-       }
-       //end of KnowledgeReview for Supervisor.
 
 
        
@@ -5926,34 +5898,8 @@ if ($request->v == "relieveEmployee")  //form.csv
      'success' => true,
      'html' => $rhtml
       ));
-}  //end here
+}  //end
 
-//emp joning date to other office
-if ($request->v == "employeeJoining")
-       
-      {         
-         $transferFrom = Officedetails::all();
-         $transferTo = Officedetails::all();
-         $empJoining = transferHistory::all();                 
-
-        $empJoining = DB::table('transferhistory')
-                    ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
-                    ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')   
-                    ->select('transferhistory.*','officedetails.officeDetails as transferFrom','B.officeDetails as transferTo')
-                    
-                    ->where('transferTo',Auth::user()->office)
-                    ->where('transferhistory.status','=','Open')
-                    ->where('transferhistory.relievedBy','!=','NULL')
-                    ->paginate(10000000);
-
-            $rhtml = view('Transfer.employeeJoining')->with(['empJoining'=>$empJoining,'transferFrom'=>$transferFrom,'transferTo'=>$transferTo])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
-        //end here
 
 }
 }

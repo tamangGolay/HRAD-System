@@ -97,28 +97,6 @@ if ($table == "paymentInfo")
             if (DB::table('users')->where('users.empId', $value)->exists())
             {
                
-            
-//                 $emp = DB::table('users')
-//                 ->join('grademaster','grademaster.id', '=', 'users.gradeId')
-//                 // ->join('resignationtypemaster','resignationtypemaster.id', '=', 'users.resignationTypeId')
-//                 ->join('designationmaster','designationmaster.id', 'users.designationId')
-//                 ->join('officedetails','officedetails.id', 'users.office')
-//                 ->select('users.empId','users.empName', 
-//                     'users.bloodGroup', 'users.cidNo','users.cidOther',
-//                     'users.dob','users.gender','users.appointmentDate',
-//                     'users.designationId',
-//                     'users.office','users.basicPay','users.empStatus',
-//                     'users.lastDop','users.mobileNo',
-//                     'users.emailId',
-                 
-//                     'users.resignationDate','users.employmentType',
-//                     'users.incrementCycle' ,'designationmaster.desisNameLong',
-//                     'grademaster.grade'  ,
-//                    'users.gradeId','designationmaster.desisNameLong',
-//                    'officedetails.id','officedetails.Address','officedetails.shortOfficeName',
-//   )
-//   ->where('users.empId', $value)->get();         
-
 
 $emp = DB::table('users')
 ->join('designationmaster','designationmaster.id', 'users.designationId')
@@ -145,7 +123,34 @@ $emp = DB::table('users')
             }
 
         }
+        if ($table == "jobDescription")
+        {
 
+            
+          //check cid if already in database.
+            if (DB::table('users')->where('users.empId', $value)->exists())
+            {
+               
+
+$emp = DB::table('jobdescription')
+->join('users', 'users.empId', '=', 'jobdescription.empId') 
+// ->join('designationmaster','designationmaster.id', 'users.designationId')
+// ->join('officedetails','officedetails.id', 'users.office')
+
+->select('jobdescription.*','users.empName'
+)
+->where('users.empId', $value)->get();  
+                return response()
+                    ->json($emp);
+                   
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
+        }
         if ($table == "booking_review")
         {
 

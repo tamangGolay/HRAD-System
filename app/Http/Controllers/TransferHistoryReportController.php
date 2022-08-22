@@ -42,7 +42,7 @@ class TransferHistoryReportController extends Controller
         
         ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
         ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
-        ->join('officedetails AS D', 'D.id', '=', 'transferhistory.id')
+        ->join('officedetails AS D', 'D.id', '=', 'transferhistory.transferTo')
 
         ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id') 
         ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 

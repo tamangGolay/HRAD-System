@@ -69,7 +69,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>User List</b>
+              <b>Knowledge Review</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">

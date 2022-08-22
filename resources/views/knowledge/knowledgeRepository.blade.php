@@ -29,7 +29,7 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageknowledge">Add new knowledge&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <!-- <a class="btn success" href="javascript:void(0)" id="manageknowledge">Add new knowledge&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a> -->
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
@@ -64,11 +64,19 @@ a {
                 <!-- <div class="form-group"> -->
                         <!-- <label for="name" class="col-sm-2 control-label">knowledgeId</label> -->
                         <!-- <div class="col-sm-12"> -->
-                        <input type="text" class="form-control" name="id" id="knowledge_id">
+                        <input type="hidden" class="form-control" name="id" id="knowledge_id">
                         <!-- <input type="text" class="form-control" id="knowledgeName" name="knowledgeName" value=""  required> -->
 
                         <!-- </div> -->
                     <!-- </div> -->
+
+					<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="empId">{{ __('EmpId:') }}</label>
+									<div class="col-sm-8">
+									<input type="text"  class="form-control" value="" name="empId" id="empId" required readonly> 
+
+									</div>
+								</div>
 
 					<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Name:') }}</label>
@@ -212,7 +220,7 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#knowledge_id').val(data.id);
 		  $('#empName').val(data.empName); //input id,database
-		//   $('#officeName').val(data.officeShortName); //input id,database
+		  $('#empId').val(data.createdBy); //input id,database
 		  $('#office').val(data.Address); //input id,database
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error

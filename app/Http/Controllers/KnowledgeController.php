@@ -93,6 +93,8 @@ class KnowledgeController extends Controller
             $requestKnowledge->solution = $request->solution;               
             $requestKnowledge->createdOn = $request->knowledgeDate;
             $requestKnowledge->officeId = $request->office;
+            $requestKnowledge->empName = $request->empName;
+
             $requestKnowledge->save();  
 
            

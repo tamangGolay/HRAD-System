@@ -64,6 +64,8 @@ use App\promotionRequest;
 use App\IncrementView;
 use App\empSupervisor;
 use App\transferRequest;
+use App\jobDescription;
+
 
 
 
@@ -4381,8 +4383,14 @@ if ($request->v == "jobDescription")
    
   $job=jobDescription::all();
   $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
+  $userdetails = DB::table('jobDescription')
+    ->join('users', 'users.empId', '=', 'jobDescription.empId') 
+    ->select('users.empName*')
+  ->get();
+  
 
-    $rhtml = view('emp.jobDescription')->with(['job' => $job])->render();
+
+    $rhtml = view('emp.jobDescription')->with(['job' => $job,'userdetails'=>$userdetails ])->render();
     return response()
         ->json(array(
         'success' => true,

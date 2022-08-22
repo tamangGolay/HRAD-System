@@ -111,7 +111,7 @@
       <div class="card card-green ">
        <div class="card-header bg-green">
         
-        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>User details</h4></div>
+        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>Employee details</h4></div>
       </div><!--/card-header-->
       <br>
 
@@ -163,137 +163,9 @@
                   <input type="text" name="name" class="form-control" id="nameid" placeholder="Name" readonly required>
                 </div>
             </div> 
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="dob">&nbsp;&nbsp;&nbsp;DoB:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="dob" id="dob" placeholder="Date of birth" autocomplete="off" readonly  required>                  
-                </div>
-            </div>
-          
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="cid">&nbsp;&nbsp;&nbsp;CID:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="cid" id="cid" placeholder="Cid no." autocomplete="off" readonly required>                  
-                </div>
-            </div>
-
-            <!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="blood">&nbsp;&nbsp;&nbsp;Blood Group:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="blood" id="blood" placeholder="bloodgroup" autocomplete="off"  required>                  
-                </div>
-            </div>
- -->
-
-           
-
-          
-    
-           
-            
-                <!-- <input type="hidden" class="form-control" name="divisionh" id="divisionh" placeholder="Division" readonly required>                   -->
-           
-
-           
-                
-          
-
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="contact_number">&nbsp;&nbsp;&nbsp;Contact number:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="contact_number" id="contact_number" placeholder="Contact Number"  required>                  
-                </div>
-            </div>
+   
 
 
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="fixed">&nbsp;&nbsp;&nbsp;Fixed number:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="fixed" id="fixed" placeholder="Fixed Number"  required>                  
-                </div>
-            </div>
-
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="extension">&nbsp;&nbsp;&nbsp;Extension:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="extension" id="extension" placeholder="Extension Number"  required>                  
-                </div>
-            </div>
-
-      
-
-                
-
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="emailid">&nbsp;&nbsp;&nbsp;Email Id:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="emailid" id="emailid" placeholder="email address" autocomplete="off"  >                  
-                </div>
-            </div>            
-      
-                    <div class="form-group row">
-					<label class="col-md-4 col-form-label text-md-right" for="office">&nbsp;&nbsp;&nbsp;Place:</label>
-						<div class="col-sm-10 col-md-6 col-lg-4">
-						<select name="office" id="office" value="" class="form-control" readonly required>
-												<option value="">Select Office address</option>
-												@foreach($officeaddress as $officeaddress)
-												<option value="{{$officeaddress->id}}">{{$officeaddress->Address}}</option>
-											@endforeach
-								</select>
-						</div>
-					</div> 
-
-          <div class="form-group row">
-					<label class="col-md-4 col-form-label text-md-right" for="qualification">&nbsp;&nbsp;&nbsp;Qualification:</label>
-						<div class="col-sm-10 col-md-6 col-lg-4">
-						<select name="qualification" id="qualification" value="" class="form-control" readonly required>
-												<!-- <option value="">Qualification</option> -->
-												@foreach($qualification as $qualification)
-
-												<option value="{{$qualification->id}}">{{$qualification->qualificationName}}</option>
-											@endforeach
-								</select>
-						</div>
-					</div> 
-
-          <!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Qualification:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <textarea type="text" class="form-control" name="qualification" id="qualification" placeholder="qualification" autocomplete="off" readonly required>                   
-</textarea> 
-              </div>
-            </div> -->
-
-
- <!-- <input type="hidden" class="form-control" name="placeId" id="placeId" placeholder="place" autocomplete="off" readonly required> -->
-
-
-             <!-- <input type="text" class="form-control" name="place" id="place" placeholder="Officeaddress" autocomplete="off" readonly required>                   -->
-             <!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="place">&nbsp;&nbsp;&nbsp;Office Address:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="place" id="place" placeholder="place" autocomplete="off" readonly required>                  
-                </div>
-            </div> -->
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="designation" id="designation" placeholder="designation" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-
-            <input type="hidden" class="form-control" name="designationId" id="designationId" placeholder="designationId" autocomplete="off" readonly required>                  
-
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Grade:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="grade" id="grade" placeholder="grade" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-
-            <input type="hidden" class="form-control" name="gradeId" id="gradeId" placeholder="grade" autocomplete="off" readonly required>                         
             
              <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
@@ -302,68 +174,16 @@
                 </div>
             </div> 
 
-                   
-         <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="appointment">&nbsp;&nbsp;&nbsp;Appointment date:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="appointment" id="appointment" placeholder="" autocomplete="off"  readonly required>                  
-                </div>
-            </div>
+        
 
 
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="basicpay">&nbsp;&nbsp;&nbsp;Basic Pay:</label>
+              <label class="col-md-4 col-form-label text-md-right" for="jobdescription">&nbsp;&nbsp;&nbsp;Job Description:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="basicpay" id="basicpay" placeholder="basicpay" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-           
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="empstatus">&nbsp;&nbsp;&nbsp;Emp Status:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="empstatus" id="empstatus" placeholder="active/inactive" autocomplete="off" readonly required>                  
+                <input type="text" class="form-control" name="jobdescription" id="jobdescription" placeholder="jobdescription" autocomplete="off"  required>                  
                 </div>
             </div>
 
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="lastdop">&nbsp;&nbsp;&nbsp;Last dop:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="lastdop" id="lastdop" placeholder="lastdop" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-            
-            <!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="resignationtype">&nbsp;&nbsp;&nbsp;Resignation Type:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-
-            <input type="hidden" class="form-control" name="resignationtypeId" id="resignationtypeId" placeholder="grade" autocomplete="off" readonly required>                  
-
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="resignationdate">&nbsp;&nbsp;&nbsp;Resignation Date:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="resignationdate" id="resignationdate" placeholder="resignationdate" autocomplete="off"  readonly required>                  
-                </div>
-            </div> -->
-
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="employmenttype">&nbsp;&nbsp;&nbsp;Employment Type:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="employmenttype" id="employmenttype" placeholder="employmenttype" autocomplete="off" readonly required>                  
-                </div>
-            </div>
-
-            
-            <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="incrementcycle">&nbsp;&nbsp;&nbsp;Increment Cycle:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="incrementcycle" id="incrementcycle" placeholder="incrementcycle" autocomplete="off" readonly  required>                  
-                </div>
-            </div>       
 
 
     

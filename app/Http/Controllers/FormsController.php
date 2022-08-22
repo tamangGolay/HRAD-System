@@ -4384,7 +4384,7 @@ if ($request->v == "jobDescription")
   $job=jobDescription::all();
   $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
   $userdetails = DB::table('jobdescription')
-    ->join('users', 'users.empId', '=', 'jobDescription.empId')
+    ->join('users', 'users.empId', '=', 'jobdescription.empId')
      ->join('officedetails','officedetails.id', 'users.office') 
     ->select('users.empName','officedetails.longOfficeName')
   ->get();

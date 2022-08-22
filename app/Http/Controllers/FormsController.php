@@ -5829,6 +5829,8 @@ if ($request->v == "dirReview")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
    ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
+   ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
+
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
    ->where('transferproposal.fromOffice','=',Auth::user()->office) 
@@ -5836,6 +5838,11 @@ if ($request->v == "dirReview")  //form.csv
 
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
     ->where('transferproposal.status','=','recommended')
+
+ ->orwhere('officeunder.head',Auth::user()->empId)  
+  ->where('transferproposal.status','=','recommended')
+  
+
 
    
     ->paginate(10000000);

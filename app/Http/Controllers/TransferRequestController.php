@@ -161,7 +161,7 @@ class TransferRequestController extends Controller
         //  ->with('success','You have recommended the Transfer Request');
 
         return redirect('home')->with('page', 'gmTransferReview')
-            ->with('success', 'Transfer request submitted successfully!');
+            ->with('success', 'You have recommended the Transfer Request!');
 
  }
  if($request->remarks2 == "rejected" ){    
@@ -212,8 +212,11 @@ public function dirReviewTransfer(Request $request)
                        'status' =>$status,
                        'fromDirectorRemarks' =>$request->rejectreason]);  
 
-     return redirect('home')
-     ->with('success','You have recommended the Transfer Request');
+    //  return redirect('home')
+    //  ->with('success','You have recommended the Transfer Request');
+
+     return redirect('home')->with('page', 'dirReview')
+     ->with('success', 'You have recommended the Transfer Request!');
 
 }
 if($request->remarks2 == "rejected" ){    

@@ -316,11 +316,11 @@ public function toGMtransferrequest()
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
     ->where('transferproposal.toOffice','=',Auth::user()->office) 
-  ->where('transferproposal.status','=','proposed')
+//   ->where('transferproposal.status','=','proposed')
   ->where('transferproposal.toGM',)
 
  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-  ->where('transferproposal.status','=','proposed')
+//   ->where('transferproposal.status','=','proposed')
   ->where('transferproposal.toGM',)
     
     
@@ -397,15 +397,15 @@ public function toDirtransferrequest()
 
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
-    ->where('transferproposal.toOffice','=',Auth::user()->office) 
-  ->where('transferproposal.status','=','recommended')
-  ->where('transferproposal.toDirector',)
+//  ->where('transferproposal.toOffice','=',Auth::user()->office) 
+//   ->where('transferproposal.status','=','recommended')
+//   ->where('transferproposal.toDirector',)
 
- ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-  ->where('transferproposal.status','=','recommended')
-  ->where('transferproposal.toDirector',)
+//  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+//   ->where('transferproposal.status','=','recommended')
+//   ->where('transferproposal.toDirector',)
 
-  ->orwhere('officeunder.head',Auth::user()->empId)  
+  ->where('officeunder.head',Auth::user()->empId)  
   ->where('transferproposal.status','=','recommended')
   ->where('transferproposal.toDirector',)
     

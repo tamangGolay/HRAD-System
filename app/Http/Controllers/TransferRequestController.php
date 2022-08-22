@@ -59,9 +59,15 @@ class TransferRequestController extends Controller
             $toOffice = DB::table('transferrequest')->select('toOffice')
             ->where('id',$request->id)
             ->first();  
+
             $requestDate = DB::table('transferrequest')->select('requestDate')
             ->where('id',$request->id)
-            ->first();  
+            ->first(); 
+
+            $reasonForTransfer = DB::table('transferrequest')->select('reason')
+            ->where('id',$request->id)
+            ->first(); 
+
         
            // dd($toOffice->toOffice);
 
@@ -72,6 +78,8 @@ class TransferRequestController extends Controller
                 $a->fromOffice = $fromOffice->fromOffice;
                 $a->toOffice = $toOffice->toOffice;
                 $a->transferType = $request->status;
+                $a->reasonForTransfer = $reasonForTransfer->reason;
+
                 $a->save();                
                 
             return redirect('home')->with('page', 'transferRequestReview')

@@ -155,9 +155,13 @@ class TransferRequestController extends Controller
                            ['fromGMAction' =>$request->remarks,
                            'fromGM' =>$request->empId,
                            'status' =>$status,
-                           'fromGMRemarks' =>$request->rejectreason]);   
-         return redirect('home')
-         ->with('success','You have recommended the Transfer Request');
+                           'fromGMRemarks' =>$request->rejectreason]);  
+
+        //  return redirect('home')
+        //  ->with('success','You have recommended the Transfer Request');
+
+        return redirect('home')->with('page', 'gmTransferReview')
+            ->with('success', 'Transfer request submitted successfully!');
 
  }
  if($request->remarks2 == "rejected" ){    
@@ -173,9 +177,13 @@ transferProposal::updateOrCreate(['id' => $id->id],
                    ['fromGMAction' =>$request->remarks2,
                    'fromGM' =>$request->empId,
                    'status' =>$status1,
-                   'fromGMRemarks' =>$request->rejectreason]);   
- return redirect('home')
- ->with('error','You have rejectd the Transfer Request');
+                   'fromGMRemarks' =>$request->rejectreason]); 
+
+//  return redirect('home')
+//  ->with('error','You have rejectd the Transfer Request');
+
+return redirect('home')->with('page', 'gmTransferReview')
+->with('error', 'You have rejectd the Transfer Request!');
 
 }
 
@@ -184,6 +192,7 @@ transferProposal::updateOrCreate(['id' => $id->id],
  }
 
 }
+
 
 public function dirReviewTransfer(Request $request)
 {

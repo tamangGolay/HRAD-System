@@ -488,7 +488,14 @@ public function HRReviewTransfer(Request $request)
 
         $toOffice = DB::table('transferproposal')->select('toOffice')
         ->where('id',$request->id)
-        ->first();  
+        ->first(); 
+        
+        // dd($toOffice); 
+
+        $reportTo = DB::table('officedetails')->select('reportToOffice')
+        ->where('id',$toOffice->toOffice)
+        ->first(); 
+        // dd($reportTo); 
 
         $proposalId = DB::table('transferproposal')  
         ->select('id')
@@ -522,6 +529,7 @@ public function HRReviewTransfer(Request $request)
             $a->status = $request->remarks; 
             $a->transferDate = $request->requestDate;
             $a->orderReleasedBy =  $request->empId;
+            $a->reportToOffice = $reportTo->reportToOffice;
             $a->orderReleasedOn = $request->requestDate;
             $a->save();   
             

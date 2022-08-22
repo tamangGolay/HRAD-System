@@ -164,7 +164,7 @@
                 </div>
             </div> 
    
-<!-- 
+
 
             
              <div class="form-group row"> 
@@ -172,7 +172,7 @@
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="division" id="division" placeholder="Division" readonly required>                  
                 </div>
-            </div>  -->
+            </div> 
 
        
            
@@ -268,8 +268,7 @@ function getEmployeeDetails(val)
                     console.log(data);
                   
                     document.getElementById('nameid').value = '';                      
-                 
-                  //   document.getElementById('division').value =  '';
+                    document.getElementById('division').value =  '';
                   //  document.getElementById('designation').value =  '';
                   //   document.getElementById('grade').value = '';   
                                     
@@ -285,10 +284,9 @@ function getEmployeeDetails(val)
                           {
 
                            
-                            document.getElementById('nameid').value = Employee.empName;                      
-                          // document.getElementById('division').value =  Employee.shortOfficeName;
-                                           
-                                document.getElementById('emp_id').innerHTML= Employee.empId;                    
+                          document.getElementById('nameid').value = Employee.empName;                      
+                          document.getElementById('division').value =  Employee.longOfficeName;
+                          document.getElementById('emp_id').innerHTML= Employee.empId;                    
             
                     // document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
                     // document.getElementById('designation').value =  Employee.desisNameLong; 

@@ -135,9 +135,9 @@ $emp = DB::table('users')
 $emp = DB::table('jobdescription')
 ->join('users', 'users.empId', '=', 'jobdescription.empId') 
 // ->join('designationmaster','designationmaster.id', 'users.designationId')
-// ->join('officedetails','officedetails.id', 'users.office')
+->join('officedetails','officedetails.id', 'users.office')
 
-->select('jobdescription.*','users.empName'
+->select('jobdescription.*','users.empName','officedetails.longOfficeName'
 )
 ->where('users.empId', $value)->get();  
                 return response()

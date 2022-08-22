@@ -8,48 +8,51 @@ use App\Mail\MyTestMail;
 use App\knowledgeapprove;
 use DB;
 use Auth;
+use  App\User;
+
 
 class KnowledgeController extends Controller
 {
 
 
-    public function index(Request $request)
-    {
+    // public function index(Request $request)
+    // {
 
-        $userList = DB::table('knowledgerepository')
-        ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
-        ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
-     //    ->join('officemaster','officemaster.id','=','users.office')
 
-     ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
-        )
+    //     $userList = DB::table('knowledgerepository')
+    //     ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
+    //     ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
+    //  //    ->join('officemaster','officemaster.id','=','users.office')
 
-        ->latest('users.id') //similar to orderby('id','desc')
-        ->where('users.office',Auth::user()->office)
+    //  ->select('users.mobileNo','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
+    //     )
+
+    //     ->latest('users.id') //similar to orderby('id','desc')
+    //     ->where('users.office',Auth::user()->office)
    
-         ->paginate(10000000);
+    //      ->paginate(10000000);
         
-        if ($request->ajax()) {
-            $data = $userList;
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
+    //     if ($request->ajax()) {
+    //         $data = $userList;
+    //         return Datatables::of($data)
+    //                 ->addIndexColumn()
+    //                 ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="delete" data-original-title="Delete" class="btn btn-primary btn-sm delete">Delete</a>';
+    //                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
+    //                        $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="delete" data-original-title="Delete" class="btn btn-primary btn-sm delete">Delete</a>';
 
 
 
 
     
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
+    //                         return $btn;
+    //                 })
+    //                 ->rawColumns(['action'])
+    //                 ->make(true);
+    //     }
       
-        return view('knowledge.knowledgeReview',compact('userList'));
-    }
+    //     return view('knowledge.knowledgeReview',compact('userList','empName'));
+    // }
 
    
 

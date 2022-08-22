@@ -480,6 +480,35 @@ if ($request->v == "knowledgeRequest")  //form.csv
 
 
 
+//knowledgeRepository for employees
+if ($request->v == "knowledgeRepository")
+{
+    $userLists = Officedetails::all();
+
+
+    $userLists = DB::table('knowledgerepository')
+        // ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
+        ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
+     //    ->join('officemaster','officemaster.id','=','users.office')
+
+     ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails','officedetails.Address'
+        )
+
+        // ->latest('users.id') //similar to orderby('id','desc')
+        // ->where('users.office',Auth::user()->office)
+   
+         ->paginate(10000000);
+     $rhtml = view('knowledge.knowledgeRepository')->with(['userList' => $userLists])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+//end of KnowledgeRepository.
+
+
+
         //Contribution report List.
         if ($request->v == "contributionReport")
         {

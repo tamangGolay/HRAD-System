@@ -423,6 +423,8 @@ Route::post('/updateSelectedEmployees',[PromotionAllListController::class,'updat
 Route::post('requestKnowledge','KnowledgeController@requestKnowledge')->name('requestKnowledge');
 
 Route::resource('knowledge', KnowledgeController::class);
+Route::resource('knowledge', KnowledgeRepositoryController::class);
+
 
 //golay end
 

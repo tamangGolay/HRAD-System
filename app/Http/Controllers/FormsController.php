@@ -65,6 +65,8 @@ use App\IncrementView;
 use App\empSupervisor;
 use App\transferRequest;
 use App\jobDescription;
+use App\transferProposal; 
+use App\EmployeeTwice;
 
 
 
@@ -5962,7 +5964,32 @@ if ($request->v == "relieveEmployee")  //form.csv
      'html' => $rhtml
       ));
 }  //end
+//Transfer History report
+if ($request->v == "transferhistoryReport")  //form.csv
+{   $tranfhisrepo = Officedetails::all();   
+    $transprop = transferProposal::all();
+    $z = EmployeeTwice::all(); 
 
+    $name = DB::table('transferhistory')
+       
+    ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
+    ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
+    ->join('officedetails AS D', 'D.id', '=', 'transferhistory.id')
+    ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')       
+    ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
+
+    ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks','B.longOfficeName as tooffname','D.reportToOffice as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit','officedetails.longOfficeName','transferproposal.reasonForTransfer','employee4twimc.empName','employee4twimc.designation','employee4twimc.grade')
+    ->where('transferhistory.status','=', 'Closed')
+     ->get();
+
+    $rhtml = view('Transfer.transferHistoryReport')->with(['tranfhisrepo'=>$tranfhisrepo, 'transprop'=>$transprop, 'z'=>$z  ])->render();
+    return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  
+//end
 
 }
 }

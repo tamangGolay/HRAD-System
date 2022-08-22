@@ -699,3 +699,6 @@ Route::post('/relieveEmployee','TransferRequestController@relieveEmployee')->nam
 
 //route for joining emp date in transfer history
 Route::post('/updateTransferHistory','TransferRequestController@updateTransferHistory')->name('updateTransferHistory');
+
+//uniform Transfer History Report
+Route::resource('transferhistoryreport', 'TransferHistoryReportController');//refund report

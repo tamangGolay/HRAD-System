@@ -65,9 +65,9 @@
     </div>
 
                     <!-- <div class="form-group row mb-0"> -->
-						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
+						<!-- <div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
 							<button  id="notescancel" class="btn btn-info btn-lg" onclick="notesheetCancel();" style="color:black;">View Notesheet</button>
-						</div>
+						</div> -->
 					</div>
                 
 				

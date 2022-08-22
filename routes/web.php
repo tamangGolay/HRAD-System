@@ -419,6 +419,8 @@ Route::post('/updateSelectedEmployees',[PromotionAllListController::class,'updat
 //route for knowledge
 Route::post('requestKnowledge','KnowledgeController@requestKnowledge')->name('requestKnowledge');
 
+Route::resource('knowledge', KnowledgeController::class);
+
 //golay end
 
 //start sonam 

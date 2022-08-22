@@ -735,6 +735,37 @@ return response()
        //end of oneEmployee .
 
 
+
+       //KnowledgeReview for Supervisor
+       if ($request->v == "knowledgeReview")
+       {
+            //    $officedetails = Officedetails::all();
+
+              
+
+
+            $userLists = DB::table('knowledgerepository')
+               ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
+               ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
+            //    ->join('officemaster','officemaster.id','=','users.office')
+
+            ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
+               )
+
+               ->latest('users.id') //similar to orderby('id','desc')
+               ->where('users.office',Auth::user()->office)
+          
+                ->paginate(10000000);
+            $rhtml = view('knowledge.knowledgeReview')->with(['userList' => $userLists])->render();
+           return response()
+               ->json(array(
+               'success' => true,
+               'html' => $rhtml
+           ));
+       }
+       //end of KnowledgeReview for Supervisor.
+
+
        
        //Start oneEmployee
        if ($request->v == "allEmployeeContribution")

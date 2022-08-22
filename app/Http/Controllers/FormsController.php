@@ -5852,6 +5852,32 @@ if ($request->v == "hrTransferReview")  //form.csv
       ));
 }  //end
 
+if ($request->v == "relieveEmployee")  //form.csv
+{       
+
+    $fromoffice = Officedetails::all();
+    $tooffice = Officedetails::all();
+ 
+    $employeeTransfer = DB::table('transferhistory')
+    ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
+   ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')  
+//    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
+    ->select('transferhistory.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+    ->where('transferhistory.transferFrom','=',Auth::user()->office) 
+    ->where('transferhistory.status','=','Open')
+    ->where('transferhistory.relievedBy',)
+     ->paginate(10000000);
+    
+   $rhtml = view('Transfer.relieveEmployee')->with(['employeeTransfer' => $employeeTransfer,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 
+    return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
 }
 }
 

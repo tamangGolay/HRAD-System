@@ -46,7 +46,7 @@ $(function() {
 		"info": true,
 		"autoWidth": true,
 		"paging": true,
-		buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5'
+		buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5',
 			'pdfHtml5'
 		]
 	});

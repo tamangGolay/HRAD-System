@@ -436,6 +436,7 @@ transferProposal::updateOrCreate(['id' => $id->id],
  }
 
 }
+
 public function HRReviewTransfer(Request $request)
 {
 
@@ -516,6 +517,35 @@ public function HRReviewTransfer(Request $request)
     ->with('error', 'This transfer request have been rejected!');
 
 }
+
+
+}
+public function relieveEmployee(Request $request)
+ {
+    // dd($request);
+    
+        if($request->remarks == "Open" ){                        //&& $request->remarks != ''
+           
+            $id = DB::table('transferhistory')->select('id')
+            ->where('id',$request->id)
+            ->first();
+
+            $status='recommended'; 
+            
+             
+
+        transferHistory::updateOrCreate(['id' => $id->id],
+                           ['relievedBy' =>$request->empId,
+                           'relievedOn' =>$request->requestDate]);  
+
+         return redirect('home')
+         ->with('success','You have Relieved the employee');
+
+ }
+
+ else{
+    return redirect('home')->with('Sorry','Recommendation Failed');  
+ }
 
 }
 

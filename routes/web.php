@@ -685,3 +685,5 @@ Route::get('/toDirtransferrequest','TransferRequestController@toDirtransferreque
 //route for transfer request review Director
 Route::post('/toDirReviewTransfer','TransferRequestController@toDirReviewTransfer')->name('toDirReviewTransfer');
 Route::post('/HRReviewTransfer','TransferRequestController@HRReviewTransfer')->name('HRReviewTransfer'); //hr transfer review
+//route for relieving employee
+Route::post('/relieveEmployee','TransferRequestController@relieveEmployee')->name('relieveEmployee'); //head relieve review

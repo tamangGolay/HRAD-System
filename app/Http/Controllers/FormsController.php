@@ -480,35 +480,6 @@ if ($request->v == "knowledgeRequest")  //form.csv
 
 
 
-//knowledgeRepository for employees
-if ($request->v == "knowledgeRepository")
-{
-    $userLists = Officedetails::all();
-
-
-    $userLists = DB::table('knowledgerepository')
-        // ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
-        ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
-     //    ->join('officemaster','officemaster.id','=','users.office')
-
-     ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails','officedetails.Address'
-        )
-
-        // ->latest('users.id') //similar to orderby('id','desc')
-        // ->where('users.office',Auth::user()->office)
-   
-         ->paginate(10000000);
-     $rhtml = view('knowledge.knowledgeRepository')->with(['userList' => $userLists])->render();
-    return response()
-        ->json(array(
-        'success' => true,
-        'html' => $rhtml
-    ));
-}
-//end of KnowledgeRepository.
-
-
-
         //Contribution report List.
         if ($request->v == "contributionReport")
         {
@@ -4428,6 +4399,30 @@ if ($request->v == "jobDescription")
      ));
 }
 
+
+//start of jobdescription
+       if ($request->v == "jobDescriptionReview")
+       {
+        
+        $job=jobDescription::all();
+        $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
+        $userdetails = DB::table('jobdescription')
+          ->join('users', 'users.empId', '=', 'jobdescription.empId')
+           ->join('officedetails','officedetails.id', 'users.office') 
+          ->select('jobdescription.*','users.empName','officedetails.longOfficeName')
+          ->paginate(10000000);
+        
+      
+      
+          $rhtml = view('emp.jobDescriptionReview')->with(['job' => $job,'userdetails'=>$userdetails ])->render();
+          return response()
+              ->json(array(
+              'success' => true,
+              'html' => $rhtml
+           ));
+      }
+
+       //end of jobdescription review.
 
 //incrementreport
 if ($request->v == "incrementReport")

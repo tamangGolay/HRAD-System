@@ -78,7 +78,6 @@
             <th>Grade</th>
             <th>Current Office</th>
             <th>New Office</th>
-            <th>Report to Office</th>
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>
             <th>Transfer Reason</th>
@@ -144,10 +143,6 @@ $(document).ready(function(){
                 {
                     data:'tooffname',
                     name:'tooffname'
-                },
-                {
-                    data:'shortOfficeName',
-                    name:'shortOfficeName'
                 },
                 {
                     data:'transferType',

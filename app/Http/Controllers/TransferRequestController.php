@@ -374,6 +374,7 @@ public function toDirtransferrequest()
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
    ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
+   ->join('officeunder','officeunder.office','=','transferproposal.toOffice')
 
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
@@ -382,6 +383,10 @@ public function toDirtransferrequest()
   ->where('transferproposal.toDirector',)
 
  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+  ->where('transferproposal.status','=','recommended')
+  ->where('transferproposal.toDirector',)
+
+  ->orwhere('officeunder.head',Auth::user()->empId)  
   ->where('transferproposal.status','=','recommended')
   ->where('transferproposal.toDirector',)
     
@@ -501,31 +506,40 @@ public function HRReviewTransfer(Request $request)
             $a->orderReleasedOn = $request->requestDate;
             $a->save();   
             
-    transferProposal::updateOrCreate(['id' => $id->id],
-    ['status' =>$request->remarks]);              
-                   
+            $hraction='approved';
             
-        return redirect('home')->with('page', 'transferReviewHR')
-        ->with('success', 'Approved the transfer request successfully!');
+            transferProposal::updateOrCreate(['id' => $id->id],
+            ['status' =>$request->remarks,
+            'hRRemarks' =>$request->rejectreason,
+            'hRAction' =>$hraction,
+            'responsibleHR' =>$request->empId]);              
+                           
+                    
+                return redirect('home')->with('page', 'hrTransferReview')
+                ->with('success', 'Approved the transfer request successfully!');
 
 }  
 
-  if($request->remarks2 == "rejected" ){    
+if($request->remarks2 == "rejected" ){ 
+
+    $hraction1='rejected';   
 
     $id = DB::table('transferproposal')->select('id')
     ->where('id',$request->id)
     ->first(); 
     
     transferProposal::updateOrCreate(['id' => $id->id],
-    ['status' =>$request->remarks2]);                  
+    ['status' =>$request->remarks2,
+    'hRRemarks' =>$request->rejectreason,
+    'hRAction' =>$hraction1,
+    'responsibleHR' =>$request->empId]);                  
         
     //mail to user with reason of rejection
         
-    return redirect('home')->with('page', 'transferReviewHR')
+    return redirect('home')->with('page', 'hrTransferReview')
     ->with('error', 'This transfer request have been rejected!');
 
 }
-
 
 }
 public function relieveEmployee(Request $request)

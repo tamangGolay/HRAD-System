@@ -687,3 +687,8 @@ Route::post('/toDirReviewTransfer','TransferRequestController@toDirReviewTransfe
 Route::post('/HRReviewTransfer','TransferRequestController@HRReviewTransfer')->name('HRReviewTransfer'); //hr transfer review
 //route for relieving employee
 Route::post('/relieveEmployee','TransferRequestController@relieveEmployee')->name('relieveEmployee'); //head relieve review
+
+
+
+//route for joining emp date in transfer history
+Route::post('/updateTransferHistory','TransferRequestController@updateTransferHistory')->name('updateTransferHistory');

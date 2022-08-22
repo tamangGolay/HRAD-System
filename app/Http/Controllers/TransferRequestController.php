@@ -9,7 +9,7 @@ use App\transferProposal;
 use App\Officedetails;
 use App\Officem;
 use App\transferHistory;
-
+use App\User;
 class TransferRequestController extends Controller
 {
 
@@ -556,6 +556,41 @@ public function relieveEmployee(Request $request)
  }
 
 }
+
+
+public function updateTransferHistory(Request $request)
+ {
+
+    $id = DB::table('transferhistory')->select('id')
+    ->where('id',$request->id)
+    ->first();
+      
+    $status='Closed';
+
+    transferHistory::updateOrCreate(['id' => $id->id],
+                   ['joinedOn' =>$request->joinedOn,
+                   'joiningAcceptedBy' =>$request->empId,
+                   'joiningAcceptedOn' =>$request->joiningAcceptedOn,
+                   'status' =>$status]);
+
+$UpdateOffice = DB::table('transferhistory')
+              ->select('transferTo')
+              ->where('id',$request->id)
+              ->first();
+
+$empId = DB::table('transferhistory')
+              ->select('empId')
+              ->where('id',$request->id)
+              ->first();    
+    
+DB::update('update users set office = ? where empId = ?', [$UpdateOffice->transferTo, $empId->empId]);
+
+return redirect('home')->with('page','employeeJoining')
+ ->with('success','You have save the joining date and approve it!');
+
+
+ }
+
 
 
 }

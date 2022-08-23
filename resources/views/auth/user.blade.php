@@ -139,9 +139,9 @@ a {
 
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
+									<label class="col-sm-4 text-md-right" for="empId">{{ __('Employee Number:') }}</label>
 									<div class="col-sm-4">
-									<input type="text" value="<?php echo $userList[0]->empId; ?>" name="emp_id" id="emp_id" >
+									<input type="text" value="<?php echo $userList[0]->empId; ?>" name="empId" id="empId" >
 
 									</div>
 								</div>

@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\WfRelease;
+use App\WfReleaseProcess;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use DB;
@@ -14,21 +14,18 @@ class PaymentReleaseController extends Controller
     public function paymentRelease(Request $request)
     {
      
-
         try
          {
-            $Request_payment = new WfRelease;
+            $Request_payment = new WfReleaseProcess;
             $Request_payment->empId = $request->empId;
-            $Request_payment->releaseDate = $request->releaseDate;
+            $Request_payment->requestDate = $request->requestDate;
             $Request_payment->amount = $request->amount;
             $Request_payment->reason = $request->reason;
-        
-            $Request_payment->save();
-
-        
+            $Request_payment->createdBy = $request->empId;        
+            $Request_payment->save();       
         
             return redirect('home')
-                ->with('success', ' Payment Successful');
+                ->with('success', 'You have requested for welfare release payment!');
 
         } //try end
        

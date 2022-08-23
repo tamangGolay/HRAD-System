@@ -3,11 +3,12 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="chgpsswd card-header bg-green text-center">
-                     <h3>Welfare Payment</h3>
+                     <h4>Welfare Release</h4>
                     </div>
 				<div class="card-body">
 					<form method="POST" action="{{route('paymentRelease')}}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-				
+					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >					
+					
 				<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
 
 				<input type="hidden" name="id" id="id">
@@ -39,21 +40,26 @@
 
 
 			<div class="textfont form-group row">
-				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Release Date</label>
+				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Request Date</label>
 					<div class="col-md-6">
 								
-						<input id="releaseDate" type="date" class="form-control" name="releaseDate"  required>
+						<input id="requestDate" type="date" class="form-control" name="requestDate"  required>
 					</div>
 			</div>
-						
+
 			<div class="textfont form-group row">
+							<label for="reason" class="col-md-4 col-form-label text-md-right">Death Of</label>
+							<div class="col-md-6">								
+									<input id="deathOf" type="text" class="form-control" name="deathOf" required>
+							</div>
+						</div>
+						
+			    <div class="textfont form-group row">
 				<label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
 					<div class="col-md-6">
-						<input id="amount" type="number" class="form-control" name="amount" required>
-						
+						<input id="amount" type="number" class="form-control" name="amount" required>						
 					</div>
-			</div>			
-
+			    </div>	
 						<div class="textfont form-group row">
 							<label for="reason" class="col-md-4 col-form-label text-md-right">Reason</label>
 							<div class="col-md-6">
@@ -61,7 +67,7 @@
 									<input id="reason" type="text" class="form-control" name="reason" required>
 									
 							</div>
-						</div>
+						</div>						
 
 						<div class="textfont form-group row mb-0">
 							<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">

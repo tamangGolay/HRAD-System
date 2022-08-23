@@ -5982,11 +5982,11 @@ if ($request->v == "transferhistoryReport")  //form.csv
        
     ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
     ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
-    ->join('officedetails AS D', 'D.id', '=', 'transferhistory.id')
+    ->join('officedetails AS D', 'D.id', '=', 'transferhistory.reportToOffice')
     ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')       
     ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
 
-    ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks','B.longOfficeName as tooffname','D.reportToOffice as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit','officedetails.longOfficeName','transferproposal.reasonForTransfer','employee4twimc.empName','employee4twimc.designation','employee4twimc.grade')
+    ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks','B.officeDetails as tooffname','D.officeDetails as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit','officedetails.officeDetails','transferproposal.reasonForTransfer','employee4twimc.empName','employee4twimc.designation','employee4twimc.grade')
     ->where('transferhistory.status','=', 'Closed')
      ->get();
 

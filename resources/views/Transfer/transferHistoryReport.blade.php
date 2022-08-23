@@ -3,12 +3,7 @@
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
-  <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-  <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>   -->
-  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+
   <style>
     .ghbheading{
     font-family: "Times New Roman", Times, serif;
@@ -35,7 +30,7 @@
                         <select class="col-lg-12 col-sm-12 form-control" name="offname" id="offname" value="" required>
                                              <option value="">Select Office Report to</option>
                                              @foreach($tranfhisrepo as $tranfhisrepo)
-                                             <option value="{{$tranfhisrepo->id}}">{{$tranfhisrepo->reportToOffice}}</option>
+                                             <option value="{{$tranfhisrepo->id}}">{{$tranfhisrepo->officeDetails}}</option>
 										@endforeach
 							</select> 
                     </div>  
@@ -82,6 +77,7 @@
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>
             <th>Transfer Reason</th>
+            <th>Transfer Date</th>
             <th>Remarks</th>
         </tr>
          </thead>
@@ -138,8 +134,8 @@ $(document).ready(function(){
                     name:'grade'
                 },
                 {
-                    data:'longOfficeName',
-                    name:'longOfficeName'
+                    data:'officeDetails',
+                    name:'officeDetails'
                 },
                 {
                     data:'tooffname',
@@ -162,6 +158,10 @@ $(document).ready(function(){
                     name:'reasonForTransfer'
                 },
                 {
+                    data:'transferDate',
+                    name:'transferDate'
+                },
+                {
                     data:'hRRemarks',
                     name:'hRRemarks'
                 }
@@ -174,7 +174,7 @@ $(document).ready(function(){
         var offname = $('#offname').val();
         var transferDate = $('#transferDate').val();
 
-        if(offname != '' &&  offname != '')
+        if(transferDate != '' &&  transferDate != '')
         {
             $('#report_data').DataTable().destroy();
             fill_datatable(offname, transferDate);

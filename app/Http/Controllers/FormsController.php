@@ -66,8 +66,8 @@ use App\empSupervisor;
 use App\transferRequest;
 use App\jobDescription;
 use App\transferProposal; 
-use App\EmployeeTwice;
-
+use App\EmployeeTwice; 
+use App\WfReleaseProcess;
 
 
 
@@ -6009,6 +6009,18 @@ if ($request->v == "transferhistoryReport")  //form.csv
       ));
 }  
 //end
+
+if ($request->v == "welfareReview")  {//form.csv
+
+   $welfareReview = WfReleaseProcess::all();
+    
+   $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
+    return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
 
 }
 }

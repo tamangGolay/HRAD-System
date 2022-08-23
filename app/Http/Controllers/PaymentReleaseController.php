@@ -38,7 +38,12 @@ class PaymentReleaseController extends Controller
          }
 
     }
-}   
+
+    public function welfareReview(Request $request)
+    {
+
+        //ur code here
+}   }
 
     
 

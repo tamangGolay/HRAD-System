@@ -119,11 +119,9 @@ Route::get('manage_guesthouse', 'Manage_GuesthouseController@message')->name('ma
 Route::post('addRoom','GuestHouseController@addRoom')->name('addRoom');
 
 
+
+
 Auth::routes();
-
-
-
-
 
 
 Route::get('/', function(){
@@ -703,3 +701,6 @@ Route::post('/updateTransferHistory','TransferRequestController@updateTransferHi
 
 //uniform Transfer History Report
 Route::resource('transferhistoryreport', 'TransferHistoryReportController');//refund report
+
+//route for welfare review
+Route::post('/welfareReview','PaymentReleaseController@welfareReview')->name('welfareReview');

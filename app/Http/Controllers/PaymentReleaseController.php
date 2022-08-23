@@ -21,13 +21,13 @@ class PaymentReleaseController extends Controller
             $Request_payment->requestDate = $request->requestDate;
             $Request_payment->amount = $request->amount;
             $Request_payment->reason = $request->reason;
-            $Request_payment->createdBy = $request->empId;        
+                 
             $Request_payment->save();       
         
             return redirect('home')
                 ->with('success', 'You have requested for welfare release payment!');
 
-        } //try end
+        }  //try end
        
      catch(\Illuminate\Database\QueryException $e)
      {

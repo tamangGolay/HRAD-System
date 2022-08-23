@@ -11,7 +11,7 @@ hr{
       <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b> Note Sheet Review STS</b>
+                <b> Director Note Sheet Review</b>
               </h5>
 			</div>
 		

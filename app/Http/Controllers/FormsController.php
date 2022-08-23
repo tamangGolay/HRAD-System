@@ -68,6 +68,7 @@ use App\jobDescription;
 use App\transferProposal; 
 use App\EmployeeTwice; 
 use App\WfReleaseProcess;
+use App\WfBank;
 
 
 
@@ -4814,7 +4815,18 @@ if ($request->v == "refundReport")  //form.csv
      'html' => $rhtml
       ));
 }  //end
+//view for manage Welfare Bank
 
+if ($request->v == "wfbank")
+{
+    $rhtml = view('welfare.welfareBank')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+//end
 
 //skill category
 

@@ -704,3 +704,6 @@ Route::resource('transferhistoryreport', 'TransferHistoryReportController');//re
 
 //route for welfare review
 Route::post('/welfareReview','PaymentReleaseController@welfareReview')->name('welfareReview');
+
+//manage welfare Bank
+Route::resource('wfbank', WelfareBankController::class);

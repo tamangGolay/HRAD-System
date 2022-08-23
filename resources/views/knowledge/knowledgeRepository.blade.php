@@ -98,6 +98,15 @@ a {
 							</select>
 									</div>
 								</div>
+
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="approvedBy">{{ __('Approved By:') }}</label>
+									<div class="col-sm-8">
+									<input type="text"  class="form-control" value="" name="approvedBy" id="approvedBy" required readonly> 
+
+									</div>
+								</div>
 								
 
 								<!-- <div class="form-group row">
@@ -225,6 +234,8 @@ a {
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
 		 $('#officeDetails').val(data.id); //input id,database
+		 $('#approvedBy').val(data.approvedBy); //input id,database
+
 
 	  })
    });

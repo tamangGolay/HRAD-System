@@ -15,29 +15,27 @@ class WelfareRefundController extends Controller
     {
         //dd($request);
     
-        // try
-        //  {
+        try
+         {
             $Request_refund = new Refund;
             $Request_refund->empId = $request->EmpId;     //database name n user input name
             $Request_refund->refundDate = $request->refundDate;
-            $Request_refund->refundAmount = $request->refundAmount;                     
+            $Request_refund->refundAmount = $request->refundAmount;                
+            $Request_refund->save();    
 
-            $Request_refund->save();
-
-           
 
             return redirect('home')->with('page', 'refund')
-                ->with('success', 'Refund Successful');
+                ->with('success', 'welfare refund for this employee is successful!');
 
-        // } //try end
+        } //try end
        
-    //  catch(\Illuminate\Database\QueryException $e)
-    //  {
+     catch(\Illuminate\Database\QueryException $e)
+     {
 
-    //       return redirect('home')->with('page', 'refund')
-    //             ->with('error', 'Cannot leave the fields empty test');
+          return redirect('home')->with('page', 'refund')
+                ->with('error', 'Cannot leave the field empty!');
 
-    //      }
+         }
 
     }
 }

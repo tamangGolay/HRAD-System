@@ -55,12 +55,39 @@ class Manage_WfRelativesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
+
+        // dd($request);
+        if($request->cIdNo == null &&  $request->cIDOther == null)
+        {
+
+            return redirect('home')
+            ->with('success', 'Notesheet submitted successfully');
+
+
+            // dd("cid cannot ne");
+
+        }
+
+       else if($request->cIdNo != null &&  $request->cIDOther != null)
+        {
+            
+            return redirect('home')
+            ->with('success', 'Notesheet submitted successfullyyy');
+
+
+        }
+
+        else{
+
         WfRelatives::updateOrCreate(['id' => $request->id],  //contract detail
                 ['empId' => $request->empId, 'name' => $request->name, 'cIdNo' => $request->cIdNo,'cIDOther' => $request->cIDOther,'doB' => $request->doB,'relation' => $request->relation]);        
    
             
         return response()->json(['success'=>'New Family Details saved successfully.']);
+    }
+
     }
     /**
      * Show the form for editing the specified resource.

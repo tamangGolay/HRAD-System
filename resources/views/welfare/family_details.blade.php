@@ -85,14 +85,15 @@ a {
                     </div>
 
                     <div class="form-group">
+                    
                         <label class="col-lg-12 col-sm-12 control-label">Relative's CID</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="cIdNo" name="cIdNo" onKeyPress="if(this.value.length==11) return false;" placeholder="eg:11233142524" class="form-control" required>
+                            <input type="text" id="cIdNo" name="cIdNo" onKeyPress="if(this.value.length==11) return false;" placeholder="Only if relative have CID" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-12 col-sm-12 control-label">Relative's other CID</label>
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's other CID (<span style="color:red"><i>required only if you dont have CID</i></span>)</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" id="cIDOther" name="cIDOther"  placeholder="Only if relative dont have CID" class="form-control" required>
                         </div>
@@ -251,7 +252,7 @@ a {
           error: function (data) {
               console.log('Error:', data);
               $('#familyButton').html('Save Changes');
-              alert("Cannot leave fields empty");
+              alert("Cannot leave fields empty/cannot fill both cid/cid other");
                 
           }
       });

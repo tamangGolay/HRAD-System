@@ -171,12 +171,12 @@ a {
         ajax: "{{ route('wfrelatives.index') }}",   //** */
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'empId'},
+            {data: 'empId', name: 'users.empId'},
             {data: 'cIdNo', name: 'cIdNo'},
             {data: 'cIDOther', name: 'cIDOther'},
             {data: 'name', name: 'name'},
             {data: 'doB', name: 'doB'},
-            {data: 'relationshipName', name: 'relationshipName'},
+            {data: 'relationshipName', name: 'relationmaster.relationshipName'},
             {data: 'action', name: 'action'}
         ]
     });

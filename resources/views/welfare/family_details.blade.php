@@ -111,9 +111,9 @@ a {
                         <div class="col-lg-12 col-sm-12">
                             <!-- <input type="text" id="relation" name="relation"  placeholder="relation" class="form-control" required> -->
                             <select class=form-control name="relation" id="relation" value="" required>
-                                             <option value="">Select Personal No.</option>
+                                             <option value="">Select Relation</option>
                                              @foreach($relation as $relation)
-                                             <option value="{{$relation->empId}}">{{$relation->relationshipName}}</option>
+                                             <option value="{{$relation->id}}">{{$relation->relationshipName}}</option>
 										@endforeach
 							</select>
                         </div>

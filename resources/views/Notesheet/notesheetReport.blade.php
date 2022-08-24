@@ -4,92 +4,74 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Laravel 8 PDF </title>
+    <title> Notesheet Report </title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
    <style>
-   table, th, td {
-  border: 1px solid black;
-}
- th, td {
-  border-color: #96D4D4;
- 
-}
-.col1{
-   width:100px;
-}
-.col2{
-   width:500px;
-}
-h1 {
- color: #1a3300;
-};
-   </style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        border-color: #96D4D4;
+    }
+  </style>
 </head>
+
 <body>
-    <div class = "container mt-4">
+    <div class = "container">
         <div class = "row">
-            <div class = "col-md-8 text-center">
-                <h1> NoteSheet ReportS</h1>
-            </div>
-          
-            <br><br><br>
-            <div class = "row">
-            <div class = "col-md-12">
-            <div class="card-body table-responsive p-0">
-					<table id="table5" class="table table-hover table-striped table-bordered">
-                <!-- <table class = "table"> -->
-                    <!-- <h2 class="headnote"> NoteSheet  </h2> -->
-                    <thead>
-                      <tr class="text-nowrap">
-                        <th scope = "col" class="col1"> Id </th>
-                        <!-- <th scope = "col" class="col1"> Employee </th> -->
-                        <th scope = "col" class="col1"> EmployeeId</th>
-                        <th scope = "col" class="col1"> Employee Name</th>
-                        <th scope = "col" class="col1"> Office </th>
-                        <th scope = "col" class="col2"> Topic </th>
-                        <th scope = "col" class="col2"> Download </th>
+            <div class = "col">
+                <div class="card ">
+                    <div class="card-header bg-green">
+                        <div class="col text-center">
+                        <h3>
+                            <b> Notesheet Report</b>
+                        </h3>
+			            </div>
+                    </div>
+                <br>
+                <div class = "row">
+                    <div class = "col-md-12">
+                        <div class="card-body table-responsive p-0">
+					        <table id="table5" class="table table-hover table-striped table-bordered">
+                               <thead>
+                                <tr class="text-nowrap">
+                                    <th scope = "col" class="col1"> Id </th>
+                                    <!-- <th scope = "col" class="col1"> Employee </th> -->
+                                    <th scope = "col" class="col1"> EmployeeId</th>
+                                    <th scope = "col" class="col1"> Employee Name</th>
+                                    <th scope = "col" class="col1"> Office </th>
+                                    <th scope = "col" class="col2"> Topic </th>
+                                    <th scope = "col" class="col2"> Download </th>
 
-                      </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($notesheet as $notesheet)
-
-                        <tr>
-                            <td class="col1"> {{$notesheet->noteId}} </td>
-                           <td class="col1"> {{$notesheet-> createdBy}} </td>
-                           <td class="col1"> {{$notesheet-> empName}} </td>
-                            <td class="col1"> {{$notesheet-> longOfficeName}} </td>
-                            <td class="col1"> {{$notesheet-> topic}} </td>
-                            <td class="col2"><a href="notesheetReport/{{$notesheet->noteId}}" class="btn btn-success">Download</a> </td>
-
-
-
-                        </tr>
-                    @endforeach
-
-                    </tbody>
-                  </table>
-            </div>
-</div>
-        </div>
-    </div>
-
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" > Export to PDF </a>
+                                </tr>
+                               </thead>
+                               <tbody>
+                                @foreach ($notesheet as $notesheet)
+                                <tr>
+                                    <td class="col1"> {{$notesheet->noteId}} </td>
+                                    <td class="col1"> {{$notesheet-> createdBy}} </td>
+                                    <td class="col1"> {{$notesheet-> empName}} </td>
+                                    <td class="col1"> {{$notesheet-> longOfficeName}} </td>
+                                    <td class="col1"> {{$notesheet-> topic}} </td>
+                                    <td class="col2"><a href="notesheetReport/{{$notesheet->noteId}}" class="btn btn-success">Download</a> </td>
+                                </tr>
+                                @endforeach
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-             -->
-             <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+    </div>
+           
+          
+    <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> </script>
    
     <!-- jquery-validation -->

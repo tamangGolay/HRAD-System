@@ -37,17 +37,7 @@
                			 </div>
             	</div> 
 
-				<div class="textfont form-group row"> 
-              <label class="col-sm-4 " for="facilityself">Relation:</label>
-                <div class="col-sm-6">              
-                  <select class="form-control form-select " name="facilityself"  id="facilityself" required>                     
-                     
-                  </select>
-                </div>
-            </div>
-
-
-
+				
 
 			<div class="textfont form-group row">
 				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Request Date</label>
@@ -57,13 +47,16 @@
 					</div>
 			</div>
 
-			<div class="textfont form-group row">
-							<label for="reason" class="col-md-4 col-form-label text-md-right">Death Of</label>
-							<div class="col-md-6">								
-									<input id="deathOf" type="text" class="form-control" name="deathOf" required>
-							</div>
-						</div>
-						
+			<div class="textfont form-group row"> 
+		   <label class="col-md-4 col-form-label text-md-right" for="relation">&nbsp;&nbsp;&nbsp;Relation:</label>                   
+              <div class="col-sm-6">              
+                  <select class="form-control form-select" name="relation"  id="relation" required>                      
+				  
+                  </select>
+                </div>
+            </div>
+
+									
 			    <div class="textfont form-group row">
 				<label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
 					<div class="col-md-6">
@@ -104,7 +97,6 @@ $(document).ready(function() {
 <script>
 	function checkvalue()
 	{
-
 		if(document.getElementById('empId').value[0] == '3' ){
 		document.getElementById('empid').innerHTML = '';                        
 
@@ -120,17 +112,15 @@ function getEmployeeDetails(val)
 
           $.get('/getValues?source=paymentInfo&info='+val+'&token='+csrftoken,function(data){   
 
-			  $('#facilityself').empty();               
+			  $('#relation').empty();               
                   $.each(data, function(index, facility){
-                      $('#facilityself').append('<option value="'+facility.id+'">'+facility.relation+'</option>');   
+                      $('#relation').append('<option value="'+facility.id+'">'+facility.relation+'</option>');   
                   })           
-                    console.log(data);
-                  
-                    // document.getElementById('empName').value = '';                      
-                    document.getElementById('empid').innerHTML = '';                        
-
-
-
+                   
+				  console.log(data);                  
+					
+                    document.getElementById('empName').value = '';                      
+                    document.getElementById('empid').innerHTML = '';                   
                     
                 $.each(data, function(index, Employee){
 
@@ -139,13 +129,11 @@ function getEmployeeDetails(val)
                           {
                             document.getElementById('empName').value = Employee.empName;                      
 							document.getElementById('empid').innerHTML = '';                        
-                        }				
-
-
+                          }	
                             
                             else {
 
-                                document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
+                                document.getElementById('empid').innerHTML = 'Record not found in welfare relatives!';  
 								 document.getElementById('empId').value='';
                     
                             }                       

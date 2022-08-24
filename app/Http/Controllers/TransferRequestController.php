@@ -183,11 +183,13 @@ class TransferRequestController extends Controller
 
  }
  if($request->remarks2 == "rejected" ){    
+
+    
                        
     $id = DB::table('transferproposal')->select('id')
     ->where('id',$request->id)
     ->first();
-
+    
     $status1='rejected'; 
      
 
@@ -196,13 +198,15 @@ transferProposal::updateOrCreate(['id' => $id->id],
                    'fromGM' =>$request->empId,
                    'status' =>$status1,
                    'fromGMRemarks' =>$request->rejectreason]);   
+
+  
  return redirect('home')
  ->with('error','You have rejectd the Transfer Request');
 
 }
 
  else{
-    return redirect('home')->with('Sorry','Recommendation Failed');  
+    return redirect('home')->with('Sorry','The transfer request have been rejected!');  
  }
 
 }

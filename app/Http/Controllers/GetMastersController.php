@@ -72,11 +72,12 @@ if ($table == "paymentInfo")
             //check cid if already in database.
 
 
-            if (DB::table('users')->where('users.empId', $value)->exists())
+            if (DB::table('view_wfrelatives')->where('view_wfrelatives.empId', $value)->exists())
             {
                $emp = DB::table('view_wfrelatives')
-                    ->where('empId',$value)
-                    ->select('relation')
+               ->join('users','users.empId','=','view_wfrelatives.empId')
+                    ->where('view_wfrelatives.empId',$value)
+                    ->select('view_wfrelatives.id','relation','empName')
                     ->get();
 
                 return response()
@@ -85,7 +86,7 @@ if ($table == "paymentInfo")
             }
             else
             {
-                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_Id!']);
 
             }
 

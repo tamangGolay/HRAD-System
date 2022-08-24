@@ -13,7 +13,7 @@ class PaymentReleaseController extends Controller
 
     public function paymentRelease(Request $request)
     {
-     
+         
         try
          {
             $Request_payment = new WfReleaseProcess;
@@ -21,7 +21,7 @@ class PaymentReleaseController extends Controller
             $Request_payment->requestDate = $request->requestDate;
             $Request_payment->amount = $request->amount;
             $Request_payment->reason = $request->reason;
-                 
+            $Request_payment->deathOf = $request->relation;                 
             $Request_payment->save();       
         
             return redirect('home')

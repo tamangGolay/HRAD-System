@@ -33,7 +33,7 @@
 							<tr>								
                 <td>{{$rv->id}}</td>
                 <td>{{$rv->empId}}</td>
-                <td>{{$rv->deathOf}}</td>
+                <td>{{$rv->relation}}</td>
                 <td>{{$rv->amount}}</td>                 
                 <td>{{$rv->reason}}</td>       
 

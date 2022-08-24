@@ -24,9 +24,10 @@ class PaymentReleaseController extends Controller
             $Request_payment->deathOf = $request->relation;                 
             $Request_payment->save();       
         
-            return redirect('home')
+            return redirect('home')->with('page','welfarePayment')
                 ->with('success', 'You have requested for welfare release payment!');
 
+               
         }  //try end
        
      catch(\Illuminate\Database\QueryException $e)

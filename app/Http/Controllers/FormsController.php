@@ -6049,9 +6049,13 @@ if ($request->v == "welfareReview")  {//form.csv
 
     if(Auth::user()->empId == 30003084) { //member1
     
-    $welfareReview = WfReleaseProcess::all()->where
-    ('status','=','applied')
-    ;
+    //$welfareReview = WfReleaseProcess::all();
+
+    $welfareReview = DB::table('wfreleaseprocess')
+    ->join('view_wfrelatives', 'view_wfrelatives.id', '=', 'wfreleaseprocess.deathOf')
+    ->select('view_wfrelatives.relation','wfreleaseprocess.*')
+    ->where('wfreleaseprocess.status','=','applied')
+    ->get();
     
     $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
     return response()
@@ -6064,8 +6068,14 @@ if ($request->v == "welfareReview")  {//form.csv
     
     if(Auth::user()->empId == 30002953) { //member2
     
-        $welfareReview = WfReleaseProcess::all()->where
-        ('status','=','under process');
+        // $welfareReview = WfReleaseProcess::all()->where
+        // ('status','=','under process');
+
+        $welfareReview = DB::table('wfreleaseprocess')
+        ->join('view_wfrelatives', 'view_wfrelatives.id', '=', 'wfreleaseprocess.deathOf')
+        ->select('view_wfrelatives.relation','wfreleaseprocess.*')
+        ->where('wfreleaseprocess.status','=','under process')
+        ->get();
          
         $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
          return response()
@@ -6077,8 +6087,13 @@ if ($request->v == "welfareReview")  {//form.csv
     
          if(Auth::user()->empId == 30002940) {//ceo 
     
-            $welfareReview = WfReleaseProcess::all()
-            ->where('status','=','pending');
+            
+            $welfareReview = DB::table('wfreleaseprocess')
+            ->join('view_wfrelatives', 'view_wfrelatives.id', '=', 'wfreleaseprocess.deathOf')
+            ->select('view_wfrelatives.relation','wfreleaseprocess.*')
+            ->where('wfreleaseprocess.status','=','pending')
+            ->get();
+            
             
             $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
              return response()

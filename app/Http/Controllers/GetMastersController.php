@@ -71,10 +71,12 @@ if ($table == "paymentInfo")
 
             //check cid if already in database.
 
+
             if (DB::table('users')->where('users.empId', $value)->exists())
             {
-                $emp = DB::table('users')->where('users.empId', $value)
-                    ->select('users.empName','users.empId')
+               $emp = DB::table('view_wfrelatives')
+                    ->where('empId',$value)
+                    ->select('relation')
                     ->get();
 
                 return response()

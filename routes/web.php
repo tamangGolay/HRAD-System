@@ -707,3 +707,8 @@ Route::post('/welfareReview','PaymentReleaseController@welfareReview')->name('we
 
 //manage welfare Bank
 Route::resource('wfbank', WelfareBankController::class);
+
+//manange contractdetail
+Route::resource('wfrelatives', Manage_WfRelativesController::class);
+Route::post('destroyrelativesdetails', 'Manage_WfRelativesController@delete')->name('destroyrelativesdetails'); //for deleting contract details
+

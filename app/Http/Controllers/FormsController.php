@@ -69,7 +69,7 @@ use App\transferProposal;
 use App\EmployeeTwice; 
 use App\WfReleaseProcess;
 use App\WfBank;
-
+use App\WfRelatives;
 
 
 
@@ -6022,6 +6022,29 @@ if ($request->v == "transferhistoryReport")  //form.csv
 }  
 //end
 
+if ($request->v == "wfRelatives")  {   //form.csv
+
+    $welfareReview = WfRelatives::all();
+
+    $pno = User::all();
+    $relation = Relationname::all();    
+
+    $wfRelatives = DB::table('wfrelatives')
+    ->join('users', 'users.empId', '=', 'wfrelatives.empId')
+    ->join('relationmaster', 'relationmaster.id', '=', 'wfrelatives.relation')
+     ->select('wfrelatives.id','wfrelatives.cIdNo','wfrelatives.cIDOther','wfrelatives.name','wfrelatives.doB','users.empId','relationshipName')
+     ->where('wfrelatives.status','0');    
+ 
+    $rhtml = view('welfare.family_details')->with(['welfareReview' => $welfareReview,'pno' => $pno, $welfareReview,'relation' => $relation])->render(); 
+     return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
+
+
+
 if ($request->v == "welfareReview")  {//form.csv
 
     if(Auth::user()->empId == 30003084) { //member1
@@ -6036,7 +6059,8 @@ if ($request->v == "welfareReview")  {//form.csv
      'success' => true,
      'html' => $rhtml
       ));
-    }  //end
+    }  //end  
+
     
     if(Auth::user()->empId == 30002953) { //member2
     
@@ -6063,7 +6087,8 @@ if ($request->v == "welfareReview")  {//form.csv
               'html' => $rhtml
                ));
              }  //end
-    }
+
+            }
     
     }
 }

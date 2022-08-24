@@ -157,6 +157,7 @@
                     <span id="empid" class="text-danger"></span>
                 </div>
             </div>
+            <input type="hidden" class="form-control" name="createdDate" id="createdDate" >
    
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
@@ -219,6 +220,11 @@
 
   
 </div>
+<script>
+    var today = new Date();
+	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	document.getElementById("createdDate").value = date;
+</script>
 
 <script type="text/javascript">
   

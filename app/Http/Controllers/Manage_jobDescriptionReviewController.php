@@ -73,10 +73,11 @@ class Manage_jobDescriptionReviewController extends Controller
 
 
         
-       jobDescription::updateOrCreate(['empId' => $request->emp_id],  [
+       jobDescription::Create(['empId' => $request->emp_id],  [
                'jobDescription' => $request->jobdescription,
           
-    ]);        
+    ]);    
+         
  
 
 //'placeId' => $request->placeId,'resignationDate' => $request->resignationdate, 'resignationType' => $request->resignationtypeId ,

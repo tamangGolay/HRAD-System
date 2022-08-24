@@ -74,7 +74,8 @@ class Manage_jobDescriptionController extends Controller
 
         
        jobDescription::updateOrCreate(['empId' => $request->emp_id],  [
-               'jobDescription' => $request->jobdescription,
+               'jobDescription' => $request->jobdescription, 'createdOn' => $request->createdDate,
+               'createdBy' => $request->emp_id
           
     ]);        
  

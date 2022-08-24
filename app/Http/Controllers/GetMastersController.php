@@ -146,7 +146,6 @@ $emp = DB::table('users')
 ->get();  
                 return response()
                     ->json($emp);
-              dd($emp);     
             }
             else
             {

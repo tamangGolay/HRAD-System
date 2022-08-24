@@ -141,6 +141,12 @@ a {
                         </div>
                     </div>
       
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Job Description</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="jobdescription" name="jobdescription"  placeholder="jobdescription" value="" class="form-control" required>
+                        </div>
+                    </div>
                 	
 
 				
@@ -255,6 +261,7 @@ $(function() {
 		
 			$('#emp_id').val(data.empId);
 			$('#empName').val(data.empName);
+			$('#jobdescription').val(data.jobDescription);
 			$('#office').val(data.longOfficeName);
 		
 		})

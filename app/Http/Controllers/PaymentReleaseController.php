@@ -41,8 +41,13 @@ class PaymentReleaseController extends Controller
 
     public function welfareReview(Request $request)
     {
+        // dd("here");
 
          if($request->empId == 30003084){//member1
+
+            if($request->status == "request"){
+
+                dd("recommended");
 
             $member1Action = "recommended";
             $status = "under process";
@@ -56,9 +61,24 @@ class PaymentReleaseController extends Controller
             $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
                 Mail::to('nimawtamang@bpc.bt') //member 2
                         ->send(new MyTestMail($email)); 
+            }
+
+            if($request->status == "rejected"){
+                dd("m1Reject");
+
+                $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+                Mail::to('nimawtamang@bpc.bt') //company Secretary
+                        ->send(new MyTestMail($email)); 
+
+            }
         }
 
         if($request->empId == 30002953){//member2
+
+            if($request->status == "request"){
+                dd("m2recommended");
+
+
 
             $member2Action = "recommended";
             $status = "pending";
@@ -71,9 +91,23 @@ class PaymentReleaseController extends Controller
             $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
             Mail::to('') //chair
                     ->send(new MyTestMail($email)); 
+            }
+            if($request->status == "rejected"){
+
+                dd("m2Reject");
+
+
+                $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+                Mail::to('nimawtamang@bpc.bt') //company Secretary
+                        ->send(new MyTestMail($email));
+
+            }
         }
 
         if($request->empId == 30002940){//ceo
+
+            if($request->status == "request"){
+
 
             $chairAction = "approved";
             $status = "approved";
@@ -82,11 +116,11 @@ class PaymentReleaseController extends Controller
             DB::update('update wfreleaseprocess set chairAction = ? where id = ?', [$chairAction, $request->id]);
             DB::update('update wfreleaseprocess set chairActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]);
             DB::update('update wfreleaseprocess set status = ? where id = ?', [$status, $request->id]);
-            dd("ahem");
+            // dd("ahem");
 
-            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
-            Mail::to('') //secretary
-                    ->send(new MyTestMail($email)); 
+            // $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+            // Mail::to('') //secretary
+            //         ->send(new MyTestMail($email)); 
 
             $empId = DB::table('wfreleaseprocess')
             ->select('wfreleaseprocess.empId')
@@ -108,8 +142,20 @@ class PaymentReleaseController extends Controller
             $Request_payment->empId = $empId->empId;
             $Request_payment->requestDate = $request->welfareReviewDate;
             $Request_payment->amount = $amount->amount;
-            $Request_payment->reason = $reason->amount;
-            $Request_payment->save();     
+            $Request_payment->reason = $reason->reason;
+            $Request_payment->save();  
+
+            dd("approve");
+
+            }
+            
+        if($request->status == "rejected"){
+                dd("chairReject");
+
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+            Mail::to('nimawtamang@bpc.bt') //company Secretary
+                    ->send(new MyTestMail($email));
+        }
 
         }
 

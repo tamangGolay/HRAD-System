@@ -38,26 +38,35 @@
                 <td>{{$rv->reason}}</td>       
 
 				<td>
-        <form method="POST" action="/recommendTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
+        <form method="POST" action="/welfareReview" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
 		<input type="hidden" class="form-control" name="welfareReviewDate" id="welfareReviewDate" >
 
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
 					<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId" >	
 
-					<input type="hidden" name="status" id="status" value="Request">  
+					<input type="hidden" name="status" id="status" value="request">  
+					@if(Auth::user()->empId == "30002953" || Auth::user()->empId == "30003084" )
+
 					<button type="submit" name="id" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center">Recommend</button>
-          </form> </form>
+					@elseif(Auth::user()->empId == "30002940")
+					<button type="submit" name="id" id="id" onclick="return confirm('Do you want to approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-12 mb-4 btn-center">Approve</button>
+					
+					@endif
+          </form> 
 			</td>
 
 			<td>
-			<form method="POST" action="/recommendTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
+			<form method="POST" action="/welfareReview" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 			<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-			<input type="hidden" name="status2" id="status2" value="rejected">  
+			<input type="hidden" name="status" id="status" value="rejected">  
 			<input type="hidden" class="form-control" name="welfareReviewDate" id="welfareReviewDate" >
 			<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId" >	
+			<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId1" >	
 
 			<button type="submit" name="id" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center">Reject</button>
+			
+			
 				<!-- <div>
 					<textarea name="rejectreason"  id="reason" placeholder="reason for rejection"  required></textarea>		
 					</div> -->

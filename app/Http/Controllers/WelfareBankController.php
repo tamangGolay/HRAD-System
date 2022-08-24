@@ -44,12 +44,31 @@ class WelfareBankController extends Controller
      */
     public function store(Request $request)
      {
-// dd($request);
+        // dd($request);
+
+        $oldBalance = DB::table('wfbalance')
+            ->select("balance")
+            ->first();
+
+        if($request->transaction == "CR"){
+            $newBalance = $oldBalance->balance + $request->amount;
+            DB::update('update wfbalance set balance = ? where id = ?', [$newBalance, 1]);
+            // dd("add");
+        }
+        else{
+            $newBalance = $oldBalance->balance - $request->amount;
+            DB::update('update wfbalance set balance = ? where id = ?', [$newBalance, 1]);
+            // dd("minus");
+
+        }
+
 
        
         WfBank::updateOrCreate(['id' => $request->id],
         ['date' => $request->date, 'narration' => $request->narration, 
-        'transaction' => $request->transaction, 'amount' => $request->amount,]);    
+        'transaction' => $request->transaction, 'amount' => $request->amount,]);  
+        
+
         
 
    

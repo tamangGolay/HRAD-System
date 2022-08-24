@@ -39,11 +39,14 @@
 
 				<td>
         <form method="POST" action="/recommendTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
-      
+		<input type="hidden" class="form-control" name="welfareReviewDate" id="welfareReviewDate" >
+
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> 
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >	
+					<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId" >	
+
 					<input type="hidden" name="status" id="status" value="Request">  
-					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center">Recommend</button>
+					<button type="submit" name="id" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center">Recommend</button>
           </form> </form>
 			</td>
 
@@ -51,8 +54,10 @@
 			<form method="POST" action="/recommendTransfer" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 			<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 			<input type="hidden" name="status2" id="status2" value="rejected">  
+			<input type="hidden" class="form-control" name="welfareReviewDate" id="welfareReviewDate" >
+			<input type="hidden" class="form-control" value="{{ Auth::user()->emailId }}" name="emailId" id="emailId" >	
 
-			<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center">Reject</button>
+			<button type="submit" name="id" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center">Reject</button>
 				<!-- <div>
 					<textarea name="rejectreason"  id="reason" placeholder="reason for rejection"  required></textarea>		
 					</div> -->
@@ -128,4 +133,10 @@ function viewRequest()
  });
 
 }
+</script>
+
+<script>
+    var today = new Date();
+	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	document.getElementById("welfareReviewDate").value = date;
 </script>

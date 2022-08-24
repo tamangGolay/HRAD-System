@@ -6024,17 +6024,48 @@ if ($request->v == "transferhistoryReport")  //form.csv
 
 if ($request->v == "welfareReview")  {//form.csv
 
-   $welfareReview = WfReleaseProcess::all();
+    if(Auth::user()->empId == 30003084) { //member1
     
-   $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
+    $welfareReview = WfReleaseProcess::all()->where
+    ('status','=','applied')
+    ;
+    
+    $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
     return response()
     ->json(array(
      'success' => true,
      'html' => $rhtml
       ));
-}  //end
-
-}
+    }  //end
+    
+    if(Auth::user()->empId == 30002953) { //member2
+    
+        $welfareReview = WfReleaseProcess::all()->where
+        ('status','=','under process');
+         
+        $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
+         return response()
+         ->json(array(
+          'success' => true,
+          'html' => $rhtml
+           ));
+         }  //end
+    
+         if(Auth::user()->empId == 30002940) {//ceo 
+    
+            $welfareReview = WfReleaseProcess::all()
+            ->where('status','=','pending');
+            
+            $rhtml = view('welfare.welfareReview')->with(['welfareReview' => $welfareReview])->render(); 
+             return response()
+             ->json(array(
+              'success' => true,
+              'html' => $rhtml
+               ));
+             }  //end
+    }
+    
+    }
 }
 
  

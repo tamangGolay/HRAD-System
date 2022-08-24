@@ -42,8 +42,80 @@ class PaymentReleaseController extends Controller
     public function welfareReview(Request $request)
     {
 
-        //ur code here
-}   }
+         if($request->empId == 30003084){//member1
+
+            $member1Action = "recommended";
+            $status = "under process";
+
+            DB::update('update wfreleaseprocess set member1Id = ? where id = ?', [$request->empId, $request->id]);
+            DB::update('update wfreleaseprocess set member1Action = ? where id = ?', [$member1Action, $request->id]);
+            DB::update('update wfreleaseprocess set member1ActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]);
+            DB::update('update wfreleaseprocess set status = ? where id = ?', [$status, $request->id]);
+
+            dd("Okay");
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+                Mail::to('nimawtamang@bpc.bt') //member 2
+                        ->send(new MyTestMail($email)); 
+        }
+
+        if($request->empId == 30002953){//member2
+
+            $member2Action = "recommended";
+            $status = "pending";
+
+            DB::update('update wfreleaseprocess set member2id = ? where id = ?', [$request->empId, $request->id]);
+            DB::update('update wfreleaseprocess set member2Action = ? where id = ?', [$member2Action, $request->id]);
+            DB::update('update wfreleaseprocess set member2ActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]);
+            DB::update('update wfreleaseprocess set status = ? where id = ?', [$status, $request->id]);
+
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+            Mail::to('') //chair
+                    ->send(new MyTestMail($email)); 
+        }
+
+        if($request->empId == 30002940){//ceo
+
+            $chairAction = "approved";
+            $status = "approved";
+
+            DB::update('update wfreleaseprocess set chairEmpId = ? where id = ?', [$request->empId, $request->id]);
+            DB::update('update wfreleaseprocess set chairAction = ? where id = ?', [$chairAction, $request->id]);
+            DB::update('update wfreleaseprocess set chairActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]);
+            DB::update('update wfreleaseprocess set status = ? where id = ?', [$status, $request->id]);
+            dd("ahem");
+
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => '','body5' => '','body6' => '', ];
+            Mail::to('') //secretary
+                    ->send(new MyTestMail($email)); 
+
+            $empId = DB::table('wfreleaseprocess')
+            ->select('wfreleaseprocess.empId')
+            ->where('wfreleaseprocess.id',$request->id)
+            ->first();
+            $amount = DB::table('wfreleaseprocess')
+            ->select('wfreleaseprocess.amount')
+            ->where('wfreleaseprocess.id',$request->id)
+            ->first();
+
+            $reason = DB::table('wfreleaseprocess')
+            ->select('wfreleaseprocess.reason')
+            ->where('wfreleaseprocess.id',$request->id)
+            ->first();
+
+                    
+                    
+            $Request_payment = new WfReleaseProcess;
+            $Request_payment->empId = $empId->empId;
+            $Request_payment->requestDate = $request->welfareReviewDate;
+            $Request_payment->amount = $amount->amount;
+            $Request_payment->reason = $reason->amount;
+            $Request_payment->save();     
+
+        }
+
+    }   
+
+}
 
     
 

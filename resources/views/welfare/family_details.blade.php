@@ -41,7 +41,7 @@ a {
                 <th>Name</th>
                 <th>Date of Birth</th>
                 <th>Relation</th>
-                <th width="300px">Action</th> 
+                <th>Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -93,7 +93,7 @@ a {
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-12 col-sm-12 control-label">Relative's other CID (<span style="color:red"><i>required only if you dont have CID</i></span>)</label>
+                        <label class="col-lg-12 col-sm-12 control-label">Relative's other CID (<span style="color:red"><i>required only if your relative dont have CID</i></span>)</label>
                         <div class="col-lg-12 col-sm-12">
                             <input type="text" id="cIDOther" name="cIDOther"  placeholder="Only if relative dont have CID" class="form-control" required>
                         </div>

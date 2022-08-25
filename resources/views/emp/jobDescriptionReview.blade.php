@@ -69,7 +69,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>User List</b>
+              <b>JobDescription Review</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -148,7 +148,7 @@ a {
                         </div>
                     </div>
                 	
-
+					<input type="hidden" class="form-control" name="officeId" id="officeId" placeholder="Division" readonly required>      
 				
 
                     
@@ -262,6 +262,7 @@ $(function() {
 			$('#emp_id').val(data.empId);
 			$('#empName').val(data.empName);
 			$('#jobdescription').val(data.jobDescription);
+			$('#officeId').val(data.officeId);
 			$('#office').val(data.officeDetails);
 		
 		})

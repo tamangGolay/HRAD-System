@@ -20,48 +20,7 @@ class Manage_jobDescriptionReviewController extends Controller
     {
 
        
-        $grade = DB::table('users')
-
-           ->join('bankmaster', 'bankmaster.id', '=', 'users.bankName')
-         //->join('users', 'users.designation', '=', 'designationmaster.id')
-        ->select('users.id','users.empId','users.cidNo',
-        'users.dob','users.bloodGroup','users.empName',
-        'users.gender', 'users.appointmentDate','users.grade',
-        'users.designation','users.basicPay','users.empStatus','users.mobileNo',
-        'users.emailId','users.placeId','users.bankName','users.accountNumber',
-        'users.resignationType','users.resignationDate','users.employmentType','users.incrementCycle',
-        'bankmaster.bankName'
-        )
-      ->where('users.status','0');
-  
-      	
-  
-      
-      
-      
-      	
-      	
-      
-        if ($request->ajax()) {
-            $data = $increment;
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-   
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteIncrement" data-original-title="Delete" class="btn btn-primary btn-sm deleteIncrement">Delete</a>';
-
-
-
-
-    
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-      
-        return view('emp.increment_history',compact('increment'));
+       
     }
      
     /**
@@ -78,17 +37,36 @@ $approvedBy= Auth::user()->empId;
 $status = 1;
 $date  = $request->approvedOn;
 
-jobDescription::Create(['empId' => $request->emp_id],  [
-    'jobDescription' => $request->jobdescription, 'createdOn' => $request->createdDate,
-    'createdBy' => $approvedBy, 'officeId' => $request->officeId,
-    '	empName' => $request->	empName, 'approvedOn' => $date,'approvedBy' => $approvedBy,
-    'dateExpired' => $request->createdDate,
-]);        
+
+
+$jobReview = new jobDescription;
+$jobReview->empId = $request->emp_id;
+$jobReview->empName = $request->empName;
+$jobReview->jobDescription = $request->jobdescription;               
+$jobReview->createdOn = $request->createdDate;
+$jobReview->officeId = $request->officeId;
+$jobReview->approvedOn = $date;
+$jobReview->createdBy = $approvedBy;
+$jobReview->approvedBy = $approvedBy;
+$jobReview->approvedOn = $date;
+$jobReview->status = $status;
+//$jobReview->dateExpired = $request->createdDate;
+$jobReview->save();  
+
+// jobDescription::Create(['empId' => $request->emp_id],  [
+//     'jobDescription' => $request->jobdescription, 
+//     'createdOn' => $request->createdDate,
+//     'createdBy' => $approvedBy, 
+//     'officeId' => $request->officeId,
+//      'approvedOn' => $date,
+//      'approvedBy' => $approvedBy,
+//     'dateExpired' => $request->createdDate,
+// ]);        
 
      //DB::update('update jobdescription set jobDescription = ? where id = ?', [$request->jobdescription,$request->id]);
      //DB::update('update jobdescription set status = ? where id = ?', [$status,$request->id]);
     //  DB::update('update jobdescription set approvedOn = ? where id = ?', [$date,$request->id]);
-    //  DB::update('update jobdescription set approvedBy = ? where id = ?', [$approvedBy,$request->id]);
+     DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->createdDate,$request->id]);
 
 
 
@@ -124,18 +102,14 @@ jobDescription::Create(['empId' => $request->emp_id],  [
     {
 
       
-        $query = DB::table('incrementhistorymaster')->where('id', $request->id)
-            ->increment('status');
-
-        return response()
-            ->json(['success' => 'Increment data deleted successfully.']);
+       
     }
 
     //To redirect to the manage_increment page after the management of increment
     public function message(Request $request)
     {
 
-        return redirect('home')->with('page', 'increment_history');
+        return redirect('home')->with('page', 'jobDescriptionReview');
     }
 
 }

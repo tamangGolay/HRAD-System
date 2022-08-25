@@ -4466,6 +4466,7 @@ if ($request->v == "jobDescription")
            ->join('officedetails','officedetails.id', 'users.office') 
           ->select('jobdescription.*','users.empName','officedetails.officeDetails')
           ->where('jobdescription.officeId',Auth::user()->office)
+          ->WhereNull('dateExpired')
           ->paginate(10000000);
         
       

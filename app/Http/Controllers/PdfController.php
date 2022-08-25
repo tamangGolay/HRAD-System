@@ -136,8 +136,9 @@ $hrGM =DB::table('officehead')
           // dd("oops");
 
           $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'http://hris.bpc.bt/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
-          Mail::to($OfficeHead->emailId) 
-                  ->send(new MyTestMail($email)); 
+          // Mail::to($OfficeHead->emailId) 
+          Mail::to('nimawtamang@bpc.bt') 
+          ->send(new MyTestMail($email)); 
         }
 
         else{
@@ -148,7 +149,9 @@ $hrGM =DB::table('officehead')
               // Mail::to($supervisorEmail->emailId) 
               // ->send(new MyTestMail($supervisor));
 
-              Mail::to([$OfficeHead->emailId,$officeAdmin->emailId]) 
+              // Mail::to([$OfficeHead->emailId,$officeAdmin->emailId]) 
+              Mail::to('nimawtamang@bpc.bt') 
+
                   ->send(new MyTestMail($email)); 
 
         }

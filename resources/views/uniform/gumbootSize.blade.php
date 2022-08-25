@@ -174,9 +174,9 @@ a {
 
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: true},
-            {data: 'eUSize', name: 'sizeName', orderable: false, searchable: true},
-            {data: 'uSSize', name: 'usUkSize', orderable: false, searchable: true},
-            {data: 'uKSize', name: 'euSize', orderable: false, searchable: true},
+            {data: 'eUSize', name: 'eUSize', orderable: false, searchable: true},
+            {data: 'uSSize', name: 'uSSize', orderable: false, searchable: true},
+            {data: 'uKSize', name: 'uKSize', orderable: false, searchable: true},
             {data: 'innerSLengthCm', name: 'innerSLengthCm', orderable: false, searchable: true},
             {data: 'bootLengthCm', name: 'bootLengthCm', orderable: false, searchable: true},
             {data: 'innerSWidthCm', name: 'innerSWidthCm', orderable: false, searchable: true},
@@ -227,7 +227,7 @@ a {
     $('#gumbootButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Saving...');
 
         
     
@@ -297,7 +297,7 @@ a {
   // after clicking yes in delete
     $('#gumbootDeleteButton').click(function (e) {
         e.preventDefault();
-        $(this).html('Save');
+        $(this).html('Deleting...');
     
         $.ajax({
           data: $('#Form').serialize(),

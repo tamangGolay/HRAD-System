@@ -29,15 +29,15 @@ a {
 
  
 <div class="container">
-    <!-- <a class="btn success" href="javascript:void(0)" id="manageknowledge">Add new knowledge&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a> -->
+    <button class="btn btn-success" style="color:white;">Knowledge Repository&nbsp;&nbsp;</button> 
+
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
             <tr>
 			<th>Sl No</th>
 
-							<th>Name</th>
-							<!-- <th>Contact Number</th> -->
+							<th>Name</th>							
 							<th>Problem</th>
 							<th>Solution</th>
 							<th>Office</th>
@@ -71,24 +71,24 @@ a {
                     <!-- </div> -->
 
 					<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="empId">{{ __('EmpId:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 text-md-right" for="empId">{{ __('EmpId:') }}</label>
+									<div class="col-sm-12">
 									<input type="text"  class="form-control" value="" name="empId" id="empId" required readonly> 
 
 									</div>
 								</div>
 
 					<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Name:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 control-label text-md-right" for="emp_id">{{ __('Name:') }}</label>
+									<div class="col-lg-12 col-sm-4">
 									<input type="text"  class="form-control" value="" name="empName" id="empName" required readonly> 
 
 									</div>
 								</div>
 
 					<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Office:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 text-md-right" for="emp_id">{{ __('Office:') }}</label>
+									<div class="col-sm-12">
 									<select name="officeDetails" id="officeDetails" value="" class="form-control" required readonly>
                                              <option value="">Select officeDetails</option>
                                              @foreach($userList as $officeDetails)
@@ -101,52 +101,39 @@ a {
 
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="approvedBy">{{ __('Approved By:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 text-md-right" for="approvedBy">{{ __('Approved By:') }}</label>
+									<div class="col-sm-12">
 									<input type="text"  class="form-control" value="" name="approvedBy" id="approvedBy" required readonly> 
 
 									</div>
 								</div>
 								
 
-								<!-- <div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Office:') }}</label>
-									<div class="col-sm-8">
-									<input type="text" class="form-control" value="" name="officeName" id="officeName" required readonly> 
-									<input type="text" class="form-control" value="" name="office" id="office" required readonly> 
-
-									</div>
-								</div> -->
-
+							
 
 						
 							
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="problem">{{ __('Problem:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 text-md-right" for="problem">{{ __('Problem:') }}</label>
+									<div class="col-sm-12">
 									<textarea type="text" rows="14" class="form-control" value="" name="problem" id="problem" required readonly> 
                          			</textarea></div>
 								</div>
 
 								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="solution">{{ __('Solution:') }}</label>
-									<div class="col-sm-8">
+									<label class="col-sm-2 text-md-right" for="solution">{{ __('Solution:') }}</label>
+									<div class="col-sm-12">
 									<textarea type="text" rows="14" class="form-control" value="" name="solution" id="solution" required readonly> 
                          			</textarea></div>
 
 									<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-									<!-- <button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Save changes </button> -->
-									<!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>       -->
-
-								</div>
-     
-                   
+									
+								</div>                   
 								
-      
-                    <div class="col-sm-offset-2 col-sm-10 text-center">
-                     </button>
-                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                    
+                          
+                          <div class="col-sm-offset-2 col-sm-10 text-center">                          
+                     <button type="submit" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                    
 
                     </div>
                 </form>
@@ -165,8 +152,6 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
@@ -201,8 +186,7 @@ a {
 			// {data: 'mobileNo', name: 'mobileNo', orderable: true, searchable: true},
 			 {data: 'problem', name: 'problem', orderable: false, searchable: true},
             {data: 'solution', name: 'solution', orderable: true, searchable: true},
-			{data: 'officeDetails', name: 'officeDetails', orderable: true, searchable: true},
-
+			{data: 'officeDetails', name: 'officedetails.officeDetails', orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -233,7 +217,7 @@ a {
 		  $('#office').val(data.Address); //input id,database
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeDetails').val(data.id); //input id,database
+		 $('#officeDetails').val(data.officeDetails); //input id,database
 		 $('#approvedBy').val(data.approvedBy); //input id,database
 
 

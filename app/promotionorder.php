@@ -10,7 +10,7 @@ class promotionorder extends Model
     protected $table = 'viewpromotionorder';
 
     protected $fillable = ['empId', 'empName','oldDesignation','newDesignation',
-    'officeName','officeAddress','officeDetails','newGrade','promotionDate','newBasic'];
+    'officeName','officeId','officeAddress','officeDetails','newGrade','promotionDate','newBasic'];
     
     public $timestamps = false;
 }

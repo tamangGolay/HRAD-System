@@ -4,7 +4,7 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Increment Order </title>
+    <title> Increment Order</title>
     <! - Bootstrap5 CSS ->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -66,14 +66,12 @@ h1 {
                             <th scope="col">SN</th>
                             <th scope="col">Name(Employee ID)</th>
                             <th scope="col">Designation(Grade)</th>
-                            <th scope="col">Old Basic</th>
-                            <!-- <th scope="col">Increment</th> -->
+                            <th scope="col">Old Basic</th>                            
                             <th scope="col">New Basic</th>
                             <th scope="col">Office Address</th>
                             <th scope="col">Action 
-                            <!-- <input type="checkbox" name="main_checkbox" id="checkbox"class=""><label></label> -->
-                            <!-- <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Order</button> -->
-                            </th>
+                          
+                        </th>
                             </tr>
                         </thead>
                     <tbody>
@@ -81,8 +79,7 @@ h1 {
 
                         <tr>
                             <td class="col1"> {{$increment->id}} </td>
-                           <!-- <td class="col1"> {{$increment-> empId }} </td> -->
-
+                           
                            <td class="col1"> {{$increment-> empName }} ({{$increment->empId}}) </td>
                             <td class="col1"> {{$increment-> designation }} ({{$increment->grade}}) </td>                     
                             <td class="col1"> {{$increment-> oldBasic}} </td>                           

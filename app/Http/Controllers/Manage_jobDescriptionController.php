@@ -6,6 +6,8 @@ use App\jobDescription;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use Auth;
+use  App\User;
         
 class Manage_jobDescriptionController extends Controller
 {
@@ -69,14 +71,14 @@ class Manage_jobDescriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-      
+   {
+    $createdBy= Auth::user()->empId;
 
         
        jobDescription::updateOrCreate(['empId' => $request->emp_id],  [
                'jobDescription' => $request->jobdescription, 'createdOn' => $request->createdDate,
-               'createdBy' => $request->emp_id, 'officeId' => $request->officeId,
-          
+               'createdBy' => $createdBy, 'officeId' => $request->officeId,
+               'empName' => $request->nameid,
     ]);        
  
 

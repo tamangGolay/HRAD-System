@@ -162,7 +162,7 @@
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                  <input type="text" name="name" class="form-control" id="nameid" placeholder="Name" readonly required>
+                  <input type="text" name="nameid" class="form-control" id="nameid" placeholder="Name" readonly required>
                 </div>
             </div> 
    
@@ -316,20 +316,9 @@ $('div.alert').delay(6500).slideUp(300);// Session message  display time
 
 </script>
 
-<!-- <style>
-
-.glyphicon glyphicon-trash{
-  text:'RESET';
-}
-
-
-</style> -->
-
-
-<!-- changes -->
 
 @endsection
-<!-- nima -->
+
 
 
 

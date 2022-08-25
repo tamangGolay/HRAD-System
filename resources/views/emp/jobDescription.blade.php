@@ -177,7 +177,7 @@
             </div> 
 
        
-           
+            <input type="hidden" class="form-control" name="officeId" id="officeId" placeholder="Division" readonly required>      
 
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="jobdescription">&nbsp;&nbsp;&nbsp;Job Description:</label>
@@ -274,7 +274,7 @@ function getEmployeeDetails(val)
                   
                     document.getElementById('nameid').value = '';                      
                     document.getElementById('division').value =  '';
-                                 
+                    document.getElementById('officeId').value =  '';           
                     document.getElementById('empid').value = '';                        
 
 
@@ -282,12 +282,13 @@ function getEmployeeDetails(val)
                     
                 $.each(data, function(index, Employee){
 
-                               if(Employee.empId != null)
+                               if(Employee.empName != null)
                           {
 
                            
                           document.getElementById('nameid').value = Employee.empName;                      
                           document.getElementById('division').value =  Employee.longOfficeName;
+                          document.getElementById('officeId').value =  Employee.office;
                           document.getElementById('emp_id').innerHTML= Employee.empId;                    
             
                         

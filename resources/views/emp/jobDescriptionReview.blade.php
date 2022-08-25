@@ -90,7 +90,7 @@ a {
 							<td> {{$userdetails->empName}} </td>
 							
 							<td> 
-							 {{$userdetails->longOfficeName}}
+							 {{$userdetails->officeDetails}}
 								
 							</td>
 
@@ -262,7 +262,7 @@ $(function() {
 			$('#emp_id').val(data.empId);
 			$('#empName').val(data.empName);
 			$('#jobdescription').val(data.jobDescription);
-			$('#office').val(data.longOfficeName);
+			$('#office').val(data.officeDetails);
 		
 		})
 	});

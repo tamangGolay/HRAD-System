@@ -70,12 +70,12 @@ class Manage_jobDescriptionController extends Controller
      */
     public function store(Request $request)
     {
-
+      
 
         
        jobDescription::updateOrCreate(['empId' => $request->emp_id],  [
                'jobDescription' => $request->jobdescription, 'createdOn' => $request->createdDate,
-               'createdBy' => $request->emp_id
+               'createdBy' => $request->emp_id, 'officeId' => $request->officeId,
           
     ]);        
  

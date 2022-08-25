@@ -97,11 +97,11 @@ class Manage_jobDescriptionReviewController extends Controller
     public function edit($id)
     {
      
-        $conference = increment::find($id);
+        $conference = jobDescription::find($id);
         return response()->json($conference);
     }
   
-    /**
+    /**empName
      * Remove the specified resource from storage.
      *
      * @param  

@@ -4431,6 +4431,7 @@ if ($request->v == "user_profile")
      ));
 }
 
+
 //jobDescription
 if ($request->v == "jobDescription")
 {
@@ -4463,7 +4464,8 @@ if ($request->v == "jobDescription")
         $userdetails = DB::table('jobdescription')
           ->join('users', 'users.empId', '=', 'jobdescription.empId')
            ->join('officedetails','officedetails.id', 'users.office') 
-          ->select('jobdescription.*','users.empName','officedetails.longOfficeName')
+          ->select('jobdescription.*','users.empName','officedetails.officeDetails')
+          ->where('jobdescription.officeId',Auth::user()->office)
           ->paginate(10000000);
         
       
@@ -4477,6 +4479,34 @@ if ($request->v == "jobDescription")
       }
 
        //end of jobdescription review.
+
+
+ //jobDescriptionRepository for employees
+ if ($request->v == "jobDescriptionRepository")
+ {
+     $userLists = Officedetails::all();
+ 
+ 
+     $userLists = DB::table('jobdescription')
+          ->join('users', 'users.empId', '=', 'jobdescription.empId')
+         ->join('officedetails', 'officedetails.id', '=', 'jobdescription.officeId')
+      //    ->join('officemaster','officemaster.id','=','users.office')
+ 
+      ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'
+        ,'users.empName' )
+ 
+         // ->latest('users.id') //similar to orderby('id','desc')
+         // ->where('users.office',Auth::user()->office)
+    
+          ->paginate(10000000);
+      $rhtml = view('emp.jobDescriptionRepository')->with(['userList' => $userLists])->render();
+     return response()
+         ->json(array(
+         'success' => true,
+         'html' => $rhtml
+     ));
+ }
+ //end of jobRepository.
 
 //incrementreport
 if ($request->v == "incrementReport")

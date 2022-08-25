@@ -9,7 +9,7 @@ class jobDescription extends Model
     //
     protected $table = 'jobdescription';
 
-    protected $fillable = ['id','empId', 'jobDescription','status','dateExpired',
+    protected $fillable = ['id','empId', 'jobDescription','status','dateExpired','officeId',
 'createdBy','createdOn','approvedBy','approvedOn'];
     
     public $timestamps = false;

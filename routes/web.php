@@ -111,7 +111,10 @@ Route::get('/promotionReport/{id}', [App\Http\Controllers\PdfController::class, 
 //jobdescription
 Route::post('/jobdescription','Manage_jobDescriptionController@store')->name('jobdescription');
 //jobdescriptionreview
-Route::resource('job', Manage_UserController::class);
+Route::resource('job', Manage_jobDescriptionReviewController::class);
+//jobdescriptionRepository
+Route::resource('jobRepository', JobRepositoryController::class);
+
 //guesthouse leki
 Route::resource('guesthouse', Manage_GuesthouseController::class);
 Route::post('destroyGuesthouse', 'Manage_GuesthouseController@delete')->name('destroyGuesthouse');

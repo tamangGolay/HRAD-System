@@ -21,11 +21,11 @@ class JobRepositoryController extends Controller
         
        
         $userList = DB::table('jobdescription')
-         ->join('users', 'users.empId', '=', 'jobdescription.empId')
+         //->join('users', 'users.empId', '=', 'jobdescription.empId')
         ->join('officedetails', 'officedetails.id', '=', 'jobdescription.officeId')
      //    ->join('officemaster','officemaster.id','=','users.office')
 
-     ->select('users.empName','jobdescription.*','officedetails.officeDetails','officedetails.Address'
+     ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'
         )
 
         // ->latest('users.id') //similar to orderby('id','desc')

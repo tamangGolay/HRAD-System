@@ -4490,7 +4490,7 @@ if ($request->v == "jobDescription")
  
      $userLists = DB::table('jobdescription')
           ->join('users', 'users.empId', '=', 'jobdescription.empId')
-         ->join('officedetails', 'officedetails.id', '=', 'jobdescription.officeId')
+          ->join('officedetails','officedetails.id', 'jobdescription.officeId') 
       //    ->join('officemaster','officemaster.id','=','users.office')
  
       ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'

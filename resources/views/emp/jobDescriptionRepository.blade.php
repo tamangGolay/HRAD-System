@@ -87,7 +87,7 @@ a {
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Office:') }}</label>
 									<div class="col-sm-8">
 									<select name="officeDetails" id="officeDetails" value="" class="form-control" required readonly>
-                                             <option value="">Select officeDetails</option>
+                                          
                                              @foreach($userList as $officeDetails)
 
                                              <option value="{{$officeDetails->id}}">{{$officeDetails->officeDetails}}</option>
@@ -204,11 +204,11 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#knowledge_id').val(data.id);
-		 // $('#empName').val(data.empName); //input id,database
+		  $('#empName').val(data.empName); //input id,database
 		  $('#empId').val(data.empId); //input id,database
-		  //$('#office').val(data.Address); //input id,database
+		  $('#office').val(data.Address); //input id,database
           $('#description').val(data.jobDescription);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeDetails').val(data.officeDetails); //input id,database
+          $('#officeDetails').val(data.id);
 		 //$('#approvedBy').val(data.approvedBy); //input id,database
 
 

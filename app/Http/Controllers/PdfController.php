@@ -135,7 +135,7 @@ $hrGM =DB::table('officehead')
         if($officeAdmin == null){
           // dd("oops");
 
-          $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'http://hris.bpc.bt/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
+          $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'http://127.0.0.1:8000/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
           // Mail::to($OfficeHead->emailId) 
           Mail::to('nimawtamang@bpc.bt') 
           ->send(new MyTestMail($email)); 
@@ -144,7 +144,7 @@ $hrGM =DB::table('officehead')
         else{
           // dd("hehe");
 
-            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' =>'http://hris.bpc.bt/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
+            $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a promotion list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' =>'http://127.0.0.1:8000/promotionReport/'.$id. '.','body5' => '','body6' => '', ];
 
               // Mail::to($supervisorEmail->emailId) 
               // ->send(new MyTestMail($supervisor));
@@ -156,7 +156,7 @@ $hrGM =DB::table('officehead')
 
         }
   
-          // return $pdf->download ('promotion.pdf');
+          return $pdf->download ('promotion.pdf');
           return redirect('home')->with('page', 'promotionReport')
     ->with('success','Mail has been sent!!!!');
       }

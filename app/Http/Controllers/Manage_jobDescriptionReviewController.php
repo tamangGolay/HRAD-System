@@ -6,6 +6,8 @@ use App\jobDescription;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use Auth;
+use  App\User;
         
 class Manage_jobDescriptionReviewController extends Controller
 {
@@ -72,17 +74,28 @@ class Manage_jobDescriptionReviewController extends Controller
     {
 
 
-        
-       jobDescription::Create(['empId' => $request->emp_id],  [
-               'jobDescription' => $request->jobdescription,
-          
-    ]);    
-         
- 
+$approvedBy= Auth::user()->empId;
+$status = 1;
+$date  = $request->approvedOn;
 
-//'placeId' => $request->placeId,'resignationDate' => $request->resignationdate, 'resignationType' => $request->resignationtypeId ,
-   //'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'bloodGroup' => $request->blood,
-        return redirect('home')->with('page', 'jobDescription');
+jobDescription::Create(['empId' => $request->emp_id],  [
+    'jobDescription' => $request->jobdescription, 'createdOn' => $request->createdDate,
+    'createdBy' => $approvedBy, 'officeId' => $request->officeId,
+    '	empName' => $request->	empName, 'approvedOn' => $date,'approvedBy' => $approvedBy,
+    'dateExpired' => $request->createdDate,
+]);        
+
+     //DB::update('update jobdescription set jobDescription = ? where id = ?', [$request->jobdescription,$request->id]);
+     //DB::update('update jobdescription set status = ? where id = ?', [$status,$request->id]);
+    //  DB::update('update jobdescription set approvedOn = ? where id = ?', [$date,$request->id]);
+    //  DB::update('update jobdescription set approvedBy = ? where id = ?', [$approvedBy,$request->id]);
+
+
+
+
+      
+ return response()->json(['success'=>'Updated successfully.']);
+
 
     }
 

@@ -124,8 +124,8 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
+				<input type="hidden" value="" name="approvedOn" id="approvedOn" required>
+				<input type="hidden" class="form-control" name="createdDate" id="createdDate" >
                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Employee Id</label>
@@ -379,4 +379,15 @@ $(document).ready(function() {
 	document.getElementById('contenthead').innerHTML = '<strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 });
 </script>
-<!-- changes -->
+
+<script>
+    var today = new Date();
+	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	document.getElementById("createdDate").value = date;
+</script>
+<script>
+				var today = new Date();
+				var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+				document.getElementById("approvedOn").value = date;
+			</script>
+

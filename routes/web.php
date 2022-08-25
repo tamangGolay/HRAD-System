@@ -107,6 +107,7 @@ Route::get('/notesheetReport/{id}', [App\Http\Controllers\PdfController::class, 
 // Route::get('/', [App\Http\Controllers\ProductController::class, 'index1'])->name('ProductController.index1');
 
 Route::get('/promotionReport/{id}', [App\Http\Controllers\PdfController::class, 'createpromotionPDF'])->name('notesheet.pdf');
+Route::get('/promotionReport1/{id}', [App\Http\Controllers\PdfController::class, 'createpromotionPDF1'])->name('notesheet.pdf');
 
 //jobdescription
 Route::post('/jobdescription','Manage_jobDescriptionController@store')->name('jobdescription');

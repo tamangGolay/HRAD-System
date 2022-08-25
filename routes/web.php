@@ -645,6 +645,7 @@ Route::get('incrementlist', ['uses'=>'IncrementListsController@index', 'as'=>'in
 
 //increment report
 Route::get('/incrementReport/{id}', [App\Http\Controllers\incrementReportController::class, 'createIncrementReport'])->name('increment.pdf');
+Route::get('/incrementReport1/{id}', [App\Http\Controllers\incrementReportController::class, 'createIncrementReport1'])->name('increment.pdf');
 
 Route::get('incrementreport', ['uses'=>'incrementReportController@index', 'as'=>'incrementreport.index']);
 

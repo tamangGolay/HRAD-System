@@ -5357,20 +5357,42 @@ if ($request->v == "employeeskillmap")  //form.csv
  // for CEO notesheet approval n recom
  if ($request->v == "CEOreview")  //form.csv
  {    
-    $notesheetRemarks = notesheetapprove::all(); 
+//     $notesheetRemarks = notesheetapprove::all(); 
+//     $officedetails = Officedetails::all(); 
+     
+//     $notesheetRequest = DB::table('notesheet')
+//     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
+
+// ->join('officemaster','officemaster.id','=','notesheet.officeId')
+// ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+
+//    ->latest('notesheet.id') //similar to orderby('id','desc')
+//     ->where('notesheet.status','=','DirectorRecommended')  
+//     ->where('cancelled','=','No')  
+//     ->where('notesheet.officeId',Auth::user()->office)
+//     ->paginate(10000000);
+
+$notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
      
     $notesheetRequest = DB::table('notesheet')
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
+    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
+    ->join('officemaster','officemaster.id','=','notesheet.officeId')
+    ->join('officeunder','officeunder.office','=','notesheet.officeId')
+    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->latest('notesheet.id') //similar to orderby('id','desc')
 
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-    ->where('notesheet.status','=','DirectorRecommended')  
-    ->where('cancelled','=','No')  
-    ->where('notesheet.officeId',Auth::user()->office)
+    ->where('notesheet.status','=','DirectorRecommended') // 
+    ->where('cancelled','=','No')
+
+    // ->where('notesheet.officeId',Auth::user()->office)
+    // ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    
+    ->where('officeunder.head',Auth::user()->empId)  
+    
     ->paginate(10000000);
+
 
     $rhtml = view('Notesheet.CEOReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()

@@ -30,7 +30,7 @@ class IncrementView extends Authenticatable
 
 
 protected $fillable = [ 
-    'id','oldBasic','incrementDate','newBasic','grade','designation','empName','empId'];
+    'id','officeAddress','oldBasic','officeId','incrementDate','newBasic','increment','grade','designation','empName','empId'];
 
      /**
      * The attributes that should be hidden for arrays.

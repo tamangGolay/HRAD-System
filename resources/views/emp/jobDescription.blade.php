@@ -1,13 +1,4 @@
 
-
-
-<!-- Stored in resources/views/pages/dispatch.blade.php -->
-@extends('layouts.masterstartpage')
-@section('pagehead')
-<!-- user_profile -->
-
-@endsection
-
 <style>
     
     a {
@@ -27,55 +18,13 @@
     }
     
     </style>
-<link href="{{asset('css/bose.css')}}" rel="stylesheet">
-<!-- called in bose.css -->
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">                  
              
-@section('content')
-
-@if(session()->has('alert-success'))
-            <div style="font-size:20px" class="alert alert-info">
-             <strong> {{ session()->get('alert-success') }}</strong>
-            </div>
-          @endif
-
-          @if(session()->has('alert-message'))
-            <div style="font-size:20px" class="alert alert-info">
-            <strong> {{ session()->get('alert-message') }}</strong>
-            </div>
-          @endif
-
-
-          @if(session()->has('alert'))
-            <div style="font-size:20px" class="alert alert-danger">
-            <strong> {{ session()->get('alert') }}</strong>
-            </div>
-          @endif
-
-		  @if(session()->has('error'))
-            <div style="font-size:20px" class="alert alert-danger">
-            <strong> {{ session()->get('error') }}</strong>
-            </div>
-          @endif
-
-		  @if(session()->has('error1'))
-            <div  style="font-size:20px" class="alert alert-danger">
-            <strong> {{ session()->get('error1') }}</strong>
-            </div>
-          @endif
-                
-                
-          @if(session()->has('fail'))
-                        <div style="font-size:20px" class="alert alert-danger">
-                        <strong>       {{ session()->get('fail') }}</strong>
-                        </div>
-            @endif 
-
  
- 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!-- called in bose.css -->
@@ -86,38 +35,17 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
  
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
-<div class="row">  
-   
-    <div class="col">
-      
-      
-      
-       <div class=" justify-content-center"> <div ><h4></h4> </div></div>
-       
-     
-  
-        
-         </div>
-      </div>
-
-
+<!-- <link href="{{asset('css/bose.css')}}" rel="stylesheet">  -->
  
+<div class="container" style="color:black;">
   <div class="row"> 
-     
-    <div class="col">
+  <div class="col-md-12"> 
+      <div class="card">
 
-    
-      <div class="card card-green ">
-       <div class="card-header bg-green">
-        
-        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>Job Description</h4></div>
-      </div><!--/card-header-->
-      <br>
-
-     
-
-
+      <div class="card-header bg-green  d-flex justify-content-center"> <h4>Job Description</h4> </div>
+			       
+      <!--/card-header-->
+      <br>  
 
       <form method="POST" action="/jobdescription" enctype="multipart/form-data" accept-charset="UTF-8" >
             @csrf
@@ -128,12 +56,10 @@
            
 <!-- //{{Auth::user()->empId}} -->
             <!-- <input type="hidden" id="did" name="frId"> -->
-            <div class="cardbody">
-
-            
+                       
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right"  for="emp_id">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
-                <div class="col-sm-10 col-md-6 col-lg-4">
+              <label class="col-md-3 col-form-label text-md-right"  for="emp_id">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
+                <div class="col-md-6">
                     <input type="number" onKeyPress="if(this.value.length==8) return false; 
                     
                     
@@ -157,11 +83,12 @@
                     <span id="empid" class="text-danger"></span>
                 </div>
             </div>
+
             <input type="hidden" class="form-control" name="createdDate" id="createdDate" >
    
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
+              <label class="col-md-3 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Name:</label>
+                <div class="col-md-6">
                   <input type="text" name="nameid" class="form-control" id="nameid" placeholder="Name" readonly required>
                 </div>
             </div> 
@@ -170,8 +97,8 @@
 
             
              <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
+              <label class="col-md-3 col-form-label text-md-right" for="division">&nbsp;&nbsp;&nbsp;Div/Dept/Wing:</label>
+                <div class="col-sm-10 col-md-6">
                 <input type="text" class="form-control" name="division" id="division" placeholder="Division" readonly required>                  
                 </div>
             </div> 
@@ -180,46 +107,43 @@
             <input type="hidden" class="form-control" name="officeId" id="officeId" placeholder="Division" readonly required>      
 
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="jobdescription">&nbsp;&nbsp;&nbsp;Job Description:</label>
-                <div class="col-sm-10 col-md-8 col-lg-4">
+              <label class="col-md-3 col-form-label text-md-right" for="jobdescription">&nbsp;&nbsp;&nbsp;Job Description:</label>
+                <div class="col-sm-10 col-md-6">
                 <textarea input type="text" rows="14" class="form-control" name="jobdescription" autocomplete="off" id="jobdescription" required> 
                          </textarea></div>
             </div>
  
 
 
-    
-         <!-- ok -->
 
          <div class="notice">
           <!-- <p style="font-size:20px" > <b> *You are kindly requested to vacate the meeting room, if CEO wants to have a meeting.</b></p></div> -->
            <div class="form-group row mb-0" >
               <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
-                <button type="submit" id="book" class="btn nSuccess btn-lg">Save details</button>
-                              </div> 
+                <button type="submit" id="book" class="btn btn-outline-success btn-lg">Save details</button>
+                </div> 
               <br>
               <br>
               <br> <br>
               
-        </div>   
-       
+        </div> 
+      </div>        
            
           </form>
         
       </div> <!--/card-body-->
-      <footer class="text-muted main-footer" style="text:center"><br>
+
+      <footer class="text-muted main-footer" style="text-center"><br>
       <div  class="d-flex justify-content-center">
       <!-- &nbsp;&nbsp;<p style="text-align:center"><h4>Please contact Front Desk (02 325095/322226) to cancel your booking</strong></h4> -->
    
+        </div>
+      </footer>
+      
+</div>  
+</div> 
 </div>
-</footer>
-      </div>
 
-     
-
-
-  
-</div>
 <script>
     var today = new Date();
 	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -228,29 +152,7 @@
 
 <script type="text/javascript">
   
-
-
-// $(document).ready(function() {
-//   $a= document.getElementById('emp_id').value;
-//   getEmployeeDetails($a);
-
-
-
-
-//     $('#myTable').DataTable( {
-//         "pagingType": "simple_numbers",
-//         "ordering": false
-
-
-//     } );
-
-
-// } );
-
-       
-
-
-
+ 
 
 	function nima()
 	{
@@ -315,10 +217,6 @@ $('div.alert').delay(6500).slideUp(300);// Session message  display time
 
 
 </script>
-
-
-@endsection
-
 
 
 

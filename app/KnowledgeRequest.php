@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Knowledgerequest extends Model
+class KnowledgeRequest extends Model
 {
     //
     protected $table = 'knowledgerepository';

@@ -38,7 +38,7 @@ class KnowledgeRepositoryController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editknowledge">View</a>&nbsp;&nbsp;&nbsp;&nbsp';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-success btn-sm editknowledge">View</a>&nbsp;&nbsp;&nbsp;&nbsp';
 
 
 

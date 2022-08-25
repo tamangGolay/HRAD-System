@@ -64,7 +64,7 @@ a {
                     <div class="form-group">
                         <label for="name" class="col-lg-12 col-sm-2 control-label">Office Name</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="officeName" id="officeName" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="officeName" id="officeName" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($officen as $officen)
                                              <option value="{{$officen->id}}">{{$officen->longOfficeName}}</option>
@@ -76,7 +76,7 @@ a {
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Address</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="officeAddress" id="officeAddress" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="officeAddress" id="officeAddress" value="" required>
                                              <option value="">Select Office Location</option>
                                              @foreach($offadd as $placemastern)
                                              <option value="{{$placemastern->placeId}}">{{$placemastern->Address}}</option>
@@ -84,27 +84,25 @@ a {
 							</select>
 
 
-                            <!-- <input type="text" id="officeAddress" name="officeAddress"  placeholder="eg: Chief Executive officer" class="form-control" required> -->
-                        </div> 
+                                  </div> 
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Office Head</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="officeHead" id="officeHead" value="" required>
-                                             <option value="">Select Office Location</option>
+                        <select class="col-lg-12 col-sm-12 form-control" name="officeHead" id="officeHead" value="" required>
+                                             <option value="">Select Office Head</option>
                                              @foreach($offhead as $offhead)
                                              <option value="{{$offhead->empId}}">{{$offhead->empId}}</option>
 										@endforeach
 							</select>   
-                        <!-- <input type="text" id="officeHead" name="officeHead"  placeholder="eg: 30003093" class="form-control" required> -->
-                        </div>
+                            </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-lg-12 col-sm-2 control-label">Report to Office</label>
                         <div class="col-lg-12 col-sm-12">
-                        <select class="col-lg-12 col-sm-12" name="reportToOffice" id="reportToOffice" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="reportToOffice" id="reportToOffice" value="" required>
                                              <option value="">Select Office</option>
                                              @foreach($reportto as $reportto)
                                              <option value="{{$reportto->id}}">{{$reportto->officeDetails}}</option>
@@ -169,7 +167,7 @@ a {
             // {data: 'officeName', name: 'officeName'},
             {data: 'longOfficeName', name: 'A.longOfficeName', orderable: true, searchable: true},
             {data: 'Address', name: 'office_address.Address',orderable: true, searchable: true},
-            {data: 'HeadOfOffice', name: 'officeHead.HeadOfOffice',orderable: true, searchable: true},
+            {data: 'HeadOfOffice', name: 'officehead.HeadOfOffice',orderable: true, searchable: true},
             {data: 'officeDetails', name: 'officedetails.officeDetails',orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
@@ -260,10 +258,11 @@ a {
           $('#officeModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#office_id').val(data.id);
-          $('#officeName').val(data.longOfficeName); //input id,database
-          $('#officeAddress').val(data.Address);
-          $('#officeHead').val(data.empId);
-          $('#reportToOffice').val(data.officeDetails);
+           //input id,database          
+          $('#officeName').val(data.officeName); //input id,database
+          $('#officeAddress').val(data.officeAddress);
+          $('#officeHead').val(data.officeHead);
+          $('#reportToOffice').val(data.reportToOffice);
       })
    });
    

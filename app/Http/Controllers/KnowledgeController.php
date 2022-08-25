@@ -2,10 +2,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\knowledgeRequest;
+use App\KnowledgeRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
-use App\knowledgeapprove;
 use DB;
 use Auth;
 use  App\User;
@@ -87,7 +86,7 @@ class KnowledgeController extends Controller
             // ->where( 'employee',Auth::user()->empId)
             // ->first();
             
-            $requestKnowledge = new knowledgeRequest;
+            $requestKnowledge = new KnowledgeRequest;
             $requestKnowledge->createdBy = $request->empId;
             $requestKnowledge->problem = $request->problem;
             $requestKnowledge->solution = $request->solution;               
@@ -139,93 +138,7 @@ class KnowledgeController extends Controller
  }
 
  
-public function ceorecommendknowledge(Request $request) 
- {
 
-    // dd($request);   
-    //no need CEO recommended status    
-       
-    
-                if($request->status1 == "Approved" ){
-                $id = DB::table('knowledge')->select('id')
-                ->where('id',$request->id)
-                ->first();                 
-                        
-                $users = new knowledgeapprove;//users is ModelName
-                    $users->noteId = $id->id;//emp_id is from input name
-                    $users->modifier =  $request->empId;//EmpName is from dB
-                    $users->remarks = $request->remarks1;
-                    $users->modiType = $request->status1;//emp_id is from input name
-                    $users->save();
-            
-                knowledgeRequest::updateOrCreate(['id' => $id->id],
-                ['status' =>$request->status1]);    //emp_id is from input name
-                
-                //email from here
-
-                // $userDetail= DB::table('users') 
-                // ->join('officedetails', 'officedetails.id', '=', 'users.office')
-                // ->select('users.*','officedetails.longOfficeName')
-                // ->where( 'users.empId',Auth::user()->empId)
-                // ->first();
-                
-                // $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for knowledge from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-                
-               
-                // $userEmail = DB::table('knowledge')
-                // ->where('id',$id->id)
-                // ->first(); 
-                // dd($userEmail);
-        
-                // Mail::to($userEmail->emailId) 
-                // ->cc([$GmEmail->emailId,$managerEmail->emailId])          
-                // ->send(new MyTestMail($approve)); 
-            
-                return redirect('home')->with('success','You have Approved the knowledge');   
-            }
-    
-                if($request->status2 == "Rejected"){
-                    $id = DB::table('knowledge')->select('id')
-                    ->where('id',$request->id)
-                    ->first();  
-                           
-                     $users = new knowledgeapprove;//users is ModelName
-                        $users->noteId = $id->id;//emp_id is from input name
-                        $users->modifier =  $request->empId;//EmpName is from dB
-                        $users->remarks = $request->remarks2;
-                        $users->modiType = $request->status2;//emp_id is from input name
-                        $users->save();
-                
-                    knowledgeRequest::updateOrCreate(['id' => $id->id],
-                    ['status' =>$request->status2]);//emp_id is from input name
-                    
-                    //email from here
-                //  $userDetail= DB::table('users') 
-                //     ->join('officedetails', 'officedetails.id', '=', 'users.office')
-                //     ->select('users.*','officedetails.longOfficeName')
-                //     ->where( 'users.empId',Auth::user()->empId)
-                //     ->first();
-
-                //     $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for knowledge from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: bose.bpc.bt','body5' => '','body6' => '', ];
-                   
-                                  
-                //     $userEmail = DB::table('knowledge')
-                //     ->where('id',$id->id)
-                //     ->first(); 
-                    // dd($userEmail);
-            
-                    // Mail::to($userEmail->emailId) 
-                    // ->cc([$GmEmail->emailId,$managerEmail->emailId])  
-                    // ->send(new MyTestMail($reject));
-           
-                return redirect('home')->with('error','You have rejected the knowledge');    
-     }
-
-            else{
-                return redirect('home')->with('error','You cannot leave the remarks field empty!');  
-        }
-         
-
-  }
+  
 
 }

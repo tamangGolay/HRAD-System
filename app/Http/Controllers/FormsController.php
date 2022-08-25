@@ -70,7 +70,7 @@ use App\EmployeeTwice;
 use App\WfReleaseProcess;
 use App\WfBank;
 use App\WfRelatives;
-
+use App\transferHistory;
 
 
 class FormsController extends Controller
@@ -6154,7 +6154,39 @@ if ($request->v == "welfareReview")  {//form.csv
                ));
              }  //end
 
-            }
+            }//END HERE
+
+    
+//employee joining 
+if ($request->v == "employeeJoining")
+       
+{         
+   $transferFrom = Officedetails::all();
+   $transferTo = Officedetails::all();
+   $empJoining = transferHistory::all();                 
+
+  $empJoining = DB::table('transferhistory')
+              ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
+              ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')   
+              ->select('transferhistory.*','officedetails.officeDetails as transferFrom','B.officeDetails as transferTo')
+              
+              ->where('transferTo',Auth::user()->office)
+              ->where('transferhistory.status','=','Open')
+              ->where('transferhistory.relievedBy','!=','NULL')
+              ->paginate(10000000);
+
+      $rhtml = view('Transfer.employeeJoining')->with(['empJoining'=>$empJoining,'transferFrom'=>$transferFrom,'transferTo'=>$transferTo])->render();
+      return response()
+          ->json(array(
+          'success' => true,
+          'html' => $rhtml
+      ));
+  }
+  //end here
+
+
+
+
     
     }
 }

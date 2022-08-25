@@ -48,7 +48,7 @@ hr{
                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status" id="status" value="DirectorRecommended">
-                      <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks">
+                      <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks" required>
                       <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mt-4 btn-center " > 
                       Recommend
                       </button> 
@@ -60,7 +60,7 @@ hr{
                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">      
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status1" id="status" value="Approved">
-                      <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks">
+                      <input type="text" name="remarks1" class="form-control" id="remarks1" placeholder="Approve Remarks" required>
                       <button type="submit" name="id[]" id="id"  onclick="return confirm('Do you want to Approve?');" value="{{$rv->id}}" class="btn btn-outline-success text-dark col-lg-4 mt-4 btn-center " > 
                       Approve
                       </button> 
@@ -72,7 +72,7 @@ hr{
                     <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">     
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
                       <input type="hidden" name="status2" id="status" value="Rejected">                   
-                      <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" >
+                      <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" required >
                       <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mt-4 btn-center" > 
                       Reject
                       </button>

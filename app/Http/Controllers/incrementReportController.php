@@ -287,7 +287,8 @@ class incrementReportController extends Controller
              ->first();
       // dd($OfficeHead,$PiadEmail);
   
-         
+    return $pdf->download ('increment.pdf');
+
       //email end
       // return redirect('home')->with('page', 'incrementReport')
       // ->with('success','Mail has been sent!!!!');

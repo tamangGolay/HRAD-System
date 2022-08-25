@@ -74,6 +74,7 @@
             <th>Current Office</th>
             <th>New Office</th>
             <th>Report to Office</th>
+            <th>Report to OfficeF</th>
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>
             <th>Transfer Reason</th>
@@ -144,6 +145,10 @@ $(document).ready(function(){
                 {
                     data:'oficereoprt',
                     name:'oficereoprt'
+                },
+                {
+                    data:'oficereoprtf',
+                    name:'oficereoprtf'
                 },
                 {
                     data:'transferType',

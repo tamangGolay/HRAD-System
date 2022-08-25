@@ -51,7 +51,7 @@ h1 {
          <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b> Incrment Order</b>
+                <b> Increment Order</b>
               </h5>
 			</div>
 		

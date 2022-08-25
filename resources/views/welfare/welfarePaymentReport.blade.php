@@ -66,6 +66,7 @@
              <th>Sl No</th>
             <th>Emp Id</th>
             <th>Release Date</th>
+            <th>Deceased</th>
             <th>Amount</th>
             <th>Reason</th>
             
@@ -122,6 +123,10 @@ $(document).ready(function(){
                 {
                     data:'releaseDate',
                     name:'releaseDate'
+                },
+                {
+                    data:'relation',
+                    name:'relation'
                 },
                 {
                     data:'amount',

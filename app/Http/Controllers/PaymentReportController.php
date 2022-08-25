@@ -20,20 +20,20 @@ class PaymentReportController extends Controller
       {
 
        $data = DB::table('wfrelease')
-    //    ->join('users', 'users.id', '=', 'wfrelease.empId')
-       ->select('*')
+          ->join('view_wfrelatives', 'view_wfrelatives.id', '=', 'wfrelease.deathOf')
+         ->select('wfrelease.*','view_wfrelatives.relation')
         ->where('releaseDate','>=',$request->filter_startdate)
          ->where('releaseDate','<=',$request->filter_enddate)
-         ->where('wfrelease.status',0)
-            ->get();
+       
+         ->get();
       }
       else
       {
        
      $data = DB::table('wfrelease')
-    //    ->join('users', 'users.id', '=', 'wfrelease.empId')
-       ->select('*')	
-        ->where('wfrelease.status',0)      
+    
+     ->join('view_wfrelatives', 'view_wfrelatives.id', '=', 'wfrelease.deathOf')
+     ->select('wfrelease.*','view_wfrelatives.relation')    
       ->get();
       }
       

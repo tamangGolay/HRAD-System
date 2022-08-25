@@ -10,7 +10,7 @@ use App\QualificationLevel;
 
         
 class QualilevelController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *

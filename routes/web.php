@@ -529,8 +529,8 @@ Route::resource('qualification', MasterQualiController::class);
 Route::post('destroyQualification', 'MasterQualiController@delete')->name('destroyQualification');
 
 //employee qualification
-Route::resource('employeeQualification', empQualificationController::class);
-Route::post('destroyEmpQualification', 'empQualificationController@delete')->name('destroyEmpQualification');
+Route::resource('employeeQualification', EmpQualificationController::class);
+Route::post('destroyEmpQualification', 'EmpQualificationController@delete')->name('destroyEmpQualification');
 
 //relation 
 Route::resource('relation', MasterRelationController::class);

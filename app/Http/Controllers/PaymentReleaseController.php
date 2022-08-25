@@ -171,7 +171,8 @@ class PaymentReleaseController extends Controller
             $Request_payment->deathOf = $deathOf->deathOf;
             $Request_payment->save();
 
-            // dd($request->id);
+            //updationg status as 1 in wfrelative after ceo approves welfare payment for that relative(to avoid duplicate relative data)
+           
             $status1 = 1;
             DB::update('update wfrelatives set status = ? where id = ?', [$status1, $request->id]);
             

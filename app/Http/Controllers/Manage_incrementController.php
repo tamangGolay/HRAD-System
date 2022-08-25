@@ -19,11 +19,11 @@ class Manage_incrementController extends Controller
 
         $increment = DB::table('incrementhistorymaster')
 
-           ->join('users', 'users.id', '=', 'incrementhistorymaster.personalNo')
+        ->join('users', 'users.id', '=', 'incrementhistorymaster.personalNo')
         ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
-        'incrementhistorymaster.oldBasic','incrementhistorymaster.newBasic',
-        'incrementhistorymaster.nextDue', 'incrementhistorymaster.remarks','users.empId')
-      ->where('incrementhistorymaster.status','0');
+        'incrementhistorymaster.newBasic',
+         'users.empId');
+         
         
         if ($request->ajax()) {
             $data = $increment;
@@ -56,9 +56,8 @@ class Manage_incrementController extends Controller
     public function store(Request $request)
     {
         // dd($request->id);
-        increment::updateOrCreate(['personalNo' => $request->name],  ['incrementDate' => $request->number,  'oldBasic' => $request->old,
-        'newBasic' => $request->new, 'nextDue' => $request->next, 'remarks' => $request->remarks
-    
+        increment::updateOrCreate(['personalNo' => $request->name],  ['incrementDate' => $request->number, 
+        'newBasic' => $request->new 
 
     ]);        
    
@@ -85,10 +84,10 @@ class Manage_incrementController extends Controller
      */
     public function delete(Request $request)
     {
-
       
-        $query = DB::table('incrementhistorymaster')->where('id', $request->id)
-            ->increment('status');
+        $query = DB::table('incrementhistorymaster')
+        ->where('id', $request->id);
+            
 
         return response()
             ->json(['success' => 'Increment data deleted successfully.']);

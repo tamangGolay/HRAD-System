@@ -158,16 +158,16 @@ class NotesheetController extends Controller
 {
 
  $selfghCancelBooking= DB::table('notesheet')  
-->where( 'createdBy',Auth::user()->empId)
-//  ->where('status', '=', 'Processing')
-
- ->select('*')
+   ->where( 'createdBy',Auth::user()->empId)
+    ->where('status', '=', 'Processing')
+    ->where('cancelled', '=', 'No')
+    ->select('*')
                                     
  ->latest('notesheet.id') //similar to orderby('roombed.id','desc')            
   ->paginate(100000000);
 
-$rhtml = view('Notesheet.notesheetCancel')->with(['selfghCancelBooking' => $selfghCancelBooking])->render();
-return response()
+  $rhtml = view('Notesheet.notesheetCancel')->with(['selfghCancelBooking' => $selfghCancelBooking])->render();
+  return response()
   ->json(array(
   'success' => true,
   'html' => $rhtml

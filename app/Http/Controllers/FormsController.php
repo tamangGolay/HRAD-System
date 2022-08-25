@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\Roles;
-use App\orgunit;
+use App\OrgUnit;
 use App\Dzongkhags;
 use Carbon\Carbon;
 use App\Vehicles;
@@ -55,7 +55,7 @@ use App\notesheetRequest;
 use App\notesheetapprove;
 use App\Pant;
 use App\Shirt;
-use App\RaincoatSize;
+use App\RainCoatSize;
 use App\officeuniform;
 use App\GumbootSize;
 use App\promotionAll;
@@ -133,7 +133,7 @@ class FormsController extends Controller
 
          
                $roles = Roles::all();
-               $orgunit = orgunit::all();
+               $OrgUnit = OrgUnit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();         
 
@@ -154,7 +154,7 @@ class FormsController extends Controller
            
                ->paginate(10000000);
 
-           $rhtml = view('auth.userList')->with(['userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit, 'grade' => $grade, 'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.userList')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit, 'grade' => $grade, 'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,
@@ -197,7 +197,7 @@ class FormsController extends Controller
 
 
                $roles = Roles::all();
-               $orgunit = orgunit::all();
+               $OrgUnit = OrgUnit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
                $gradeId = DB::table('users')
@@ -234,7 +234,7 @@ class FormsController extends Controller
 
             // $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
             // ->join('roles', 'users.role_id', '=', 'roles.id')
-            // ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+            // ->join('OrgUnit', 'OrgUnit.id', '=', 'users.org_unit_id')
             // ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
             // ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
 
@@ -244,7 +244,7 @@ class FormsController extends Controller
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,
@@ -288,7 +288,7 @@ class FormsController extends Controller
          $jacket = JacketSize::all();
          $shoe = Shoesize::all();
          $gumboot = GumbootSize::all();
-         $raincoat = RaincoatSize::all();
+         $raincoat = RainCoatSize::all();
           
              // $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
              //    ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
@@ -321,7 +321,7 @@ class FormsController extends Controller
              $jacket = JacketSize::all();
              $shoe = Shoesize::all();
              $gumboot = GumbootSize::all();
-             $raincoat = RaincoatSize::all();
+             $raincoat = RainCoatSize::all();
             $office = Officedetails::all();
  
          $data1 = DB::table('employeeuniform')
@@ -355,7 +355,7 @@ class FormsController extends Controller
              //     $jacket = JacketSize::all();
              //     $shoe = Shoesize::all();
              //     $gumboot = GumbootSize::all();
-             //     $raincoat = RaincoatSize::all();
+             //     $raincoat = RainCoatSize::all();
              //     $office = Officedetails::all();
  
              //     $data1 = DB::table('employeeuniform')
@@ -686,7 +686,7 @@ return response()
        {
         //  dd($request);
                $roles = Roles::all();
-               $orgunit = orgunit::all();
+               $OrgUnit = OrgUnit::all();
                $grade = Grade::all();
                $dzongkhag = Dzongkhags::all();
 
@@ -720,7 +720,7 @@ return response()
 
             // ->paginate(10000000);
 
-           $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'orgunit' => $orgunit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+           $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
                'success' => true,
@@ -3781,13 +3781,13 @@ if ($request->v == "room_details")
             $user = Auth::user();
             $grade = Grade::all();
             $dzongkhag = Dzongkhags::all();
-            $orgunit = orgunit::all();
+            $OrgUnit = OrgUnit::all();
             $roles = roles::all();
 
 
 
           
-            $rhtml = view('super admin.user')->with(['roles' => $roles, 'orgunit' => $orgunit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
+            $rhtml = view('super admin.user')->with(['roles' => $roles, 'OrgUnit' => $OrgUnit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
             return response()
                 ->json(array(
                 'success' => true,
@@ -3890,7 +3890,7 @@ if ($request->v == "room_details")
             $user = Auth::user();
             // $grade = Grade::all();
             $dzongkhag = Dzongkhags::all();
-            // $orgunit = orgunit::all();
+            // $OrgUnit = OrgUnit::all();
             $roles = roles::all();
             $bk = bank::all();
             $dg = Designation::all(); 

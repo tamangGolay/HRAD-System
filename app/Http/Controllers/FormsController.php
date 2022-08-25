@@ -4485,19 +4485,17 @@ if ($request->v == "jobDescription")
  //jobDescriptionRepository for employees
  if ($request->v == "jobDescriptionRepository")
  {
-     $userLists = Officedetails::all();
- 
+    
+
  
      $userLists = DB::table('jobdescription')
           ->join('users', 'users.empId', '=', 'jobdescription.empId')
-          ->join('officedetails','officedetails.id', 'jobdescription.officeId') 
+          ->join('officedetails','officedetails.id', 'users.office') 
       //    ->join('officemaster','officemaster.id','=','users.office')
  
       ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'
         ,'users.empName' )
- 
-         // ->latest('users.id') //similar to orderby('id','desc')
-         // ->where('users.office',Auth::user()->office)
+       
     
           ->paginate(10000000);
       $rhtml = view('emp.jobDescriptionRepository')->with(['userList' => $userLists])->render();

@@ -199,7 +199,7 @@ a {
       var knowledge_id = $(this).data('id');
      
       $.get("{{ route('jobRepository.index') }}" +'/' + knowledge_id +'/edit', function (data) {
-          $('#modelHeading').html("Knowledge details");
+          $('#modelHeading').html("Job description details");
           $('#knowledgeButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),

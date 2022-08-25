@@ -61,21 +61,21 @@ a {
 
                    <input type="hidden" name="id" id="officeName_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Office ShortName</label>
+                        <label for="name" class="col-sm-2 col-lg-8 control-label">Office ShortName</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="shortOfficeName" name="shortOfficeName" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Office LongName</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Office LongName</label>
                         <div class="col-sm-12">
                             <input type="text" id="longOfficeName" name="longOfficeName"   class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Office Type</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Office Type</label>
                         <div class="col-sm-12">
                             <input type="text" id="officeType" name="officeType"   class="form-control" required>
                         </div>

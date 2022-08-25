@@ -152,7 +152,7 @@ a {
         ajax: "{{ route('contractdetail.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'employeemaster.empId'},
+            {data: 'empId', name: 'users.empId'},
             {data: 'startDate', name: 'startDate'},
             {data: 'endDate', name: 'endDate'},
             {data: 'termNo', name: 'termNo'},

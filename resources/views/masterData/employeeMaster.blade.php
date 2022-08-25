@@ -45,7 +45,7 @@
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Blood Group:') }}</label>
 						<div class="col-md-4">
-							<input id="BloodGroup" type="text" autocomplete="off" placeholder="Contact Number" 
+							<input id="BloodGroup" type="text" autocomplete="off" placeholder="A+/O+" 
 							class="form-control" name="BloodGroup" required> 
 						</div>
 					</div>
@@ -75,13 +75,7 @@
 						</select> 
 						</div>
 					</div>
-					<!-- <div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gender:') }}</label>
-						<div class="col-md-4">
-							<input id="gender" type="text" autocomplete="off" placeholder="Gender" class="form-control"
-							 name="gender" required>
-						</div>
-					</div> -->
+					
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Appoinment Date:') }}</label>
@@ -116,7 +110,7 @@
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employee Status:') }}</label>
 						<div class="col-md-4">
-							<input id="empStatus" type="text" autocomplete="off" placeholder="eg: Single" class="form-control"
+							<input id="empStatus" type="text" autocomplete="off" placeholder="Active" class="form-control"
 							 name="empStatus" required>
 						</div>
 					</div>
@@ -140,7 +134,7 @@
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Email id:') }}</label>
 						<div class="col-md-4">
-							<input id="emailId" type="text" autocomplete="off" placeholder="eg: abc@gmail.com" class="form-control"
+							<input id="emailId" type="text" autocomplete="off" placeholder="eg: yourname@bpc.bt" class="form-control"
 							 name="emailId" required>
 						</div>
 					</div>

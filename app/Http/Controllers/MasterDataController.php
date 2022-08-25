@@ -9,7 +9,7 @@ use App\User;
 use Auth;
 use Hash;
 use App\Roles;
-use App\roleusermappings;
+use App\RoleUserMappings;
 use App\Dzongkhags;
 use App\user_details;
 use DB;
@@ -124,7 +124,7 @@ class MasterDataController extends Controller
         // $user->created_by = Auth::id();
 
         //add role in the user_role_mapping.
-        $roleuser = new roleusermappings;       
+        $roleuser = new RoleUserMappings;       
         $roleuser->role_id = $request->role;
         $roleuser->created_by = Auth::id();
 

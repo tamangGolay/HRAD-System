@@ -51,6 +51,8 @@ class Manage_MasterController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
         officeName::updateOrCreate(['id' => $request->id],
                 ['shortOfficeName' => $request->shortOfficeName, 'longOfficeName' => $request->longOfficeName,
                  'officeType' => $request->officeType]);        
@@ -78,7 +80,7 @@ class Manage_MasterController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('officeName')->where('id', $request->id)
+        $query = DB::table('officename')->where('id', $request->id)
             ->increment('status');
 
         return response()

@@ -20,7 +20,7 @@ class Manage_ContractDetailController extends Controller
     {
 
         $contractdetail = DB::table('contractdetailsmaster')
-        ->join('users', 'users.id', '=', 'contractdetailsmaster.personalNo')
+        ->join('users', 'users.empId', '=', 'contractdetailsmaster.personalNo')
         ->select('contractdetailsmaster.id','users.empId','startDate','endDate','termNo')
         ->where('contractdetailsmaster.status','0');
 

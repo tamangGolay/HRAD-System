@@ -69,7 +69,7 @@ class Manage_UserController extends Controller
 // "Address" => "1"
             User::updateOrCreate(['id' => $request->id],
                 ['empName' => $request->empName,
-                 'empId' => $request->emp_id,
+                 'empId' => $request->empId,
                  'cidNo' => $request->cidNo,
                  'role_id' => $request->role,
                  'office' => $request->office,

@@ -4145,8 +4145,8 @@ if ($request->v == "room_details")
             ->where('status',0);
            
             $contractdetails = DB::table('contractdetailsmaster')
-            ->join('employeemaster', 'employeemaster.id', '=', 'contractdetailsmaster.personalNo')
-            ->select('employeemaster.empId')
+            ->join('users', 'users.empId', '=', 'contractdetailsmaster.personalNo')
+            ->select('users.empId')
             ->where('contractdetailsmaster.status',0);         
 
              $rhtml = view('masterData.contractDetailMaster')->with(['employeen' => $employeen])->render();

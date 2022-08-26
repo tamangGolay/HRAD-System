@@ -82,8 +82,10 @@ class MasterDataController extends Controller
       //     echo 'ok';
       //   }
       //  } 
-       
-        $users = new User;//users is ModelName
+      //  dd($request);
+      //  $request->employmentType = 'regular'; 
+       $request->password = '$2y$10$fDIw.1lGpnLMdBNWB2RlKuo1JfVi7IpHfxrTCr5NyaE2AtIf9qFFC';       
+       $users = new User;//users is ModelName
         $users->EmpId = $request->EmpId;//emp_id is from input name
         $users->EmpName =  $request->EmpName;//EmpName is from dB
        //rolepull 
@@ -98,18 +100,19 @@ class MasterDataController extends Controller
         $users->lastDop = $request->lastDop;
         $users->mobileNo = $request->mobileNo;
         $users->emailId = $request->emailId;
+        $users->password = $request->password;
         // $users->placeId = $request->placeId;
         $users->designationId = $request->designationId;
         $users->office = $request->office;
         // $users->bankName = $request->bankName;
         // $users->accountNumber = $request->accountNumber; 
-        $users->resignationTypeId = $request->resignationTypeId;
-        $users->resignationDate = $request->resignationDate;
+        // $users->resignationTypeId = $request->resignationTypeId;
+        // $users->resignationDate = $request->resignationDate;
         $users->employmentType = $request->employmentType;
         $users->incrementCycle = $request->incrementCycle;
         $users->extension = $request->extension;
         $users->fixedno = $request->fixedno;
-        $users->createdBy = Auth::id();
+        $users->createdBy = Auth::user()->empId;
 
         // $user->password =  Hash::make($request->password);      
         // $user->org_unit_id = $request->orgunit;

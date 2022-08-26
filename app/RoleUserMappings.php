@@ -9,7 +9,7 @@ class roleusermappings extends Model
     //
     protected $table="userrolemapping";
 
-    protected $fillable = ['user_id','role_id','created_by'];
+    protected $fillable = ['user_id','role_id','created_by','updated_at'];
     // const updated_at = null;
-    // public $timestamps = false;
+    public $timestamps = false;
 }

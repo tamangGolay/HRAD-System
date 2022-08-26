@@ -42,13 +42,30 @@
 						</div>
 					</div>
  
-					<div class="form-group row">
+					<!-- <div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Blood Group:') }}</label>
 						<div class="col-md-4">
 							<input id="BloodGroup" type="text" autocomplete="off" placeholder="A+/O+" 
 							class="form-control" name="BloodGroup" required> 
 						</div>
+					</div> -->
+					<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="BloodGroup">{{ __('BloodGroup:') }}</label>
+						<div class="col-sm-4">
+						<select name="BloodGroup" id="BloodGroup" class="form-control" required> 
+							<option value=" ">Select BloodGroup</option> 
+							<option value="A+">A+</option>
+							<option value="A-">A-</option> 
+							<option value="B+">B+</option>
+							<option value="B-">B-</option> 	
+							<option value="O+">O+</option>
+							<option value="O-">O-</option> 	
+							<option value="AB+">AB+</option>
+							<option value="AB-">AB-</option> 
+						</select> 
+						</div>
 					</div>
+					
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CID Number:') }}</label>
@@ -108,10 +125,10 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employee Status:') }}</label>
+						<!-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employee Status:') }}</label> -->
 						<div class="col-md-4">
-							<input id="empStatus" type="text" autocomplete="off" placeholder="Active" class="form-control"
-							 name="empStatus" required>
+							<input id="empStatus" type="hidden" autocomplete="off" placeholder="Active" class="form-control"
+							 name="empStatus" value="Active" required>
 						</div>
 					</div>
 
@@ -119,7 +136,7 @@
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Date of Promotion:') }}</label>
 						<div class="col-md-4">
 							<input id="lastDop" type="date" autocomplete="off" placeholder="1/1/2000" class="form-control"
-							 name="lastDop" required>
+							 name="lastDop" >
 						</div>
 					</div>
 
@@ -138,7 +155,7 @@
 							 name="emailId" required>
 						</div>
 					</div>
-					<div class="form-group row">
+					<!-- <div class="form-group row">
 					<label class="col-md-4 col-form-label text-md-right" for="grade">&nbsp;&nbsp;&nbsp;Place:</label>
 						<div class="col-md-4">
 						<select name="placeId" id="placeId" value="" class="form-control" required>
@@ -149,7 +166,7 @@
 											@endforeach
 								</select>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="form-group row"> 
 						<label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
@@ -178,12 +195,12 @@
 							</div>
 					</div>
 
-					<div class="form-group row">
+					<!-- <div class="form-group row">
                         <label for="bankname" class="col-md-4 col-form-label text-md-right">Bank name</label>
-                        <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="col-sm-10 col-md-6 col-lg-4"> -->
 
                             <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="bankName" id="bankName" value="" class="form-control" required>
+                            <!-- <select name="bankName" id="bankName" value="" class="form-control" required>
                                              <option value="">Select Bank name</option>
                                              @foreach($bk as $bk)
 
@@ -191,38 +208,31 @@
 										@endforeach
 							</select>
                         </div>
-                    </div>
+                    </div> -->
 
 
 
-					<div class="form-group row">
+					<!-- <div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Bank account no:') }}</label>
 						<div class="col-md-4">
 							<input id="accountNumber" type="text" autocomplete="off" placeholder="eg: 200102384" class="form-control"
 							 name="accountNumber" required>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="form-group row"> 
-						<label class="col-md-4 col-form-label text-md-right" for="resignationtype">&nbsp;&nbsp;&nbsp;Resignation Type:</label>
-							<div class="col-sm-10 col-md-6 col-lg-4">
-							<select name="resignationTypeId" id="resignationTypeId" value="" class="form-control" required>
-                                             <option value="">Select Resignation Type</option>
-                                             @foreach($rg as $rg)
-
-                                             <option value="{{$rg->id}}">{{$rg->resignationType}}</option>
-										@endforeach
-							</select>
-
-							<!-- <input type="text" class="form-control" name="resignationtype" id="resignationtype" placeholder="resignationtype" autocomplete="off" readonly required>                   -->
+					<div class="form-group row">
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Extension:') }}</label>
+						<div class="col-md-4">
+							<input id="extension" type="number" autocomplete="off" placeholder="eg:500" class="form-control"
+							 name="extension" required>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Resignation Date:') }}</label>
+						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Fixed No:') }}</label>
 						<div class="col-md-4">
-							<input id="resignationDate" type="date" autocomplete="off" placeholder="eg: 1/1/2000" class="form-control"
-							 name="resignationDate" required>
+							<input id="fixedno" type="number" autocomplete="off" placeholder="02345690" class="form-control"
+							 name="fixedno" required>
 						</div>
 					</div>
 
@@ -234,11 +244,36 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
+					
+
+					<!-- <div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Increment Cycle:') }}</label>
 						<div class="col-md-4">
 							<input id="incrementCycle" type="text" autocomplete="off" placeholder="eg: Jan/July" class="form-control"
 							 name="incrementCycle" required>
+						</div>
+					</div> -->
+
+					
+					<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="employmentType">{{ __('Select EmploymentType:') }}</label>
+						<div class="col-sm-4">
+						<select name="employmentType" id="employmentType" class="form-control" required> 
+							<option value=" ">Select EmploymentType</option> 
+							<option value="regular">Regular</option>
+							<option value="contract">Contract</option> 
+						</select> 
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('Select IncrementCycle:') }}</label>
+						<div class="col-sm-4">
+						<select name="incrementCycle" id="incrementCycle" class="form-control" required> 
+							<option value=" ">Select IncrementCycle</option> 
+							<option value="January">January</option>
+							<option value="July">July</option> 
+						</select> 
 						</div>
 					</div>
 

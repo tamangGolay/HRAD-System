@@ -246,7 +246,7 @@ a {
         
             // window.location.href = '/home'
             document.body.appendChild(alt);
-            $.get('/getView?v=knowledgeRepository',function(data){
+            $.get('/getView?v=jobDescriptionRepository',function(data){
             $('#contentpage').empty();                          
             $('#contentpage').append(data.html);
             });

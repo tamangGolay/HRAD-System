@@ -287,7 +287,7 @@ $(function() {
 					alt.parentNode.removeChild(alt);
 				}, 4500);
 				document.body.appendChild(alt);
-				$.get('/getView?v=employeeList',function(data){
+				$.get('/getView?v=jobDescriptionReview',function(data){
 				$('#contentpage').empty();                          
 				$('#contentpage').append(data.html);
 				}); 
@@ -332,7 +332,7 @@ $(function() {
 					alt.parentNode.removeChild(alt);
 				}, 4500);
 				document.body.appendChild(alt);
-				$.get('/getView?v=employeeList',function(data){
+				$.get('/getView?v=jobDescriptionReview',function(data){
 				$('#contentpage').empty();                          
 				$('#contentpage').append(data.html);
 				}); 

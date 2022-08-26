@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
           
 use App\User;
-use App\roleusermappings;
+use App\RoleUserMappings;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
@@ -98,7 +98,7 @@ class Manage_UserController extends Controller
                 // $roleuser->save();
         
 // dd($request->id);
-                 roleusermappings::updateOrCreate(['user_id' => $request->id],
+                 RoleUserMappings::updateOrCreate(['user_id' => $request->id],
                  [
                  'role_id' => $request->role,
                   ]); 

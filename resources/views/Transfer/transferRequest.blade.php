@@ -58,7 +58,7 @@
                       <div class="col-md-8 ">
 					  <select class="col-lg-12 col-sm-12 form-control" name="toOffice" id="toOffice" value="" required>
                                             
-					    <option value="">Select Office From</option>
+					    <option value="">Select Office To</option>
                                              @foreach($officedetas as $officedetas)
 											 <option value="{{$officedetas->id}}">{{$officedetas->officeDetails}}</option>
 										@endforeach

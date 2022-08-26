@@ -61,7 +61,7 @@ class UniformController extends Controller
 
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
-     'officeId' => $request->office, 
+     'officeId' => $request->officeId, 
      'pant' => $request->pant,
     'shirt' => $request->shirt,
     'jacket' => $request->jacket,
@@ -73,13 +73,13 @@ class UniformController extends Controller
 
 ]);        
 
-    return response()->json(['success'=>'New pay saved successfully.']);
+    // return response()->json(['success'=>'New pay saved successfully.']);
    
       
 
      
-    // return redirect('/home')->with('page', 'uniform')
-    // ->with('success', 'Data inserted successfully!!!');
+    return redirect('/home')->with('home')
+    ->with('success', 'Data inserted successfully!!!');
     
     
     }

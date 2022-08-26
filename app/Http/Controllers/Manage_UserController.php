@@ -109,25 +109,6 @@ class Manage_UserController extends Controller
     }
 
 
-
-    // //For HR
-    // public function b(Request $request)
-    // {
-   
-    //         User::updateOrCreate(['id' => $request->id],
-    //             ['name' => $request->name,
-    //              'contact_number' => $request->contact_number,
-    //              'org_unit_id' => $request->orgunit,
-    //              'egender' => $request->gender,
-
-    //              ]); 
-
-                 
-                 
-              
-   
-    //     return response()->json(['success'=>'Updated successfully.']);
-    // }
     /**
      * Show the form for editing the specified resource.
      *
@@ -150,14 +131,6 @@ class Manage_UserController extends Controller
     {
 
 
-        // $isconferenceuser = DB::table('users')->select('conference_user')
-        // ->where('id', $request->id)
-        // ->first();
-        // if($isconferenceuser->conference_user == 1){//For headquarter employee 
-        //     $query = DB::table('users')->where('id', $request->id)
-        //     ->decrement('conference_user');
-
-        // }
 
         $query = DB::table('users')->where('id', $request->id)
             ->increment('status');

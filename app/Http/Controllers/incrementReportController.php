@@ -23,8 +23,7 @@ class incrementReportController extends Controller
 
 
    $increment = DB::table('viewincrementorder')
-  // // ->join('viewincrementorder','viewincrementorder.empId','=','incrementhistorymaster.empId')
-  //   ->select('viewincrementorder.*')
+  
 
     ->join('incrementhistorymaster','incrementhistorymaster.personalNo','=','viewincrementorder.empId')
     ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
@@ -38,24 +37,14 @@ class incrementReportController extends Controller
        return Datatables::of($data)
 
                ->addIndexColumn()
-
-              //  ->addColumn('checkbox', function($row){  
-                                               
-              //              return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
-              //          })
-
               ->addColumn('action', function($row){
 
               $btn = '<a href="incrementReport/{{$increment->id}}" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Download</a>&nbsp;&nbsp;&nbsp;&nbsp';
-              // $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteraincoat" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteraincoat">Delete</a>';
-
+              
               return $btn;
             })
 
-          //   ->addColumn('checkbox', function($row){                                                      
-          //     return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
-          // })
-
+        
           ->rawColumns(['action','checkbox'])
           ->make(true);
              }   
@@ -65,7 +54,7 @@ class incrementReportController extends Controller
 
   public function createIncrementReport ($id){
 
-      // $products = Product::where('user_id', $user_id->id)->get();
+     
       $officeId = DB::table('viewincrementorder')//promotionall table(incrementall)
       ->select('officeId')
       ->where('id',$id)
@@ -82,7 +71,7 @@ class incrementReportController extends Controller
       ->where('viewincrementorder.officeId',$officeId->officeId)
       ->first();
 
-      // dd($officeAddress->officeDetails);
+    
  
       $headDesignation = DB::table('officehead')
       ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
@@ -109,7 +98,6 @@ class incrementReportController extends Controller
                     })
                     ->first();
 
-                    // dd($PiadDesignation->desisnamelong);
 
       $increment1 = DB::table('viewincrementorder')
       ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
@@ -157,30 +145,26 @@ class incrementReportController extends Controller
           //  ->where('users.empId',$empId->empId)
           ->where('users.role_id',8)
            ->first();
-    // dd($OfficeHead,$PiadEmail);
+   
 
         if($HrAdmin == null){
-            // dd($OfficeHead->emailId,$PiadEmail->emailId);
+         
 
             $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a increment list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'http://hris.bpc.bt/incrementReport1/'.$id. '.','body5' => '','body6' => '', ];
-            // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId])
-                        Mail::to('nimawtamang@bpc.bt') 
+                                    Mail::to('nimawtamang@bpc.bt') 
  
                     ->send(new MyTestMail($email)); 
           }
 
           else{
-            // dd("hehe");
+            
 
               $email = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a increment list for ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' =>'http://hris.bpc.bt/incrementReport1/'.$id. '.','body5' => '','body6' => '', ];
 
-                // Mail::to($supervisorEmail->emailId) 
-                // ->send(new MyTestMail($supervisor));
                 Mail::to('nimawtamang@bpc.bt') 
 
 
-                // Mail::to([$OfficeHead->emailId,$PiadEmail->emailId,$HrAdmin->emailId]) 
-
+               
                     ->send(new MyTestMail($email)); 
 
           }
@@ -213,7 +197,6 @@ class incrementReportController extends Controller
         ->where('viewincrementorder.officeId',$officeId->officeId)
         ->first();
   
-        // dd($officeAddress->officeDetails);
    
         $headDesignation = DB::table('officehead')
         ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
@@ -240,7 +223,6 @@ class incrementReportController extends Controller
                       })
                       ->first();
   
-                      // dd($PiadDesignation->desisnamelong);
   
         $increment1 = DB::table('viewincrementorder')
         ->join('incrementall','incrementall.empId','=','viewincrementorder.empId')
@@ -288,13 +270,11 @@ class incrementReportController extends Controller
             //  ->where('users.empId',$empId->empId)
             ->where('users.role_id',8)
              ->first();
-      // dd($OfficeHead,$PiadEmail);
+    
   
     return $pdf->download ('increment.pdf');
 
-      //email end
-      // return redirect('home')->with('page', 'incrementReport')
-      // ->with('success','Mail has been sent!!!!');
+    
   
         }
     }

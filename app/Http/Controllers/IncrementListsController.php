@@ -32,35 +32,7 @@ class IncrementListsController extends Controller
 
                     ->addIndexColumn()
 
-                    // ->filter(function ($instance) use ($request) {
-                        
-                    //     if (!empty($request->get('filter'))) {
-                    //         $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    //             return Str::contains($row['incrementDueDate'], $request->get('filter')) ? true : false;   
-                    //         });
-                    //     }
-                    //     if (!empty($request->get('month'))) {
-                    //         $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    //             return Str::contains($row['month'], $request->get('month')) ? true : false;   
-                    //         });
-                    //     }
-                        
-                    //     if (!empty($request->get('search'))) {
-                    //         $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    //             if (Str::contains(Str::lower($row['incrementDueDate']), Str::lower($request->get('search')))){
-                    //                 return true;
-                    //             }else if (Str::contains(Str::lower($row['empId']), Str::lower($request->get('search')))) {
-                    //                 return true;
-                    //             }else if (Str::contains(Str::lower($row['incrementCycle']), Str::lower($request->get('search')))) {
-                    //                 return true;
-                    //             }
-   
-                    //             return false;
-                    //         });
-                    //     }   
-                    // })
-
-                    ->addColumn('checkbox', function($row){  
+                            ->addColumn('checkbox', function($row){  
                                                     
                                 return '<input type="checkbox" name="update_checkbox" data-id=" '.$row->id.'"><label></label>';
                             })

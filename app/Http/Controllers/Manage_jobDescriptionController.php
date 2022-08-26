@@ -81,9 +81,6 @@ class Manage_jobDescriptionController extends Controller
                'empName' => $request->nameid,
     ]);        
  
-
-//'placeId' => $request->placeId,'resignationDate' => $request->resignationdate, 'resignationType' => $request->resignationtypeId ,
-   //'bankName' => $request->bankname, 'accountNumber' => $request->accountnumber, 'bloodGroup' => $request->blood,
         return redirect('home')->with('page', 'jobDescription');
 
     }

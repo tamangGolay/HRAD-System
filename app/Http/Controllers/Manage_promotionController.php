@@ -24,11 +24,7 @@ class Manage_promotionController extends Controller
         ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionhistorymaster.gradeTo')
         ->join('designationmaster as d', 'd.id', '=', 'promotionhistorymaster.newDesignation')
 
-        //   'promotionhistorymaster.gradeTo',
-//      'users.empId')
-// ->select('promotionhistorymaster.id','promotionhistorymaster.promotionDate',
-//   'promotionhistorymaster.gradeTo',
-//      'promotionhistorymaster.empId')
+      
 
 ->select('promotionhistorymaster.newDesignation','designationmaster.id as oldDesignation','d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
   'promotionhistorymaster.gradeTo','promotionhistorymaster.id','designationmaster.desisNameLong')
@@ -64,7 +60,7 @@ class Manage_promotionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+      
         PromotionHistoryMaster::updateOrCreate(['id' => $request->id],  
         ['newDesignation' => $request->newDesignation
         ]);        

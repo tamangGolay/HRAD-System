@@ -30,7 +30,7 @@ class IncrementallController extends Controller
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="editIncrement btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                        //    $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteIncrement" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteIncrement">Delete</a>';
+                       
 
                             return $btn;
                     })
@@ -56,7 +56,7 @@ class IncrementallController extends Controller
      */
     public function store(Request $request)
     {
-        // protected $fillable = ['id','empId','lastIncrementDate','incrementDueDate','incrementCycle','modificationReason'];
+        
 
         Incrementall::updateOrCreate(['id' => $request->id],  //vehicles
                 ['empId' => $request->empId,'lastIncrementDate' => $request->lastIncrementDate,'incrementDueDate' => $request->incrementDueDate,'incrementCycle' => $request->incrementCycle,'modificationReason' => $request->modificationReason]);        

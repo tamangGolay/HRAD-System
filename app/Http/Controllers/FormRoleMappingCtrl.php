@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\roleformmapping;
+use App\RoleFormMapping;
 use Auth;
 
 class FormRoleMappingCtrl extends Controller
@@ -15,7 +15,7 @@ class FormRoleMappingCtrl extends Controller
         $roleId = $request->role;
 
         //delete existings forms assigned to the role.
-        roleformmapping::where('role_id', $roleId)->where('form_id', '!=', 71) //role_form.
+        RoleFormMapping::where('role_id', $roleId)->where('form_id', '!=', 110) //role_form.
         
             ->delete();
 
@@ -23,7 +23,7 @@ class FormRoleMappingCtrl extends Controller
         foreach ($formId as $fId)
         {
             $uid = Auth::id();
-            $rf = roleformmapping::Create(['role_id' => $roleId, 'form_id' => $fId, 'created_by' => $uid]);
+            $rf = RoleFormMapping::Create(['role_id' => $roleId, 'form_id' => $fId, 'created_by' => $uid]);
 
             // for update or create ... use updateOrCreate
             

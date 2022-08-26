@@ -131,6 +131,7 @@ div.table2 {
 
                 <div class = "row">
                    <div class = "col-md-12 increment1">
+                   <img src="{{asset('/cd/images/hrsign.JPG')}}" width="40%" height="50px">
                     <p> {{$increment1-> empId }} </p>
                     <p> {{$GmName-> empName }} </p>
                     <p> General Manager-HR </p>

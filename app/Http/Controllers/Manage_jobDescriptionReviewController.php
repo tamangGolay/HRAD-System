@@ -58,9 +58,11 @@ DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->
 
 
 
-   
+// return redirect('home')
+// ->with('success', 'Updated successfully');
  return response()->json(['success'=>'Updated successfully.']);
- return redirect('home')->with( 'jobDescriptionReview');  
+ return redirect('home');  
+
 
     }
 

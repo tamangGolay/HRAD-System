@@ -167,7 +167,7 @@ a {
         $('#skillcategoryButton').val("create-room");
         $('#skillcategory_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new skill Category");   // model heading
+        $('#modelHeading').html("Add new Employee");   // model heading
         $('#ajaxModel').modal('show');  
 
        

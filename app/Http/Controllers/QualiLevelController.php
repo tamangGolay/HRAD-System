@@ -9,7 +9,7 @@ use DB;
 use App\QualificationLevel; 
 
         
-class QualilevelController extends Controller
+class QualiLevelController extends Controller
 { 
     /**
      * Display a listing of the resource.

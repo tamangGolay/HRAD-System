@@ -92,7 +92,7 @@ a {
                         <div class="form-group row">
                             <label for="title" class="col-md-2 col-form-label text-md-right">Upload CSV/Excel</label>
                                 <div class="col-sm-10 col-md-6 col-lg-10 ">
-                                    <input type="file" name="file" class="form-control">
+                                    <input type="file" name="file" class="form-control" required>
                                 </div>
                         </div>
 

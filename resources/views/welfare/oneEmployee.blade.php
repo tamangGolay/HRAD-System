@@ -26,9 +26,21 @@
             border-color: red;
         }
     </style>
-    <div class="container">
+<div class="container-fluid">
+<div class="row ">
+  <div class="col">
+    <div class="card ">
+      <div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b>Individual Employee Contribution</b>
+              </h5>
+			</div>
+		
+      </div>
         <br><br>
         <span id="message_error"></span>
+        
         <form id="validate" action="save" method="post">
             @csrf  
             <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
@@ -37,7 +49,7 @@
             <!-- <input type="text" id="myInput3" /> -->
 
             <table id="emptbl" class="table table-bordered border-primar">
-                <thead class="table-dark">
+                <thead class="bg-green">
                     <tr>
                         <th>Employee Number</th>
                         <th>Amount</th>
@@ -48,7 +60,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>Total Rows<input type="text" class="form-control" id="slno" name="slno[]" readonly></tr> 
+                    <h5 class="text-center">Total Number of Records</h5>
+                <tr><input type="text" class="form-control" id="slno" name="slno[]" readonly></tr> 
 
                     <tr> 
                     <?php 
@@ -111,15 +124,19 @@
                     </tr>
                 </tbody>  
             </table> 
-            <table>
+            <table align= "center">
                 <br>
                 <tr> 
-                    <td><button type="button" class="btn btn-outline-info" onclick="addRows()">Add</button></td>
+                    <td><button type="button" class="btn btn-outline-info" onclick="addRows()">Add Records</button></td>
                     <td><button type="button" class="btn btn-outline-danger" onclick="deleteRows()">Remove</button></td>
-                    <td><button type="submit" class="btn btn-outline-success">Save</button></td> 
+                    <td><button type="submit" class="btn btn-outline-success">Save Records</button></td> 
                 </tr>  
             </table>
         </form>
+    </div>
+
+    </div>
+    </div>
     </div>
 
     <script>

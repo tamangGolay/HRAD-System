@@ -522,8 +522,8 @@ Route::post('destroyplace', 'Manage_MasterPlaceController@delete')->name('destro
 
 
 //qualificationleveltype
-Route::resource('qualificationlevel', QualilevelController::class);
-Route::post('destroyqualificationlevel', 'QualilevelController@delete')->name('destroyqualificationlevel');
+Route::resource('qualificationlevel', QualiLevelController::class);
+Route::post('destroyqualificationlevel', 'QualiLevelController@delete')->name('destroyqualificationlevel');
 
 //qualification
 Route::resource('qualification', MasterQualiController::class);

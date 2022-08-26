@@ -50,30 +50,17 @@ $jobReview->createdBy = $approvedBy;
 $jobReview->approvedBy = $approvedBy;
 $jobReview->approvedOn = $date;
 $jobReview->status = $status;
-//$jobReview->dateExpired = $request->createdDate;
+
 $jobReview->save();  
 
-// jobDescription::Create(['empId' => $request->emp_id],  [
-//     'jobDescription' => $request->jobdescription, 
-//     'createdOn' => $request->createdDate,
-//     'createdBy' => $approvedBy, 
-//     'officeId' => $request->officeId,
-//      'approvedOn' => $date,
-//      'approvedBy' => $approvedBy,
-//     'dateExpired' => $request->createdDate,
-// ]);        
-
-     //DB::update('update jobdescription set jobDescription = ? where id = ?', [$request->jobdescription,$request->id]);
-     //DB::update('update jobdescription set status = ? where id = ?', [$status,$request->id]);
-    //  DB::update('update jobdescription set approvedOn = ? where id = ?', [$date,$request->id]);
-     DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->createdDate,$request->id]);
+DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->createdDate,$request->id]);
 
 
 
 
-      
+   
  return response()->json(['success'=>'Updated successfully.']);
-
+ return redirect('home')->with( 'jobDescriptionReview');  
 
     }
 

@@ -4,7 +4,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Promotion Due List</b>
+                <b>Promotion Review by General Manager</b>
               </h5> </div>
 			</div>
 			

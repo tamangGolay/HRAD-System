@@ -5435,13 +5435,14 @@ $notesheetRemarks = notesheetapprove::all();
  //  all office uniform report
  if ($request->v == "officeWiseUniformSizeReport")  //form.csv
  {    
-    $officename = officeuniform::all();     
+    $officename = officeuniform::all();  
+    $officedetailsx = officedetails::all();     
 
     $officenamez = DB::table('officeuniform')
                 //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
                 ->select('*');                  
 
-  $rhtml = view('UniformReport.officeUniformSizeReport')->with(['officename' => $officename])->render(); 
+  $rhtml = view('UniformReport.officeUniformSizeReport')->with(['officename' => $officename,'officedetailsx'=>$officedetailsx])->render(); 
   return response()
      ->json(array(
       'success' => true,

@@ -29,8 +29,8 @@
                         <div class="col-sm-12">                          
                             <select name="officeId" id="officeId" value="" class="form-control" required>
                                              <option value="">Select OfficeName</option>
-                                             @foreach($officename as $officename)
-                                             <option value="{{$officename->Office}}">{{$officename->Office}}</option>
+                                             @foreach($officedetailsx as $officedetailsx)
+                                             <option value="{{$officedetailsx->officeDetails}}">{{$officedetailsx->officeDetails}}</option>
 										
                                             @endforeach
 							</select>

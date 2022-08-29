@@ -5,7 +5,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Office wise uniform report</b>
+                <b>Office Wise Uniform Report</b>
               </h5> </div>
 			</div>
 			<!--/card-header-->

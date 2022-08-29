@@ -70,7 +70,7 @@ div.table2 {
             <br>
             <div class = "row">
                 <div class = "col-md-12">
-                    <p> <strong> Subject:</strong> <u>incremental Order</u></p>
+                    <p> <strong> Subject:</strong> <u>Increment Order</u></p>
                 </div>
             </div>
             <br>

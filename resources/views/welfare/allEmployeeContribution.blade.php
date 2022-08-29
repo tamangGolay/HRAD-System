@@ -27,14 +27,18 @@ a {
     border-color: #dc3545 !important;
 }
  img {
-	width: 70%;
-	height: 20%;
+	width: 80%;
+	height: 90%;
     border-radius: 5px;
     padding: 40% left;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 
 }
+h4{
+   
+   text-decoration: underline; 
+ }
 
 
 </style>

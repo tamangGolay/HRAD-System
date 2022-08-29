@@ -40,7 +40,7 @@
 				
 
 			<div class="textfont form-group row">
-				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Request Date</label>
+				<label for="releasedate" class="col-md-4 col-form-label text-md-right">Date</label>
 					<div class="col-md-6">
 								
 						<input id="requestDate" type="date" class="form-control" name="requestDate"  required>
@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="textfont form-group row"> 
-		   <label class="col-md-4 col-form-label text-md-right" for="relation">&nbsp;&nbsp;&nbsp;Relation:</label>                   
+		   <label class="col-md-4 col-form-label text-md-right" for="relation"  onKeyup="getEmployeeDetails(this.value);">&nbsp;&nbsp;&nbsp;Expiry Of:</label>                   
               <div class="col-sm-6">              
                   <select class="form-control form-select" name="relation"  id="relation" required>                      
 				  
@@ -56,6 +56,15 @@
                 </div>
             </div>
 
+			<div class="textfont form-group row"> 
+		   <label class="col-md-4 col-form-label text-md-right" for="cidNo">&nbsp;&nbsp;&nbsp;CID of relative:</label>                   
+              <div class="col-sm-6">              
+                  <select class="form-control form-select" name="cidNo"  id="cidNo" required>                      
+				  
+                  </select>
+                </div>
+            </div>
+			
 									
 			    <div class="textfont form-group row">
 				<label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
@@ -115,10 +124,16 @@ function getEmployeeDetails(val)
 			  $('#relation').empty();               
                   $.each(data, function(index, facility){
                       $('#relation').append('<option value="'+facility.id+'">'+facility.relation+'</option>');   
-                  })           
+                  })   
+				  
+				  $('#cidNo').empty();               
+                  $.each(data, function(index, facility){
+                      $('#cidNo').append('<option value="'+facility.id+'">'+facility.cIdNo+'</option>');   
+                  })  
                    
-				  console.log(data);                  
-					
+				  console.log(data);    
+
+				    //document.getElementById('cidNo').value = '';  
                     document.getElementById('empName').value = '';                      
                     document.getElementById('empid').innerHTML = '';                   
                     

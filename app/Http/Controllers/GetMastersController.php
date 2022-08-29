@@ -77,7 +77,7 @@ if ($table == "paymentInfo")
                $emp = DB::table('view_wfrelatives')
                ->join('users','users.empId','=','view_wfrelatives.empId')
                     ->where('view_wfrelatives.empId',$value)
-                    ->select('view_wfrelatives.id','relation','empName')
+                    ->select('view_wfrelatives.id','relation','empName','view_wfrelatives.cIdNo')
                     ->get();
 
                 return response()

@@ -53,6 +53,10 @@ div.table2 {
 h4{
   text-decoration: underline; 
 }
+th{
+  font-family:Cambria;
+  font-size:12px;
+}
 </style>
 </head>
 <body>
@@ -66,7 +70,7 @@ h4{
 
         
             <div class = "col-md-8">
-            <div class="notesheet">{{$promotion->date}}</div>
+            <div class="notesheet">{{ date('d-m-Y', strtotime($promotion->date)) }}</div> 
                 <h6> BPC/HRA/HR-04/{{$year->promotionDate}}/{{$promotion->id}} </h6>
             </div>
 <br>

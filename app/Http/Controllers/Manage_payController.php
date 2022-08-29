@@ -17,7 +17,9 @@ class Manage_payController extends Controller
     public function index(Request $request)
     {
 
-        $pay = DB::table('payscalemaster')->where('status', 0);
+        $pay = DB::table('payscalemaster')
+        ->where('status', 0)
+        ->orderBy('payscalemaster.low', 'desc');
         
         if ($request->ajax()) {
             $data = $pay;

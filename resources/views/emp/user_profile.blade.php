@@ -111,7 +111,7 @@
       <div class="card card-green ">
        <div class="card-header bg-green">
         
-        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>User details</h4></div>
+        <div class="col bg-green d-flex justify-content-center">&nbsp;&nbsp;&nbsp;<h4>User Profile</h4></div>
       </div><!--/card-header-->
       <br>
 
@@ -373,9 +373,9 @@
           <!-- <p style="font-size:20px" > <b> *You are kindly requested to vacate the meeting room, if CEO wants to have a meeting.</b></p></div> -->
            <div class="form-group row mb-0" >
               <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
-                <button type="submit" id="book" class="btn nSuccess btn-lg">Save details</button>
+                <button type="submit" id="book" class="btn nSuccess btn-lg">Update details</button>
                 &nbsp;&nbsp;
-                <button type="submit" id="book" class="btn nSuccess btn-lg"><a href="cd/twimc.php?EID={{Auth::user()->empId}}" >Download</a></button>
+                <button type="submit" id="book" class="btn nSuccess btn-lg"><a href="cd/twimc.php?EID={{Auth::user()->empId}}" >Download TWIMC</a></button>
               </div> 
               <br>
               <br>

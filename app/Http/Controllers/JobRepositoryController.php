@@ -27,7 +27,8 @@ class JobRepositoryController extends Controller
 
         
    
-        ->where('jobdescription.status','1');
+        ->where('jobdescription.status','1')
+        ->WhereNull('dateExpired');
         
         if ($request->ajax()) {
             $data = $userList;

@@ -4496,6 +4496,7 @@ if ($request->v == "jobDescription")
       ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'
         ,'users.empName' )
        ->where('jobdescription.status','=',1)
+       ->WhereNull('dateExpired')
     
           ->paginate(10000000);
       $rhtml = view('emp.jobDescriptionRepository')->with(['userList' => $userLists])->render();

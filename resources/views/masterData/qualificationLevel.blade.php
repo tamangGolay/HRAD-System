@@ -29,6 +29,15 @@ a {
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
  
+    <div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b>Qualification Master </b>
+              </h5>
+			</div>
+		
+      </div><br>
+
 <div class="container">
     <a class="btn success" href="javascript:void(0)" id="manageQuali">Add new qualification&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">

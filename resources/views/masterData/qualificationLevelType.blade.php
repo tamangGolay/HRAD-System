@@ -28,7 +28,13 @@ a {
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
- 
+    <div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b>Qualification Level Master </b>
+              </h5>
+			</div> </div> <br>
+
 <div class="container">
     <a class="btn success" href="javascript:void(0)" id="manageQualiLevel">Add new qualification level&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">

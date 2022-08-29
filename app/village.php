@@ -9,7 +9,7 @@ class village extends Model
     //
     protected $table = 'villagemaster';
 
-    protected $fillable = ['id','villageId','villageName','gewogId','status'];
+    protected $fillable = ['id','villageName','gewogId','status'];
 
      public $timestamps = false;
 }

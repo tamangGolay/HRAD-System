@@ -4062,8 +4062,7 @@ if ($request->v == "room_details")
              if ($request->v == "placemaster")
              {
                         
-               $dzongkhag = Dzongkhags::all()
-               ->where('status',0);
+               $dzongkhag = Dzongkhags::all();               
 
                $gewog = gewog::all()
                ->where('status',0);

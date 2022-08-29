@@ -41,7 +41,7 @@ a {
                 <th>Name</th>
                 <th>Date of Birth</th>
                 <th>Relation</th>
-                <th>Action</th> 
+                <th width="13%">Action</th> 
             </tr>
         </thead>
         <tbody>

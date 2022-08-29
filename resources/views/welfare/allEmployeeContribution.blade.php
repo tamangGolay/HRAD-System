@@ -63,7 +63,7 @@ a {
      <div class="col-md-12 ">
             <div class="card">
              <div class="card-header bg-green  d-flex justify-content-center">
-                 <strong>All Employee Contribuation</strong> 
+                 <strong>Bulk upload</strong> 
              </div>
                 <div class="textfont card-body">
                     @if(count($errors) > 0)

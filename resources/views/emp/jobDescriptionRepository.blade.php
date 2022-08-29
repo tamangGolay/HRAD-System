@@ -29,12 +29,17 @@ a {
 
  
 <div class="container">
+
+<div class="card-header bg-green  d-flex justify-content-center"> <h4>View Job Description</h4> </div>
+			       
+      <!--/card-header-->
+      <br>
     <!-- <a class="btn success" href="javascript:void(0)" id="manageknowledge">Add new knowledge&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a> -->
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
             <tr>
-			<th>Sl No</th>
+			                <th>Sl No</th>
                             <th>Employee Id</th>
 							<th>Name</th>
 							<th>Office</th>
@@ -67,9 +72,10 @@ a {
                         <!-- </div> -->
                     <!-- </div> -->
 
-					<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="empId">{{ __('EmpId:') }}</label>
-									<div class="col-sm-8">
+					<div class="form-group ">
+                   
+									<label class="col-sm-4 col-lg-12 " for="empId">{{ __('EmpId') }}</label>
+									<div class="col-sm-8 col-lg-12">
 									<input type="text"  class="form-control" value="" name="empId" id="empId" required readonly> 
 
 									</div>
@@ -83,9 +89,9 @@ a {
 									</div>
 								</div> -->
 
-					<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Office:') }}</label>
-									<div class="col-sm-8">
+					<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="emp_id">{{ __('Office') }}</label>
+									<div class="col-sm-8 col-lg-12">
 									<select name="officeDetails" id="officeDetails" value="" class="form-control" required readonly>
                                           
                                              @foreach($userList as $officeDetails)
@@ -107,10 +113,10 @@ a {
 										
 		
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="solution">{{ __('JobDescription:') }}</label>
-									<div class="col-sm-8">
-									<textarea type="text" rows="14" class="form-control" value="" name="description" id="description" required readonly> 
+								<div class="form-group">
+									<label class="col-sm-4 col-lg-12" for="solution">{{ __('JobDescription') }}</label>
+									<div class="col-sm-8 col-lg-12">
+									<textarea type="text" rows="14" class="form-control col-lg-12" value="" name="description" id="description" required readonly> 
                          			</textarea></div>
 
 									<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
@@ -199,7 +205,7 @@ a {
       var knowledge_id = $(this).data('id');
      
       $.get("{{ route('jobRepository.index') }}" +'/' + knowledge_id +'/edit', function (data) {
-          $('#modelHeading').html("Job description details");
+          $('#modelHeading').html("Job description");
           $('#knowledgeButton').val("edit-room");
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),

@@ -9,7 +9,7 @@ class drungkhag extends Model
     //
     protected $table = 'drungkhagmaster';
 
-    protected $fillable = ['drungkhagid','drungkhagName','dzongkhagId','status'];
+    protected $fillable = ['id','drungkhagName','dzongkhagId','status'];
 
      public $timestamps = false;
 }

@@ -69,7 +69,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>JobDescription Review</b>
+              <b>Review Job Description</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -79,8 +79,6 @@ a {
 							<th>Employee No</th>
 							<th>Name</th>
 							<th>Office</th>
-
-
 							<th class="fat">Action</th>
 						</tr>
 					</thead>
@@ -94,13 +92,8 @@ a {
 								
 							</td>
 
-						
-
-
-
-
 							<td>
-							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$userdetails->id}}" data-original-title="Edit" class="edit mt-1 col-lg-12 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
+							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$userdetails->id}}" data-original-title="Edit" class="edit mt-1 col-lg-12 btn btn-outline-success btn edit"> <i class="fa fa-edit" ></i></a>
 
 							</td>
 						</tr> @endforeach </tbody>
@@ -128,23 +121,23 @@ a {
 				<input type="hidden" class="form-control" name="createdDate" id="createdDate" >
                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Employee Id</label>
+                        <label for="name" class="col-sm-2 col-lg-12 control-label">Employee Id</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="emp_id" name="emp_id" placeholder="emp_id" value="" maxlength="50" required>
                         </div>
                     </div>
      
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Employee Name</label>
+                        <label class="col-sm-2 col-lg-12 control-label">Employee Name</label>
                         <div class="col-sm-12">
                             <input type="text" id="empName" name="empName"  placeholder="empName" value="" class="form-control" required>
                         </div>
                     </div>
       
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Job Description</label>
+                        <label class="col-sm-2 col-lg-12 control-label">Job Description</label>
                         <div class="col-sm-12">
-                            <input type="text" id="jobdescription" name="jobdescription"  placeholder="jobdescription" value="" class="form-control" required>
+                            <textarea type="text" rows="14" id="jobdescription" name="jobdescription"  placeholder="jobdescription" value="" class="form-control" required></textarea>
                         </div>
                     </div>
                 	
@@ -254,7 +247,7 @@ $(function() {
 	$('body').on('click', '.edit', function() {
 		var guestHouse_id = $(this).data('id');
 		$.get("{{ route('job.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
-			$('#modelHeading').html("Edit User");
+			$('#modelHeading').html("Edit");
 			$('#saveBtn').val("edit-book");
 			$('#ajaxModel').modal('show');
 			$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database

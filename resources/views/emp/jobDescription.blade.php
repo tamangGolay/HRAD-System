@@ -42,7 +42,7 @@
   <div class="col-md-12"> 
       <div class="card">
 
-      <div class="card-header bg-green  d-flex justify-content-center"> <h4>Job Description</h4> </div>
+      <div class="card-header bg-green  d-flex justify-content-center"> <h4>Add Job Description</h4> </div>
 			       
       <!--/card-header-->
       <br>  

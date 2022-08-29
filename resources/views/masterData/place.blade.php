@@ -29,6 +29,9 @@ a {
 
  
 <div class="container">
+    <div class=" card-header bg-green text-center mb-3">
+              <h3>Place Master</h3>
+	</div>
     <a class="btn success" href="javascript:void(0)" id="manageplace">Add new place&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
@@ -144,7 +147,15 @@ a {
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Place Category</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required>
+                                <select class="form-control" id="placeCategory" name="placeCategory">
+                                  <option>Village</option>
+                                  <option>Town</option>
+                                  <option>Gewog</option>
+                                  <option>Drungkhag</option>
+                                  <option>Dzongkhag</option>
+                                </select>   
+                        
+                        <!-- <input type="text" class="form-control" id="placeCategory" name="placeCategory" value=""  required> -->
                         </div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-10text-center">

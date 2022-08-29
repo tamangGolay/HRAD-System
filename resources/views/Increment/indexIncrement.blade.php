@@ -104,9 +104,19 @@ div.table2 {
 
                         <tbody>
                         <tr>
-                        @foreach ($increment as $increment)
 
-                          <td class="col1"> {{$increment->id}} </td>
+                        @php
+  $i = 0;
+@endphp
+
+
+
+
+                        @foreach ($increment as $increment)
+                        
+ 
+
+                          <td class="col1"> {{ $i }}  </td>
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>
@@ -114,6 +124,7 @@ div.table2 {
                             <td class="col1"> {{$increment-> newBasic}} </td>
                         </tr>
                         </tbody>
+                        $i++;
                         @endforeach
 
                   </table>

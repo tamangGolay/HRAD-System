@@ -4256,7 +4256,11 @@ if ($request->v == "room_details")
 if ($request->v == "pay_scale")
 {
 
-  
+    $payscale = DB::table('paysclaemaster')
+    ->select('*')
+    ->where('paysclaemaster.status',0)
+    ->orderBy('payscalemaster.low', 'desc');
+    
 
     $rhtml = view('emp.pay_scale')->render();
     return response()

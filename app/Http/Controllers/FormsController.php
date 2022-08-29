@@ -777,10 +777,10 @@ return response()
        //Start oneEmployee
        if ($request->v == "oneEmployee")
        {
-        $officeName = officeName::all();
+        $officedetails = officedetails::all();
 
 
-           $rhtml = view('welfare.oneEmployee')->with(['officeName' => $officeName])
+           $rhtml = view('welfare.oneEmployee')->with(['officedetails' => $officedetails])
            
            ->render();
            return response()

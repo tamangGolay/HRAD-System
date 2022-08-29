@@ -114,8 +114,8 @@
 
 <select class="form-control" name="officeName[]" id="officeName" required>
                      <option value="">Select Office</option>
-                     @foreach($officeName as $officeName)
-                     <option value="{{$officeName->id}}">{{$officeName->longOfficeName}}</option>
+                     @foreach($officedetails as $officedetails)
+                     <option value="{{$officedetails->id}}">{{$officedetails->officeDetails}}</option>
                 @endforeach
     </select>
 

@@ -22,11 +22,7 @@ class JobRepositoryController extends Controller
        
         $userList = DB::table('jobdescription')
                 ->join('officedetails', 'officedetails.id', '=', 'jobdescription.officeId')
-       ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address'
-        )
-
-        
-   
+       ->select('jobdescription.*','officedetails.officeDetails','officedetails.Address')
         ->where('jobdescription.status','1')
         ->WhereNull('dateExpired');
         

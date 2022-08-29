@@ -183,7 +183,7 @@ a {
             {data: 'id', name: 'id',orderable: true, searchable: true},
             {data: 'empId', name: 'empId', orderable: false, searchable: true},
             {data: 'empName', name: 'empName', orderable: false, searchable: true},
-		   {data: 'officeDetails', name: 'officeDetails', orderable: true, searchable: true},
+		   {data: 'officeDetails', name: 'officedetails.officeDetails', orderable: true, searchable: true},
            //{data: 'jobDescription', name: 'description', orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]

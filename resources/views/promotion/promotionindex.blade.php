@@ -17,7 +17,7 @@ a {
         color: black !important;
         text-decoration: none;
         font-family:Cambria;
-  font-size:12px;
+  font-size:12;
     }
     
     
@@ -32,7 +32,7 @@ a {
  table, th, td {
   border-color: #FFFFFF;
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
  
 }
 .col1{
@@ -48,26 +48,31 @@ div.notesheet {
   width: 100px;
   height: 120px;
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
 }
 
 div.table2 {
   position: absolute;
   left: 55;
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
   
 }
 h4{
   text-decoration: underline; 
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
 }
 div{
   font-family:Cambria;
-  font-size:12px;
+  font-size:12;
+}
+h6{
+  font-family:Cambria;
+  font-size:12;
+
 }
 </style>
 </head>

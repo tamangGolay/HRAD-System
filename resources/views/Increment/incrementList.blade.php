@@ -40,7 +40,7 @@ a {
 </head>
  
 <div class="container">   
-<button class="btn btn-success" style="color:white;" href="javascript:void(0)" id="manage">Increment Duelist Records of Employee&nbsp;&nbsp;</button>
+<button class="btn btn-success" style="color:white;" href="javascript:void(0)" id="manage">Increment Due List of Employees&nbsp;&nbsp;</button>
     <table class="table table-bordered data-table" style="width:100%">
         <thead>
             <tr>

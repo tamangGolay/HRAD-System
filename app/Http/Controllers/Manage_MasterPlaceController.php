@@ -6,6 +6,13 @@ use App\place;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use App\Dzongkhags;
+use App\gewog;
+use App\village;
+use App\drungkhag;
+use App\town;
+
+
         
 class Manage_MasterPlaceController extends Controller
 {
@@ -17,6 +24,21 @@ class Manage_MasterPlaceController extends Controller
     public function index(Request $request)
     {
 
+        $dzongkhag = Dzongkhags::all()
+        ->where('status',0);
+
+        $gewog = gewog::all()
+        ->where('status',0);
+
+        $village = village::all()
+        ->where('status',0);
+
+        $drungkhag = drungkhag::all()
+        ->where('status',0);
+
+        $town = town::all()
+        ->where('status',0);
+
         $place = DB::table('placemaster')
         ->join('dzongkhags', 'dzongkhags.id', '=', 'placemaster.dzongkhagId')
         ->join('gewogmaster', 'gewogmaster.id', '=', 'placemaster.gewogId')
@@ -27,7 +49,7 @@ class Manage_MasterPlaceController extends Controller
         // ->select('townmaster.townName','placemaster.placeCategory','placemaster.id','villagemaster.villageName',
         //  'drungkhagmaster.drungkhagName','gewogmaster.gewogName','dzongkhags.Dzongkhag_Name')
        
-        ->select('placemaster.placeCategory','drungkhagmaster.drungkhagName','townmaster.townName','placemaster.id','villagemaster.villageName','dzongkhags.Dzongkhag_Name',
+        ->select('placemaster.*','placemaster.placeCategory','drungkhagmaster.drungkhagName','townmaster.townName','placemaster.id','villagemaster.villageName','dzongkhags.Dzongkhag_Name',
         'gewogmaster.gewogName')
         ->where('placemaster.status','0');
         
@@ -51,7 +73,9 @@ class Manage_MasterPlaceController extends Controller
                     ->make(true);
         }
       
-        return view('masterData.place',compact('place'));
+        return view('masterData.place',compact('place','dzongkhag',
+    'gewog','drungkhag','town','village'
+    ));
     }
 
    
@@ -64,12 +88,14 @@ class Manage_MasterPlaceController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         place::updateOrCreate(['id' => $request->id],
-                ['villageId' => $request->villageId,
-                'townId' => $request->townId,
-                'dzongkhagId' => $request->dzongkhagId,
-                'drungkhagId' => $request->drungkhagId,
-                'gewogId' => $request->gewogId,
+                ['villageId' => $request->villageName,
+                'townId' => $request->townName,
+                'dzongkhagId' => $request->Dzongkhag_Name,
+                'drungkhagId' => $request->drungkhagName,
+                'gewogId' => $request->gewogName,
                 'placeCategory' => $request->placeCategory]);        
    
         return response()->json(['success'=>'Place saved successfully.']);

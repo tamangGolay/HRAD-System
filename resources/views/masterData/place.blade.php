@@ -73,7 +73,7 @@ a {
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="townId" id="townId" value="" class="form-control" required>
+                            <select name="townName" id="townId" value="" class="form-control" required>
                                              <option value="">Select Town</option>
                                              @foreach($town as $town)
 
@@ -88,7 +88,7 @@ a {
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="villageId" id="villageId" value="" class="form-control"  required>
+                            <select name="villageName" id="villageId" value="" class="form-control"  required>
                                              <option value="">Select Village</option>
                                              @foreach($village as $village)
 
@@ -103,7 +103,7 @@ a {
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="drungkhagId" id="drungkhagId" value="" class="form-control" required>
+                            <select name="drungkhagName" id="drungkhagId" value="" class="form-control" required>
                                              <option value="">Select Drungkhag</option>
                                              @foreach($drungkhag as $drungkhag)
 
@@ -119,7 +119,7 @@ a {
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Gewog</label>
                         <div class="col-sm-12">
                             <!-- <input type="text" class="form-control" id="gewogName" name="gewogName" value=""  required> -->
-                            <select name="gewogId" id="gewogId" value="" class="form-control" required>
+                            <select name="gewogName" id="gewogId" value="" class="form-control" required>
                                              <option value="">Select Gewog</option>
                                              @foreach($gewog as $gewog)
 
@@ -134,7 +134,7 @@ a {
                         <div class="col-sm-12">
                             <!-- <input type="text" id="dzongkhagId" name="dzongkhagId"   class="form-control" required> -->
 
-                            <select name="dzongkhagId" id="dzongkhagId" value="" class="form-control" required>
+                            <select name="Dzongkhag_Name" id="dzongkhagId" value="" class="form-control" required>
                                              <option value="">Select Dzongkhag</option>
                                              @foreach($dzongkhag as $dzongkhag)
 
@@ -207,7 +207,7 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        "searching": true,
+        // "searching": true,
 		"ordering": true,
 		"paging": true,
         ajax: "{{ route('place.index') }}",
@@ -217,7 +217,7 @@ a {
             {data: 'townName', name: 'townmaster.townName', orderable: false, searchable: true},
              {data: 'gewogName', name: 'gewogmaster.gewogName', orderable: false, searchable: true},
              {data: 'drungkhagName', name: 'drungkhagmaster.drungkhagName', orderable: false, searchable: true},
-            {data: 'Dzongkhag_Name', name: '.dzongkhags.Dzongkhag_Name', orderable: false, searchable: true},
+            {data: 'Dzongkhag_Name', name: '.dzongkhags.Dzongkhag_Name', orderable: false, searchable: false},
             {data: 'placeCategory', name: 'placeCategory', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},

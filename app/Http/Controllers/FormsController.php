@@ -4141,7 +4141,7 @@ if ($request->v == "room_details")
          
          if ($request->v == "contractdetails")
          {
-            $employeen = EmployeeMaster::all()
+            $employeen = User::all()
             ->where('status',0);
            
             $contractdetails = DB::table('contractdetailsmaster')

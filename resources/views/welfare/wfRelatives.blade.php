@@ -69,7 +69,7 @@ a {
                                              <option value="">Select Employee Number</option>
                                              @foreach($employeen as $employeen)
 
-                                             <option value="{{$employeen->empId}}">{{$employeen->empId}}</option>
+                                             <option value="{{$employeen->id}}">{{$employeen->empId}}</option>
 										@endforeach
 							</select>
 
@@ -152,7 +152,7 @@ a {
         ajax: "{{ route('contractdetail.index') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'empId', name: 'users.empId'},
+            {data: 'empId', name: 'employeemaster.empId'},
             {data: 'startDate', name: 'startDate'},
             {data: 'endDate', name: 'endDate'},
             {data: 'termNo', name: 'termNo'},

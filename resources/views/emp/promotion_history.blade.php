@@ -27,8 +27,18 @@ a {
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
- 
+    
 <div class="container">
+<div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b> Promotion Records </b>
+              </h5>
+			</div>
+		
+      </div><br>
+      <br>
+      
     <!-- <a class="btn success" href="javascript:void(0)" id="managepromotionHistory">Add Promotion Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a> -->
     <table class="table table-bordered data-table">
     @csrf

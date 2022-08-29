@@ -47,7 +47,7 @@ div.table2 {
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
         <div class = "col-md-8">
-            <div class="notesheet">{{$increment1->createdOn}}</div>
+            <div class="notesheet">{{date('d-m-Y', strtotime($increment1->createdOn))}}</div> 
                 <p> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </p>
             </div>
 
@@ -160,7 +160,7 @@ div.table2 {
   </div>
   <div class = "row">
         <!-- <img src="{{asset('/cd/images/footer.jpg')}}" width="40%" height="100px"> -->
-        <img src="{{asset('/cd/images/footer.png')}}" width="100%" height="40px">
+        <img src="{{asset('/cd/images/footer.png')}}" width="80%" height="40px">
 
 </div>
 

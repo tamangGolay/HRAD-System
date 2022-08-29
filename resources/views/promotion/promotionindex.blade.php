@@ -16,6 +16,8 @@
 a {
         color: black !important;
         text-decoration: none;
+        font-family:Cambria;
+  font-size:12px;
     }
     
     
@@ -29,6 +31,8 @@ a {
 
  table, th, td {
   border-color: #FFFFFF;
+  font-family:Cambria;
+  font-size:12px;
  
 }
 .col1{
@@ -43,17 +47,25 @@ div.notesheet {
   right: 45;
   width: 100px;
   height: 120px;
+  font-family:Cambria;
+  font-size:12px;
 }
 
 div.table2 {
   position: absolute;
   left: 55;
+  font-family:Cambria;
+  font-size:12px;
+  font-family:Cambria;
+  font-size:12px;
   
 }
 h4{
   text-decoration: underline; 
+  font-family:Cambria;
+  font-size:12px;
 }
-th{
+div{
   font-family:Cambria;
   font-size:12px;
 }

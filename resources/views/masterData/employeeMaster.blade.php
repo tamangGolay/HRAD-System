@@ -187,9 +187,9 @@
 							<div class="col-sm-10 col-md-6 col-lg-4">
 								<select name="office" id="office" value="" class="form-control" required>
 												<option value="">Select Office</option>
-												@foreach($ff as $ff)
+												@foreach($officedetails as $ff)
 
-												<option value="{{$ff->id}}">{{$ff->longOfficeName}}</option>
+												<option value="{{$ff->id}}">{{$ff->officeDetails}}</option>
 											@endforeach
 								</select>
 							</div>
@@ -236,13 +236,13 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
+					<!-- <div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employment Type:') }}</label>
 						<div class="col-md-4">
 							<input id="employmentType" type="text" autocomplete="off" placeholder="eg: regular/contract" class="form-control"
 							 name="employmentType" required>
 						</div>
-					</div>
+					</div> -->
 
 					
 
@@ -322,7 +322,7 @@
 								
 								</table> -->
 								<div align="center" class="col-lg-12">
-								<input type="submit" name="submit" class="btn btn-outline-success col-lg-2" value="Insert" />
+								<input type="submit" name="submit" class="btn btn-outline-success col-lg-2" value="Add" />
 								</div>
 								</div>
 								</div>

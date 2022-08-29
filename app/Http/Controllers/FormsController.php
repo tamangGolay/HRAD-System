@@ -3882,7 +3882,7 @@ if ($request->v == "room_details")
             ));
         }
 
-        //employeemaster
+       //employeemaster
          //Golay's part from here
          if ($request->v == "employeemaster")
          {
@@ -3898,6 +3898,8 @@ if ($request->v == "room_details")
             $gg = pay::all();
             $ff = officeName::all(); 
             $pp = OfficeAddress::all();
+            $officedetails = Officedetails::all();     
+
            
 
 
@@ -3931,7 +3933,7 @@ if ($request->v == "room_details")
                ->select('office_address.Address')
                ->where('employeemaster.status', '=', 0);
 
-            $rhtml = view('masterData.employeeMaster')->with(['dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp,'dzongkhag' => $dzongkhag])->render();
+            $rhtml = view('masterData.employeeMaster')->with(['officedetails'=>$officedetails,'dg' => $dg, 'bk' => $bk,'roles' => $roles,'rg' => $rg, 'gg' => $gg, 'ff' => $ff, 'pp' => $pp,'dzongkhag' => $dzongkhag])->render();
             return response()
                 ->json(array(
                 'success' => true,

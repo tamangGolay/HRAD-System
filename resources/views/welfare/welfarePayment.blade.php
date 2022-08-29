@@ -3,7 +3,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="chgpsswd card-header bg-green text-center">
-                     <h4>Welfare Release</h4>
+                     <h4>Release Welfare Payment</h4>
                     </div>
 				<div class="card-body">
 					<form method="POST" action="{{route('paymentRelease')}}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf

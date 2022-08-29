@@ -130,7 +130,7 @@
 
                 <div class="form-group row mb-0">
                     <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
-                        <button type="submit" class="btn btn-outline-success btn-save" id="bsubmit">{{ __('Insert Record') }}</button>
+                        <button type="submit" class="btn btn-outline-success btn-save" id="bsubmit">{{ __('Save') }}</button>
                     </div>
                 </div>   
                 </div>

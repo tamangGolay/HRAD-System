@@ -68,7 +68,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>User List</b>
+              <b>Uniform Report</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -101,10 +101,6 @@ a {
 								<td> {{$rv->uKSize}}  </td>
 								<td> {{$rv->sizeName}}  </td>
 						
-
-
-
-
 							<td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
 							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$rv->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
@@ -407,7 +403,7 @@ $(function() {
 				$('body').on('click', '.delete', function() {
 					var guestHouse_id = $(this).data('id');
 					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
-						$('#modelUserHeading').html("Do you want to delete user?");
+						$('#modelUserHeading').html("Do you want to delete?");
 						$('#saveUserBtn').val("edit-book");
 						$('#userModel').modal('show');
 						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database

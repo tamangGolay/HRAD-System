@@ -33,7 +33,7 @@
       <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b>Individual Employee Contribution</b>
+                <b> Add Individual Employee Contribution</b>
               </h5>
 			</div>
 		
@@ -48,8 +48,8 @@
             <!-- <input type="text" id="myInput2" /> -->
             <!-- <input type="text" id="myInput3" /> -->
 
-            <table id="emptbl" class="table table-bordered border-primar">
-                <thead class="bg-green">
+            <table id="emptbl" class="table table-bordered border-dark">
+                <thead style="background-color: #E7E7E7;">
                     <tr>
                         <th>Employee Number</th>
                         <th>Amount</th>
@@ -60,8 +60,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <h5 class="text-center">Total Number of Records</h5>
-                <tr><input type="text" class="form-control" id="slno" name="slno[]" readonly></tr> 
+                <tr><input type="hidden" class="form-control" id="slno" name="slno[]" readonly></tr> 
 
                     <tr> 
                     <?php 
@@ -127,7 +126,7 @@
             <table align= "center">
                 <br>
                 <tr> 
-                    <td><button type="button" class="btn btn-outline-info" onclick="addRows()">Add Records</button></td>
+                    <td><button type="button" class="btn btn-outline-info" onclick="addRows()">Add More</button></td>
                     <td><button type="button" class="btn btn-outline-danger" onclick="deleteRows()">Remove</button></td>
                     <td><button type="submit" class="btn btn-outline-success">Save Records</button></td> 
                 </tr>  

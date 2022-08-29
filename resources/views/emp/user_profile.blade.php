@@ -327,7 +327,7 @@
 
             
             <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right" for="lastdop">&nbsp;&nbsp;&nbsp;Last dop:</label>
+              <label class="col-md-4 col-form-label text-md-right" for="lastdop">&nbsp;&nbsp;&nbsp;Last D.o.P:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
                 <input type="text" class="form-control" name="lastdop" id="lastdop" placeholder="lastdop" autocomplete="off" readonly required>                  
                 </div>

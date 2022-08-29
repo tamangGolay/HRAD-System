@@ -122,8 +122,8 @@ $(document).ready(function(){
                 },
 
                 {
-                    data:'amount',
-                    name:'amount'
+                    data:'refundAmount',
+                    name:'refundAmount'
                 },
                 {
                     data:'refundDate',

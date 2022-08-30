@@ -23,15 +23,19 @@ class TransferHistoryReportController extends Controller
         ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
         ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
         ->join('officedetails AS D', 'D.id', '=', 'transferhistory.id')
+        ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')
         ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')
         ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId')       
 
-        ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks','B.longOfficeName as tooffname','D.reportToOffice as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit','officedetails.longOfficeName','transferproposal.reasonForTransfer','employee4twimc.empName','employee4twimc.designation','employee4twimc.grade')
-        ->where('transferhistory.status','=', 'Closed')
-            
-        ->where('transferhistory.id','=',$request->offname)
-        ->where('transferhistory.id','=',$request->transferDate)
-         ->get();
+        ->select('E.reportToOffice as oficereoprtf','transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks',
+        'B.longOfficeName as tooffname','D.reportToOffice as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit',
+        'officedetails.longOfficeName','transferproposal.reasonForTransfer',
+         'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
+       
+        ->where('transferhistory.status','=', 'Closed')            
+        ->where('transferhistory.transferFrom','=',$request->transferFrom)
+        ->where('transferhistory.transferDate','=',$request->transferDate)
+         ->first();
       }
       //When the report page loads 
       else
@@ -43,12 +47,18 @@ class TransferHistoryReportController extends Controller
         ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
         ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
         ->join('officedetails AS D', 'D.id', '=', 'transferhistory.reportToOffice')
-        ->join('officedetails AS C', 'C.id', '=', 'transferhistory.reportToOfficeF') 
+        ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')
 
         ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id') 
         ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
 
-        ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks','B.officeDetails as tooffname','D.officeDetails as oficereoprt','C.officeDetails as oficereoprtf','transferhistory.transferType','transferhistory.transferBenefit','officedetails.officeDetails','transferproposal.reasonForTransfer','employee4twimc.empName','employee4twimc.designation','employee4twimc.grade')
+        ->select('E.reportToOffice as oficereoprtf','transferhistory.empId',
+        'transferhistory.transferDate','transferproposal.hRRemarks',
+        'B.officeDetails as tooffname','D.officeDetails as oficereoprt',
+        'transferhistory.transferType','transferhistory.transferBenefit',
+        'officedetails.officeDetails','transferproposal.reasonForTransfer',
+         'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
+        
         ->where('transferhistory.status','=', 'Closed')
         ->get();
       }

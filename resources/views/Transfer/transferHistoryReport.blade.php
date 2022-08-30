@@ -27,7 +27,7 @@
                     <div class="col-lg-6 col-sm-12 col-md-6">
                     <label class="col-md-4 col-form-label text-md-left" for="stardate">Office Name</label>
                         <!-- <input type="date" name="filter_startdate" id="filter_startdate" placeholder="Start Date" class="form-control" required> -->
-                        <select class="col-lg-12 col-sm-12 form-control" name="offname" id="offname" value="" required>
+                        <select class="col-lg-12 col-sm-12 form-control" name="transferFrom" id="transferFrom" value="" required>
                                              <option value="">Select Office Report to</option>
                                              @foreach($tranfhisrepo as $tranfhisrepo)
                                              <option value="{{$tranfhisrepo->id}}">{{$tranfhisrepo->officeDetails}}</option>
@@ -73,13 +73,14 @@
             <th>Grade</th>
             <th>Current Office</th>
             <th>New Office</th>
-            <th>Report to Office</th>
-            <th>Report to OfficeF</th>
+            <th>Report to Office(CO)</th>
+            <th>Report to Office(NO)</th>
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>
-            <th>Transfer Reason</th>
+            <!-- <th>Transfer Reason</th> -->
+            <!-- <th>Transfer Reason</th>
             <th>Transfer Date</th>
-            <th>Remarks</th>
+            <th>Remarks</th> -->
         </tr>
          </thead>
      </table>
@@ -96,7 +97,7 @@ $(document).ready(function(){
 
     fill_datatable();
 
-    function fill_datatable(offname = '', transferDate = '')
+    function fill_datatable(transferFrom = '', transferDate = '')
     {
         var dataTable = $('#report_data').DataTable({
 
@@ -114,7 +115,7 @@ $(document).ready(function(){
 
             ajax:{
                 url: "{{ route('transferhistoryreport.index') }}",
-                data:{offname:offname, transferDate:transferDate}
+                data:{transferFrom:transferFrom, transferDate:transferDate}
             },
             columns: [
 
@@ -122,18 +123,18 @@ $(document).ready(function(){
                     data:'empId',
                     name:'empId'
                 },
-                {
-                    data:'empName',
-                    name:'empName'
-                },
-                {
-                    data:'designation',
-                    name:'designation'
-                },
-                {
-                    data:'grade',
-                    name:'grade'
-                },
+                // {
+                //     data:'empName',
+                //     name:'empName'
+                // },
+                // {
+                //     data:'designation',
+                //     name:'designation'
+                // },
+                // {
+                //     data:'grade',
+                //     name:'grade'
+                // },
                 {
                     data:'officeDetails',
                     name:'officeDetails'
@@ -176,13 +177,13 @@ $(document).ready(function(){
 
 
     $('#filter').click(function(){
-        var offname = $('#offname').val();
+        var transferFrom = $('#transferFrom').val();
         var transferDate = $('#transferDate').val();
 
         if(transferDate != '' &&  transferDate != '')
         {
             $('#report_data').DataTable().destroy();
-            fill_datatable(offname, transferDate);
+            fill_datatable(transferFrom, transferDate);
         }
         else
         {
@@ -191,7 +192,7 @@ $(document).ready(function(){
     });
 
     $('#reset').click(function(){
-        $('#offname').val('');
+        $('#transferFrom').val('');
         $('#transferDate').val('');
         $('#report_data').DataTable().destroy();
         fill_datatable();

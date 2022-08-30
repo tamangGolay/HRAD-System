@@ -52,7 +52,6 @@
             <th>New Office</th>
             <th>Report to Office(CO)</th>
             <th>Report to Office</th>            
-            
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>    
             <th>Transfer Reason</th>

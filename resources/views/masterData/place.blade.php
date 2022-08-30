@@ -30,7 +30,7 @@ a {
  
 <div class="container">
 <div class=" card-header bg-green text-center mb-3">
-              <h3>Place Master</h3>
+              <h5>Place Master</h5>
 	</div>
     <a class="btn success" href="javascript:void(0)" id="manageplace">Add new place&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">
@@ -207,7 +207,7 @@ a {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        // "searching": true,
+         "searching": true,
 		"ordering": true,
 		"paging": true,
         ajax: "{{ route('place.index') }}",
@@ -217,7 +217,7 @@ a {
             {data: 'townName', name: 'townmaster.townName', orderable: false, searchable: true},
              {data: 'gewogName', name: 'gewogmaster.gewogName', orderable: false, searchable: true},
              {data: 'drungkhagName', name: 'drungkhagmaster.drungkhagName', orderable: false, searchable: true},
-            {data: 'Dzongkhag_Name', name: '.dzongkhags.Dzongkhag_Name', orderable: false, searchable: false},
+            {data: 'Dzongkhag_Name', name: 'dzongkhags.Dzongkhag_Name', orderable: false, searchable: true},
             {data: 'placeCategory', name: 'placeCategory', orderable: false, searchable: true},
 
             {data: 'action', name: 'action', orderable: true, searchable: false},

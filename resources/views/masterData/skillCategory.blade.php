@@ -36,7 +36,7 @@ a {
             <tr>
                 <th>id</th>
                 <th>Category Name</th>
-                <th>action</th>     
+                <th>Action</th>     
             </tr>
         </thead>
         <tbody>

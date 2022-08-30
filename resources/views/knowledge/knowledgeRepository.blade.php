@@ -61,14 +61,9 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
 
-                <!-- <div class="form-group"> -->
-                        <!-- <label for="name" class="col-sm-2 control-label">knowledgeId</label> -->
-                        <!-- <div class="col-sm-12"> -->
+                
                         <input type="hidden" class="form-control" name="id" id="knowledge_id">
-                        <!-- <input type="text" class="form-control" id="knowledgeName" name="knowledgeName" value=""  required> -->
-
-                        <!-- </div> -->
-                    <!-- </div> -->
+                        
 
 					<div class="form-group row">
 									<label class="col-sm-2 text-md-right" for="empId">{{ __('EmpId:') }}</label>
@@ -182,11 +177,10 @@ a {
         ajax: "{{ route('knowledge.index') }}",
         columns: [
             {data: 'id', name: 'id',orderable: true, searchable: true},
-            {data: 'empName', name: 'empName', orderable: false, searchable: true},
-			// {data: 'mobileNo', name: 'mobileNo', orderable: true, searchable: true},
+            {data: 'empName', name: 'empName', orderable: false, searchable: true},			
 			 {data: 'problem', name: 'problem', orderable: false, searchable: true},
             {data: 'solution', name: 'solution', orderable: true, searchable: true},
-			{data: 'officeDetails', name: 'officeDetails', orderable: true, searchable: true},
+			{data: 'officeDetails', name: 'officedetails.officeDetails', orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -213,11 +207,9 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#knowledge_id').val(data.id);
 		  $('#empName').val(data.empName); //input id,database
-		  $('#empId').val(data.createdBy); //input id,database
-		  $('#office').val(data.Address); //input id,database
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeDetails').val(data.id); //input id,database
+		 $('#officeId').val(data.officeId); //input id,database
 		 $('#approvedBy').val(data.approvedBy); //input id,database
 
 
@@ -284,9 +276,12 @@ a {
           $('#knowledgeModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#knowledge_id').val(data.id);
-          $('#knowledgeClass').val(data.knowledgeClass); //input id,database
-            $('#knowledgeName').val(data.knowledgeName); //input id,database
-          $('#dzongkhagId').val(data.dzongkhagId);
+		  $('#empName').val(data.empName); //input id,database
+
+          $('#problem').val(data.problem); //input id,database
+         $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
+		 $('#officeId').val(data.officeId); //input id,database
+		 $('#approvedBy').val(data.approvedBy); //input id,database
       })
    });
    

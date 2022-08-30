@@ -515,7 +515,11 @@ transferProposal::updateOrCreate(['id' => $id->id],
 
 public function HRReviewTransfer(Request $request)
 {
+    
 
+  
+    $dt = date('Y-m-d');
+    
     if($request->remarks == "Open" ){    
 
         $id = DB::table('transferproposal')->select('id')
@@ -576,11 +580,11 @@ public function HRReviewTransfer(Request $request)
             $a->transferType = $transferType->transferType;
             $a->transferBenefit = $transferBenefit->transferBenefits;
             $a->status = $request->remarks; 
-            $a->transferDate = $request->requestDate;
+            $a->transferDate = $dt;
             $a->orderReleasedBy =  $request->empId;
             $a->reportToOffice = $reportTo->reportToOffice;
             $a->reportToOfficeF = $reportTof->reportToOffice;
-            $a->orderReleasedOn = $request->requestDate;
+            $a->orderReleasedOn = $dt;
             $a->save();   
             
             $hraction='approved';

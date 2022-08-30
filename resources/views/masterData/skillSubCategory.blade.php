@@ -35,7 +35,7 @@ a {
         <thead>
             <tr>
 
-                <th>Id</th>
+                <th>Sl.No</th>
                 <th>Sub Category Name</th>
                 <th>Category Name</th>
                 <th>Action</th>

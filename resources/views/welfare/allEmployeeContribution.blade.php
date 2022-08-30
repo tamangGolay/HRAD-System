@@ -118,7 +118,7 @@ h4{
             <br>
 
         <div>
-        <img  class="img-responsive center-block d-block mx-auto" src="{{asset('/cd/images/sample.png')}}">
+        <img  class="img-responsive center-block d-block mx-auto" src="{{asset('/cd/images/sample.PNG')}}">
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>

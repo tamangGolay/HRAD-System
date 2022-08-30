@@ -186,7 +186,7 @@ a {
 			// {data: 'mobileNo', name: 'mobileNo', orderable: true, searchable: true},
 			 {data: 'problem', name: 'problem', orderable: false, searchable: true},
             {data: 'solution', name: 'solution', orderable: true, searchable: true},
-			{data: 'officeDetails', name: 'officedetails.officeDetails', orderable: true, searchable: true},
+			{data: 'officeDetails', name: 'officeDetails', orderable: true, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
     });
@@ -217,7 +217,7 @@ a {
 		  $('#office').val(data.Address); //input id,database
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeDetails').val(data.officeDetails); //input id,database
+		 $('#officeDetails').val(data.id); //input id,database
 		 $('#approvedBy').val(data.approvedBy); //input id,database
 
 

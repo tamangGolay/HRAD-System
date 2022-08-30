@@ -161,7 +161,7 @@ div.table2 {
   </div>
   <div class = "row">
         <!-- <img src="{{asset('/cd/images/footer.jpg')}}" width="40%" height="100px"> -->
-        <img src="{{asset('/cd/images/footer.png')}}" width="80%" height="40px">
+        <img src="{{asset('/cd/images/footer.PNG')}}" width="80%" height="40px">
 
 </div>
 

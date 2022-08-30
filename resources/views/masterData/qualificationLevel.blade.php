@@ -232,7 +232,7 @@ a {
             document.body.appendChild(alt);                 
        
             document.body.appendChild(alt);
-            $.get('/getView?v=qualilevelmaster',function(data){
+            $.get('/getView?v=qualificationmaster',function(data){
             $('#contentpage').empty();                          
             $('#contentpage').append(data.html);
             });
@@ -291,7 +291,7 @@ a {
               alt.parentNode.removeChild(alt);
              },4500);
             document.body.appendChild(alt);
-            $.get('/getView?v=qualilevelmaster',function(data){
+            $.get('/getView?v=qualificationmaster',function(data){
             $('#contentpage').empty();                          
             $('#contentpage').append(data.html);
             });

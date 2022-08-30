@@ -209,7 +209,7 @@
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="fixed">&nbsp;&nbsp;&nbsp;Fixed number:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="fixed" id="fixed" placeholder="Fixed Number"  required>                  
+                <input type="text" class="form-control" name="fixed" id="fixed" placeholder="Fixed Number"  >                  
                 </div>
             </div>
 
@@ -217,7 +217,7 @@
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="extension">&nbsp;&nbsp;&nbsp;Extension:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">
-                <input type="text" class="form-control" name="extension" id="extension" placeholder="Extension Number"  required>                  
+                <input type="text" class="form-control" name="extension" id="extension" placeholder="Extension Number" >                  
                 </div>
             </div>
 

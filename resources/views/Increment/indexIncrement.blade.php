@@ -135,11 +135,12 @@ div.table2 {
                    <div class = "col-md-12 ">
                     <p> Yours Sincerely </p></div>
                 </div>
-                <br><br>
+                <br>
 
                 <div class = "row">
                    <div class = "col-md-12 increment1">
                    <img src="{{asset('/cd/images/hrsign.gif')}}" width="20%" height="30px">
+                   <br>
                     <p> {{$increment1-> empId }} </p>
                     <p> {{$GmName-> empName }} </p>
                     <p> General Manager-HR </p>

@@ -6066,17 +6066,24 @@ if ($request->v == "transferhistoryReport")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
     ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
     ->join('officedetails AS D', 'D.id', '=', 'transferhistory.reportToOffice')
-    // ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')
+    ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')
     ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')       
-    ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
+    // ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
 
-    ->select('transferhistory.empId','transferhistory.transferDate',
+    ->select('E.officeDetails as oficereoprtf','transferhistory.empId','transferhistory.transferDate',
     'transferproposal.hRRemarks','B.officeDetails as tooffname',
     'D.officeDetails as oficereoprt',
     'transferhistory.transferType',
     'transferhistory.transferBenefit','officedetails.officeDetails',
-    'transferproposal.reasonForTransfer',
-     'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
+    'transferproposal.reasonForTransfer')
+    
+    // ->select('transferhistory.empId','transferhistory.transferDate',
+    // 'transferproposal.hRRemarks','B.officeDetails as tooffname',
+    // 'D.officeDetails as oficereoprt',
+    // 'transferhistory.transferType',
+    // 'transferhistory.transferBenefit','officedetails.officeDetails',
+    // 'transferproposal.reasonForTransfer',
+    //  'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
 
     ->where('transferhistory.status','=', 'Closed')
 

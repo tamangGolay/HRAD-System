@@ -43,19 +43,20 @@ class TransferHistoryReportController extends Controller
        
 
         $review = DB::table('transferhistory')
-        
+       
         ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
         ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
-        ->join('officedetails AS D', 'D.id', '=', 'transferhistory.reportToOffice')  
-        ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id') 
-        ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
-
-        ->select('transferhistory.empId',
-        'transferhistory.transferDate','transferproposal.hRRemarks',
-        'B.officeDetails as tooffname','D.officeDetails as oficereoprt',
-        'transferhistory.transferType','transferhistory.transferBenefit',
-        'officedetails.officeDetails','transferproposal.reasonForTransfer',
-         'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
+        ->join('officedetails AS D', 'D.id', '=', 'transferhistory.reportToOffice')
+        ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')
+        ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')       
+        // ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId') 
+    
+        ->select('E.officeDetails as oficereoprtf','transferhistory.empId','transferhistory.transferDate',
+        'transferproposal.hRRemarks','B.officeDetails as tooffname',
+        'D.officeDetails as oficereoprt',
+        'transferhistory.transferType',
+        'transferhistory.transferBenefit','officedetails.officeDetails',
+        'transferproposal.reasonForTransfer')
         
         ->where('transferhistory.status','=', 'Closed')
         ->get();

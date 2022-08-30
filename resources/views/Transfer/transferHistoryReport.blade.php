@@ -25,30 +25,7 @@
                 
                     <div class="form-group row col-sm-12 col-md-12">
                     <div class="col-lg-6 col-sm-12 col-md-6">
-            <label class="col-md-4 col-form-label text-md-left" for="stardate">Office Name</label>
-                        
-                <select class="col-lg-12 col-sm-12 form-control" name="transferFrom" id="transferFrom" value="" required>
-                                     <option value="">Select Office Report to</option>
-                                             @foreach($tranfhisrepo as $tranfhisrepo)
-                                             <option value="{{$tranfhisrepo->id}}">{{$tranfhisrepo->officeDetails}}</option>
-										@endforeach
-							</select> 
-                    </div>  
-						
-                    
-                    <div class="col-lg-6 col-sm-12 col-md-6">
-                    <label class="col-md-4 col-form-label text-md-left" for="stardate">Transfer Date</label>
-
-                        <input type="date" name="transferDate" id="transferDate"  placeholder="Transfer Date" class="form-control" required>
-                       
-                    </div>
-                  </div>
-                    
-                    <div class="form-group textfont" align="center">
-                        <button type="button" style="width:90px" name="filter" id="filter" class="btn btn-success">Filter</button>
-
-                        <button type="button"  style="width:90px" name="reset" id="reset" class="btn btn-warning">Reset</button>
-                    </div>
+            
                 </div>
 
             </div>
@@ -68,12 +45,14 @@
          <tr class="text-nowrap">
 
             <th>Employee Id</th>
-            <th>Name</th>
-            <th>Designation</th>
-            <th>Grade</th>
+            <!-- <th>Name</th> -->
+            <!-- <th>Designation</th> -->
+            <!-- <th>Grade</th> -->
             <th>Current Office</th>
             <th>New Office</th>
-            <th>Report to Office(CO)</th>            
+            <th>Report to Office(CO)</th>
+            <th>Report to Office</th>            
+            
             <th>Transfer Type</th>
             <th>Transfer Benefit</th>    
             <th>Transfer Reason</th>
@@ -121,18 +100,7 @@ $(document).ready(function(){
                     data:'empId',
                     name:'empId'
                 },
-                {
-                    data:'empName',
-                    name:'empName'
-                },
-                {
-                    data:'designation',
-                    name:'designation'
-                },
-                {
-                    data:'grade',
-                    name:'grade'
-                },
+                
                 {
                     data:'officeDetails',
                     name:'officeDetails'
@@ -145,6 +113,12 @@ $(document).ready(function(){
                     data:'oficereoprt',
                     name:'oficereoprt'
                 },
+
+                {
+                    data:'oficereoprtf',
+                    name:'oficereoprtf'
+                },
+                
                
                 {
                     data:'transferType',

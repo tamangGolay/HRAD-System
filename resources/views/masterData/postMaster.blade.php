@@ -83,14 +83,14 @@ a {
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Position Specific Allowance</label>
                         <div class="col-sm-12">
-                            <input type="text" id="positionSpecificAllowance" name="positionSpecificAllowance"  placeholder="" class="form-control" required>
+                            <input type="number" id="positionSpecificAllowance" name="positionSpecificAllowance"  placeholder="eg:500" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Contract Allowance</label>
                         <div class="col-sm-12">
-                            <input type="text" id="contractAllowance" name="contractAllowance"  placeholder="" class="form-control" required>
+                            <input type="number" id="contractAllowance" name="contractAllowance"  placeholder="eg:500" class="form-control" required>
                         </div>
                     </div>
 
@@ -99,13 +99,18 @@ a {
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Communication Allowance</label>
                         <div class="col-sm-12">
-                            <input type="text" id="communicationAllowance" name="communicationAllowance"  placeholder="" class="form-control" required>
+                            <input type="number" id="communicationAllowance" name="communicationAllowance"  placeholder="eg:500" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Type</label>
                         <div class="col-sm-12">
-                            <input type="text" id="type" name="type"  placeholder="" class="form-control" required>
+                            <!-- <input type="text" id="type" name="type"  placeholder="" class="form-control" required> -->
+                            <select class="form-control" id="type" name="type" required>
+                                  <option>Select Your Employment Type</option>
+                                  <option>Regular</option>
+                                  <option>Contract</option>                            
+                                </select>
                         </div>
                     </div>
       

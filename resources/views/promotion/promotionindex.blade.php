@@ -45,9 +45,7 @@ a {
 div.notesheet {
   position: absolute;
   right: 45;
-  width: 100px;
-  height: 120px;
-  font-family:Cambria;
+   font-family:Cambria;
   font-size:12;
 }
 
@@ -165,7 +163,7 @@ h6{
                               Yours sincerely,
                                             </th>
                                         </tr>
-
+<br>
                                         @if($gradeId->newGrade <= 7)
                                         <img src="{{asset('/cd/images/ceosign.png')}}" width="40%" height="50px">
                                         <br>

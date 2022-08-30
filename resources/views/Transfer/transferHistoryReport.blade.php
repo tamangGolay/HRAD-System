@@ -76,11 +76,10 @@
             <th>Report to Office(CO)</th>
             <th>Report to Office(NO)</th>
             <th>Transfer Type</th>
-            <th>Transfer Benefit</th>
-            <!-- <th>Transfer Reason</th> -->
-            <!-- <th>Transfer Reason</th>
+            <th>Transfer Benefit</th>    
+            <th>Transfer Reason</th>
             <th>Transfer Date</th>
-            <th>Remarks</th> -->
+            <th>Remarks</th>
         </tr>
          </thead>
      </table>
@@ -123,18 +122,18 @@ $(document).ready(function(){
                     data:'empId',
                     name:'empId'
                 },
-                // {
-                //     data:'empName',
-                //     name:'empName'
-                // },
-                // {
-                //     data:'designation',
-                //     name:'designation'
-                // },
-                // {
-                //     data:'grade',
-                //     name:'grade'
-                // },
+                {
+                    data:'empName',
+                    name:'empName'
+                },
+                {
+                    data:'designation',
+                    name:'designation'
+                },
+                {
+                    data:'grade',
+                    name:'grade'
+                },
                 {
                     data:'officeDetails',
                     name:'officeDetails'

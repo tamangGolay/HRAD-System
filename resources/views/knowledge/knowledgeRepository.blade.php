@@ -66,9 +66,9 @@ a {
                         
 
 					<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="empId">{{ __('EmpId:') }}</label>
+									<label class="col-sm-2 text-md-right" for="createdBy">{{ __('EmpId:') }}</label>
 									<div class="col-sm-12">
-									<input type="text"  class="form-control" value="" name="empId" id="empId" required readonly> 
+									<input type="text"  class="form-control" value="" name="createdBy" id="createdBy" required readonly> 
 
 									</div>
 								</div>
@@ -85,9 +85,8 @@ a {
 									<label class="col-sm-2 text-md-right" for="emp_id">{{ __('Office:') }}</label>
 									<div class="col-sm-12">
 									<select name="officeDetails" id="officeDetails" value="" class="form-control" required readonly>
-                                             <option value="">Select officeDetails</option>
+                                             
                                              @foreach($userList as $officeDetails)
-
                                              <option value="{{$officeDetails->id}}">{{$officeDetails->officeDetails}}</option>
 										@endforeach
 							</select>
@@ -209,9 +208,9 @@ a {
 		  $('#empName').val(data.empName); //input id,database
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeId').val(data.officeId); //input id,database
+		 $('#officeDetails').val(data.id); //input id,database
 		 $('#approvedBy').val(data.approvedBy); //input id,database
-
+         $('#createdBy').val(data.createdBy); 
 
 	  })
    });
@@ -277,11 +276,11 @@ a {
           $('meta[name="csrf-token"]').attr('content'),
           $('#knowledge_id').val(data.id);
 		  $('#empName').val(data.empName); //input id,database
-
           $('#problem').val(data.problem); //input id,database
          $('#solution').val(data.solution);//keeping input name and dB field name same so that the search will not give error
-		 $('#officeId').val(data.officeId); //input id,database
-		 $('#approvedBy').val(data.approvedBy); //input id,database
+		 $('#officeDetails').val(data.id); //input id,database
+		 $('#approvedBy').val(data.approvedBy); 
+         $('#createdBy').val(data.createdBy); //input id,database
       })
    });
    

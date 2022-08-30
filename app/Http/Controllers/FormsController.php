@@ -541,8 +541,7 @@ if ($request->v == "knowledgeRepository")
         ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
      //    ->join('officemaster','officemaster.id','=','users.office')
 
-     ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails','officedetails.Address'
-        )
+     ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails')
 
         // ->latest('users.id') //similar to orderby('id','desc')
         // ->where('users.office',Auth::user()->office)

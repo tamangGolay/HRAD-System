@@ -80,19 +80,33 @@ a {
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Case</label>
                         <div class="col-sm-12">
                             <input type="text" id="case" name="case"  placeholder="case" class="form-control" required>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
+						<label class="col-md-2 col-lg-8 control-label" for="Case">&nbsp;&nbsp;&nbsp;Case</label>
+						<div class="col-md-12 ">
+						<textarea input type="text" id="case" placeholder="Case" rows="14" class="form-control" name="case" autocomplete="off"  required> 
+                         </textarea></div>
+					</div> 
+
+                    <div class="form-group">
+						<label class="col-md-2 col-lg-8 control-label " for="Case">&nbsp;&nbsp;Action taken</label>
+						<div class="col-md-12 ">
+						<textarea input type="text" id="actionTaken" placeholder="Action Taken" rows="14" class="form-control" name="actionTaken" autocomplete="off" id="actionTaken" required> 
+                         </textarea></div>
+					</div>
+
+                    <!-- <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Action taken</label>
                         <div class="col-sm-12">
                             <input type="text" id="actionTaken" name="actionTaken"  placeholder="Action taken" class="form-control" required>
                         </div>
-                    </div>
+                    </div> -->
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="displinaryButton" value="create">Save changes

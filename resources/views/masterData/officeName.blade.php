@@ -60,6 +60,7 @@ a {
 
 
                    <input type="hidden" name="id" id="officeName_id">
+
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Office ShortName</label>
                         <div class="col-sm-12">
@@ -77,7 +78,19 @@ a {
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">Office Type</label>
                         <div class="col-sm-12">
-                            <input type="text" id="officeType" name="officeType"   class="form-control" required>
+                            <!-- <input type="text" id="officeType" name="officeType"   class="form-control" required> -->
+                            <select class="form-control" id="officeType" name="officeType">
+                                  <option>Select Your Office Type</option>
+                                  <option>Company</option>
+                                  <option>Services</option>
+                                  <option>Department</option>
+                                  <option>Division</option>
+                                  <option>Sub Division</option>
+                                  <option>Unit</option>
+                                  <option>Substation</option>
+                            
+                                </select>   
+                        
                         </div>
                     </div>
       

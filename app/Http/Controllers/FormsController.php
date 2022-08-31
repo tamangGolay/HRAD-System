@@ -5538,7 +5538,7 @@ $notesheetRemarks = notesheetapprove::all();
 //     ->where('promotionduelist.status','=','Proposed')
 
 
-        ->where('promotionduelist.status','=','Proposed')
+        ->where('promotionduelist.status','=','Recommended')
         ->where('officeunder.head',Auth::user()->empId) 
         ->paginate(10000000); 
 

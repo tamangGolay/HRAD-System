@@ -130,7 +130,7 @@ a {
       
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      </button>
-                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>                    
+                     <button type="button"  data-dismiss="modal">Close</button>                    
 
                     </div>
                 </form>

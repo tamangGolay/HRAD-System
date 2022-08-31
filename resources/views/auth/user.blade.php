@@ -374,7 +374,7 @@ $(function() {
 		"autoWidth": true,
 		"paging": true,
 		"retrieve":true,
-		buttons: ['copyHtml5', 'excelHtml5', 'pdfHtml5']
+		buttons: ['copyHtml5', 'excelHtml5','csv']
 	});
 });
 </script>

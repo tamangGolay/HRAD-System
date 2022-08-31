@@ -14,16 +14,17 @@ class TransferRequestController extends Controller
 {
 
     public function Request_transfer(Request $request)
-    {
-        
-        $b= DB::table('transferrequest') 
-        ->join('officedetails', 'officedetails.id', '=', 'transferrequest.id')
-        ->join('officedetails AS B', 'B.id', '=', 'transferrequest.id')
-        ->join('employeesupervisor', 'employeesupervisor.employee', '=', 'transferrequest.createdBy') 
-        ->select('transferrequest.requestDate', 'transferrequest.reason','officedetails.*','officedetails.officeDetails as f','B.officeDetails as tff','employeesupervisor.superName','employeesupervisor.supervisor')
-        ->get();      
-          
+    {        
+                   
+        $officeType= DB::table('officedetails')
+            ->join('users','users.office','=','officedetails.id')
+            ->where( 'officedetails.id',Auth::user()->office)
+            ->select('officeType')
+            ->first();
 
+        if($officeType->officeType == 'Department')
+        {       
+           
             $Request_notesheet = new transferRequest;
             $Request_notesheet->requestDate = $request->requestDate;
             $Request_notesheet->fromOffice = $request->fromOffice;
@@ -31,13 +32,76 @@ class TransferRequestController extends Controller
             $Request_notesheet->requestToEmp = $request->requestToEmp;     //database name n user input name
             $Request_notesheet->reason = $request->reason;
             $Request_notesheet->createdBy = $request->empId;
-            $Request_notesheet->save();  
+            $Request_notesheet->save(); 
+
+            $Request_notesheet->id;
+
+            $status= 'proposed';
+            $transferType='Request';
+
+            transferProposal::updateOrCreate(['requestId'=>$Request_notesheet->id],
+            ['status' =>$status,
+            'empId'=>$request->empId,
+            'proposedDate'=>$request->requestDate,
+            'fromOffice'=>$request->fromOffice,
+            'toOffice'=>$request->toOffice,
+            'transferType'=>$transferType,
+            'reasonForTransfer'=>$request->reason]);      
+                        
+            return redirect('home')->with('page', 'transferRequest')
+            ->with('success', 'Transfer request submitted successfully!');
+
+        }  
+
+       else if($officeType->officeType == 'Services')
+        {       
+           
+            $Request_notesheet = new transferRequest;
+            $Request_notesheet->requestDate = $request->requestDate;
+            $Request_notesheet->fromOffice = $request->fromOffice;
+            $Request_notesheet->toOffice = $request->toOffice;               
+            $Request_notesheet->requestToEmp = $request->requestToEmp;     //database name n user input name
+            $Request_notesheet->reason = $request->reason;
+            $Request_notesheet->createdBy = $request->empId;
+            $Request_notesheet->save(); 
+            $Request_notesheet->id;
+
+            $status= 'recommended';
+            $transferType='Request';
+
+            transferProposal::updateOrCreate(['requestId'=>$Request_notesheet->id],
+            ['status' =>$status,
+            'empId'=>$request->empId,
+            'proposedDate'=>$request->requestDate,
+            'fromOffice'=>$request->fromOffice,
+            'toOffice'=>$request->toOffice,
+            'transferType'=>$transferType,
+            'reasonForTransfer'=>$request->reason]);      
+                        
+            return redirect('home')->with('page', 'transferRequest')
+            ->with('success', 'Transfer request submitted successfully!');
+
+        }  
+        else{
+        
+            $Request_notesheet = new transferRequest;
+            $Request_notesheet->requestDate = $request->requestDate;
+            $Request_notesheet->fromOffice = $request->fromOffice;
+            $Request_notesheet->toOffice = $request->toOffice;               
+            $Request_notesheet->requestToEmp = $request->requestToEmp;     //database name n user input name
+            $Request_notesheet->reason = $request->reason;
+            $Request_notesheet->createdBy = $request->empId;
+            $Request_notesheet->save();
+
+            return redirect('home')->with('page', 'transferRequest')
+            ->with('success', 'Transfer request submitted successfully!');
+        }
+               
 
             return redirect('home')->with('page', 'transferRequest')
             ->with('success', 'Transfer request submitted successfully!');
 
 }
-
 
    public function recommendTransfer(Request $request)
     {
@@ -79,7 +143,6 @@ class TransferRequestController extends Controller
                 $a->toOffice = $toOffice->toOffice;
                 $a->transferType = $request->status;
                 $a->reasonForTransfer = $reasonForTransfer->reason;
-
                 $a->save(); 
                 
                 $approvestatus='recommended';
@@ -168,7 +231,7 @@ class TransferRequestController extends Controller
                 ->with('success','You have recommended the Transfer Request');
          }
 
-         if($toOffice->toOffice != " "){
+        if($toOffice->toOffice != " "){
 
         transferProposal::updateOrCreate(['id' => $id->id],
                            ['toGMAction' =>$request->remarks,
@@ -314,7 +377,7 @@ public function toManagerTransfer(Request $request)
 {
     // dd($request);
 
-    if($request->remarks == "proposed" ){                        
+    if($request->remarks == "proposed"){                        
        
         $id = DB::table('transferproposal')->select('id')
         ->where('id',$request->id)
@@ -441,18 +504,10 @@ public function toDirtransferrequest()
 
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
-//  ->where('transferproposal.toOffice','=',Auth::user()->office) 
-//   ->where('transferproposal.status','=','recommended')
-//   ->where('transferproposal.toDirector',)
-
-//  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-//   ->where('transferproposal.status','=','recommended')
-//   ->where('transferproposal.toDirector',)
 
   ->where('officeunder.head',Auth::user()->empId)  
   ->where('transferproposal.status','=','recommended')
-  ->where('transferproposal.toDirector',)
-    
+  ->where('transferproposal.toDirector',)    
     
     ->paginate(10000000);
 
@@ -633,13 +688,13 @@ public function relieveEmployee(Request $request)
             ->where('id',$request->id)
             ->first();
 
-            $status='recommended'; 
+            $status='recommended';
             
-             
+            $relievedOn = date('Y-m-d');
 
         transferHistory::updateOrCreate(['id' => $id->id],
                            ['relievedBy' =>$request->empId,
-                           'relievedOn' =>$request->requestDate]);  
+                           'relievedOn' =>$relievedOn]);  
 
          return redirect('home')
          ->with('success','You have Relieved the employee');
@@ -662,10 +717,12 @@ public function updateTransferHistory(Request $request)
       
     $status='Closed';
 
+    $joiningAcceptedOn = date('Y-m-d');    
+
     transferHistory::updateOrCreate(['id' => $id->id],
                    ['joinedOn' =>$request->joinedOn,
                    'joiningAcceptedBy' =>$request->empId,
-                   'joiningAcceptedOn' =>$request->joiningAcceptedOn,
+                   'joiningAcceptedOn' =>$joiningAcceptedOn,
                    'status' =>$status]);
 
 $UpdateOffice = DB::table('transferhistory')

@@ -5924,7 +5924,7 @@ if ($request->v == "normalTransfer")  //form.csv
 }  //end
 
 //Transfer Request manager review
-if ($request->v == "transferRequestReview") 
+if ($request->v == "transferRequestReview")   //manager
 {       
 $transferRequest=transferRequest::all();
 
@@ -6016,8 +6016,23 @@ if ($request->v == "hrTransferReview")  //form.csv
 //    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
     ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
-    ->where('transferproposal.status','=','dirrecommended')
+    ->where('transferproposal.toGMAction','=','recommended')
     ->where('transferproposal.toDirectorAction','=','recommended')
+    ->where('transferproposal.status','=','proposed')
+
+    ->orwhere('transferproposal.status','=','recomended')
+    ->where('transferproposal.toGMAction','=','recommended')
+    ->where('transferproposal.toDirectorAction','=','recommended')
+
+    ->orwhere('transferproposal.status','=','dirrecommended')
+    ->where('transferproposal.toGMAction','=','recommended')
+    ->where('transferproposal.toDirectorAction','=','recommended')
+
+
+    
+
+
+
  ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewHR')->with(['employeeTransfer' => $employeeTransfer,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 

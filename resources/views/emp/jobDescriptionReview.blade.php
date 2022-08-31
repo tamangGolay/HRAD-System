@@ -146,7 +146,7 @@ a {
 
                     
                     <div class="col-sm-offset-2 col-sm-10 text-center">
-                     <button type="submit"  class="btn btn-outline-success" id="saveBtn" value="create">Save changes
+                     <button type="submit"  class="btn btn-outline-success" id="saveBtn" value="create">Approve
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 
@@ -290,7 +290,7 @@ $(function() {
 			},
 			error: function(data) {
 				console.log('Error:', data);
-				$('#saveBtn').html('Save Changes');
+				$('#saveBtn').html('Approve');
 			}
 		});
 	});
@@ -333,7 +333,7 @@ $(function() {
 			},
 			error: function(data) {
 				console.log('Error:', data);
-				$('#saveBtn').html('Save Changes');
+				$('#saveBtn').html('Approve');
 			}
 		});
 	});

@@ -30,7 +30,7 @@ hr{
               <tr class="text-nowrap">
               <th>Note Id</th>         <td> {{($rv->id)}} </td>    </tr>
               <tr>  <th>Topic</th>     <td> {{$rv->topic}} </td>       </tr>
-			  <tr>   <th>Justification</th> <td> {{$rv->justification}} </td>  </tr>                                  
+			  <tr>   <th>Justification</th> <td> {!! nl2br($rv->justification) !!} </td>  </tr>                                  
 			  <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 			  <tr> <th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
            <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         

@@ -34,7 +34,7 @@ hr{
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
               <tr>   <th>office Name</th>       <td> {{($rv->longOfficeName)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
-			        <tr>   <th>Justification</th>    <td> {{$rv->justification}} </td> </tr>                            
+			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
 			        <tr>    <th>Status</th>             <td> {{$rv->status}} </td>  </tr>
 
         <tr><th colspan="2">Action</th> </tr>

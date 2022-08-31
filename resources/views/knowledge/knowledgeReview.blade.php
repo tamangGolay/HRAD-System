@@ -147,7 +147,7 @@ a {
                          			</textarea></div>
 
 									<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-									<button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Save changes </button>
+									<button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Approve </button>
 									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>      
 
 								</div>
@@ -280,7 +280,7 @@ $(function() {
 						},
 						error: function(data) {
 							console.log('Error:', data);
-							$('#saveBtn').html('Save Changes');
+							$('#saveBtn').html('Approve');
 							alert("You cannot leave the fields empty");;
 						}
 					});
@@ -325,7 +325,7 @@ $(function() {
 						error: function(data) {
 
 							console.log('Error:', data);
-							$('#saveBtn').html('Save Changes');
+							$('#saveBtn').html('Approve');
 							alert("You cannot leave the fields empty");
 							
 						}

@@ -25,7 +25,7 @@ hr{
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-			@foreach($selfghCancelBooking as $rv)
+		   	@foreach($selfghCancelBooking as $rv)
 			
               <tr class="text-nowrap">
               <th>Note Id</th>         <td> {{($rv->id)}} </td>    </tr>
@@ -33,16 +33,19 @@ hr{
 			  <tr>   <th>Justification</th> <td> {!! nl2br($rv->justification) !!} </td>  </tr>                                  
 			  <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 			  <tr> <th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
-           <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
+        <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
         
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <!-- <input type="hidden" name="status" id="status" value="Cancel"> -->
         <input type="hidden" name="cancelled" id="cancelled" value="Yes">
 
+        @if($rv->status == 'Processing')
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 
-        Cancel
-        </button>		
-		
+        Cancel </button>	
+        @elseif($rv->status == 'Recommended' || $rv->status == 'GMRecommended'|| $rv->status == 'DirectorRecommended')
+        <p class="btn-outline-success">Some Progress.Happy Now</p>
+        @endif
+		    
       </form> </td> 	                 
               </tr>
 		

@@ -9,6 +9,9 @@
 	font-family: Arial, Helvetica, sans-serif; 
 	font-size: 15px;
   }
+.preserveLines{
+	white-space:normal;
+}
 </style>
 
 
@@ -44,17 +47,9 @@
 					<div class="form-group row">
 						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Justication:</label>
 						<div class="col-md-8 ">
-						<textarea input type="text" rows="18" class="form-control" name="justification" autocomplete="off" id="justification" required> 
-                         </textarea></div>
+						<textarea input type="text" rows="18" class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea></div>
 					</div>
-
                     
-					<!-- <div class="form-group row">
-						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Status:</label>
-						<div class="col-md-8">
-						<input type="number" class="form-control" name="status" autocomplete="off" id="status" readonly required> 
-						</div>
-					</div>							 -->
 					
 
 					<div class="form-group row mb-0">
@@ -66,7 +61,7 @@
 
                     <!-- <div class="form-group row mb-0"> -->
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
-							<button  id="notescancel" class="btn btn-info btn-lg" onclick="notesheetCancel();" style="color:black;">View Notesheet</button>
+							<button  id="notescancel" class="btn btn-info btn-md" onclick="notesheetCancel();" style="color:black;">View Notesheet</button>
 						</div>
 					</div>
                 

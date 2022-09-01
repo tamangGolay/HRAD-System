@@ -6026,10 +6026,7 @@ if ($request->v == "hrTransferReview")  //form.csv
 
     ->orwhere('transferproposal.status','=','dirrecommended')
     ->where('transferproposal.toGMAction','=','recommended')
-    ->where('transferproposal.toDirectorAction','=','recommended')
-
-
-    
+    ->where('transferproposal.toDirectorAction','=','recommended')  
 
 
 

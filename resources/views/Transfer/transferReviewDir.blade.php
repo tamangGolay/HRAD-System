@@ -4,11 +4,11 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Transfer Request Review (Director Page)</b>
+                <b>Transfer Request Review</b>
               </h5> </div>
 			</div>
 			<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
-				<button  id="notescancel" class="btn btn-info btn" onclick="othertransferrequest();" style="color:black;">View Transfer Request</button>
+				<button  id="notescancel" class="btn btn-outline-info btn" onclick="othertransferrequest();" style="color:black;">View Transfer Request</button>
 			</div
 			
 	<form method="POST" action="/dirReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf

@@ -4,7 +4,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Transfer Request from other Offices (Director Page)</b>
+                <b>Transfer Request Review</b>
               </h5> </div>
 			</div>	
 

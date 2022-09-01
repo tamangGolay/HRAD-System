@@ -65,10 +65,10 @@ a {
                     </div>
      
                     <div class="form-group">
-                        <label class="col-lg-12 col-sm-12 control-label">Skill Sub Categorg Id</label>
+                        <label class="col-lg-12 col-sm-12 control-label"> Sub Skill Category</label>
                         <div class="col-lg-12 col-sm-12">
                             <select class="col-lg-12 col-sm-12 form-control" name="subCatId" id="subCatId" value="" required>
-                                             <option value="">Select Office</option>
+                                             <option value="">Select Skills Category</option>
                                              @foreach($skilm as $skilm)
                                              <option value="{{$skilm->id}}">{{$skilm->subCatName}}</option>
 										@endforeach

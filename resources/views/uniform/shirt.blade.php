@@ -29,7 +29,7 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageshirt">Add new Shirt Size Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="manageshirt">Add New Shirt Size Name&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
@@ -65,8 +65,8 @@ a {
                         </div>
                     </div>
       
-                    <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit"  class="btn btn-primary" id="shirtButton" value="create">Save changes
+                    <div class="col-sm-offset-2 col-sm-10 text-center">
+                     <button type="submit"  class="btn btn-outline-success" id="shirtButton" value="create">Save changes
                      </button>
                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>                    
 

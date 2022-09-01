@@ -35,7 +35,7 @@ a {
     
 
 }
-h4{
+h5{
    
    text-decoration: underline; 
  }
@@ -67,7 +67,7 @@ h4{
      <div class="col-md-12 ">
             <div class="card">
              <div class="card-header bg-green  d-flex justify-content-center">
-                 <strong>Bulk upload</strong> 
+                 <h4> Bulk upload</h4> 
              </div>
                 <div class="textfont card-body">
                     @if(count($errors) > 0)
@@ -113,7 +113,7 @@ h4{
 </div> 
 <br>
 <div class = "col-md-11 text-center">
-                <h4> Excel format sample</h4>
+                <h5> CSV format sample</h5>
             </div>
             <br>
 

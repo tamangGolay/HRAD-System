@@ -5,11 +5,6 @@ a {
     text-decoration: none;
 }
 
-<style>
-
-
-
-
 .btn-primary {
     color: #fff !important;
     background-color: #007bff;

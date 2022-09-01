@@ -149,8 +149,7 @@ class TransferRequestController extends Controller
                 
                 transferRequest::updateOrCreate(['id' => $id->id],
                 ['status' =>$approvestatus]);       
-                
-                
+                                
                 
             return redirect('home')->with('page', 'transferRequestReview')
             ->with('success', 'Recommended and forwarded the transfer request successfully!');
@@ -541,7 +540,8 @@ public function toDirReviewTransfer(Request $request)
                            'toDirector' =>$request->empId,
                            'status' =>$status,
                            'toDirectorRemarks' =>$request->rejectreason]);   
-         return redirect('home')
+       
+                           return redirect('home')
          ->with('success','You have recommended the Transfer Request');
 
  }

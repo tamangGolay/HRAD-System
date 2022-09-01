@@ -29,7 +29,7 @@ a {
 
 
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="managegumboot">Add new Gumboot Size&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    <a class="btn success" href="javascript:void(0)" id="managegumboot">Add New Gumboot Size&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>

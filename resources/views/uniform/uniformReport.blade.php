@@ -58,9 +58,9 @@ a {
 </style>
 
 
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <div class="row">
 	<div class="col">
@@ -68,7 +68,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>Uniform Report</b>
+              <h5>Uniform Report</h5>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -77,7 +77,7 @@ a {
 						<tr class="thw">
 						<th>Sl.No</th>
 								<th>Emp Id</th>
-                                <!-- <th>Name</th> -->
+                                <!-- <th>this is the real</th> -->
 								<th>Wing/Dept/Div</th> 								
 								<th>Pant Size</th>
 								<th>Shirt Size</th>
@@ -86,7 +86,7 @@ a {
                                 <th> Gumboot Size </th>
                                 <th> Raincoat Size </th>								
 								
-								<th> Delete </th>
+								<th> Action </th>
 						</tr>
 					</thead>
 					<tbody> @foreach($data1 as $rv)

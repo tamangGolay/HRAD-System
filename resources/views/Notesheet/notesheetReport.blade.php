@@ -25,9 +25,9 @@
                 <div class="card ">
                     <div class="card-header bg-green">
                         <div class="col text-center">
-                        <h3>
+                        <h5>
                             <b> Notesheet Report</b>
-                        </h3>
+                        </h5>
 			            </div>
                     </div>
                 <br>
@@ -37,7 +37,7 @@
 					        <table id="table5" class="table table-hover table-striped table-bordered">
                                <thead>
                                 <tr class="text-nowrap">
-                                    <th scope = "col" class="col1"> Id </th>
+                                    <th scope = "col" class="col1"> Sl.No </th>
                                     <!-- <th scope = "col" class="col1"> Employee </th> -->
                                     <th scope = "col" class="col1"> EmployeeId</th>
                                     <th scope = "col" class="col1"> Employee Name</th>

@@ -128,10 +128,9 @@ class ChangePasswordController extends Controller
 
         
         DB::update('update users set password = ?  where empId = ?',[$new_password,$request->emp_id]);
-
-
             
-            return redirect('home')->with('page','resetpassword');
+            return redirect('home')->with('page', 'resetpassword')
+            ->with('success','You have reset the password successfully!');
 
         
 

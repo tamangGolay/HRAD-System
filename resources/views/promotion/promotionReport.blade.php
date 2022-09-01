@@ -42,9 +42,9 @@ h1 {
 </head>
 <body>
     <div class = "container ">
-    <div class = "col">
-        <div class="card ">
-        <div class = "row">
+    <div class = "row">
+        <div class="col">
+        <div class = "card">
         <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
@@ -53,8 +53,9 @@ h1 {
 			</div>		
         </div>
           
-            <br><br><br>
-            <div class = "row">
+            <br>
+
+            
             <div class = "col-md-12">
             <div class="card-body table-responsive p-0">
 					<table id="table5" class="table table-hover table-striped table-bordered">
@@ -62,7 +63,7 @@ h1 {
                     <!-- <h2 class="headnote"> NoteSheet  </h2> -->
                     <thead>
                       <tr class="text-nowrap">
-                        <th scope = "col" class="col1"> Id </th>
+                        <th scope = "col" class="col1"> SN </th>
                         <th scope = "col" class="col1"> EmployeeId</th>
                         <th scope = "col" class="col1"> Employee Name</th>
                         <th scope = "col" class="col1"> Office </th>
@@ -88,7 +89,7 @@ h1 {
             </div>
         </div>
     </div>
-</div>
+</div> </div>
         
             
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>

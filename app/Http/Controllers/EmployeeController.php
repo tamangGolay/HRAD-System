@@ -34,11 +34,7 @@ class EmployeeController extends Controller
 
         public function import(Request $request){
 
-            // dd($request);
-
-            // dd($request);
-
-            // $validator = Validator::make($request->all(), [
+                        // $validator = Validator::make($request->all(), [
             //     'file' => 'required|mimes:xls,xlsx,csv',
             // ]);
      
@@ -58,13 +54,9 @@ class EmployeeController extends Controller
     //                     ->withErrors($validator)
     //                     ->withInput();
     // }
- 
 
-
-    // else{
         try{
-        
-        
+                
             
          Excel::import(new EmployeeImport, request()->file('file'));
         
@@ -74,8 +66,7 @@ class EmployeeController extends Controller
         return redirect('home')->with('page', 'allEmployeeContribution')
         ->with('success', 'Excel Data Imported successfully.');
 
-        // return back()->with('success', 'Excel Data Imported successfully.');
-        }
+                }
 
         
 
@@ -85,15 +76,13 @@ class EmployeeController extends Controller
         //   }
         
         return redirect('home')->with('page', 'allEmployeeContribution')
-                                    ->with('error',"The Records contain either duplicate or null values");
-        
-        
+                                    ->with('error',"Sorry!.The Records must be in csv format only and it should not contains null values or wrong data.");
+                
         }
     }
     
     public function tocheckofficeId()
-    {
-       
+    {       
      
         $tocheckofficeId = DB::table('officedetails')
        
@@ -118,16 +107,10 @@ class EmployeeController extends Controller
       'success' => true,
       'html' => $rhtml
     ));
-    } 
-
-
-
-    
+    }  
     
 
 }
-
-
-           
+          
         
     

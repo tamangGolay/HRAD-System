@@ -25,7 +25,8 @@
 
 <body>
 <div class="container-fluid" style="margin-right:20%;width:95%;" > 
-    <div class="card-header bg-green text-center">
+    
+<div class="card-header bg-green text-center">
         
             <h5>
                 <b> Promotion Due List </b>
@@ -313,6 +314,8 @@
         processing: true,
 
         serverSide: true,
+
+        "aLengthMenu":[[10,25,50,-1],[10,25,50,"All"]],
 
         ajax:"{{ route('promotionlistall.index') }}", 
 

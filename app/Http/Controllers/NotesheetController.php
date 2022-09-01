@@ -49,6 +49,22 @@ class NotesheetController extends Controller
 
         if($officeHead == null)
         {
+            $officeType= DB::table('officedetails')
+            ->join('users','users.office','=','officedetails.id')
+            ->where( 'officedetails.id',Auth::user()->office)
+            ->select('officeType')
+            ->first();
+
+            // dd($officeType->officeType);
+
+            if($officeType->officeType == 'Department'){
+                $status = 'Recommended';
+            }
+
+            if($officeType->officeType == 'Services'){
+                $status = 'GMRecommended';
+            }
+
             $supervisorEmail= DB::table('employeesupervisor')  
             ->select('employeesupervisor.emailId')
             ->where( 'employee',Auth::user()->empId)
@@ -56,12 +72,16 @@ class NotesheetController extends Controller
             
             $Request_notesheet = new notesheetRequest;
             $Request_notesheet->createdBy = $request->empId;
+            if($officeType->officeType == 'Services' || $officeType->officeType == 'Department'){
+                $Request_notesheet->status = $status;
+            }
+          
             $Request_notesheet->emailId = $request->emailId;
             $Request_notesheet->officeId = $request->office;               
             $Request_notesheet->topic = $request->topic;     //database name n user input name
             $Request_notesheet->justification = $request->justification;
             $Request_notesheet->createdOn = $request->notesheetDate;
-            $Request_notesheet->save();  
+            $Request_notesheet->save(); 
            
     
             // dd($supervisorEmail->emailId);

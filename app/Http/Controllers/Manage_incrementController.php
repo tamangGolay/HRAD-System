@@ -19,10 +19,10 @@ class Manage_incrementController extends Controller
 
         $increment = DB::table('incrementhistorymaster')
 
-        ->join('users', 'users.id', '=', 'incrementhistorymaster.personalNo')
+        ->join('users', 'users.empId', '=', 'incrementhistorymaster.personalNo')
         ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
         'incrementhistorymaster.newBasic',
-         'users.empId');
+         'users.empId','incrementhistorymaster.increment');
          
         
         if ($request->ajax()) {
@@ -32,7 +32,6 @@ class Manage_incrementController extends Controller
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-outline-info btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteIncrement" data-original-title="Delete" class="btn btn-outline-danger btn-sm deleteIncrement">Delete</a>';
 
 
 
@@ -56,8 +55,8 @@ class Manage_incrementController extends Controller
     public function store(Request $request)
     {
         // dd($request->id);
-        increment::updateOrCreate(['personalNo' => $request->name],  ['incrementDate' => $request->number, 
-        'newBasic' => $request->new 
+        increment::updateOrCreate(['personalNo' => $request->empId],  ['incrementDate' => $request->number, 
+        'newBasic' => $request->newBasic,'increment' => $request->increment
 
     ]);        
    

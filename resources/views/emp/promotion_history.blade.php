@@ -36,7 +36,7 @@ a {
               </h5>
 			</div>
 		
-      </div><br>
+      </div>
       <br>
       
     <!-- <a class="btn success" href="javascript:void(0)" id="managepromotionHistory">Add Promotion Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a> -->

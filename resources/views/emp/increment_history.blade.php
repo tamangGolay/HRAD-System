@@ -29,7 +29,17 @@ a {
 
  
 <div class="container">
-    <a class="btn success" href="javascript:void(0)" id="manageIncrement">Add Increment Details&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+
+<div class="card-header bg-green">
+        <div class="col text-center">
+          <h5>
+                <b> Increment History Details </b>
+              </h5>
+			</div>
+		
+      </div>
+      <br>
+    
     <table class="table table-bordered data-table">
     @csrf
         <thead>
@@ -37,10 +47,9 @@ a {
 
                 <th>Personal No.</th>
                 <th>Increment Date</th>
-                <th>Old Basic</th>
+                <th>Increment</th>
+                
                 <th>New Basic</th>
-                <th>Next Due</th>
-                <th>Remarks</th>
 
                 <th width="300px">Action</th>
             </tr>
@@ -65,11 +74,11 @@ a {
                    <input type="hidden" name="id" id="increment_id">
                    <div class="form-group">
                    <label class="col-sm-2  col-lg-8 control-label">Personal Number</label>
-                    <select name="name" id="name" class="form-control" value="" required>
+                    <select name="empId" id="empId" class="form-control" value="" required>
                                              <option value="">Select PersonalNo.</option>
                                              @foreach($increment as $increment)
                     
-                                             <option value="{{$increment->id}}">{{$increment->empId}}</option>
+                                             <option value="{{$increment->empId}}">{{$increment->empId}}</option>
 										@endforeach
 							</select>
 
@@ -82,34 +91,24 @@ a {
                         </div>
                     </div>
       
-                   
                     <div class="form-group">
-                        <label class="col-sm-2  col-lg-8 control-label">Old Basic</label>
+                        <label class="col-sm-2 col-lg-8 control-label">Increment</label>
                         <div class="col-sm-12">
-                            <input type="text" id="old" name="old"  placeholder="" class="form-control" required>
+                            <input type="text" id="increment" name="increment"  placeholder="" class="form-control" required>
                         </div>
                     </div>
+                 
                     
                     <div class="form-group">
                         <label class="col-sm-2 col-lg-8 control-label">New Basic</label>
                         <div class="col-sm-12">
-                            <input type="text" id="new" name="new"  placeholder="" class="form-control" required>
+                            <input type="text" id="newBasic" name="newBasic"  placeholder="" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Next Due</label>
-                        <div class="col-sm-12">
-                            <input type="date" id="next" name="next"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
+                    
 
-                    <div class="form-group">
-                        <label class="col-sm-2 col-lg-8 control-label">Remarks</label>
-                        <div class="col-sm-12">
-                            <input type="text" id="remarks" name="remarks"  placeholder="" class="form-control" required>
-                        </div>
-                    </div>
+                   
 
                     <div class="col-sm-offset-2 col-sm-10 text-center">
                      <button type="submit"  class="btn btn-outline-success" id="incrementButton" value="create">Save changes
@@ -121,6 +120,7 @@ a {
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -146,7 +146,7 @@ a {
             </div>
         </div>
     </div>
-</div>
+
 
     
 
@@ -164,10 +164,9 @@ a {
         columns: [
             {data: 'empId', name: 'users.empId'},
             {data: 'incrementDate', name: 'incrementDate'},
-            {data: 'oldBasic', name: 'oldBasic'},
+            {data: 'increment', name: 'increment'},
             {data: 'newBasic', name: 'newBasic'},
-            {data: 'nextDue', name: 'nextDue'},
-            {data: 'remarks', name: 'remarks'},
+          
            
 
             {data: 'action', name: 'action', orderable: true, searchable: true},
@@ -195,13 +194,11 @@ a {
           $('#ajaxModel').modal('show');
           $('meta[name="csrf-token"]').attr('content'),
           $('#increment_id').val(data.id);
-          $('#name').val(data.name); //input id,database
+          $('#empId').val(data.personalNo); //input id,database
           $('#number').val(data.incrementDate);
-          $('#old').val(data.oldBasic);
-          $('#new').val(data.newBasic);
-          $('#next').val(data.nextDue);
-          $('#remarks').val(data.remarks);
-
+          $('#increment').val(data.increment);
+          $('#newBasic').val(data.newBasic);
+         
 
           
 
@@ -254,106 +251,6 @@ a {
           }
       });
     });
-
-  //  After clicking delete it will trigger here
-
-    $('body').on('click', '.deleteIncrement', function () {
-      var increment_id = $(this).data('id');
-     
-      $.get("{{ route('increment.index') }}" +'/' + increment_id +'/edit', function (data) {
-          $('#incrementHeading').html("Do you want to delete the Detail?");
-          $('#incrementDeleteButton').val("edit-room");
-          $('#incrementModel').modal('show');
-          $('meta[name="csrf-token"]').attr('content'),
-           $('#increment_id').val(data.id);
-          $('#name').val(data.name); //input id,database
-          $('#number').val(data.incrementDate);
-          $('#old').val(data.oldBasic);
-          $('#new').val(data.newBasic);
-          $('#next').val(data.nextDue);
-          $('#remarks').val(data.remarks);
-
-
-     
-
-
-
-      })
-   });
-   
-  // after clicking yes in delete
-    $('#incrementDeleteButton').click(function (e) {
-        e.preventDefault();
-        $(this).html('Deleting...');
-    
-        $.ajax({
-          data: $('#Form').serialize(),
-          url: "{{ route('destroyincrementhistory') }}",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-     
-              $('#Form').trigger("reset");
-              $('#incrementModel').modal('hide');
-              table.draw();
-              window.onload = callajaxOnPageLoad(page);
-        var alt = document.createElement("div");
-             alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-             alt.innerHTML = "Data Updated Successfully! ";
-             setTimeout(function(){
-              alt.parentNode.removeChild(alt);
-             },4500);
-            document.body.appendChild(alt);
-            $.get('/getView?v=increment_history',function(data){
-            $('#contentpage').empty();                          
-            $('#contentpage').append(data.html);
-             });			
-             table.draw();                 
-       
-       
-
-    
-         
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#incrementDeleteButton').html('Save Changes');
-          }
-      });
-    });
-    
-    // $('body').on('click', '.deleteIncrement', function() {
-	// 				if(confirm("Do you want to delete it?")) {
-	// 					$.ajax({
-	// 						dataType: 'json',
-	// 						type: "POST",
-	// 						url: "{{ route('destroyVehicle') }}",
-	// 						data: {
-	// 							'id': $(this).data('id'),
-	// 							'_token': $('input[name=_token]').val()
-	// 						},
-	// 						success: function(data) {
-	// 							window.onload = callajaxOnPageLoad(page);
-	// 							var alt = document.createElement("div");
-	// 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-	// 							alt.innerHTML = "Data Updated Successfully! ";
-	// 							setTimeout(function() {
-	// 								alt.parentNode.removeChild(alt);
-	// 							}, 4500);
-	// 							document.body.appendChild(alt);
-	// 							window.location.href = '/manage_vehicle';
-	// 							table.draw();
-	// 						},
-	// 						error: function(data) {
-	// 							console.log('Error:', data);
-	// 						}
-	// 					});
-	// 				}
-	// 				if(false) {
-	// 					window.close();
-	// 				}
-	// 	});
-     
      
 </script>
 

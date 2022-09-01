@@ -312,8 +312,7 @@ class FormsController extends Controller
 
        //uniform report for individual employee
         //uniform report for individual employee
-        if ($request->v == "uniformReport") 
-        {
+        if ($request->v == "uniformReport")         {
             
  
              $pant = Pant::all();
@@ -323,17 +322,18 @@ class FormsController extends Controller
              $gumboot = GumbootSize::all();
              $raincoat = RainCoatSize::all();
             $office = Officedetails::all();
+            $usersU = User::all();
  
          $data1 = DB::table('employeeuniform')
+         ->join('users', 'users.empId', '=', 'employeeuniform.empId')
          ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
          ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
          ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
          ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
          ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
          ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
-         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
- 
-         ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
+         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+         ->select('users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
          'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
          'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
          ->where('employeeuniform.status',0)
@@ -342,7 +342,7 @@ class FormsController extends Controller
  
                 $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
                 'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
-                'pant' => $pant, 'office' => $office])->render();
+                'pant' => $pant, 'office' => $office,'usersU'=>$usersU])->render();
                 return response()
                     ->json(array(
                     'success' => true,

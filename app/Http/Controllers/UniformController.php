@@ -15,12 +15,11 @@ use DataTables;
 class UniformController extends Controller
 {
 
-
-
     public function index(Request $request)
     {
         
         $pay = DB::table('employeeuniform')
+        ->join('users', 'users.empId', '=', 'employeeuniform.empId')
         ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
         ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
         ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
@@ -29,7 +28,7 @@ class UniformController extends Controller
         ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
         ->where('status', 0)
-        ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
+        ->select('users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
         'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
         'shoesize.ukShoeSize','raincoatsize.sizeName')
                     ->paginate(10000);
@@ -38,11 +37,7 @@ class UniformController extends Controller
             $data = $pay;
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('action', function($row){
-   
-                          
-
-
+                    ->addColumn('action', function($row){                    
 
     
                             return $btn;
@@ -56,8 +51,6 @@ class UniformController extends Controller
 
     public function store(Request $request)
     {
-    //  dd($request);
-
 
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
@@ -68,19 +61,13 @@ class UniformController extends Controller
     'shoe' => $request->shoe,
     'gumboot' => $request->gumboot,
     'raincoat' => $request->raincoat,
-    'createdBy' => $request->emp_id
-
-
-]);        
+    'createdBy' => $request->emp_id]);        
 
     // return response()->json(['success'=>'New pay saved successfully.']);
    
-      
-
-     
-    return redirect('/home')->with('home')
-    ->with('success', 'Data inserted successfully!!!');
-    
+    return response()
+    ->json(['success' => 'Data inserted successfully.']);
+        
     
     }
     //delte indivual record from database

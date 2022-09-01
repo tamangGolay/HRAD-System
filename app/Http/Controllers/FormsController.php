@@ -5361,22 +5361,8 @@ if ($request->v == "employeeskillmap")  //form.csv
  // for CEO notesheet approval n recom
  if ($request->v == "CEOreview")  //form.csv
  {    
-//     $notesheetRemarks = notesheetapprove::all(); 
-//     $officedetails = Officedetails::all(); 
-     
-//     $notesheetRequest = DB::table('notesheet')
-//     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
 
-// ->join('officemaster','officemaster.id','=','notesheet.officeId')
-// ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
-
-//    ->latest('notesheet.id') //similar to orderby('id','desc')
-//     ->where('notesheet.status','=','DirectorRecommended')  
-//     ->where('cancelled','=','No')  
-//     ->where('notesheet.officeId',Auth::user()->office)
-//     ->paginate(10000000);
-
-$notesheetRemarks = notesheetapprove::all(); 
+    $notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
      
     $notesheetRequest = DB::table('notesheet')
@@ -5386,13 +5372,8 @@ $notesheetRemarks = notesheetapprove::all();
     ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
-
     ->where('notesheet.status','=','DirectorRecommended') // 
-    ->where('cancelled','=','No')
-
-    // ->where('notesheet.officeId',Auth::user()->office)
-    // ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    
+    ->where('cancelled','=','No')      
     ->where('officeunder.head',Auth::user()->empId)  
     
     ->paginate(10000000);
@@ -5894,7 +5875,8 @@ if ($request->v == "normalTransfer")  //form.csv
         ->select('officeunder.office')
         ->where('officeunder.head', '=', Auth::user()->empId);
     })
-    ->get();  // emp id for his underoffice
+    ->get();  // emp id for his underoffice for manager or offoce head    
+
 
     $officett =  DB::table('officeunder')
         ->join('officedetails','officedetails.id','=','officeunder.office')   
@@ -5907,8 +5889,7 @@ if ($request->v == "normalTransfer")  //form.csv
 
    $officedds = Officedetails::all();  //office name 
 
-   $b= DB::table('transferrequest') 
-   
+   $b= DB::table('transferrequest')     
    ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice') 
    ->join('employeesupervisor', 'employeesupervisor.supervisor', '=', 'transferrequest.requestToEmp')    

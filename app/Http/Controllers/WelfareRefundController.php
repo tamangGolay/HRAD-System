@@ -15,12 +15,12 @@ class WelfareRefundController extends Controller
     {
         //dd($request);
     
-        try
-         {
+        // try
+        //  {
             $Request_refund = new Refund;
             $Request_refund->empId = $request->EmpId;     //database name n user input name
             $Request_refund->refundDate = $request->refundDate;
-            $Request_refund->refundAmount = $request->refundAmount;                
+            $Request_refund->amount = $request->refundAmount;                
             $Request_refund->save();    
 
 
@@ -29,14 +29,14 @@ class WelfareRefundController extends Controller
 
         } //try end
        
-     catch(\Illuminate\Database\QueryException $e)
-     {
+    //  catch(\Illuminate\Database\QueryException $e)
+    //  {
 
-          return redirect('home')->with('page', 'refund')
-                ->with('error', 'Cannot leave the field empty!');
+    //       return redirect('home')->with('page', 'refund')
+    //             ->with('error', 'Cannot leave the field empty!');
 
-         }
+    //      }
 
-    }
+    
 }
 

@@ -18,14 +18,13 @@ class EmployeeImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {
 
-        // $row[1] = date('Y-m-d',strtotime($row[1]));
+        $row['contributiondate'] = date('Y-m-d',strtotime($row['contributiondate']));
         // dd($row);
 
     //     dd( \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1])
     // );
-        return new employeeContribution([
-            
-            
+    
+        return new employeeContribution([             
              
               'empId'  => $row['empid'],
               'contributionDate'  =>  $row['contributiondate'],

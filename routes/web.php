@@ -717,3 +717,7 @@ Route::resource('wfbank', WelfareBankController::class);
 Route::resource('wfrelatives', Manage_WfRelativesController::class);
 Route::post('destroyrelativesdetails', 'Manage_WfRelativesController@delete')->name('destroyrelativesdetails'); //for deleting contract details
 
+Route::get('/tocheckofficeId','EmployeeController@tocheckofficeId');// 
+Route::get('/backtopage','EmployeeController@backtopage');// 
+ 
+  

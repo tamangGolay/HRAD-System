@@ -90,10 +90,44 @@ class EmployeeController extends Controller
         
         }
     }
+    
+    public function tocheckofficeId()
+    {
+       
+     
+        $tocheckofficeId = DB::table('officedetails')
+       
+       ->select('id','officeDetails')
+        ->paginate(10000000);
+    
+    
+    $rhtml = view('welfare.officeId')->with(['tocheckofficeId' => $tocheckofficeId])->render();
+    return response()
+      ->json(array(
+      'success' => true,
+      'html' => $rhtml
+    ));
+    } 
+
+    public function backtopage()
+    {  
+    
+    $rhtml = view('welfare.allEmployeeContribution')->render();
+    return response()
+      ->json(array(
+      'success' => true,
+      'html' => $rhtml
+    ));
+    } 
+
+
+
+    
+    
 
 }
 
-// }
+
            
         
     

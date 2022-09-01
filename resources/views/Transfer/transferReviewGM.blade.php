@@ -8,7 +8,7 @@
               </h5> </div>
 			</div>
 <div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
-<button  id="notescancel" class="btn btn-info btn" onclick="othertransferrequest();" style="color:black;">View Transfer Request</button>
+<button  id="notescancel" class="btn btn-outline-info btn" onclick="othertransferrequest();" style="color:black;">View Transfer Request</button>
 	</div		
 			
 	<form method="POST" action="/gmReviewTransfer" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf

@@ -745,7 +745,7 @@ return response()
                ->join('officedetails', 'officedetails.id', '=', 'users.office')
                ->join('officemaster','officemaster.id','=','users.office')
 
-            ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.Address'
+            ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.officeDetails','officedetails.Address'
                )
 
                ->latest('users.id') //similar to orderby('id','desc')
@@ -6026,10 +6026,7 @@ if ($request->v == "hrTransferReview")  //form.csv
 
     ->orwhere('transferproposal.status','=','dirrecommended')
     ->where('transferproposal.toGMAction','=','recommended')
-    ->where('transferproposal.toDirectorAction','=','recommended')
-
-
-    
+    ->where('transferproposal.toDirectorAction','=','recommended')  
 
 
 

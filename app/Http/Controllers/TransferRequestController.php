@@ -360,7 +360,7 @@ $viewRequest = DB::table('transferproposal')
 ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
 ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
  
- ->where('status','=','dirrecommended')     
+ ->where('transferproposal.status','=','dirrecommended')     
  ->where('transferproposal.toOffice','=',Auth::user()->office)                             
           
   ->paginate(10000000);
@@ -423,12 +423,13 @@ public function toGMtransferrequest()
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
     ->where('transferproposal.toOffice','=',Auth::user()->office) 
-//   ->where('transferproposal.status','=','proposed')
-  ->where('transferproposal.toGM',)
+   ->where('transferproposal.fromDirectorAction','=','recommended')
+    ->where('transferproposal.toGM',)
 
- ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-//   ->where('transferproposal.status','=','proposed')
-  ->where('transferproposal.toGM',)
+     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+     ->where('transferproposal.fromDirectorAction','=','recommended')
+     ->where('transferproposal.status','=','proposed')
+     ->where('transferproposal.toGM',)
     
     
     ->paginate(10000000);
@@ -501,12 +502,15 @@ public function toDirtransferrequest()
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
    ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
    ->join('officeunder','officeunder.office','=','transferproposal.toOffice')
-
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
-
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','B.officeType')
+   
 
   ->where('officeunder.head',Auth::user()->empId)  
   ->where('transferproposal.status','=','recommended')
+  ->where('transferproposal.toDirector',)  
+
+  ->orwhere('B.officeType','=','Services')  
+  ->where('officeunder.head',Auth::user()->empId) 
   ->where('transferproposal.toDirector',)    
     
     ->paginate(10000000);

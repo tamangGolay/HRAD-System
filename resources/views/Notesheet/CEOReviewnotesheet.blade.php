@@ -24,17 +24,15 @@ hr{
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-			@foreach($notesheetRequest as $rv)
+			       @forelse($notesheetRequest as $rv)
 			
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
               <tr>   <th>office Name</th>        <td> {{($rv->longOfficeName)}} </td>  </tr>
                <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr> 
-			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td> </tr>  
-
-                           
-			  <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
+			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td> </tr>                           
+			        <tr> <th>Status</th> <td> {{$rv->status}} </td>  </tr>
 
         <tr><th colspan="2">Action</th> </tr>
               <tr ><th colspan="2" >
@@ -80,8 +78,10 @@ hr{
             </form>
           </th>  
         </tr>
-      </thead>  
-      @endforeach
+      </thead>
+      @empty
+      </p class="text-center">No data available</p>  
+      @endforelse
 	   </tbody>
     </table>	  <div>
         <!--/card-body-->
@@ -91,14 +91,9 @@ hr{
     </div>
 
 
-    
-
-
 
 
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-    
-
 
 <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>

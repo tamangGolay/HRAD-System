@@ -68,15 +68,13 @@ class incrementReportController extends Controller
       $officeAddress = DB::table('viewincrementorder')//promotionall table(incrementall)
       ->join('officedetails','officedetails.id','=','viewincrementorder.officeId')
       ->select('officedetails.officeDetails')
-      ->where('viewincrementorder.officeId','=',$officeId->officeId)
-      ->first();
-
-    
+      ->where('viewincrementorder.officeId',$officeId->officeId)
+      ->first();    
  
       $headDesignation = DB::table('officehead')
       ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
         ->select('officehead.designation')
-         ->where('officehead.OfficeId', '=',$officeId->officeId)
+         ->where('officehead.OfficeId',$officeId->officeId)
          ->first();
 
       $GmName = DB::table('users')
@@ -93,7 +91,7 @@ class incrementReportController extends Controller
                     // ->where('users.designationid', '=', 'designationmaster.id')
                     ->where('users.empid', '=', function($query){
                       $query->from('officemaster')
-                      ->select('officemaster.officehead')
+                      ->select('officemaster.officeHead')
                       ->where('officemaster.id', '=', 75);
                     })
                     ->first();
@@ -134,7 +132,7 @@ class incrementReportController extends Controller
          ->select('users.emailId')
          ->where('users.empid', '=', function($query){
           $query->from('officemaster')
-          ->select('officemaster.officehead')
+          ->select('officemaster.officeHead')
           ->where('officemaster.id', '=', 75);
         })
         ->first();
@@ -201,7 +199,7 @@ class incrementReportController extends Controller
         $headDesignation = DB::table('officehead')
         ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
           ->select('officehead.designation')
-           ->where('officehead.officeId', $officeId->officeId)
+           ->where('officehead.OfficeId', $officeId->officeId)
            ->first();
   
         $GmName = DB::table('users')
@@ -218,7 +216,7 @@ class incrementReportController extends Controller
                       // ->where('users.designationid', '=', 'designationmaster.id')
                       ->where('users.empid', '=', function($query){
                         $query->from('officemaster')
-                        ->select('officemaster.officehead')
+                        ->select('officemaster.officeHead')
                         ->where('officemaster.id', '=', 75);
                       })
                       ->first();
@@ -259,7 +257,7 @@ class incrementReportController extends Controller
            ->select('users.emailId')
            ->where('users.empid', '=', function($query){
             $query->from('officemaster')
-            ->select('officemaster.officehead')
+            ->select('officemaster.officeHead')
             ->where('officemaster.id', '=', 75);
           })
           ->first();

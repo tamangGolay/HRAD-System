@@ -35,33 +35,33 @@ div.notesheet {
                 <p> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </p>
             </div>
             <br>
-            <div class ="row">
-                <div class = "col-md-12">
+            <div class ="row col-lg-12">
+                <div class = "col-md-12 col-lg-12">
                     <p>{{$headDesignation->designation}}</p>
                     <p>{{$increment1->longOfficeName}}</p>
                     <p>{{$increment1->officeAddress}}</p>
                 </div>
             </div>
             <br>
-            <div class = "row">
-                <div class = "col-md-12">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12">
                     <p> <strong> Subject:</strong> <u>Increment Order</u></p>
                 </div>
             </div>
             <br>
-            <div class = "row">
-                <div class = "col-md-12">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12">
                     <p> Dear sir/madam, </p>
                     <br>
                 </div>
             </div>
-            <div class = "row">
-                <div class = "col-md-12 increment1">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 increment1 col-lg-12">
                 <p> The final increment payout for the {{$increment1->incrementCycle}} Cycle {{$increment1->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>     
-            <div class = "row">
-                <div class = "col-md-12">      
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12">      
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover table-striped table-bordered gg">
                             <thead>
@@ -91,20 +91,20 @@ div.notesheet {
                 </div> 
             </div>
             <br>
-            <div class = "row">
-                <div class = "col-md-12 ">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12">
                     <p> You are requested to inform the employees under their jurisdiction of the same and also to maintain a copy of the same in their personal file for record. </p> 
                 </div>
             </div> 
             <br>
-            <div class = "row">
-                <div class = "col-md-12 ">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12">
                     <p> Yours Sincerely </p>
                 </div>
             </div>
             <br>
-            <div class = "row">
-                <div class = "col-md-12 increment1">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12 increment1">
                    <img src="{{asset('/cd/images/hrsign.gif')}}" width="20%" height="30px">
                    <br>       
                     <p> {{$GmName-> empName }} </p>
@@ -112,8 +112,8 @@ div.notesheet {
                 </div>
             </div> 
             <br><br><br>                
-            <div class = "row">
-                <div class = "col-md-12 increment1">
+            <div class = "row col-lg-12">
+                <div class = "col-md-12 col-lg-12 increment1">
                     <p> Copy to: </p>
                     <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisnamelong }}, PIAD, HRAD, BPC for further necessary action.  </p>                    
                     <p> &nbsp; &nbsp; 2. HR Admin, {{$officeAddress->officeDetails }} for necessary action. </p>

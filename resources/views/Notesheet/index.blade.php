@@ -67,6 +67,7 @@ div.notesheet {
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
+                      @continue
                       <tr >
                         <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
                         <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>

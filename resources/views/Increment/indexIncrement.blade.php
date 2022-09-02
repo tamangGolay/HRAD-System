@@ -17,6 +17,10 @@
   border-color: #000000;
  
 }
+div.notesheet {
+      position: absolute;
+      right: 45;  
+    }
    </style>
 
 </head>
@@ -56,7 +60,7 @@
                 <p> The final increment payout for the {{$increment1->incrementCycle}} Cycle {{$increment1->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>     
-            <div class = "">
+            <div class = "row">
                 <div class = "col-md-12">      
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover table-striped table-bordered gg">

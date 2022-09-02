@@ -47,7 +47,7 @@ div.notesheet {
 
         
             <div class = "col-md-8">
-            <div class="notesheet">{{$notesheet->createdOn}}</div>
+            <div class="notesheet"> @if{{$notesheet->createdOn}}</div>
                 <h2 style="text-align:center"> Notesheet Report </h2>
             </div>
 
@@ -76,7 +76,7 @@ div.notesheet {
                       <tr>
                         <th scope = "col" class="col5"> Office </th>
                         <td class="col1"> {{$date-> longOfficeName}} </td>
-
+@endif
                       </tr>
                     </thead>
                     <!-- <tbody>

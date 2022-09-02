@@ -5,14 +5,14 @@
     <meta charset = "UTF-8">
     <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title> Laravel 8 PDF </title>
-    <! - Bootstrap5 CSS ->
+    <title> Notesheet Report </title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
    <style>
    table, th, td {
     border: 1px solid black;
 }
+
  /* th, td {
   border-color: #96D4D4;
  
@@ -47,7 +47,6 @@ div.notesheet {
             <div class = "col-md-8">
             <div class="notesheet">{{$notesheet->createdOn}}</div>
                 <h2 style="text-align:center"> Notesheet Report </h2>
-
             </div>
 
             <div class = "row">
@@ -68,7 +67,7 @@ div.notesheet {
                       </tr>
                       <tr>
                         <th scope = "col" class="col5"> Justification </th>
-                        <td class="col1"> {{$notesheet-> justification}} </td>
+                        <td class="col1 align-top"> {{$notesheet-> justification}} </td>
 
                       </tr>
                       <tr>
@@ -87,8 +86,8 @@ div.notesheet {
         </div>
     </div>
         <div class = "row">
-            <div class = "table2 col-md-6">
-                <table>
+            <div class = "col-lg-10">
+                <table class="table">
                     <caption> Remarks </caption>
                     <thead>
                       <tr>

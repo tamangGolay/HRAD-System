@@ -11,7 +11,7 @@
 
    <style>
    table, th, td {
-  border: 1px solid black;
+    border: 1px solid black;
 }
  /* th, td {
   border-color: #96D4D4;
@@ -31,11 +31,7 @@ div.notesheet {
   height: 120px;
 }
 
-div.table2 {
-  position: absolute;
-  left: 55;
-  
-}
+
    </style>
 </head>
 <body>

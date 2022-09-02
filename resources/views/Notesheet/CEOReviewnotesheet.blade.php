@@ -80,7 +80,7 @@ hr{
         </tr>
       </thead>
       @empty
-      </p class="text-center">No data available</p>  
+      <p class="text-center">No data available</p>  
       @endforelse
 	   </tbody>
     </table>	  <div>
@@ -89,8 +89,6 @@ hr{
       </div>
       </div>
     </div>
-
-
 
 
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>

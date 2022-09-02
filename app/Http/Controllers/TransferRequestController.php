@@ -193,10 +193,9 @@ class TransferRequestController extends Controller
             $Request_notesheet->reason = $request->reason;
             $Request_notesheet->createdBy = $request->empId;
             $Request_notesheet->status = $request->status;
-            $Request_notesheet->save();  
+            $Request_notesheet->save(); 
 
-
-            return redirect('home')
+            return redirect('home')->with('page', 'normalTransfer')
             ->with('success', 'Transfer request submitted successfully!');
     }
 
@@ -226,7 +225,8 @@ class TransferRequestController extends Controller
          ->first();
         
        if($toOffice == NULL){
-            return redirect('home')
+
+            return redirect('home')->with('page', 'gmTransferReview')
                 ->with('success','You have recommended the Transfer Request');
          }
 
@@ -239,7 +239,7 @@ class TransferRequestController extends Controller
                            'toGMRemarks' =>$request->rejectreason]);
          }
          
-         return redirect('home')
+         return redirect('home')->with('page', 'gmTransferReview')
          ->with('success','You have recommended the Transfer Request');
 
 
@@ -262,15 +262,15 @@ transferProposal::updateOrCreate(['id' => $id->id],
                    'fromGMRemarks' =>$request->rejectreason]);   
 
   
- return redirect('home')
+ return redirect('home')->with('page', 'gmTransferReview')
  ->with('error','You have rejectd the Transfer Request');
 
 }
 
  else{
-    return redirect('home')->with('Sorry','The transfer request have been rejected!');  
- }
-
+    return redirect('home')->with('page', 'gmTransferReview')
+    ->with('error','The transfer request have been rejected!');  
+ }  
 }
 
 public function dirReviewTransfer(Request $request)
@@ -292,13 +292,7 @@ public function dirReviewTransfer(Request $request)
                        'fromDirectorRemarks' =>$request->rejectreason]); 
                        
 
-// $fromOffice1 = DB::table('transferproposal')
-// ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
-// ->select('transferproposal.fromOffice','officeunder.head')         
-// ->where('transferproposal.id',$request->id)
-// ->get();
 
-// dd($fromOffice1[]->head);
 
 $toOffice1 = DB::table('transferproposal')
          ->join('officeunder','officeunder.office','transferproposal.toOffice')
@@ -308,7 +302,7 @@ $toOffice1 = DB::table('transferproposal')
          ->first();
 
 if($toOffice1 == NULL){
-            return redirect('home')
+            return redirect('home')->with('page', 'dirReview')
                 ->with('success','You have recommended the Transfer Request');
 }
 
@@ -322,7 +316,7 @@ if($toOffice1 == NULL){
     }
                      
 
-     return redirect('home')
+     return redirect('home')->with('page', 'dirReview')
      ->with('success','You have recommended the Transfer Request');
 
 }
@@ -340,13 +334,14 @@ if($request->remarks2 == "rejected" ){
                         'fromDirector' =>$request->empId,
                         'status' =>$status1,
                         'fromDirectorRemarks' =>$request->rejectreason]);   
-                        return redirect('home')
+                        return redirect('home')->with('page', 'dirReview')
                         ->with('error','You have rejectd the Transfer Request');
 
                     }
 
 else{
-return redirect('home')->with('Sorry','Recommendation Failed');  
+return redirect('home')->with('page', 'dirReview')
+->with('error','Recommendation Failed');  
 }
 
 }
@@ -574,9 +569,7 @@ transferProposal::updateOrCreate(['id' => $id->id],
 
 public function HRReviewTransfer(Request $request)
 {
-    
-
-  
+      
     $dt = date('Y-m-d');
     
     if($request->remarks == "Open" ){    
@@ -622,14 +615,7 @@ public function HRReviewTransfer(Request $request)
         ->where('id',$request->id)
         ->first();
 
-        // $requestDate = DB::table('transferrequest')->select('requestDate')
-        // ->where('id',$request->id)
-        // ->first();  
-    
-    
-       // dd($toOffice->toOffice);
-    //    id,proposalId,empId,transferDate,transferFrom,transferTo,transferType,TransferBenefit,orderReleasedBy,OrderReleasedOn,relievedBy,relievedOn,joinedOn,joiningAcceptedBy,joiningAcceptedOn,status
-
+        
             $a = new transferHistory;   // is ModelName
             $a->id = $id->id;
             $a->empId =  $empId->empId;
@@ -700,13 +686,14 @@ public function relieveEmployee(Request $request)
                            ['relievedBy' =>$request->empId,
                            'relievedOn' =>$relievedOn]);  
 
-         return redirect('home')
+         return redirect('home')->with('page','relieveEmployee')
          ->with('success','You have Relieved the employee');
 
  }
 
  else{
-    return redirect('home')->with('Sorry','Recommendation Failed');  
+    return redirect('home')->with('page','relieveEmployee')
+    ->with('error','Recommendation Failed');  
  }
 
 }

@@ -48,26 +48,12 @@
 					<input type="hidden" name="remarks" id="remarks" value="Open">
 					<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Relieve?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-12 mb-4 btn-center " >Relieve</button>
 		
-					<!-- <div>
-					<textarea name="rejectreason" id="reason" placeholder="Recommendation Remarks"  required></textarea>		
-					</div> -->
+					
 
 		    		</form> 
 					 </td>
 
-				<!-- <td>
-
-				 <form method="POST" action="/relieveEmployee" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
-					<input type="hidden" class="form-control air-datepicker" id="requestDate" name="requestDate" autocomplete="off" required readonly>
-				<input type="hidden" name="remarks2" id="remarks2" value="rejected">  
-				<button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-12 mb-4 btn-center " >Reject</button>
-				<div>
-					<textarea name="rejectreason" id="reason" placeholder="reason for rejection"  required></textarea>		
-					</div>
-           </form> 
-		</td> -->
+				
 			
       </tr>
 	@endforeach 
@@ -87,7 +73,7 @@
 		<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
 		});
 		</script>
 		<!-- jquery-validation -->

@@ -88,7 +88,7 @@ class NotesheetController extends Controller
             Mail::to($supervisorEmail->emailId) 
             ->send(new MyTestMail($supervisor));
 
-            return redirect('home')
+            return redirect('home')->with('page','notesheet')
             ->with('success', 'Notesheet submitted successfully');
 
         }
@@ -169,7 +169,7 @@ class NotesheetController extends Controller
         //     // ->where('status','=','Processing')            
         //     // ->first();
         // }
-        return redirect('home')
+        return redirect('home')->with('page','notesheet')
         ->with('success', 'Notesheet submitted successfully');
 
  }
@@ -251,7 +251,8 @@ public function recommendnotesheet(Request $request)
         ->cc($userEmail->emailId)
         ->send(new MyTestMail($supervisor)); 
                 
-        return redirect('home')->with('success','You have recommended and forwarded the Notesheet');
+        return redirect('home')
+        ->with('success','You have recommended and forwarded the Notesheet');
         }
     
                 if($request->status1 == "Approved" ){

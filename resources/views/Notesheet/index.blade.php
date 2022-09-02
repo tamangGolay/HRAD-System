@@ -12,9 +12,11 @@
    table, th, td {
     border: 1px solid black;
 }
-tr{
-   page-break-inside:avoid;
+
+table{
+   page-break-inside:avoid !important;
 }
+
  /* th, td {
   border-color: #96D4D4;
  
@@ -47,7 +49,7 @@ div.notesheet {
 
         
             <div class = "col-md-8">
-            @if <div class="notesheet"> {{$notesheet->createdOn}}</div>
+            <div class="notesheet"> {{$notesheet->createdOn}}</div>
                 <h2 style="text-align:center"> Notesheet Report </h2>
             </div>
 
@@ -67,7 +69,7 @@ div.notesheet {
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
-                      @continue
+                     
                       <tr >
                         <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
                         <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>
@@ -76,7 +78,7 @@ div.notesheet {
                       <tr>
                         <th scope = "col" class="col5"> Office </th>
                         <td class="col1"> {{$date-> longOfficeName}} </td>
-@endif
+
                       </tr>
                     </thead>
                     <!-- <tbody>

@@ -14,7 +14,7 @@
   border: 1px solid black;
 }
  th, td {
-  border-color: #96D4D4;
+  border-color: #000000;
  
 }
 .col1{

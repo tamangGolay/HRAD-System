@@ -83,7 +83,7 @@
         <div class = "row">
             <div class = "col-lg-10">
                 <table class="table">
-                    <strong class="text-center"> Remarks by Supervisor(s)</strong>
+                    <strong > Remarks by Supervisor(s)</strong>
                     <thead>
                       <tr>
                         <th scope = "col" class="col5"> Reviewer </th>

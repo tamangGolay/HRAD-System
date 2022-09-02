@@ -29,8 +29,10 @@ a {
 
  
 <div class="container">
-    <button class="btn btn-success" style="color:white;">Knowledge Repository&nbsp;&nbsp;</button> 
-
+  
+    <div class=" card-header bg-green text-center mb-3">
+              <h5>Knowledge Repository</h5>
+	</div>
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
@@ -66,7 +68,7 @@ a {
                         
 
 					<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="createdBy">{{ __('EmpId:') }}</label>
+									<label class="col-sm-2 col-lg-12" for="createdBy">{{ __('EmpId:') }}</label>
 									<div class="col-sm-12">
 									<input type="text"  class="form-control" value="" name="createdBy" id="createdBy" required readonly> 
 
@@ -74,7 +76,7 @@ a {
 								</div>
 
 					<div class="form-group row">
-									<label class="col-sm-2 control-label text-md-right" for="emp_id">{{ __('Name:') }}</label>
+									<label class="col-sm-2 control-label col-lg-12" for="emp_id">{{ __('Name:') }}</label>
 									<div class="col-lg-12 col-sm-4">
 									<input type="text"  class="form-control" value="" name="empName" id="empName" required readonly> 
 
@@ -82,7 +84,7 @@ a {
 								</div>
 
 					<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="emp_id">{{ __('Office:') }}</label>
+									<label class="col-sm-2 col-lg-12" for="emp_id">{{ __('Office:') }}</label>
 									<div class="col-sm-12">
 									<select name="officeDetails" id="officeDetails" value="" class="form-control" required readonly>
                                              
@@ -95,7 +97,7 @@ a {
 
 
 								<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="approvedBy">{{ __('Approved By:') }}</label>
+									<label class="col-sm-2 col-lg-12" for="approvedBy">{{ __('Approved By:') }}</label>
 									<div class="col-sm-12">
 									<input type="text"  class="form-control" value="" name="approvedBy" id="approvedBy" required readonly> 
 
@@ -109,16 +111,16 @@ a {
 							
 
 								<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="problem">{{ __('Problem:') }}</label>
+									<label class="col-sm-2 col-lg-12" for="problem">{{ __('Problem:') }}</label>
 									<div class="col-sm-12">
-									<textarea type="text" rows="14" class="form-control" value="" name="problem" id="problem" required readonly> 
+									<textarea type="text" rows="10" class="form-control" value="" name="problem" id="problem" required readonly> 
                          			</textarea></div>
 								</div>
 
 								<div class="form-group row">
-									<label class="col-sm-2 text-md-right" for="solution">{{ __('Solution:') }}</label>
+									<label class="col-sm-2 col-lg-12" for="solution">{{ __('Solution:') }}</label>
 									<div class="col-sm-12">
-									<textarea type="text" rows="14" class="form-control" value="" name="solution" id="solution" required readonly> 
+									<textarea type="text" rows="10" class="form-control" value="" name="solution" id="solution" required readonly> 
                          			</textarea></div>
 
 									<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">

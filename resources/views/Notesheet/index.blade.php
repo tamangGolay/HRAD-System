@@ -30,10 +30,7 @@
 .col5{
   width:20%;
 }
-.col4{
-   width:80%;
-   position:absolute;
-}
+
 
 /* div.notesheet {
   position: fluid;
@@ -74,27 +71,31 @@
                         <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
 
-                      </tr>
+                      </tr>   </thead> </table>
                      
-                      <tr >
+                      <!-- <tr >
                         <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
-                        <td class="col4"> {!! nl2br ($notesheet-> justification) !!} </td>
+                        <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>
                       
                       </tr>
                       <tr>
                         <th scope = "col" class="col5"> Office </th>
                         <td class="col1"> {{$date-> longOfficeName}} </td>
 
-                      </tr>
-                    </thead>
+                      </tr> -->
+                  
                     <!-- <tbody>
                         <tr>
 
                         </tr>
                     </tbody> -->
-                  </table>
+                  
             </div>
         </div>
+
+        <p>Justicfication</p>
+        <p>{!! nl2br ($notesheet-> justification) !!}</p>
+
     </div>
         <div class = "row">
             <div class = "col-lg-10">

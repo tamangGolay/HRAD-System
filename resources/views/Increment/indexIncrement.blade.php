@@ -103,15 +103,12 @@ div.table2 {
                         </thead>
 
                         <tbody>
-                        <tr>
-
-                       
+                        <tr>                   
 
 
 
 
-                        @foreach ($increment as $increment)
-                        
+                        @foreach ($increment as $increment)                       
  
 
                           <td class="col1"> {{ $loop->iteration }}</td>

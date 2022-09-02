@@ -83,7 +83,7 @@ div.notesheet {
                             <tr class="page-break">             
                              @foreach ($increment as $increment) 
                               
-                             @if($loop->iteration <= 10)            
+                             @if($loop->iteration < 10)            
                                 <!-- <td > {{$loop->iteration}}</td> -->
                                 <td > {{$increment->empName }} ({{$increment->empId}}) </td>
                                 <td > {{$increment->designation}}({{$increment->grade}}) </td>

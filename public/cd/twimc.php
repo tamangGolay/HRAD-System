@@ -5,7 +5,17 @@
 			" FROM employee4twimc" .
 			" where empId = " . $empid .";";
     $result = mysqli_query($conn,$sql);
-	$row = mysqli_fetch_array($result)
+	$row = mysqli_fetch_array($result);
+	if ($row["superNumber"]=='0'){
+		$supNumber = '339852';
+	} else {
+		$supNumber = $row["superNumber"];
+	}
+	if ($row["superEmailId"]==''){
+		$supEmail = 'hrad@bpc.bt';
+	} else {
+		$supEmail = $row["superEmailId"];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +36,8 @@
     </head>
     <body>
     <div class="w3-border w3-content w3-margin-top w3-card-4 bgReceipt" id="nodetoprint">
-            <img src="images/header.jpg" alt="Header Picture" class="images">
-			<p id=todayDate></p>
+            <img src="images/Header.jpg" alt="Header Picture" class="images">
+			<p id=todayDate><?php echo date("d/m/Y"); ?></p>
            <div class="w3-container w3-margin w3-padding">
                <h2 id="center">To Whom It May Concern</h2>
             <table id="table" class=bodytext>
@@ -42,7 +52,7 @@
 				<tr><td width="200px"><span class="labelReceipt"> Employment Type: </span> </td><td><span class="dataReceipt"> <?php echo $row["employmentType"]; ?></span></td></tr>
             </table>
         <br>
-		<div id="note">This is a system generated document and you may call <?php echo $row["superNumber"]; ?> or email <?php echo $row["superEmailId"]; ?> to authenticate the same.</div>
+		<div id="note">This is a system generated document and you may call <?php echo $supNumber; ?> or email <?php echo $supEmail; ?> to authenticate the same.</div>
         <br>
 		<form id ="printing">
             <input id = "print" type="button" title="Choose save as pdf for saving" value="Print/Save" onclick="printReceipt()"/>
@@ -53,25 +63,12 @@
             </footer>
     </div>
     <script>
-		const d = new Date();
-		dateT = formatDate(d)
-		document.getElementById("todayDate").innerHTML = dateT;
-		
 		function printReceipt(){
             document.getElementById('printing').innerHTML = ('');
             window.print();
         }
-		function formatDate(date) {
-		  return [
-			padTo2Digits(date.getDate()),
-			padTo2Digits(date.getMonth() + 1),
-			date.getFullYear(),
-		  ].join('/');
-		}
-		function padTo2Digits(num) {
-		  return num.toString().padStart(2, '0');
-		}
-</script>
-    </script>
+
+	</script>
+
     </body>
 </html>

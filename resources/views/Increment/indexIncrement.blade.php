@@ -18,7 +18,10 @@
  
 }
 /*  */
+.gg{
+  width:100%;
 
+}
 
 div.notesheet {
   position: absolute;
@@ -76,9 +79,9 @@ div.notesheet {
         
             <div class = "row">
             <div class = "col-md-12">
-            <div style="page-break-after:always;">
+            
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover table-striped table-bordered">
+                <table class="table table-hover table-striped table-bordered gg">
 
                 <thead>
                             <tr>
@@ -95,7 +98,7 @@ div.notesheet {
                         <tr>             
 
                         @foreach ($increment as $increment)             
-                           <td class="col1"> {{$loop->iteration}}</td>
+                           <td class="col2"> {{$loop->iteration}}</td>
                           <td class="col2"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col2"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col2"> {{$increment-> oldBasic}} </td>

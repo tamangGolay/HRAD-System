@@ -5875,6 +5875,7 @@ if ($request->v == "normalTransfer")  //form.csv
         ->select('officeunder.office')
         ->where('officeunder.head', '=', Auth::user()->empId);
     })
+    ->orWhere('users.office',Auth::user()->office)
     ->get();  // emp id for his underoffice for manager or offoce head    
 
 

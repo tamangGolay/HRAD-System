@@ -18,10 +18,10 @@
  
 } */
 .col1{
-   width:100px;
+   width:70%;
 }
 .col5{
-  width:80%;
+  width:30%;
 }
 .col2{
    width:250px;;
@@ -64,23 +64,23 @@ div.table2 {
                     <!-- <caption> NoteSheet </caption> -->
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Sl no </th>
+                        <th scope = "col" class="col5"> Sl no </th>
                         <td class="col1"> {{$notesheet->id}} </td>
 
                       </tr>
 
                       <tr>
-                        <th scope = "col" class="col1"> Name </th>
+                        <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
                       <tr>
-                        <th scope = "col" class="col1"> Justification </th>
-                        <td class="col5"> {{$notesheet-> justification}} </td>
+                        <th scope = "col" class="col5"> Justification </th>
+                        <td class="col1"> {{$notesheet-> justification}} </td>
 
                       </tr>
                       <tr>
-                        <th scope = "col" class="col1"> Office </th>
+                        <th scope = "col" class="col5"> Office </th>
                         <td class="col1"> {{$date-> longOfficeName}} </td>
 
                       </tr>
@@ -108,9 +108,9 @@ div.table2 {
                     <caption> Remarks </caption>
                     <thead>
                       <tr>
-                        <th scope = "col" class="col1"> Reviewer </th>
-                        <th scope = "col" class="col1"> Status </th>
-                        <th scope = "col" class="col1"> Remarks </th>
+                        <th scope = "col" class="col5"> Reviewer </th>
+                        <th scope = "col" class="col5"> Status </th>
+                        <th scope = "col" class="col5"> Remarks </th>
                       </tr>
                     </thead>
                     <tbody>

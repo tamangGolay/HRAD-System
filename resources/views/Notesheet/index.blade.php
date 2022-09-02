@@ -13,7 +13,10 @@
     border: 1px solid black;
 }
 
-.reportpage{
+/* .reportpage{
+   page-break-inside:avoid !important;
+} */
+.table{
    page-break-inside:avoid !important;
 }
 
@@ -40,7 +43,7 @@
 </head>
 <body>
 
-    <div class = "container-fluid mt-4 reportpage" style="width:70%">
+    <div class = "container-fluid mt-4">
         <div class = "row">
 
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">

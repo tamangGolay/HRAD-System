@@ -13,8 +13,7 @@
 
 
 
-a {
-        color: black !important;
+a {        color: black !important;
         text-decoration: none;
         font-family:Cambria;
   font-size:12;
@@ -45,28 +44,20 @@ a {
 div.notesheet {
   position: absolute;
   right: 45;
-   font-family:Cambria;
-  font-size:12;
+   
 }
 
 div.table2 {
   position: absolute;
   left: 55;
-  font-family:Cambria;
-  font-size:12;
-  font-family:Cambria;
-  font-size:12;
-  
+    
 }
 h4{
   text-decoration: underline; 
   font-family:Cambria;
   font-size:12;
 }
-div{
-  font-family:Cambria;
-  font-size:12;
-}
+
 h6{
   font-family:Cambria;
   font-size:12;

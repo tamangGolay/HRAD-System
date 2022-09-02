@@ -29,7 +29,7 @@ div.notesheet {
   right: 45;
   width: 100px;
   height: 120px;
-}
+  }
 
 div.table2 {
   position: absolute;
@@ -141,7 +141,7 @@ div.table2 {
                    <div class = "col-md-12 increment1">
                    <img src="{{asset('/cd/images/hrsign.gif')}}" width="20%" height="30px">
                    <br>
-                    <p> {{$increment1-> empId }} </p>
+                    
                     <p> {{$GmName-> empName }} </p>
                     <p> General Manager-HR </p>
                     </div>
@@ -149,8 +149,10 @@ div.table2 {
                 <br>                <div class = "row">
                    <div class = "col-md-12 increment1">
                     <p> Copy to: </p>
-                    <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisnamelong }}, PIAD, HRAD, BPC for further necessary action.  </p>
-                    <p> &nbsp; &nbsp; 2. All HR Admin, {{$officeAddress->officeDetails }} for necessary action. </p>
+                    <p> &nbsp; &nbsp; 1. {{$PiadDesignation->desisnamelong }}, PIAD, HRAD, BPC for further necessary action.  </p>                    
+                    <p> &nbsp; &nbsp; 2. HR Admin, {{$officeAddress->officeDetails }} for necessary action. </p>
+                    <p> &nbsp; &nbsp; 3. Person Concern</p>
+
                     </div>
                 </div>
             </div>

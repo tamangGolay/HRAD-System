@@ -99,11 +99,11 @@ div.table2 {
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <!-- <tbody> -->
                         <tr>             
 
                         @foreach ($increment as $increment)             
-                           <td class="col1"> {{ $loop->iteration <= 10 }}</td>
+                           <td class="col1"> {{ $loop->iteration < 7 }}</td>
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>

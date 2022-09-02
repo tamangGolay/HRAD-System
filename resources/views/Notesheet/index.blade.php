@@ -13,12 +13,15 @@
    table, th, td {
   border: 1px solid black;
 }
- th, td {
+ /* th, td {
   border-color: #96D4D4;
  
-}
+} */
 .col1{
    width:100px;
+}
+.col5{
+  width:80%;
 }
 .col2{
    width:250px;;
@@ -38,15 +41,11 @@ div.table2 {
 }
 
 
-
-
-
-
    </style>
 </head>
 <body>
 
-    <div class = "container mt-4">
+    <div class = "container-fluid mt-4">
         <div class = "row">
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
@@ -55,14 +54,14 @@ div.table2 {
         
             <div class = "col-md-8">
             <div class="notesheet">{{$notesheet->createdOn}}</div>
-                <h2> NoteSheet </h2>
+                <h2 style="text-align:center"> Notesheet Report </h2>
 
             </div>
 
             <div class = "row">
             <div class = "col-md-12">
                 <table class = "table" width="93%">
-                    <caption> NoteSheet </caption>
+                    <!-- <caption> NoteSheet </caption> -->
                     <thead>
                       <tr>
                         <th scope = "col" class="col1"> Sl no </th>
@@ -77,7 +76,7 @@ div.table2 {
                       </tr>
                       <tr>
                         <th scope = "col" class="col1"> Justification </th>
-                        <td class="col1"> {{$notesheet-> justification}} </td>
+                        <td class="col5"> {{$notesheet-> justification}} </td>
 
                       </tr>
                       <tr>

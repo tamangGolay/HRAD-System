@@ -30,7 +30,10 @@
 .col5{
   width:20%;
 }
-
+div.notesheet {
+      position: absolute;
+      right: 45;  
+    }
 
 
    </style>

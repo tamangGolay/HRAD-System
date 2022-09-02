@@ -197,7 +197,14 @@ function notesheetCancel()
     $('#contentpage').append(data.html);
  });
 
-}
-  
+} 
 
 		</script>
+
+		
+<script>
+    var today = new Date();
+	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	document.getElementById("notesheetDate").value = date;
+
+    </script>

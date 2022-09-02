@@ -53,7 +53,7 @@
 
                     <thead>
                       <tr>
-                        <th scope = "col" class="col5"> Sl no </th>
+                        <th scope = "col" class="col5">Notesheet Id</th>
                         <td class="col1"> {{$notesheet->id}} </td>
                       </tr>
 
@@ -78,11 +78,12 @@
         <br>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
+        <br> <br>
     </div>
         <div class = "row">
             <div class = "col-lg-10">
                 <table class="table">
-                    <strong> Remarks by Supervisor(s)</strong>
+                    <strong class="text-center"> Remarks by Supervisor(s)</strong>
                     <thead>
                       <tr>
                         <th scope = "col" class="col5"> Reviewer </th>

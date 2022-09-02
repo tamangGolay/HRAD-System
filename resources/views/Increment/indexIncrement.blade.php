@@ -18,11 +18,9 @@
  
 }
 .col1{
-   width:100px;
+   width:100%;
 }
-.col2{
-   width:250px;;
-}
+
 
 div.notesheet {
   position: absolute;
@@ -104,12 +102,12 @@ div.table2 {
                         <tr>             
 
                         @foreach ($increment as $increment)             
-                           <td class="col1"> {{ $loop->iteration}}</td>
-                          <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
-                          <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
-                           <td class="col1"> {{$increment-> oldBasic}} </td>
-                            <td class="col1"> {{$increment-> increment}} </td>
-                            <td class="col1"> {{$increment-> newBasic}} </td>
+                           <td class="col1"> {{$loop->iteration}}</td>
+                          <td class="col2"> {{$increment->empName }} ({{$increment->empId}}) </td>
+                          <td class="col2"> {{$increment->designation}}({{$increment->grade}}) </td>
+                           <td class="col2"> {{$increment-> oldBasic}} </td>
+                            <td class="col2"> {{$increment-> increment}} </td>
+                            <td class="col2"> {{$increment-> newBasic}} </td>
                         </tr>
                         </tbody>
                         @endforeach

@@ -17,11 +17,7 @@
   border-color: #000000;
  
 }
-/*  */
-.gg{
-  width:100%;
 
-}
 
 div.notesheet {
   position: absolute;
@@ -109,6 +105,8 @@ div.notesheet {
                         @endforeach
 
                   </table>
+</div> </div> </div>
+
                   <br>
                   <div class = "row">
                    <div class = "col-md-12 ">
@@ -141,10 +139,7 @@ div.notesheet {
                 </div>
             </div>
             </div>
-        </div>
-
-    </div>
-  </div>
+       
   <div class = "row">
         <!-- <img src="{{asset('/cd/images/footer.jpg')}}" width="40%" height="100px"> -->
         <img src="{{asset('/cd/images/footer.PNG')}}" width="80%" height="40px">

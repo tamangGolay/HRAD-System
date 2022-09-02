@@ -13,7 +13,7 @@
     border: 1px solid black;
 }
 
-table{
+.reportpage{
    page-break-inside:avoid !important;
 }
 
@@ -40,14 +40,11 @@ div.notesheet {
 </head>
 <body>
 
-    <div class = "container-fluid mt-4">
+    <div class = "container-fluid mt-4 reportpage">
         <div class = "row">
 
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
-
-
-        
             <div class = "col-md-8">
             <div class="notesheet"> {{$notesheet->createdOn}}</div>
                 <h2 style="text-align:center"> Notesheet Report </h2>

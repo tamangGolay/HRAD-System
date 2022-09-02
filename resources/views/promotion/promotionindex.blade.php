@@ -12,12 +12,7 @@
    <style>
 
 
-
-a {        color: black !important;
-        text-decoration: none;
-      
-    }
-    
+ 
     
  
     .alert-success {
@@ -28,8 +23,7 @@ a {        color: black !important;
 
 
  table, th, td {
-  border-color: #FFFFFF;
- 
+  border-color: #FFFFFF; 
  
 }
 .col1{
@@ -51,9 +45,7 @@ div.table2 {
     
 }
 h4{
-  text-decoration: underline; 
-  font-family:Cambria;
-  font-size:12;
+  text-decoration: underline;   
 }
 
 

@@ -52,6 +52,9 @@ class UniformController extends Controller
     public function store(Request $request)
     {
 
+    try{
+
+
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
      'officeId' => $request->officeId, 
@@ -65,8 +68,18 @@ class UniformController extends Controller
 
     // return response()->json(['success'=>'New pay saved successfully.']);
    
-    return response()
-    ->json(['success' => 'Data inserted successfully.']);
+    // return response()
+    // ->json(['success' => 'Data inserted successfully.']);
+
+    return redirect('home')->with('page', 'uniform')->with('success','Record added successfully!!!');
+    }
+
+    catch(\Illuminate\Database\QueryException $e){
+
+        return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry!!!');
+    
+    
+    }
         
     
     }

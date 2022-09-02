@@ -96,7 +96,7 @@
                     <select class="form-control" name="shoe" id="officeName" required>
                             <option value="">Select Size</option>
                             @foreach($shoe as $shoe)
-                            <option value="{{$shoe->id}}">{{$shoe->ukShoeSize}}</option>
+                            <option value="{{$shoe->id}}">{{$shoe->euShoeSize}}</option>
                             @endforeach
                     </select>                     
                     </div>
@@ -109,7 +109,7 @@
                     <select class="form-control" name="gumboot" id="officeName" required>
                             <option value="">Select Size</option>
                             @foreach($gumboot as $gumboot)
-                            <option value="{{$gumboot->id}}">{{$gumboot->uKSize}}</option>
+                            <option value="{{$gumboot->id}}">{{$gumboot->eUSize}}</option>
                             @endforeach
                     </select>                   
                     </div>

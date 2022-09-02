@@ -335,7 +335,7 @@ class FormsController extends Controller
          ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
          ->select('users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
          'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
-         'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
+         'shoesize.ukShoeSize','shoesize.euShoeSize','raincoatsize.sizeName','gumboot.uKSize','gumboot.eUSize')
          ->where('employeeuniform.status',0)
                      ->paginate(10000);
              

@@ -74,14 +74,15 @@
         </div>
         <br> <br> 
         
-        <p> <h5 class="text-center">Justicfication</h5></p>
+        <p> <h5 class="text-center">Justification</h5></p>
+        <br>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
     </div>
         <div class = "row">
             <div class = "col-lg-10">
                 <table class="table">
-                    <caption> Remarks </caption>
+                    <strong> Remarks by Supervisor(s)</strong>
                     <thead>
                       <tr>
                         <th scope = "col" class="col5"> Reviewer </th>

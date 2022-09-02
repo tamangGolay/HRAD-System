@@ -35,10 +35,16 @@
 
 div.notesheet {
   position: absolute;
+  right: 45;   
+}
+
+div{  
+  position: absolute;
   right: 45;
    
 }
 
+}
 div.table2 {
   position: absolute;
   left: 55;

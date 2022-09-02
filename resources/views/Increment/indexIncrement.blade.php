@@ -51,10 +51,7 @@ div.table2 {
                 <p> BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}} </p>
             </div>
 
-        <!-- <div class = "row">
-            <div class="col">BPC/HRAD/HRMD-05/{{$increment1->incrementDate}} / {{$increment1->id}}</div>
-            <div class="col ">{{$increment1->createdOn}}</div>
-        </div> -->
+        
 
             <br>
             <div class ="row">
@@ -103,15 +100,10 @@ div.table2 {
                         </thead>
 
                         <tbody>
-                        <tr>                   
+                        <tr>             
 
-
-
-
-                        @foreach ($increment as $increment)                       
- 
-
-                          <td class="col1"> {{ $loop->iteration }}</td>
+                        @foreach ($increment as $increment)             
+                           <td class="col1"> {{ $loop->iteration <= 10 }}</td>
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>

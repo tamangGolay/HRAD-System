@@ -18,7 +18,7 @@
  
 }
 .col1{
-   width:100px;
+   width:100%;
 }
 .col2{
    width:250px;;
@@ -85,6 +85,7 @@ div.table2 {
         
             <div class = "row">
             <div class = "col-md-12">
+            <div style="page-break-after:always;">
               <div class="card-body table-responsive p-0">
                 <table id="table5" class="table table-hover table-striped table-bordered">
 
@@ -99,11 +100,11 @@ div.table2 {
                             </tr>
                         </thead>
 
-                        <!-- <tbody> -->
+                        <tbody>
                         <tr>             
 
                         @foreach ($increment as $increment)             
-                           <td class="col1"> {{ $loop->iteration < 7 }}</td>
+                           <td class="col1"> {{ $loop->iteration}}</td>
                           <td class="col1"> {{$increment->empName }} ({{$increment->empId}}) </td>
                           <td class="col1"> {{$increment->designation}}({{$increment->grade}}) </td>
                            <td class="col1"> {{$increment-> oldBasic}} </td>

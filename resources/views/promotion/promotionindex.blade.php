@@ -65,14 +65,14 @@ h4{
         
             <div class = "col-md-8">
             <div class="notesheet">{{ date('d-m-Y', strtotime($promotion->date)) }}</div> 
-                <h6> BPC/HRA/HR-04/{{$year->promotionDate}}/{{$promotion->id}} </h6>
+                <p> BPC/HRA/HR-04/{{$year->promotionDate}}/{{$promotion->id}} </p>
             </div>
 <br>
  <div class = "row">
     <div class = "col-md-12">
         <table class = "table" width="93%">      
             <thead>
-                <tr>
+                <!-- <tr>
                     <th scope = "col" class="col1">{{$promotion->empName}}</th>                              
                 </tr>
                   <tr>
@@ -83,8 +83,23 @@ h4{
                       </tr>
                           <tr>
                               <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
-                          </tr>
+                          </tr> -->
                 </thead>
+                <tbody>
+                <tr>
+                    <td scope = "col" class="col1">{{$promotion->empName}}</td>                              
+                </tr>
+                  <tr>
+                      <td scope = "col" class="col1"> {{$promotion->oldDesignation}} </td>            
+                  </tr>
+                      <tr>
+                        <td scope = "col" class="col1">  {{$promotion->officeName}}</td>
+                      </tr>
+                          <tr>
+                              <td scope = "col" class="col1"> {{$promotion->officeAddress}} </td>
+                          </tr>
+              </tbody>
+                
                    
                   </table>
             </div>
@@ -101,42 +116,46 @@ h4{
   <div class = "row">
        <div class = "table2 col-md-6">
             <table width="79%">
-                 <h4> Subject:- Promotion Order </h4>
+                 <!-- <h4> Subject:- Promotion Order </h4> -->
+                 <p> <strong> Subject:</strong> <u>Promotion Order</u></p>
   <br>
   <br> 
                    <thead>
-                      <tr>
+                      <!-- <tr>
                         <th scope = "col" class="col1"> Dear {{$promotion->empName}}, </th>
                         
-                      </tr>
-                    </thead>
- <br>
- 
-                      <tbody>         
+                      </tr> -->
+                    </thead> 
+                      <tbody> 
+                      <tr>
+                        <td scope = "col" class="col1"> Dear {{$promotion->empName}}, </td>
+                        
+                      </tr> 
+                      <br>      
                         <tr>
-                            <th  class="col1"> I have the pleasure to inform you that you have been promoted to
+                            <td  class="col1"> I have the pleasure to inform you that you have been promoted to
                               {{$promotion->newDesignation}} ({{$grade->grade}}) in the {{$promotion->officeDetails}} of the company. 
                               You are promoted with effect from {{$promotion->promotionDate}}. Please accept my hearty congratulations on your promotion.
-                          </th>
+                          </td>
                         </tr>
 <br>
                           <tr>
-                            <th>
+                            <td>
                               Your basic pay after the promotion shall be Nu  {{$promotion->newBasic}}. 
-                           </th>
+                           </td>
                             </tr>
 <br>
                                   <tr>
-                                          <th>
+                                          <td>
                               Other service conditions remain unchanged.
-                                          </th>
+                                          </td>
                                   </tr>
 <br>
 <br>
                                         <tr>
-                                            <th>
+                                            <td>
                               Yours sincerely,
-                                            </th>
+                                            </td>
                                         </tr>
 <br>
                                         @if($gradeId->newGrade <= 7)
@@ -156,7 +175,7 @@ h4{
 <br>
 <br>
                                                 <tr>
-                                                 <th>
+                                                 <td>
                               Copies to: <br>
                              
                               {{$copy->copies}}
@@ -166,7 +185,7 @@ h4{
                         <br>Concerned HR Admin.
 <br>
 
-                                                      </th>
+                                                      </td>
                            
                         </tr>
                         <img src="{{asset('/cd/images/promofooter.PNG')}}" width="100%" height="40px">

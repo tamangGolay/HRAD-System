@@ -30,6 +30,21 @@ a {
   
 <div class="container">
     <a class="btn success" href="javascript:void(0)" id="manageWfBank">Add new transaction&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
+    
+    <div class=" textfont form-group row col-lg-12"> 
+    <label class="col-md-10 col-form-label text-md-right">Balance:</label>
+    <div class="col-md-2"> 
+            <button class="btn-outline-info" name="balance" id="balance" value="" required readonly>
+                                 
+					                     @foreach($wfbalance as $wfbalance)
+											 <option value="{{$wfbalance->balance}}">{{$wfbalance->balance}}</option>
+										@endforeach
+</button>  
+</div>
+    </div>
+
+    
+    
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>

@@ -71,6 +71,7 @@ use App\WfReleaseProcess;
 use App\WfBank;
 use App\WfRelatives;
 use App\transferHistory;
+use App\Balance;
 
 
 class FormsController extends Controller
@@ -4853,7 +4854,9 @@ if ($request->v == "refundReport")  //form.csv
 
 if ($request->v == "wfbank")
 {
-    $rhtml = view('welfare.welfareBank')->render();
+    $wfbalance = Balance::all();
+    
+    $rhtml = view('welfare.welfareBank')->with(['wfbalance'=>$wfbalance])->render();
     return response()
         ->json(array(
         'success' => true,

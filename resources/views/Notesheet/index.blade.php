@@ -30,6 +30,10 @@
 .col5{
   width:20%;
 }
+.col4{
+   width:80%;
+   position:absolute;
+}
 
 /* div.notesheet {
   position: fluid;
@@ -56,7 +60,7 @@
             <div class = "row">
             <div class = "col-md-12">
                 <table class = "table">
-                    <!-- <caption> NoteSheet </caption> -->
+
                     <thead>
                       <tr>
                         <th scope = "col" class="col5"> Sl no </th>
@@ -72,7 +76,7 @@
                      
                       <tr >
                         <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
-                        <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>
+                        <td class="col4"> {!! nl2br ($notesheet-> justification) !!} </td>
                       
                       </tr>
                       <tr>

@@ -32,15 +32,6 @@
 }
 
 
-/* div.notesheet {
-  position: fluid;
-  right: 45;
-  width: 100%;
-  height: 120px;
-} */
-.notejust{
-  page-break-after: always;
-}
 
    </style>
 </head>
@@ -64,13 +55,11 @@
                       <tr>
                         <th scope = "col" class="col5"> Sl no </th>
                         <td class="col1"> {{$notesheet->id}} </td>
-
                       </tr>
 
-                      <tr class="notejust">
+                      <tr>
                         <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
-
                       </tr>
 
                       <tr>
@@ -83,9 +72,9 @@
                      
             </div>
         </div>
-        <br> <br> <br>
-
-        <p class="text-center" style="color:blue;"> <h5>Justicfication</h5></p>
+        <br> <br>  <br>
+        
+        <p class="text-center"> <h5>Justicfication</h5></p>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
     </div>

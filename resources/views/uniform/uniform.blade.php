@@ -5,10 +5,6 @@
             <div class="card-header bg-green">
                 <div class="rvheading bg-green d-flex justify-content-center"><h3>Uniform</h3></div>
             </div><!--/card-header-->
-            @if(session()->has('success'))
-<div style="font-size:20px" class="alert alert-success text-center" > {{ session()->get('success') }} </div> @endif
-@if(session()->has('success'))<div style="font-size:20px" class="alert alert-success text-center" > {{ session()->get('error') }} </div> @endif
-  
       <br>
             <form method="POST" action="/uniform" enctype="multipart/form-data" accept-charset="UTF-8" >
                 @csrf
@@ -133,8 +129,8 @@
                 </div>
 
                 <div class="form-group row mb-0">
-                    <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
-                        <button type="submit" class="btn btn-outline-success btn-save" id="bsubmit">{{ __('Save') }}</button>
+                    <div class="col text-right col-form-label col-md-center col-sm-2 col-md-10 col-lg-7">
+                        <button type="submit" class="btn btn-outline-success btn-save col-lg-3 text-center" id="bsubmit">{{ __('Save') }}</button>
                     </div>
                 </div>   
                 </div>

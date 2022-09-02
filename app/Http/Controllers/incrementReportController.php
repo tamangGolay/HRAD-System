@@ -68,7 +68,7 @@ class incrementReportController extends Controller
       $officeAddress = DB::table('viewincrementorder')//promotionall table(incrementall)
       ->join('officedetails','officedetails.id','=','viewincrementorder.officeId')
       ->select('officedetails.officeDetails')
-      ->where('viewincrementorder.officeId',$officeId->officeId)
+      ->where('viewincrementorder.officeId','=',$officeId->officeId)
       ->first();
 
     
@@ -76,7 +76,7 @@ class incrementReportController extends Controller
       $headDesignation = DB::table('officehead')
       ->join('viewincrementorder','viewincrementorder.officeId','=','officehead.OfficeId')
         ->select('officehead.designation')
-         ->where('officehead.officeId', $officeId->officeId)
+         ->where('officehead.OfficeId', '=',$officeId->officeId)
          ->first();
 
       $GmName = DB::table('users')

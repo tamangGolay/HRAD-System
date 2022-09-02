@@ -71,29 +71,21 @@
                         <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
 
-                      </tr>   </thead> </table>
-                     
-                      <!-- <tr >
-                        <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
-                        <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>
-                      
                       </tr>
+
                       <tr>
                         <th scope = "col" class="col5"> Office </th>
                         <td class="col1"> {{$date-> longOfficeName}} </td>
 
-                      </tr> -->
-                  
-                    <!-- <tbody>
-                        <tr>
-
-                        </tr>
-                    </tbody> -->
-                  
+                      </tr>
+                    
+                    </thead> </table>
+                     
             </div>
         </div>
+        <br> <br> <br>
 
-        <p>Justicfication</p>
+        <p class="text-center" style="color:blue;"> <h5>Justicfication</h5></p>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
     </div>

@@ -172,7 +172,7 @@ a {
         $('#wfbankButton').val("create-room");
         $('#wfbank_id').val('');
         $('#Form').trigger("reset");
-        $('#modelHeading').html("Add new WF Bank");
+        $('#modelHeading').html("Add new transaction ");
         $('#ajaxModel').modal('show');
 
        

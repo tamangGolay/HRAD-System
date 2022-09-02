@@ -18,7 +18,7 @@
  
 }
 .col1{
-   width:100%;
+   width:100px;
 }
 .col2{
    width:250px;;

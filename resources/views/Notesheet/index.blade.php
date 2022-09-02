@@ -40,7 +40,7 @@
 </head>
 <body>
 
-    <div class = "container mt-4 reportpage">
+    <div class = "container-fluid mt-4 reportpage" style="width:70%">
         <div class = "row">
 
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">

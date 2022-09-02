@@ -63,7 +63,7 @@ h4{
         
             <div class = "col-md-8">
             <div class="notesheet">{{ date('d-m-Y', strtotime($promotion->date)) }}</div> 
-                <h6> BPC/HRA/HR-04/{{$year->promotionDate}}/{{$promotion->id}} </h6>
+                <p> BPC/HRA/HR-04/{{$year->promotionDate}}/{{$promotion->id}} </p>
             </div>
 <br>
  <div class = "row">
@@ -83,6 +83,11 @@ h4{
                               <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
                           </tr>
                 </thead>
+                <tbody>
+                <td scope = "col" class="col1">{{$promotion->empName}}</td> 
+                <td scope = "col" class="col1"> {{$promotion->oldDesignation}} </td>
+              </tbody>
+                
                    
                   </table>
             </div>
@@ -99,7 +104,8 @@ h4{
   <div class = "row">
        <div class = "table2 col-md-6">
             <table width="79%">
-                 <h4> Subject:- Promotion Order </h4>
+                 <!-- <h4> Subject:- Promotion Order </h4> -->
+                 <p> <strong> Subject:</strong> <u>Promotion Order</u></p>
   <br>
   <br> 
                    <thead>

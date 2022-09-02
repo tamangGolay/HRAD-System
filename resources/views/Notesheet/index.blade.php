@@ -67,8 +67,8 @@ div.notesheet {
                       </tr>
                       <tr>
                         <th scope = "col" class="col5"> Justification </th>
-                        <td class="col1 align-top"> {{$notesheet-> justification}} </td>
-
+                        <td class="col1 align-top"> {{!! nl2br ($notesheet-> justification) !!}} </td>
+                      
                       </tr>
                       <tr>
                         <th scope = "col" class="col5"> Office </th>

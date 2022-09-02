@@ -89,6 +89,7 @@
 							<option value=" ">Select Gender</option> 
 							<option value="Male">Male</option>
 							<option value="Female">Female</option> 
+							<option value="Other">Other</option> 
 						</select> 
 						</div>
 					</div>
@@ -132,13 +133,7 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Date of Promotion:') }}</label>
-						<div class="col-md-4">
-							<input id="lastDop" type="date" autocomplete="off" placeholder="1/1/2000" class="form-control"
-							 name="lastDop" >
-						</div>
-					</div>
+					
 
 					<div class="form-group row">
 						<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Mobile No:') }}</label>

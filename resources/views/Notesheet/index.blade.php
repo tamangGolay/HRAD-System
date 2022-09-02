@@ -12,7 +12,9 @@
    table, th, td {
     border: 1px solid black;
 }
-
+tr{
+   page-break-inside:avoid;
+}
  /* th, td {
   border-color: #96D4D4;
  
@@ -65,8 +67,8 @@ div.notesheet {
                         <td class="col1"> {{$userName->empName}} </td>
 
                       </tr>
-                      <tr>
-                        <th scope = "col" class="col5 page-break-before:avoid"> Justification </th>
+                      <tr >
+                        <th scope = "col" class="col5"> Justification </th>
                         <td class="col1 align-top"> {!! nl2br ($notesheet-> justification) !!} </td>
                       
                       </tr>

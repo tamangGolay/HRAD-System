@@ -47,7 +47,7 @@ div.notesheet {
 
         
             <div class = "col-md-8">
-            <div class="notesheet"> @if{{$notesheet->createdOn}}</div>
+            @if <div class="notesheet"> {{$notesheet->createdOn}}</div>
                 <h2 style="text-align:center"> Notesheet Report </h2>
             </div>
 

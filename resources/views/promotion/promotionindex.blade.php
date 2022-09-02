@@ -39,6 +39,8 @@ div.notesheet {
    
 }
 
+
+
 div.table2 {
   position: absolute;
   left: 55;

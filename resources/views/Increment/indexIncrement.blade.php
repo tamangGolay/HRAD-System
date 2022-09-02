@@ -82,7 +82,7 @@ div.notesheet {
                             <tbody>
                                         
                              @foreach ($increment as $increment) 
-                             @if( $loop->first or $loop->iteration  <= 3 )
+                             @if( $loop->first or $loop->iteration  <= 10 )
 
                                  <tr>
                                 <td > {{$loop->iteration}}</td>

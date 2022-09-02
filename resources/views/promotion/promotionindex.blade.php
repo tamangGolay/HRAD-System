@@ -10,48 +10,30 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
    <style>
-
-
- 
-    
- 
     .alert-success {
       color: #28a745 !important;
         background-color: #28a745 !important;
         border-color: #28a745 !important;
-}
+    }
+    table, th, td {
+      border-color: #FFFFFF;  
+    }
+    .col1{
+      width:100px;
+    }
+    .col2{
+      width:250px;;
+    }
+    div.notesheet {
+      position: absolute;
+      right: 45;  
+    }
+    div.table2 {
+      position: absolute;
+      left: 55;    
+    }
+  </style>
 
-
- table, th, td {
-  border-color: #FFFFFF; 
- 
-}
-.col1{
-   width:100px;
-}
-.col2{
-   width:250px;;
-}
-
-div.notesheet {
-  position: absolute;
-  right: 45;
-   
-}
-
-
-
-div.table2 {
-  position: absolute;
-  left: 55;
-    
-}
-h4{
-  text-decoration: underline;   
-}
-
-
-</style>
 </head>
 <body>
 @foreach($promotion as $promotion)

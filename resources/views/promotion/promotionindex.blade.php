@@ -13,10 +13,9 @@
 
 
 
-a { 
-         color: black !important;
+a {        color: black !important;
         text-decoration: none;
-       
+      
     }
     
     
@@ -30,7 +29,7 @@ a {
 
  table, th, td {
   border-color: #FFFFFF;
-  border: 1px solid black;
+ 
  
 }
 .col1{
@@ -57,11 +56,7 @@ h4{
   font-size:12;
 }
 
-/* h6{
-  font-family:Cambria;
-  font-size:12;
 
-} */
 </style>
 </head>
 <body>

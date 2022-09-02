@@ -24,6 +24,7 @@
         border-color: #28a745 !important;
     }
     
+  
    table, th, td {
   border: 1px solid black;
 }
@@ -31,11 +32,6 @@
   border-color: #96D4D4;
  
 }
-
-.page-break {
-    page-break-before: always;
-}
-
 /* .col1{
    width:100px;
 }
@@ -61,10 +57,8 @@ h1 {
 		
 </div>
       <br>
-      <div style="page-break-after:auto;">
 
                 <div class = "col-md-12">
-                <>
                     <div class="card-body table-responsive p-0">
 					    <table id="table5" class="table table-hover table-striped table-bordered">
                         <thead>
@@ -110,9 +104,6 @@ h1 {
 </div>
         </div>
     </div>
-
-    <div style="page-break-before:always;">
-   
 
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
     <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KinkN" crossorigin="anonymous"></script>

@@ -16,9 +16,9 @@
 /* .reportpage{
    page-break-inside:avoid !important;
 }  */
-.table{
+/* .table{
    page-break-inside:avoid !important;
-}
+} */
 
  /* th, td {
   border-color: #96D4D4;

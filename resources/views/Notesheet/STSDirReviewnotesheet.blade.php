@@ -24,7 +24,7 @@ hr{
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-			@foreach($notesheetRequest as $rv)
+			@forelse($notesheetRequest as $rv)
 			
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
@@ -94,8 +94,10 @@ hr{
             </form>
           </th>  
         </tr>
-      </thead>  
-      @endforeach
+      </thead>
+      @empty
+      <p class="text-center">No data available</p>   
+      @endforelse
 	   </tbody>
     </table>	  <div>
         <!--/card-body-->

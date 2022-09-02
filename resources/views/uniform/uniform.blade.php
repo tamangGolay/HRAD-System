@@ -5,6 +5,10 @@
             <div class="card-header bg-green">
                 <div class="rvheading bg-green d-flex justify-content-center"><h3>Uniform</h3></div>
             </div><!--/card-header-->
+            @if(session()->has('success'))
+<div style="font-size:20px" class="alert alert-success text-center" > {{ session()->get('success') }} </div> @endif
+@if(session()->has('success'))<div style="font-size:20px" class="alert alert-success text-center" > {{ session()->get('error') }} </div> @endif
+  
       <br>
             <form method="POST" action="/uniform" enctype="multipart/form-data" accept-charset="UTF-8" >
                 @csrf

@@ -18,13 +18,10 @@
  
 } */
 .col1{
-   width:70%;
+   width:80%;
 }
 .col5{
-  width:30%;
-}
-.col2{
-   width:250px;;
+  width:20%;
 }
 
 div.notesheet {
@@ -39,14 +36,13 @@ div.table2 {
   left: 55;
   
 }
-
-
    </style>
 </head>
 <body>
 
     <div class = "container-fluid mt-4">
         <div class = "row">
+
         <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
         <br><br><br>
 
@@ -60,7 +56,7 @@ div.table2 {
 
             <div class = "row">
             <div class = "col-md-12">
-                <table class = "table" width="93%">
+                <table class = "table">
                     <!-- <caption> NoteSheet </caption> -->
                     <thead>
                       <tr>
@@ -94,17 +90,9 @@ div.table2 {
             </div>
         </div>
     </div>
-
-           
-            <!-- <div class = "col-md-4">
-                <div class = "mb-4 d-flex justify-content-end">
-                    <a class="btn btn-primary" href="http://127.0.0.1:8000/product/pdf"> Export to PDF </a>
-                </div>
-            </div> -->
-        </div>
         <div class = "row">
             <div class = "table2 col-md-6">
-                <table width="79%">
+                <table>
                     <caption> Remarks </caption>
                     <thead>
                       <tr>

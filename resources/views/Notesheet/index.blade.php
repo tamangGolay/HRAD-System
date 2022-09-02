@@ -28,12 +28,12 @@
   width:20%;
 }
 
-div.notesheet {
-  position: absolute;
+/* div.notesheet {
+  position: fluid;
   right: 45;
-  width: 100px;
+  width: 100%;
   height: 120px;
-}
+} */
 
 
    </style>

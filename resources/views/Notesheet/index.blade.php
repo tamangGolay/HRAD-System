@@ -37,7 +37,9 @@
   width: 100%;
   height: 120px;
 } */
-
+.notejust{
+  page-break-after: always;
+}
 
    </style>
 </head>
@@ -64,7 +66,7 @@
 
                       </tr>
 
-                      <tr>
+                      <tr class="notejust">
                         <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
 

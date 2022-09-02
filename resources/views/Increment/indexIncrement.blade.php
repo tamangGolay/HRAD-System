@@ -21,6 +21,10 @@ div.notesheet {
       position: absolute;
       right: 45;  
     }
+@media print {
+    tr.page-break  { display: block; page-break-before: always; }
+}   
+
    </style>
 
 </head>
@@ -75,7 +79,7 @@ div.notesheet {
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr>             
+                            <tr class="page-break">             
                              @foreach ($increment as $increment)             
                                 <td > {{$loop->iteration}}</td>
                                 <td > {{$increment->empName }} ({{$increment->empId}}) </td>

@@ -17,9 +17,7 @@
   border-color: #000000;
  
 }
-.col1{
-   width:100%;
-}
+/*  */
 
 
 div.notesheet {
@@ -29,11 +27,6 @@ div.notesheet {
   height: 120px;
   }
 
-div.table2 {
-  position: absolute;
-  left: 55;
-  
-}
 
    </style>
 </head>
@@ -85,7 +78,7 @@ div.table2 {
             <div class = "col-md-12">
             <div style="page-break-after:always;">
               <div class="card-body table-responsive p-0">
-                <table id="table5" class="table table-hover table-striped table-bordered">
+                <table class="table table-hover table-striped table-bordered">
 
                 <thead>
                             <tr>

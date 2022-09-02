@@ -66,7 +66,7 @@ div.notesheet {
 
                       </tr>
                       <tr>
-                        <th scope = "col" class="col5"> Justification </th>
+                        <th scope = "col" class="col5 page-break-before:avoid"> Justification </th>
                         <td class="col1 align-top"> {!! nl2br ($notesheet-> justification) !!} </td>
                       
                       </tr>

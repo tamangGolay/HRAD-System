@@ -69,7 +69,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>User List</b>
+              <b>User List123</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -138,74 +138,74 @@ a {
 						
 
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="emp_id">{{ __('Employee Number:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text" class="form-control"  value="<?php echo $userList[0]->empId; ?>" name="empId" id="empId" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="empName">{{ __('Name:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="empName">{{ __('Name:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control" value="<?php echo $userList[0]->empName; ?>" name="empName" id="empName" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="cidNo">{{ __('Cid Number:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="cidNo">{{ __('Cid Number:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->cidNo; ?>" name="cidNo" id="cidNo" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="dob">{{ __('Date of Birth:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="dob">{{ __('Date of Birth:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->dob; ?>" name="dob" id="dob" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="appointmentDate">{{ __('Appointment Date:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="appointmentDate">{{ __('Appointment Date:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->appointmentDate; ?>" name="appointmentDate" id="appointmentDate" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="gradeId">{{ __('Grade:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="gradeId">{{ __('Grade:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->gradeId; ?>" name="gradeId" id="gradeId" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="lastDop">{{ __('Last Dop:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="lastDop">{{ __('Last Dop:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->lastDop; ?>" name="lastDop" id="lastDop" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="emailId">{{ __('Email:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="emailId">{{ __('Email:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->emailId; ?>" name="emailId" id="emailId" >
 
 									</div>
 								</div>
 
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="basicPay">{{ __('Basic Pay:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="basicPay">{{ __('Basic Pay:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->basicPay; ?>" name="basicPay" id="basicPay" >
 
 									</div>
@@ -213,9 +213,9 @@ a {
 
 				
 
-								<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="designation">{{ __('Designation:') }}</label>
-						<div class="col-sm-6">
+								<div class="form-group ">
+						<label class="col-sm-4 col-lg-12" for="designation">{{ __('Designation:') }}</label>
+						<div class="col-sm-6 col-lg-12">
 
 							<select class="form-control" name="designation" id="designation" required> @foreach($designation as $designation)
 								<option value="{{$designation->id}}" > {{$designation->desisNameLong}}
@@ -224,25 +224,25 @@ a {
 						</div>
 					</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="mobileNo">{{ __('MobileNo:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="mobileNo">{{ __('MobileNo:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->mobileNo; ?>" name="mobileNo" id="mobileNo" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="incrementCycle">{{ __('incrementCycle:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="incrementCycle">{{ __('incrementCycle:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->incrementCycle; ?>" name="incrementCycle" id="incrementCycle" >
 
 									</div>
 								</div>
 
-								<div class="form-group row">
-									<label class="col-sm-4 text-md-right" for="gender">{{ __('Gender:') }}</label>
-									<div class="col-sm-6">
+								<div class="form-group ">
+									<label class="col-sm-4 col-lg-12" for="gender">{{ __('Gender:') }}</label>
+									<div class="col-sm-6 col-lg-12">
 									<input type="text"  class="form-control"  value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
 
 									</div>
@@ -252,9 +252,9 @@ a {
 								
 
 
-								<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="office">{{ __('Office:') }}</label>
-						<div class="col-sm-6">
+								<div class="form-group ">
+						<label class="col-sm-4 col-lg-12" for="office">{{ __('Office:') }}</label>
+						<div class="col-sm-6 col-lg-12">
 
 							<select class="form-control" name="office" id="office" required> @foreach($officedetails as $office)
 								<option value="{{$office->id}}" > {{$office->shortOfficeName}}
@@ -265,9 +265,9 @@ a {
 
 
 					
-					<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="Address">{{ __('Office Address:') }}</label>
-						<div class="col-sm-6">
+					<div class="form-group ">
+						<label class="col-sm-4 col-lg-12" for="Address">{{ __('Office Address:') }}</label>
+						<div class="col-sm-6 col-lg-12">
 
 							<select class="form-control" name="Address" id="Address" required> @foreach($officedetails as $office)
 								<option value="{{$office->id}}" > {{$office->Address}}
@@ -279,9 +279,9 @@ a {
 
 
 
-								<div class="form-group row">
-						<label class="col-sm-4 text-md-right" for="role">{{ __('Role:') }}</label>
-						<div class="col-sm-6">
+								<div class="form-group ">
+						<label class="col-sm-4 col-lg-12" for="role">{{ __('Role:') }}</label>
+						<div class="col-sm-6 col-lg-12">
 							<select class="form-control" name="role" id="role" required> @foreach($roles as $role)
 								<option value="{{$role->id}}" 
 								@if($role->name == 'Super Admin' || $role->name == 'Admin') disabled @endif>
@@ -493,10 +493,11 @@ $(function() {
 								alt.parentNode.removeChild(alt);
 							}, 4500);
 							document.body.appendChild(alt);
-							$.get('/getView?v=userList', function(data) {
-								$('#contentpage').empty();
-								$('#contentpage').append(data.html);
-							});
+							// $.get('/getView?v=userList', function(data) {
+							// 	$('#contentpage').empty();
+							// 	$('#contentpage').append(data.html);
+							// });
+							window.location.href = '/home';
 							table.draw();
 						},
 						error: function(data) {

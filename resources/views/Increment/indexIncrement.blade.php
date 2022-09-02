@@ -56,7 +56,7 @@
                 <p> The final increment payout for the {{$increment1->incrementCycle}} Cycle {{$increment1->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
             </div>     
-            <div class = "row">
+            <div class = "">
                 <div class = "col-md-12">      
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover table-striped table-bordered gg">
@@ -73,12 +73,12 @@
                             <tbody>
                             <tr>             
                              @foreach ($increment as $increment)             
-                                <td class="col2"> {{$loop->iteration}}</td>
-                                <td class="col2"> {{$increment->empName }} ({{$increment->empId}}) </td>
-                                <td class="col2"> {{$increment->designation}}({{$increment->grade}}) </td>
-                                <td class="col2"> {{$increment-> oldBasic}} </td>
-                                <td class="col2"> {{$increment-> increment}} </td>
-                                <td class="col2"> {{$increment-> newBasic}} </td>
+                                <td > {{$loop->iteration}}</td>
+                                <td > {{$increment->empName }} ({{$increment->empId}}) </td>
+                                <td > {{$increment->designation}}({{$increment->grade}}) </td>
+                                <td > {{$increment-> oldBasic}} </td>
+                                <td > {{$increment-> increment}} </td>
+                                <td > {{$increment-> newBasic}} </td>
                             </tr>
                             </tbody>
                              @endforeach

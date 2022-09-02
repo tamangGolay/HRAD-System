@@ -68,8 +68,8 @@ div.notesheet {
 
                       </tr>
                       <tr >
-                        <th scope = "col" class="col5"> Justification </th>
-                        <td class="col1" style="vertical-align:text-top"> {!! nl2br ($notesheet-> justification) !!} </td>
+                        <th scope ="col" class="col5" style="vertical-align:text-top"> Justification </th>
+                        <td class="col1"> {!! nl2br ($notesheet-> justification) !!} </td>
                       
                       </tr>
                       <tr>

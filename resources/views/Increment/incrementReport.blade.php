@@ -24,7 +24,6 @@
         border-color: #28a745 !important;
     }
     
-  
    table, th, td {
   border: 1px solid black;
 }
@@ -32,6 +31,11 @@
   border-color: #96D4D4;
  
 }
+
+.page-break {
+    page-break-before: always;
+}
+
 /* .col1{
    width:100px;
 }
@@ -57,8 +61,10 @@ h1 {
 		
 </div>
       <br>
+      <div style="page-break-after:auto;">
 
                 <div class = "col-md-12">
+                <>
                     <div class="card-body table-responsive p-0">
 					    <table id="table5" class="table table-hover table-striped table-bordered">
                         <thead>

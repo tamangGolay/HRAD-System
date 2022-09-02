@@ -5882,7 +5882,9 @@ if ($request->v == "normalTransfer")  //form.csv
     $officett =  DB::table('officeunder')
         ->join('officedetails','officedetails.id','=','officeunder.office')   
         ->select('officedetails.officeDetails','officeunder.office')
-        ->where('officeunder.head', '=', Auth::user()->empId)            
+        ->where('officeunder.head', '=', Auth::user()->empId)
+        ->orWhere('officedetails.id',Auth::user()->office)
+            
     ->get();  //only his under office
      
 

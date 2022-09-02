@@ -64,7 +64,8 @@ div.notesheet {
                 <div class = "col-md-12 increment1 col-lg-12">
                 <p> The final increment payout for the {{$increment1->incrementCycle}} Cycle {{$increment1->incrementDate}} is circulated for kind information and necessary action. </p>
                 </div>
-            </div>     
+            </div>    
+            <br> <br> <br> <br> <br> <br> <br>  <br> <br> <br>
             <div class = "row col-lg-12">
                 <div class = "col-md-12 col-lg-12">      
                     <div class="card-body table-responsive p-0">
@@ -82,7 +83,7 @@ div.notesheet {
                             <tbody>
                                         
                              @foreach ($increment as $increment) 
-                             @if( $loop->first or $loop->iteration  <= 10 )
+                             @if( $loop->first or $loop->iteration  <= 100 )
 
                                  <tr>
                                 <td > {{$loop->iteration}}</td>

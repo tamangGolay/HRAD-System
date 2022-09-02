@@ -44,7 +44,7 @@ a {
                 <th>Inner S Width(Cm)</th>
                 <th>Boot Width(Cm)</th>
                 <th>Boot Opening(Cm)</th>
-                 <th width="300">Action</th>
+                 <th width="20%">Action</th>
             </tr>
         </thead>
         <tbody>

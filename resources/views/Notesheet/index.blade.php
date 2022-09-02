@@ -72,9 +72,9 @@
                      
             </div>
         </div>
-        <br> <br>  <br>
+        <br> <br> 
         
-        <p class="text-center"> <h5>Justicfication</h5></p>
+        <p> <h5 class="text-center">Justicfication</h5></p>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
     </div>

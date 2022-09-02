@@ -13,10 +13,10 @@
 
 
 
-a {        color: black !important;
+a { 
+         color: black !important;
         text-decoration: none;
-        font-family:Cambria;
-  font-size:12;
+       
     }
     
     
@@ -30,8 +30,7 @@ a {        color: black !important;
 
  table, th, td {
   border-color: #FFFFFF;
-  font-family:Cambria;
-  font-size:12;
+  border: 1px solid black;
  
 }
 .col1{
@@ -58,11 +57,11 @@ h4{
   font-size:12;
 }
 
-h6{
+/* h6{
   font-family:Cambria;
   font-size:12;
 
-}
+} */
 </style>
 </head>
 <body>
@@ -97,11 +96,7 @@ h6{
                               <th scope = "col" class="col1"> {{$promotion->officeAddress}} </th>
                           </tr>
                 </thead>
-                    <!-- <tbody>
-                        <tr>
-
-                        </tr>
-                    </tbody> -->
+                   
                   </table>
             </div>
         </div>

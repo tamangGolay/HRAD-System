@@ -188,7 +188,7 @@ class AuthController extends Controller
 
         
         $status = DB::table('users')->select('status')
-        ->where('empId', $request->emp_id)
+        ->where('empId', $request->empId)
         ->first();
         // dd($status);
 

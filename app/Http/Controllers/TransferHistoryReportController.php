@@ -23,9 +23,9 @@ class TransferHistoryReportController extends Controller
         ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
         ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')
         ->join('officedetails AS D', 'D.id', '=', 'transferhistory.id')
-       
+        ->join('officedetails AS E', 'E.id', '=', 'transferhistory.reportToOfficeF')       
         ->join('transferproposal', 'transferproposal.id', '=', 'transferhistory.id')
-        ->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId')       
+        //->join('employee4twimc', 'employee4twimc.empId', '=', 'transferhistory.empId')       
 
         ->select('transferhistory.empId','transferhistory.transferDate','transferproposal.hRRemarks',
         'B.longOfficeName as tooffname','D.reportToOffice as oficereoprt','transferhistory.transferType','transferhistory.transferBenefit',

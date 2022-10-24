@@ -618,6 +618,8 @@ Route::post('/supervisorApproval/{id}','NotesheetController@supervisorApproval')
 
 //gm notesheet route
 Route::post('/GMrecommendnotesheet','NotesheetController@GMrecommendnotesheet')->name('GMrecommendnotesheet');
+Route::resource('tyty', NoteSReviewController::class);
+
 
 //director notesheet route
 Route::post('/directorrecommendnotesheet','NotesheetController@directorrecommendnotesheet')->name('directorrecommendnotesheet');
@@ -719,5 +721,3 @@ Route::post('destroyrelativesdetails', 'Manage_WfRelativesController@delete')->n
 
 Route::get('/tocheckofficeId','EmployeeController@tocheckofficeId');// 
 Route::get('/backtopage','EmployeeController@backtopage');// 
- 
-  

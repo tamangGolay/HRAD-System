@@ -314,16 +314,15 @@ class FormsController extends Controller
        //uniform report for individual employee
         //uniform report for individual employee
         if ($request->v == "uniformReport")         {
-            
- 
+             
              $pant = Pant::all();
              $shirt = Shirt::all();
              $jacket = JacketSize::all();
              $shoe = Shoesize::all();
              $gumboot = GumbootSize::all();
              $raincoat = RainCoatSize::all();
-            $office = Officedetails::all();
-            $usersU = User::all();
+             $office = Officedetails::all();
+             $usersU = User::all();
  
          $data1 = DB::table('employeeuniform')
          ->join('users', 'users.empId', '=', 'employeeuniform.empId')
@@ -388,14 +387,14 @@ class FormsController extends Controller
         //end of uniform report for individual employee
          //uniform report for offfice wise
 
+
        if ($request->v == "officeuniformReport")  
        {
 
         $data2 = DB::table('officeuniform') 
         ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
         ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
-        
-                 
+                         
            ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.S','officeuniform.M','officeuniform.L', 'officeuniform.XL','officeuniform.Size_2XL','officeuniform.Size_3XL','officeuniform.Size_4XL','officeuniform.Size_5XL','officeuniform.Size_6XL')
            ->where('officeuniform.id',1) 
            ->orwhere('officeuniform.id',2) 
@@ -4960,7 +4959,7 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
- if ($request->v == "notesheetReview")  //form.csv
+ if ($request->v == "notesheetReview")  //form.csv  //manager review nootesheet
  {    
     // $roles = Roles::all();
     $notesheetRequest = notesheetRequest::all();    
@@ -4986,19 +4985,19 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+
  if ($request->v == "GMReview")  //form.csv
  { 
     
     $notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
      
-    $notesheetRequest = DB::table('notesheet')
+    $notesheetRequests = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
-    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
-
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-
+    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
+    'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('notesheet.status','=','Recommended')
     ->where('cancelled','=','No')
     ->where('notesheet.officeId',Auth::user()->office)
@@ -5009,7 +5008,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 //    ->orWhere('orgunit.office',Auth::user()->office)
     ->paginate(10000000);
   
-    $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
+  $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequests,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
   return response()
      ->json(array(
       'success' => true,

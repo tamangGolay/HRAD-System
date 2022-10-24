@@ -25,7 +25,7 @@
         <br>
         <div class="col text-center">
           <h5>
-                <b> Remarks From Manager </b>
+                <b> Remarks From Supervisor(s) </b>
               
               </h5>
 			</div>

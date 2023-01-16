@@ -140,9 +140,6 @@ class FormsController extends Controller
 
       
 
-       
-
-
            $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
                ->join('roles', 'users.role_id', '=', 'roles.id')
                ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
@@ -488,11 +485,18 @@ if ($request->v == "knowledgeReview")
     $userLists = DB::table('knowledgerepository')
         ->join('users', 'users.empId', '=', 'knowledgerepository.createdBy')
         ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
+
+        ->join('officemaster','officemaster.id','=','knowledgerepository.officeId')
+
         ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
         )
 
         ->latest('users.id') //similar to orderby('id','desc')
-        ->where('knowledgerepository.officeId',Auth::user()->office)
+        // ->where('knowledgerepository.officeId',Auth::user()->office)
+
+        ->where('officemaster.reportToOffice','=',Auth::user()->office) 
+        ->where('knowledgerepository.approvedBy',)
+
    
          ->paginate(10000000);
      $rhtml = view('knowledge.knowledgeReview')->with(['userList' => $userLists])->render();
@@ -763,7 +767,7 @@ return response()
                 })
                 ->paginate(10000000);
             $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
-           return response()
+                 return response()
                ->json(array(
                'success' => true,
                'html' => $rhtml
@@ -4466,10 +4470,18 @@ if ($request->v == "jobDescription")
         $job=jobDescription::all();
         $qualification=Qualificationview::all()->where('empId',Auth::user()->empId);
         $userdetails = DB::table('jobdescription')
-          ->join('users', 'users.empId', '=', 'jobdescription.empId')
-           ->join('officedetails','officedetails.id', 'users.office') 
+        ->join('users', 'users.empId', '=', 'jobdescription.empId')
+         ->join('officedetails','officedetails.id', 'users.office') 
+         ->join('officemaster','officemaster.id','=','jobdescription.officeId')
+
+
+
           ->select('jobdescription.*','users.empName','officedetails.officeDetails')
-          ->where('jobdescription.officeId',Auth::user()->office)
+        //   ->where('jobdescription.officeId',Auth::user()->office)
+
+        ->where('officemaster.reportToOffice','=',Auth::user()->office) 
+        ->where('jobdescription.approvedBy',) 
+
           ->WhereNull('dateExpired')
           ->paginate(10000000);
         
@@ -4966,10 +4978,15 @@ if ($request->v == "employeeskillmap")  //form.csv
     $officedetails = Officedetails::all();     
     $notesheetRequest = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
+    ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->select('notesheet.*','officedetails.longOfficeName')
 
                ->latest('notesheet.id') //similar to orderby('id','desc')
                ->where('notesheet.officeId',Auth::user()->office)
+               ->where('status','=','Processing')
+               ->where('cancelled','=','No')
+
+               ->orwhere('officemaster.reportToOffice',Auth::user()->office)
                ->where('status','=','Processing')
                ->where('cancelled','=','No')
            
@@ -4997,6 +5014,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
     'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    
     ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('notesheet.status','=','Recommended')
     ->where('cancelled','=','No')
@@ -5909,19 +5927,33 @@ if ($request->v == "normalTransfer")  //form.csv
       ));
 }  //end
 
+
 //Transfer Request manager review
 if ($request->v == "transferRequestReview")   //manager
-{       
+{   
+        
 $transferRequest=transferRequest::all();
 
 $transferRequest= DB::table('transferrequest') 
 ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
-->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')   
+->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')  
+->join('officemaster','officemaster.id','=','transferrequest.fromOffice') 
+
 ->select('transferrequest.*','officedetails.officeDetails as fromOff','B.officeDetails as toOff')
+
+ ->latest ('transferrequest.id')
 
   ->where('transferrequest.fromOffice','=',Auth::user()->office) 
   ->where('transferrequest.status','=','requested')
+
   ->orwhere('transferrequest.fromOffice','=',Auth::user()->office) 
+  ->where('transferrequest.status','=','normal')
+
+
+  ->orwhere('officemaster.reportToOffice','=',Auth::user()->office) 
+  ->where('transferrequest.status','=','requested')
+
+  ->orwhere('officemaster.reportToOffice','=',Auth::user()->office) 
   ->where('transferrequest.status','=','normal')
   
   ->get();  
@@ -5944,14 +5976,21 @@ if ($request->v == "gmTransferReview")  //form.csv
     $transferRequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
     ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
-   ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
+    ->join('officeunder','officeunder.office','=','transferproposal.fromOffice') 
+    
+    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
     ->where('transferproposal.fromOffice','=',Auth::user()->office) 
     ->where('transferproposal.status','=','proposed')
 
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
     ->where('transferproposal.status','=','proposed')
+
+    ->orwhere('officeunder.head',Auth::user()->empId)
+    ->where('transferproposal.status','=','proposed')
+
+
     ->paginate(10000000);
     
    $rhtml = view('Transfer.transferReviewGM')->with(['transferRequest' => $transferRequest,'fromoffice' => $fromoffice,'tooffice' => $tooffice])->render(); 
@@ -5974,6 +6013,7 @@ if ($request->v == "dirReview")  //form.csv
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
    ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
    ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
+
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
    ->where('officeunder.head',Auth::user()->empId)  
@@ -6035,12 +6075,21 @@ if ($request->v == "relieveEmployee")  //form.csv
     $employeeTransfer = DB::table('transferhistory')
     ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
    ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')  
+//    ->join('officemaster','officemaster.id','=','transferrequest.transferFrom') 
+   ->join('officeunder','officeunder.office','=','transferhistory.transferFrom')
+
 //    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
     ->select('transferhistory.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
     ->where('transferhistory.transferFrom','=',Auth::user()->office) 
     ->where('transferhistory.status','=','Open')
     ->where('transferhistory.relievedBy',)
+
+    ->orwhere('officeunder.head',Auth::user()->empId)  
+    ->where('transferhistory.status','=','Open')
+    ->where('transferhistory.relievedBy',)
+
+
      ->paginate(10000000);
     
    $rhtml = view('Transfer.relieveEmployee')->with(['employeeTransfer' => $employeeTransfer,'fromoffice' => $fromoffice,'tooffice' => $tooffice,])->render(); 
@@ -6189,10 +6238,16 @@ if ($request->v == "employeeJoining")
 
   $empJoining = DB::table('transferhistory')
               ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
-              ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')   
+              ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')  
+              ->join('officeunder','officeunder.office','=','transferhistory.transferTo')
               ->select('transferhistory.*','officedetails.officeDetails as transferFrom','B.officeDetails as transferTo')
               
               ->where('transferTo',Auth::user()->office)
+              ->where('transferhistory.status','=','Open')
+              ->where('transferhistory.relievedBy','!=','NULL')
+
+
+              ->orwhere('officeunder.head',Auth::user()->empId)  
               ->where('transferhistory.status','=','Open')
               ->where('transferhistory.relievedBy','!=','NULL')
               ->paginate(10000000);

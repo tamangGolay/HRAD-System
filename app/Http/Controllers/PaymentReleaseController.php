@@ -14,6 +14,7 @@ class PaymentReleaseController extends Controller
 
     public function paymentRelease(Request $request)
     {
+
          
         try
          {
@@ -128,15 +129,20 @@ class PaymentReleaseController extends Controller
 
         if($request->empId == 30002940){//ceo
 
+
+
             if($request->status == "request"){
 
 
             $chairAction = "approved";
             $status = "approved";
+            $welfareReviewDate = date('Y-m-d'); //added this
 
             DB::update('update wfreleaseprocess set chairEmpId = ? where id = ?', [$request->empId, $request->id]);
             DB::update('update wfreleaseprocess set chairAction = ? where id = ?', [$chairAction, $request->id]);
-            DB::update('update wfreleaseprocess set chairActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]);
+            // DB::update('update wfreleaseprocess set chairActionDate = ? where id = ?', [$request->welfareReviewDate, $request->id]); (changed here)
+         DB::update('update wfreleaseprocess set chairActionDate = ? where id = ?', [$welfareReviewDate, $request->id]);
+
             DB::update('update wfreleaseprocess set status = ? where id = ?', [$status, $request->id]);
             
 
@@ -161,11 +167,16 @@ class PaymentReleaseController extends Controller
             $deathOf = DB::table('wfreleaseprocess')
             ->select('wfreleaseprocess.deathOf')
             ->where('wfreleaseprocess.id',$request->id)
-            ->first();                   
+            ->first(); 
+            
+            
                     
             $Request_payment = new WfRelease;
             $Request_payment->empId = $empId->empId;
-            $Request_payment->releaseDate = $request->welfareReviewDate;
+            // $Request_payment->releaseDate = $request->welfareReviewDate;(changed here)
+
+            $Request_payment->releaseDate = $welfareReviewDate;
+
             $Request_payment->amount = $amount->amount;
             $Request_payment->reason = $reason->reason;
             $Request_payment->deathOf = $deathOf->deathOf;

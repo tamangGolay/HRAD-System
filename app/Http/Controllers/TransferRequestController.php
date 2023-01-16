@@ -412,6 +412,8 @@ public function toGMtransferrequest()
     $toGMtransferrequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
+   ->join('officeunder','officeunder.office','=','transferproposal.toOffice') 
+
    ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
 
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
@@ -423,6 +425,11 @@ public function toGMtransferrequest()
      ->orwhere('officemaster.reportToOffice',Auth::user()->office)
      ->where('transferproposal.fromDirectorAction','=','recommended')
      ->where('transferproposal.status','=','proposed')
+     ->where('transferproposal.toGM',)
+
+     ->orwhere('officeunder.head',Auth::user()->empId)
+     ->where('transferproposal.fromDirectorAction','=','recommended')
+    //  ->where('transferproposal.status','=','proposed')
      ->where('transferproposal.toGM',)
     
     
@@ -503,7 +510,7 @@ public function toDirtransferrequest()
   ->where('transferproposal.status','=','recommended')
   ->where('transferproposal.toDirector',)  
 
-  ->orwhere('B.officeType','=','Services')  
+  ->orwhere('B.officeType','=','Department')  
   ->where('officeunder.head',Auth::user()->empId) 
   ->where('transferproposal.toDirector',)    
     

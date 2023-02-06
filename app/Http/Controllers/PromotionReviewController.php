@@ -13,7 +13,7 @@ class PromotionReviewController extends Controller
 {
     public function recommendpromotion(Request $request){
 
-        //   dd($request);
+          // dd($request);
         // try{
             
             if($request->status == "Recommended" ){  

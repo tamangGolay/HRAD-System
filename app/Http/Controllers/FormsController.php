@@ -488,17 +488,15 @@ if ($request->v == "knowledgeReview")
 
         ->join('officemaster','officemaster.id','=','knowledgerepository.officeId')
 
-        ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address'
-        )
+        ->select('users.empName','knowledgerepository.*','officedetails.shortOfficeName','officedetails.Address')
 
-        ->latest('users.id') //similar to orderby('id','desc')
+        ->latest('knowledgerepository.id') //similar to orderby('id','desc')
         // ->where('knowledgerepository.officeId',Auth::user()->office)
 
         ->where('officemaster.reportToOffice','=',Auth::user()->office) 
         ->where('knowledgerepository.approvedBy',)
-
-   
-         ->paginate(10000000);
+  
+        ->paginate(10000000);
      $rhtml = view('knowledge.knowledgeReview')->with(['userList' => $userLists])->render();
     return response()
         ->json(array(
@@ -4374,9 +4372,12 @@ if ($request->v == "promotionform")  //form.csv
    $officedetails = Officedetails::all();     
    $promotionRequest = DB::table('promotionduelist')
     ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
+    ->join('officeunder','officeunder.office','=','promotionduelist.office')
     ->select('promotionduelist.*','officedetails.longOfficeName')
     ->latest('promotionduelist.id') //similar to orderby('id','desc')
-    ->where('promotionduelist.office',Auth::user()->office)
+    // ->where('promotionduelist.office',Auth::user()->office)
+    ->where('officeunder.head',Auth::user()->empId)
+
     ->where('status','=','Due')
    //  ->where('cancelled','=','No') 
     ->paginate(10000000);
@@ -4388,6 +4389,119 @@ if ($request->v == "promotionform")  //form.csv
       'html' => $rhtml
        ));
  }  //end
+
+ //GM
+ if ($request->v == "gmPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+    ->join('officeunder','officeunder.office','=','promotionduelist.office')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->latest('promotionduelist.id') //similar to orderby('id','desc')
+
+   ->where('promotionduelist.status','=','Recommended')
+   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
+   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('promotionduelist.status','=','Recommended')
+   
+   
+    ->orwhere('officeunder.head',Auth::user()->empId)
+    ->where('promotionduelist.status','=','Recommended')
+
+
+
+   ->paginate(10000000);
+    
+
+  $rhtml = view('promotion.GMReviewPromotion')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+ //Director
+ if ($request->v == "stsPromotionReview")  //form.csv
+ {  
+    $promotiondue =Promotionduelist::all();
+    $officedetails = Officedetails::all();
+
+    $promotiondue = DB::table('promotionduelist')
+
+    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
+    ->join('officemaster','officemaster.id','=','promotionduelist.office')
+    ->join('officeunder','officeunder.office','=','promotionduelist.office') //added new join
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office')
+    ->latest('promotionduelist.id')         //similar to orderby('id','desc')
+
+//    ->where('promotionduelist.status','=','Proposed')
+//    ->where('promotionduelist.office',Auth::user()->office)  //mam icd
+   
+//  ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm  //alredy commented
+
+
+//    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+//     ->where('promotionduelist.status','=','Proposed')
+
+
+        ->where('promotionduelist.status','=','Recommended')
+        ->where('officeunder.head',Auth::user()->empId) 
+        ->paginate(10000000); 
+
+
+    // ->orwhere('office','=',89)  //IT
+    // ->where('promotionduelist.status','=','Proposed') 
+
+    // ->orwhere('office','=',90) // Suit
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',88)  //fnd (3 for ICD)
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',72) // RDD
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',86) // 
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',87) // GIS
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',93) //spbd
+    // ->where('promotionduelist.status','=','Proposed')
+
+    // ->orwhere('office','=',94) //cspd
+    // ->where('promotionduelist.status','=','Proposed')
+    // ->paginate(10000000);
+
+
+// ->orwhere('office','>=',86 ||'office','<=',90  ||'office','=',72 ||'office','=',93 || 'office','=',94 ) //cspd
+
+// ->where('promotionduelist.status','=','Proposed')
+
+
+
+    
+
+  $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }//end
+
+
+
 
  // Promotion review FAS Dir
  if ($request->v == "fasPromotionReview")  //form.csv
@@ -4979,15 +5093,21 @@ if ($request->v == "employeeskillmap")  //form.csv
     $notesheetRequest = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
+    ->join('officeunder','officeunder.office','=','notesheet.officeId')
     ->select('notesheet.*','officedetails.longOfficeName')
 
                ->latest('notesheet.id') //similar to orderby('id','desc')
-               ->where('notesheet.officeId',Auth::user()->office)
-               ->where('status','=','Processing')
-               ->where('cancelled','=','No')
 
-               ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-               ->where('status','=','Processing')
+            //    ->where('notesheet.officeId',Auth::user()->office)
+            //    ->where('notesheet.status','=','Processing')
+            //    ->where('cancelled','=','No')
+
+            //    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+            //    ->where('notesheet.status','=','Processing')
+            //    ->where('cancelled','=','No')
+
+               ->orwhere('officeunder.head',Auth::user()->empId) 
+               ->where('notesheet.status','=','Processing')
                ->where('cancelled','=','No')
            
                ->paginate(10000000);
@@ -5012,6 +5132,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     $notesheetRequests = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
+    ->join('officeunder','officeunder.office','=','notesheet.officeId')
     ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
     'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
     
@@ -5021,6 +5142,9 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->where('notesheet.officeId',Auth::user()->office)
     
     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    ->where('notesheet.status','=','Recommended')
+
+    ->orwhere('officeunder.head',Auth::user()->empId) 
     ->where('notesheet.status','=','Recommended')
 
 //    ->orWhere('orgunit.office',Auth::user()->office)
@@ -5486,108 +5610,7 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  } 
 
- if ($request->v == "gmPromotionReview")  //form.csv
- {  
-    $promotiondue =Promotionduelist::all();
-    $officedetails = Officedetails::all();
-
-    $promotiondue = DB::table('promotionduelist')
-
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
-    ->join('officemaster','officemaster.id','=','promotionduelist.office')
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
-    ->latest('promotionduelist.id') //similar to orderby('id','desc')
-
-   ->where('promotionduelist.status','=','Recommended')
-   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
-   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Recommended')
-   ->paginate(10000000);
-    
-
-  $rhtml = view('promotion.GMReviewPromotion')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }//end
-
- if ($request->v == "stsPromotionReview")  //form.csv
- {  
-    $promotiondue =Promotionduelist::all();
-    $officedetails = Officedetails::all();
-
-    $promotiondue = DB::table('promotionduelist')
-
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
-    ->join('officemaster','officemaster.id','=','promotionduelist.office')
-    ->join('officeunder','officeunder.office','=','promotionduelist.office') //added new join
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office')
-    ->latest('promotionduelist.id')         //similar to orderby('id','desc')
-
-//    ->where('promotionduelist.status','=','Proposed')
-//    ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-   
-//  ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm  //alredy commented
-
-
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-//     ->where('promotionduelist.status','=','Proposed')
-
-
-        ->where('promotionduelist.status','=','Recommended')
-        ->where('officeunder.head',Auth::user()->empId) 
-        ->paginate(10000000); 
-
-
-    // ->orwhere('office','=',89)  //IT
-    // ->where('promotionduelist.status','=','Proposed') 
-
-    // ->orwhere('office','=',90) // Suit
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',88)  //fnd (3 for ICD)
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',72) // RDD
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',86) // 
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',87) // GIS
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',93) //spbd
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',94) //cspd
-    // ->where('promotionduelist.status','=','Proposed')
-    // ->paginate(10000000);
-
-
-// ->orwhere('office','>=',86 ||'office','<=',90  ||'office','=',72 ||'office','=',93 || 'office','=',94 ) //cspd
-
-// ->where('promotionduelist.status','=','Proposed')
-
-
-
-    
-
-  $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }//end
-
-
-
+ 
  if ($request->v == "hrcsPromotionReview")  //form.csv
  {  
     $promotiondue =Promotionduelist::all();

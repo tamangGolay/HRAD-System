@@ -27,18 +27,17 @@ class UniformController extends Controller
         ->join('shoesize as gumboot', 'gumboot.id', '=', 'employeeuniform.shoe')
         ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
         ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
-        ->where('status', 0)
+        ->where('employeeuniform.status', 0)
         ->select('users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
         'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
         'shoesize.ukShoeSize','raincoatsize.sizeName')
-                    ->paginate(10000);
+        ->paginate(10000);
         
         if ($request->ajax()) {
             $data = $pay;
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('action', function($row){                    
-
+                    ->addColumn('action', function($row){                  
     
                             return $btn;
                     })
@@ -52,9 +51,9 @@ class UniformController extends Controller
     public function store(Request $request)
     {
 
-    try{
+    // try{
 
-
+    // dd($request);
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
      'officeId' => $request->officeId, 
@@ -64,7 +63,8 @@ class UniformController extends Controller
     'shoe' => $request->shoe,
     'gumboot' => $request->gumboot,
     'raincoat' => $request->raincoat,
-    'createdBy' => $request->emp_id]);        
+    'createdBy' => $request->emp_id
+]);        
 
     // return response()->json(['success'=>'New pay saved successfully.']);
    
@@ -72,15 +72,14 @@ class UniformController extends Controller
     // ->json(['success' => 'Data inserted successfully.']);
 
     return redirect('home')->with('page', 'uniform')->with('success','Record added successfully!!!');
-    }
+    // }
 
-    catch(\Illuminate\Database\QueryException $e){
+    // catch(\Illuminate\Database\QueryException $e){
 
-        return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry!!!');
+    //     return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry!!!');
     
     
-    }
-        
+    // }        
     
     }
     //delte indivual record from database
@@ -94,8 +93,8 @@ class UniformController extends Controller
     public function delete(Request $request)
     {
 
-                  $query = DB::table('employeeuniform')->where('id', $request->id)
-            ->increment('status');
+        $query = DB::table('employeeuniform')->where('id', $request->id)
+        ->increment('status');
 
         return response()
             ->json(['success' => 'Detail deleted successfully.']);

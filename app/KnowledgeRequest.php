@@ -9,7 +9,7 @@ class KnowledgeRequest extends Model
     //
     protected $table = 'knowledgerepository';
 
-    protected $fillable = ['approveBy','createdBy','problem','solution','createdOn','status'];
+    protected $fillable = ['approveBy','id','createdBy','problem','solution','createdOn','status'];
 
     public $timestamps = false;
 

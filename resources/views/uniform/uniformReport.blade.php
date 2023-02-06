@@ -125,7 +125,7 @@ a {
 							<form id="Form" name="Form" class="form-horizontal"> @csrf
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
-								<input type="hidden" value="<?php echo $data1[0]->id;?>" name="id" id="id" >
+								<input type="hidden" value="<?php echo $data1[0]->id;?>" name="id" id="ids" >
 						
 
 
@@ -287,7 +287,7 @@ a {
 						$('#modelHeading').html("Edit uniform size");
 						$('#uniformT').val("edit-book");
 						$('#ajaxModel').modal('show');
-						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database
+						$('#ids').val(data.id);//#id is from modal form(id) and data.id is from modal(fillable) database
 						$('#emp_id').val(data.empId); //input id,database
 						$('#officeId').val(data.officeId);
 						$('#pant').val(data.pant);
@@ -302,7 +302,6 @@ a {
 				$('#uniformT').click(function(e) {
 					e.preventDefault();
 					$(this).html('Saving...');
-
 					$.ajax({
 						data: $('#Form').serialize(),
 						url: "{{ route('uniform.store') }}",
@@ -322,7 +321,7 @@ a {
 							}, 4500);
 							document.body.appendChild(alt);
 							
-							$.get('/getView?v=uniformReport', function(data) {
+							$.get('/getView?v=/home', function(data) {
 								$('#contentpage').empty();
 								$('#contentpage').append(data.html);
 							});							
@@ -379,8 +378,25 @@ a {
 					});
 				});
 			});
-			</script>
-<script>
+</script>
+<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+			<!-- DataTables -->
+			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+			<!-- Script for export file from datatable -->
+			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
+			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
+			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
+			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
+			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
+			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
+			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
+			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
+
+    <script>
 $(function() {
 	$("#example3").DataTable({
 		"dom": 'Bfrtip',

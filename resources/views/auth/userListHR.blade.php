@@ -99,11 +99,7 @@ a {
 							<td> 
 							 {{$ul->shortOfficeName}}/
 								{{$ul->Address}}
-							</td>
-
-						
-
-
+							</td>	
 
 
 							<td>
@@ -257,7 +253,7 @@ a {
 						<div class="col-sm-6 col-lg-12">
 
 							<select class="form-control" name="office" id="office" required> @foreach($officedetails as $office)
-								<option value="{{$office->id}}" > {{$office->shortOfficeName}}
+								<option value="{{$office->id}}" > {{$office->officeDetails}}
 								</option>
 								@endforeach </select>
 						</div>

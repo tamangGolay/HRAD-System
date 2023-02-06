@@ -43,7 +43,7 @@ hr{
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 
         Cancel </button>	
         @elseif($rv->status == 'Recommended' || $rv->status == 'GMRecommended'|| $rv->status == 'DirectorRecommended')
-        <p class="btn-outline-success">Some Progress.Happy Now</p>
+        <p class="btn-outline-success">Processing</p>
         @endif
 		    
       </form> </td> 	                 

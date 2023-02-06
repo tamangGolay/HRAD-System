@@ -418,14 +418,14 @@ public function toGMtransferrequest()
 
    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
 
-    ->where('transferproposal.toOffice','=',Auth::user()->office) 
-   ->where('transferproposal.fromDirectorAction','=','recommended')
-    ->where('transferproposal.toGM',)
+    // ->where('transferproposal.toOffice','=',Auth::user()->office) 
+    // ->where('transferproposal.fromDirectorAction','=','recommended')
+    // ->where('transferproposal.toGM',)
 
-     ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-     ->where('transferproposal.fromDirectorAction','=','recommended')
-     ->where('transferproposal.status','=','proposed')
-     ->where('transferproposal.toGM',)
+    //  ->where('officemaster.reportToOffice',Auth::user()->office)
+    //  ->where('transferproposal.fromDirectorAction','=','recommended')
+    //  ->where('transferproposal.status','=','proposed')
+    //  ->where('transferproposal.toGM',)
 
      ->orwhere('officeunder.head',Auth::user()->empId)
      ->where('transferproposal.fromDirectorAction','=','recommended')

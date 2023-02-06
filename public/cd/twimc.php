@@ -59,7 +59,7 @@
         </form>
       </div>
         <footer class="w3-green w3-container w3-center">
-                <p>©2019 <a href = "http://www.bpc.bt"> Bhutan Power Corporation Limited</a></p>
+                <p>©2022<a href = "http://www.bpc.bt"> Bhutan Power Corporation Limited</a></p>
             </footer>
     </div>
     <script>

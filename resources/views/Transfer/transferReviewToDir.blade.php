@@ -20,7 +20,7 @@
 							<tr class="text-nowrap">
 								<th>Request Id</th>
                 				<th>Emp Id </th>
-								<th>From Office</th>
+								<th>To Office</th>
 								<th>Transfer Type</th>
 								<th>From General Manager</th>
 								<th>From General Manager Remarks</th>	

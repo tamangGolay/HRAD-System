@@ -34,6 +34,7 @@ public function index(Request $request)
 //  ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
         ->select('promotionduelist.*','officedetails.officeDetails')
         ->where('promotionduelist.status','=','Approved') 
+        ->orwhere('promotionduelist.status','=','DirRecommend') 
         
         ->get();
 
@@ -343,12 +344,25 @@ public function insertSelectedEmployees(Request $request){
         // ->where('payscalemaster.id','=',$fromGrade[$i])//test
         ->first();
 
+        $oldIncrement [$i]= DB::table('payscalemaster')
+        ->select('payscalemaster.increment')
+        ->where('payscalemaster.id','=',$fromGrade[$i]->gradeId)
+        ->first();
+
+        $incrementCycle[$i] = DB::table('users')//users table
+        ->join('promotionall', 'promotionall.empId', '=', 'users.empId')
+        ->select('users.incrementCycle')
+        ->where('promotionall.id',$request->promotion_ids[$i])
+        ->first();
+        
+
 
         $office[$i] = DB::table('users')//users table
         ->join('promotionall', 'promotionall.empId', '=', 'users.empId')
         ->select('users.office')
         ->where('promotionall.id',$request->promotion_ids[$i])
         ->first();
+        
 
         // if($i == 0){
         //     dd($office[$i]->office);
@@ -411,14 +425,9 @@ public function insertSelectedEmployees(Request $request){
             }
         }
 
-       
+            
 
-
-
-
-
-       
-
+        
         $promotionAll = new Promotionduelist;
       
         if($promotion[$i]->month == 7){
@@ -546,7 +555,7 @@ public function updateSelectedEmployees(Request $request){
 
         $newDesignation[$i] = DB::table('designationmaster')//users table
         ->select('designationmaster.id')
-        ->where('id',349)
+        ->where('id',350)
         ->first();
 
         // dd($newDesignation[$i]->id);
@@ -592,7 +601,7 @@ public function updateSelectedEmployees(Request $request){
             // $yearsToPromote[$i] = 4;
 
             DB::update('update promotionall set yearsToPromote = ? where empId = ?', [$yearsToPromote[$i]->noofYears, $empId[$i]->empId]);
-            DB::update('update promotionall set promotionDueDate = ? where empId = ?', [promotionDueDate[$i], $empId[$i]->empId]);
+            DB::update('update promotionall set promotionDueDate = ? where empId = ?', [$promotionDueDate[$i], $empId[$i]->empId]);
 
         }
         else{

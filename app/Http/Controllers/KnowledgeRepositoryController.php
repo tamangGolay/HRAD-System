@@ -24,7 +24,7 @@ class KnowledgeRepositoryController extends Controller
         ->join('officedetails', 'officedetails.id', '=', 'knowledgerepository.officeId')
      //    ->join('officemaster','officemaster.id','=','users.office')
 
-     ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails')
+        ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails')
 
        
         ->where('knowledgerepository.status','1');

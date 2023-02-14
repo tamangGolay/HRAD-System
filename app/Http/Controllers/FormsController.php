@@ -221,9 +221,6 @@ class FormsController extends Controller
             //        ['users.org_unit_id','=','orgunit.parent_id'],
             //        ['orgunit.parent_id','=','orgunit.id'],
             //        ['orgunit.id','=','orgunit.id']
-
-
-
             //    ])
 
 
@@ -239,7 +236,6 @@ class FormsController extends Controller
             // ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
             // ->latest('users.id') //similar to orderby('id','desc')
             // ->where('users.status',0)
-
             // ->paginate(10000000);
 
            $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
@@ -274,24 +270,21 @@ class FormsController extends Controller
        }
        //end Pant report.
 
-
         //    uniform view
 
         if ($request->v == "uniform")
         {
  
         
-         $pant = Pant::all();
-         $shirt = Shirt::all();
-         $jacket = JacketSize::all();
-         $shoe = Shoesize::all();
-         $gumboot = GumbootSize::all();
-         $raincoat = RainCoatSize::all();
+         $pant = Pant::all()->where('status',0);
+         $shirt = Shirt::all()->where('status',0);
+         $jacket = JacketSize::all()->where('status',0);
+         $shoe = Shoesize::all()->where('status',0);
+         $gumboot = GumbootSize::all()->where('status',0);
+         $raincoat = RainCoatSize::all()->where('status',0);
           
              // $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-             //    ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-    
-            
+             //    ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')             
     
              //    ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'conference.Conference_Name'
              //            )
@@ -310,12 +303,13 @@ class FormsController extends Controller
 
        //uniform report for individual employee
         //uniform report for individual employee
-        if ($request->v == "uniformReport")         {
+        if ($request->v == "uniformReport")  {
              
              $pant = Pant::all();
              $shirt = Shirt::all();
              $jacket = JacketSize::all();
              $shoe = Shoesize::all();
+            //  ->where('status',0);
              $gumboot = GumbootSize::all();
              $raincoat = RainCoatSize::all();
              $office = Officedetails::all();
@@ -936,9 +930,7 @@ $bookedv = DB::table('vehiclerequest')
         if ($request->v == "GuestHouseBooking")
         {
             $guesthouseroom = guesthouseroom::all();
-            $roombed = guesthouseroom::all();
-
-         
+            $roombed = guesthouseroom::all();       
 
           
             
@@ -5916,7 +5908,6 @@ if ($request->v == "employeeskillmap")  //form.csv
       'html' => $rhtml
        ));
  }//end
-
 
 //Transfer Request
 if ($request->v == "transferRequest")  //form.csv

@@ -66,7 +66,7 @@ table, th, td {
                 <div class="form-group row"> 
                 <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                    <input type="text" class="form-control" name="designation" id="designation" placeholder="Contact Number" readonly required>                  
+                    <input type="text" class="form-control" name="designation" id="designation" placeholder="Designation" readonly required>                  
                     </div>
                 </div>
                 <input type="hidden" class="form-control" name="designationID" id="designationID" readonly required>

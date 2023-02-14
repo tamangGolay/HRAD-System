@@ -5575,6 +5575,39 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+ //all uniform for all all employee
+ //  all office uniform report
+
+ if ($request->v == "allUniformReport")  //form.csv
+ {    
+    // $officename = officeuniform::all();  
+    // $officedetailsx = officedetails::all();     
+
+    $officenamez = DB::table('uniformreport')
+                //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+                ->select('*')
+                ->get();                 
+
+  $rhtml = view('UniformReport.allUniformReport')->with(['officenamez' => $officenamez])->render(); 
+//   $rhtml = view('UniformReport.allUniformReport')->with(['officename' => $officename,'officedetailsx'=>$officedetailsx,'officenamez' => $officenamez])->render(); 
+
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  
+ 
+ //end of all uniform employee
+
+
+
+
+
+
+
+
+
  // for increment all
  
  if ($request->v == "incrementall")  //form.csv

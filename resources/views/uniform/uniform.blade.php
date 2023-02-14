@@ -51,6 +51,14 @@
                 </div>
 
                 <div class="form-group row"> 
+                <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                    <input type="text" class="form-control" name="designation" id="designation" placeholder="Contact Number" readonly required>                  
+                    </div>
+                </div>
+                <input type="hidden" class="form-control" name="designationID" id="designationID" readonly required>
+
+                <div class="form-group row"> 
                     <input type="hidden" class="form-control" value="1" name="pant_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Pant Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
@@ -160,6 +168,7 @@ function getEmployeeDetails(val)
                     console.log(data);         
     document.getElementById('nameid').value = '';                      
                     document.getElementById('contact_number').value = '';
+                    document.getElementById('designation').value = '';
                     // document.getElementById('fixed').value = '';
                     // document.getElementById('extension').value = '';
                     document.getElementById('office').value =  '';
@@ -167,7 +176,7 @@ function getEmployeeDetails(val)
                     // document.getElementById('dob').value = '';                      
                     // document.getElementById('cid').value = '';
                     // // document.getElementById('blood').value =  '';
-                    // document.getElementById('designation').value =  '';
+
                     // document.getElementById('grade').value = '';   
                     // document.getElementById('appointment').value = '';                      
                     // document.getElementById('basicpay').value = '';
@@ -192,13 +201,13 @@ function getEmployeeDetails(val)
 
                           if(Employee.empId != null)
                           {
-
                            
                             document.getElementById('nameid').value = Employee.empName;                      
                                 document.getElementById('contact_number').value = Employee.mobileNo;
-                    //             document.getElementById('fixed').value = Employee.fixedNo;
+                                document.getElementById('designation').value = Employee.desisNameLong;
+                                document.getElementById('designationID').value =  Employee.designationId;
                     //             document.getElementById('extension').value = Employee.extension;
-                                document.getElementById('office').value =  Employee.shortOfficeName;
+                                document.getElementById('office').value =  Employee.shortOfficeName;                                
                                 document.getElementById('officeId').value =  Employee.office;
 
                     //             document.getElementById('emp_id').innerHTML= Employee.empId;                    
@@ -303,16 +312,3 @@ $('div.alert').delay(6500).slideUp(300);// Session message  display time
 
         
 		</script>
-
-
-
-
-
-
-
-  
-      
-
-
-
-

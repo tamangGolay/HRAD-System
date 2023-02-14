@@ -11,6 +11,6 @@ class UniformEmployee extends Model
 
     protected $table = 'employeeuniform';
 
-    protected $fillable = ['empId','id','officeId','shirt','pant','shoe','jacket','gumboot','raincoat'];
+    protected $fillable = ['empId','id','officeId','designationID','shirt','pant','shoe','jacket','gumboot','raincoat'];
     public $timestamps = false;
 }

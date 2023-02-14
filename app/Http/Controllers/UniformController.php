@@ -51,12 +51,13 @@ class UniformController extends Controller
     public function store(Request $request)
     {
 
-    // try{
+    try{
 
     // dd($request);
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
      'officeId' => $request->officeId, 
+     'designationID' => $request->designationID, 
      'pant' => $request->pant,
     'shirt' => $request->shirt,
     'jacket' => $request->jacket,
@@ -72,14 +73,14 @@ class UniformController extends Controller
     // ->json(['success' => 'Data inserted successfully.']);
 
     return redirect('home')->with('page', 'uniform')->with('success','Record added successfully!!!');
-    // }
+    }
 
-    // catch(\Illuminate\Database\QueryException $e){
+    catch(\Illuminate\Database\QueryException $e){
 
-    //     return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry!!!');
+        return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry for this employee!!!');
     
     
-    // }        
+    }        
     
     }
     //delte indivual record from database

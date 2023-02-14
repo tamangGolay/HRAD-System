@@ -31,9 +31,9 @@ a {
 	border-color: #28a745;
 }
 
-.thw {
+/* .thw {
 	white-space: nowrap;
-}
+} */
 
 .fat{
 	width: 14%;
@@ -75,17 +75,18 @@ a {
 				<table id="example3" class="table table-hover table-striped table-bordered" width="100%">
 					<thead>
 						<tr class="thw">
-						<th>Sl.No</th>
+						       <th>Sl.No</th>
 								<th>Emp Id</th>
+								<th>Name</th>
+								<th>Designation</th>
                                 <!-- <th>this is the real</th> -->
 								<th>Office Name</th> 								
 								<th>Pant Size</th>
 								<th>Shirt Size</th>
 								<th>Jacket Size</th>
 								<th>Shoe Size</th>
-                                <th> Gumboot Size </th>
-                                <th> Raincoat Size </th>								
-								
+                                <th> Gumboot Size</th>
+                                <th> Raincoat Size</th>					
 								<th> Action </th>
 						</tr>
 					</thead>
@@ -93,6 +94,8 @@ a {
 						<tr>
 						<td> {{$rv->uniformId}} </td>
 								<td> {{$rv->empId}} </td>
+								<td> {{$rv->empName}} </td>
+								<td> {{$rv->desisNameLong}} </td>
                                 <td> {{$rv->officeDetails}} </td>	
                                 <td> {{$rv->pantSizeName}} </td>
 								<td> {{$rv->shirtSizeName}} </td>

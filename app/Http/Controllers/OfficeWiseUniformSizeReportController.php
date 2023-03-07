@@ -35,10 +35,10 @@ class OfficeWiseUniformSizeReportController extends Controller
        
 
         $review = DB::table('officeuniform')        
-
        
          ->select('*')
-      //  ->where('officeuniform.status','=', 0)
+         ->where('officeuniform.size','!=','Not Applicable')
+
        ->get();
       }
       return datatables()->of($review)->make(true);

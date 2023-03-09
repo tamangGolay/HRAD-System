@@ -18,6 +18,7 @@
 								<th>Uniform Name</th>
 								<th>Uniform Size</th>
 								<th>Total Numbers</th>
+								
 							</tr>
 						</thead>
 						<tbody> @foreach($officenamez as $rv)
@@ -74,9 +75,9 @@
 	
 		$(function() {
 			$("#table1").DataTable({
-				"dom": 'Bfrtip',
+				"dom": 'Blfrtip',
+
 				"responsive": true,
-				"lengthChange": true,
 				"searching": true,
 				"ordering": false,
 				"info": true,

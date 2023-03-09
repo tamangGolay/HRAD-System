@@ -75,12 +75,18 @@ table, th, td {
                     <input type="hidden" class="form-control" value="1" name="pant_id">                  
                     <label class="col-md-4 col-form-label text-md-right" for="meeting_name">&nbsp;&nbsp;&nbsp;Pant Size:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                    <select class="form-control" name="pant" id="officeName" required>
+
+                    <select class="form-control" name="pant" id="officeName"  required>
                             <option value="">Select Size</option>
                             @foreach($pant as $pant)
-                            <option value="{{$pant->id}}">{{$pant->pantSizeName}}</option>
+                            <option value="{{$pant->id}}"
+                                @if ($pant->pantSizeName == '---For New Employee---') disabled @endif>
+                             
+                            {{$pant->pantSizeName}}</option>
+				
                             @endforeach
-                    </select>                 
+                    </select>
+
                     </div>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal2">Pant size</button>
                 </div>
@@ -92,7 +98,11 @@ table, th, td {
                         <select class="form-control" name="shirt" id="officeName" required>
                             <option value="">Select Size</option>
                             @foreach($shirt as $shirt)
-                            <option value="{{$shirt->id}}">{{$shirt->shirtSizeName}}</option>
+                            <option value="{{$shirt->id}}"
+                                @if ($shirt->shirtSizeName == '---For New Employee---') disabled @endif>
+                             
+                            {{$shirt->shirtSizeName}}</option>
+				
                             @endforeach
                     </select>             
                         </div>
@@ -160,6 +170,7 @@ table, th, td {
                 </div>   
                 </div>
             </form>
+            <p class="text-center" style="font-size:16px"><b><i> Note:<i></b><b>choose shirt size or pant size as <i> size(2) ex:XS-Female(2) </i> only if you are getting uniform for the first time</b></p>
         </div>    
     </div>
     <!-- Modal  -->
@@ -814,7 +825,7 @@ table, th, td {
           <!--<h4 class="modal-title">Shoe size</h4>-->
         </div>
         <div class="modal-body" style="width:100%; height:100%">
-            <table>
+            <table style="width:100%">
                 <tr>
                     <th>SIZES</th>
                     <th>FOOT LENGTH</th>
@@ -823,7 +834,7 @@ table, th, td {
                     <th>US</th>
                     <th>EU</th>
                     <th> UK </th>
-                    <th> inches </th>
+                    <th >inches </th>
                     <th> cm </th>
                 </tr>
                 <tr>

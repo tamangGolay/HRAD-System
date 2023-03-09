@@ -313,6 +313,7 @@ class FormsController extends Controller
              $gumboot = GumbootSize::all();
              $raincoat = RainCoatSize::all();
              $office = Officedetails::all();
+             $designation = Designation::all();
              $usersU = User::all();
  
          $data1 = DB::table('employeeuniform')
@@ -325,16 +326,17 @@ class FormsController extends Controller
          ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
          ->join('designationmaster', 'designationmaster.id', '=', 'employeeuniform.designationID')
          ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
-         ->select('desisNameLong','users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
+         ->select('desisNameLong','users.empName','users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
          'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
          'shoesize.ukShoeSize','shoesize.euShoeSize','raincoatsize.sizeName','gumboot.uKSize','gumboot.eUSize')
-         ->where('employeeuniform.status',0)
-                     ->paginate(10000);
+        ->where('employeeuniform.status',0)
+        ->latest('uniformId') 
+        ->paginate(10000);
              
  
                 $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
                 'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
-                'pant' => $pant, 'office' => $office,'usersU'=>$usersU])->render();
+                'pant' => $pant, 'office' => $office,'usersU'=>$usersU, 'designation'=>$designation])->render();
                 return response()
                     ->json(array(
                     'success' => true,
@@ -5579,6 +5581,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     $officenamez = DB::table('uniformreport')
                 //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
                 ->select('*')
+                ->where('size','!=','Not Applicable')
                 ->get();                 
 
   $rhtml = view('UniformReport.allUniformReport')->with(['officenamez' => $officenamez])->render(); 

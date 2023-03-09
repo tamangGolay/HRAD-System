@@ -128,9 +128,8 @@ a {
 							<form id="Form" name="Form" class="form-horizontal"> @csrf
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
-								<input type="hidden" value="<?php echo $data1[0]->id;?>" name="id" id="ids" >
+								<input type="hidden" value="<?php echo $data1[0]->id;?>" name="id" id="id" >
 						
-
 
 								<div class="form-group row">
 									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Employee Number:') }}</label>
@@ -154,7 +153,21 @@ a {
 								</option>
 								@endforeach </select>
 									</div>
-								</div>
+								</div>		
+								
+								<div class="form-group row">
+                                    <label class="col-sm-4 text-md-right" for="designationID">{{ __('Designation:') }}</label>
+                                    <div class="col-sm-6">
+                            <select class="form-control" name="designationID" id="designationID" required> 
+                            <option value="">Select Designation</option>    
+                            @foreach($designation as $designation)
+                                <option value="{{$designation->id}}"> {{$designation->desisNameLong}}
+                                </option>
+                                @endforeach </select>
+                                    </div>
+                                </div>
+
+
 
 								<div class="form-group row">
 						<label class="col-sm-4 text-md-right" for="pant">{{ __('Pant:') }}</label>
@@ -290,9 +303,10 @@ a {
 						$('#modelHeading').html("Edit uniform size");
 						$('#uniformT').val("edit-book");
 						$('#ajaxModel').modal('show');
-						$('#ids').val(data.id);//#id is from modal form(id) and data.id is from modal(fillable) database
+						$('#id').val(data.id);//#id is from modal form(id) and data.id is from modal(fillable) database
 						$('#emp_id').val(data.empId); //input id,database
 						$('#officeId').val(data.officeId);
+						$('#designationID').val(data.designationID);
 						$('#pant').val(data.pant);
 						$('#shirt').val(data.shirt);
 						$('#jacket').val(data.jacket);
@@ -324,10 +338,8 @@ a {
 							}, 4500);
 							document.body.appendChild(alt);
 							
-							$.get('/getView?v=/home', function(data) {
-								$('#contentpage').empty();
-								$('#contentpage').append(data.html);
-							});							
+							
+							window.location.href='/home';						
 							table.draw();
 						},
 						error: function(data) {
@@ -368,10 +380,11 @@ a {
 							}, 4500);
 							document.body.appendChild(alt);
 
-							$.get('/getView?v=uniformReport', function(data) {
-								$('#contentpage').empty();
-								$('#contentpage').append(data.html);
-							});
+							// $.get('/getView?v=/home', function(data) {
+							// 	$('#contentpage').empty();
+							// 	$('#contentpage').append(data.html);
+							// });
+							window.location.href='/home';
 							table.draw();
 						},
 						error: function(data) {
@@ -382,24 +395,7 @@ a {
 				});
 			});
 </script>
-<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
-			<!-- DataTables -->
-			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-			<!-- Script for export file from datatable -->
-			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
-
-    <script>
+<script>
 $(function() {
 	$("#example3").DataTable({
 		"dom": 'Bfrtip',

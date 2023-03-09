@@ -175,10 +175,15 @@ a {
 
 							<select class="form-control" name="pant" id="pant" required> 
 							<option value="">Select pant Size</option>	
-							@foreach($pant as $pant)
-								<option value="{{$pant->id}}" > {{$pant->pantSizeName}}
-								</option>
-								@endforeach </select>
+								@foreach($pant as $pant)
+                            <option value="{{$pant->id}}"
+                                @if ($pant->pantSizeName == '---For New Employee---') disabled @endif>
+                             
+                            {{$pant->pantSizeName}}</option>
+				
+                            @endforeach
+							</select>
+
 						</div>
 					</div>
 
@@ -189,10 +194,15 @@ a {
 
 							<select class="form-control" name="shirt" id="shirt" required> 
 							<option value="">Select Shirt Size</option>	
-							@foreach($shirt as $shirt)
-								<option value="{{$shirt->id}}" > {{$shirt->shirtSizeName}}
-								</option>
-								@endforeach </select>
+								@foreach($shirt as $shirt)
+                            <option value="{{$shirt->id}}"
+                                @if ($shirt->shirtSizeName == '---For New Employee---') disabled @endif>
+                             
+                            {{$shirt->shirtSizeName}}</option>
+				
+                            @endforeach
+							
+							</select>
 						</div>
 					</div>
 

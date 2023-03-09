@@ -5581,7 +5581,8 @@ if ($request->v == "employeeskillmap")  //form.csv
     $officenamez = DB::table('uniformreport')
                 //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
                 ->select('*')
-                ->where('size','!=','Not Applicable')
+                ->where('uniformreport.size','!=','0')
+                ->where('uniformreport.size','!=','Not Applicable')                
                 ->get();                 
 
   $rhtml = view('UniformReport.allUniformReport')->with(['officenamez' => $officenamez])->render(); 

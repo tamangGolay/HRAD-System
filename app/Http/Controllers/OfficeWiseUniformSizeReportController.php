@@ -24,8 +24,8 @@ class OfficeWiseUniformSizeReportController extends Controller
          ->select('*')            
          ->where('Office','=',$request->officeId)
          ->where('cloths','=',$request->cloths)
-         ->where('officeuniform.size','!=','Not Applicable')
-        //  ->where('employeeuniform.status','=', 0)
+         ->where('officeuniform.size','!=','0')
+         ->where('officeuniform.size','!=','Not Applicable')     
 
          ->get();
       }
@@ -37,9 +37,11 @@ class OfficeWiseUniformSizeReportController extends Controller
         $review = DB::table('officeuniform')        
        
          ->select('*')
-         ->where('officeuniform.size','!=','Not Applicable')
-
-       ->get();
+         
+         ->where('officeuniform.size','!=','0')
+         ->where('officeuniform.size','!=','Not Applicable')     
+          
+          ->get();
       }
       return datatables()->of($review)->make(true);
      }

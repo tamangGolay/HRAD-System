@@ -170,7 +170,7 @@ table, th, td {
                 </div>   
                 </div>
             </form>
-            <p class="text-center" style="font-size:16px"><b><i> Note:<i></b><b>choose shirt size or pant size as <i> size(2) ex:XS-Female(2) </i> only if you are getting uniform for the first time</b></p>
+            <p class="text-center" style="font-size:16px"><b><i> Note:<i></b><b>choose shirt size or pant size as <i> size(2) eg:XS-Female(2) </i> only if you are getting uniform for the first time</b></p>
         </div>    
     </div>
     <!-- Modal  -->

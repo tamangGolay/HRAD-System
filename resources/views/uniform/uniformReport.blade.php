@@ -356,6 +356,8 @@ a {
 							console.log('Error:', data);
 							$('#uniformT').html('Save Changes');
 							//alert(data);
+							window.location.href='/home';						
+							table.draw();   //save changes issue: use this 
 						}
 					});
 				});

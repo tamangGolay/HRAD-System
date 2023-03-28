@@ -330,6 +330,7 @@ class FormsController extends Controller
          'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
          'shoesize.ukShoeSize','shoesize.euShoeSize','raincoatsize.sizeName','gumboot.uKSize','gumboot.eUSize')
         ->where('employeeuniform.status',0)
+        ->where('employeeuniform.officeId',Auth::user()->office)
         ->latest('uniformId') 
         ->paginate(10000);
              

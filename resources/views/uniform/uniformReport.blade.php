@@ -92,7 +92,7 @@ a {
 					</thead>
 					<tbody> @foreach($data1 as $rv)
 						<tr>
-						<td> {{$rv->uniformId}} </td>
+						<td> {{$loop->iteration}}</td>
 								<td> {{$rv->empId}} </td>
 								<td> {{$rv->empName}} </td>
 								<td> {{$rv->desisNameLong}} </td>

@@ -75,6 +75,8 @@
 	
 		$(function() {
 			$("#table1").DataTable({
+				"aLengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
+                 "iDisplayLength": 10,
 				"dom": 'Blfrtip',
 
 				"responsive": true,

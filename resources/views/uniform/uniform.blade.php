@@ -826,157 +826,91 @@ table, th, td {
         </div>
         <div class="modal-body" style="width:100%; height:100%">
             <table style="width:100%">
+            <p>Note: Refer equivalent EU size chart for Gumboot size</p>
                 <tr>
                     <th>SIZES</th>
-                    <th>FOOT LENGTH</th>
+                    <th></th>
                 </tr>
-                <tr>
-                    <th>US</th>
+                <tr>                    
                     <th>EU</th>
-                    <th> UK </th>
-                    <th >inches </th>
-                    <th> cm </th>
+                    <th> UK </th>                    
                 </tr>
-                <tr>
-                    <th>2</th>
+                <tr>                    
+                    <th>35</th>
+                    <th>3</th>                    
+                </tr>
+                <tr>                    
                     <th>36</th>
-                    <th> 1 </th>
-                    <th> 9.1 </th>
-                    <th> 23 </th>
+                    <th> 4 </th>                    
                 </tr>
                 <tr>
-                    <th>3</th>
                     <th>37</th>
-                    <th> 2 </th>
-                    <th> 9.3 </th>
-                    <th> 23.7 </th>
+                    <th> 5 </th>                    
                 </tr>
-                <tr>
-                    <th>4</th>
-                    <th>38</th>
-                    <th> 3</th>
-                    <th> 9.6 </th>
-                    <th> 24.4 </th>
-                </tr>
-                <tr>
-                    <th>5</th>
+                
+                <tr>                   
                     <th>39</th>
-                    <th> 4 </th>
-                    <th> 9.9 </th>
-                    <th> 25 </th>
+                    <th> 6 </th>                    
                 </tr>
-                <tr>
-                    <th>6</th>
-                    <th>40</th>
-                    <th> 5 </th>
-                    <th> 10.1 </th>
-                    <th> 25.7 </th>
-                </tr>
-                <tr>
-                    <th>7</th>
+                
+                <tr>                    
                     <th>41</th>
-                    <th> 6 </th>
-                    <th> 10.4 </th>
-                    <th> 26.3 </th>
-                </tr>
-                <tr>
-                    <th>7.5</th>
-                    <th>41.5</th>
-                    <th> 6.5 </th>
-                    <th> 10.5 </th>
-                    <th> 26.7 </th>
-                </tr>
-                <tr>
-                    <th>8</th>
-                    <th>42</th>
                     <th> 7 </th>
-                    <th> 10.6 </th>
-                    <th> 27 </th>
+                    
                 </tr>
+                
                 <tr>
-                    <th>8.5</th>
-                    <th>42.5</th>
-                    <th> 7.5 </th>
-                    <th> 10.8 </th>
-                    <th> 27.3 </th>
+                    
+                    <th>42</th>
+                    <th> 8 </th>
+                    
                 </tr>
+               
                 <tr>
-                    <th>9</th>
+                    
                     <th>43</th>
-                    <th> 8</th>
-                    <th> 10.9 </th>
-                    <th> 27.7 </th>
+                    <th> 9</th>
+                    
                 </tr>
+               
                 <tr>
-                    <th>9.5</th>
-                    <th>43.5</th>
-                    <th> 8.5 </th>
-                    <th> 11 </th>
-                    <th> 28 </th>
-                </tr>
-                <tr>
-                    <th>10</th>
+                    
                     <th>44</th>
-                    <th> 9 </th>
-                    <th> 11.1 </th>
-                    <th> 28.3 </th>
-                </tr>
-                <tr>
-                    <th>10.5</th>
-                    <th>44.5</th>
-                    <th> 9.5 </th>
-                    <th> 11.3 </th>
-                    <th> 28.7 </th>
-                </tr>
-                <tr>
-                    <th>11</th>
-                    <th>45</th>
                     <th> 10 </th>
-                    <th> 11.4 </th>
-                    <th> 29 </th>
+                    
                 </tr>
+                
                 <tr>
-                    <th>12</th>
-                    <th>46</th>
+                    
+                    <th>45</th>
                     <th> 11 </th>
-                    <th> 11.7 </th>
-                    <th> 29.6 </th>
+                    
                 </tr>
                 <tr>
-                    <th>13</th>
-                    <th>47</th>
+                    
+                    <th>46</th>
                     <th> 12 </th>
-                    <th> 11.9 </th>
-                    <th> 30.3 </th>
+                    
                 </tr>
                 <tr>
-                    <th>14</th>
-                    <th>48</th>
+                    
+                    <th>47</th>
                     <th> 13 </th>
-                    <th> 12.2 </th>
-                    <th> 31 </th>
+                    
                 </tr>
+                
                 <tr>
-                    <th>15</th>
+                    
                     <th>49</th>
                     <th> 14 </th>
-                    <th> 12.5 </th>
-                    <th> 31.7 </th>
+                    
                 </tr>
                 <tr>
-                    <th>16</th>
+                    
                     <th>50</th>
                     <th> 15 </th>
-                    <th> 12.7 </th>
-                    <th> 32.3 </th>
-                </tr>
-                <tr>
-                    <th>17</th>
-                    <th>51</th>
-                    <th> 16 </th>
-                    <th> 13 </th>
-                    <th> 33 </th>
-                </tr>
+                    
+                </tr>                
 
             </table> 
         </div>

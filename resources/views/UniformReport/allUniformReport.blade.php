@@ -91,3 +91,9 @@
 		});
 
 		</script>
+
+       <script type="text/javascript">
+		$(document).ready(function() {
+			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true"></i></a></strong>';
+		});
+		</script>

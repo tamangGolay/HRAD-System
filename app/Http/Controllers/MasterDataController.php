@@ -84,6 +84,8 @@ class MasterDataController extends Controller
       //  } 
       //  dd($request);
       //  $request->employmentType = 'regular'; 
+       
+       $dt = date('Y-m-d');
        $request->password = '$2y$10$fDIw.1lGpnLMdBNWB2RlKuo1JfVi7IpHfxrTCr5NyaE2AtIf9qFFC';       
        $users = new User;//users is ModelName
         $users->EmpId = $request->EmpId;//emp_id is from input name
@@ -113,22 +115,25 @@ class MasterDataController extends Controller
         $users->extension = $request->extension;
         $users->fixedno = $request->fixedno;
         $users->createdBy = Auth::user()->empId;
+        $users->createdOn = $dt;
+        $users->role_id = $request->role;
 
         // $user->password =  Hash::make($request->password);      
         // $user->org_unit_id = $request->orgunit;
-        // $user->role_id = $request->role;
+        
         // $user->gender = $request->gender;
         // $user->contact_number = $request->contact_number;
         // $user->designation = $request->designation;
         // $user->dzongkhag = $request->dzongkhag;
-
-
         // $user->conference_user = $request->conferenceuser;
         // $user->created_by = Auth::id();
 
         //add role in the user_role_mapping.
+        $dt = date('Y-m-d');
         $roleuser = new RoleUserMappings;       
         $roleuser->role_id = $request->role;
+        $roleuser->createdBy = Auth::user()->empId;
+        $roleuser->createdOn = $dt;
         $roleuser->created_by = Auth::id();
 
 

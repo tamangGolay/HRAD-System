@@ -313,7 +313,7 @@ class FormsController extends Controller
              $gumboot = GumbootSize::all();
              $raincoat = RainCoatSize::all();
              $office = Officedetails::all();
-             $designation = Designation::all();
+             $designation = Designation::all()->where('status',0);
              $usersU = User::all();
  
          $data1 = DB::table('employeeuniform')
@@ -617,7 +617,7 @@ if ($request->v == "userListHR")
 //  $orgunit = orgunit::all();
 //  $grade = Grade::all();
  $dzongkhag = Dzongkhags::all();
- $designation = Designation::all();
+ $designation = Designation::all()->where('status',0);
 
 
 $userLists = DB::table('users')
@@ -3888,9 +3888,9 @@ if ($request->v == "room_details")
             // $grade = Grade::all();
             $dzongkhag = Dzongkhags::all();
             // $OrgUnit = OrgUnit::all();
-            $roles = roles::all();
+            $roles = roles::all(); //here ena mos
             $bk = bank::all();
-            $dg = Designation::all(); 
+            $dg = Designation::all()->where('status',0); 
             $rg = Resignation::all(); 
             $gg = pay::all();
             $ff = officeName::all(); 

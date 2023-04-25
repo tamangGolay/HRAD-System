@@ -383,6 +383,49 @@ class FormsController extends Controller
          //uniform report for offfice wise
 
 
+
+         if ($request->v == "uniformReportpsd")  {
+             
+            $pant = Pant::all();
+            $shirt = Shirt::all();
+            $jacket = JacketSize::all();
+            $shoe = Shoesize::all();
+           //  ->where('status',0);
+            $gumboot = GumbootSize::all();
+            $raincoat = RainCoatSize::all();
+            $office = Officedetails::all();
+            $designation = Designation::all()->where('status',0);
+            $usersU = User::all();
+
+        $data12 = DB::table('employeeuniform')
+        ->join('users', 'users.empId', '=', 'employeeuniform.empId')
+        ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
+        ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
+        ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
+        ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
+        ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
+        ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
+        ->join('designationmaster', 'designationmaster.id', '=', 'employeeuniform.designationID')
+        ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
+        ->select('desisNameLong','users.empName','users.empId','employeeuniform.id as uniformId','employeeuniform.*','officedetails.officeDetails',
+        'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
+        'shoesize.ukShoeSize','shoesize.euShoeSize','raincoatsize.sizeName','gumboot.uKSize','gumboot.eUSize')
+       ->where('employeeuniform.status',0)       
+       ->latest('uniformId') 
+       ->paginate(10000);
+            
+
+               $rhtml = view('uniform.uniformReportpsd')->with(['data12' => $data12,
+               'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
+               'pant' => $pant, 'office' => $office,'usersU'=>$usersU, 'designation'=>$designation])->render();
+               return response()
+                   ->json(array(
+                   'success' => true,
+                   'html' => $rhtml
+               ));  
+            }
+
+
        if ($request->v == "officeuniformReport")  
        {
 

@@ -87,7 +87,7 @@ a {
 								<th>Shoe Size</th>
                                 <th> Gumboot Size</th>
                                 <th> Raincoat Size</th>					
-								<th> Action </th>
+								<!-- <th> Action </th> -->
 						</tr>
 					</thead>
 					<tbody> @foreach($data12 as $rv)
@@ -104,11 +104,11 @@ a {
 								<td> {{$rv->eUSize}}  </td>
 								<td> {{$rv->sizeName}}  </td>
 						
-							<td>
+							<!-- <td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
 							<a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$rv->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button>
-
-					</td>
+					</td> -->
+					
 						</tr> @endforeach </tbody>
 				</table>
 			</div>

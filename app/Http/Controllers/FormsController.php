@@ -790,6 +790,7 @@ return response()
 
             ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.officeDetails','officedetails.Address'
                )
+            ->where('users.status',0)
 
                ->latest('users.id') //similar to orderby('id','desc')
             //    ->where('users.office',Auth::user()->office)

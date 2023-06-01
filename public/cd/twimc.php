@@ -36,7 +36,7 @@
     </head>
     <body>
     <div class="w3-border w3-content w3-margin-top w3-card-4 bgReceipt" id="nodetoprint">
-            <img src="images/Header.jpg" alt="Header Picture" class="images">
+            <img src="images/header.png" alt="Header Picture" class="images">
 			<p id=todayDate><?php echo date("d/m/Y"); ?></p>
            <div class="w3-container w3-margin w3-padding">
                <h2 id="center">To Whom It May Concern</h2>

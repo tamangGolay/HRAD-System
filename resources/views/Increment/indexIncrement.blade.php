@@ -33,7 +33,7 @@ div.notesheet {
 
   <div class = "container-fluid mt-4">
         <div class = "row">
-            <img src="{{asset('/cd/images/header.jpg')}}" width="100%" height="100px">
+            <img src="{{asset('/cd/images/header.png')}}" width="100%" height="100px">
             <br><br><br>
             <div class = "col-md-8">
                 <div class="notesheet">{{date('d-m-Y', strtotime($increment1->createdOn))}}</div> 

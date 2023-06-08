@@ -22,7 +22,7 @@ class TransferRequestController extends Controller
             ->select('officeType')
             ->first();
 
-        if($officeType->officeType == 'Department')
+        if($officeType->officeType == 'Division')
         {       
            
             $Request_notesheet = new transferRequest;
@@ -53,7 +53,7 @@ class TransferRequestController extends Controller
 
         }  
 
-       else if($officeType->officeType == 'Services')
+       else if($officeType->officeType == 'Department')
         {       
            
             $Request_notesheet = new transferRequest;
@@ -510,7 +510,7 @@ public function toDirtransferrequest()
   ->where('transferproposal.status','=','recommended')
   ->where('transferproposal.toDirector',)  
 
-  ->orwhere('B.officeType','=','Department')  
+  ->orwhere('B.officeType','=','Division')  
   ->where('officeunder.head',Auth::user()->empId) 
   ->where('transferproposal.toDirector',)    
     

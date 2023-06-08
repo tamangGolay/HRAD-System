@@ -28,6 +28,7 @@ class NotesheetController extends Controller
 
     public function Request_notesheet(Request $request)
     {
+        // try{  
 
         $supervisorEmail= DB::table('employeesupervisor')  
         ->select('employeesupervisor.emailId')
@@ -47,7 +48,7 @@ class NotesheetController extends Controller
         ->where( 'supervisor',Auth::user()->empId)
         ->first();
 
-        if($officeHead == null)
+        if($officeHead == null) //if the user are from dept n service but not officehead
         {
             $officeType= DB::table('officedetails')
             ->join('users','users.office','=','officedetails.id')
@@ -56,12 +57,15 @@ class NotesheetController extends Controller
             ->first();
 
             // dd($officeType->officeType);
+            if($officeType->officeType == 'Section'){ //Department previous
+                $status = 'Processing';
+            }
 
-            if($officeType->officeType == 'Department'){
+            if($officeType->officeType == 'Division'){ //Department previous
                 $status = 'Recommended';
             }
 
-            if($officeType->officeType == 'Services'){
+            if($officeType->officeType == 'Department'){ //Services prevoius
                 $status = 'GMRecommended';
             }
 
@@ -72,7 +76,8 @@ class NotesheetController extends Controller
             
             $Request_notesheet = new notesheetRequest;
             $Request_notesheet->createdBy = $request->empId;
-            if($officeType->officeType == 'Services' || $officeType->officeType == 'Department'){
+            if($officeType->officeType == 'Division' || $officeType->officeType == 'Department' 
+            || $officeType->officeType == 'Section'){
                 $Request_notesheet->status = $status;
             }
           
@@ -89,7 +94,7 @@ class NotesheetController extends Controller
             ->send(new MyTestMail($supervisor));
 
             return redirect('home')->with('page','notesheet')
-            ->with('success', 'Notesheet submitted successfully');
+            ->with('success', 'Notesheet submitted successfully1');
 
         }
 
@@ -100,10 +105,26 @@ class NotesheetController extends Controller
             ->where( 'officedetails.id',Auth::user()->office)
             ->select('officeType')
             ->first();
+            //4th layer
+            if($officeType->officeType == 'Unit'|| $officeType->officeType == 'Sub Division' 
+            || $officeType->officeType == 'Team'|| $officeType->officeType == 'Substation'){
+                $Supervisorstatus = 'Processing';
+                $Request_notesheet = new notesheetRequest;
+                $Request_notesheet->status = $Supervisorstatus;
+                $Request_notesheet->createdBy = $request->empId;
+                $Request_notesheet->emailId = $request->emailId;
+                $Request_notesheet->officeId = $request->office;               
+                $Request_notesheet->topic = $request->topic;     //database name n user input name
+                $Request_notesheet->justification = $request->justification;
+                $Request_notesheet->createdOn = $request->notesheetDate;
+                $Request_notesheet->save();  
+                Mail::to($supervisorEmail->emailId) 
+                ->send(new MyTestMail($supervisor));
+                // dd("4th level");
+            }
+
              //Manager
-            if($officeType->officeType == 'Division' || $officeType->officeType == 'Sub Division'
-            || $officeType->officeType == 'Unit' || $officeType->officeType == 'Substation'
-            ){
+            if($officeType->officeType == 'Section'){
                 $Supervisorstatus = 'Recommended';
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
@@ -118,10 +139,11 @@ class NotesheetController extends Controller
                 ->send(new MyTestMail($supervisor));
                 // dd("Manager");
             }
+
             //GM
 
         //    dd($officeType->officeType);
-            if($officeType->officeType == 'Department'){
+            if($officeType->officeType == 'Division'){ //Department old
                 $Supervisorstatus = 'GMRecommended';
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
@@ -136,8 +158,9 @@ class NotesheetController extends Controller
                 ->send(new MyTestMail($supervisor)); 
                 // dd("GM");
             }
+            
             //Director
-            if($officeType->officeType == 'Services'){
+            if($officeType->officeType == 'Department'){ // Services old
                 $Supervisorstatus = 'DirectorRecommended';
                 $Request_notesheet = new notesheetRequest;
                 $Request_notesheet->status = $Supervisorstatus;
@@ -170,7 +193,13 @@ class NotesheetController extends Controller
         //     // ->first();
         // }
         return redirect('home')->with('page','notesheet')
-        ->with('success', 'Notesheet submitted successfully');
+        ->with('success', 'Notesheet submitted successfully2');
+
+        //  } catch(\Illuminate\Database\QueryException $e){        
+ 
+        //     return redirect('home')->with('error',"Sorry!.Somethig went wrong. Maybe you skip a field or your details are missing in system!");
+       
+        // }
 
  }
  public function selfghCancelBooking()

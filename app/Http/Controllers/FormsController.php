@@ -5173,18 +5173,20 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
-    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
+    ->select('notesheet.*','notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
     'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
     
     ->latest('notesheet.id') //similar to orderby('id','desc')
-    ->where('notesheet.status','=','Recommended')
-    ->where('cancelled','=','No')
-    ->where('notesheet.officeId',Auth::user()->office)
+   
+    //  ->where('notesheet.status','=','Recommended')
+    //  
+    //  ->where('notesheet.officeId',Auth::user()->office)
     
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('notesheet.status','=','Recommended')
+    //  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+    //  ->where('notesheet.status','=','Recommended')
 
-    ->orwhere('officeunder.head',Auth::user()->empId) 
+    ->where('officeunder.head',Auth::user()->empId) 
+    ->where('cancelled','=','No')   
     ->where('notesheet.status','=','Recommended')
 
 //    ->orWhere('orgunit.office',Auth::user()->office)

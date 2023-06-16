@@ -721,3 +721,7 @@ Route::post('destroyrelativesdetails', 'Manage_WfRelativesController@delete')->n
 
 Route::get('/tocheckofficeId','EmployeeController@tocheckofficeId');// 
 Route::get('/backtopage','EmployeeController@backtopage');// 
+
+//for ipv4
+Route::resource('ipv4', Manage_IPv4Controller::class);
+Route::post('destroyipv4', 'Manage_IPv4Controller@delete')->name('destroyipv4');

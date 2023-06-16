@@ -72,6 +72,7 @@ use App\WfBank;
 use App\WfRelatives;
 use App\transferHistory;
 use App\Balance;
+use App\v4allocation;
 
 
 class FormsController extends Controller
@@ -4066,8 +4067,7 @@ if ($request->v == "room_details")
       
                 //bankmaster
                 if ($request->v == "bankmaster")
-                {
-                           
+                {                           
         
                     $rhtml = view('masterData.bank')->render();
                      return response()
@@ -6360,8 +6360,18 @@ if ($request->v == "employeeJoining")
   }
   //end here
 
+  //v4allocation
+  if ($request->v == "v4allocation")
+  {                           
 
+      $rhtml = view('ip.v4allocation')->render();
+       return response()
+           ->json(array(
+           'success' => true,
+           'html' => $rhtml
+       ));
 
+   }
 
     
     }

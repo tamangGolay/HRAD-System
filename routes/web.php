@@ -725,3 +725,6 @@ Route::get('/backtopage','EmployeeController@backtopage');//
 //for ipv4
 Route::resource('ipv4', Manage_IPv4Controller::class);
 Route::post('destroyipv4', 'Manage_IPv4Controller@delete')->name('destroyipv4');
+
+Route::resource('v6allocation', Manage_v6allocationController::class);
+Route::post('destroyipv6', 'Manage_v6allocationController@delete')->name('destroyipv6');

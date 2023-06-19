@@ -5134,7 +5134,8 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
-    ->select('notesheet.*','officedetails.longOfficeName')
+    ->join('users','users.empId','=','notesheet.createdBy')
+    ->select('notesheet.*','officedetails.longOfficeName','users.empName')
 
                ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -5173,8 +5174,9 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
+    ->join('users','users.empId','=','notesheet.createdBy')
     ->select('notesheet.*','notesheet.id','officedetails.longOfficeName','notesheet.createdBy',
-    'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
     
     ->latest('notesheet.id') //similar to orderby('id','desc')
    
@@ -5202,7 +5204,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
 
 
- if ($request->v == "stsdirreview")  //form.csv
+ if ($request->v == "stsdirreview")  //form.csv  for director use this
  {    
     $notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
@@ -5211,7 +5213,8 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
-    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->join('users','users.empId','=','notesheet.createdBy')
+    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
 
@@ -5555,7 +5558,8 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
-    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
+    ->join('users','users.empId','=','notesheet.createdBy')
+    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('notesheet.status','=','DirectorRecommended') // 

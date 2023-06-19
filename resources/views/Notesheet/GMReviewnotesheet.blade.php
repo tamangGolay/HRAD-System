@@ -37,6 +37,7 @@ hr{
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
+              <tr>   <th>Name</th>       <td> {{$rv->empName}} </td>     </tr>
               <tr>   <th>office Name</th>      <td> {{($rv->longOfficeName)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            

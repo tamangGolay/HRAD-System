@@ -6036,13 +6036,16 @@ if ($request->v == "transferRequestReview")   //manager
 {   
         
 $transferRequest=transferRequest::all();
+$users=User::all();
 
 $transferRequest= DB::table('transferrequest') 
 ->join('officedetails', 'officedetails.id', '=', 'transferrequest.fromOffice')
 ->join('officedetails AS B', 'B.id', '=', 'transferrequest.toOffice')  
 ->join('officemaster','officemaster.id','=','transferrequest.fromOffice') 
+->join('users','users.empId','=','transferrequest.createdBy') 
 
-->select('transferrequest.*','officedetails.officeDetails as fromOff','B.officeDetails as toOff')
+
+->select('transferrequest.*','officedetails.officeDetails as fromOff','B.officeDetails as toOff','users.empName')
 
  ->latest ('transferrequest.id')
 
@@ -6075,14 +6078,18 @@ if ($request->v == "gmTransferReview")  //form.csv
     // $transferRequest=transferProposal::all();
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users=User::all();
+
  
     $transferRequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
     ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
     ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
     ->join('officeunder','officeunder.office','=','transferproposal.fromOffice') 
+    ->join('users','users.empId','=','transferproposal.empId') 
+
     
-    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
 
     ->where('transferproposal.fromOffice','=',Auth::user()->office) 
     ->where('transferproposal.status','=','proposed')
@@ -6110,14 +6117,18 @@ if ($request->v == "dirReview")  //form.csv
     // $transferRequest=transferProposal::all();
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users=User::all();
+
  
     $transferRequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
    ->join('officemaster','officemaster.id','=','transferproposal.fromOffice')
    ->join('officeunder','officeunder.office','=','transferproposal.fromOffice')
+   ->join('users','users.empId','=','transferproposal.empId') 
 
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
 
    ->where('officeunder.head',Auth::user()->empId)  
     ->where('transferproposal.status','=','recommended')
@@ -6138,12 +6149,14 @@ if ($request->v == "hrTransferReview")  //form.csv
 
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users=User::all();
  
     $employeeTransfer = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')  
+   ->join('users','users.empId','=','transferproposal.empId')
 //    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
-    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+    ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
 
     ->where('transferproposal.toGMAction','=','recommended')
     ->where('transferproposal.toDirectorAction','=','recommended')
@@ -6174,15 +6187,18 @@ if ($request->v == "relieveEmployee")  //form.csv
 
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users = User::all();
  
     $employeeTransfer = DB::table('transferhistory')
     ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
    ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')  
 //    ->join('officemaster','officemaster.id','=','transferrequest.transferFrom') 
    ->join('officeunder','officeunder.office','=','transferhistory.transferFrom')
+   ->join('users','users.empId','=','transferhistory.empId') 
+
 
 //    ->join('transferhistory', 'transferhistory.proposalId', '=', 'transferproposal.requestId')  
-    ->select('transferhistory.*','officedetails.officeDetails as f','B.officeDetails as tff')
+    ->select('transferhistory.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
 
     ->where('transferhistory.transferFrom','=',Auth::user()->office) 
     ->where('transferhistory.status','=','Open')
@@ -6337,13 +6353,16 @@ if ($request->v == "employeeJoining")
 {         
    $transferFrom = Officedetails::all();
    $transferTo = Officedetails::all();
-   $empJoining = transferHistory::all();                 
+   $empJoining = transferHistory::all(); 
+   $users = User::all();                
 
   $empJoining = DB::table('transferhistory')
               ->join('officedetails', 'officedetails.id', '=', 'transferhistory.transferFrom')
               ->join('officedetails AS B', 'B.id', '=', 'transferhistory.transferTo')  
               ->join('officeunder','officeunder.office','=','transferhistory.transferTo')
-              ->select('transferhistory.*','officedetails.officeDetails as transferFrom','B.officeDetails as transferTo')
+              ->join('users','users.empId','=','transferhistory.empId') 
+
+              ->select('transferhistory.*','officedetails.officeDetails as transferFrom','B.officeDetails as transferTo','users.empName')
               
               ->where('transferTo',Auth::user()->office)
               ->where('transferhistory.status','=','Open')
@@ -6376,6 +6395,21 @@ if ($request->v == "employeeJoining")
        ));
 
    }
+   if ($request->v == "ipv6")
+{
+   
+
+    $rhtml = view('ip.v6allocation')->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+
+   
+}
+//end
+
 
     
     }

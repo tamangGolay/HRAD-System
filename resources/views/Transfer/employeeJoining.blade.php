@@ -20,6 +20,7 @@
 							<tr class="text-nowrap">
 								<th>Sl.No</th>
                                 <th>Emp Id </th>
+								<th>Name </th>
 								<th>From Office</th>
 								<th>To Office</th>																						
 								<th style="width:15%">Joining Date</th>
@@ -31,6 +32,7 @@
 			    <tr>					
 				<td>{{$empJoining->id}}</td>
                 <td>{{$empJoining->empId}}</td>
+				<td>{{$empJoining->empName}}</td>
                 <td>{{$empJoining->transferFrom}}</td>
                 <td>{{$empJoining->transferTo}}</td>    
                     

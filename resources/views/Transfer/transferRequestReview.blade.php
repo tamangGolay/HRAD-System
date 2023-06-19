@@ -4,7 +4,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Transfer Request Review</b>
+                <b>Transfer Request Review </b>
               </h5> </div>
 			</div>
 			
@@ -23,6 +23,7 @@
 							<tr class="text-nowrap">
 								<th>Sl.No</th>
                                 <th>Emp Id </th>
+								<th>Name </th>
 								<th>From Office</th>
 								<th>To Office</th>
 								<th>Reason</th>															
@@ -35,6 +36,7 @@
 							<tr>								
                 <td>{{$rv->id}}</td>
                 <td>{{$rv->createdBy}}</td>
+				<td>{{$rv->empName}}</td>
                 <td>{{$rv->fromOff}}</td>
                 <td>{{$rv->toOff}}</td>                 
                 <td>{{$rv->reason}}</td>       

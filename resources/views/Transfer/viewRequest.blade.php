@@ -17,6 +17,7 @@
 							<tr class="text-nowrap">
 								<th>Sl No</th>
                 				<th>Emp Id </th>
+								<th>Name </th>
 								<th>From Office</th>
 								<th>Transfer Type</th>
 								<th>From Director</th>
@@ -32,6 +33,7 @@
 								
                   			<td>{{$rv->id}}</td>
                  			<td>{{$rv->empId}}</td>
+							 <td>{{$rv->empName}}</td>
                  			<td>{{$rv->f}}</td>
                  			<td>{{$rv->transferType}}</td>  
 							 <td>{{$rv->fromDirector}}</td>   

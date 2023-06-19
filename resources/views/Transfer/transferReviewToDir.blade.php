@@ -20,6 +20,7 @@
 							<tr class="text-nowrap">
 								<th>Request Id</th>
                 				<th>Emp Id </th>
+								<th>Name</th>
 								<th>To Office</th>
 								<th>Transfer Type</th>
 								<th>From General Manager</th>
@@ -35,6 +36,7 @@
 								
                   			<td>{{$rv->id}}</td>
                  			<td>{{$rv->empId}}</td>
+							 <td>{{$rv->empName}}</td>
                  			<td>{{$rv->tff}}</td> 
 							 <td>{{$rv->transferType}}</td>
 							 <td>{{$rv->toGM }}</td>

@@ -348,11 +348,14 @@ return redirect('home')->with('page', 'dirReview')
 
 public function viewRequest()
 {
+ $user=User::all();
     
 $viewRequest = DB::table('transferproposal')
 ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
-->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice')   
-->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
+->join('users','users.empId','=','transferproposal.empId') 
+
+->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
  
  ->where('transferproposal.status','=','dirrecommended')     
  ->where('transferproposal.toOffice','=',Auth::user()->office)                             
@@ -408,6 +411,7 @@ public function toGMtransferrequest()
 {
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users = User::all();
  
     $toGMtransferrequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
@@ -415,8 +419,10 @@ public function toGMtransferrequest()
    ->join('officeunder','officeunder.office','=','transferproposal.toOffice') 
 
    ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
+   ->join('users','users.empId','=','transferproposal.empId') 
 
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff')
+
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','users.empName')
 
     // ->where('transferproposal.toOffice','=',Auth::user()->office) 
     // ->where('transferproposal.fromDirectorAction','=','recommended')
@@ -497,13 +503,17 @@ public function toDirtransferrequest()
 {
     $fromoffice = Officedetails::all();
     $tooffice = Officedetails::all();
+    $users = User::all();
+
  
     $toDirtransferrequest = DB::table('transferproposal')
     ->join('officedetails', 'officedetails.id', '=', 'transferproposal.fromOffice')
    ->join('officedetails AS B', 'B.id', '=', 'transferproposal.toOffice') 
    ->join('officemaster','officemaster.id','=','transferproposal.toOffice')
    ->join('officeunder','officeunder.office','=','transferproposal.toOffice')
-   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','B.officeType')
+   ->join('users','users.empId','=','transferproposal.empId') 
+
+   ->select('transferproposal.*','officedetails.officeDetails as f','B.officeDetails as tff','B.officeType','users.empName')
    
 
   ->where('officeunder.head',Auth::user()->empId)  

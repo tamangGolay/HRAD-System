@@ -5562,9 +5562,16 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
-    ->where('notesheet.status','=','DirectorRecommended') // 
+    ->where('notesheet.status','=','DirectorRecommended') //     
     ->where('cancelled','=','No')      
     ->where('officeunder.head',Auth::user()->empId)  
+
+    ->orwhere('notesheet.status','=','GMRecommended') //     
+    ->where('cancelled','=','No')      
+    ->where('officeunder.head',Auth::user()->empId)
+    ->where('notesheet.createdBy', '=' ,'30003221')   //ERD GM
+    
+
     
     ->paginate(10000000);
 

@@ -38,6 +38,7 @@ a {
     <a class="btn success" href="javascript:void(0)" id="managePromotionAll">Add New &nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"> </i></a>
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
+    <!-- main promotion data -->
         <thead>
             <tr>
                 <th><button class="btn btn-sm btn-success d-none" id="insertAllBtn">Insert</button>

@@ -34,7 +34,16 @@ class PdfController extends Controller
         ->where('notesheet.id',$id)
         ->first();
 
-        $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove));
+
+        // Manually fetch empName for each $notesheetapprove
+        $notesheetapproveSup = $notesheetapprove->map(function ($approve) {
+          $user = DB::table('users')->where('empId', $approve->modifier)->first();
+          $approve->empName = $user ? $user->empName : ''; // Set empName or an empty string if not found
+          return $approve;
+      });
+      
+        
+        $pdf = PDF ::loadView ('Notesheet.index', array('userName'=>$userName,'date'=>$date,'notesheet'=>$notesheet,'notesheetapprove'=>$notesheetapprove,'notesheetapproveSup'=>$notesheetapproveSup));
         return $pdf->download ('notesheet.pdf');
     }
 

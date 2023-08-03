@@ -104,8 +104,8 @@ div.notesheet {
                     <tbody>
                         @foreach ($notesheetapprove as $approve)
                         <tr>
-                            <th  class="col1"> {{$approve-> modifier}} </th>
-                            <!-- <th  class="col1"> {{$userNameSup-> empName}} </th>                             -->
+                            <td  class="col1"> {{$approve-> modifier}} </td>
+                            <td  class="col1"> {{$approve-> empName}} </td>                            
                             <td class="col1" > {{$approve->modiType}} </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
                           

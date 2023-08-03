@@ -61,6 +61,11 @@ div.notesheet {
                       </tr>
 
                       <tr>
+                        <th scope = "col" class="col5">Notesheet Topic</th>
+                        <td class="col1"> {{$notesheet->topic}} </td>
+                      </tr>
+
+                      <tr>
                         <th scope = "col" class="col5"> Name </th>
                         <td class="col1"> {{$userName->empName}} </td>
                       </tr>
@@ -82,6 +87,7 @@ div.notesheet {
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
         <br> <br>
+        
     </div>
         <div class = "row">
             <div class = "col-lg-10">
@@ -90,6 +96,7 @@ div.notesheet {
                     <thead>
                       <tr>
                         <th scope = "col" class="col5"> Reviewer </th>
+                        <th scope = "col" class="col5"> Name </th>
                         <th scope = "col" class="col5"> Status </th>
                         <th scope = "col" class="col5"> Remarks </th>
                       </tr>
@@ -98,13 +105,15 @@ div.notesheet {
                         @foreach ($notesheetapprove as $approve)
                         <tr>
                             <th  class="col1"> {{$approve-> modifier}} </th>
+                            <!-- <th  class="col1"> {{$userNameSup-> empName}} </th>                             -->
                             <td class="col1" > {{$approve->modiType}} </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
                           
                         </tr>
                         @endforeach
-                    </tbody>
+                    </tbody>                    
                   </table>
+                  <p style="text-align:center"><i>***This is system generated report.***</i></p>
             </div>
         </div>
     </div>

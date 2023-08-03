@@ -78,11 +78,10 @@ a {
 						<tr class="thw">
 							<th>Employee No</th>
 							<th>Name</th>
-							<th>Cid No</th>
+							<!-- <th>Cid No</th> -->
+							<th>Designation</th>
 							<th>Gender</th>
-							<th>Office</th>
-
-				
+							<th>Office</th>				
 							<!-- <th>Grade</th>
 							<th>User Role</th>
 							<th>BasicPay</th> -->
@@ -94,7 +93,9 @@ a {
 						<tr>
 							<td> {{$ul->empId}} </td>
 							<td> {{$ul->empName}} </td>
-							<td> {{$ul->cidNo}} </td>
+							<!-- <td> {{$ul->cidNo}} </td> -->
+							<td> {{$ul->desisNameLong}} </td>  
+							<!-- add designation -->
 							<td> {{$ul->gender}} </td>
 							<td> 
 							 {{$ul->shortOfficeName}}/

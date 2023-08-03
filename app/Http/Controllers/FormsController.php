@@ -131,8 +131,6 @@ class FormsController extends Controller
        //User List.
        if ($request->v == "userList")
        {
-
-
          
                $roles = Roles::all();
                $OrgUnit = OrgUnit::all();
@@ -671,11 +669,11 @@ $userLists = DB::table('users')
 //    ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
 //    ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
  ->join('officedetails', 'officedetails.id', '=', 'users.office')
+ 
+ ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId') 
 
 //    ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
- ->select('users.*','roles.name','officedetails.shortOfficeName'
- ,'officedetails.Address'
- )
+ ->select('users.*','roles.name','desisNameLong','officedetails.shortOfficeName','officedetails.Address')
 
  ->latest('users.id') //similar to orderby('id','desc')
  ->where('users.status',0)

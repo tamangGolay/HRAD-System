@@ -20,7 +20,8 @@ class promotionAllController extends Controller
         // dd($request);
         $b = DB::table('promotionall')
         ->join('users', 'users.empId', '=', 'promotionall.empId')
-        ->select('users.empId','promotionall.id','promotionall.grade', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason')
+        ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionall.grade')
+        ->select('users.empId','promotionall.id', 'promotionall.gradeCeiling', 'promotionall.yearsToPromote', 'promotionall.doJoining', 'promotionall.doLastPromotion', 'promotionall.promotionDueDate', 'promotionall.modificationReason','payscalemaster.grade')
         ->get();
         
         if ($request->ajax()) {

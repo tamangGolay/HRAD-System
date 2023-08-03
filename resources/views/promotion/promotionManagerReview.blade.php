@@ -29,6 +29,7 @@ hr{
               <th>Promotion Year</th>
               <th>Promotion Month</th>
               <th>Employee Id</th>
+              <th>Employee Name</th>
               <th>From Grade</th>
               <th>To Grade</th>
               <th>Old Basic</th>
@@ -47,7 +48,8 @@ hr{
                   <td> {{($rv->id)}} </td>      
                   <td> {{$rv->promotionYear}} </td>   
                   <td> {{($rv->promotionMonth)}} </td>    
-                  <td> {{$rv->empId}} </td>         
+                  <td> {{$rv->empId}} </td>   
+                  <td> {{$rv->empName}} </td>       
 			            <td> {{$rv->fromGrade}} </td>   
                   <td> {{$rv->toGrade}} </td>  
                   <td> {{$rv->oldBasic}} </td>   

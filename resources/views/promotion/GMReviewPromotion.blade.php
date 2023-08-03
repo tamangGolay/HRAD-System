@@ -20,6 +20,7 @@
 							<tr class="text-nowrap">
 								<th>Id No</th>
                                  <th>Emp Id </th>
+								<th>Emp Name </th>
 								<th>Prmotion Year</th>
 								<th>Promotion Month</th>
 								<th>From Grade</th>
@@ -39,6 +40,7 @@
 							<tr>
 								<td> {{$rv->id}} </td>
                                 <td> {{$rv->empId}} </td>
+                                <td> {{$rv->empName}} </td>
 								<td> {{$rv->promotionYear}} </td>
 								<td> {{$rv->promotionMonth}} </td>
 								 <td> {{$rv->fromGrade}} </td> 

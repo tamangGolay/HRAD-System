@@ -4411,12 +4411,14 @@ if ($request->v == "promotionform")  //form.csv
    $promotionRequest = DB::table('promotionduelist')
     ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
     ->join('officeunder','officeunder.office','=','promotionduelist.office')
-    ->select('promotionduelist.*','officedetails.longOfficeName')
+    ->join('users','users.empId','=','promotionduelist.empId')
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','users.empName')
     ->latest('promotionduelist.id') //similar to orderby('id','desc')
     // ->where('promotionduelist.office',Auth::user()->office)
     ->where('officeunder.head',Auth::user()->empId)
 
-    ->where('status','=','Due')
+    ->where('promotionduelist.status','=','Due')
    //  ->where('cancelled','=','No') 
     ->paginate(10000000);
 
@@ -4439,8 +4441,9 @@ if ($request->v == "promotionform")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
     ->join('officemaster','officemaster.id','=','promotionduelist.office')
     ->join('officeunder','officeunder.office','=','promotionduelist.office')
+    ->join('users','users.empId','=','promotionduelist.empId')
 
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','users.empName')
     ->latest('promotionduelist.id') //similar to orderby('id','desc')
 
    ->where('promotionduelist.status','=','Recommended')
@@ -4477,8 +4480,11 @@ if ($request->v == "promotionform")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
     ->join('officemaster','officemaster.id','=','promotionduelist.office')
     ->join('officeunder','officeunder.office','=','promotionduelist.office') //added new join
+    ->join('users','users.empId','=','promotionduelist.empId')
 
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office')
+    
+
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office','users.empName')
     ->latest('promotionduelist.id')         //similar to orderby('id','desc')
 
 //    ->where('promotionduelist.status','=','Proposed')

@@ -45,6 +45,7 @@ a {
                 <input type="checkbox" class="" id="checkbox" name="main_checkbox"><label></label></th>
 				<th>No</th>
                 <th width="30">Employee Id</th> 
+                <th width="30">Name</th> 
                 <th width="30">Grade</th>
                 <th width="30">Grade Ceiling</th>
                 <th width="30">Years To Promote</th>
@@ -75,7 +76,7 @@ a {
                         <label class="col-lg-12 col-sm-12 control-label">Employee Id</label>
                         <div class="col-lg-12 col-sm-12">						
 						<select class="col-lg-12 col-sm-12 form-control" name="empId" id="empId" value="" required>
-                                             <option value="">Select Office</option>
+                                             <option value="">Select Emp Id</option>
                                              @foreach($promo as $promo)
                                              <option value="{{$promo->empId}}">{{$promo->empId}}</option>
 										@endforeach
@@ -87,7 +88,7 @@ a {
 					<div class="form-group">
                         <label class="col-lg-12 col-sm-12 control-label">Grade</label>
                         <div class="col-lg-12 col-sm-12">
-                            <input type="text" id="grade" name="grade"  placeholder="eg: A2" class="form-control" required>
+                            <input type="text" id="grade" name="grade"  placeholder="eg: 10 (insert id of grade)" class="form-control" required>
                         </div>
                     </div>
 
@@ -182,9 +183,7 @@ a {
 
     
 // checkbox end
-         toastr.options.preventDuplicates = true;
-
-         
+         toastr.options.preventDuplicates = true;        
 
 
          $(function(){
@@ -424,6 +423,7 @@ $(function () {
             {data:'checkbox', name:'checkbox', orderable:false, searchable:false},
             {data: 'id', name: 'id'},
 			{data: 'empId', name: 'empId'},
+            {data:'empName', name:'empName'},
             {data: 'grade', name: 'grade'},
             {data: 'gradeCeiling', name: 'gradeCeiling'},
             {data: 'yearsToPromote', name: 'yearsToPromote'},
@@ -526,6 +526,7 @@ $(function () {
           $('meta[name="csrf-token"]').attr('content'),
           $('#promo_id').val(data.id);
 		  $('#empId').val(data.empId);
+          $('#empName').val(data.empName);
           $('#grade').val(data.grade); //input id,database
           $('#gradeCeiling').val(data.gradeCeiling);
           $('#yearsToPromote').val(data.yearsToPromote);

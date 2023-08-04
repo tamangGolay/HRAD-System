@@ -47,6 +47,7 @@
                 <input type="checkbox" class="" id="checkbox" name="main_checkbox"><label></label></th>
                 <th>Sl No</th>
                 <th>Emp Id</th>
+                <th>Name</th>
                 <th>Promotion Year</th>
                 <th>Promotion Month</th>
                 <th>From Grade</th>
@@ -127,6 +128,7 @@
                          {data:'checkbox', name:'checkbox', orderable:false, searchable:false},
                          {data:'DT_RowIndex', name:'DT_RowIndex'},
                          {data:'empId', name:'empId'},
+                        //  {data:'empName', name:'empName'},
                          {data:'promotionYear', name:'promotionYear'},
                          {data:'promotionMonth', name:'promotionMonth'},
                          {data:'fromGrade', name:'fromGrade'},
@@ -326,6 +328,8 @@
             {data: 'id', name: 'id'},
 
             {data:'empId', name:'empId'},
+
+            {data:'empName', name:'empName'},
 
              {data:'promotionYear', name:'promotionYear'},
 

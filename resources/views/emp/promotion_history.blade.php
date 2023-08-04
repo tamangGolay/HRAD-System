@@ -46,6 +46,7 @@ a {
             <tr>
             <!-- <th>Sl No.</th> -->
                 <th>Personal No.</th>
+                <th>Name</th>
                 <th>Promotion Date</th>
                 <th>New Basic</th>
                 <th>Grade To</th>
@@ -70,9 +71,7 @@ a {
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
                    <input type="hidden" name="id" id="promotionHistory_id">
-                   
-
-              
+                               
  
 
                     <div class="form-group">
@@ -165,6 +164,7 @@ a {
 
             // {data: 'promotionhistorymaster.id', name: 'id'},
             {data: 'personalNo', name: 'personalNo'},
+            {data: 'empName', name: 'users.empName'},
             {data: 'promotionDate', name: 'promotionDate'},
             {data: 'newBasicPay', name: 'newBasicPay'},
             {data: 'grade', name: 'gradeTo'},

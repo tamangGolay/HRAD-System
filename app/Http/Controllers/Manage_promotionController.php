@@ -23,12 +23,12 @@ class Manage_promotionController extends Controller
         ->join('designationmaster', 'designationmaster.id', '=', 'promotionhistorymaster.oldDesignation')
         ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionhistorymaster.gradeTo')
         ->join('designationmaster as d', 'd.id', '=', 'promotionhistorymaster.newDesignation')
+        ->join('users', 'users.empId', '=', 'promotionhistorymaster.personalNo')
 
       
-
-->select('promotionhistorymaster.newDesignation','designationmaster.id as oldDesignation','d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
-  'promotionhistorymaster.gradeTo','promotionhistorymaster.id','designationmaster.desisNameLong')
-   ->where('promotionhistorymaster.status',0);
+        ->select('promotionhistorymaster.newDesignation','designationmaster.id as oldDesignation','d.desisNameLong as desis','promotionhistorymaster.personalNo','promotionhistorymaster.newBasicPay','payscalemaster.grade','promotionhistorymaster.promotionDate',
+             'promotionhistorymaster.gradeTo','promotionhistorymaster.id','designationmaster.desisNameLong','users.empName')
+          ->where('promotionhistorymaster.status',0);
         
         if ($request->ajax()) {
             $data = $promotion;

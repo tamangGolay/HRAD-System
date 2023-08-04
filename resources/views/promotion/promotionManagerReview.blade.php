@@ -50,8 +50,8 @@ hr{
                   <td> {{($rv->promotionMonth)}} </td>    
                   <td> {{$rv->empId}} </td>   
                   <td> {{$rv->empName}} </td>       
-			            <td> {{$rv->fromGrade}} </td>   
-                  <td> {{$rv->toGrade}} </td>  
+			            <td> {{$rv->fGrade}} </td>   
+                  <td> {{$rv->tGrade}} </td>  
                   <td> {{$rv->oldBasic}} </td>   
                   <td> {{$rv->newBasic}} </td>  
                   <td> {{$rv->longOfficeName}} </td> 

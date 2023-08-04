@@ -4412,8 +4412,11 @@ if ($request->v == "promotionform")  //form.csv
     ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
     ->join('officeunder','officeunder.office','=','promotionduelist.office')
     ->join('users','users.empId','=','promotionduelist.empId')
+    ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionduelist.fromGrade')
+    ->join('payscalemaster as ps', 'ps.id', '=', 'promotionduelist.toGrade') 
+    //added 2 new line for grade name not id
 
-    ->select('promotionduelist.*','officedetails.longOfficeName','users.empName')
+    ->select('promotionduelist.*','officedetails.longOfficeName','users.empName','payscalemaster.grade as fGrade','ps.grade as tGrade')
     ->latest('promotionduelist.id') //similar to orderby('id','desc')
     // ->where('promotionduelist.office',Auth::user()->office)
     ->where('officeunder.head',Auth::user()->empId)
@@ -4430,7 +4433,7 @@ if ($request->v == "promotionform")  //form.csv
        ));
  }  //end
 
- //GM
+ //GM promotion review
  if ($request->v == "gmPromotionReview")  //form.csv
  {  
     $promotiondue =Promotionduelist::all();
@@ -4442,21 +4445,21 @@ if ($request->v == "promotionform")  //form.csv
     ->join('officemaster','officemaster.id','=','promotionduelist.office')
     ->join('officeunder','officeunder.office','=','promotionduelist.office')
     ->join('users','users.empId','=','promotionduelist.empId')
+    ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionduelist.fromGrade')
+    ->join('payscalemaster as ps', 'ps.id', '=', 'promotionduelist.toGrade') 
+    //added 2 new line for grade name not id
 
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','users.empName')
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','users.empName','payscalemaster.grade as fGrade','ps.grade as tGrade')
     ->latest('promotionduelist.id') //similar to orderby('id','desc')
 
    ->where('promotionduelist.status','=','Recommended')
    ->where('promotionduelist.office',Auth::user()->office)  //mam icd
 //    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Recommended')
-   
+    ->where('promotionduelist.status','=','Recommended')   
    
     ->orwhere('officeunder.head',Auth::user()->empId)
     ->where('promotionduelist.status','=','Recommended')
-
-
 
    ->paginate(10000000);
     
@@ -4481,10 +4484,11 @@ if ($request->v == "promotionform")  //form.csv
     ->join('officemaster','officemaster.id','=','promotionduelist.office')
     ->join('officeunder','officeunder.office','=','promotionduelist.office') //added new join
     ->join('users','users.empId','=','promotionduelist.empId')
+    ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionduelist.fromGrade')
+    ->join('payscalemaster as ps', 'ps.id', '=', 'promotionduelist.toGrade') 
+    //added 2 new line for grade name not id
 
-    
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office','users.empName')
+    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office','users.empName','payscalemaster.grade as fGrade','ps.grade as tGrade')
     ->latest('promotionduelist.id')         //similar to orderby('id','desc')
 
 //    ->where('promotionduelist.status','=','Proposed')
@@ -4495,7 +4499,6 @@ if ($request->v == "promotionform")  //form.csv
 
 //    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
 //     ->where('promotionduelist.status','=','Proposed')
-
 
         ->where('promotionduelist.status','=','Recommended')
         ->where('officeunder.head',Auth::user()->empId) 

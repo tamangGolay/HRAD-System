@@ -5,9 +5,11 @@
 <body>
     <h1>{{ $details['title'] }}</h1><br>
     <p>{{ $details['body'] }}</p>
-    <p>{{ $details['body1'] }}</p><br>
+    <p>{!! $details['body1'] !!}</p><br>
     <p>{{ $details['body2'] }}</p>
     <p>{{ $details['body3'] }}</p><br>
+
+  
 
    
     <p>Thank You</p>

@@ -129,7 +129,7 @@
                          {data:'empId', name:'empId'},
                          {data:'promotionYear', name:'promotionYear'},
                          {data:'promotionMonth', name:'promotionMonth'},
-                         {data:'fromGrade', name:'toGrade'},
+                         {data:'fromGrade', name:'fromGrade'},
                          {data:'toGrade', name:'toGrade'},
                          {data:'oldBasic', name:'oldBasic'},
                          {data:'newBasic', name:'newBasic'},
@@ -331,7 +331,7 @@
 
              {data:'promotionMonth', name:'promotionMonth'},
 
-             {data:'fromGrade', name:'toGrade'},
+             {data:'fromGrade', name:'fromGrade'},
 
              {data:'toGrade', name:'toGrade'},
 

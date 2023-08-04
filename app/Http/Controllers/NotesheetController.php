@@ -35,14 +35,14 @@ class NotesheetController extends Controller
         ->where( 'employee',Auth::user()->empId)
         ->first();
 
-       
+
         $userDetail= DB::table('users') 
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
         ->select('users.*','officedetails.longOfficeName')
         ->where( 'users.empId',Auth::user()->empId)
         ->first();
 
-        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => '','body6' => '', ];
+        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet titled ' . $request->topic . ' from ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => '','body6' => '', ];
 
         $officeHead= DB::table('employeesupervisor')  
         ->where( 'supervisor',Auth::user()->empId)
@@ -202,6 +202,7 @@ class NotesheetController extends Controller
         // }
 
  }
+
  public function selfghCancelBooking()
 {
 
@@ -224,7 +225,6 @@ return response()
 
 public function cancelNotesheet(Request $request)
 {
-
 
     DB::update('update notesheet set cancelled = ? where id = ?', [$request->cancelled, $request->id]);       
 
@@ -257,11 +257,12 @@ public function recommendnotesheet(Request $request)
         ['status' =>$request->status]); 
         
         //email from here
-        $supervisorEmail= DB::table('employeesupervisor')  
+        $supervisorEmail= DB::table('employeesupervisor') 
         ->select('employeesupervisor.emailId')
         ->where( 'employee',Auth::user()->empId)
         ->first();
 
+    
        
         $userDetail= DB::table('users') 
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
@@ -269,7 +270,14 @@ public function recommendnotesheet(Request $request)
         ->where( 'users.empId',Auth::user()->empId)
         ->first();
 
-        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet, recommended by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => '','body6' => '', ];
+        $notetitle= DB::table('notesheet')  
+        ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+        ->select('notesheet.topic')
+        ->where('notesheet.id',$id->id)
+        ->first();
+
+
+        $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'You have a request for notesheet titled ' . $notetitle->topic . ' , recommended by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => '','body6' => '', ];
        
         $userEmail = DB::table('notesheet')
         ->where('id',$id->id)
@@ -310,8 +318,16 @@ public function recommendnotesheet(Request $request)
                 ->select('users.*','officedetails.longOfficeName')
                 ->where( 'users.empId',Auth::user()->empId)
                 ->first();
+
+
+                $notetitle= DB::table('notesheet')  
+                ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                ->select('notesheet.topic')
+                ->where('notesheet.id',$id->id)
+                ->first();
+        
                 
-                $approve = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been approved by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Have a great day!','body6' => '', ];
+                $approve = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . ' has been approved by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Have a great day!','body6' => '', ];
                 
                 
                
@@ -354,10 +370,16 @@ public function recommendnotesheet(Request $request)
                     ->where( 'users.empId',Auth::user()->empId)
                     ->first();
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been rejected by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason: '. $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt','body5' => 'Never give up. Great things take time','body6' => '', ];
+                    $notetitle= DB::table('notesheet')  
+                    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                    ->select('notesheet.topic')
+                    ->where('notesheet.id',$id->id)
+                    ->first();
+
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled '. $notetitle->topic .' has been rejected by the manager ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason: '. $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt','body5' => 'Never give up. Great things take time','body6' => '', ];
                    
                 
-                   
                     $userEmail = DB::table('notesheet')
                     ->where('id',$id->id)
                     ->first(); 
@@ -410,6 +432,14 @@ public function recommendnotesheet(Request $request)
     ->select('employeesupervisor.emailId')
     ->where( 'employee',Auth::user()->empId)
     ->first();
+
+    $notetitle= DB::table('notesheet')  
+    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+    ->select('notesheet.topic')
+    ->where('notesheet.id',$id->id)
+    ->first();
+
+    
     // dd($DirectorEmail->emailId);
 
     if($request->status == "GMRecommended" ){  //&& $request->remarks != ''
@@ -482,7 +512,7 @@ public function recommendnotesheet(Request $request)
         ->first();
 
         $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 
-        'You have a request for notesheet recommended by GM ' . $userDetail->empName . 
+        'You have a request for notesheet titled '. $notetitle->topic . ' recommended by GM ' . $userDetail->empName . 
         ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.',
          'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt','body5' => '','body6' => 'Have a good day!', ];
        
@@ -524,8 +554,16 @@ public function recommendnotesheet(Request $request)
                 ->select('users.*','officedetails.longOfficeName')
                 ->where( 'users.empId',Auth::user()->empId)
                 ->first();
+
+                $notetitle= DB::table('notesheet')  
+                ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                ->select('notesheet.topic')
+                ->where('notesheet.id',$id->id)
+                ->first();
+
+            
                 
-                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been approved by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Be grateful for life.Not everyone made it this far.','body6' => '', ];
+                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . '  has been approved by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Be grateful for life.Not everyone made it this far.','body6' => '', ];
                                
                
                 // $userEmail = DB::table('notesheet')
@@ -569,7 +607,15 @@ public function recommendnotesheet(Request $request)
                     ->where( 'users.empId',Auth::user()->empId)
                     ->first();
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been rejected by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
+                    $notetitle= DB::table('notesheet')  
+                    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                    ->select('notesheet.topic')
+                    ->where('notesheet.id',$id->id)
+                    ->first();
+
+
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . ' has been rejected by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
                    
                                   
                     // $userEmail = DB::table('notesheet')
@@ -711,8 +757,14 @@ public function recommendnotesheet(Request $request)
         ->where( 'users.empId',Auth::user()->empId)
         ->first();
 
+        $notetitle= DB::table('notesheet')  
+        ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+        ->select('notesheet.topic')
+        ->where('notesheet.id',$id->id)
+        ->first();
+
         $supervisor = ['title' => 'Mail From the HRIS System', 'body' => 'Dear sir/madam,', 'body1' => 
-        'You have a request for notesheet, recommended by Director ' . $userDetail->empName . 
+        'You have a request for notesheet titled ' . $notetitle->topic . '  , recommended by Director ' . $userDetail->empName . 
         ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.',
          'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Kindness always comes back','body6' => '', ];
        
@@ -760,8 +812,17 @@ public function recommendnotesheet(Request $request)
                 ->select('users.*','officedetails.longOfficeName')
                 ->where( 'users.empId',Auth::user()->empId)
                 ->first();
+
+                $notetitle= DB::table('notesheet')  
+                ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                ->select('notesheet.topic')
+                ->where('notesheet.id',$id->id)
+                ->first();
+
+
+
                 
-                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been Approved by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Self-belief and hard work will always earn you success.','body6' => '', ];
+                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . '  has been Approved by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => 'Self-belief and hard work will always earn you success.','body6' => '', ];
                       
                
                 // $userEmail = DB::table('notesheet')
@@ -797,13 +858,20 @@ public function recommendnotesheet(Request $request)
                     ['status' =>$request->status2]);//emp_id is from input name
                     
                     //email from here
-                 $userDetail= DB::table('users') 
+                    $userDetail= DB::table('users') 
                     ->join('officedetails', 'officedetails.id', '=', 'users.office')
                     ->select('users.*','officedetails.longOfficeName')
                     ->where( 'users.empId',Auth::user()->empId)
                     ->first();
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been Rejected by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:'. $request->remarks2 .'.', 'body4' => '','body5' => 'Your patience is your power. Smile','body6' => '', ];
+
+                    $notetitle= DB::table('notesheet')  
+                    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                    ->select('notesheet.topic')
+                    ->where('notesheet.id',$id->id)
+                    ->first();
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . ' has been Rejected by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:'. $request->remarks2 .'.', 'body4' => '','body5' => 'Your patience is your power. Smile','body6' => '', ];
                    
                                   
                     // $userEmail = DB::table('notesheet')
@@ -943,8 +1011,17 @@ public function recommendnotesheet(Request $request)
                     ->join('officedetails', 'officedetails.id', '=', 'users.office')
                     ->select('users.*','officedetails.longOfficeName')
                     ->where( 'users.empId',Auth::user()->empId)
-                    ->first();          
-                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been approved by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => ' Positivity always wins.','body6' => '', ];
+                    ->first(); 
+                    
+                    
+                    $notetitle= DB::table('notesheet')  
+                    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                    ->select('notesheet.topic')
+                    ->where('notesheet.id',$id->id)
+                    ->first();
+
+
+                $approve = ['title' => 'Mail From the HRIS System Approve', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . '  has been approved by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => '','body5' => ' Positivity always wins.','body6' => '', ];
                 
                
                 // $userEmail = DB::table('notesheet')
@@ -970,18 +1047,28 @@ public function recommendnotesheet(Request $request)
                         $users->remarks = $request->remarks2;
                         $users->modiType = $request->status2;//emp_id is from input name
                         $users->save();
-                
+
+
+                         
+            
                     notesheetRequest::updateOrCreate(['id' => $id->id],
                     ['status' =>$request->status2]);//emp_id is from input name
                     
                     // email from here
-                 $userDetail= DB::table('users') 
+                     $userDetail= DB::table('users') 
                     ->join('officedetails', 'officedetails.id', '=', 'users.office')
                     ->select('users.*','officedetails.longOfficeName')
                     ->where( 'users.empId',Auth::user()->empId)
                     ->first();
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet has been rejected by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
+                    $notetitle= DB::table('notesheet')  
+                    ->join('noteapproval', 'noteapproval.noteId', '=', 'notesheet.id')
+                    ->select('notesheet.topic')
+                    ->where('notesheet.id',$id->id)
+                    ->first();
+
+
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled ' . $notetitle->topic . '  has been rejected by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
                    
                                   
                 //     $userEmail = DB::table('notesheet')

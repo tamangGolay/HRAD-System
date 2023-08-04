@@ -28,17 +28,16 @@ public function index(Request $request)
 
 {
     $b = DB::table('promotionduelist')
-//  ->join('users', 'users.empId', '=', 'promotionall.empId')
+ ->join('users', 'users.empId', '=', 'promotionduelist.empId')
  ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
  ->join('payscalemaster', 'payscalemaster.id', '=', 'promotionduelist.fromGrade')
  ->join('payscalemaster as toPayscale', 'toPayscale.id', '=', 'promotionduelist.toGrade')
  //above 2 line added new for grade
 
 //  ->select('users.basicPay','promotionall.id','promotionall.empId','promotionall.grade',DB::raw('Year(promotionDueDate) AS promotionDueDate'),DB::raw('month(promotionDueDate) AS month'))
-        ->select('promotionduelist.*','officedetails.officeDetails','payscalemaster.grade as fromGrade', 'toPayscale.grade as toGrade')
+        ->select('promotionduelist.*','users.empName','officedetails.officeDetails','payscalemaster.grade as fromGrade', 'toPayscale.grade as toGrade')
         ->where('promotionduelist.status','=','Approved') 
-        ->orwhere('promotionduelist.status','=','DirRecommend') 
-        
+        ->orwhere('promotionduelist.status','=','DirRecommend')         
         ->get();
 
      if ($request->ajax()) {
@@ -53,9 +52,7 @@ public function index(Request $request)
          })
            
          ->rawColumns(['actions','checkbox'])
-        ->make(true);
-
-               
+        ->make(true);              
 
     }
 

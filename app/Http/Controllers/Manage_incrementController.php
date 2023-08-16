@@ -21,8 +21,7 @@ class Manage_incrementController extends Controller
 
         ->join('users', 'users.empId', '=', 'incrementhistorymaster.personalNo')
         ->select('incrementhistorymaster.id','incrementhistorymaster.incrementDate',
-        'incrementhistorymaster.newBasic',
-         'users.empId','incrementhistorymaster.increment');
+        'incrementhistorymaster.newBasic','users.empId','incrementhistorymaster.increment','users.empName');
          
         
         if ($request->ajax()) {

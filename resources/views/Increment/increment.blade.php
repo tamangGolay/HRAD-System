@@ -53,6 +53,7 @@ a {
             <button class="btn btn-sm btn-success d-none" id=deleteAllBtn>Generate Increment Duelist</button> </th>
             <th>Sl.No</th>   
             <th>Employee Id</th>
+            <th>Name</th>
             <th>Last Increment Date</th>
 			<th>Increment Due Date</th>
 			<th>Increment Cycle</th>
@@ -287,6 +288,7 @@ $(function () {
             {data: 'checkbox', name: 'checkbox',orderable: false, searchable: false},
             {data: 'id', name:'id'},
             {data: 'empId', name:'empId'},
+            {data: 'empName', name:'empName'},
             {data: 'lastIncrementDate', name: 'lastIncrementDate'},
 			{data: 'incrementDueDate', name: 'incrementDueDate'},
 			{data: 'incrementCycle', name: 'incrementCycle'},

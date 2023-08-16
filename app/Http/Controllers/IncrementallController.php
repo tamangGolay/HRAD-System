@@ -20,7 +20,7 @@ class IncrementallController extends Controller
     {
         $increments = DB::table('incrementall')    
         ->join('users', 'users.empId', '=', 'incrementall.empId')
-        ->select('incrementall.id','users.empId','incrementall.lastIncrementDate','incrementall.incrementDueDate','incrementall.incrementCycle')
+        ->select('incrementall.id','users.empId','users.empName','incrementall.lastIncrementDate','incrementall.incrementDueDate','incrementall.incrementCycle')
         ->get(); 
         
         if ($request->ajax()) {

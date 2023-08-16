@@ -46,9 +46,9 @@ a {
             <tr>
 
                 <th>Personal No.</th>
+                <th>Name</th>
                 <th>Increment Date</th>
-                <th>Increment</th>
-                
+                <th>Increment</th>                
                 <th>New Basic</th>
 
                 <th width="300px">Action</th>
@@ -163,12 +163,11 @@ a {
         ajax: "{{ route('increment.index') }}",   //** */
         columns: [
             {data: 'empId', name: 'users.empId'},
+            {data: 'empName', name: 'users.empName'},
             {data: 'incrementDate', name: 'incrementDate'},
             {data: 'increment', name: 'increment'},
-            {data: 'newBasic', name: 'newBasic'},
-          
+            {data: 'newBasic', name: 'newBasic'},       
            
-
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ]
     });

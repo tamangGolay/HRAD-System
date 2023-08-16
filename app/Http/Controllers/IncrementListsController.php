@@ -21,8 +21,8 @@ class IncrementListsController extends Controller
     public function index(Request $request)
        {
         $b = DB::table('incrementduelist')
-        ->select('*')      
-     
+        ->join('users','users.empId','=','incrementduelist.empId')
+        ->select('incrementduelist.*','users.empName')    
         ->get();
     
         if ($request->ajax()) {              

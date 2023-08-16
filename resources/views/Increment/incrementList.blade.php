@@ -45,7 +45,8 @@ a {
         <thead>
             <tr>
                 <th>No</th>
-                <th>EmpId</th>                
+                <th>EmpId</th> 
+                <th>Name</th>                
                 <th>Increment  Year</th>
                 <th>Increment  Month</th>
                 <th>Old Basic</th>
@@ -182,6 +183,9 @@ a {
 
            {data: 'empId', 
            name: 'empId'},
+
+           {data: 'empName', 
+           name: 'empName'},
 
            {data: 'incrementYear', 
            name:'incrementYear'},

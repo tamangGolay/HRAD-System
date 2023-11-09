@@ -24,7 +24,21 @@ table, th, td {
                 <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                 <!-- <input type="hidden" id="did" name="frId"> -->
                 <div class="cardbody">
-                
+                <div class="form-group row"> 
+                    <input type="hidden" class="form-control"  name="year">                  
+                    <label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Year:</label>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+
+                    <select name="year" id="year" class="form-control">
+                    <option value="">Choose Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2025</option>
+                    </select>
+
+                    </div>
+
+                    </div>
                 <div class="form-group row"> 
                 <label class="col-md-4 col-form-label text-md-right"  for="user">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
                     <div class="col-sm-10 col-md-6 col-lg-4">

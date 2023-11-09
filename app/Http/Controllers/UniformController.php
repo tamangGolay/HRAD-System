@@ -15,9 +15,10 @@ use DataTables;
 class UniformController extends Controller
 {
 
+
     public function index(Request $request)
     {
-        
+       
         $pay = DB::table('employeeuniform')
         ->join('users', 'users.empId', '=', 'employeeuniform.empId')
         ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
@@ -51,9 +52,10 @@ class UniformController extends Controller
     public function store(Request $request)
     {
 
-    try{
+    // try{
 
-    // dd($request);
+        // dd($request->year);
+        
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
      'officeId' => $request->officeId, 
@@ -63,6 +65,7 @@ class UniformController extends Controller
     'jacket' => $request->jacket,
     'shoe' => $request->shoe,
     'gumboot' => $request->gumboot,
+    'year' => $request->year,
     'raincoat' => $request->raincoat,
     'createdBy' => $request->emp_id
 ]);        
@@ -73,14 +76,14 @@ class UniformController extends Controller
     // ->json(['success' => 'Data inserted successfully.']);
 
     return redirect('home')->with('page', 'uniform')->with('success','Record added successfully!!!');
-    }
+    // }
 
-    catch(\Illuminate\Database\QueryException $e){
+    // catch(\Illuminate\Database\QueryException $e){
 
-        return redirect('home')->with('page', 'uniform')->with('error','Duplicate entry for this employee!!!');
+    //     return redirect('home')->with('page', 'uniform')->with('error','Duplicate !!!');
     
     
-    }        
+    // }        
     
     }
     //delte indivual record from database

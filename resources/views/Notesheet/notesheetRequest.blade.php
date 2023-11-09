@@ -1,5 +1,4 @@
 <style>
-
 .welfarerefund{
 	
 	font-family: "Times New Roman", Times, serif;
@@ -12,6 +11,11 @@
 .preserveLines{
 	white-space:normal;
 }
+/* .justification{
+	height:100px; */
+
+
+
 </style>
 
 
@@ -40,49 +44,58 @@
                       <div class="col-md-8 ">
                         <input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required>
                       </div>
-                  </div>               
-
-					
+                  </div>     
+				
 					 
-					<div class="form-group row">
-						<label class="col-md-2 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Justication:</label>
+					<!-- <div class="form-group row">
+						<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justication:</label>
 						<div class="col-md-8 ">
-						<textarea input type="text" rows="18" class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea></div>
+						<textarea input type="text" rows="18" class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea>
 					</div>
-                    
+					</div>
+                     -->
+
+					 <div class="form-group row">
+                            <label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justification:</label>
+                            <div class="col-md-8">
+                                <div contenteditable="true" rows="18" class="justification form-control preserveLines" id="justification" required>
+                                    {!! old('justification') !!}
+                                </div>
+                                <input type="hidden" rows="18" name="justification" id="justification-input">
+                            </div>
+                        </div>
 					
 
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
 							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
+						</div>
 						</div> 
-</form>
-    </div>
+					</form>
+   				 </div>
 
                     <!-- <div class="form-group row mb-0"> -->
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-12 ">
 							<button  id="notescancel" class="btn btn-info btn-md" onclick="notesheetCancel();" style="color:black;">View Notesheet</button>
 						</div>
-					</div>
-                
-				
-				
-			</div>
-		</div> </div>
-		
 
-		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+					</div>
+			</div>
+		</div>
+		</div> 
+	
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+		<!-- <script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script> 
+		<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>  -->
 
-		
-		
-		
-		
-	
+		<!-- <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script> -->
 
-   <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+
+
 		<script type="text/javascript">
 		
 		$(document).ready(function() {
@@ -145,25 +158,24 @@ function checkEmployee(val) {
   
 } 
 
-
-		</script>
+</script>
 
 	<script>
-		$(function() {
-			$("#vehiclerecord").DataTable({
-				"dom": 'Blfrtip',
-				"responsive": true,
-				"lengthChange": true,
-				"searching": true,
-				"ordering": false,
-				"info": false,
-				"autoWidth": false,
-				"paging": true,
-				"retrieve":true,
-				buttons: []
+		// $(function() {
+		// 	$("#vehiclerecord").DataTable({
+		// 		"dom": 'Blfrtip',
+		// 		"responsive": true,
+		// 		"lengthChange": true,
+		// 		"searching": true,
+		// 		"ordering": false,
+		// 		"info": false,
+		// 		"autoWidth": false,
+		// 		"paging": true,
+		// 		"retrieve":true,
+		// 		buttons: []
 
-			 });
-		});
+		// 	 });
+		// });
 
 		$('form').submit(function () {
     // Bail out if the form contains validation errors
@@ -199,12 +211,28 @@ function notesheetCancel()
 
 } 
 
-		</script>
+</script>
 
 		
 <script>
     var today = new Date();
-	var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	document.getElementById("notesheetDate").value = date;
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    document.getElementById("notesheetDate").value = date;
 
-    </script>
+    // Use jQuery to copy content from contenteditable div to hidden input on form submit
+    $('form').submit(function () {
+        var justificationContent = $('#justification').html();
+        $('#justification-input').val(justificationContent);
+    });
+</script>
+
+<script>
+	
+document.addEventListener('input', function (e) {
+    if (e.target && e.target.classList.contains('justification')) {
+        // Adjust the height of the contenteditable div
+        e.target.style.height = 'auto';
+        e.target.style.height = e.target.scrollHeight + 'px';
+    }
+});
+</script>

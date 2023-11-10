@@ -18,6 +18,7 @@
 								<th>Uniform Name</th>
 								<th>Uniform Size</th>
 								<th>Total Numbers</th>
+								<th>Year</th>
 								
 							</tr>
 						</thead>
@@ -26,6 +27,7 @@
 								<td> {{$rv->cloths}} </td>
 								<td> {{$rv->size}} </td>
 								<td> {{$rv->count}} </td>
+								<td> {{$rv->year}} </td>
 								
 		
 			</tr> @endforeach 

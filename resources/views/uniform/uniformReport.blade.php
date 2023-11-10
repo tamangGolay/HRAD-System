@@ -54,6 +54,25 @@ a {
 .card-nima {
     margin-bottom: .75rem;
 }
+.custom-filter-button {
+        background-color: #007bff; /* Set your desired background color */
+        color: #fff !important;
+        border-color: ##33FF4F;
+		border-radius:5px;
+		width:150px;
+		margin-left:60%
+		
+    }
+
+    .custom-filter-button:hover {
+        background-color: #0056b3; /* Change the background color on hover */
+        border-color: #0056b3;
+    }
+
+    .button-text {
+        margin-right: 5px;
+    }
+
 
 </style>
 
@@ -71,6 +90,41 @@ a {
               <h5>Uniform Report</h5>
              </div>
 			</div>
+
+
+<!-- Add this modal for year filtering -->
+<div class="modal fade" id="yearFilterModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Filter by Year</h4>
+            </div>
+            <div class="modal-body">
+                <form id="yearFilterForm" name="yearFilterForm" class="form-horizontal">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-4 text-md-right" for="filterYear">{{ __('Select Year:') }}</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="filterYear" id="filterYear" required>
+                                <option value="">Select Year</option>
+                                <!-- Add options dynamically based on available years -->
+								@foreach($data1->unique('year') as $data2)
+                                    <option value="{{$data2->year}}">{{$data2->year}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+                        <button type="submit" class="btn btn-outline-primary">Apply Filter</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 			<div class="card-body table-responsive">
 				<table id="example3" class="table table-hover table-striped table-bordered" width="100%">
 					<thead>
@@ -137,8 +191,7 @@ a {
 									<div class="col-sm-6">
 									<select class="form-control" name="year" id="year" required> 
 							   <option value="">Select Year</option>	
-							  @foreach($data1 as $data2)
-								<option value="{{$data2->year}}"> {{$data2->year}}
+							   @foreach($data1->unique('year') as $data2)								<option value="{{$data2->year}}"> {{$data2->year}}
 								</option>
 								@endforeach </select>
 									</div>
@@ -422,7 +475,7 @@ a {
 				});
 			});
 </script>
-<script>
+<!-- <script>
 $(function() {
 	$("#example3").DataTable({
 		"dom": 'Bfrtip',
@@ -437,7 +490,45 @@ $(function() {
 		buttons: ['copyHtml5', 'excelHtml5', 'print']
 	});
 });
-</script>			
+</script>			 -->
+
+
+<script>
+$(function() {
+    var table = $("#example3").DataTable({
+        "dom": 'Bfrtip',
+        "responsive": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": true,
+        "paging": true,
+        "retrieve": true,
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'print',
+            {
+				text: '<span class="button-text">Filter by Year</span>',
+                className: 'custom-filter-button',
+                action: function (e, dt, node, config) {
+                    $('#yearFilterModal').modal('show');
+                }
+            }
+        ]
+    });
+
+    // Additional code for handling year filtering
+    $('#yearFilterForm').submit(function (e) {
+        e.preventDefault();
+        var selectedYear = $('#filterYear').val();
+        
+        table.column(11).search(selectedYear).draw();
+        $('#yearFilterModal').modal('hide');
+    });
+});
+</script>
 		
 			
 			<script type="text/javascript">

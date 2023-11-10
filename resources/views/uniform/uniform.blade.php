@@ -24,21 +24,21 @@ table, th, td {
                 <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                 <!-- <input type="hidden" id="did" name="frId"> -->
                 <div class="cardbody">
+                
                 <div class="form-group row"> 
                     <input type="hidden" class="form-control"  name="year">                  
                     <label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Year:</label>
                     <div class="col-sm-10 col-md-6 col-lg-4">
 
-                    <select name="year" id="year" class="form-control">
-                    <option value="">Choose Year</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2025</option>
-                    </select>
+                        <select name="year" id="year" class="form-control" required>
+                        <option value="">Choose Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>                        
+                        </select>
 
                     </div>
 
-                    </div>
+                </div>
                 <div class="form-group row"> 
                 <label class="col-md-4 col-form-label text-md-right"  for="user">&nbsp;&nbsp;&nbsp;Employee Id:</label>              
                     <div class="col-sm-10 col-md-6 col-lg-4">
@@ -962,30 +962,9 @@ function getEmployeeDetails(val)
                     document.getElementById('designation').value = '';
                     // document.getElementById('fixed').value = '';
                     // document.getElementById('extension').value = '';
-                    document.getElementById('office').value =  '';
-                                
-                    // document.getElementById('dob').value = '';                      
-                    // document.getElementById('cid').value = '';
-                    // // document.getElementById('blood').value =  '';
-
-                    // document.getElementById('grade').value = '';   
-                    // document.getElementById('appointment').value = '';                      
-                    // document.getElementById('basicpay').value = '';
-                    // document.getElementById('empstatus').value =  '';
-                    // document.getElementById('lastdop').value =  '';
-                    // document.getElementById('emailid').value = '';   
-                    // document.getElementById('office').value = '';                      
-                    // // document.getElementById('resignationtype').value =  '';
-                    // // document.getElementById('resignationdate').value = '';  
-                    // // document.getElementById('qualification').value = '';    
-                    // document.getElementById('employmenttype').value = '';                      
-                    // document.getElementById('incrementcycle').value = '';
-                    
-                   
-                    document.getElementById('empid').value = '';                        
-
-
-
+                    document.getElementById('office').value =  '';                              
+                                                          
+                    document.getElementById('empid').value = '';                      
                     
                 $.each(data, function(index, Employee){
 
@@ -993,45 +972,15 @@ function getEmployeeDetails(val)
                           if(Employee.empId != null)
                           {
                            
-                            document.getElementById('nameid').value = Employee.empName;                      
+                               document.getElementById('nameid').value = Employee.empName;                      
                                 document.getElementById('contact_number').value = Employee.mobileNo;
                                 document.getElementById('designation').value = Employee.desisNameLong;
                                 document.getElementById('designationID').value =  Employee.designationId;
                     //             document.getElementById('extension').value = Employee.extension;
                                 document.getElementById('office').value =  Employee.shortOfficeName;                                
-                                document.getElementById('officeId').value =  Employee.office;
-
-                    //             document.getElementById('emp_id').innerHTML= Employee.empId;                    
-                    // document.getElementById('dob').value = Employee.dob;                      
-                    // document.getElementById('cid').value = Employee.cidNo; 
-                    // // document.getElementById('blood').value =  Employee.bloodGroup; 
-                    // document.getElementById('designationId').value =  Employee.designationId; //pulls id from desination master
-                    // document.getElementById('designation').value =  Employee.desisNameLong; 
-                  
-                    // document.getElementById('grade').value = Employee.grade;
-                    // document.getElementById('gradeId').value = Employee.gradeId; 
-                    // document.getElementById('empstatus').value = Employee.empStatus;    
-   
-
-                    // document.getElementById('appointment').value = Employee.appointmentDate;                       
-                    // document.getElementById('basicpay').value = Employee.basicPay; 
-                    // document.getElementById('lastdop').value =  Employee.lastDop; 
-                    // document.getElementById('emailid').value = Employee.emailId;    
-                    // //  document.getElementById('placeId').value = Employee.id;  //pulls id of officedetailss table
-                    // document.getElementById('office').value = Employee.office; //pulls id from users table                      
-                    // // document.getElementById('bankname').value = Employee.bankName; 
-                    // // document.getElementById('qualification').value = Employee.qualificationName;
-                    // // document.getElementById('accountnumber').value =  Employee.accountNumber; 
-                    // // document.getElementById('resignationtype').value =  Employee.resignationType; 
-                    // // document.getElementById('resignationtypeId').value =  Employee.resignationTypeId; 
-                    // // document.getElementById('resignationdate').value = Employee.resignationDate;    
-                    // document.getElementById('employmenttype').value = Employee.employmentType;                       
-                    // document.getElementById('incrementcycle').value = Employee.incrementCycle; 
-                 
-                        
+                                document.getElementById('officeId').value =  Employee.office;                  
+                                           
                         }				
-
-
                             
                             else {
                                 document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
@@ -1041,58 +990,12 @@ function getEmployeeDetails(val)
                                                          
                             
                 })
-        });
-      
-  
+        });       
 
 }  
 $('div.alert').delay(6500).slideUp(300);// Session message  display time
 
 
-//     //pulling records using emp_id from users table 
-//       var csrftoken =document.getElementById('tokenid').value;
-//           $.get('/getValues?source=useruniformadd&info='+val+'&token='+csrftoken,function(data){              
-//                     console.log(data);
-//                     document.getElementById('nameid').value = '';                      
-//                     document.getElementById('contact_number').value = '';
-//                     document.getElementById('division').value =  '';
-//                     document.getElementById('divisionh').value =  '';
-//                     document.getElementById('empid').innerHTML = '';                        
-                
-//                 $.each(data, function(index, Employee){
-//                     if(Employee.empName != null)
-//                     {
-//                         document.getElementById('nameid').value = Employee.empName;                      
-//                         // document.getElementById('contactNumber').value = Employee.contactNumber;
-//                         document.getElementById('division').value =  Employee.longOfficeName;
-//                         // document.getElementById('divisionh').value =  Employee.office;
-//                         // document.getElementById('emp_id').innerHTML='';
-//                     }				
-//                     else 
-//                     {
-//                         document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-// 				    }                       
-//                 })
-//             }); 
-
-
-// 	// //pulling records using cid from checkin table 
-// 	// var csrftoken = document.getElementById('tokenid').value;
-// 	// $.get('/getValues?source=useruniformadd&info=' + val + '&token=' + csrftoken, function(data) {
-// 	// 	console.log(data);
-// 	// 	// document.getElementById('nameid').value =  '';
-// 	// 	document.getElementById('empid').innerHTML = '';
-// 	// 	$.each(data, function(index, Employee) {
-// 	// 		if(Employee.empId != null) {                  
-// 	// 			document.getElementById('empid').innerHTML = 'Record already exist for this employee!!';
-// 	// 			document.getElementById('emp_id').value = '';
-// 	// 		}
-// 	// 	})
-// 	// });
-
-
-// }  
-// $('div.alert').delay(4500).slideUp(300);// Session message  display time
 </script>
 
 <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>

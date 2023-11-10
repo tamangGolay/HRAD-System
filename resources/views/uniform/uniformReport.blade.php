@@ -86,7 +86,8 @@ a {
 								<th>Jacket Size</th>
 								<th>Shoe Size</th>
                                 <th> Gumboot Size</th>
-                                <th> Raincoat Size</th>					
+                                <th> Raincoat Size</th>	
+								<th> Year</th>					
 								<th> Action </th>
 						</tr>
 					</thead>
@@ -96,13 +97,14 @@ a {
 								<td> {{$rv->empId}} </td>
 								<td> {{$rv->empName}} </td>
 								<td> {{$rv->desisNameLong}} </td>
-                                <td> {{$rv->officeDetails}} </td>	
+                                <td> {{$rv->officeDetails1}} </td>	
                                 <td> {{$rv->pantSizeName}} </td>
 								<td> {{$rv->shirtSizeName}} </td>
 								<td> {{$rv->jacket}} </td>
                                 <td> {{$rv->euShoeSize}} </td>
 								<td> {{$rv->eUSize}}  </td>
 								<td> {{$rv->sizeName}}  </td>
+								<td> {{$rv->year}}  </td>
 						
 							<td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
@@ -129,6 +131,18 @@ a {
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
 								<input type="hidden" value="<?php echo $data1[0]->id;?>" name="id" id="id" >
+
+								<div class="form-group row">
+									<label class="col-sm-4 text-md-right" for="emp_id">{{ __('Year:') }}</label>
+									<div class="col-sm-6">
+									<select class="form-control" name="year" id="year" required> 
+							   <option value="">Select Year</option>	
+							  @foreach($data1 as $data2)
+								<option value="{{$data2->year}}"> {{$data2->year}}
+								</option>
+								@endforeach </select>
+									</div>
+								</div>
 						
 
 								<div class="form-group row">
@@ -258,7 +272,7 @@ a {
 								</option>
 								@endforeach </select>
 						</div>
-</div>	
+					</div>	
 															
 					<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
 									<button type="submit" class="btn btn-outline-success" id="uniformT" value="create">Save changes </button>
@@ -309,9 +323,9 @@ a {
 	
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
-					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
+					$.get("{{ route('uniform.index') }}" + '/' + guestHouse_id + '/edit', function(data) {
 						$('#modelHeading').html("Edit uniform size");
-						$('#uniformT').val("edit-book");
+						$('#uniformT').val("update");
 						$('#ajaxModel').modal('show');
 						$('#id').val(data.id);//#id is from modal form(id) and data.id is from modal(fillable) database
 						$('#emp_id').val(data.empId); //input id,database
@@ -323,6 +337,7 @@ a {
 						$('#shoe').val(data.shoe);
 						$('#gumboot').val(data.gumboot);
 						$('#raincoat').val(data.raincoat);
+						$('#year').val(data.year);
 
 					})
 				});

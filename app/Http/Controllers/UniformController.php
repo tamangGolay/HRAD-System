@@ -52,9 +52,16 @@ class UniformController extends Controller
     public function store(Request $request)
     {
 
-    // try{
+    try{
+       
+        $existingRecord = UniformEmployee::where('empId', $request->emp_id)
+            ->where('year', $request->year)
+            ->first();
 
-        // dd($request->year);
+        if ($existingRecord && $request->id != $existingRecord->id) {
+            // If the record already exists and it's not the same record being edited, show an error
+            return redirect('home')->with('page', 'uniform')->with('error', 'Record already exists for the given empId and year.');
+        }
         
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 
@@ -68,24 +75,19 @@ class UniformController extends Controller
     'year' => $request->year,
     'raincoat' => $request->raincoat,
     'createdBy' => $request->emp_id
-]);        
-
-    // return response()->json(['success'=>'New pay saved successfully.']);
-   
-    // return response()
-    // ->json(['success' => 'Data inserted successfully.']);
+]);           
 
     return redirect('home')->with('page', 'uniform')->with('success','Record added successfully!!!');
-    // }
-
-    // catch(\Illuminate\Database\QueryException $e){
-
-    //     return redirect('home')->with('page', 'uniform')->with('error','Duplicate !!!');
-    
-    
-    // }        
-    
     }
+
+    catch(\Illuminate\Database\QueryException $e){
+
+        return redirect('home')->with('page', 'uniform')->with('error','Duplicate record!!!');
+    
+    
+    }        
+    
+}
     //delte indivual record from database
 
     public function edit($id)

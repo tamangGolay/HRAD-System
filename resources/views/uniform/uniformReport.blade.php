@@ -323,7 +323,7 @@ a {
 	
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
-					$.get("{{ route('uniform.index') }}" + '/' + guestHouse_id + '/edit', function(data) {
+					$.get("{{ route('uniform.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
 						$('#modelHeading').html("Edit uniform size");
 						$('#uniformT').val("update");
 						$('#ajaxModel').modal('show');

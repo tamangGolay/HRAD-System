@@ -55,6 +55,25 @@ a {
     margin-bottom: .75rem;
 }
 
+.custom-filter-button {
+        background-color: #007bff; 
+        color: #fff !important;
+        border-color: ##33FF4F;
+		border-radius:5px;
+		width:150px;
+		
+    }
+
+    .custom-filter-button:hover {
+        background-color: #0056b3; /* Change the background color on hover */
+        border-color: #0056b3;
+    }
+
+    .button-text {
+        margin-right: 5px;
+    }
+
+
 </style>
 
 
@@ -71,6 +90,39 @@ a {
               <h5>All Emp Uniform Report</h5>
              </div>
 			</div>
+
+
+			<div class="modal fade" id="yearFilterModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Filter by Year</h4>
+            </div>
+            <div class="modal-body">
+                <form id="yearFilterForm" name="yearFilterForm" class="form-horizontal">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-4 text-md-right" for="filterYear">{{ __('Select Year:') }}</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="filterYear" id="filterYear" required>
+                                <option value="">Select Year</option>
+                                <!-- Add options dynamically based on available years -->
+								@foreach($data12->unique('year') as $data2)
+                                    <option value="{{$data2->year}}">{{$data2->year}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+                        <button type="submit" class="btn btn-outline-primary">Apply Filter</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 			<div class="card-body table-responsive">
 				<table id="example3" class="table table-hover table-striped table-bordered" width="100%">
 					<thead>
@@ -86,7 +138,8 @@ a {
 								<th>Jacket Size</th>
 								<th>Shoe Size</th>
                                 <th> Gumboot Size</th>
-                                <th> Raincoat Size</th>					
+                                <th> Raincoat Size</th>		
+								<th> Year</th>			
 								<!-- <th> Action </th> -->
 						</tr>
 					</thead>
@@ -103,6 +156,7 @@ a {
                                 <td> {{$rv->euShoeSize}} </td>
 								<td> {{$rv->eUSize}}  </td>
 								<td> {{$rv->sizeName}}  </td>
+								<td> {{$rv->year}}  </td>
 						
 							<!-- <td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
@@ -409,25 +463,44 @@ a {
 </script>
 <script>
 $(function() {
-	$("#example3").DataTable({
-		"dom": 'Bfrtip',
-		"responsive": true,
-		"lengthChange": true,
-		"searching": true,
-		"ordering": false,
-		"info": true,
-		"autoWidth": true,
-		"paging": true,
-		"retrieve":true,
-		buttons: ['copyHtml5', 'excelHtml5', 'print']
-	});
+    var table = $("#example3").DataTable({
+        "dom": 'Bfrtip',
+        "responsive": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": true,
+        "paging": true,
+        "retrieve": true,
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'print',
+            {
+				text: '<span class="button-text">Filter by Year</span>',
+                className: 'custom-filter-button',
+                action: function (e, dt, node, config) {
+                    $('#yearFilterModal').modal('show');
+                }
+            }
+        ]
+    });
+
+    // Additional code for handling year filtering
+    $('#yearFilterForm').submit(function (e) {
+        e.preventDefault();
+        var selectedYear = $('#filterYear').val();
+        
+        table.column(11).search(selectedYear).draw();
+        $('#yearFilterModal').modal('hide');
+    });
 });
-</script>			
-		
+</script>
 			
-			<script type="text/javascript">
+<script type="text/javascript">
 			$(document).ready(function() {
 				document.getElementById('contenthead').innerHTML = '<strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
-			});
-			</script>
-			<!-- changes -->
+	});
+</script>
+			

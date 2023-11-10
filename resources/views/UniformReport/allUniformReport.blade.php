@@ -1,3 +1,26 @@
+<style>
+	.custom-filter-button {
+        background-color: #007bff; /* Set your desired background color */
+        color: #fff !important;
+        border-color: ##33FF4F;
+		border-radius:5px;
+		width:150px;
+	
+    }
+	
+    .custom-filter-button:hover {
+        background-color: #0056b3; /* Change the background color on hover */
+        border-color: #0056b3;
+    }
+
+    .button-text {
+        margin-right: 5px;
+    }
+	</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <div class="row ">
 	<div class="col">
@@ -6,8 +29,40 @@
 				<div class="col text-center">
 					<h5>
                 <b>All employee uniform Report</b>
-              </h5> </div>
+              </h5> 
 			</div>
+			</div>
+	<div class="modal fade" id="yearFilterModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Filter by Year</h4>
+            </div>
+            <div class="modal-body">
+                <form id="yearFilterForm" name="yearFilterForm" class="form-horizontal">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-4 text-md-right" for="filterYear">{{ __('Select Year:') }}</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="filterYear" id="filterYear" required>
+                                <option value="">Select Year</option>
+                                <!-- Add options dynamically based on available years -->
+								@foreach($officenamez->unique('year') as $data2)
+                                    <option value="{{$data2->year}}">{{$data2->year}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
+                        <button type="submit" class="btn btn-outline-primary">Apply Filter</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 			<!--/card-header-->
 			<form method="POST" action="/vehicleapprove" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
 				<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
@@ -41,9 +96,12 @@
 			</div>
 		</div>
 
-		
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 		
 		<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+
 		<script type="text/javascript">
 		$(document).ready(function() {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
@@ -71,28 +129,43 @@
 
 		
 		<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
-		<!-- called in bose.css -->
-
+		
 		<script>
-	
-		$(function() {
-			$("#table1").DataTable({
-				"aLengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
-                 "iDisplayLength": 10,
-				"dom": 'Blfrtip',
+$(function() {
+    var table = $("#table1").DataTable({
+        "dom": 'Bfrtip',
+        "responsive": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": true,
+        "paging": true,
+        "retrieve": true,
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'print',
+            {
+				text: '<span class="button-text">Filter by Year</span>',
+                className: 'custom-filter-button',
+                action: function (e, dt, node, config) {
+                    $('#yearFilterModal').modal('show');
+                }
+            }
+        ]
+    });
 
-				"responsive": true,
-				"searching": true,
-				"ordering": false,
-				"info": true,
-				"autoWidth": false,
-				"paging": true,
-				"retrieve":true,
-				buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
-			});
-		});
-
-		</script>
+    // Additional code for handling year filtering
+    $('#yearFilterForm').submit(function (e) {
+        e.preventDefault();
+        var selectedYear = $('#filterYear').val();
+        
+        table.column(3).search(selectedYear).draw();
+        $('#yearFilterModal').modal('hide');
+    });
+});
+</script>
 
        <script type="text/javascript">
 		$(document).ready(function() {

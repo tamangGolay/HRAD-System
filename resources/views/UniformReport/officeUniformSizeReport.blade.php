@@ -21,24 +21,10 @@
   
 <div class="container-fluid"  style="margin-right:20%;width:95%;">    
  <div class="row">
-
-
- <div class="col-lg-6 col-sm-12 col-md-12">
-    <label class="col-md-4 col-form-label text-md-left" for="year">Year</label>
-    <div class="col-sm-12 col-lg-12">
-        <select name="year" id="year" class="form-control" required>
-            <option value="">Select Year</option>
-            <!-- Add your years dynamically if needed -->
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <!-- Add more years as needed -->
-        </select>
-    </div>
-</div>
         <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="form-group row col-sm-12 col-md-12">                    
               
-                        <div class="col-lg-6 col-sm-12 col-md-6">
+                        <div class="col-lg-4 col-sm-4 col-md-4">
                         <label class="col-md-4 col-form-label text-md-left" for="stardate">Office Name</label>
                         <div class="col-sm-12">                          
                             <select name="officeId" id="officeId" value="" class="form-control" required>
@@ -52,7 +38,7 @@
                         </div>
                     </div>
 						                   
-                    <div class="col-lg-6 col-sm-12 col-md-6">
+                    <div class="col-lg-4 col-sm-4 col-md-4">
                       <label class="col-md-4 col-form-label text-md-left" for="stardate">Uniform Name</label>
                         <div class="col-sm-12">                          
                             <select name="cloths" id="cloths" value="" class="form-control" required>
@@ -69,6 +55,18 @@
                     
                     </div>
                   </div> 
+                  <div class="col-lg-4 col-sm-4 col-md-4">
+    <label class="col-md-4 col-form-label text-md-left" for="year">Year</label>
+    <div class="col-sm-12 col-lg-12">
+        <select name="year" id="year" class="form-control" required>
+            <option value="">Select Year</option>
+            <!-- Add your years dynamically if needed -->
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <!-- Add more years as needed -->
+        </select>
+    </div>
+</div>
                 </div>
                     
                     <div class="form-group textfont" align="center">

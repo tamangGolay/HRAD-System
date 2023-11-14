@@ -58,10 +58,13 @@ class UniformController extends Controller
             ->where('year', $request->year)
             ->first();
 
+        
         if ($existingRecord && $request->id != $existingRecord->id) {
             // If the record already exists and it's not the same record being edited, show an error
-            return redirect('home')->with('page', 'uniform')->with('error', 'Record already exists for the given empId and year.');
+            $errorMessage = 'Record already exists for empId ' . $request->emp_id . ' for the year ' . $request->year . '.';
+            return redirect('home')->with('page', 'uniform')->with('error', $errorMessage);
         }
+
         
     UniformEmployee::updateOrCreate(['id' => $request->id], 
      ['empId' => $request->emp_id, 

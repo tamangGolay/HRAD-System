@@ -55,23 +55,21 @@ a {
     margin-bottom: .75rem;
 }
 .custom-filter-button {
-        background-color: #007bff; /* Set your desired background color */
+        background-color: #4BB543; /* Set your desired background color */
         color: #fff !important;
         border-color: ##33FF4F;
 		border-radius:5px;
-		width:150px;
-		margin-left:60%
-		
+		width:150px;	
     }
-
-    .custom-filter-button:hover {
-        background-color: #0056b3; /* Change the background color on hover */
-        border-color: #0056b3;
-    }
-
-    .button-text {
+.button-text {
         margin-right: 5px;
+
     }
+	.custom-reset-button{
+		background-color: #FFC300 ; /* Set your desired background color */
+		border-radius:5px;
+
+	}
 
 
 </style>
@@ -360,12 +358,9 @@ a {
 				</div>
 			</div> 
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-			<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-			<!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
-			<script type="text/javascript">	
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript">	
 
 			$(function() {
 				$.ajaxSetup({
@@ -475,24 +470,6 @@ a {
 				});
 			});
 </script>
-<!-- <script>
-$(function() {
-	$("#example3").DataTable({
-		"dom": 'Bfrtip',
-		"responsive": true,
-		"lengthChange": true,
-		"searching": true,
-		"ordering": false,
-		"info": true,
-		"autoWidth": true,
-		"paging": true,
-		"retrieve":true,
-		buttons: ['copyHtml5', 'excelHtml5', 'print']
-	});
-});
-</script>			 -->
-
-
 <script>
 $(function() {
     var table = $("#example3").DataTable({
@@ -514,7 +491,16 @@ $(function() {
                 className: 'custom-filter-button',
                 action: function (e, dt, node, config) {
                     $('#yearFilterModal').modal('show');
-                }
+             }
+			},
+
+            {
+                text: '<span class="button-text">Reset</span>',
+				className: 'custom-reset-button',
+                action: function (e, dt, node, config) {
+                    $('#filterYear').val('');
+                    table.column(11).search('').draw();
+                }	
             }
         ]
     });

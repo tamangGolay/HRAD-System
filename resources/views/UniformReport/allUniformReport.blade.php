@@ -1,6 +1,6 @@
 <style>
 	.custom-filter-button {
-        background-color: #007bff; /* Set your desired background color */
+        background-color: #4BB543; /* Set your desired background color */
         color: #fff !important;
         border-color: ##33FF4F;
 		border-radius:5px;
@@ -8,10 +8,11 @@
 	
     }
 	
-    .custom-filter-button:hover {
-        background-color: #0056b3; /* Change the background color on hover */
-        border-color: #0056b3;
-    }
+	.custom-reset-button{
+		background-color: #FFC300 ; /* Set your desired background color */
+		border-radius:5px;
+
+	}
 
     .button-text {
         margin-right: 5px;
@@ -152,6 +153,15 @@ $(function() {
                 action: function (e, dt, node, config) {
                     $('#yearFilterModal').modal('show');
                 }
+			},
+
+			{
+				text: '<span class="button-text">Reset</span>',
+				className: 'custom-reset-button',
+				action: function (e, dt, node, config) {
+				$('#filterYear').val('');
+				table.column(3).search('').draw();
+	         	}	
             }
         ]
     });

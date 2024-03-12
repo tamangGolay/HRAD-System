@@ -27,7 +27,7 @@
 			'allow_self_signed' => true
 		)
 	);
-	$mail->Host = 'mail.bpc.bt';
+	$mail->Host = 'smtp.googlemail.com';
 	$mail->Port = '587';
 	$mail->isHTML();
 
@@ -111,7 +111,7 @@
  **/
 	function sendmail($mail, $recipaint, $subject, $message){
 		$mail->Username = 'do-not-reply';
-		$mail->Password = '9CHVQxW7';
+		$mail->Password = "wrcw uuvj jmgz amwc";
 		$mail->SetFrom('do-not-reply@bpc.bt');
 		$mail->Subject = $subject;
 		$mail->Body = $message;

@@ -320,13 +320,7 @@ a {
 						</div>
 					</div>
 				</div>
-			</div> 
-
-
-
-
-
-								
+			</div> 				
 							
 
 
@@ -362,7 +356,7 @@ $(function() {
 		"info": true,
 		"autoWidth": true,
 		"paging": true,
-		"retrieve":true,
+		"retrieve":true,		
 		buttons: ['copyHtml5', 'excelHtml5', 'pdfHtml5']
 	});
 });
@@ -386,20 +380,9 @@ $(function() {
 					}
 				});
 
-		// 		$table->id();
+		    
 
-		// $table->integer('empId');
-		// $table->string('empName');
-		// $table->string('bloodGroup')->nullable();
-		// $table->bigInteger('cidNo');
-		// $table->string('cidOther')->nullable();
-		
-        
 
-		
-	
-	
-	
 		
 		
 
@@ -445,13 +428,14 @@ $(function() {
 							var alt = document.createElement("div");
 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
 							alt.innerHTML = "Data Updated Successfully! ";
-							setTimeout(function() {
-								alt.parentNode.removeChild(alt);
-							}, 4500);
-							document.body.appendChild(alt);
 							
-							window.location.href = '/home';
+							$.get('/getView?v=userListHR',function(data){
+							$('#contentpage').empty();                          
+							$('#contentpage').append(data.html);
+							});                
+							// window.location.href = '/home';
 							table.draw();
+
 						},
 						error: function(data) {
 							console.log('Error:', data);
@@ -486,16 +470,14 @@ $(function() {
 							var alt = document.createElement("div");
 							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
 							alt.innerHTML = "Data Updated Successfully! ";
-							setTimeout(function() {
-								alt.parentNode.removeChild(alt);
-							}, 4500);
+							
 							document.body.appendChild(alt);
-							// $.get('/getView?v=userList', function(data) {
-							// 	$('#contentpage').empty();
-							// 	$('#contentpage').append(data.html);
-							// });
-							window.location.href = '/home';
-							table.draw();
+							$.get('/getView?v=userListHR',function(data){
+							$('#contentpage').empty();                          
+							$('#contentpage').append(data.html);
+							});
+							// window.location.href = '/home';
+							table.draw(); 
 						},
 						error: function(data) {
 							console.log('Error:', data);

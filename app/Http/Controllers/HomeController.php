@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Dzongkhags;
 use Auth;
 use DB;
+
 class HomeController extends Controller
 {
     //
@@ -18,7 +19,6 @@ class HomeController extends Controller
         $this->middleware('auth');
 
     }
-
    
     //go to form.
     public function home()
@@ -27,9 +27,7 @@ class HomeController extends Controller
         $forms = $this->form;
         $formgroups = $this->formgroup;
         $title = "Home";
-        $page = "";
-
-       
+        $page = "";       
 
         return view('home', ['title' => $title, 'page' => $page], compact('forms', 'formgroups'));
     }
@@ -59,7 +57,6 @@ class HomeController extends Controller
             ->select('forms.group')
             ->groupBy('forms.group')
             ->get();
-
     }
 }
 

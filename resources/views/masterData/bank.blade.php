@@ -19,8 +19,7 @@ a {
 </style>
 
 
-
-<link href="{{asset('css/bose.css')}}" rel="stylesheet">
+     <link href="{{asset('css/bose.css')}}" rel="stylesheet">
 <!-- called in bose.css -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
@@ -34,7 +33,6 @@ a {
     @csrf
         <thead>
             <tr>
-
                 <th>No</th>
                 <th>Bank Name</th>
                 <th width="300px">Action</th>
@@ -91,8 +89,6 @@ a {
                 <form id="Form" name="Form" class="form-horizontal">
                 @csrf
                 <input type="hidden"  value="{{ csrf_token() }}">
-
-
                    
       
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
@@ -103,15 +99,13 @@ a {
             </div>
         </div>
     </div>
-</div>
-
-    
+</div>    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>   -->
-<script type="text/javascript">
+    <script type="text/javascript">
   
     //Loading the contents of the Datatable from here
     var table = $('.data-table').DataTable({
@@ -158,9 +152,7 @@ a {
     $('#bankButton').click(function (e) {
        
         e.preventDefault();
-        $(this).html('Save');
-
-        
+        $(this).html('Save');        
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -182,10 +174,8 @@ a {
             document.body.appendChild(alt);                 
        
         
-            window.location.href = '/home';
-        table.draw();
-
-    
+        window.location.href = '/home';
+        table.draw();    
          
           },
           error: function (data) {
@@ -236,9 +226,8 @@ a {
              },4500);
             document.body.appendChild(alt);
             window.location.href = '/home';
-			table.draw();                 
-       
-       
+			table.draw();          
+           
 
     
          
@@ -255,7 +244,9 @@ a {
      
 </script>
 
-<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}">
+
+</script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';

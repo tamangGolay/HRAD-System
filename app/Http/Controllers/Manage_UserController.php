@@ -64,9 +64,6 @@ class Manage_UserController extends Controller
      */
     public function store(Request $request)
     {
-// dd($request);
-
-// "Address" => "1"
             User::updateOrCreate(['id' => $request->id],
                 ['empName' => $request->empName,
                  'empId' => $request->empId,
@@ -77,6 +74,8 @@ class Manage_UserController extends Controller
                  'gender' => $request->gender, //null
                 'designationId' => $request->designation,
                 'incrementCycle' => $request->incrementCycle,
+                'gender' => $request->gender,
+                'empStatus' => $request->empStatus,
                 'emailId' => $request->emailId,
                 'dob' => $request->dob,
                 'appointmentDate' => $request->appointmentDate,
@@ -145,5 +144,6 @@ class Manage_UserController extends Controller
 
         return redirect('home')->with('page', 'userList');
     }
+    
 
 }

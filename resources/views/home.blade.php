@@ -1,7 +1,10 @@
 <!-- <link href="{{asset('css/bose.css')}}" rel="stylesheet">  -->
 		<!-- called in bose.css -->
 
-<!-- Stored in resources/views/pages/incoming.blade.php -->@extends('layouts.master') @section('title') {{$title}} @endsection @section('pagehead')
+<!-- Stored in resources/views/pages/incoming.blade.php -->
+<!-- <link rel="icon" href="/fav.png" type="image/x-icon"> -->
+@extends('layouts.master') @section('title') {{$title}} @endsection @section('pagehead')
+
 <style>
 	a {
     text-decoration: none;
@@ -9,8 +12,6 @@
 }
 
 /* @media only screen and (min-width: 750px) {
-
-
 
 } */
 
@@ -58,6 +59,7 @@
 }
 
 </style>
+
 
 @if(count($errors) > 0)
     <div class="alert alert-danger">

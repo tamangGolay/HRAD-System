@@ -175,7 +175,9 @@ Route::middleware(['auth'])->group(function() {
 Route::post('Request_vehicle','VehicleController@Request_vehicle')->name('Request_vehicle');
 
 Route::get('/home', 'HomeController@home')->name('home');
+//Route::get('/userlistNEW', 'Home2Controller@userlistNEW')->name('userlistNEW');
 
+Route::get('/userlistNEW', 'Manage_HRListController@index')->name('userlistNEW'); 
 
 
 
@@ -728,3 +730,7 @@ Route::post('destroyipv4', 'Manage_IPv4Controller@delete')->name('destroyipv4');
 
 Route::resource('v6allocation', Manage_v6allocationController::class);
 Route::post('destroyipv6', 'Manage_v6allocationController@delete')->name('destroyipv6');
+
+//HR new list updated
+Route::resource('newHRList', Manage_HRListController::class);
+Route::post('deleteuserNEW', 'Manage_HRListController@delete')->name('deleteuserNEW');

@@ -22,7 +22,6 @@ use PDO;
 
 
 
-
 class MasterDataController extends Controller
 {
 

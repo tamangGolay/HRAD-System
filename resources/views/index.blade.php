@@ -1,4 +1,6 @@
-<!-- Stored in resources/views/pages/incoming.blade.php -->@extends('layouts.masterdefault') @section('title', 'Home')
+<!-- Stored in resources/views/pages/incoming.blade.php -->
+
+@extends('layouts.masterdefault') @section('title', 'Home')
 <style>
 .boxinfo {
 	font-size: 12px;

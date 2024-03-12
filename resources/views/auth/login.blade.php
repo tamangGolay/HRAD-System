@@ -47,11 +47,11 @@ input[type=text]{
 a:hover{
 	text-decoration:none;
 }
-
-
 </style>
   
-@extends('layouts.masterdefault') @section('title', 'Login') @section('content')
+@extends('layouts.masterdefault') 
+@section('title', 'Login') 
+@section('content')
 	<div class="hold-transition login-page">
 		<div class="login-box login-boxn">
 		@if(session()->has('success'))
@@ -62,7 +62,8 @@ a:hover{
 			<div class="card">
 				<div class="card-body login-card-body">
 					<div class="login-box-msg">{{ __('Sign in') }}</div>
-					<form method="POST" action="{{ route('login') }}"> @csrf @if(session()->has('error'))
+					<form method="POST" action="{{ route('login') }}"> 
+						@csrf @if(session()->has('error'))
 						<div class="alert alert-danger"> {{ session()->get('error') }} </div> @endif
 						<div class="form-group row">
 							<!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->

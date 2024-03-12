@@ -18,8 +18,6 @@ a {
 
 </style>
 
-
-
 <link href="{{asset('css/bose.css')}}" rel="stylesheet">
 <!-- called in bose.css -->
 
@@ -44,8 +42,6 @@ a {
                 <th>Drungkhag</th>
                 <th>Dzongkhag</th>
                 <th>Place Category</th>
-
-
                 <th width=150px">Action</th>
             </tr>
         </thead>
@@ -230,9 +226,7 @@ a {
         $('#place_id').val('');
         $('#Form').trigger("reset");
         $('#modelHeading').html("Add new place");
-        $('#ajaxModel').modal('show');
-
-       
+        $('#ajaxModel').modal('show');       
     });
 
   //  After clicking the edit button it will trigger here
@@ -251,9 +245,7 @@ a {
           $('#gewogId').val(data.gewogId);//keeping input name and dB field name same so that the search will not give error
           $('#dzongkhagId').val(data.dzongkhagId);//keeping input name and dB field name same so that the search will not give error
           $('#drungkhagId').val(data.drungkhagId);//keeping input name and dB field name same so that the search will not give error
-
-         
-          
+                 
      
      
       })
@@ -261,12 +253,9 @@ a {
 
 //   After clicking save changes in Add and Edit it will trigger here
 
-    $('#placeButton').click(function (e) {
-       
+    $('#placeButton').click(function (e) {       
         e.preventDefault();
-        $(this).html('Saving..');
-
-        
+        $(this).html('Saving..');        
     
         $.ajax({
           data: $('#Form').serialize(),
@@ -292,16 +281,13 @@ a {
             });
         
             // window.location.href = '/home';
-        table.draw();
-
-    
+        table.draw();   
          
           },
           error: function (data) {
               console.log('Error:', data);
               $('#placeButton').html('Save Changes');
-              alert(data);
-                
+              alert(data);                
           }
       });
     });
@@ -355,10 +341,8 @@ a {
             $('#contentpage').append(data.html);
             });
             // window.location.href = '/home';
-			table.draw();                 
-       
-       
-
+			table.draw();             
+            
     
          
           },
@@ -367,10 +351,8 @@ a {
               $('#placeDeleteButton').html('Save Changes');
           }
       });
-    });
-    
-    
-     
+    });  
+         
      
 </script>
 

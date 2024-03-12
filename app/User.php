@@ -30,10 +30,10 @@ class User extends Authenticatable
 
   
 protected $fillable = [ 
-    'cidNo','incrementCycle','appointmentDate', 'lastDop', 'basicPay','dob','id','gender','empName','empId','designationId','office'
 
-,'mobileNo','password','status','conference_user','emailId','role_id','gradeId'
- ];
+'cidNo','incrementCycle','appointmentDate', 'lastDop', 'basicPay','dob','id','gender','empName','empId','designationId','office'
+
+,'mobileNo','password','status','conference_user','emailId','role_id','gradeId','empStatus' ];
 
     /**
      * The attributes that should be hidden for arrays.

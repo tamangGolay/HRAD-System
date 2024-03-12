@@ -35,9 +35,9 @@
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							
 					<input type="date" class="form-control" name="start_date" autocomplete="off" id="start_date" onfocusout="myFunction()" required> 
-				
-				
+								
 				</div>
+
 				<div class="col-sm-2">
                     <span id="backdate" class="text-danger"></span>
                 </div>
@@ -53,10 +53,9 @@
 					<div class="col-sm-2">
                     <span id="backenddate" class="text-danger"></span>
             
-			</div>
-       </div>
-
-					
+						</div>
+				</div>
+		
 					 
 					<div class="form-group row">
 						<label class="col-md-4 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Purpose:</label>
@@ -126,10 +125,8 @@ function myFunction(val)
 //  document.getElementById('end').innerHTML = ''; 
  document.getElementById('backenddate').innerHTML = '';  
                       
+              
                        
-                       
-
-
   var user_year0=document.getElementById('start_date').value[0];
   var user_year1=document.getElementById('start_date').value[1];
   var user_year2=document.getElementById('start_date').value[2];

@@ -655,62 +655,24 @@ if ($request->v == "userListHR")
 {
  $roles = Roles::all();
  $officedetails = Officedetails::all();
-
-//  $orgunit = orgunit::all();
-//  $grade = Grade::all();
  $dzongkhag = Dzongkhags::all();
  $designation = Designation::all()->where('status',0);
 
 
 $userLists = DB::table('users')
-// ->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
+
  ->join('roles', 'users.role_id', '=', 'roles.id')
-//    ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-//    ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-//    ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
+
  ->join('officedetails', 'officedetails.id', '=', 'users.office')
  
  ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId') 
 
-//    ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
- ->select('users.*','roles.name','desisNameLong','officedetails.shortOfficeName','officedetails.Address')
+->select('users.*','roles.name','desisNameLong','officedetails.shortOfficeName','officedetails.Address')
 
  ->latest('users.id') //similar to orderby('id','desc')
  ->where('users.status',0)
-//    ->orWhere('orgunit.office',Auth::user()->office)
-
 
  ->paginate(10000000);
-
-
-
-// if() {
-//    $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-//        ->join('roles', 'users.role_id', '=', 'roles.id')
-//        ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-//        ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-//        ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-//        ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-//        ->latest('users.id') //similar to orderby('id','desc')
-//        ->where('users.org_unit_id',Auth::user()->org_unit_id)
-//        ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
-
-
-//        ->paginate(10000000);
-// }
-
-// $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-// ->join('roles', 'users.role_id', '=', 'roles.id')
-// ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-// ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-// ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-// ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-// ->latest('users.id') //similar to orderby('id','desc')
-// ->where('users.status',0)
-
-// ->paginate(10000000);
 
 $rhtml = view('auth.userListHR')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
 return response()
@@ -721,6 +683,37 @@ return response()
 }
 //end of User List.
 
+
+if ($request->v == "userlistNEW")
+{
+ $roles = Roles::all();
+ $officedetails = Officedetails::all();
+ $dzongkhag = Dzongkhags::all();
+ $designation = Designation::all()->where('status',0);
+ $payscalemaster = pay::all()->where('status',0);
+
+ $userLists = DB::table('users')
+
+ ->join('roles', 'users.role_id', '=', 'roles.id')
+ ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
+ ->join('officedetails', 'officedetails.id', '=', 'users.office') 
+ ->join('designationmaster', 'designationmaster.id', '=', 'users.designationId')
+ ->select('users.*','roles.name','desisNameLong','officedetails.shortOfficeName','officedetails.Address','officedetails.officeDetails','grade')
+ ->latest('users.id') //similar to orderby('id','desc')
+ ->where('users.status',0)
+
+ ->paginate(10000000);
+
+$rhtml = view('auth.userListHR1')->with(['designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag,'payscalemaster'=>$payscalemaster])->render();
+
+return response()
+ ->json(array(
+ 'success' => true,
+ 'html' => $rhtml
+    ));
+}
+
+//new list hr 
 
        
        if ($request->v == "suit")
@@ -940,8 +933,6 @@ return response()
             // $user = User::find($id)->name;
             // $user = User::find($id)->emp_id;
             // $user = User::find($id)->org_unit_id;
-
-
 //added new
 
 $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
@@ -4759,7 +4750,9 @@ if ($request->v == "promotionReport")
               'success' => true,
               'html' => $rhtml
                ));
-         }  //end
+         }  
+         
+         //end
  
          //2. view for Qualificationlevel (Tdee)
  
@@ -4779,7 +4772,7 @@ if ($request->v == "promotionReport")
         ->select('qualilevelmaster.qualiLevelName','fieldmaster.fieldName')
             ->where('qualificationmaster.status',0);          
 
-      $rhtml = view('masterData.qualificationLevel')->with(['qualificationlevel' => $qualificationlevel,'qmaster'=>$qmaster])->render();
+       $rhtml = view('masterData.qualificationLevel')->with(['qualificationlevel' => $qualificationlevel,'qmaster'=>$qmaster])->render();
           return response()
              ->json(array(
               'success' => true,

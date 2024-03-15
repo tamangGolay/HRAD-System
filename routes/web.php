@@ -743,3 +743,5 @@ Route::get('/welfareStatusReview','WelfareNewController@welfareStatusReview');
 Route::post('/cancelWelfare','WelfareNewController@cancelWelfare')->name('cancelWelfare');
 
 Route::resource('welfareEdit', NoteSReviewController::class);
+
+Route::resource('managecommitte', ManageCommitteController::class);

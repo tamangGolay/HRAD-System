@@ -6458,7 +6458,29 @@ if ($request->v == "welfareReviewForm")  //form.csv
  }  //end
 
 
-    
+ if ($request->v == "manageCommitte")
+{
+
+
+ $roleType = DB::table('welfarecommitte')
+    ->join('users', 'welfarecommitte.memberEID', '=', 'users.empId')
+    ->select('users.empName','welfarecommitte.*')
+    ->latest('welfarecommitte.id'); //similar to orderby('id','desc')
+    // ->where('users.status',0)
+    //  ->paginate(10000000);
+
+
+$rhtml = view('welfare.manageWelfareCommitte')->with(['roleType' => $roleType])->render();
+
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+
+} 
+
+ 
     }
 }
 

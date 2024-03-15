@@ -25,7 +25,7 @@
         <br>
         <div class="col text-center">
           <h5>
-                <b> Remarks From Supervisor(s) </b>
+                <b> Remarks From Committe Member(s) </b>
               
               </h5>
 			</div>
@@ -36,20 +36,20 @@
       </div>
 
       <div class="card-body table-responsive">
-      <a href="/home" text-left"><i class="fa fa-arrow-left fa-lg back"></i> <span class="back">Home</span></a>  <br>
+      <a href="javascript:history.back()" class="btn btn-secondary">Back</a> <br>      
       <table id="example1" class=" table data-table table-hover table-striped  table-bordered" style="width:100%">
           <thead>
             <tr>
-              <th>Notesheet Id</th>
-              <th>CreatedBy</th>
+              <th>Welfare NotesheetId</th>
+              <th>Name</th>
               <th>Remarks</th> 
             </tr>
             </thead>
 
 						<tbody>
-              @foreach($notesheetRemarks as $rv)
+              @foreach($welfareRemarks as $rv)
               <tr>
-                <td>{{$rv->noteId}}</td>
+                <td>{{$rv->welfareId}}</td>
                 <td>{{$rv->modifier}}</td>
                 <td>{{$rv->remarks}}</td>
               </tr>@endforeach

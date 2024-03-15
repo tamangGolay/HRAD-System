@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\welfareRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
-use App\notesheetapprove;
+use App\welfareRequest;
+use App\welfarenoteapproval;
 use DB;
 use Auth;
 
@@ -60,4 +60,40 @@ class WelfareNewController extends Controller
                 DB::update('update welfarenote set cancelled = ? where id = ?', [$request->cancelled, $request->id]);       
                 return redirect('home')->with('error','You have cancelled the Welfare Request!');   
             }
+
+             /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {       
+        welfareRequest::updateOrCreate(['id' => $request->id],
+                ['justification' => $request->justification,                                 
+                ]); 
+                   
+        return response()->json(['success'=>'Updated successfully.']);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $User = welfareRequest::find($id);
+        return response()->json($User);
+    }
+
+    public function viewRemarks($id)
+    {    
+        $welfareRemarks = welfarenoteapproval::all()
+        ->where('welfareId',$id);   
+      
+        return view('welfareNew.remarks',compact('welfareRemarks'));
+    }
+  
+  }

@@ -33,22 +33,21 @@ hr{
 			      @forelse($welfareNote as $rv)
 			
               <tr class="text-nowrap">
-                     <th>Note Id</th>          <td> {{($rv->id)}} </td>                     </tr>
+                     <th>Welfare NoteId</th>   <td> {{($rv->id)}} </td>                     </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>                </tr>           
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>                    </tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
 			        <tr>    <th>Status</th>          <td> {{$rv->status}} </td>                    </tr>
-              <tr>    <th>Edit Justification Content</th>   
+              <tr>    <th>Edit Content</th>   
               <td> <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
              </td> </tr>
 
             <tr><th colspan="2">Action</th> </tr>
 
-          <tr><th colspan="2">
-                <div class="container">
-                  
+            <tr><th colspan="2">
+                <div class="container">                  
                 <div class="row">                    
-                  <div class="col ">          
+                  <div class="col">          
                       <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
@@ -60,13 +59,13 @@ hr{
                         </button> 
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks" required>
                       </form>
-                    </div>                    
+                    </div>   
+                    <!-- 1 col-->
 
      
                     <div class="col">  
                       <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
-                       <div>
-                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
+                        <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
                         <input type="hidden" name="status2" id="status" value="Rejected">
@@ -76,68 +75,25 @@ hr{
                         <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" required>
                       </form> </form>
                     </div>
+
                     </div>
-                  </div>         
-                </td> 	                 
-             <th> </tr> 
+                  </div>       
+                </th> </tr> 
 
               <tr>
                 <th style="border-bottom:4px solid black;" colspan="2"> 
 
-                    <form method="POST" action="/supervisorApproval/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
+                    <form method="POST" action="/viewRemarks/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
                       @csrf
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="submit" value="View Details" class="btn btn-primary text-center col-lg-4">
-                  </form>  
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-
-                            <h5 class="modal-title" id="exampleModalLabel">Remarks By Member 1</h5>
-                            <button type="submit" name="id" class="close"   data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-
-                          <div class="modal-body">
-                            <table class="table table-hover table-striped table-bordered" style="width:100%">
-                              <thead>
-                                <tr>
-                                  <th>Notesheet Id</th>
-                                  <th>Name</th>
-                                  <th>Status</th>
-                                  <th>Remarks</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach($welfare as $rv)
-                                  <tr>
-                                    <td>{{$rv->welfareId}}</td>
-                                    <td>{{$rv->modifier}}</td>
-                                    <td>{{$rv->modifierType}}</td>
-                                    <td>{{$rv->Remarks}}</td>
-
-                                  </tr>@endforeach
-
-                                </tbody>  
-                              </table>                        
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
-                          </div>
-                        
-                    </th>
-                  <!-- </td>   -->
+                  </form>      
+                </th>                 
               </tr>
             </thead>  
       @empty
       <p class="text-center">No data available</p>   
-       @endforelse
-	  
+       @endforelse	  
 
         </tbody>
       </table>	  
@@ -156,7 +112,7 @@ hr{
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
 
 								<div class="form-group">
-									<label class="col-sm-4 col-lg-12" for="justification">{{ __('Welfare Id:') }}</label>
+									<label class="col-sm-4 col-lg-12" for="justification">{{ __('Welfare NoteId:') }}</label>
 									<div class="col-sm-6 col-lg-12">
 								<input type="text" value="<?php echo $welfareNote[0]->id;?>" name="id" id="ids" readonly>	
                 </div>
@@ -249,7 +205,7 @@ hr{
 							}, 4500);
 							document.body.appendChild(alt);
 
-            $.get('/getView?v=GMReview',function(data){        
+            $.get('/getView?v=welfareReviewForm',function(data){        
            $('#contentpage').empty();                          
            $('#contentpage').append(data.html);
             });

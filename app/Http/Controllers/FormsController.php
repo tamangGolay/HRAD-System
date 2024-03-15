@@ -6430,33 +6430,58 @@ if ($request->v == "welfare_request")  //form.csv
 }  //end
 
 
-// welfare review form
-if ($request->v == "welfareReviewForm")  //form.csv
- {     
-    $welfare = welfarenoteapproval::all();    
-     
-    $welfareNote = DB::table('welfarenote')
+if ($request->v == "welfareReviewForm") {
+    // Check if the user is authenticated
+    if (Auth::check()) {
+        
+        $userId = Auth::user()->empId;
+        // Fetch the authenticated user's memberType from the welfarecommitte table
+        $userMemberType = DB::table('welfarecommitte')
+            ->where('memberEID', '=', $userId)
+            ->value('memberType');
 
-    ->join('users','users.empId','=','welfarenote.createdBy')
-    ->join('welfarecommitte','welfarecommitte.memberEID','=','welfarenote.createdBy')
-    ->select('welfarenote.*','users.empName','welfarecommitte.memberType')    
-    ->latest('welfarenote.id')                              //similar to orderby('id','desc')   
-    
-    ->where('cancelled','=','No')   
-    ->where('welfarenote.status','=','Applied')
-    ->where('memberType','=','Member 1')
+        // Query to fetch welfare notes based on user's memberType and status
+        $welfareNoteQuery = DB::table('welfarenote')
+            ->join('users', 'users.empId', '=', 'welfarenote.createdBy')
+            ->select('welfarenote.*', 'users.empName')
+            ->latest('welfarenote.id')
+            ->where('cancelled', '=', 'No');
 
-    ->paginate(10000000);
-  
-  $rhtml = view('welfareNew.welfareReviewForm')->with([ 'welfareNote' => $welfareNote,'welfare' => $welfare,])->render(); 
- 
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
+        if ($userMemberType == 'Member 1') {
+            // If the user is of 'Member 1' type, display forms with status 'Applied'
+            $welfareNoteQuery->where('welfarenote.status', '=', 'Applied');
+        } elseif ($userMemberType == 'Member 2') {
+            // If the user is of 'Member 2' type, display forms with status 'Recommend'
+            $welfareNoteQuery->where('welfarenote.status', '=', 'Member1Recommended');
+        }
+        elseif ($userMemberType == 'Chairperson') {
+        // If the user is Chairperson, display forms with status 'Recommend'
+        $welfareNoteQuery->where('welfarenote.status', '=', 'Member2Recommended');
+        
+        }
 
+        // Paginate the results
+        $welfareNote = $welfareNoteQuery->paginate(10);
+
+        // Fetch all welfare for other purposes
+        $welfare = welfarenoteapproval::all();
+
+        // Render the view
+        $rhtml = view('welfareNew.welfareReviewForm')->with(['welfareNote' => $welfareNote, 'welfare' => $welfare])->render();
+
+        // Return JSON response
+        return response()->json([
+            'success' => true,
+            'html' => $rhtml
+        ]);
+    } else {
+        // User is not authenticated
+        return response()->json([
+            'success' => false,
+            'message' => 'User is not authenticated'
+        ]);
+    }
+}
 
  if ($request->v == "manageCommitte")
 {

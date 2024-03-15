@@ -78,7 +78,7 @@ class NotesheetController extends Controller
             $Request_notesheet->createdBy = $request->empId;
             if($officeType->officeType == 'Division' || $officeType->officeType == 'Department' 
             || $officeType->officeType == 'Section'){
-                $Request_notesheet->status = $status;
+            $Request_notesheet->status = $status;
             }
           
             $Request_notesheet->emailId = $request->emailId;
@@ -230,9 +230,7 @@ public function cancelNotesheet(Request $request)
 
     return redirect('home')->with('error','You have cancelled the Notesheet');   
 
-
-  }
-
+}
 
 
 public function recommendnotesheet(Request $request)

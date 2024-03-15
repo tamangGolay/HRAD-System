@@ -734,3 +734,12 @@ Route::post('destroyipv6', 'Manage_v6allocationController@delete')->name('destro
 //HR new list updated
 Route::resource('newHRList', Manage_HRListController::class);
 Route::post('deleteuserNEW', 'Manage_HRListController@delete')->name('deleteuserNEW');
+
+
+//WELFARE REQUEST NEW (DATE:12/03/2024)
+Route::post('Request_welfare','WelfareNewController@Request_welfare')->name('Request_welfare');
+//notesheet route to view
+Route::get('/welfareStatusReview','WelfareNewController@welfareStatusReview');
+Route::post('/cancelWelfare','WelfareNewController@cancelWelfare')->name('cancelWelfare');
+
+Route::resource('welfareEdit', NoteSReviewController::class);

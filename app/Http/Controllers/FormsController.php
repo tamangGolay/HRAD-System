@@ -72,8 +72,8 @@ use App\WfBank;
 use App\WfRelatives;
 use App\transferHistory;
 use App\Balance;
-use App\v4allocation;
-
+use App\v4allocation; 
+use App\welfarenoteapproval;
 
 class FormsController extends Controller
 {
@@ -6416,6 +6416,46 @@ if ($request->v == "employeeJoining")
    
 }
 //end
+
+// welfareNew Request (TDee: date:12/03/2024)
+if ($request->v == "welfare_request")  //form.csv
+{    
+
+ $rhtml = view('welfareNew.welfarerequest')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
+// welfare review form
+if ($request->v == "welfareReviewForm")  //form.csv
+ {     
+    $welfare = welfarenoteapproval::all();    
+     
+    $welfareNote = DB::table('welfarenote')
+
+    ->join('users','users.empId','=','welfarenote.createdBy')
+    ->join('welfarecommitte','welfarecommitte.memberEID','=','welfarenote.createdBy')
+    ->select('welfarenote.*','users.empName','welfarecommitte.memberType')    
+    ->latest('welfarenote.id')                              //similar to orderby('id','desc')   
+    
+    ->where('cancelled','=','No')   
+    ->where('welfarenote.status','=','Applied')
+    ->where('memberType','=','Member 1')
+
+    ->paginate(10000000);
+  
+  $rhtml = view('welfareNew.welfareReviewForm')->with([ 'welfareNote' => $welfareNote,'welfare' => $welfare,])->render(); 
+ 
+  return response()
+     ->json(array(
+      'success' => true,
+      'html' => $rhtml
+       ));
+ }  //end
 
 
     

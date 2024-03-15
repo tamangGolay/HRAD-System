@@ -746,3 +746,5 @@ Route::resource('managecommitte', ManageCommitteController::class);
 
 Route::resource('welfareEdit', WelfareNewController::class);
 Route::post('/viewRemarks/{id}','WelfareNewController@viewRemarks')->name('viewRemarks'); 
+
+Route::post('/recommendWelfare','WelfareNewController@recommendWelfare')->name('recommendWelfare');

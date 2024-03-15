@@ -74,6 +74,7 @@ use App\transferHistory;
 use App\Balance;
 use App\v4allocation; 
 use App\welfarenoteapproval;
+use App\WelfareCommitte;
 
 class FormsController extends Controller
 {
@@ -6459,15 +6460,20 @@ if ($request->v == "welfareReviewForm") {
         $welfareNoteQuery->where('welfarenote.status', '=', 'Member2Recommended');
         
         }
-
         // Paginate the results
         $welfareNote = $welfareNoteQuery->paginate(10);
 
         // Fetch all welfare for other purposes
         $welfare = welfarenoteapproval::all();
 
+                $memberIdentity = DB::table('welfarecommitte')
+                ->select('welfarecommitte.*')
+                ->Where('welfarecommitte.memberEID','=',Auth::User()->empId)   
+                ->first();
+   
+
         // Render the view
-        $rhtml = view('welfareNew.welfareReviewForm')->with(['welfareNote' => $welfareNote, 'welfare' => $welfare])->render();
+        $rhtml = view('welfareNew.welfareReviewForm')->with(['welfareNote' => $welfareNote, 'welfare' => $welfare,'memberIdentity'=>$memberIdentity])->render();
 
         // Return JSON response
         return response()->json([

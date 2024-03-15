@@ -22,14 +22,14 @@ hr{
 		
     </div><br>
 	 
-      <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
+      <form method="POST" action="/recommendWelfare" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
 
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-
+            @if($welfareNote)
 			      @forelse($welfareNote as $rv)
 			
               <tr class="text-nowrap">
@@ -46,33 +46,50 @@ hr{
 
             <tr><th colspan="2">
                 <div class="container">                  
-                <div class="row">                    
+                <div class="row">  
+                @if ($memberIdentity && ($memberIdentity->memberType == 'Member 1' || $memberIdentity->memberType == 'Member 2'))            
                   <div class="col">          
-                      <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
+                      <form method="POST" action="/recommendWelfare" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status" id="status" value="GMRecommended">
+                        <input type="hidden" name="status" id="status" value="Recommended">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center"> 
                         Recommend
                         </button> 
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks" required>
                       </form>
-                    </div>   
+                    </div>  
+                    @endif 
                     <!-- 1 col-->
+                    @if ($memberIdentity && $memberIdentity->memberType == 'Chairperson') 
+                    <div class="col">          
+                      <form method="POST" action="/recommendWelfare" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
+                      <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
+                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
+                        <input type="hidden" name="status1" id="status" value="Approved">
+                        
+                        <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Approve the welfare request?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center"> 
+                        Approved
+                        </button> 
+                        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Approve remarks" required>
+                      </form>
+                    </div>   
+                  @endif
      
                     <div class="col">  
-                      <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
+                      <form method="POST" action="/recommendWelfare"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
                         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
                         <input type="hidden" name="status2" id="status" value="Rejected">
+                        
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
                         Reject
                         </button>
-                        <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks" required>
+                        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder=" Reject Remarks" required>
                       </form> </form>
                     </div>
 
@@ -90,10 +107,19 @@ hr{
                   </form>      
                 </th>                 
               </tr>
-            </thead>  
-      @empty
-      <p class="text-center">No data available</p>   
-       @endforelse	  
+            </thead> 
+
+            @empty
+                    <tr>
+                        <td colspan="6" class="text-center">No data available</td>
+                    </tr>
+                @endforelse
+
+            @else
+                <tr>
+                    <td colspan="6" class="text-center">No data available</td>
+                </tr>
+            @endif
 
         </tbody>
       </table>	  
@@ -101,7 +127,8 @@ hr{
     </div>
   </div>
 <div>
-  
+
+@if($welfareNote && count($welfareNote) > 0)
 <div class="modal fade" id="ajaxModel" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
@@ -110,7 +137,7 @@ hr{
 						<div class="modal-body">
 							<form id="Form" name="Form" class="form-horizontal"> @csrf
 								<input type="hidden" id="token" value="{{ csrf_token() }}">
-
+                
 								<div class="form-group">
 									<label class="col-sm-4 col-lg-12" for="justification">{{ __('Welfare NoteId:') }}</label>
 									<div class="col-sm-6 col-lg-12">
@@ -136,6 +163,16 @@ hr{
 					</div>
 				</div>
 </div>
+
+@else
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                
+            </div>
+        </div>
+    </div>
+@endif
 
 
 <!-- jquery-validation -->

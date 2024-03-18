@@ -133,6 +133,8 @@ Route::get('/', function(){
 
 });
 
+// welfareReport
+Route::get('/wReport/{id}', [App\Http\Controllers\WelfareReportController::class, 'createWF_PDF'])->name('WFreport.pdf');
 
 
 

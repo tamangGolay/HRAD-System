@@ -6511,6 +6511,26 @@ $rhtml = view('welfare.manageWelfareCommitte')->with(['roleType' => $roleType])-
 
 } 
 
+//notesheetreport
+if ($request->v == "welfareReport")
+{
+    //  $notesheet = notesheetRequest::all();
+    $welfarereport = DB::table('welfarenoteapproval')
+    ->join('welfarenote','welfarenote.id','=','welfarenoteapproval.welfareId')
+    ->select('welfarenoteapproval.*','welfarenote.id','welfarenote.topic')  
+        ->where('welfarenoteapproval.modifierType','=','Approved')
+        ->latest('welfarenoteapproval.id')
+        ->get();
+
+    $rhtml = view('welfareNew.welfareReport')->with(['welfarereport' => $welfarereport])->render();
+    return response()
+        ->json(array(
+        'success' => true,
+        'html' => $rhtml
+    ));
+}
+
+
  
     }
 }

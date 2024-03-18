@@ -8,15 +8,13 @@ hr{
 			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-   
-
 <div class="row">
   <div class="col">
     <div class="card ">
       <div class="card-header bg-green">
         <div class="col text-center">
           <h5>
-                <b>Welfare Review Form </b>
+             <b>Welfare Review Form </b>
               </h5>
 			</div>
 		
@@ -78,28 +76,28 @@ hr{
                       </form>
                     </div>   
                   @endif
+
+                  @if ($memberIdentity && ($memberIdentity->memberType == 'Chairperson' || $memberIdentity->memberType == 'Member 1' || $memberIdentity->memberType == 'Member 2')) 
      
                     <div class="col">  
                       <form method="POST" action="/recommendWelfare"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf  
                         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">       
                         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
-                        <input type="hidden" name="status2" id="status" value="Rejected">
-                        
+                        <input type="hidden" name="status2" id="status" value="Rejected">                        
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Reject?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark col-lg-4 mb-4 btn-center " > 
                         Reject
                         </button>
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder=" Reject Remarks" required>
                       </form> </form>
-                    </div>
-
+                     </div>
+                    @endif
                     </div>
                   </div>       
                 </th> </tr> 
 
               <tr>
-                <th style="border-bottom:4px solid black;" colspan="2"> 
-
+                <th style="border-bottom:4px solid black;" colspan="2">
                     <form method="POST" action="/viewRemarks/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
                       @csrf
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">

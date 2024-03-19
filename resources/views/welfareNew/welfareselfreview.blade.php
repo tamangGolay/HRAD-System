@@ -3,6 +3,10 @@ hr{
   border: 2px solid green;
   border-radius: 5px;
 }
+#backbutton{
+  margin-left:2%;
+}
+
 
 </style>
 <div class="row ">
@@ -19,8 +23,9 @@ hr{
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
-            <thead> <tbody>
-		   	
+          <button  id="backbutton" class="btn btn-info btn-md mb-3" onclick="back();" style="color:black;">Back</button>
+
+            <thead> <tbody>		   	
             @foreach($welfareStatusReview as $rv)
 			
               <tr class="text-nowrap">
@@ -58,17 +63,14 @@ hr{
 
         </tbody>
       </table>  
-
-
-      <div class="float-right"> {{$welfareStatusReview->links()}} </div>
-      <div>
-        
+    <div class="float-right"> {{$welfareStatusReview->links()}} </div>
+    <div>        
       </div>
       </div>
     </div>
     <script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 
-<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
     <!-- DataTables -->
     <script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -102,3 +104,14 @@ hr{
       });
     });
     </script>
+
+<script>
+  
+function back()
+{
+  $.get('/getView?v=welfare_request', function(data) {
+				$('#contentpage').empty();
+				$('#contentpage').append(data.html);
+			});
+} 
+</script>

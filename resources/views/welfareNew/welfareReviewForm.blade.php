@@ -7,7 +7,6 @@ hr{
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 <div class="row">
   <div class="col">
     <div class="card ">
@@ -15,11 +14,9 @@ hr{
         <div class="col text-center">
           <h5>
              <b>Welfare Review Form </b>
-              </h5>
-			</div>
-		
-    </div><br>
-	 
+            </h5>
+			</div>		
+    </div><br>	 
       <form method="POST" action="/recommendWelfare" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
@@ -27,6 +24,7 @@ hr{
           <table id="example1" class="table table-hover table-striped table-bordered">
             <!-- <thead>  -->
               <tbody>
+
             @if($welfareNote)
 			      @forelse($welfareNote as $rv)
 			
@@ -49,10 +47,9 @@ hr{
                   <div class="col">          
                       <form method="POST" action="/recommendWelfare" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+                      <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId"> 
 
-                        <input type="hidden" name="status" id="status" value="Recommended">
-                        
+                        <input type="hidden" name="status" id="status" value="Recommended">                        
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to recommend and forward?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center"> 
                         Recommend
                         </button> 
@@ -95,7 +92,6 @@ hr{
                     </div>
                   </div>       
                 </th> </tr> 
-
               <tr>
                 <th style="border-bottom:4px solid black;" colspan="2">
                     <form method="POST" action="/viewRemarks/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
@@ -152,16 +148,13 @@ hr{
 
                 <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
 									<button type="submit" class="btn btn-outline-success" id="saveBtn" value="create">Save changes </button>
-									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>      
-
-								</div>
+									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>       							</div>
 							</form>
 						</div>
 					</div>
 				</div>
 </div>
-@endif
-
+@endif 
 
 <!-- jquery-validation -->
 <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
@@ -194,8 +187,7 @@ hr{
 					headers: {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
-				});
-			
+				});			
         	$('body').on('click', '.edit', function() {
 					var notesheetRM = $(this).data('id');
 					$.get("{{ route('welfareEdit.store') }}" + '/' + notesheetRM + '/edit', function(data) {
@@ -203,8 +195,7 @@ hr{
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
 						$('#ids').val(data.id);                       //#id is from modal form and data.id is from modal(fillable) database
-						$('#justification').val(data.justification);    //#input id and with data(DB field name)
-						
+						$('#justification').val(data.justification);    //#input id and with data(DB field name)						
 					})
 				});
 				$('#saveBtn').click(function(e) {
@@ -231,9 +222,7 @@ hr{
             $.get('/getView?v=welfareReviewForm',function(data){        
            $('#contentpage').empty();                          
            $('#contentpage').append(data.html);
-            });
-							
-							
+            });				
 							table.draw();
 						},
 						error: function(data) {
@@ -243,9 +232,9 @@ hr{
 					});
       		});
       })
-</script>
-<!-- jquery-validation -->
-<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+      </script>
+      <!-- jquery-validation -->
+      <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 			<!-- DataTables -->
 			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>

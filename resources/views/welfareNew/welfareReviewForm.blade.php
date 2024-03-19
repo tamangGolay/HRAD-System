@@ -21,12 +21,12 @@ hr{
     </div><br>
 	 
       <form method="POST" action="/recommendWelfare" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
-
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
 
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
-            <thead> <tbody>
+            <!-- <thead>  -->
+              <tbody>
             @if($welfareNote)
 			      @forelse($welfareNote as $rv)
 			
@@ -34,13 +34,13 @@ hr{
                      <th>Welfare NoteId</th>   <td> {{($rv->id)}} </td>                     </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>                </tr>           
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>                    </tr>
-			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
-			        <tr>    <th>Status</th>          <td> {{$rv->status}} </td>                    </tr>
-              <tr>    <th>Edit Content</th>   
-              <td> <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
+			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td>  </tr>                            
+			        <tr>   <th>Status</th>           <td> {{$rv->status}} </td>                    </tr>
+              <tr>   <th>Edit Content</th>   
+              <td>   <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
              </td> </tr>
 
-            <tr><th colspan="2">Action</th> </tr>
+            <tr><th colspan="2">Action</th></tr>
 
             <tr><th colspan="2">
                 <div class="container">                  
@@ -104,10 +104,8 @@ hr{
                       <input type="submit" value="View Details" class="btn btn-primary text-center col-lg-4">
                   </form>      
                 </th>                 
-              </tr>
-            </thead> 
-
-            @empty
+              </tr>           
+                @empty
                     <tr>
                         <td colspan="6" class="text-center">No data available</td>
                     </tr>
@@ -120,6 +118,7 @@ hr{
             @endif
 
         </tbody>
+        <!-- </thead> -->
       </table>	  
       </div>
     </div>
@@ -161,15 +160,6 @@ hr{
 					</div>
 				</div>
 </div>
-
-@else
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                
-            </div>
-        </div>
-    </div>
 @endif
 
 
@@ -192,8 +182,6 @@ hr{
 <!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
 <script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
 
-
-
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 			<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
@@ -214,8 +202,8 @@ hr{
 						$('#modelHeading').html("Edit Welfare Content");
 						$('#saveBtn').val("edit-book");
 						$('#ajaxModel').modal('show');
-						$('#ids').val(data.id);              //#id is from modal form and data.id is from modal(fillable) database
-						$('#justification').val(data.justification);//#input id and with data(DB field name)
+						$('#ids').val(data.id);                       //#id is from modal form and data.id is from modal(fillable) database
+						$('#justification').val(data.justification);    //#input id and with data(DB field name)
 						
 					})
 				});
@@ -245,7 +233,7 @@ hr{
            $('#contentpage').append(data.html);
             });
 							
-							// window.location.href = '/home';
+							
 							table.draw();
 						},
 						error: function(data) {
@@ -271,7 +259,7 @@ hr{
 			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
 			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
 			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
+			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->  
 			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
 
     <script>

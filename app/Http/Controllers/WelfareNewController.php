@@ -29,12 +29,12 @@ class WelfareNewController extends Controller
 
             // dd($member1Mail->memberEmail);
             Mail::to($member1Mail->memberEmail) 
-            ->send(new MyTestMail($member1MailContent));
+            ->send(new MyTestMail($member1MailContent));           
 
-            return redirect('home')->with('success', 'Welfare Request Form submitted successfully');
-
-         }
-
+          return redirect('home')->with('page', 'welfare_request')
+          ->with('success', 'Welfare Request Form submitted successfully');
+        }
+          
          public function welfareStatusReview()
          {
          
@@ -55,11 +55,11 @@ class WelfareNewController extends Controller
          ));
          }
 
-            public function cancelWelfare(Request $request)
-            {
-                DB::update('update welfarenote set cancelled = ? where id = ?', [$request->cancelled, $request->id]);       
-                return redirect('home')->with('error','You have cancelled the Welfare Request!');   
-            }
+        public function cancelWelfare(Request $request)
+        {
+            DB::update('update welfarenote set cancelled = ? where id = ?', [$request->cancelled, $request->id]);       
+            return redirect('home')->with('error','You have cancelled the Welfare Request!');   
+        }
 
              /**
      * Store a newly created resource in storage.
@@ -149,7 +149,8 @@ class WelfareNewController extends Controller
                           Mail::to($member2Email->memberEmail)                    
                               ->send(new MyTestMail($member2EmailContent)); 
 
-                      return redirect('home')->with('success','You have recommended and forwarded the Welfare Request');
+                      return redirect('home')
+                        ->with('success','You have recommended and forwarded the Welfare Request');
                       }  
 
                       
@@ -192,7 +193,8 @@ class WelfareNewController extends Controller
                         Mail::to($member3Email->memberEmail)                    
                             ->send(new MyTestMail($member3EmailContent)); 
 
-                    return redirect('home')->with('success','You have recommended and forwarded the Welfare Request');
+                    return redirect('home')
+                        ->with('success','You have recommended and forwarded the Welfare Request');
                     } } 
 
 
@@ -235,7 +237,8 @@ class WelfareNewController extends Controller
                         Mail::to($userEmail->emailId)                    
                             ->send(new MyTestMail($EmailMemberSecretary)); 
 
-                    return redirect('home')->with('success','You have approved Welfare Request!');
+                    return redirect('home')
+                        ->with('success','You have approved Welfare Request!');
                     }   
                   }                         
                     
@@ -274,7 +277,8 @@ class WelfareNewController extends Controller
                        Mail::to($userEmail->emailId)                       
                        ->send(new MyTestMail($rejectWelfare));
                          
-                   return redirect('home')->with('error','You have rejected the Welfare Request!');    
+                   return redirect('home')
+                      ->with('error','You have rejected the Welfare Request!');    
                }
 
                elseif($welfareCommitte->memberType == "Member 2"){
@@ -310,7 +314,8 @@ class WelfareNewController extends Controller
                    Mail::to($userEmail->emailId)                       
                    ->send(new MyTestMail($rejectWelfare));
                      
-               return redirect('home')->with('error','You have rejected the Welfare Request!');    
+               return redirect('home')
+                    ->with('error','You have rejected the Welfare Request!');    
               }
 
                 else{
@@ -347,12 +352,14 @@ class WelfareNewController extends Controller
                     Mail::to($userEmail->emailId)                       
                     ->send(new MyTestMail($rejectWelfare));
                       
-                return redirect('home')->with('error','You have rejected the Welfare Request!');    
+                return redirect('home')
+                    ->with('error','You have rejected the Welfare Request!');    
             }}
    
     else{
 
-          return redirect('home')->with('error','You cannot leave the remarks field empty test!!');  
+          return redirect('home')
+              ->with('error','You cannot leave the remarks field empty test!!');  
       }           
    
      }

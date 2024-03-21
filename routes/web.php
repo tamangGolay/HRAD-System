@@ -133,8 +133,6 @@ Route::get('/', function(){
 
 });
 
-// welfareReport
-Route::get('/wReport/{id}', [App\Http\Controllers\WelfareReportController::class, 'createWF_PDF'])->name('WFreport.pdf');
 
 
 
@@ -750,3 +748,6 @@ Route::resource('welfareEdit', WelfareNewController::class);
 Route::post('/viewRemarks/{id}','WelfareNewController@viewRemarks')->name('viewRemarks'); 
 
 Route::post('/recommendWelfare','WelfareNewController@recommendWelfare')->name('recommendWelfare');
+
+// welfareReport
+Route::get('/wReport/{id}', [App\Http\Controllers\WelfareReportController::class, 'createWF_PDF'])->name('WFreport.pdf');

@@ -18,19 +18,19 @@ a {
 
 </style>
 
-
-
-<link href="{{asset('css/bose.css')}}" rel="stylesheet">
-
+<link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">  
+
 <div class="container">
     <div class="card-header bg-green" style="margin-bottom: 5px;">
 				<div class="col text-center">
-				<h5>
-                <b>Committe List</b>
-              </h5> </div>
+                    <h5>
+                        <b>Committe List</b>
+                    </h5> 
+                </div>
 	</div>
+
     <table class="table table-bordered data-table" style="width:100%">
     @csrf
         <thead>
@@ -38,7 +38,7 @@ a {
                 <th>No</th>
                 <th>Employee Name</th>
                 <th>Employee ID</th>
-                <th>email</th>
+                <th>Email</th>
                 <th>Role</th>
                 <th width="300px">Action</th>
             </tr>
@@ -78,7 +78,7 @@ a {
                     <div class="form-group">
                         <label for="name" class="col-sm-2 col-lg-8 control-label">Email</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="emailId" name="emailId" value=""  required>
+                            <input type="text" class="form-control" id="memberEmail" name="memberEmail" value=""  required>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@ a {
             },
             {data: 'empName', name: 'empName', orderable: false, searchable: true},
             {data: 'empId', name: 'empId', orderable: false, searchable: true},
-            {data: 'emailId', name: 'emailId', orderable: false, searchable: true},
+            {data: 'memberEmail', name: 'memberEmail', orderable: false, searchable: true},
 			{data: 'memberType', name: 'memberType', orderable: false, searchable: true},
             {data: 'action', name: 'action', orderable: true, searchable: false},
         ]
@@ -171,7 +171,7 @@ a {
          $('#user_id').val(data.id);
          $('#empName').val(data.user.empName);
          $('#emp_id').val(data.memberEID);
-         $('#emailId').val(data.emailId);
+         $('#memberEmail').val(data.memberEmail); 
          $('#memberType').val(data.memberType);
     
       })
@@ -180,53 +180,41 @@ a {
 //   After clicking save changes in Add and Edit it will trigger here
 
     $('#addButton').click(function (e) {
-       
-        e.preventDefault();
-        $(this).html('Save');        
-    
-        $.ajax({
-          data: $('#Form').serialize(),
-          url: "{{ route('managecommitte.store') }}",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-     
-              $('#Form').trigger("reset");
-              $('#adduserModel').modal('hide');
-              table.draw();
-              window.onload = callajaxOnPageLoad(page);
-             var alt = document.createElement("div");
-             alt.setAttribute("style","position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-             alt.innerHTML = "Data Updated Successfully! ";
-             setTimeout(function(){
-              alt.parentNode.removeChild(alt);
-             },4500);
-            document.body.appendChild(alt);                 
-       
-        
-            window.location.href = '/home';
-        table.draw();
+    e.preventDefault();
+    $(this).html('Save');
 
-    
-         
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#addButton').html('Save Changes');
-              alert(data);
-                
-          }
-      });
-    });    
+    $.ajax({
+        data: $('#Form').serialize(),
+        url: "{{ route('managecommitte.store') }}",
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            // Reset form and hide modal
+            $('#Form').trigger("reset");
+            $('#adduserModel').modal('hide');
+            
+            // Display success message
+            var alt = document.createElement("div");
+            alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
+            alt.innerHTML = "Data Updated Successfully! ";
+            document.body.appendChild(alt);             
+            
+            // After another delay, load the manageCommitte view
+            setTimeout(function() {
+                $.get('/getView?v=manageCommitte', function(data) {
+                    $('#contentpage').empty();                          
+                    $('#contentpage').append(data.html);
+                });
+            }, 4000); // Adjust the delay as needed
+        },
+        error: function (data) {
+            console.log('Error:', data);
+            $('#addButton').html('Save Changes');
+            alert(data);
+        }
+    });
+});
 </script>
-
-<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-		<script type="text/javascript">
-		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<strong></strong>';
-		});
-
-		</script>
 
 
 

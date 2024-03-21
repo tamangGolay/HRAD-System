@@ -10,7 +10,7 @@ class WelfareCommitte extends Model
     protected $table = 'welfarecommitte';
 
     protected $fillable = ['id',
-    'memberEID','memberType','emailId'];
+    'memberEID','memberType','memberEmail'];
     
     public $timestamps = false;
 

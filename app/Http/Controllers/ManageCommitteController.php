@@ -22,12 +22,8 @@ class ManageCommitteController extends Controller
      $userList = DB::table('welfarecommitte')
     ->join('users', 'welfarecommitte.memberEID', '=', 'users.empId')
     ->select('users.empName','users.empId','welfarecommitte.*')
-    ->latest('welfarecommitte.id'); //similar to orderby('id','desc')
-    // ->where('users.status',0)
-    //  ->paginate(10000000);
-
-        
-        
+    ->latest('welfarecommitte.id');      //similar to orderby('id','desc')
+                
         if ($request->ajax()) {
             $data = $userList;
             return Datatables::of($data)
@@ -58,18 +54,10 @@ class ManageCommitteController extends Controller
         WelfareCommitte::updateOrCreate(['id' => $request->id],
                 [
                 'memberEID' => $request->emp_id,
-                'emailId' => $request->emailId,
+                'memberEmail' => $request->memberEmail,
                 'memberType' => $request->memberType,
-                ]); 
-
-                //  User::updateOrCreate(['id' => $request->id],
-                //  [
-                //   'memberEID' => $request->emp_id
+                ]);
                   
-                //   ]); 
-                 
-              
-   
         return response()->json(['success'=>'Updated successfully.']);
     }
     /**
@@ -105,8 +93,6 @@ class ManageCommitteController extends Controller
     //To redirect to the manage_vehicle page after the management of vehicle
     public function message(Request $request)
     {
-
         return redirect('home')->with('page', 'userList');
     }
-
 }

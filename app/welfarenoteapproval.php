@@ -9,7 +9,7 @@ class welfarenoteapproval extends Model
     //
     protected $table = 'welfarenoteapproval';
 
-    protected $fillable = ['welfareId','modifier','modiType','remarks'];
+    protected $fillable = ['welfareId','modifier','modifierType','remarks'];
 
     public $timestamps = false;
 

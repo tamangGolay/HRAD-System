@@ -34,8 +34,8 @@ div.notesheet {
 
         <img src="{{asset('/cd/images/header.png')}}" width="100%" height="100px">
         <br><br><br>
-            <div class = "col-md-8">
-            <div class="notesheet"> {{$welfare->createdOn}}</div>
+            <div class = "col-md-8">           
+            <div class="notesheet">{{ \Carbon\Carbon::parse($welfare->createdOn)->format('Y-m-d') }}</div>
                 <h2 style="text-align:center"> Welfare Report </h2>
             </div>
 

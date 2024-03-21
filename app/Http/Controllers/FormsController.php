@@ -3836,9 +3836,6 @@ if ($request->v == "room_details")
               
               
                
-   
-               
-   
                $rhtml = view('super admin.roleAdd')->render();
                return response()
                    ->json(array(
@@ -6501,7 +6498,7 @@ if ($request->v == "welfareReviewForm") {
     //  ->paginate(10000000);
 
 
-$rhtml = view('welfare.manageWelfareCommitte')->with(['roleType' => $roleType])->render();
+$rhtml = view('welfareNew.manageWelfareCommitte')->with(['roleType' => $roleType])->render();
 
     return response()
         ->json(array(

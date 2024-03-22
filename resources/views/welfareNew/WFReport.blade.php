@@ -55,7 +55,7 @@ div.notesheet {
                       </tr>
 
                       <tr>
-                        <th scope = "col" class="col5"> Name </th>
+                        <th scope = "col" class="col5">Applied By</th>
                         <td class="col1"> {{$userName->empName}} </td>
                       </tr>
                     

@@ -75,20 +75,7 @@ class ManageCommitteController extends Controller
         return response()->json($User);
     }
   
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(Request $request)
-    {
-        $query = DB::table('users')->where('id', $request->id)
-            ->increment('status');
-
-        return response()
-            ->json(['success' => 'User deleted successfully.']);
-    }
+    
 
     //To redirect to the manage_vehicle page after the management of vehicle
     public function message(Request $request)

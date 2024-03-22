@@ -92,6 +92,7 @@ hr{
                     </div>
                   </div>       
                 </th> </tr> 
+              @if ($memberIdentity->memberType != 'Member 1')
               <tr>
                 <th style="border-bottom:4px solid black;" colspan="2">
                     <form method="POST" action="/viewRemarks/{{($rv->id)}}"  enctype="multipart/form-data" accept-charset="UTF-8" class="text-center"> @csrf         
@@ -100,7 +101,15 @@ hr{
                       <input type="submit" value="View Details" class="btn btn-primary text-center col-lg-4">
                   </form>      
                 </th>                 
-              </tr>           
+              </tr> 
+            @endif
+
+            @if ($memberIdentity->memberType == 'Member 1')
+            <tr>
+                <th style="border-bottom:4px solid black;" colspan="2"></th>                 
+              </tr> 
+            @endif
+
                 @empty
                     <tr>
                         <td colspan="6" class="text-center">No data available</td>

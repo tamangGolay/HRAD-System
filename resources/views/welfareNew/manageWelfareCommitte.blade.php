@@ -108,25 +108,6 @@ a {
 </div>
 
 
-<div class="modal fade" id="userModel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="jobHeading"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="Form" name="Form" class="form-horizontal">
-                @csrf
-                <input type="hidden"  value="{{ csrf_token() }}">  
-      
-                <div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12">
-                    <button type="submit" class="btn btn-outline-success" id="userDeleteButton" value="create">Yes</button>
-						<button type="button" class="btn btn-outline-danger" data-dismiss="modal">No</button>                   
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
     
 
@@ -163,7 +144,7 @@ a {
     $('body').on('click', '.edit', function () {
       var user_id = $(this).data('id');
      
-      $.get("{{ route('managecommitte.index') }}" +'/' + user_id +'/edit', function (data) {
+      $.get("{{ route('managecommitte.store') }}" +'/' + user_id +'/edit', function (data) {
           $('#modelHeading').html("Edit user details");
           $('#addButton').val("edit-room");
           $('#adduserModel').modal('show');

@@ -6528,6 +6528,33 @@ if ($request->v == "welfareReport")
     ));
 }
 
+//laptop details
+
+if ($request->v == "laptopdetails")  //form.csv
+{    
+
+ $rhtml = view('LaptopDetails.laptopReleaseDetails')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
+//laptop release Report
+if ($request->v == "laptopreport")  //form.csv
+{    
+
+ $rhtml = view('LaptopDetails.laptopReleaseReport')->render(); 
+ return response()
+    ->json(array(
+     'success' => true,
+     'html' => $rhtml
+      ));
+}  //end
+
+
 
  
     }

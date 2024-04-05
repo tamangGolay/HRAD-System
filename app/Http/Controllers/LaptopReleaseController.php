@@ -14,15 +14,14 @@ class LaptopReleaseController extends Controller
     public function Laptop_release(Request $request)
     {
         
-            $Request_refund = new LaptopRelease;
-            $Request_refund->empid = $request->EmpId;     //database name n user input name
-            $Request_refund->remarks = $request->remarks;
-            // $Request_refund->releasedate = $request->refundAmount;                
-            $Request_refund->save();    
+            $Request_release = new LaptopRelease;
+            $Request_release->empid = $request->EmpId;    
+            $Request_release->remarks = $request->remarks;
+            $Request_release->save();    
 
 
-            return redirect('home')->with('page', 'refund')
-                ->with('success', 'welfare refund for this employee is successful!');
+            return redirect('home')->with('page', 'laptopdetails')
+                ->with('success', 'You have successfully saved the record!');
 
         } 
 

@@ -6441,7 +6441,8 @@ if ($request->v == "welfareReviewForm") {
         // Query to fetch welfare notes based on user's memberType and status
         $welfareNoteQuery = DB::table('welfarenote')
             ->join('users', 'users.empId', '=', 'welfarenote.createdBy')
-            ->select('welfarenote.*', 'users.empName')
+            ->join('users as empUser', 'empUser.empId', '=', 'welfarenote.empID')
+            ->select('welfarenote.*', 'users.empName','empUser.empName as employeeName')
             ->latest('welfarenote.id')
             ->where('cancelled', '=', 'No');
 

@@ -37,7 +37,46 @@
                       <div class="col-md-8 ">
                         <input type="text" name="topicWelfare" class="form-control" id="topicWelfare" placeholder="Topic" required>
                       </div>
-                  </div>     
+        </div>   
+        
+        <div class=" textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="empID">&nbsp;&nbsp;&nbsp;EmpId:</label>
+                <div class="col-md-3">                       
+                <input type="number" id="empID" class="form-control" placeholder="empId,you are requesting for" onKeyPress="if(this.value.length==8) return false;
+					       if( isNaN(String.fromCharCode(event.keyCode))) return false"; name="empID" value="{{ old('EmpId') }}"
+							  autocomplete="EmpId" onFocusOut="checkEmployee(this.value);" 
+							  onKeyup=" if(this.value.length==8) getEmployeeDetails(this.value) 
+							  if(this.value[0] == 3 || this.value[0] == 9) empcheck (this.value) ;" required> 
+                </div>
+
+                      <span id="info" class="text-danger text-md-right"></span>
+                     <div class="col-sm-2"> 
+                    <span id="empid" class="text-danger"></span>
+                  </div>
+
+                      <div class="col-md-3">
+                        <input type="text" name="empName" class="form-control" id="empName" placeholder="Name" readonly required>
+                      </div>
+        </div>
+
+        
+        <div class=" textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Claiming for:</label>
+                      <div class="col-md-8">                      
+                        <select name="relationToEmp" id="relationToEmp" class="form-control" required> 
+                          <option value=" ">Select Relation</option>
+                          <option value="Father">Father</option>
+                          <option value="Mother">Mother</option> 
+                          <option value="Spouse">Spouse</option>
+                          <option value="Son">Son</option> 
+                          <option value="Daughter">Daughter</option>
+                          <option value="In-law Mother">In-law (Mother)</option> 
+                          <option value="In-law Father">In-law (Father)</option> 
+                          <option value="Resign">Resign (50%)</option>
+                          <option value="Employee">Employee</option>                           
+                        </select> 
+                      </div>
+        </div>  
 												
 
 				<div class="form-group row">
@@ -78,21 +117,7 @@
 		
 		});
 
-function checkEmployee(val) {
-	
-	var csrftoken = document.getElementById('tokenid').value;
-	$.get('/getValues?source=checkrefund&info=' + val + '&token=' + csrftoken, function(data) {
-		console.log(data);
-		
-		$.each(data, function(index, Employee) {
-			if(Employee.empId != null) {  //empId here is db col name from wfrelease
-				document.getElementById('empid').innerHTML = 'Sorry!.This user is not eligble for Refund.';
-				document.getElementById('emp_id').value = '';
-			}
-			
-		})
-	});
-  }
+
 
   function getEmployeeDetails(val)
 {
@@ -119,8 +144,8 @@ function checkEmployee(val) {
 
                             
                             else {
-                                document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-                                 document.getElementById('emp_id').value='';
+                                document.getElementById('empid').innerHTML = 'Please check your Empl Id!';  
+                                 document.getElementById('empID').value='';
 								
                     
                             }               
@@ -131,6 +156,15 @@ function checkEmployee(val) {
       
   
 } 
+
+function empcheck()
+  {
+
+    if(document.getElementById('empID').value[0] == '3' || document.getElementById('empID').value[0] == '9' ){
+       document.getElementById('empid').innerHTML = '';                        
+
+    }
+  }
 
 </script>
 
@@ -153,14 +187,7 @@ function checkEmployee(val) {
 	});
 
 	
-  function empcheck()
-  {
-
-    if(document.getElementById('emp_id').value[0] == '3' || document.getElementById('emp_id').value[0] == '9' ){
-       document.getElementById('empid').innerHTML = '';                        
-
-    }
-  }
+  
   
 function welfareStatus()
 {

@@ -32,11 +32,24 @@ hr{
                 <th>Wefare NoteId</th>     <td> {{($rv->id)}}</td>    </tr>              
               <tr>  
                 <th>Topic</th>              <td> {{$rv->topic}} </td>  </tr>
+
+                <tr>  
+                <th>EmpId</th>              <td> {{$rv->empID}}<b> ({{$rv->empName}}) </b></td> </tr>         
+                
+                <tr>  
+                <th>Claiming for</th>        <td> {{$rv->relationToEmp}} </td>  </tr>
+
 			        <tr>   
-                <th>Justification</th>      <td> {!! nl2br($rv->justification) !!} </td>  </tr>                                  
-			        <tr>   
-                <th>Status</th>             <td> {{$rv->status}} </td> </tr>
-			        <tr> 
+                <th>Justification</th>      <td> {!! nl2br($rv->justification) !!} </td></tr>                                  
+			        <!-- <tr>   
+                <th>Status</th>             <td> {{$rv->status}} </td> </tr>     -->
+                
+              @if($rv->modifierName) 
+              <tr>   
+                  <th class="text-nowrap">Recommended By</th>   <td> {{$rv->modifierName}} </td>          </tr>
+              @endif          
+
+
                 <th style="border-bottom:4px solid black;">Action</th> 
                 <td  style="border-bottom:4px solid black;">
 
@@ -47,8 +60,10 @@ hr{
         @if($rv->status == 'Applied')
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark"> 
         Cancel </button>	
-        @elseif($rv->status == 'Member1Recommended' || $rv->status == 'Member2Recommended' || $rv->status == 'ChairpersonRecommended')
+        @elseif($rv->status == 'Member1Recommended' || $rv->status == 'Member2Recommended')
         <p class="btn btn-outline-success">Progress</p>
+        @elseif($rv->status == 'Approved')
+        <p class="btn btn-outline-success">Success</p>
         @endif
 		    
       </form> 
@@ -63,7 +78,7 @@ hr{
 
         </tbody>
       </table>  
-    <div class="float-right"> {{$welfareStatusReview->links()}} </div>
+    
     <div>        
       </div>
       </div>

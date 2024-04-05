@@ -32,11 +32,13 @@ hr{
                      <th>Welfare NoteId</th>   <td> {{($rv->id)}} </td>                     </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>                </tr>           
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>                    </tr>
+              <tr>   <th>Topic</th>            <td> {{$rv->empID}}( {{$rv->employeeName}}) </td>                    </tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td>  </tr>                            
 			        <tr>   <th>Status</th>           <td> {{$rv->status}} </td>                    </tr>
-              <tr>   <th>Edit Content</th>   
+              
+              <!-- <tr>   <th>Edit Content</th>   
               <td>   <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
-             </td> </tr>
+             </td> </tr> -->
 
             <tr><th colspan="2">Action</th></tr>
 
@@ -69,7 +71,7 @@ hr{
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Approve the welfare request?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center"> 
                         Approved
                         </button> 
-                        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Approve remarks" required>
+                        <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Approve remarks" >
                       </form>
                     </div>   
                   @endif

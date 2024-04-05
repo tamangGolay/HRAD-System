@@ -24,6 +24,8 @@ class WelfareNewController extends Controller
             $Request_welfare->createdBy = $request->empId;     
             $Request_welfare->emailId = $request->emailId;                           
             $Request_welfare->topic = $request->topicWelfare;             
+            $Request_welfare->empID = $request->empID;   
+            $Request_welfare->relationToEmp = $request->relationToEmp;            
             $Request_welfare->justification = $request->justification;            
             $Request_welfare->save(); 
 
@@ -38,14 +40,42 @@ class WelfareNewController extends Controller
          public function welfareStatusReview()
          {
          
-          $welfareStatusReview= DB::table('welfarenote')  
-            ->where('createdBy',Auth::user()->empId)
+          $query= DB::table('welfarenote')
+            ->join('users','welfarenote.empID','=','users.empId')    
+            ->where('welfarenote.createdBy',Auth::user()->empId)
             ->where('cancelled', '=', 'No')         
-            ->select('*')
-                                             
-            ->latest('welfarenote.id') //similar to orderby('welfarenote.id','desc')            
-            ->paginate(1000);
-         
+            ->select('welfarenote.*','users.empName')                                             
+            ->latest('welfarenote.id'); //similar to orderby('welfarenote.id','desc') 
+
+            $welfareStatusReview = $query->paginate(1000);
+
+
+    if ($welfareStatusReview->isNotEmpty()) {      
+      $welfareStatusReview->getCollection()->transform(function ($item) {
+        
+        $modifier = null;
+        $modifierName = null;
+
+        // Check if status is 'Member1Recommended', 'Member2Recommended', or 'Approved'
+        if ($item->status == 'Member1Recommended' || $item->status == 'Member2Recommended' || $item->status == 'Approved') {
+            // Join with welfarenoteapproval and users table to get modifier and modifier's name
+            $modifierInfo = DB::table('welfarenoteapproval')
+                ->join('users as modifier_user', 'welfarenoteapproval.modifier', '=', 'modifier_user.empId')
+                ->where('welfarenoteapproval.welfareId', $item->id)
+                ->where('welfarenoteapproval.modifierType', $item->status)
+                ->select('welfarenoteapproval.modifier', 'modifier_user.empName as modifier_empName')
+                ->first();
+                            
+            $modifier = $modifierInfo->modifier;
+            $modifierName = $modifierInfo->modifier_empName;
+        }
+        
+        $item->modifier = $modifier;
+        $item->modifierName = $modifierName;
+
+        return $item;
+    });
+}
          $rhtml = view('welfareNew.welfareselfreview')->with(['welfareStatusReview' => $welfareStatusReview])->render();
          
          return response()
@@ -198,11 +228,11 @@ class WelfareNewController extends Controller
                     } } 
 
 
-    elseif($request->status1 == "Approved"){
+          elseif($request->status1 == "Approved"){
 
                         if($welfareCommitte->memberType == "Chairperson"){
                         
-                        $re="ChairpersonRecommended";
+                        $re="Approved";
                 
                         $welfarenoteapproval = new welfarenoteapproval;         //notesheetaprove is ModelName
                         $welfarenoteapproval->welfareId = $id->id;                 

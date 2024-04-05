@@ -58,6 +58,11 @@ div.notesheet {
                         <th scope = "col" class="col5">Applied By</th>
                         <td class="col1"> {{$userName->empName}} </td>
                       </tr>
+
+                      <tr>
+                        <th scope = "col" class="col5">Applied For</th>
+                        <td class="col1"> {{$userName->empID}} <p>For his/her:</p>({{$userName->relationToEmp}}) </td>
+                      </tr>
                     
                     </thead> </table>
                      

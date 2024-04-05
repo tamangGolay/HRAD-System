@@ -32,7 +32,8 @@ hr{
                      <th>Welfare NoteId</th>   <td> {{($rv->id)}} </td>                     </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>                </tr>           
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>                    </tr>
-              <tr>   <th>Topic</th>            <td> {{$rv->empID}}( {{$rv->employeeName}}) </td>                    </tr>
+              <tr>   <th>EmpId</th>            <td> {{$rv->empID}}( {{$rv->employeeName}}) </td></tr>
+              <tr>   <th>For</th>              <td> {{$rv->relationToEmp}} </td></tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td>  </tr>                            
 			        <tr>   <th>Status</th>           <td> {{$rv->status}} </td>                    </tr>
               

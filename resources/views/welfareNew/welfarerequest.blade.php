@@ -121,9 +121,7 @@
 
   function getEmployeeDetails(val)
 {
-    //pulling records using cid from checkin table
-
-      var csrftoken = document.getElementById('tokenid').value;
+         var csrftoken = document.getElementById('tokenid').value;
 
           $.get('/getValues?source=getName&info='+val+'&token='+csrftoken,function(data){              
                     console.log(data);
@@ -134,28 +132,20 @@
                     
                    $.each(data, function(index, Employee){
 
-
                           if(Employee.empName != null)
                           {
                             document.getElementById('empName').value = Employee.empName;                  
                                 
                             document.getElementById('empId').innerHTML='';
-                        }  
-
-                            
+                        }                              
                             else {
                                 document.getElementById('empid').innerHTML = 'Please check your Empl Id!';  
-                                 document.getElementById('empID').value='';
-								
+                                 document.getElementById('empID').value='';							
                     
-                            }               
-                                                         
-                            
-                })
-        });
-      
-  
-} 
+                            }            
+            })
+        });     
+  } 
 
 function empcheck()
   {

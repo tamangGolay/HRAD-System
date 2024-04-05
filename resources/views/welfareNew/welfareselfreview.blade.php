@@ -57,13 +57,15 @@ hr{
         <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">        
         <input type="hidden" name="cancelled" id="cancelled" value="Yes">
 
-        @if($rv->status == 'Applied')
+        @if($rv->status == 'Applied')<p>Applied</p>
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark"> 
         Cancel </button>	
         @elseif($rv->status == 'Member1Recommended' || $rv->status == 'Member2Recommended')
         <p class="btn btn-outline-success">Progress</p>
         @elseif($rv->status == 'Approved')
         <p class="btn btn-outline-success">Success</p>
+        @elseif($rv->status == 'Rejected')
+        <p class="btn btn-outline-danger">Rejected</p>
         @endif
 		    
       </form> 

@@ -39,6 +39,8 @@
                                 <tr class="text-nowrap">
                                     <th scope = "col" class="col1"> Sl.No </th>
                                     <th scope = "col" class="col1"> Topic</th>  
+                                    <th scope = "col" class="col1"> For Employee</th> 
+                                    <th scope = "col" class="col1"> For (Relation)</th> 
                                     <th scope = "col" class="col2"> Download </th>
                                 </tr>
                                </thead>
@@ -48,6 +50,8 @@
                                 <tr>
                                     <td class="col1"> {{$welfarereport->welfareId}} </td>
                                     <td class="col1"> {{$welfarereport-> topic}} </td>
+                                    <td class="col1"> {{$welfarereport-> empID}} ({{$welfarereport-> empName}}) </td>
+                                    <td class="col1"> {{$welfarereport-> relationToEmp}} </td>
                                     <td class="col2"><a href="wReport/{{$welfarereport->welfareId}}" class="btn btn-success">Download</a> </td>
                                 </tr>
                                 @endforeach

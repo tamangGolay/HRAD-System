@@ -22,7 +22,8 @@ class WelfareReportController extends Controller
 
         $userName = DB::table('welfarenote')
         ->join('users','users.empId','=','welfarenote.createdBy')
-        ->select('*')	
+        ->join('users as emp_user', 'welfarenote.empID', '=', 'emp_user.empId')
+        ->select('welfarenote.*','users.empName','emp_user.empName as empIdName')	
         ->where('welfarenote.id',$id)
         ->first();
 

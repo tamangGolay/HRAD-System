@@ -6515,7 +6515,8 @@ if ($request->v == "welfareReport")
     //  $notesheet = notesheetRequest::all();
     $welfarereport = DB::table('welfarenoteapproval')
     ->join('welfarenote','welfarenote.id','=','welfarenoteapproval.welfareId')
-    ->select('welfarenoteapproval.*','welfarenote.id','welfarenote.topic')  
+    ->join('users','users.empId','=','welfarenote.empID')
+    ->select('welfarenoteapproval.*','welfarenote.id','welfarenote.topic','welfarenote.empID','welfarenote.relationToEmp','users.empName')  
         ->where('welfarenoteapproval.modifierType','=','Approved')
         ->latest('welfarenoteapproval.id')
         ->get();

@@ -61,8 +61,13 @@ div.notesheet {
 
                       <tr>
                         <th scope = "col" class="col5">Applied For</th>
-                        <td class="col1"> {{$userName->empID}} (For his/her: {{$userName->relationToEmp}}) </td>
-                      </tr>
+                        <td class="col1">
+                        {{$userName->empID}}    ({{$userName->empIdName}})
+                        <br>
+                        <span style="margin-left: 10px;">(For his/her: {{$userName->relationToEmp}})</span>
+                        </td>
+                      </tr>                  
+                   
                     
                     </thead> </table>
                      

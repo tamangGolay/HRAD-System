@@ -751,3 +751,9 @@ Route::post('/recommendWelfare','WelfareNewController@recommendWelfare')->name('
 
 // welfareReport
 Route::get('/wReport/{id}', [App\Http\Controllers\WelfareReportController::class, 'createWF_PDF'])->name('WFreport.pdf');
+
+// laptop release
+Route::post('Laptop_release','LaptopReleaseController@Laptop_release')->name('Laptop_release');
+
+//report for laptop release 
+Route::resource('laptopReleaseReport', 'LaptopReleaseReportController');//refund report

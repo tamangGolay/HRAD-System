@@ -173,7 +173,7 @@ class WelfareNewController extends Controller
                       ->first();
               
                       $member2EmailContent = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 
-                      'You have a request for welfare titled <b> '. $welfaretitle->topic . '</b> recommended by Committe Member 1 Mr/Mrs.' . $userDetail->empName .  '.',
+                      'You have a request for welfare titled <b> '. $welfaretitle->topic . '</b> recommended by Mr/Mrs.' . $userDetail->empName .  '.',
                         'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt','body5' => '','body6' => 'Have a good day!', ];
                       
                           Mail::to($member2Email->memberEmail)                    
@@ -217,7 +217,7 @@ class WelfareNewController extends Controller
                     
             
                     $member3EmailContent = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 
-                    'You have a request for welfare titled <b> '. $welfaretitle->topic . '</b> recommended by Committe Member 2 Mr/Mrs.' . $userDetail->empName .  '.',
+                    'You have a request for welfare titled <b> '. $welfaretitle->topic . '</b> recommended by Mr/Mrs.' . $userDetail->empName .  '.',
                       'body2' => '', 'body3' => 'Please kindly do the necessary action.', 'body4' => 'click here: http://hris.bpc.bt','body5' => '','body6' => 'Have a good day!', ];
                     
                         Mail::to($member3Email->memberEmail)                    
@@ -298,7 +298,7 @@ class WelfareNewController extends Controller
                   ->where('welfarenote.id',$id->id)
                   ->first();
       
-                  $rejectWelfare = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for welfare titled <b>' . $welfaretitle->topic . '</b> has been rejected by committe member 1 Mr/Mrs.' . $userDetail->empName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
+                  $rejectWelfare = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for welfare titled <b>' . $welfaretitle->topic . '</b> has been rejected by Mr/Mrs.' . $userDetail->empName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
                                                     
                     $userEmail = DB::table('welfarenote')
                     ->where('id',$id->id)
@@ -335,7 +335,7 @@ class WelfareNewController extends Controller
               ->where('welfarenote.id',$id->id)
               ->first();
   
-              $rejectWelfare = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for welfare titled <b>' . $welfaretitle->topic . '</b> has been rejected by committe member 2 Mr/Mrs.' . $userDetail->empName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
+              $rejectWelfare = ['title' => 'Mail From the HRIS Welfare System', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for welfare titled <b>' . $welfaretitle->topic . '</b> has been rejected by Mr/Mrs.' . $userDetail->empName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
                                                 
                 $userEmail = DB::table('welfarenote')
                 ->where('id',$id->id)

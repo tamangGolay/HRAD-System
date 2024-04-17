@@ -6431,6 +6431,18 @@ if ($request->v == "welfare_request")  //form.csv
 if ($request->v == "welfareReviewForm") {
     // Check if the user is authenticated
     if (Auth::check()) {
+
+        $memberName1= DB::table('welfarecommitte')
+        ->join('users as reviewName1','reviewName1.empId','welfarecommitte.memberEID')       
+        ->where( 'memberType','=','Member 1')
+        ->select('reviewName1.empName as reviewerName1')
+        ->first();
+        
+        $memberName2= DB::table('welfarecommitte')       
+        ->join('users as reviewName2','reviewName2.empId','welfarecommitte.memberEID')       
+        ->where( 'memberType','=','Member 2')
+        ->select('reviewName2.empName as reviewerName2')
+        ->first();
         
         $userId = Auth::user()->empId;
         // Fetch the authenticated user's memberType from the welfarecommitte table
@@ -6441,7 +6453,7 @@ if ($request->v == "welfareReviewForm") {
         // Query to fetch welfare notes based on user's memberType and status
         $welfareNoteQuery = DB::table('welfarenote')
             ->join('users', 'users.empId', '=', 'welfarenote.createdBy')
-            ->join('users as empUser', 'empUser.empId', '=', 'welfarenote.empID')
+            ->join('users as empUser', 'empUser.empId', '=', 'welfarenote.empID') 
             ->select('welfarenote.*', 'users.empName','empUser.empName as employeeName')
             ->latest('welfarenote.id')
             ->where('cancelled', '=', 'No');
@@ -6471,7 +6483,7 @@ if ($request->v == "welfareReviewForm") {
    
 
         // Render the view
-        $rhtml = view('welfareNew.welfareReviewForm')->with(['welfareNote' => $welfareNote, 'welfare' => $welfare,'memberIdentity'=>$memberIdentity])->render();
+        $rhtml = view('welfareNew.welfareReviewForm')->with(['welfareNote' => $welfareNote, 'welfare' => $welfare,'memberIdentity'=>$memberIdentity,'memberName1'=>$memberName1,'memberName2'=>$memberName2])->render();
 
         // Return JSON response
         return response()->json([

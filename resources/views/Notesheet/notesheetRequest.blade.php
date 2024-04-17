@@ -192,15 +192,7 @@ function checkEmployee(val) {
     });
 	});
 
-	
-  function empcheck()
-  {
-
-    if(document.getElementById('emp_id').value[0] == '3' || document.getElementById('emp_id').value[0] == '9' ){
-       document.getElementById('empid').innerHTML = '';                        
-
-    }
-  }
+ 
   
 function notesheetCancel()
 {

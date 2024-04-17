@@ -30,16 +30,27 @@ hr{
 			
               <tr class="text-nowrap">
                      <th>Welfare NoteId</th>   <td> {{($rv->id)}} </td>                     </tr>
-              <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>                </tr>           
+              <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} ({{$rv->empName}}) </td>   </tr>           
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>                    </tr>
               <tr>   <th>EmpId</th>            <td> {{$rv->empID}}( {{$rv->employeeName}}) </td></tr>
               <tr>   <th>For</th>              <td> {{$rv->relationToEmp}} </td></tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!}</td>  </tr>                            
-			        <tr>   <th>Status</th>           <td> {{$rv->status}} </td>                    </tr>
+			        <tr>   <th>Status</th>           
               
-              <!-- <tr>   <th>Edit Content</th>   
-              <td>   <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
-             </td> </tr> -->
+              <td> 
+              @if ($memberIdentity->memberType == 'Member 2') 
+                  @if ($memberName1)
+                 Recommended by: {{$memberName1->reviewerName1}},Director 
+                  @endif
+              @elseif ($memberIdentity->memberType == 'Chairperson')
+                  @if ($memberName2)
+                  Recommended by: {{$memberName2->reviewerName2}}, Director 
+                  @endif
+              @endif
+              </td> 
+            </tr>
+              
+              
 
             <tr><th colspan="2">Action</th></tr>
 
@@ -70,7 +81,7 @@ hr{
                         <input type="hidden" name="status1" id="status" value="Approved">
                         
                         <button type="submit" name="id[]" id="id" onclick="return confirm('Do you want to Approve the welfare request?');" value="{{$rv->id}}" class="btn btn-outline-info text-dark col-lg-4 mb-4 btn-center"> 
-                        Approved
+                        Approv
                         </button> 
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="Approve remarks" >
                       </form>

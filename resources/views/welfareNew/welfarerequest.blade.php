@@ -77,9 +77,17 @@
                         </select> 
                       </div>
         </div>  
+
+        <div class="form-group row">
+						<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justication:</label>
+						<div class="col-md-8 ">
+						<textarea rows="10" class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea>
+					</div>
+					</div>
+                    
 												
 
-				<div class="form-group row">
+				<!-- <div class="form-group row">
                         <label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justification:</label>
                         <div class="col-md-8">
                                 <div contenteditable="true" rows="18" class="justification form-control preserveLines" id="justification" required>
@@ -87,7 +95,7 @@
                                 </div>
                                 <input type="hidden" rows="18" name="justification" id="justification-input">
                         </div>
-                </div>
+                </div> -->
 					
 
 					<div class="form-group row mb-0">
@@ -176,8 +184,7 @@ function empcheck()
     });
 	});
 
-	
-  
+ 
   
 function welfareStatus()
 {
@@ -197,19 +204,30 @@ function welfareStatus()
     document.getElementById("requestDate").value = date;
 
     // Use jQuery to copy content from contenteditable div to hidden input on form submit
-    $('form').submit(function () {
-        var justificationContent = $('#justification').html();
-        $('#justification-input').val(justificationContent);
-    });
+    // $('form').submit(function () {
+    //     var justificationContent = $('#justification').html();
+    //     $('#justification-input').val(justificationContent);
+    // });
 </script>
 
 <script>
-	
-document.addEventListener('input', function (e) {
-    if (e.target && e.target.classList.contains('justification')) {
-        // Adjust the height of the contenteditable div
-        e.target.style.height = 'auto';
-        e.target.style.height = e.target.scrollHeight + 'px';
+	// justification height adjustable based on content
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'justification') {
+        
+        var scrollHeight = e.target.scrollHeight;      
+        
+        e.target.style.height = scrollHeight + 'px';
     }
 });
+
+// Adjust the height when the content is removed
+document.getElementById('justification').addEventListener('keyup', function () {
+    var elem = this;
+    setTimeout(function () {
+        var scrollHeight = elem.scrollHeight;
+        elem.style.height = scrollHeight + 'px';
+    }, 0);
+});
+
 </script>

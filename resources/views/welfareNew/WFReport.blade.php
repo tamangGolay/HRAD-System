@@ -100,8 +100,10 @@ div.notesheet {
                         @foreach ($welfareapprove as $approve)
                         <tr>
                             <td  class="col1"> {{$approve-> modifier}} </td>
-                            <td  class="col1"> {{$approve-> empName}} </td>                            
-                            <td class="col1" > {{$approve->modifierType}} </td>
+                            <td  class="col1"> {{$approve-> empName}} </td>                          
+                            <td class="col1"> 
+{{ $approve->modifierType == 'Member1Recommended' || $approve->modifierType == 'Member2Recommended' ? 'Recommended' : $approve->modifierType }}
+                            </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
                           
                         </tr>

@@ -213,10 +213,8 @@ function welfareStatus()
 <script>
 	// justification height adjustable based on content
   document.addEventListener('input', function (e) {
-    if (e.target && e.target.id === 'justification') {
-        
-        var scrollHeight = e.target.scrollHeight;      
-        
+    if (e.target && e.target.id === 'justification') {        
+        var scrollHeight = e.target.scrollHeight;     
         e.target.style.height = scrollHeight + 'px';
     }
 });

@@ -92,7 +92,8 @@ $(document).ready(function(){
 
             dom: 'Blfrtip',
 			
-			lengthMenu: [ 4, 7, 10 ],
+			//lengthMenu: [ 4, 7, 10 ],
+            "aLengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
             buttons: [
                     'copy',
                     'excel',
@@ -128,10 +129,16 @@ $(document).ready(function(){
                 },
                 {
                     data:'releasedate',
-                    name:'releasedate'
-                }               
-                	
-
+                    name:'releasedate',
+                    render: function(data) {
+                        // Split the date and time components
+                        var parts = data.split(' ');
+                        // Take only the date part
+                        var dateOnly = parts[0];
+                        return dateOnly;
+                    }
+                }              
+                
             ]
         });
     }

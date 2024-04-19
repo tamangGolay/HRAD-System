@@ -40,11 +40,11 @@ hr{
               <td> 
               @if ($memberIdentity->memberType == 'Member 2') 
                   @if ($memberName1)
-                 Recommended by: {{$memberName1->reviewerName1}}, Director 
+                 Recommended by: {{$memberName1->reviewerName1}}
                   @endif
               @elseif ($memberIdentity->memberType == 'Chairperson')
                   @if ($memberName2)
-                  Recommended by: {{$memberName2->reviewerName2}}, Director 
+                  Recommended by: {{$memberName2->reviewerName2}}
                   @endif
               @endif
               </td> 

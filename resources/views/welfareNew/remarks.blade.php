@@ -41,7 +41,7 @@
           <thead>
             <tr>
               <th>Welfare NotesheetId</th>
-              <th>Name</th>
+              <th>Modifier</th>
               <th>Remarks</th> 
             </tr>
             </thead>

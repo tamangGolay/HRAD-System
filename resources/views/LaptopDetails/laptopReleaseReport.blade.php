@@ -110,8 +110,11 @@ $(document).ready(function(){
             columns: [
 
                 {
-                    data:'id',
-                    name:'id'
+                    data: null,
+                    name: 'id',
+                    render: function (data, type, row, meta) {
+                        return meta.row + 1; // Start Sl No from 1
+                    }
                 },
                 {
                     data:'empid',
@@ -121,7 +124,6 @@ $(document).ready(function(){
                     data:'empName',
                     name:'empName'
                 },
-
 
                 {
                     data:'amount',
@@ -139,7 +141,10 @@ $(document).ready(function(){
                     }
                 }              
                 
-            ]
+            ],
+            rowCallback: function(row, data, index) {
+                $('td:eq(0)', row).html(index + 1); // Update Sl No in the first column
+            }
         });
     }
 

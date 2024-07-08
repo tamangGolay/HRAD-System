@@ -37,7 +37,7 @@ a {
 
                 <th>No</th> 
                 <th style="width:20%">Office Name</th>
-                <th >Office Address</th>
+                <th>Office Address</th>
                 <th>Office Head</th>
                 <th>Report to</th>
                 <th>Action</th>
@@ -84,7 +84,7 @@ a {
 							</select>
 
 
-                                  </div> 
+                        </div> 
                     </div>
 
                     <div class="form-group">

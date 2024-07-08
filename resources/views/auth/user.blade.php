@@ -80,9 +80,7 @@ a {
 							<th>Name</th>
 							<th>Cid No</th>
 							<th>Gender</th>
-							<th>Office</th>
-
-				
+							<th>Office</th>				
 							<!-- <th>Grade</th>
 							<th>User Role</th>
 							<th>BasicPay</th> -->
@@ -99,13 +97,7 @@ a {
 							<td> 
 							 {{$ul->shortOfficeName}}/
 								{{$ul->Address}}
-							</td>
-
-						
-
-
-
-
+							</td>			
 							<td>
 							<a href="javascript:void(0)" data-toggle="tooltip"   data-id="{{$ul->id}}" data-original-title="Edit" class="edit mt-1 col-lg-12 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a>
 							<!-- <a href="javascript:void(0)" data-toggle="tooltip" id="" data-id="{{$ul->id}}" id="delete" data-original-title="Delete" class="btn mt-7 ml-2 danger btn delete"> <i class="fa fa-window-close" style="color:white"></i></a>	</button> -->
@@ -120,10 +112,7 @@ a {
 		</div>
 	</div>
 </div>
-
 <div>
-
-
 
 <div class="modal fade" id="ajaxModel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -183,9 +172,9 @@ a {
 							<label class="col-sm-4 col-lg-12" for="gradeId">{{ __('Grade:') }}</label>
 							<div class="col-sm-6 col-lg-12">
 								<select class="form-control" name="gradeId" id="gradeId" required> 
-									<option value="">Select Grade</option>	
+									<option value="">Select Grade</option> 	
 									@foreach($gg as $gg)
-									<option value="{{$gg->id}}" > {{$gg->grade}}</option>
+									<option value="{{$gg->id}}"> {{$gg->grade}}</option>
 									@endforeach 
 								</select>
 							</div>

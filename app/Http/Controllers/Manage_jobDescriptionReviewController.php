@@ -53,7 +53,7 @@ $jobReview->status = $status;
 
 $jobReview->save();  
 
-DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->createdDate,$request->id]);
+        DB::update('update jobdescription set dateExpired = ? where id = ?', [$request->createdDate,$request->id]);
 
 
 

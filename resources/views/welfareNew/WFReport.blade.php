@@ -87,13 +87,14 @@ div.notesheet {
                 <table class="table">
                 <thead>
                         <tr>
-                            <th colspan="4" class="text-center">Remarks by Committee Member(s)</th>
+                            <th colspan="5" class="text-center">Remarks by Committee Member(s)</th>
                         </tr>
                       <tr>
                         <th scope = "col" class="col5"> Reviewer </th>
                         <th scope = "col" class="col5"> Name </th>
-                        <th scope = "col" class="col5"> Status </th>
+                        <th scope = "col" class="col5"> Status </th>                        
                         <th scope = "col" class="col5"> Remarks </th>
+                        <th scope = "col" class="col5"> Action Date</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -102,9 +103,10 @@ div.notesheet {
                             <td  class="col1"> {{$approve-> modifier}} </td>
                             <td  class="col1"> {{$approve-> empName}} </td>                          
                             <td class="col1"> 
-{{ $approve->modifierType == 'Member1Recommended' || $approve->modifierType == 'Member2Recommended' ? 'Recommended' : $approve->modifierType }}
+                            {{ $approve->modifierType == 'Member1Recommended' || $approve->modifierType == 'Member2Recommended' ? 'Recommended' : $approve->modifierType }}
                             </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
+                            <td class="col1" > {{$approve-> modifiedOn}} </td>
                           
                         </tr>
                         @endforeach

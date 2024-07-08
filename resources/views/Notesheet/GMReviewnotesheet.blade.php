@@ -28,16 +28,20 @@ hr{
       <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data"  accept-charset="UTF-8" > @csrf
         <!-- <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}"> -->
         <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
+      
+        @if($notesheetRequest->isEmpty())
+          <p class="text-center">No data available</p>
+        @else
 
         <div class="card-body table-responsive p-0">
           <table id="example1" class="table table-hover table-striped table-bordered">
             <thead> <tbody>
-			@forelse($notesheetRequest as $rv)
+			@foreach($notesheetRequest as $rv)
 			
               <tr class="text-nowrap">
                      <th>Note Id</th>          <td> {{($rv->id)}} </td>      </tr>
               <tr>   <th>Created By</th>       <td> {{$rv->createdBy}} </td>     </tr>
-              <tr>   <th>Name</th>       <td> {{$rv->empName}} </td>     </tr>
+              <tr>   <th>Name</th>             <td> {{$rv->empName}} </td>     </tr>
               <tr>   <th>office Name</th>      <td> {{($rv->longOfficeName)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
 			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
@@ -154,15 +158,11 @@ hr{
                     </th>
                   <!-- </td>   -->
               </tr>
-            </thead>  
-      @empty
-      <p class="text-center">No data available</p>   
-       @endforelse
-	  
-
+            </thead> 
+            @endforeach	              
         </tbody>
-      </table>	  
-      </div>
+      </table>	 
+     </div>
     </div>
   </div>
 <div>
@@ -202,7 +202,7 @@ hr{
 				</div>
 </div>
 
-
+@endif
 <!-- jquery-validation -->
 <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>

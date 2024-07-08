@@ -48,7 +48,9 @@ class CompanyMasterController extends Controller
 // dd($request);
        
         Company::updateOrCreate(['id' => $request->id],
-        ['comNameShort' => $request->comNameShort, 'comNameLong' => $request->comNameLong, 'comReportsTo' => $request->comReportsTo]);    
+        ['comNameShort' => $request->comNameShort, 
+        'comNameLong' => $request->comNameLong, 
+        'comReportsTo' => $request->comReportsTo]);    
         
 
    

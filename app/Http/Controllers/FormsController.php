@@ -775,7 +775,6 @@ return response()
               
                $gg = pay::all();
 
-
             $userLists = DB::table('users')
                ->join('roles', 'users.role_id', '=', 'roles.id')
                ->join('officedetails', 'officedetails.id', '=', 'users.office')
@@ -5129,6 +5128,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     $notesheetRequest = notesheetRequest::all();    
     $officedetails = Officedetails::all();     
     $notesheetRequest = DB::table('notesheet')
+    
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
@@ -5145,7 +5145,7 @@ if ($request->v == "employeeskillmap")  //form.csv
             //    ->where('notesheet.status','=','Processing')
             //    ->where('cancelled','=','No')
 
-               ->orwhere('officeunder.head',Auth::user()->empId) 
+               ->where('officeunder.head',Auth::user()->empId) 
                ->where('notesheet.status','=','Processing')
                ->where('cancelled','=','No')
            

@@ -196,7 +196,6 @@ hr{
 <!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
 <script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 			<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -274,6 +273,10 @@ hr{
 
     <script>
     $(function() {
+      // Destroy the DataTable if it's already initialized
+    if ($.fn.DataTable.isDataTable('#example1')) {
+        $('#example1').DataTable().destroy();
+    }
       $("#example1").DataTable({
         "dom": 'Bfrtip',
         "responsive": true,
@@ -284,6 +287,7 @@ hr{
         "autoWidth": false,
         "paging": true,
         "retrieve":true,
+        "destroy": true,  // Allows reinitialization datatable
         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
       });
     });

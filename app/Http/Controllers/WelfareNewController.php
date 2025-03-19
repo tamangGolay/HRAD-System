@@ -180,6 +180,7 @@ class WelfareNewController extends Controller
                               ->send(new MyTestMail($member2EmailContent)); 
 
                       return redirect('home')
+                        ->with('page','welfareReviewForm')
                         ->with('success','You have recommended and forwarded the Welfare Request');
                       }  
 
@@ -224,6 +225,7 @@ class WelfareNewController extends Controller
                             ->send(new MyTestMail($member3EmailContent)); 
 
                     return redirect('home')
+                        ->with('page','welfareReviewForm')
                         ->with('success','You have recommended and forwarded the Welfare Request');
                     } } 
 
@@ -268,6 +270,7 @@ class WelfareNewController extends Controller
                             ->send(new MyTestMail($EmailMemberSecretary)); 
 
                     return redirect('home')
+                        ->with('page','welfareReviewForm')
                         ->with('success','You have approved Welfare Request!');
                     }   
                   }                         
@@ -308,6 +311,7 @@ class WelfareNewController extends Controller
                        ->send(new MyTestMail($rejectWelfare));
                          
                    return redirect('home')
+                      ->with('page','welfareReviewForm')
                       ->with('error','You have rejected the Welfare Request!');    
                }
 
@@ -345,6 +349,7 @@ class WelfareNewController extends Controller
                    ->send(new MyTestMail($rejectWelfare));
                      
                return redirect('home')
+                    ->with('page','welfareReviewForm')
                     ->with('error','You have rejected the Welfare Request!');    
               }
 
@@ -383,6 +388,7 @@ class WelfareNewController extends Controller
                     ->send(new MyTestMail($rejectWelfare));
                       
                 return redirect('home')
+                    ->with('page','welfareReviewForm')
                     ->with('error','You have rejected the Welfare Request!');    
             }}
    

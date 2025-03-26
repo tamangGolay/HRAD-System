@@ -107,6 +107,9 @@ $(document).ready(function(){
                 url: "{{ route('laptopReleaseReport.index') }}",
                 data:{filter_startdate:filter_startdate, filter_enddate:filter_enddate}
             },
+
+            order: [[4, "desc"]], // Order by releasedate column (index 4) in descending order
+
             columns: [
 
                 {

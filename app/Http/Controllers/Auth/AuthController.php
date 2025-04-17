@@ -17,8 +17,6 @@ use App\orgunit;
 use App\Grade;
 
 
-
-
 class AuthController extends Controller
 {
 
@@ -109,47 +107,9 @@ class AuthController extends Controller
       ->where('empId', $request->emp_id)
       ->first();
       
-
-
       DB::update('update users set email = ? where id = ?', [$request->email, $id->id]);
 
-    //  dd($request);
-      //   $user = new User;
-      //   $user->empId = $request->empId;
-      //   $user->name =  $request->name;
-      //   $user->email = $request->email;   
-      //   $user->password =  Hash::make($request->password);      
-      //   $user->org_unit_id = $request->orgunit;
-      //   $user->first_time_login = $request->firstTimeLogin;
-      //   $user->grade = $request->grade;
-      //   $user->gender = $request->gender;
-      //   $user->contact_number = $request->contactNumber;
-      //   $user->designation = $request->designation;
-      //   $user->role_id = $request->role;
-      //   $user->dzongkhag = $request->dzongkhag;
-      //   $user->created_by = $request->create;
-
-
-      //   $user->conference_user = $request->conferenceuser;
-
-      //   //add role in the user_role_mapping.
-      //   $roleuser = new roleusermappings;       
-      //   $roleuser->role_id = $request->role;
-      //   $roleuser->created_by = $request->create;
-
-
-      //  DB::transaction(function() use ($user,$roleuser)
-      //  {
-      //   $user->save();
-
-      //   $roleuser->user_id = $user->id;
-      //   $roleuser->save();
-
-      //  });
-
-
-
-       return redirect('login')->with('success', 'User Registered Successfully!!!');
+          return redirect('login')->with('success', 'User Registered Successfully!!!');
        ;
     }
 
@@ -167,7 +127,6 @@ class AuthController extends Controller
       }
       
     }
-
 
     public function firstpage()
     {
@@ -190,23 +149,7 @@ class AuthController extends Controller
         $status = DB::table('users')->select('status')
         ->where('empId', $request->empId)
         ->first();
-        // dd($status);
-
-        // $email = DB::table('users')->select('email')
-        // ->where('empId', $request->empId)
-        // ->first();
-
-        // if($status == null){
-        //   return redirect('login')->with('error', 'Please Register!!!');
-        // }
-
-        // if($email->email == 'e'){
-        //   return redirect('login')->with('error', 'Please Register!!!');
-        // }
-
-        // if($status->status == 0){
-
-
+        
         if (Auth::attempt($credentials)) {
 
 // dd("here");

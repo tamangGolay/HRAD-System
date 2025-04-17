@@ -41,7 +41,11 @@
 	<link rel="stylesheet" href="{{URL::asset('admin-lte/plugins/codemirror/theme/monokai.css')}}">
 	<!-- SimpleMDE -->
 	<link rel="stylesheet" href="{{URL::asset('admin-lte/plugins/simplemde/simplemde.css')}}">
-	
+
+	<!-- try calling fav icon -->
+	<link rel="icon" type="image/png" href="{{ asset('fav.png') }}">
+
+
 	<style>
 	img {
 		border-radius: 50%;

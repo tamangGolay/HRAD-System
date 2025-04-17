@@ -6,9 +6,14 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\PromotionAllListController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DocumentController;
 
-
-
+use App\Http\Controllers\Hr_ServicesManagerController;
+use App\Http\Controllers\Hr_ServicesGMController;
+use App\Http\Controllers\HR_ServiceController;
+use App\Http\Controllers\Hr_ServicesDirectorController;
+use App\Http\Controllers\Hr_ServicesCEOController;
 
 /*
 |--------------------------------------------------------------------------
@@ -757,3 +762,41 @@ Route::post('Laptop_release','LaptopReleaseController@Laptop_release')->name('La
 
 //report for laptop release 
 Route::resource('laptopReleaseReport', 'LaptopReleaseReportController');//refund report
+
+//attendence review
+Route::resource('attendanceReview', 'AttendanceController');
+Route::resource('attendanceCount', 'AttendanceCountController');
+
+Route::post('/attendance/update-status', [AttendanceController::class, 'updateStatus'])->name('attendanceReview.updateStatus');
+Route::post('/attendance/update-statusreject', [AttendanceController::class, 'updateStatusReject'])->name('attendanceReview.updateStatusReject');
+
+
+//attachment in notsheet
+Route::get('/documents/view/{filename?}', [DocumentController::class, 'view'])->name('documents.view');
+
+// Hr services
+//request notesheet
+Route::post('Request_HrServices','HR_ServiceController@Request_HrServices')->name('Request_HrServices');
+
+//manager review for hr service
+Route::resource('HR_Services', 'Hr_ServicesManagerController');
+Route::post('/HR_Services/Manager_hrservice', [Hr_ServicesManagerController::class, 'Manager_hrservice'])->name('HR_Services.Manager_hrservice');
+
+
+//GM review for hr service
+Route::resource('HR_Services_GM', 'Hr_ServicesGMController');
+Route::post('/HR_Services_GM/GM_hrservice', [Hr_ServicesGMController::class, 'GM_hrservice'])->name('HR_Services_GM.GM_hrservice');
+
+Route::get('/get-remarks/{id}', [HR_ServiceController::class, 'getRemarks']);
+
+//Director review for hr service
+Route::resource('HR_Services_Director', 'Hr_ServicesDirectorController');
+Route::post('/HR_Services_Director/Director_hrservice', [Hr_ServicesDirectorController::class, 'Director_hrservice'])->name('HR_Services_Director.Director_hrservice');
+
+//CEO review for hr service
+Route::resource('HR_Services_CEO', 'Hr_ServicesCEOController');
+Route::post('/HR_Services_CEO/CEO_hrservice', [Hr_ServicesCEOController::class, 'CEO_hrservice'])->name('HR_Services_CEO.CEO_hrservice');
+
+//final HR review for hr service
+Route::resource('HR_Services_HR', 'HR_ServiceController');
+Route::post('/HR_Services_HR/HR_hrservice', [HR_ServiceController::class, 'HR_hrservice'])->name('HR_Services_HR.HR_hrservice');

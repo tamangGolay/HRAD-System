@@ -72,9 +72,13 @@ use App\WfBank;
 use App\WfRelatives;
 use App\transferHistory;
 use App\Balance;
+use App\HR_Service_Approval;
 use App\v4allocation; 
 use App\welfarenoteapproval;
 use App\WelfareCommitte;
+use App\Models\Attendance;
+
+
 
 class FormsController extends Controller
 {
@@ -104,20 +108,7 @@ class FormsController extends Controller
                     $role_admin = true;
                 }
             }
-            // //admin to add user from any dzongkhags and any roles.
-            // if($role_admin)
-            // {
-            //      $roles = Roles::all();
-            //      $wings = Wing::all();
-            //      $departments = Department::all();
-            //     //  $division = Division::all();
-            // }
-            // else
-            // {
-            //     $roles = Roles::wherein('role_admin',$user->role)->get();
-            //     // $dzongkhags = Dzongkhags::where('id',$user->dzongkhag_id)->get();
-            // }
-            
+                      
 
             $rhtml = view('conference.conferenceuser')->with(['roles' => $roles, 'wings' => $wings, 'departments' => $departments, 'divisions' => $divisions])->render();
             return response()
@@ -164,36 +155,7 @@ class FormsController extends Controller
 //start of employeeList
        if ($request->v == "suit")
        {
-        //  dd($request);
-        // $rawSql = <<<SQL
-        //         WITH RECURSIVE a AS (
-        //             SELECT orgunit.id
-        //             FROM orgunit
-        //             WHERE id = 'Auth::user()->org_unit_id'
-                
-        //         UNION ALL
-                
-        //             SELECT child.parent_id
-        //             FROM orgunit child
-        //             JOIN orgunit g
-        //             ON g.id = child.parent_id
-                
-        //         )
-                
-        //         SELECT  u.id
-        //         FROM users u
-        //         JOIN orgunit parent
-        //         ON u.org_unit_id = parent.id
-        //         ;
-
-        //         SQL;
-
-        //         $results = DB::select($rawSql);
-        // dd($results->org_unit_id[]);
-
-
-
-
+        
                $roles = Roles::all();
                $OrgUnit = OrgUnit::all();
                $grade = Grade::all();
@@ -202,8 +164,7 @@ class FormsController extends Controller
                ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
                ->select('payscalemaster.grade');
 
-    //    User::find(Auth::user()->org_unit_id)->descendants()->get();
-    //    dd(User);
+
 
         // if() {
            $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
@@ -217,26 +178,12 @@ class FormsController extends Controller
                ->where('users.org_unit_id',Auth::user()->org_unit_id)
                ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
             
-               //    ->whereColumn([
-            //        ['users.org_unit_id','=','orgunit.parent_id'],
-            //        ['orgunit.parent_id','=','orgunit.id'],
-            //        ['orgunit.id','=','orgunit.id']
-            //    ])
-
+           
 
                ->paginate(10000000);
             // }
 
-            // $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-            // ->join('roles', 'users.role_id', '=', 'roles.id')
-            // ->join('OrgUnit', 'OrgUnit.id', '=', 'users.org_unit_id')
-            // ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-            // ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-            // ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-            // ->latest('users.id') //similar to orderby('id','desc')
-            // ->where('users.status',0)
-            // ->paginate(10000000);
+          
 
            $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
@@ -283,13 +230,6 @@ class FormsController extends Controller
          $gumboot = GumbootSize::all()->where('status',0);
          $raincoat = RainCoatSize::all()->where('status',0);
           
-             // $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-             //    ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')             
-    
-             //    ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'conference.Conference_Name'
-             //            )
-             //    ->latest('id')
-             //    ->paginate(1000000000);
  
                 $rhtml = view('uniform.uniform')->with(['shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,'pant' => $pant])->render();
                 return response()
@@ -301,7 +241,6 @@ class FormsController extends Controller
          }
      //    end uniform view
 
-       //uniform report for individual employee
         //uniform report for individual employee
         if ($request->v == "uniformReport")  {
              
@@ -343,45 +282,7 @@ class FormsController extends Controller
                     'success' => true,
                     'html' => $rhtml
                 ));  
-             }
-             // catch(\Facade\Ignition\Exceptions\ViewException $e) {
-             //     $pant = Pant::all();
-             //     $shirt = Shirt::all();
-             //     $jacket = JacketSize::all();
-             //     $shoe = Shoesize::all();
-             //     $gumboot = GumbootSize::all();
-             //     $raincoat = RainCoatSize::all();
-             //     $office = Officedetails::all();
- 
-             //     $data1 = DB::table('employeeuniform')
-             //     ->join('pantmaster', 'pantmaster.id', '=', 'employeeuniform.pant')
-             //     ->join('shirtmaster', 'shirtmaster.id', '=', 'employeeuniform.shirt')
-             //     ->join('jacketmaster', 'jacketmaster.id', '=', 'employeeuniform.jacket')
-             //     ->join('shoesize', 'shoesize.id', '=', 'employeeuniform.shoe')
-             //     ->join('gumboot', 'gumboot.id', '=', 'employeeuniform.gumboot')
-             //     ->join('raincoatsize', 'raincoatsize.id', '=', 'employeeuniform.raincoat')
-             //     ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId')
-           
-             //     ->select('employeeuniform.id as uniformId','employeeuniform.*','officedetails.shortOfficeName',
-             //     'pantmaster.pantSizeName','shirtmaster.shirtSizeName','jacketmaster.sizeName as jacket',
-             //     'shoesize.ukShoeSize','raincoatsize.sizeName','gumboot.uKSize')
-             //                 ->paginate(10000);
-                             
-             //  $rhtml = view('uniform.uniformReport')->with(['data1' => $data1,
-             // 'shirt' => $shirt,'shoe' => $shoe,'gumboot' => $gumboot, 'raincoat' => $raincoat,'jacket' => $jacket,
-             // 'pant' => $pant,'office' => $office])->render();       
-             //     return response()
-             //                ->json(array(
-             //                'success' => true,
-             //                'html' => $rhtml
-             //            ));  
- 
- 
-             // } 
-         //}
-        //end of uniform report for individual employee
-         //uniform report for offfice wise
-
+             }         
 
 
          if ($request->v == "uniformReportpsd")  {
@@ -555,11 +456,7 @@ if ($request->v == "knowledgeReview")
         {
            
            $data = DB::table('wfcontribution')
-   //    ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-   //    ->join('status', 'status.id', '=', 'vehiclerequest.status')
-   //    ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-   //   ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-     
+   
       ->select('*')
       ->get();
      
@@ -573,7 +470,8 @@ if ($request->v == "knowledgeReview")
         }
         //end Contribution report.
 
-        //knowledgeRepository for employees
+
+//knowledgeRepository for employees
 if ($request->v == "knowledgeRepository")
 {
     $userLists = Officedetails::all();
@@ -586,9 +484,7 @@ if ($request->v == "knowledgeRepository")
 
      ->select('knowledgerepository.empName','knowledgerepository.*','officedetails.officeDetails')
 
-        // ->latest('users.id') //similar to orderby('id','desc')
-        // ->where('users.office',Auth::user()->office)
-   
+        
          ->paginate(10000000);
      $rhtml = view('knowledge.knowledgeRepository')->with(['userList' => $userLists])->render();
     return response()
@@ -605,11 +501,7 @@ if ($request->v == "cReports")
 
          {            
             $review = DB::table('conferencerequest')
-    //    ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-    //    ->join('status', 'status.id', '=', 'vehiclerequest.status')
-    //    ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-    //   ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-      
+     
        ->select('*')
        ->get();
       
@@ -624,7 +516,6 @@ if ($request->v == "cReports")
 
 //end of CReports
 
-//Guest House reports
 
 //Conference Report
 if ($request->v == "guestHouseReports")
@@ -632,12 +523,10 @@ if ($request->v == "guestHouseReports")
             
  $review= DB::table('roombed')
         
-
        ->select('*')
        ->latest('roombed.id')
 
-       ->get();
-      
+       ->get();      
 
          $rhtml = view('guesthouse.guestHouseReports')->with(['review' => $review])->render();
          return response()
@@ -743,18 +632,7 @@ return response()
                ->paginate(10000000);
             // }
 
-            // $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-            // ->join('roles', 'users.role_id', '=', 'roles.id')
-            // ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-            // ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-            // ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-            // ->select('dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-            // ->latest('users.id') //similar to orderby('id','desc')
-            // ->where('users.status',0)
-
-            // ->paginate(10000000);
-
+           
            $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
            return response()
                ->json(array(
@@ -842,31 +720,9 @@ return response()
        }
        //end of oneEmployee .
        
-        //Q_Checkout form
-        if ($request->v == "Q_Checkout")
-        {
-            $dzongkhags = Dzongkhags::all();
-            $agencies = Agencies::all();
-
-            $rhtml = view('Quarantine.Q_Checkout')->with(['dzongkhags' => $dzongkhags, 'agencies' => $agencies])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
-        //Q_Facility form
-        if ($request->v == "Q_Facility")
-        {
-            $dzongkhags = Dzongkhags::all();
-
-            $rhtml = view('Quarantine.Q_Facility')->with(['dzongkhags' => $dzongkhags])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
+      
+           
+        
 
         //admin role and form mapping
         if ($request->v == "role_form")
@@ -884,23 +740,9 @@ return response()
                 'html' => $rhtml
             ));
         }
+  
 
         
-
-        //form
-        if ($request->v == "registerVehicle")
-        {
-            $dzongkhags = Dzongkhags::all();
-            $agencies = Agencies::all();
-
-            $rhtml = view('Transportation.registerVehicle')->with(['dzongkhags' => $dzongkhags, 'agencies' => $agencies])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
 
         //Tracking Vehicle(To free the vehicle after tour)
         if ($request->v == "Free_vehicle")
@@ -918,6 +760,7 @@ return response()
                 'html' => $rhtml
             ));
         }
+        
         //Free_vehicle end
         //Request_vehicle
         if ($request->v == "Request_vehicle")
@@ -930,10 +773,7 @@ return response()
 	    ->where('status',0)	    ;
             $user = Auth::id();
 
-            // $user = User::find($id)->name;
-            // $user = User::find($id)->emp_id;
-            // $user = User::find($id)->org_unit_id;
-//added new
+            
 
 $vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
     ->select('vehicle_name', 'vehicle_number')
@@ -962,1666 +802,6 @@ $bookedv = DB::table('vehiclerequest')
 
 }
 //Request_vehicle end
-
-        //guest house start
-        if ($request->v == "GuestHouseBooking")
-        {
-            $guesthouseroom = guesthouseroom::all();
-            $roombed = guesthouseroom::all();       
-
-          
-            
-            $dzongkhags = Dzongkhags::all();
-            $dzongkhag = Dzongkhags::all();
-            $dzongkhag2 = Dzongkhags::all();
-
-            $dzongkhag3 = Dzongkhags::all();
-
-            $dzongkhag4 = Dzongkhags::all();
-            $dzongkhag90 = Dzongkhags::all();
-
-
-        
-            $user = Auth::id();
-
-         
-            
-
-            $rhtml = view('guesthouse.GuestHouseBooking')->with(['roombed'  => $roombed,'guesthouseroom' => $guesthouseroom,'dzongkhags' => $dzongkhags,
-            
-            'dzongkhag' => $dzongkhag,  'dzongkhag90' => $dzongkhag90,'dzongkhag2' => $dzongkhag2,'dzongkhag3' => $dzongkhag3,'dzongkhag4' => $dzongkhag4,'user' => $user])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
-
-        //guesthouse end
-
-
-
-        //guest house outsider start
-        if ($request->v == "GuestHouseBookingOutsider")
-        {
-            $guesthouseroom = guesthouseroom::all();
-            $roombed = guesthouseroom::all();
-
-         
-
-          
-            
-            $dzongkhags = Dzongkhags::all();
-            $dzongkhag = Dzongkhags::all();
-            $dzongkhag2 = Dzongkhags::all();
-
-            $dzongkhag3 = Dzongkhags::all();
-
-            $dzongkhag4 = Dzongkhags::all();
-            $dzongkhag90 = Dzongkhags::all();
-
-
-        
-            $user = Auth::id();
-
-         
-            
-
-            $rhtml = view('guesthouse.GuestHouseBookingOutsider')->with(['roombed'  => $roombed,'guesthouseroom' => $guesthouseroom,'dzongkhags' => $dzongkhags,
-            
-            'dzongkhag' => $dzongkhag,  'dzongkhag90' => $dzongkhag90,'dzongkhag2' => $dzongkhag2,'dzongkhag3' => $dzongkhag3,'dzongkhag4' => $dzongkhag4,'user' => $user])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
-
-        //guesthouse end
-
-
-
-         //guest house Self
-         if ($request->v == "GuestHouseBookingSelf")
-         {
-             $guesthouseroom = guesthouseroom::all();
-             $roombed = guesthouseroom::all();
- 
-          
- 
-           
-             
-             $dzongkhags = Dzongkhags::all();
-             $dzongkhag = Dzongkhags::all();
-             $dzongkhag2 = Dzongkhags::all();
- 
-             $dzongkhag3 = Dzongkhags::all();
- 
-             $dzongkhag4 = Dzongkhags::all();
-             $dzongkhag90 = Dzongkhags::all();
- 
- 
-         
-             $user = Auth::id();
- 
-          
-             
- 
-             $rhtml = view('guesthouse.GuestHouseBookingSelf')->with(['roombed'  => $roombed,'guesthouseroom' => $guesthouseroom,'dzongkhags' => $dzongkhags,
-             
-             'dzongkhag' => $dzongkhag,  'dzongkhag90' => $dzongkhag90,'dzongkhag2' => $dzongkhag2,'dzongkhag3' => $dzongkhag3,'dzongkhag4' => $dzongkhag4,'user' => $user])->render();
-             return response()
-                 ->json(array(
-                 'success' => true,
-                 'html' => $rhtml
-             ));
- 
-         }
- 
-         //guesthouse end
-
-//add Room and bed to old guestHouse
- if ($request->v == "addRoom")
- {
-
-
- 
-    $guesthouseroom = guesthouseroom::all();
-
- 
-
-  
-    
-    $dzongkhags = Dzongkhags::all();
-    $dzongkhag = Dzongkhags::all();
-    $dzongkhag2 = Dzongkhags::all();
-
-    $dzongkhag3 = Dzongkhags::all();
-
-    $dzongkhag4 = Dzongkhags::all();
-
-
-
-    $user = Auth::id();
-
-    $roombed = DB::table('guesthouseroom')->join('guesthousename', 'guesthousename.id', '=', 'guesthouseroom.guest_house_id')
-    ->join('dzongkhags', 'dzongkhags.id', '=', 'guesthouseroom.dzo_id')  
-
-
-
-
-    ->select('guesthouseroom.room_no','guesthouseroom.id as gid','dzongkhags.Dzongkhag_Name','guesthousename.name')
-   
-   ->latest('guesthouseroom.id') //similar to orderby('roombed.id','desc')            
-    ->paginate(10000000);
-
- 
-    
-
-    $rhtml = view('guesthouse.addRoom')->with(['roombed'  => $roombed,'guesthouseroom' => $guesthouseroom,'dzongkhags' => $dzongkhags,
-    
-    'dzongkhag' => $dzongkhag,'dzongkhag2' => $dzongkhag2,'dzongkhag3' => $dzongkhag3,'dzongkhag4' => $dzongkhag4,'user' => $user])->render();
-    return response()
-        ->json(array(
-        'success' => true,
-        'html' => $rhtml
-    ));
- }
-//add room end
-
-        //guest house wangtsa review=1           
-        if ($request->v == "ghWangtsa_review")
-        {
-
-            try{
-
-            $wangtsaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                 ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                 ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                                 ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                
-                                                 ->where('roombed.guest_house_id', 1)               
-            
-                                                 ->where('roombed.statusrb', 0)
-                                                 ->where('roombed.id','>', 25)
-
-                                 
-                                                 ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                         
-                                                ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                               ->paginate(10000000);
-                                 
-                                             $rhtml = view('guesthouse.wangtsaReview')->with(['wangtsaReview' => $wangtsaReview])->render();
-                                             return response()
-                                                 ->json(array(
-                                                 'success' => true,
-                                                 'html' => $rhtml
-                                             ));
-                                            }
-
-                                            catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                                $wangtsaReview = DB::table('roombed')
-                                                ->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                                ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                               
-                                                ->where('roombed.guest_house_id', 1)               
-           
-                                                ->where('roombed.statusrb', 0)
-                                                ->where('roombed.id','>', 25)
-
-                                
-                                                ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                               ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                ->paginate(10000000);
-                                
-                                            $rhtml = view('guesthouse.wangtsaReviewE')->with(['wangtsaReview' => $wangtsaReview])->render();
-                                            return response()
-                                                ->json(array(
-                                                'success' => true,
-                                                'html' => $rhtml
-                                            ));
-                                             }
-                                         }                                     
-                                   
-//guest house wangtsa review end
-
-
-//guest house TMO review=2        
-        if ($request->v == "ghTMO_review")
-        {
-        try{
-            $tmoReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                 ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                 ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                                 ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                 
-                                                 ->where('roombed.guest_house_id', 2)               
-            
-                                                 ->where('roombed.statusrb', 0)
-                                                 ->where('roombed.id','>', 25)
-
-                                 
-                                                 ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                                ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                 ->paginate(10000000);
-                                 
-                                             $rhtml = view('guesthouse.tmoReview')->with(['tmoReview' => $tmoReview])->render();
-                                             return response()
-                                                 ->json(array(
-                                                 'success' => true,
-                                                 'html' => $rhtml
-                                             ));
-                                            }
-
-                                            catch(\Facade\Ignition\Exceptions\ViewException $e) {
-
-                                                $tmoReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                                ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                
-                                                ->where('roombed.guest_house_id', 2)               
-           
-                                                ->where('roombed.statusrb', 0)
-                                                ->where('roombed.id','>', 25)
-
-                                
-                                                ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                               ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                ->paginate(10000000);
-                                
-                                            $rhtml = view('guesthouse.tmoReviewE')->with(['tmoReview' => $tmoReview])->render();
-                                            return response()
-                                                ->json(array(
-                                                'success' => true,
-                                                'html' => $rhtml
-                                            ));
-                                             }
-                                         }                                     
-                                   
-//guest house TMO review end
-
-//guest house Dhamdum review=3       
-if ($request->v == "ghDhamdum_review")
-{
-try{
-    $dhamdumReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 3)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.dhamdhumReview')->with(['dhamdumReview' => $dhamdumReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $dhamdumReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 3)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.dhamdhumReviewE')->with(['dhamdumReview' => $dhamdumReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-                           
-//guest house Dhamdum review end
-
-//guest house Jigmeling review=4     
-if ($request->v == "ghJigmeling_review")
-{
-try{
-    $jigmelingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 4)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                         
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.jigmelingReview')->with(['jigmelingReview' => $jigmelingReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $jigmelingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 4)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.jigmelingReviewE')->with(['jigmelingReview' => $jigmelingReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-                           
-//guest house Jigmeling substation review end
-
-
-//guest house Dhajay review=5       
-if ($request->v == "ghDhajay_review")
-{
-try{
-    $dhajayReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 5)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                         
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.dhajayReview')->with(['dhajayReview' => $dhajayReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                         
-    $dhajayReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-    ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-    ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-    ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-    
-    ->where('roombed.guest_house_id', 5)               
-
-    ->where('roombed.statusrb', 0)
-    ->where('roombed.id','>', 25)
-
-
-    ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-    
-   ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-    ->paginate(10000000);
-
-$rhtml = view('guesthouse.dhajayReviewE')->with(['dhajayReview' => $dhajayReview])->render();
-return response()
-    ->json(array(
-    'success' => true,
-    'html' => $rhtml
-));
-                                     }
-                                 }                                     
-                           
-//guest house Dhajay review end
-
-// //guest house Tingtibi review=6
-// if ($request->v == "ghTingtibi_review")
-// {
-// try{
-//     $tingtibiReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-//                                          ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-//                                          ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-//                                          ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-//                                          ->where('roombed.guest_house_id', 6)               
-    
-//                                          ->where('roombed.statusrb', 0)
-//                                          ->where('roombed.id','>', 26)
-
-                         
-//                                          ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-//                                         ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-//                                          ->paginate(10000000);
-                         
-//                                      $rhtml = view('guesthouse.tingtibiReview')->with(['tingtibiReview' => $tingtibiReview])->render();
-//                                      return response()
-//                                          ->json(array(
-//                                          'success' => true,
-//                                          'html' => $rhtml
-//                                      ));
-//                                     }
-
-//                                     catch(\Facade\Ignition\Exceptions\ViewException $e) {
-//                                         $tingtibiReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-//                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-//                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-//                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-//                                         ->where('roombed.guest_house_id', 6)               
-   
-//                                         ->where('roombed.statusrb', 0)
-//                                         ->where('roombed.id','>', 26)
-
-                        
-//                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-//                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-//                                         ->paginate(10000000);
-                        
-//                                     $rhtml = view('guesthouse.tingtibiReviewE')->with(['tingtibiReview' => $tingtibiReview])->render();
-//                                     return response()
-//                                         ->json(array(
-//                                         'success' => true,
-//                                         'html' => $rhtml
-//                                     ));
-//                                      }
-//                                  }                                     
-                           
-// //guest house tingtibi review end
-
-//guest house Dhajay review=6   
-if ($request->v == "ghYurmoo_review")
-{
-try{
-    $yurmooReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 6)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.yurmooReview')->with(['yurmooReview' => $yurmooReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $yurmooReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 6)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.yurmooReviewE')->with(['yurmooReview' => $yurmooReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-                           
-//guest house yurmoo review end
-
-
-//guest house Dangapela review=7      
-if ($request->v == "ghDagapela_review")
-{
-try{
-    $dagapelaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 7)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.dagapelaReview')->with(['dagapelaReview' => $dagapelaReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $dagapelaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 7)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.dagapelaReviewE')->with(['dagapelaReview' => $dagapelaReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-                           
-//guest house Dagapela review end
-
-
-//guest house TMD Transit camp review=8   
-if ($request->v == "ghTMD_review")
-{
-try{
-    $tmdReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 8)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.tmdReview')->with(['tmdReview' => $tmdReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $tmdReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 8)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.tmdReviewE')->with(['tmdReview' => $tmdReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-                           
-//guest house TMD Transit camp review end
-
-//Guest House olathang Review= 9  
-
-        if ($request->v == "ghOlathang_review")
-        {
-            try{
-            $olathangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                 ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                 ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                                 ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                 
-                                                 ->where('roombed.guest_house_id', 9)               
-            
-                                                 ->where('roombed.statusrb', 0)
-                                                 ->where('roombed.id','>', 25)
-
-                                 
-                                                 ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                                ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                 ->paginate(10000000);
-                                 
-                                             $rhtml = view('guesthouse.olathangReview')->with(['olathangReview' => $olathangReview])->render();
-                                             return response()
-                                                 ->json(array(
-                                                 'success' => true,
-                                                 'html' => $rhtml
-                                             ));
-                                            }
-
-                                            catch(\Facade\Ignition\Exceptions\ViewException $e) {
-
-                                             $olathangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                             ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                             ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                             ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                             
-                                             ->where('roombed.guest_house_id', 9)               
-        
-                                             ->where('roombed.statusrb', 0)
-                                             ->where('roombed.id','>', 25)
-
-                             
-                                             ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                    
-                                            ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                             ->paginate(10000000);
-                             
-                                         $rhtml = view('guesthouse.olathangReviewE')->with(['olathangReview' => $olathangReview])->render();
-                                         return response()
-                                             ->json(array(
-                                             'success' => true,
-                                             'html' => $rhtml
-                                         ));
-                                        }
-                                         }                                     
- //end of olathang guest house review     
- 
- 
-//Guest House pangbesa Review= 10
-
-if ($request->v == "ghPangbesa_review")
-{
-    try{
-        $pangbesaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 10)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.pangbesaReview')->with(['pangbesaReview' => $pangbesaReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e){
-                                        $pangbesaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                            ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                            ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                            ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                            
-                                            ->where('roombed.guest_house_id', 10)               
-    
-                                            ->where('roombed.statusrb', 0)
-                                            ->where('roombed.id','>', 25)
-
-                            
-                                            ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                            ->paginate(10000000);
-                            
-                                        $rhtml = view('guesthouse.pangbesaReviewE')->with(['pangbesaReview' => $pangbesaReview])->render();
-                                        return response()
-                                            ->json(array(
-                                            'success' => true,
-                                            'html' => $rhtml
-                                        ));
-                                     }
-                                 }                                     
-//end of pangbesa guest house review  
- 
-//DEOTHANG gUEST house=11
-if ($request->v == "ghDeothang_review")
-{
-    try{
-        $deothangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 11)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.deothangReview')->with(['deothangReview' => $deothangReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                    $deothangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 11)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.deothangReviewE')->with(['deothangReview' => $deothangReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-//DEOTHANG gUEST house end
- 
-  
-//TM Pinsa gUEST house=12
-if ($request->v == "ghPinsa_review")
-{
-    try{
-        $pinsaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 12)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.pinsaReview')->with(['pinsaReview' => $pinsaReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $pinsaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 12)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.pinsaReviewE')->with(['pinsaReview' => $pinsaReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                    }
-                                 }                                     
-//pinsa gUEST house end
-
- 
-//ESSD Tashichholing gUEST house=13
-if ($request->v == "ghTashichoeling_review")
-{
-    try{
-        $tashichoelingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 13)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.tashichoelingReview')->with(['tashichoelingReview' => $tashichoelingReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $tashichoelingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 13)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.tashichoelingReviewE')->with(['tashichoelingReview' => $tashichoelingReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-//Tashicholling gUEST house end
-
- 
-//Dorokha gUEST house=14
-if ($request->v == "ghDorokha_review")
-{
- try{
-    $dorokhaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 14)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.dorokhaReview')->with(['dorokhaReview' => $dorokhaReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $dorokhaReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 14)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.dorokhaReviewE')->with(['dorokhaReview' => $dorokhaReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-//dorokha gUEST house end
-
-//Kewathang gUEST house=15
-if ($request->v == "ghKewathang_review")
-{
-try{
-    $kewathangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 15)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.kewathangReview')->with(['kewathangReview' => $kewathangReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $kewathangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 15)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.kewathangReviewE')->with(['kewathangReview' => $kewathangReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                                     
-//Kewathang gUEST house end
-
-
-        //Guest House Garpang Review=16
-
-        if ($request->v == "ghGarpang_review")
-        {
-            try{
-            $garpangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                 ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                 ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                                 ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                 
-                                                 ->where('roombed.guest_house_id', 16)               
-            
-                                                 ->where('roombed.statusrb', 0)
-                                                 ->where('roombed.id','>', 25)
-
-                                 
-                                                 ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                                ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                 ->paginate(10000000);
-                                 
-                                             $rhtml = view('guesthouse.garpangReview')->with(['garpangReview' => $garpangReview])->render();
-                                             return response()
-                                                 ->json(array(
-                                                 'success' => true,
-                                                 'html' => $rhtml
-                                             ));
-                                            }
-
-                                            catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                                $garpangReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                                ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                                ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                                ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                                
-                                                ->where('roombed.guest_house_id', 16)               
-           
-                                                ->where('roombed.statusrb', 0)
-                                                ->where('roombed.id','>', 25)
-
-                                
-                                                ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                               ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                                ->paginate(10000000);
-                                
-                                            $rhtml = view('guesthouse.garpangReviewE')->with(['garpangReview' => $garpangReview])->render();
-                                            return response()
-                                                ->json(array(
-                                                'success' => true,
-                                                'html' => $rhtml
-                                            ));
-                                             }
-                                         }                               
-                                    
-         
-//end of garpang guest house review
-                                        
- 
-
-//chumey GH=17
-if ($request->v == "ghChumey_review")
-{
-    try{
-
-    $chumeyReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-
-                                         ->where('roombed.guest_house_id', 17)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.chumeyReview')->with(['chumeyReview' => $chumeyReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-              catch(\Facade\Ignition\Exceptions\ViewException $e){
-                $chumeyReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-
-                ->where('roombed.guest_house_id', 17)               
-
-                ->where('roombed.statusrb', 0)
-                ->where('roombed.id','>', 25)
-
-
-                ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-               
-               ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                ->paginate(10000000);
-
-            $rhtml = view('guesthouse.chumeyReviewE')->with(['chumeyReview' => $chumeyReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-    }                       
-                                 }                               
-                            
- //end of chumey guest house review
-
- //ESD Wangdue GH=18
-if ($request->v == "ghESDwangdue_review")
-{
-try{
-    $wangdueReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 18)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.wangdueReview')->with(['wangdueReview' => $wangdueReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $wangdueReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 18)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.wangdueReviewE')->with(['wangdueReview' => $wangdueReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //end of wangdue guest house review
-
- //chumey GH=
-if ($request->v == "ghTangmachu_review")
-{
-    try{
-
-    $tangmachuReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 19)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.tangmachuReview')->with(['tangmachuReview' => $tangmachuReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $tangmachuReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 19)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.tangmachuReviewE')->with(['tangmachuReview' => $tangmachuReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //end of tangmachu guest house review
-                                      
- //phuentsholing GH=20
-if ($request->v == "ghPhuentsholing_review")
-{
-try{
-    $phuentsholingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 20)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.phuentsholingReview')->with(['phuentsholingReview' => $phuentsholingReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $phuentsholingReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag')  
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id') 
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 20)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.phuentsholingReviewE')->with(['phuentsholingReview' => $phuentsholingReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //end of phuentsholing guest house review
- 
- //Transit Camp GH=21
-if ($request->v == "ghTransitCamp_review")
-{
-    try{
-
-    $transitCampReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 21)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.transitCampReview')->with(['transitCampReview' => $transitCampReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                
-
-                         
-                     
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $transitCampReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 21)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.transitCampReviewE')->with(['transitCampReview' => $transitCampReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //end of transitCamp guest house review   
- 
- // Kilikhar GuestHouse  id=22
-if ($request->v == "ghkilikhar_review")
-{
-    try{
-
-    $kilikharReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 22)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.kilikharReview')->with(['kilikharReview' => $kilikharReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                
-
-                         
-                     
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $transitCampReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 22)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.kilikharReviewE')->with(['kilikharReview' => $kilikharReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //kilikhar guest house review   
-
- // Kanglung GuestHouse  id=23
-if ($request->v == "ghkanglung_review")
-{
-    try{
-
-    $kanglungReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 23)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.kanglungReview')->with(['kanglungReview' => $kanglungReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                
-
-                         
-                     
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $transitCampReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 23)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.kanglungReviewE')->with(['kanglungReview' => $kanglungReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- // end of kanglung guest house review   
-
-// nangkhor GuestHouse  id=24
-if ($request->v == "ghnangkhor_review")
-{
-    try{
-
-    $nangkhorReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 24)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.nangkhorReview')->with(['nangkhorReview' => $nangkhorReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                
-
-                         
-                     
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $transitCampReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 24)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.nangkhorReviewE')->with(['nangkhorReview' => $nangkhorReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- // end of nangkhor guest house review   
-
-
- // nganglam guesthouse review  gh id =25
-
-if ($request->v == "ghnganglam_review")
-{
-    try{
-
-    $nganglamReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                         ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                         ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                         ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                         
-                                         ->where('roombed.guest_house_id', 25)               
-    
-                                         ->where('roombed.statusrb', 0)
-                                         ->where('roombed.id','>', 25)
-
-                         
-                                         ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                        
-                                        ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                         ->paginate(10000000);
-                         
-                                     $rhtml = view('guesthouse.nganglamReview')->with(['nganglamReview' => $nganglamReview])->render();
-                                     return response()
-                                         ->json(array(
-                                         'success' => true,
-                                         'html' => $rhtml
-                                     ));
-                                    }
-                                
-
-                         
-                     
-                                    catch(\Facade\Ignition\Exceptions\ViewException $e) {
-                                        $nganglamReview = DB::table('roombed')->join('guesthousename', 'guesthousename.id', '=', 'roombed.guest_house_id')
-                                        ->join('dzongkhags', 'dzongkhags.id', '=', 'roombed.dzongkhag') 
-                                        ->join('orgunit', 'orgunit.id', '=', 'roombed.org_unit_id')  
-                                        ->join('guesthouseroom', 'guesthouseroom.id', '=', 'roombed.roomdetails_id') 
-                                        
-                                        ->where('roombed.guest_house_id', 25)               
-   
-                                        ->where('roombed.statusrb', 0)
-                                        ->where('roombed.id','>', 25)
-
-                        
-                                        ->select('guesthouseroom.room_no','guesthouseroom.id as gid','roombed.id','dzongkhags.Dzongkhag_Name','guesthousename.name','orgunit.description','roombed.gender','roombed.name','roombed.emp_id','roombed.check_in','roombed.check_out','roombed.rate')
-                                       
-                                       ->latest('roombed.id') //similar to orderby('roombed.id','desc')            
-                                        ->paginate(10000000);
-                        
-                                    $rhtml = view('guesthouse.nganglamReviewE')->with(['nganglamReview' => $nganglamReview])->render();
-                                    return response()
-                                        ->json(array(
-                                        'success' => true,
-                                        'html' => $rhtml
-                                    ));
-                                     }
-                                 }                               
-                            
- //end of nganglam guesthouse  review   
-
      
  //final GM AFTER MTO
  if ($request->v == "MTOGM_Review")
@@ -2685,36 +865,7 @@ if ($request->v == "ghnganglam_review")
  
  //END return  mto GM
 
-     //CMDPO Review
-           if ($request->v == "CMDPO_Review")
-        
-         {
-
-          $cmdpoReview = DB::table('vehiclerequest')
-              ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-          // ->join('users','users.id','=','vehiclerequest.supervisor')//pull users designation
           
-
-              ->where('vehiclerequest.org_unit_id', 73) //field id
-          
-              ->where('vehiclerequest.status', 0)
-              
-              ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.designationVf','vehiclerequest.vname', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'vehiclerequest.personalvehicle')
-
-              ->latest('vehiclerequest.id') //similar to orderby('vehiclerequest.id','desc')
-          
-              ->paginate(10000000);
-
-          $rhtml = view('vehicle.CMDPO_Review')->with(['cmdpoReview' => $cmdpoReview])->render();
-          return response()
-              ->json(array(
-              'success' => true,
-              'html' => $rhtml
-          ));
-      } 
-     
-     //end of cdmpo
-     
       //ICD REview
         if ($request->v == "ICD_Review")
         
@@ -3428,14 +1579,9 @@ if ($request->v == "vehicleReport")
     //end of IAD      
 
 //view for manage vehicle
- //view for manage conference
-
- if ($request->v == "manage_vehicle")
+  if ($request->v == "manage_vehicle")
  {
 
-    //  $conference = vehicles::all();
-    //  $review = DB::table('vehicledetails')->select('*')
-    //      ->paginate();
 
      $rhtml = view('vehicle.manage_vehicle')->render();
      return response()
@@ -3645,11 +1791,7 @@ if ($request->v == "room_details")
 
             $conference = conference::all();
             $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-            // ->join('division_tbl','division_tbl.id','=','conferencerequest.div_id')
-            // ->join('wing_tbl','wing_tbl.id','=','conferencerequest.wing_id')
-            // ->join('department_tbl','department_tbl.id','=','conferencerequest.dept_id')
-            
-            // ->join('rangeofpeople', 'rangeofpeople.id', '=', 'conferencerequest.no_of_people') 
+          
                 ->join('conference', 'conference.id', '=', 'conferencerequest.conference_id')
 
                 ->where('status', 0)
@@ -4479,53 +2621,9 @@ if ($request->v == "promotionform")  //form.csv
     ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice','officeunder.office','users.empName','payscalemaster.grade as fGrade','ps.grade as tGrade')
     ->latest('promotionduelist.id')         //similar to orderby('id','desc')
 
-//    ->where('promotionduelist.status','=','Proposed')
-//    ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-   
-//  ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm  //alredy commented
-
-
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-//     ->where('promotionduelist.status','=','Proposed')
-
         ->where('promotionduelist.status','=','Recommended')
         ->where('officeunder.head',Auth::user()->empId) 
-        ->paginate(10000000); 
-
-
-    // ->orwhere('office','=',89)  //IT
-    // ->where('promotionduelist.status','=','Proposed') 
-
-    // ->orwhere('office','=',90) // Suit
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',88)  //fnd (3 for ICD)
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',72) // RDD
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',86) // 
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',87) // GIS
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',93) //spbd
-    // ->where('promotionduelist.status','=','Proposed')
-
-    // ->orwhere('office','=',94) //cspd
-    // ->where('promotionduelist.status','=','Proposed')
-    // ->paginate(10000000);
-
-
-// ->orwhere('office','>=',86 ||'office','<=',90  ||'office','=',72 ||'office','=',93 || 'office','=',94 ) //cspd
-
-// ->where('promotionduelist.status','=','Proposed')
-
-
-
-    
+        ->paginate(10000000);    
 
   $rhtml = view('promotion.STSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
   return response()
@@ -4534,42 +2632,6 @@ if ($request->v == "promotionform")  //form.csv
       'html' => $rhtml
        ));
  }//end
-
-
-
-
- // Promotion review FAS Dir
- if ($request->v == "fasPromotionReview")  //form.csv
- {    
-    $promotionRequestdir = promotionRequest::all(); 
-    $officedetails = Officedetails::all(); 
-     
-    $promotionRequestdir = DB::table('promotionduelist')
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office') 
-   ->join('officemaster','officemaster.id','=','promotionduelist.office')
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
-
-   ->latest('promotionduelist.id') //similar to orderby('id','desc')
-
-    ->where('promotionduelist.status','=','Proposed') 
-    // ->where('cancelled','=','No')
-    ->where('promotionduelist.office',Auth::user()->office)
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Proposed') 
-
-
-
-    ->paginate(10000000);
-
-
-    $rhtml = view('promotion.FASDirReviewpromotion')->with([ 'promotionRequestdir' => $promotionRequestdir,'officedetails'=>$officedetails])->render(); 
-  return response()
-  
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
 
 //user_profile
 if ($request->v == "user_profile")
@@ -4705,7 +2767,7 @@ if ($request->v == "notesheetReport")
     ->select('notesheet.*','notesheet.id as noteId','officedetails.longOfficeName','users.empName')  
         ->where('notesheet.status','=','approved')
         ->latest('notesheet.id')
-        ->get();
+        ->paginate(10000000);
 
     $rhtml = view('Notesheet.notesheetReport')->with(['notesheet' => $notesheet])->render();
     return response()
@@ -4924,9 +2986,6 @@ if ($request->v == "promotionReport")
          }  
          //end
 
-
-
-
          // uniform pantsize
          if ($request->v == "pantsize")  //form.csv
          {    
@@ -5040,7 +3099,6 @@ if ($request->v == "skillcategory")  //form.csv
       ));
 }  //end
 
-//skill category
 //view for manage skill master
 
 if ($request->v == "skillmaster")
@@ -5122,6 +3180,7 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
+
  if ($request->v == "notesheetReview")  //form.csv  //manager review nootesheet
  {    
     // $roles = Roles::all();
@@ -5137,14 +3196,6 @@ if ($request->v == "employeeskillmap")  //form.csv
 
                ->latest('notesheet.id') //similar to orderby('id','desc')
 
-            //    ->where('notesheet.officeId',Auth::user()->office)
-            //    ->where('notesheet.status','=','Processing')
-            //    ->where('cancelled','=','No')
-
-            //    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-            //    ->where('notesheet.status','=','Processing')
-            //    ->where('cancelled','=','No')
-
                ->where('officeunder.head',Auth::user()->empId) 
                ->where('notesheet.status','=','Processing')
                ->where('cancelled','=','No')
@@ -5152,7 +3203,8 @@ if ($request->v == "employeeskillmap")  //form.csv
                ->paginate(10000000);
 
 
-  $rhtml = view('Notesheet.Reviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'officedetails' => $officedetails])->render(); 
+  $rhtml = view('Notesheet.Reviewnotesheet')
+  ->with([ 'notesheetRequest' => $notesheetRequest,'officedetails' => $officedetails])->render(); 
   return response()
   
      ->json(array(
@@ -5177,14 +3229,6 @@ if ($request->v == "employeeskillmap")  //form.csv
     'topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
     
     ->latest('notesheet.id') //similar to orderby('id','desc')
-   
-    //  ->where('notesheet.status','=','Recommended')
-    //  
-    //  ->where('notesheet.officeId',Auth::user()->office)
-    
-    //  ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    //  ->where('notesheet.status','=','Recommended')
-
     ->where('officeunder.head',Auth::user()->empId) 
     ->where('cancelled','=','No')   
     ->where('notesheet.status','=','Recommended')
@@ -5192,7 +3236,9 @@ if ($request->v == "employeeskillmap")  //form.csv
 //    ->orWhere('orgunit.office',Auth::user()->office)
     ->paginate(10000000);
   
-  $rhtml = view('Notesheet.GMReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequests,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
+  $rhtml = view('Notesheet.GMReviewnotesheet')
+  ->with([ 'notesheetRequest' => $notesheetRequests,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])
+  ->render(); 
   return response()
      ->json(array(
       'success' => true,
@@ -5204,6 +3250,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
  if ($request->v == "stsdirreview")  //form.csv  for director use this
  {    
+    //for all director notesheet review page
     $notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
      
@@ -5236,315 +3283,7 @@ if ($request->v == "employeeskillmap")  //form.csv
        ));
  }  //end
 
- if ($request->v == "fasdirreview")  //form.csv
- {    
-    $notesheetRemarks = notesheetapprove::all(); 
-    $officedetails = Officedetails::all(); 
-     
-    $notesheetRequest = DB::table('notesheet')
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId') 
-   ->join('officemaster','officemaster.id','=','notesheet.officeId')
-    ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
 
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-
-    ->where('notesheet.status','=','GMRecommended') 
-    ->where('cancelled','=','No')
-    ->where('notesheet.officeId',Auth::user()->office)
-
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->paginate(10000000);
-
-
-    $rhtml = view('Notesheet.FASDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
-  return response()
-  
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
-
-
- if ($request->v == "dsdirreview")  //form.csv
- {    
-
-    $notesheetRemarks = notesheetapprove::all(); 
-    $officedetails = Officedetails::all(); 
-     
-    $notesheetRequest = DB::table('notesheet')
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
-
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
-
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-
-    ->where('notesheet.status','=','GMRecommended') 
-    ->where('cancelled','=','No')
-    ->where('notesheet.officeId',Auth::user()->office)
-
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('notesheet.status','=','GMRecommended')
-
-
-    ->orwhere('officeId','=',63) // 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',64) //
-    ->where('notesheet.status','=','GMRecommended')
- 
-    ->orwhere('officeId','=',62) // 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',65) // 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',24) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',25)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',26)  //esd n essd
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',27)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',28)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',29) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',30) 
-     ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',31)  
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',32)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',33) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',34) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',35) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',36) 
-    ->where('notesheet.status','=','GMRecommended')
- 
-    ->orwhere('officeId','=',37) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',38) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',39)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',40)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',41)  
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',42)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',43)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',44)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',45)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',46)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',47)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',48)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',49)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',50)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',51)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',52)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',53)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',54)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',55) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',56)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',57)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',58) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',59) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',60)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',61) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',16) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',17) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',18) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->paginate(10000000);
-
-
-    $rhtml = view('Notesheet.DSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
-  return response()
-  
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
- if ($request->v == "tsdirreview")  //form.csv
- {    
-    $notesheetRemarks = notesheetapprove::all(); 
-    $officedetails = Officedetails::all(); 
-     
-    $notesheetRequest = DB::table('notesheet')
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
-     ->join('officemaster','officemaster.id','=','notesheet.officeId')
-     ->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
-
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-
-    ->where('notesheet.status','=','GMRecommended')   
-    ->where('cancelled','=','No')
-
-    ->where('notesheet.officeId',Auth::user()->office)
-
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',137)  //
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',156)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',157)
-    ->where('notesheet.status','=','GMRecommended')
-
-     ->orwhere('officeId','=',158)
-     ->where('notesheet.status','=','GMRecommended')
-
-     ->orwhere('officeId','=',159) 
-     ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',160)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',161)
-    ->where('notesheet.status','=','GMRecommended')
-  
-    ->orwhere('officeId','=',130)
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',131) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',132) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',133)
-    ->where('notesheet.status','=','GMRecommended')
- 
-    ->orwhere('officeId','=',138) 
-    ->where('notesheet.status','=','GMRecommended')
-
-    ->orwhere('officeId','=',96) 
-    ->where('notesheet.status','=','GMRecommended')
-
-
-    ->paginate(10000000);
-
-
-    $rhtml = view('Notesheet.TSDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
-  return response()
-  
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
- 
-
- if ($request->v == "hrdirreview")  //form.csv
- {    
-    $notesheetRemarks = notesheetapprove::all(); 
-    $officedetails = Officedetails::all(); 
-     
-    $notesheetRequest = DB::table('notesheet')
-    ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')
-
-->join('officemaster','officemaster.id','=','notesheet.officeId')
-->select('notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice')
-
-   ->latest('notesheet.id') //similar to orderby('id','desc')
-
-    ->where('notesheet.status','=','GMRecommended')     
-    ->where('cancelled','=','No')
-    ->where('notesheet.officeId',Auth::user()->office)
-    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-
-    ->orwhere('officeId','=',78)  //
-    ->orwhere('officeId','=',80) // 
-    ->orwhere('officeId','=',81) //
-    ->orwhere('officeId','=',76) // 
-    ->orwhere('officeId','=',74) // 
-    ->orwhere('officeId','=',75) // 
-
-    ->paginate(10000000);
-
-
-    $rhtml = view('Notesheet.HRDirReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
-  return response()
-  
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }  //end
 
  // for CEO notesheet approval n recom
  if ($request->v == "CEOreview")  //form.csv
@@ -5577,7 +3316,9 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->paginate(10000000);
 
 
-    $rhtml = view('Notesheet.CEOReviewnotesheet')->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])->render(); 
+    $rhtml = view('Notesheet.CEOReviewnotesheet')
+    ->with([ 'notesheetRequest' => $notesheetRequest,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])
+    ->render(); 
   return response()
   
      ->json(array(
@@ -5634,8 +3375,7 @@ if ($request->v == "employeeskillmap")  //form.csv
 
  if ($request->v == "allUniformReport")  //form.csv
  {    
-    // $officename = officeuniform::all();  
-    // $officedetailsx = officedetails::all();     
+      
 
     $officenamez = DB::table('uniformreport')
                 //   ->join('officedetails', 'officedetails.id', '=', 'employeeuniform.officeId') 
@@ -5655,15 +3395,6 @@ if ($request->v == "employeeskillmap")  //form.csv
  }  
  
  //end of all uniform employee
-
-
-
-
-
-
-
-
-
  // for increment all
  
  if ($request->v == "incrementall")  //form.csv
@@ -5700,277 +3431,7 @@ if ($request->v == "employeeskillmap")  //form.csv
  } 
 
  
- if ($request->v == "hrcsPromotionReview")  //form.csv
- {  
-    $promotiondue =Promotionduelist::all();
-    $officedetails = Officedetails::all();
-
-    $promotiondue = DB::table('promotionduelist')
-
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
-    ->join('officemaster','officemaster.id','=','promotionduelist.office')
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
-    ->latest('promotionduelist.id') //similar to orderby('id','desc')
-
-   ->where('promotionduelist.status','=','Proposed')
-   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
-   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',78) 
-    ->where('promotionduelist.status','=','Proposed') 
-
-    ->orwhere('office','=',80) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',81) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',76) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',74) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',75)
-    ->where('promotionduelist.status','=','Proposed')
-
-    
-    ->paginate(10000000);
-
-  $rhtml = view('promotion.HRCSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }//end
-
- if ($request->v == "dsPromotionReview")  //form.csv
- {  
-    $promotiondue =Promotionduelist::all();
-    $officedetails = Officedetails::all();
-
-    $promotiondue = DB::table('promotionduelist')
-
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
-    ->join('officemaster','officemaster.id','=','promotionduelist.office')
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
-    ->latest('promotionduelist.id') //similar to orderby('id','desc')
-
-   ->where('promotionduelist.status','=','Proposed')
-   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
-   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',16)  
-    ->where('promotionduelist.status','=','Proposed') 
-
-    ->orwhere('office','=',17) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',18) 
- ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',63) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',64) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',62) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',65) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',24) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',27) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',31) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',34)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',37) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',40) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',43) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',46) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',49) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',52) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',55) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',58) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',61)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',25) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',26) 
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',28) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',29) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',32) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',33) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',35)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',36) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',39) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',41) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',42)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',44) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',45)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',48)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',47)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',50) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',51) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',54) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',56) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',57)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',59)
-
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',60) 
-
-    ->where('promotionduelist.status','=','Proposed')
-    
-    
-    ->paginate(10000000);
-
-  $rhtml = view('promotion.DSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }//end
-
-
-
- if ($request->v == "tsPromotionReview")  //form.csv
- {  
-    $promotiondue =Promotionduelist::all();
-    $officedetails = Officedetails::all();
-
-    $promotiondue = DB::table('promotionduelist')
-
-    ->join('officedetails', 'officedetails.id', '=', 'promotionduelist.office')
-    ->join('officemaster','officemaster.id','=','promotionduelist.office')
-
-    ->select('promotionduelist.*','officedetails.longOfficeName','officemaster.reportToOffice')
-    ->latest('promotionduelist.id') //similar to orderby('id','desc')
-
-   ->where('promotionduelist.status','=','Proposed')
-   ->where('promotionduelist.office',Auth::user()->office)  //mam icd
-//    ->orwhere('officemaster.reportToOffice',Auth::user()->office  && 'promotionduelist.status','=','Recommended') //gm 
-   ->orwhere('officemaster.reportToOffice',Auth::user()->office)
-    ->where('promotionduelist.status','=','Proposed')
-    ->orwhere('office','=',96)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',137) 
-    ->where('promotionduelist.status','=','Proposed') 
-
-    ->orwhere('office','=',156)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',157) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',158) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',159) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',160)
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',161)  
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',130) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',131) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',132) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',133) 
-    ->where('promotionduelist.status','=','Proposed')
-
-    ->orwhere('office','=',138) 
-    ->where('promotionduelist.status','=','Proposed')
-    ->paginate(10000000);
-
-  $rhtml = view('promotion.TSDirReview')->with(['promotiondue' => $promotiondue,'officedetails' => $officedetails])->render();
-  return response()
-     ->json(array(
-      'success' => true,
-      'html' => $rhtml
-       ));
- }//end
+ 
 
 //Transfer Request
 if ($request->v == "transferRequest")  //form.csv
@@ -6249,14 +3710,6 @@ if ($request->v == "transferhistoryReport")  //form.csv
     'transferhistory.transferType',
     'transferhistory.transferBenefit','officedetails.officeDetails',
     'transferproposal.reasonForTransfer')
-    
-    // ->select('transferhistory.empId','transferhistory.transferDate',
-    // 'transferproposal.hRRemarks','B.officeDetails as tooffname',
-    // 'D.officeDetails as oficereoprt',
-    // 'transferhistory.transferType',
-    // 'transferhistory.transferBenefit','officedetails.officeDetails',
-    // 'transferproposal.reasonForTransfer',
-    //  'employee4twimc.empName','employee4twimc.grade','employee4twimc.designation')
 
     ->where('transferhistory.status','=', 'Closed')
 
@@ -6534,7 +3987,7 @@ if ($request->v == "welfareReport")
     ->select('welfarenoteapproval.*','welfarenote.id','welfarenote.topic','welfarenote.empID','welfarenote.relationToEmp','users.empName')  
         ->where('welfarenoteapproval.modifierType','=','Approved')
         ->latest('welfarenoteapproval.id')
-        ->get();
+        ->paginate(10000000);
 
     $rhtml = view('welfareNew.welfareReport')->with(['welfarereport' => $welfarereport])->render();
     return response()
@@ -6571,9 +4024,146 @@ if ($request->v == "laptopreport")  //form.csv
 }  //end
 
 
+//attendance
+if ($request->v == "attendanceReview")
+        {   
+            
+            $officeHead = DB::connection('mysql')->table('officeunder')
+                ->where('head', Auth::user()->empId)
+                ->pluck('office'); // This should return an array of office IDs
 
+            // If no offices are found, return this
+            if ($officeHead->isEmpty()) {
+                return response()->json([
+                    'message' => 'No offices found for the current user.',
+                    'data' => []
+                ]);
+            }
+            $offices = DB::connection('mysql')->table('officedetails')
+            ->whereIn('id', $officeHead)
+            ->select('id', 'longOfficeName')
+            ->get();                    
+                     
+            $rhtml = view('Attendance.attendanceReview')
+            ->with([
+               
+                'offices'=>$offices])
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+        }
+//end 
+    
+//attendance
+if ($request->v == "attendanceCount")
+        {               
+            $officeHead = DB::connection('mysql')->table('officeunder')
+                ->where('head', Auth::user()->empId)
+                ->pluck('office'); // This should return an array of office IDs
+
+            // If no offices are found, return this
+            if ($officeHead->isEmpty()) {
+                return response()->json([
+                    'message' => 'No offices found for the current user.',
+                    'data' => []
+                ]);
+            }
+            $offices = DB::connection('mysql')->table('officedetails')
+            ->whereIn('id', $officeHead)
+            ->select('id', 'longOfficeName')
+            ->get();       
+                   
+            $rhtml = view('Attendance.attendanceCount')
+            ->with([
+               
+                'offices'=>$offices])
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+        }
+//end 
+
+        // HR SERVICES
+        if ($request->v == "HR_FORMS")  //form.csv
+        {    
+
+        $rhtml = view('HRServices.HrServices')->render(); 
+        return response()
+            ->json(array(
+            'success' => true,
+            'html' => $rhtml
+            ));
+        }  //end
+
+            //manager views on hr services
+            if ($request->v == "ManagerReview")  //form.csv
+            {   
+
+            $rhtml = view('HRServices.ManagerReview')->render(); 
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+                ));
+            } //end 
+
+            //GM view
+            if ($request->v == "GmReviewHrService")  //form.csv
+            {                  
+
+            $rhtml = view('HRServices.GmReviewHrService')                 
+            ->render(); 
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+                ));
+            } //end
+
+             //director view
+             if ($request->v == "DirectorReviewHrService")  //form.csv
+             {                  
  
-    }
+             $rhtml = view('HRServices.DirectorReviewHrService')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end
+
+             //CEO view
+             if ($request->v == "CEOReviewHrService")  //form.csv
+             {                  
+ 
+             $rhtml = view('HRServices.CEOReviewHrService')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end
+             //CEO view
+             if ($request->v == "ReviewHrService")  //form.csv
+             {                  
+ 
+             $rhtml = view('HRServices.ReviewHrService')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end
+    
 }
+} 
 
- 

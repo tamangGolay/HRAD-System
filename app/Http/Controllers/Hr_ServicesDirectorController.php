@@ -21,7 +21,7 @@ class Hr_ServicesDirectorController extends Controller
           ->join('users','users.empId','hrservice.createdBy')
           ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
-          ->select('hrservice.*','longOfficeName','empName')
+          ->select('hrservice.*','officeDetails','empName')
           ->where('hrservice.status','=','GMRecommended')
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
@@ -68,7 +68,7 @@ class Hr_ServicesDirectorController extends Controller
     $user = Auth::user();
     $userDetail = DB::table('users')
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
-        ->select('users.empName', 'users.empId', 'officedetails.longOfficeName')
+        ->select('users.empName', 'users.empId', 'officedetails.officeDetails')
         ->where('users.empId', $user->empId)
         ->first();
 
@@ -96,7 +96,7 @@ class Hr_ServicesDirectorController extends Controller
                 ->where('employee', $user->empId)
                 ->value('emailId');
 
-            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->longOfficeName}.";
+            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
 
             Mail::to($supervisorEmail)->cc($userEmail)->send(new MyTestMail($mailData));
@@ -104,7 +104,7 @@ class Hr_ServicesDirectorController extends Controller
            return response()->json(['success' => true]);
 
         case 'Approved':
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->longOfficeName}.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body5'] = 'Have a great day!';
 
             Mail::to($userEmail)->send(new MyTestMail($mailData));
@@ -113,7 +113,7 @@ class Hr_ServicesDirectorController extends Controller
 
         case 'Rejected':
             $mailData['title'] = 'Mail From the HRIS System Reject';
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->longOfficeName}.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the director {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body3'] = 'Reason: ' . $request->remarks;
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
             $mailData['body5'] = 'Never give up. Great things take time';

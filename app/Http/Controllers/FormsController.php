@@ -4026,7 +4026,7 @@ if ($request->v == "laptopreport")  //form.csv
 
 //attendance
 if ($request->v == "attendanceReview")
-        {   
+        {  
             
             $officeHead = DB::connection('mysql')->table('officeunder')
                 ->where('head', Auth::user()->empId)
@@ -4035,18 +4035,17 @@ if ($request->v == "attendanceReview")
             // If no offices are found, return this
             if ($officeHead->isEmpty()) {
                 return response()->json([
-                    'message' => 'No offices found for the current user.',
+                    'message' => 'No offices found for the current user forms.',
                     'data' => []
                 ]);
             }
             $offices = DB::connection('mysql')->table('officedetails')
             ->whereIn('id', $officeHead)
-            ->select('id', 'longOfficeName')
+            ->select('id', 'officeDetails')
             ->get();                    
                      
             $rhtml = view('Attendance.attendanceReview')
-            ->with([
-               
+            ->with([               
                 'offices'=>$offices])
             ->render();
             return response()
@@ -4073,7 +4072,7 @@ if ($request->v == "attendanceCount")
             }
             $offices = DB::connection('mysql')->table('officedetails')
             ->whereIn('id', $officeHead)
-            ->select('id', 'longOfficeName')
+            ->select('id', 'officeDetails')
             ->get();       
                    
             $rhtml = view('Attendance.attendanceCount')
@@ -4087,7 +4086,29 @@ if ($request->v == "attendanceCount")
                 'html' => $rhtml
             ));
         }
-//end 
+        //end 
+
+            //attendance Report
+            if ($request->v == "attendanceReport")
+            {               
+           
+            $offices = DB::connection('mysql')->table('officedetails')
+         
+            ->select('id', 'officeDetails')
+            ->get();       
+                
+            $rhtml = view('Attendance.attendanceReportAdmin')
+
+            ->with([            
+                'offices'=>$offices])
+
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+        }//end
 
         // HR SERVICES
         if ($request->v == "HR_FORMS")  //form.csv
@@ -4163,7 +4184,17 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //end
-    
+             if ($request->v == "deviceReset")  //form.csv
+             {                  
+ 
+             $rhtml = view('Attendance.deviceReset')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end
 }
 } 
 

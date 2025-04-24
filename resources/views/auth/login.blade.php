@@ -1,7 +1,9 @@
 <?php
 header('X-Frame-Options: SAMEORIGIN');
 ?> 
-
+<head>
+<link rel='icon' href='images/favicon.ico' type='image/x-icon'/>  
+</head>
 <style>
 
 @media only screen and (min-width: 1200px){

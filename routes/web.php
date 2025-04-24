@@ -766,9 +766,13 @@ Route::resource('laptopReleaseReport', 'LaptopReleaseReportController');//refund
 //attendence review
 Route::resource('attendanceReview', 'AttendanceController');
 Route::resource('attendanceCount', 'AttendanceCountController');
+Route::resource('attendanceReport', 'AttendanceReportController');
 
 Route::post('/attendance/update-status', [AttendanceController::class, 'updateStatus'])->name('attendanceReview.updateStatus');
 Route::post('/attendance/update-statusreject', [AttendanceController::class, 'updateStatusReject'])->name('attendanceReview.updateStatusReject');
+
+//device Reset
+Route::post('/reset-device', [AttendanceController::class, 'resetDevice']);
 
 
 //attachment in notsheet
@@ -800,3 +804,4 @@ Route::post('/HR_Services_CEO/CEO_hrservice', [Hr_ServicesCEOController::class, 
 //final HR review for hr service
 Route::resource('HR_Services_HR', 'HR_ServiceController');
 Route::post('/HR_Services_HR/HR_hrservice', [HR_ServiceController::class, 'HR_hrservice'])->name('HR_Services_HR.HR_hrservice');
+

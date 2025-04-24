@@ -21,7 +21,7 @@ class Hr_ServicesCEOController extends Controller
           ->join('users','users.empId','hrservice.createdBy')
           ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
-          ->select('hrservice.*','longOfficeName','empName')
+          ->select('hrservice.*','officeDetails','empName')
           ->where('hrservice.status','=','DirectorRecommended')
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
@@ -65,7 +65,7 @@ class Hr_ServicesCEOController extends Controller
     $user = Auth::user();
     $userDetail = DB::table('users')
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
-        ->select('users.empName', 'users.empId', 'officedetails.longOfficeName')
+        ->select('users.empName', 'users.empId', 'officedetails.officeDetails')
         ->where('users.empId', $user->empId)
         ->first();
 

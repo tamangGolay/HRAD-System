@@ -238,7 +238,7 @@
                        
                     },
 
-                    { data: 'longOfficeName', name: 'longOfficeName' },                   
+                    { data: 'officeDetails', name: 'officeDetails' },                   
 
                     {
                         data: 'justification',

@@ -22,7 +22,7 @@ class HR_ServiceController extends Controller
           ->join('users','users.empId','hrservice.createdBy')
         //   ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
-          ->select('hrservice.*','longOfficeName','empName')
+          ->select('hrservice.*','officeDetails','empName')
           ->where('hrservice.status','=','Approved')
         //   ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
@@ -53,7 +53,7 @@ class HR_ServiceController extends Controller
 
         $userDetail = DB::table('users')
             ->join('officedetails', 'officedetails.id', '=', 'users.office')
-            ->select('users.*', 'officedetails.longOfficeName')
+            ->select('users.*', 'officedetails.officeDetails')
             ->where('users.empId', $empId)
             ->first();
 
@@ -62,7 +62,7 @@ class HR_ServiceController extends Controller
             'body' => 'Dear sir/madam,',
             'body1' => 'You have a request for ' . $request->serviceType . ' from ' . $userDetail->empName . 
                        ' bearing employee Id ' . $userDetail->empId . 
-                       ' of ' . $userDetail->longOfficeName . '.',
+                       ' of ' . $userDetail->officeDetails . '.',
             'body2' => '',
             'body3' => 'Please kindly do the necessary action.',
             'body4' => 'click here: http://hris.bpc.bt',
@@ -167,7 +167,7 @@ public function HR_hrservice(Request $request)
     $user = Auth::user();
     $userDetail = DB::table('users')
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
-        ->select('users.empName', 'users.empId', 'officedetails.longOfficeName')
+        ->select('users.empName', 'users.empId', 'officedetails.officeDetails')
         ->where('users.empId', $user->empId)
         ->first();
 
@@ -191,7 +191,7 @@ public function HR_hrservice(Request $request)
 
     switch ($request->status) {        
         case 'HRApproved':
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the HR focal person {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->longOfficeName}. They will contact or mail you on your request.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the HR focal person {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. They will contact or mail you on your request.";
             $mailData['body5'] = 'Have a great day!';
 
              Mail::to($userEmail)->send(new MyTestMail($mailData));
@@ -200,7 +200,7 @@ public function HR_hrservice(Request $request)
 
         case 'Rejected':
             $mailData['title'] = 'Mail From the HRIS System Reject';
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the HR Admin {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->longOfficeName}.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the HR Admin {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body3'] = 'Reason: ' . $request->remarks;
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
             $mailData['body5'] = 'Never give up. Great things take time';

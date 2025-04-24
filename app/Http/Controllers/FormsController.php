@@ -4059,27 +4059,14 @@ if ($request->v == "attendanceReview")
 //attendance
 if ($request->v == "attendanceCount")
         {               
-            $officeHead = DB::connection('mysql')->table('officeunder')
-                ->where('head', Auth::user()->empId)
-                ->pluck('office'); // This should return an array of office IDs
-
-            // If no offices are found, return this
-            if ($officeHead->isEmpty()) {
-                return response()->json([
-                    'message' => 'No offices found for the current user.',
-                    'data' => []
-                ]);
-            }
-            $offices = DB::connection('mysql')->table('officedetails')
-            ->whereIn('id', $officeHead)
+            $offices = DB::connection('mysql')->table('officedetails')         
             ->select('id', 'officeDetails')
-            ->get();       
+            ->get();         
                    
             $rhtml = view('Attendance.attendanceCount')
-            ->with([
-               
-                'offices'=>$offices])
+            ->with(['offices'=>$offices])
             ->render();
+            
             return response()
                 ->json(array(
                 'success' => true,

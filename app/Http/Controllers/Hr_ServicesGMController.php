@@ -18,13 +18,16 @@ class Hr_ServicesGMController extends Controller
       if ($request->ajax()) {
           $query = DB::table('hrservice')
           ->join('officedetails','officedetails.id','hrservice.officeId')
-          ->join('users','users.empId','hrservice.createdBy')
+         ->join('users','users.empId','hrservice.createdBy')
           ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
-          ->select('hrservice.*','officeDetails','empName')
+          ->select('hrservice.*','officedetails.officeDetails','empName','officeType')
+
           ->where('hrservice.status','=','Recommended')
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
+
+          $typesToHideRecomButton = ['Unit', 'Sub Division', 'Team', 'Substation'];
           
   
           if (!empty($request->serviceType)) {
@@ -32,6 +35,11 @@ class Hr_ServicesGMController extends Controller
           }
   
           $review = $query->get();
+          // Add `recommendButton` flag based on officeType
+        $review->transform(function ($item) use ($typesToHideRecomButton) {
+            $item->recommendButton = !in_array($item->officeType, $typesToHideRecomButton);
+            return $item;
+        });
   
           return datatables()->of($review)->make(true);
       }        

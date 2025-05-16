@@ -40,7 +40,9 @@
 									
 
 				<div class=" textfont form-group row"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Topic:</label>
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Topic:
+					<span style="color: red;">*</span>
+				</label>
                       <div class="col-md-8 ">
                         <input type="text" name="topic" class="form-control" id="topic" placeholder="Topic" required>
                       </div>
@@ -48,12 +50,24 @@
 				
 					 
 					<div class="form-group row">
-							<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justication:</label>
+							<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justication:
+								<span style="color: red;">*</span>
+							</label>
 							<div class="col-md-8 ">
 							<textarea class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea>
 						</div>
+					</div>     
+					
+				<div class="form-group row">
+					<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Attach Document:</label>
+					<div class="col-md-4">
+						<input type="file" name="document" class="form-control-file" id="document" accept=".pdf,.doc,.docx">
 					</div>
-                    
+					<div class="col-md-4 align-self-center">
+						<small class="text-muted">(Optional: Attach only if required!)</small>
+					</div>
+				</div>
+
 
 					 <!-- <div class="form-group row">
                             <label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Justification:</label>
@@ -64,13 +78,31 @@
                                 <input type="hidden" rows="18" name="justification" id="justification-input">
                             </div>
                         </div> -->
+
+					<div class="form-group row">
+						<label class="col-md-2 col-form-label text-md-right" for="ApproverLevel">Final Approver Level:
+							<span style="color: red;">*</span>
+						</label>				
+
+						<div class="col-md-8" style="text-align: center;">
+							<select name="approverLevel" id="ApproverLevel" class="form-control" required 
+							data-toggle="tooltip" data-placement="top" title="Select the final approver of your notesheet from the list.">
+
+							<option value="" disabled selected>Select final Approver</option>
+								<option value="M">1. Manager</option>
+								<option value="GM">2. General Manager</option>
+								<option value="D">3. Director</option>
+								<option value="C">4. CEO</option>
+							</select>												
+						</div>
+					</div>
 					
 
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
 							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
 						</div>
-						</div> 
+					</div> 
 					</form>
    				 </div>
 
@@ -235,4 +267,7 @@ document.getElementById('justification').addEventListener('keyup', function () {
         elem.style.height = scrollHeight + 'px';
     }, 0);
 });
+
+
 </script>
+

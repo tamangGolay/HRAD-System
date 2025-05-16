@@ -35,7 +35,23 @@ hr{
               <tr>   <th>Name</th>             <td> {{$rv->empName}} </td>     </tr>
               <tr>   <th>office Name</th>       <td> {{($rv->longOfficeName)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
-			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
+			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>  
+              
+              @if($rv->document !== NULL)
+              <tr>   
+              <th>Document</th>
+                <td>
+                    <!-- Display the document name -->
+                    <span>{{($rv->document)}}</span>                    
+                    <br>
+                    <!-- View Button (Opens in new tab) -->
+                    <a href="{{ route('documents.view', ['filename' => basename($rv->document)]) }}" target="_blank" class="btn btn-info btn-sm mt-2">
+                        View Supporting Document
+                    </a>
+                </td>
+              </tr>     
+              @endif  
+              
               <tr> <th>Status</th> <td> {{$rv->status}} </td> </tr>
               <tr>    <th>Edit Content</th>   
            <td> <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
@@ -45,7 +61,9 @@ hr{
               <tr ><th colspan="2" style="border-bottom:4px solid black;">
               <div class="container">
                 <div class="row">
-                  <div class="col ">
+                 
+                @if($rv->approverLevel !== 'M')
+                <div class="col">
                       <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
                                            
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
@@ -54,12 +72,14 @@ hr{
                       Recommend
                       </button>
                       <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks" required>
-                  
+                 
                       </form>
-
                   </div>
-      
-                  <div class="col">                
+                  @endif
+
+                  
+                  @if($rv->approverLevel == 'M')
+                  <div class="col">               
                   
                       <form method="POST" action="/recommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf      
                       <div>
@@ -73,6 +93,7 @@ hr{
                     </form> 
 
                   </div>
+                  @endif
       
                   <div class="col">
       
@@ -85,7 +106,8 @@ hr{
                     </button>        
                     <input type="text"  name="remarks2" class="form-control" id="remarks2" placeholder=" Reject Remarks"  required>
                     </div>
-                    </form></form>
+                    </form>
+                  </form>
 
                   </div>
                   </div>
@@ -151,6 +173,9 @@ hr{
 				</div>
 </div>
 
+
+
+
 <!-- jquery-validation -->
 <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
@@ -170,8 +195,6 @@ hr{
 <!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
 <script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
 
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 			<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -221,7 +244,7 @@ hr{
            $('#contentpage').append(data.html);
             });
 							
-							// window.location.href = '/home';
+						  // window.location.href = '/home';
 							table.draw();
 						},
 						error: function(data) {
@@ -252,9 +275,11 @@ hr{
 
     <script>
 
-
-
     $(function() {
+      // Destroy the DataTable if it's already initialized
+    if ($.fn.DataTable.isDataTable('#example1')) {
+        $('#example1').DataTable().destroy();
+    }
       $("#example1").DataTable({
         "dom": 'Bfrtip',
         "responsive": true,
@@ -265,7 +290,10 @@ hr{
         "autoWidth": false,
         "paging": true,
         "retrieve":true,
+        "destroy": true,  // Allows reinitialization
         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
       });
     });
     </script>
+
+ 

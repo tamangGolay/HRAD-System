@@ -44,7 +44,23 @@ hr{
               <tr>   <th>Name</th>             <td> {{$rv->empName}} </td>     </tr>
               <tr>   <th>office Name</th>      <td> {{($rv->longOfficeName)}} </td>    </tr>
               <tr>   <th>Topic</th>            <td> {{$rv->topic}} </td>         </tr>
-			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>                            
+			        <tr>   <th>Justification</th>    <td> {!! nl2br($rv->justification) !!} </td> </tr>  
+          
+              @if($rv->document !== NULL)
+              <tr>   
+              <th>Document</th>
+                <td>
+                    <!-- Display the document name -->
+                    <span>{{($rv->document)}}</span>                    
+                    <br>
+                    <!-- View Button (Opens in new tab) -->
+                    <a href="{{ route('documents.view', ['filename' => basename($rv->document)]) }}" target="_blank" class="btn btn-info btn-sm mt-2">
+                        View Supporting Document
+                    </a>
+                </td>
+              </tr>     
+              @endif  
+
 			        <tr>    <th>Status</th>          <td> {{$rv->status}} </td> </tr>
               <tr>    <th>Edit Content</th>   
            <td> <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-success btn edit"> <i class="fa fa-edit" style="color:white"></i></a> 
@@ -56,7 +72,8 @@ hr{
                 <div class="container">
                   <div class="row">
                     
-                  <div class="col ">          
+                  @if($rv->approverLevel !== 'GM')
+                  <div class="col">          
                       <form method="POST" action="/GMrecommendnotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf        
                       <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
                       <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId" >
@@ -69,7 +86,9 @@ hr{
                         <input type="text"  name="remarks" class="form-control" id="remarks" placeholder="recommend remarks" required>
                       </form>
                     </div>
+                    @endif
 
+                    @if($rv->approverLevel == 'GM')
                     <div class="col">
                       <form method="POST" action="/GMrecommendnotesheet"  enctype="multipart/form-data" accept-charset="UTF-8"> @csrf    
                       <div>
@@ -85,6 +104,7 @@ hr{
                        </div>
                       </form>
                     </div>
+                    @endif
 
      
                     <div class="col">  
@@ -288,7 +308,7 @@ hr{
       })
 </script>
 <!-- jquery-validation -->
-<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 			<!-- DataTables -->
 			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -307,6 +327,10 @@ hr{
 
     <script>
     $(function() {
+       // Destroy the DataTable if it's already initialized
+    if ($.fn.DataTable.isDataTable('#example1')) {
+        $('#example1').DataTable().destroy();
+    }
       $("#example1").DataTable({
         "dom": 'Bfrtip',
         "responsive": true,
@@ -317,6 +341,7 @@ hr{
         "autoWidth": false,
         "paging": true,
         "retrieve":true,
+        "destroy": true,  // Allows reinitialization
         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
       });
     });

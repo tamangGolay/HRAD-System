@@ -108,7 +108,8 @@ div.notesheet {
                             <td  class="col1"> {{$approve-> empName}} </td>                            
                             <td class="col1" > {{$approve->modiType}} </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
-                          
+                            <td class="col1" > {{$approve-> modifiedOn}} </td>                          
+                                                    
                         </tr>
                         @endforeach
                     </tbody>                    

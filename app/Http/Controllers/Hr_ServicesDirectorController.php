@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\MyTestMail;
 use App\HR_Service;
 use App\HR_Service_Approval;
+use Illuminate\Support\Facades\Log;
 // Add more models as needed
 
 class Hr_ServicesDirectorController extends Controller
@@ -18,20 +19,33 @@ class Hr_ServicesDirectorController extends Controller
       if ($request->ajax()) {
           $query = DB::table('hrservice')
           ->join('officedetails','officedetails.id','hrservice.officeId')
-          ->join('users','users.empId','hrservice.createdBy')
-          ->join('officeunder','officeunder.office','=','hrservice.officeId')
-          
-          ->select('hrservice.*','officeDetails','empName')
+            // ->join('officedetails as odee','odee.id','hrservice.officeId')
+            ->join('users','users.empId','hrservice.createdBy')
+            ->join('officeunder','officeunder.office','=','hrservice.officeId')
+            //->join('officeunder as ou', 'ou.office', '=', 'hrservice.officeId')          
+          ->select('hrservice.*','officedetails.officeDetails','empName','officeType')
+        
           ->where('hrservice.status','=','GMRecommended')
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
-          
-  
+
+       
           if (!empty($request->serviceType)) {
               $query->where('serviceType', $request->serviceType);
           }
   
           $review = $query->get();
+
+          // Add recommendButton flag based on your condition
+        $review->transform(function ($item) {
+            $isAlsoOfficeHead = DB::table('officeunder')
+            ->where('head', $item->createdBy)
+            ->exists();
+
+        $item->recommendButton = ($isAlsoOfficeHead && $item->officeType == 'Division');
+        
+        return $item;
+    });
   
           return datatables()->of($review)->make(true);
       }        

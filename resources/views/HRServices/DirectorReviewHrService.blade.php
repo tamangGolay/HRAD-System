@@ -263,7 +263,9 @@
                             return `
                               <div style="white-space: nowrap;">
                                 <button class="btn btn-outline-success btn-sm approve-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Approve</button>
-                                <button class="btn btn-outline-info btn-sm recommend-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Recommend</button>                                
+                                 ${row.recommendButton ? `
+                                <button class="btn btn-outline-info btn-sm recommend-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Recommend</button>    
+                                 ` : '' }                            
                                 <button class="btn btn-outline-danger btn-sm reject-btn"  data-id="${row.id}"  style="color: black;"> Reject</button>
                              </div>
                                 `;

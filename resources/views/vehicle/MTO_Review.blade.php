@@ -9,7 +9,7 @@
 			<div class="card-header bg-green">
 				<div class="col text-center">
 					<h5>
-                <b>Vehicle Review</b>
+                <b>Vehicle Review by MTO</b>
               </h5> </div>
 			</div>
 			<!--/card-header-->
@@ -24,8 +24,9 @@
 							<tr class="text-nowrap">
 								<th>Booking No</th>
 								<th>Emp Id</th>
-								<th>Wing/Dept/Div</th>
+								<th>Office Name</th>
 								<th>Name</th>
+								<th>Contact Number</th>
 								<th>Date of Requisition</th>
 								<th>Start Date</th>
 								<th>End Date</th>								
@@ -56,21 +57,28 @@
 							<tr>
 								<td> {{$rv->id}} </td>
 								<td> {{$rv->emp_id}} </td>
-								<td> {{$rv->description}} </td>
+								<td> {{$rv->officeDetails}} </td>
 								<td> {{$rv->vname}} </td>
+								<td> {{$rv->mobileNo}} </td>
 								<td> {{$rv->dateOfRequisition}} </td>
-								<td class="text-nowrap"> {{$rv->start_date}} </td>
+					
+								<td class="text-nowrap">
+   									 {{ \Carbon\Carbon::parse($rv->start_date)->format('Y-m-d') }}<br>
+   									 {{ \Carbon\Carbon::parse($rv->start_date)->format('h:i A') }}
+								</td>
+
+
 								<td class="text-nowrap"> {{$rv->end_date}} </td>
-								
+						
 								<td> {{$rv->purpose}} </td>
 								<td> {{$rv->placesToVisit}} </td>
-								<td> {{$rv->name}} ({{$rv->designation}}) </td>
+								<td> {{$rv->empName}} ({{$rv->desisNameLong}}) </td>
 								<td> {{$rv->personalvehicle}} </td>
 
 								
 								
 						<td align="center">
-						<button type="submit" name="idl[]" id="idsubmit" value="{{$rv->id}}"  class="btn btn-outline-success text-center text-dark" > Approve</button>
+						<button type="submit" name="idl[]" id="idl" value="{{$rv->id}}" class="btn btn-outline-success text-center text-dark" > Approve</button>
 								
 						
 							
@@ -87,7 +95,7 @@
 
 					
 					
-			<button type="submit" name="idl[]" id="idl" value="{{$rv->id}}" onclick="return confirm('Do you want to reject?')" class="btn btn-outline-danger text-center text-dark">Reject</button>
+			<button type="submit" name="idl[]" id="idl" onclick="return confirm('Do you want to reject?')" value="{{$rv->id}}" class="btn btn-outline-danger text-center text-dark">Reject</button>
 			<br>
 			<br>
 		<div>
@@ -105,38 +113,36 @@
 				<!--/card-body-->
 			</div>
 			</div>
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-			<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-			<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-	 
+</div></div>
 
+			<!-- Scripts -->
+<script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#contenthead').html('<strong><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;</i></a></strong>');
+    });
+</script>
 
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-			<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-			<script type="text/javascript">
-			$(document).ready(function() {
-				document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
-			});
-			</script>
-			<!-- jquery-validation -->
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
-			<!-- DataTables -->
-			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-			<!-- Script for export file from datatable -->
-			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/buttons.flash.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
-			<!-- checkin form -->
+<!-- jQuery Validation -->
+<script src="{{ asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+
+<!-- DataTables -->
+<script src="{{ asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+
+<!-- Export buttons -->
+<script src="{{ asset('/admin-lte/datatables/nima.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/datatables/vfs_fonts.js') }}"></script>
+
+	
 			<script>
 			$(function() {
 				$("#example2").DataTable({
@@ -199,22 +205,7 @@
 			});
 
 			</script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
-			<!-- DataTables -->
-			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-			<!-- Script for export file from datatable -->
-			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
+		
 
 	<script>
 
@@ -242,15 +233,7 @@ function check() {
 $("#vehicle").on('change',function(e){
 	document.getElementById('vehicle').style = "border-color:#ced4da;width:200px";
 
-});
-
-// $("#idsubmit").click(function() {
-// // disable button
-// $(this).prop("disabled", true);
-// // add spinner to button
-// $(this).html(
-// '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
-// );
-// });
+        
+    });
 
 	</script>

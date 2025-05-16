@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
           
 use App\Vehicles;
 use Illuminate\Http\Request;
-use DataTables;
-use DB;
+// use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
         
 class Manage_VehicleController extends Controller
 {
@@ -17,7 +18,8 @@ class Manage_VehicleController extends Controller
     public function index(Request $request)
     {
 
-        $vehicle = DB::table('vehicledetails')->where('status','0');
+        $vehicle = DB::table('vehicledetails')
+                ->where('status','Active');
         
         if ($request->ajax()) {
             $data = $vehicle;
@@ -26,13 +28,9 @@ class Manage_VehicleController extends Controller
                     ->addColumn('action', function($row){
    
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp';
-                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteVehicle" data-original-title="Delete" class="btn btn-primary btn-sm deleteVehicle">Delete</a>';
+                           $btn = $btn .'<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" id="deleteVehicle" data-original-title="Delete" class="btn btn-danger btn-sm deleteVehicle">Delete</a>';
 
-
-
-
-    
-                            return $btn;
+                                return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -76,8 +74,9 @@ class Manage_VehicleController extends Controller
      */
     public function delete(Request $request)
     {
-        $query = DB::table('vehicledetails')->where('id', $request->id)
-            ->increment('status');
+        DB::table('vehicledetails')
+            ->where('id', $request->id)
+            ->update(['status' => 'Inactive']);
 
         return response()
             ->json(['success' => 'Vehicle deleted successfully.']);

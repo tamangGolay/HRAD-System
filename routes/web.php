@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\PromotionAllListController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DocumentController;
-
+use App\Http\Controllers\GetMastersController;
 use App\Http\Controllers\Hr_ServicesManagerController;
 use App\Http\Controllers\Hr_ServicesGMController;
 use App\Http\Controllers\HR_ServiceController;
 use App\Http\Controllers\Hr_ServicesDirectorController;
 use App\Http\Controllers\Hr_ServicesCEOController;
-
+use App\Http\Controllers\VehicleReportController;
+use App\Http\Controllers\Manage_VehicleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,17 +44,14 @@ Route::get('/forgetPassword', function () {
 })->middleware('guest')->name('password.request');
 //end forgot password new
 
-
-
 Route::post('destroyVehicle', 'Manage_VehicleController@delete')->name('destroyVehicle');
 Route::get('manage_vehicle', 'Manage_VehicleController@message')->name('manage_vehicle');
-
-
-
+//manage vehicle
+Route::resource('vehicle', 'Manage_VehicleController');
 
 //vehicle Report
-Route::post('reportsearch', 'ContributionReportController@index')->name('reportsearch');
 
+Route::post('/reportsearch', [VehicleReportController::class, 'index']);
 
 
 
@@ -62,11 +60,6 @@ Route::resource('a_b', VehicleController::class);
 
 //guesthouse edit routing
 Route::resource('guesth', guestHouseEditController::class);
-
-//manage vehicle
-Route::resource('vehicle', Manage_VehicleController::class);
-
-
 
 
 //employeeReporting
@@ -134,7 +127,7 @@ Auth::routes();
 
 
 Route::get('/', function(){
-  return view('auth.login');
+  return view('firstpage');
 
 });
 
@@ -326,8 +319,9 @@ Route::resource('guesthousereport','guestHouseReportsController');
 
 //Booking review updating request in store function
 Route::resource('c_request', ConferenceController::class);
+//[GuestHouseController::class, 'fetchguesthouse']);
 //Booking review deleting request
-Route::post('/delete', 'ConferenceController@delete')->name('delete');
+
 //Redirecting the booking review page after crude operations
 Route::get('/booking_reviewm', 'ConferenceController@message')->name('booking_reviewm');
 
@@ -342,7 +336,9 @@ Route::post('/conferencereject','ConferenceController@conferencereject')->name('
 //Routes for user_profile page
 //To view the page
 
-Route::get('/cbook/', 'GetMastersController@user_profile');
+// conference
+Route::get('/cbook/', 'GetMastersController@c_booking');
+
 //For message
 Route::get('/success', 'GetMastersController@success');
 Route::get('/error', 'GetMastersController@error');

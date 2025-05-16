@@ -17,7 +17,7 @@
 							<tr class="text-nowrap">
 								<th>Booking No</th>
 								<th>Emp Id</th>
-								<th>Wing/Dept/Div</th>
+								<th>Office Name</th>
 								<th>Name</th>
 								<th>Date of Requisition</th>
 								<th>Start Date</th>
@@ -37,21 +37,21 @@
 							<tr>
 								<td> {{$rv->id}} </td>
 								<td> {{$rv->emp_id}} </td>
-								<td> {{$rv->description}} </td>
+								<td> {{$rv->officeDetails}} </td>
 								<td> {{$rv->vname}} </td>
 								<td> {{$rv->dateOfRequisition}} </td>
 								<td class="text-nowrap"> {{$rv->start_date}} </td>
 								<td class="text-nowrap"> {{$rv->end_date}} </td>								
 								<td> {{$rv->purpose}} </td>
 								<td> {{$rv->placesToVisit}} </td>
-								<td> {{$rv->name}} ({{$rv->designation}}) </td>
+							<td> {{$rv->empName}} ({{$rv->desisNameLong}}) </td>
 								<td> {{$rv->personalvehicle}} </td>
 								<td>
 									<a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$rv->id}}" data-original-title="Edit" class="edit mt-1 ml-2 btn btn-outline-info btn edit"> 
 										<i class="fa fa-edit" style="color:black"></i></a>
 								</td>
 								
-													
+												
 						<td> <button type="submit" name="idl[]" id="idl" value="{{$rv->id}}" onclick="return confirm('Vehicle is back to HQ?');" class="btn btn-outline-success text-dark text-center "> 
 						      Yes</button> 	
 					
@@ -107,18 +107,11 @@
 					</div>
 				</div>
 			</div>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-			<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>			
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-			<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-			<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-			<script type="text/javascript">
-			$(document).ready(function() {
-				document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center></strong>';
-			});
-			</script>
+	<script>
+    $(document).ready(function () {
+        $('#contenthead').html('<strong><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;</i></a></strong>');
+    });
+</script>
 			<!-- jquery-validation -->
 			<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
@@ -217,22 +210,4 @@
         $(this).hide();
         form.prepend($(this));
     });
-	});
-
-			</script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
-			<!-- DataTables -->
-			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-			<!-- Script for export file from datatable -->
-			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
+	});			

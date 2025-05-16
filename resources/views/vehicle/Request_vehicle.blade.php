@@ -8,9 +8,7 @@
 </style>
 
 <link href="{{asset('css/bose.css')}}" rel="stylesheet"> 
- <!-- css property called in bose.css -->
 
-<!-- Stored in resources/views/pages/dispatch.blade.php -->
 <div class="row">
 	<div class="col">
 	
@@ -18,34 +16,54 @@
 			<div class="rvheading card-header bg-green  d-flex justify-content-center"> <strong>Vehicle Requisition Form</strong> </div>
 			<!--/card-header-->
 			<div class="textfont card-body">
-				<form method="POST" action="{{ route('Request_vehicle') }}" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf
-					<input type="hidden" class="form-control" value="{{ Auth::user()->name }}" name="name" id="name" placeholder="Employ ID">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->email }}" name="email" id="email" placeholder="Employ ID">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->emp_id }}" name="emp_id" id="emp_id" placeholder="Employ ID">
-					<input type="hidden" class="form-control" value="{{ Auth::user()->org_unit_id }}" name="org_unit_id" id="org_unit_id" placeholder="Employ ID">
+				<form method="POST" id="vehicleRequestForm" action="{{ route('Request_vehicle') }}" enctype="multipart/form-data" accept-charset="UTF-8"> 
+					@csrf
+					<input type="hidden" class="form-control" value="{{ Auth::user()->empName }}" name="name" id="name" placeholder="Employ ID">
+					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="emp_id" id="emp_id" placeholder="Employ ID">
+					<input type="hidden" class="form-control" value="{{ Auth::user()->office }}" name="office" id="office" placeholder="Employ ID">
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					<input type="hidden" class="form-control air-datepicker" id="date_of_requisition" name="date_of_requisition" autocomplete="off" required readonly>
-					<!-- <div class="form-group row"> 
-              <label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Date of requistion:</label>
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                </div>
-            </div> -->
+					
 					<div class="form-group row">
-						<label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Start Date:</label>
+						<label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Email ID:<span style="color: red;">*</span></label>
+							<div class="col-sm-10 col-md-6 col-lg-4">							
+								<input type="text" class="form-control" value="{{ Auth::user()->emailId }}" name="email" id="email" placeholder="Email ID" required>		
+							</div>
+							<div class="col-sm-4">
+								<span class="text-info">*Please ensure the emailId is correct and not empty!</span>
+							</div>								
+					</div>	
+					
+					<div class="form-group row">
+						<label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Office Name:<span style="color: red;">*</span></label>
+							<div class="col-sm-10 col-md-6 col-lg-4">							
+								<input type="text" class="form-control"
+									value="{{ $officenameAuthUser->officeDetails ?? '' }}"
+									name="officename" id="officename"
+									placeholder="office name" required readonly>
+							</div>
+
+							<div class="col-sm-4">
+								<span class="text-info">*Please ensure that your office name is correct!</span>
+							</div>
+														
+					</div>	
+										
+					<div class="form-group row">
+						<label class="col-md-4 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Start Date:<span style="color: red;">*</span></label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							
-					<input type="date" class="form-control" name="start_date" autocomplete="off" id="start_date" onfocusout="myFunction()" required> 
-								
-				</div>
-
-				<div class="col-sm-2">
-                    <span id="backdate" class="text-danger"></span>
-                </div>
+						<input type="datetime-local" class="form-control" name="start_date" autocomplete="off" id="start_date" onfocusout="myFunction()" required> 
+		
+					</div>
+					<div class="col-sm-2">
+						<span id="backdate" class="text-danger"></span>
+					</div>
 
 					</div>
 
 					<div class="form-group row">
-						<label class="col-md-4 col-form-label text-md-right" for="dateid">&nbsp;&nbsp;&nbsp;End Date:</label>
+						<label class="col-md-4 col-form-label text-md-right" for="dateid">&nbsp;&nbsp;&nbsp;End Date:<span style="color: red;">*</span></label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							<input type="date" class="form-control" name="end_date" autocomplete="off" id="end_date" onfocusout="myFunction()" required>
 						 </div>
@@ -53,25 +71,24 @@
 					<div class="col-sm-2">
                     <span id="backenddate" class="text-danger"></span>
             
-						</div>
-				</div>
-		
-					 
+			</div>
+       </div>
+	 
 					<div class="form-group row">
-						<label class="col-md-4 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Purpose:</label>
+						<label class="col-md-4 col-form-label text-md-right" for="purpose">&nbsp;&nbsp;&nbsp;Purpose:<span style="color: red;">*</span></label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							<textarea class="form-control" name="purpose" id="purpose" placeholder="Purpose of visit" required></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-4 col-form-label text-md-right" for="places to visit">&nbsp;&nbsp;&nbsp;Places to visit:</label>
+						<label class="col-md-4 col-form-label text-md-right" for="places to visit">&nbsp;&nbsp;&nbsp;Places to visit:<span style="color: red;">*</span></label>
 						<div class="col-sm-10 col-md-6 col-lg-4">
 							<textarea class="form-control" name="places to visit" id="places to visit" placeholder="Chumey, Bumthang" required></textarea>
 						</div>
 					</div>
 						
 	<div class="form-group row">
-    <label class="col-md-7 col-form-label text-md-right" for="purpose"><i>&nbsp;&nbsp;&nbsp;Can you drive your own vehicle if the office vehicle is unavailable?:&nbsp;&nbsp;&nbsp;</i></label>
+    <label class="col-md-7 col-form-label text-md-right" for="purpose"><i>&nbsp;&nbsp;&nbsp;Can you drive your own vehicle if the office vehicle is unavailable?:&nbsp;&nbsp;&nbsp;<span style="color: red;">*</span></i></label>
       
         
           <label class="radio-inline">
@@ -87,7 +104,7 @@
 					
 					<div class="form-group row mb-0">
 						<div class="col text-center col-form-label col-md-center col-sm-2 col-md-10 col-lg-12 ">
-							<button type="submit"  id="book" class="btn nSuccess btn-lg">Book Now</button>
+							<button type="submit" id="book" class="btn nSuccess btn-lg">Book Now</button>
 						</div>
 					</div>
 				</form>
@@ -96,7 +113,6 @@
 				</div>
 			</div>
 		</div>
-	
 
 		<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 		<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -124,10 +140,8 @@ function myFunction(val)
    document.getElementById('backdate').innerHTML = ''; 
 //  document.getElementById('end').innerHTML = ''; 
  document.getElementById('backenddate').innerHTML = '';  
-                      
-              
-                       
-  var user_year0=document.getElementById('start_date').value[0];
+
+ var user_year0=document.getElementById('start_date').value[0];
   var user_year1=document.getElementById('start_date').value[1];
   var user_year2=document.getElementById('start_date').value[2];
   var user_year3=document.getElementById('start_date').value[3];
@@ -163,36 +177,19 @@ function myFunction(val)
   var user_edate=user_edate0+user_edate1;
 
 
-  var sys_year = {{date('Y')}};
-  var sys_month = {{date('m')}};
-  var sys_date = {{date('d')}};
+var sys_year = "{{ date('Y') }}";
+var sys_month = "{{ date('m') }}";
+var sys_date = "{{ date('d') }}";
 
- if( (user_year <=sys_year) && (user_month <= sys_month) && (user_date < sys_date)){
-  document.getElementById('backdate').innerHTML = 'Invalid Date!!!'; 
- document.getElementById('start_date').value='';
+  if( (user_eyear <= user_year) && (user_emonth <= user_month) && (user_edate < user_date) ||
+	  (user_eyear <= user_year) && (user_emonth <= user_month) && (user_edate < user_date) 
+	 || (user_month > user_emonth) && (user_eyear == user_year) ){
 
-                          
-        
-      }
-
-	  if( (user_eyear <= sys_year) && (user_emonth <= sys_month) && (user_edate <sys_date) ||
-        (user_eyear <= user_year) && (user_emonth<= user_month) && (user_edate<user_date)
-		||(user_month > user_emonth )&&(user_eyear == user_year)
-		){
-
-          document.getElementById('backenddate').innerHTML = 'Invalid Date!!!'; 
-          document.getElementById('end_date').value='';
-
- }	  
- }
+	 document.getElementById('backenddate').innerHTML = 'Invalid Date!!!';
+	 document.getElementById('end_date').value='';
+  }
+  }
 </script>
-
-<script src="{{asset('assets/js/jquery-3.5.1.slim.min.js')}}"></script>
-		<script type="text/javascript">
-		$(document).ready(function() {
-			document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';
-		});
-		</script>
 
 	<script>
 		$(function() {
@@ -211,7 +208,7 @@ function myFunction(val)
 			 });
 		});
 
-		$('form').submit(function () {
+			$('form').submit(function () {
     // Bail out if the form contains validation errors
     if ($.validator && !$(this).valid()) return;
 
@@ -225,4 +222,12 @@ function myFunction(val)
         form.prepend($(this));
     });
 	});
-		</script>
+
+$(document).ready(function() {
+
+document.getElementById('contenthead').innerHTML = '<Strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;</i></a></strong>';
+
+});
+
+</script>
+

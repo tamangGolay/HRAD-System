@@ -85,7 +85,7 @@ class ImportMaster extends Command
         $this->importGewog('gewogmaster',new gewog);
         $this->importVillage('villagemaster',new village);
         $this->importPlace('placemaster',new place);
-        $this->importOrgUnit('OrgUnit',new OrgUnit);
+       // $this->importOrgUnit('OrgUnit',new OrgUnit);
         $this->importRoles('roles',new Roles);
         // $this->importUser('user',new User);
         // $this->importForms('forms',new Forms);

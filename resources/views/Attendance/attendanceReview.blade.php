@@ -130,7 +130,7 @@
 </div>
 
 <!-- Reject Remark Modal -->
-<div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
+<!-- <div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 </body>
@@ -161,6 +161,7 @@
 
         var filterApplied = false;
         var authUserOfficeId = '{{ Auth::user()->office }}';
+        var authUserHead = '{{ Auth::user()->empId }}';
        
 
         // console.log('test data here',reportToOffice );
@@ -275,16 +276,26 @@
                         data: null, // We'll render the buttons here
                         render: function(data, type, row) {
 
-                            if (row.reportToOffice != authUserOfficeId) {
-                            return '';  // Hide approve and reject button if not direct supervisor
-                        }
+                            // if (!row.canApproveReject) {
+                            //     return '';
+                            // }
+
+                        //     if ( row.head != authUserHead) {
+                        //     return '';  // Hide approve and reject button if not direct supervisor
+                        // }
                             // Render the Approve and Reject buttons if direct supervisor
+                    // console.log('canApproveReject:', row.canApproveReject);
+
+                            if (row.canApproveReject == true) {
                             return `
                                 <button class="btn btn-outline-success btn-sm approve-btn" data-id="${row.id}"  data-date="${row.date}" style="color: black;  margin-right: 10px;"> <i class="fas fa-check"></i></button>
                                 
                                 <button class="btn btn-outline-danger btn-sm reject-btn"  data-id="${row.id}" data-date="${row.date}" style="color: black;"> <i class="fas fa-times"></i></button>
                             `;
                         }
+                    else{
+                        return `<span class="text-muted">N/A</span>`;
+                    }}
                     }
                     
                 ],
@@ -293,9 +304,9 @@
 
                     if (!filterApplied) {
 
-                    if (data.reportToOffice != authUserOfficeId) {
-                    $(row).hide(); // Hide the entire row
-                }
+                     if (row.canApproveReject == false) {
+                     $(row).hide(); // Hide the entire row
+                 }
             }
                 },
                 
@@ -375,20 +386,25 @@ $(document).on('click', '.reject-btn', function() {
     var rowId = $(this).data('id');
     var date = $(this).data('date');
 
+     if (!confirm("Are you sure you want to reject this attendance record?")) {
+        return;
+    }
+
+
     // Store rowId & date globally to use in the approval button click
-   $('#rejectModal').data('rowId', rowId).data('date', date).modal('show');
-    });
+//    $('#rejectModal').data('rowId', rowId).data('date', date).modal('show');
+    // });
   
     // When the "Approve" button in the modal is clicked
-    $('#confirmReject').on('click', function() {
-    var rowId = $('#rejectModal').data('rowId');
-    var date = $('#rejectModal').data('date');
-    var remarkReject = $('#remarkReject').val().trim(); // Get the remark input
+    // $('#confirmReject').on('click', function() {
+    // var rowId = $('#rejectModal').data('rowId');
+    // var date = $('#rejectModal').data('date');
+    // var remarkReject = $('#remarkReject').val().trim(); // Get the remark input
 
-    if (remarkReject === "") {
-        alert("Please enter a justification before approving.");
-        return;
-    }   
+    // if (remarkReject === "") {
+    //     alert("Please enter a justification before approving.");
+    //     return;
+    // }   
    
     $.ajax({
         url: "{{ route('attendanceReview.updateStatusReject') }}", 
@@ -397,13 +413,13 @@ $(document).on('click', '.reject-btn', function() {
             id: rowId,
             date: date,
             status: 'Rejected',  
-            remarkReject: remarkReject,  // Send the remark
+           // remarkReject: remarkReject,  // Send the remark
             _token: '{{ csrf_token() }}'  
         },
         success: function(response) {
             if (response.success) {               
-                $('#rejectModal').modal('hide'); 
-                alert('Justification added sucessfully!')
+                // $('#rejectModal').modal('hide'); 
+                alert('Rejected sucessfully!')
 
                 $('#att_data').DataTable().ajax.reload();
             } else {

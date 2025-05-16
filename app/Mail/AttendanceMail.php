@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
   
-class MyTestMail extends Mailable implements ShouldQueue
+class AttendanceMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
   
@@ -31,6 +31,6 @@ class MyTestMail extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->subject('Mail From BPC System')
-                    ->view('emails.myTestMail');
+                    ->view('emails.attendancemail');
     }
 }

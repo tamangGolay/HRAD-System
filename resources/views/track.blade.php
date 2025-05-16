@@ -11,12 +11,12 @@ header('X-Frame-Options: SAMEORIGIN');
   white-space:nowrap;
 }
 
-.nima, .register-box {
+.cardTrack, .register-box {
     width: 90%;
  
 }
 
-.sonam, .register-page {
+.REG, .register-page {
     -ms-flex-align: center;
     align-items: center;
     
@@ -34,14 +34,12 @@ header('X-Frame-Options: SAMEORIGIN');
   margin-top:10%;
 }
 
-
-
 </style>
 
 
 
-<div class="hold-transition sonam">
-    <div class="nima">
+<div class="hold-transition REG">
+    <div class="cardTrack">
             <div class="card">
                 <div class="card-body">
                 <div class="card-header bg-green">     
@@ -55,22 +53,19 @@ header('X-Frame-Options: SAMEORIGIN');
                   <th>Booking _Id</th>
                   <th>Emp_id</th>
                   <th>Name</th>
-                  <!-- <th>Designation</th> -->
+               
                   <th>Contact_no</th>
                   <th width=15%>Wing/Dept/Div</th>
                   <th>Meeting Name</th>
                   <th>Conference Name</th>
-                  <th class="w-25 ">Date and Time</th>
-
-                  
+                  <th class="w-25 ">Date and Time</th>                  
                   <th>Status</th>
                   <th>Reason</th>
 
                  </tr>
                 </thead>
                 <tbody>   
-                
-     
+                    
             
                   @foreach($review as $rv) 
 
@@ -83,10 +78,8 @@ header('X-Frame-Options: SAMEORIGIN');
                     <td>
 
                      {{$rv->emp_id}}
-                     <!-- pass employee id -->
-                    
-                     <!-- <input type="hidden" name="emp_id[]" id="emp_id" value="{{$rv->emp_id}}"> -->
-                                         </td>
+    
+                    </td>
                     <td>
                      {{$rv->name}}
                     </td>
@@ -94,7 +87,7 @@ header('X-Frame-Options: SAMEORIGIN');
                      {{$rv->contact_number}}
                     </td>
                     <td>
-                     {{$rv->description}}
+                     {{$rv->officeDetails}}
                     </td>
                     
                     <td>
@@ -105,7 +98,7 @@ header('X-Frame-Options: SAMEORIGIN');
                     </td>
                     
                     
-                    <td  >
+                    <td>
 
                     {{date("Y-m-d h:i A",strtotime($rv->start_date))}}
 
@@ -115,13 +108,7 @@ header('X-Frame-Options: SAMEORIGIN');
                     {{date("Y-m-d h:i A",strtotime($rv->end_date))}}
                     </td>
 
-                    <!-- <td >                  
-                   
-                     <br>
-                    </td> -->
-                  
-
-                    
+                                       
                     <td style="width:40%">
 
                     @if($rv->status=='0' && ($rv->conference_id ==1 ) )
@@ -152,8 +139,6 @@ header('X-Frame-Options: SAMEORIGIN');
                    </td>
 
                   </tr>
-
-
 
                
                   @endforeach

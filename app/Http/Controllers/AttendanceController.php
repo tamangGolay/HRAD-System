@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use App\Mail\AttendanceMail;
 use App\User;
 
@@ -20,7 +20,8 @@ class AttendanceController extends Controller
     {
         if (request()->ajax()) {
             // Get the offices where the current user is the head
-            $officeHead = DB::connection('mysql')->table('officeunder')
+            $officeHead = DB::connection('mysql')
+                ->table('officeunder')
                 ->where('head', Auth::user()->empId)
                 ->pluck('office');
 
@@ -52,6 +53,15 @@ class AttendanceController extends Controller
                     $records = DB::connection('mysql2')
                         ->table($tableName . ' as a')
                         ->whereIn('a.office_id', $officeHead)
+                        // ->where('a.status', '=', 'NULL')                        
+                        //  ->where('a.checkin_status', '=', 'Late')
+                        //  ->orWhere('a.checkout_status', '=', 'Early')
+                        ->whereNull('a.status')
+                        ->where(function ($query) {
+                            $query->where('a.checkin_status', 'Late')
+                                ->orWhere('a.checkout_status', 'Early');
+                        })
+
                         ->select('a.*', 'a.office_id')
                         ->get();
 
@@ -59,15 +69,10 @@ class AttendanceController extends Controller
                 }
             }
 
-            // ** Filter the dataset to include only yesterday's records : added at last**
-            // $yesterday = Carbon::yesterday()->format('Y-m-d');
-            // $attendance = $attendance->filter(function ($item) use ($yesterday) {
-            //     return $item->date == $yesterday;
-            // });
-
             // Only apply "yesterday" filter if no date filter is provided
             if (empty($request->filter_startdate) && empty($request->filter_enddate)) {
                 $yesterday = Carbon::yesterday()->format('Y-m-d');
+                // dd($yesterday);
                 $attendance = $attendance->filter(function ($item) use ($yesterday) {
                     return $item->date == $yesterday;
                 });
@@ -87,16 +92,63 @@ class AttendanceController extends Controller
                 ->whereIn('o.id', $officeHead)
                 ->select('o.id', 'o.officeDetails')
                 ->get();
+                
+            $officeUnderHeads = DB::connection('mysql')
+                ->table('officeunder')
+                ->pluck('head'); // office => head            
 
+                // Maps office => head
+      $officeHeadMapping = DB::connection('mysql')
+                ->table('officeunder')
+                ->get()
+                ->groupBy('office')
+                ->map(function ($group) {
+                    return $group->pluck('head')->toArray(); // get all heads as array per office
+                });
 
-            $attendance = $attendance->map(function ($item) use ($reportToOffices, $officeDetailsfull) {
+            $attendance = $attendance->map(function ($item) use ($reportToOffices, $officeDetailsfull,$officeHead,$officeUnderHeads,$officeHeadMapping) {
 
                 $office = $officeDetailsfull->firstWhere('id', $item->office_id);
                 $item->officeDetails = $office ? $office->officeDetails : null;  // Add the office name to the attendance
                
-                // Add reportToOffice info
+             //$item->reportToOffice = $reportToOffices->get($item->office_id, null);
+             $reportToOffice = $reportToOffices->get($item->office_id, null);
+             $item->reportToOffice = $reportToOffice;                  
 
-                $item->reportToOffice = $reportToOffices->get($item->office_id, null);
+            $authOfficeId = Auth::user()->office;
+            $authUserId = Auth::user()->empId;
+            $item->canApproveReject = false;
+            
+         // ✅ Case 1: Logged-in user is working in their own office and is one of the office heads
+  
+                    if (
+                    $item->office_id == $authOfficeId &&
+                    in_array($authOfficeId, $officeHead->toArray())
+                     ) {
+                  
+                     $item->canApproveReject = true;
+                    }
+        // ✅ Case 2: The user (item->user_id) is a head of a sub-office,and that sub-office reports to the logged-in user's office
+
+                    elseif (($officeUnderHeads->contains($item->user_id)) && $reportToOffice == $authOfficeId)
+                    {
+                    $item->canApproveReject = true;
+
+                   }
+    // ✅ Case 3: The logged-in user is one of the heads of the item's office, and that office reports to the logged-in user's office
+                   
+                    elseif (
+                        isset($officeHeadMapping[$item->office_id]) &&
+                        in_array($authUserId, $officeHeadMapping[$item->office_id]) &&
+                        $reportToOffice == $authOfficeId)
+                        {
+
+                        $item->canApproveReject = true;
+                   }
+                    else {
+                          $item->canApproveReject = false;
+                    }
+              
                 return $item;
             });
 
@@ -163,12 +215,12 @@ class AttendanceController extends Controller
             'id' => 'required',
             'date' => 'required|date', 
             'status' => 'required|string',
-            'remarkReject' => 'nullable|string'
+            // 'remarkReject' => 'nullable|string'
         ]);
 
         $date = $validated['date'];  
         $status = $validated['status'];
-        $remark = $validated['remarkReject'];
+        // $remark = $validated['remarkReject'];
 
         $month = Carbon::parse($date)->format('F');
 
@@ -189,8 +241,9 @@ class AttendanceController extends Controller
 
         $mailContent = ['title' => 'Mail From the Attendance System ( Office Attendance Notification )', 'body' => 'Dear sir/madam,', 
                                                                                                     'body1' => 'This is to inform you that you reported late to the office on date <b>' . $request->date . '</b>',                                                                                                    
-                                                                                                    'body2' => 'Kindly review the remarks provided by your supervisor below.',
-                                                                                                    'body3' => 'Remarks: <b>' . $request->remarkReject . '</b>',
+                                                                                                    'body2' => '',
+                                                                                                    'body3' => '',
+                                                                                                    // 'body3' => 'Remarks: <b>' . $request->remarkReject . '</b>',
                                                                                                     'body4' => '<b>Please be mindful of your check-in and check-out, as repeated offenses may result in complications.</b>', ];                                                                                                 
                                                                                                     
 
@@ -203,7 +256,8 @@ class AttendanceController extends Controller
         $query = $model->where('id', $request->id)
         ->update([
             'status' => $status,
-            'remarks_supervisor' => $remark // Save remark
+            // 'remarks_supervisor' => $remark 
+            // Save remark
         ]);
         return response()->json(['success' => true, 'message' => 'Status updated successfully']);
     }

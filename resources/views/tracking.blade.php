@@ -3,11 +3,8 @@ header('X-Frame-Options: SAMEORIGIN');
 ?>
 @extends('layouts.masterdefault')
 @section('title', 'Login')
+
 @section('content')
-
-
-
-
 
 
 <div class="hold-transition login-page">
@@ -30,7 +27,7 @@ header('X-Frame-Options: SAMEORIGIN');
                 <!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->
 
                 <div class="input-group mb-2">
-                <input id="emp_id" type="number" placeholder="Booking No/Emplyee No" class="form-control" name="emp_id" required>
+                <input id="empId" type="number" placeholder="Booking No/Emplyee No" class="form-control" name="empId" required>
                
 
                     <div class="input-group-append">
@@ -47,18 +44,12 @@ header('X-Frame-Options: SAMEORIGIN');
 
 
                 <br>
-            <div class="row">
-                <div class="col-8">
-                    <div class="col-4">
-
-              
+            <div class="row justify-content-center">
+                <div>
                     <button type="submit" class="btn btn-outline btn-success">
                         {{ __('Track') }}
-                    </button>
+                    </button>                   
 
-                    
-
-                    </div>
                 </div>
            
             </div>
@@ -71,7 +62,5 @@ header('X-Frame-Options: SAMEORIGIN');
 
       
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-
 
 @endsection

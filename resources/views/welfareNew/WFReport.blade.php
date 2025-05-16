@@ -106,7 +106,7 @@ div.notesheet {
                             {{ $approve->modifierType == 'Member1Recommended' || $approve->modifierType == 'Member2Recommended' ? 'Recommended' : $approve->modifierType }}
                             </td>
                             <td class="col1" > {{$approve-> remarks}} </td>
-                            <td class="col1" > {{$approve-> modifiedOn}} </td>
+                            <td class="col1" > {{$approve-> modifiedOn}} </td>                          
                           
                         </tr>
                         @endforeach

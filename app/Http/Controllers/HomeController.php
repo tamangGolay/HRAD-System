@@ -29,7 +29,9 @@ class HomeController extends Controller
         $title = "Home";
         $page = "";       
 
-        return view('home', ['title' => $title, 'page' => $page], compact('forms', 'formgroups'));
+        $groupedForms = $forms->groupBy('group');
+
+        return view('home', ['title' => $title, 'page' => $page], compact('forms', 'formgroups','groupedForms',));
     }
 
     

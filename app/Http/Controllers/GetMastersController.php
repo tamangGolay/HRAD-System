@@ -64,6 +64,30 @@ class GetMastersController extends Controller
 
         }
 
+
+        if ($table == "C_Booking")
+        {
+
+            //check cid if already in database.
+            if (DB::table('users')->where('users.empId', $value)->exists())
+            {
+                $emp = DB::table('users')->where('users.empId', $value)
+                    ->join('officedetails', 'officedetails.id', '=', 'users.office')
+                    ->select('users.gradeId','users.empName', 'users.mobileNo', 'users.office','users.emailId','officedetails.officeDetails')
+                    ->get();
+
+                return response()
+                    ->json($emp);
+
+            }
+            else
+            {
+                return response()->json(['code' => '200', 'failed' => 'Check your Emp_id!']);
+
+            }
+
+        }
+
 // pull name form users table
 
 if ($table == "paymentInfo")
@@ -575,13 +599,7 @@ $emp = DB::table('users')
             ->orwhere("conference_id", "3")
             ->orwhere("conference_id", "4")
             ->orwhere('conference_id', "5")
-            // ->orwhere("conference_id", "6")
-            // ->orwhere("conference_id", "7")
-            // ->orwhere("conference_id", "8")
-
-
-        // dd($c_book);
-        
+           
             ->select('conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date','conference.Conference_Name'
                     )
 
@@ -601,7 +619,7 @@ $emp = DB::table('users')
     }
 
     //For view of conference
-    public function user_profile()
+    public function c_Booking()
     {
 	    $conference = conference::all()
             ->where('status_c',0)		    
@@ -611,15 +629,12 @@ $emp = DB::table('users')
 		    ;
       
          $c_book = DB::table('conferencerequest')->join('conference', 'conferencerequest.conference_id', '=', 'conference.id')
-            ->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
+                    ->join('officedetails', 'officedetails.id', '=', 'conferencerequest.office_Id')
 
-	    
-           
+	               
             ->where('status', 1)
             ->where('conference_id', '1')
-
-        //  ->where('conference_id' ,'=', '5')
-        
+             
             ->orwhere("conference_id", "2")
             ->where('status', 0)
             ->where('default',)
@@ -636,25 +651,23 @@ $emp = DB::table('users')
             ->where('status', 0)
             ->where('default',)
 
-            // ->orwhere("conference_id", "6")
-            // ->where('status', 0)
-            // ->where('default',)
+        //     ->where('status', 1)
+        //     ->where('conference_id', '1')
+        //         ->whereRaw('conferencerequest.id >= 1')
 
-            //  ->orwhere("conference_id", "7")
-            // ->where('status', 0)
-            // ->where('default',)
+        //     ->orwhere("conference_id",'>=',"2")
+        //     ->where('status', 0)
+	    // ->where('default',)
+        //    ->whereRaw('conferencerequest.id >= 1')
 
-            // ->orwhere("conference_id", "8")
-            // ->where('status', 0)
-            // ->where('default',)
 
-            ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'orgunit.description','conference.Conference_Name'
+           
+            ->select('conferencerequest.id', 'conferencerequest.emp_id', 'conferencerequest.id', 'conferencerequest.name', 'conferencerequest.contact_number', 'conferencerequest.meeting_name', 'conferencerequest.start_date', 'conferencerequest.end_date', 'officedetails.officeDetails','conference.Conference_Name'
                     )
             ->latest('id')
             ->paginate(1000000000);
 
-        return view('user_profile', compact('conference', 'c_book','no_of_people90'));
-
+            return view('C_Booking', compact('conference', 'c_book','no_of_people90'));
     }
 
     public function success()
@@ -666,7 +679,7 @@ $emp = DB::table('users')
     public function error()
     {
         return redirect('home')
-        ->with('error', 'Meeting Hall Cancelled Successfully!!!!');
+        ->with('error', 'Meeting Hall Cancelled Successfully!!!');
     }
 
 }

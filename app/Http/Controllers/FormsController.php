@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Roles;
 use App\OrgUnit;
 use App\Dzongkhags;
@@ -77,6 +77,7 @@ use App\v4allocation;
 use App\welfarenoteapproval;
 use App\WelfareCommitte;
 use App\Models\Attendance;
+use App\conference;
 
 
 
@@ -90,108 +91,81 @@ class FormsController extends Controller
 
     public function getView(Request $request)
     {
-        //create user.
-        if ($request->v == "conferenceuser")
-        {
-            $user = Auth::user();
-
-            $wings = Wing::all();
-            $departments = Department::all();
-            $divisions = Division::all();
-
-            $roles = $user->role;
-            $role_admin = false;
-            foreach ($roles as $role)
-            {
-                if ($role->name == "Admin")
-                {
-                    $role_admin = true;
-                }
-            }
-                      
-
-            $rhtml = view('conference.conferenceuser')->with(['roles' => $roles, 'wings' => $wings, 'departments' => $departments, 'divisions' => $divisions])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
-        //end of create user.
+        
         
 
        //User List.
-       if ($request->v == "userList")
-       {
+    //    if ($request->v == "userList")
+    //    {
          
-               $roles = Roles::all();
-               $OrgUnit = OrgUnit::all();
-               $grade = Grade::all();
-               $dzongkhag = Dzongkhags::all();         
+    //            $roles = Roles::all();
+    //            $OrgUnit = OrgUnit::all();
+    //            $grade = Grade::all();
+    //            $dzongkhag = Dzongkhags::all();         
 
       
 
-           $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-               ->join('roles', 'users.role_id', '=', 'roles.id')
-               ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-               ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-               ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
+    //        $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
+    //            ->join('roles', 'users.role_id', '=', 'roles.id')
+    //            ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+    //            ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
+    //            ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
 
-               ->select('users.id','users.email','dzongkhags.Dzongkhag_Name','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-               ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.status',0)
+    //            ->select('users.id','users.email','dzongkhags.Dzongkhag_Name','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
+    //            ->latest('users.id') //similar to orderby('id','desc')
+    //            ->where('users.status',0)
            
-               ->paginate(10000000);
+    //            ->paginate(10000000);
 
-           $rhtml = view('auth.userList')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit, 'grade' => $grade, 'dzongkhag' => $dzongkhag])->render();
-           return response()
-               ->json(array(
-               'success' => true,
-               'html' => $rhtml
-           ));
-       }
+    //        $rhtml = view('auth.userList')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit, 'grade' => $grade, 'dzongkhag' => $dzongkhag])->render();
+    //        return response()
+    //            ->json(array(
+    //            'success' => true,
+    //            'html' => $rhtml
+    //        ));
+    //    }
        //end of User List.
 
 //start of employeeList
-       if ($request->v == "suit")
-       {
+    //    if ($request->v == "suit")
+    //    {
         
-               $roles = Roles::all();
-               $OrgUnit = OrgUnit::all();
-               $grade = Grade::all();
-               $dzongkhag = Dzongkhags::all();
-               $gradeId = DB::table('users')
-               ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
-               ->select('payscalemaster.grade');
+    //            $roles = Roles::all();
+    //            $OrgUnit = OrgUnit::all();
+    //            $grade = Grade::all();
+    //            $dzongkhag = Dzongkhags::all();
+    //            $gradeId = DB::table('users')
+    //            ->join('payscalemaster', 'payscalemaster.id', '=', 'users.gradeId')
+    //            ->select('payscalemaster.grade');
 
 
 
-        // if() {
-           $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-               ->join('roles', 'users.role_id', '=', 'roles.id')
-               ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-               ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-               ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
+    //     // if() {
+    //        $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
+    //            ->join('roles', 'users.role_id', '=', 'roles.id')
+    //            ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
+    //            ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
+    //            ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
 
-               ->select('orgunit.id','orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-               ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.org_unit_id',Auth::user()->org_unit_id)
-               ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
+    //            ->select('orgunit.id','orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
+    //            ->latest('users.id') //similar to orderby('id','desc')
+    //            ->where('users.org_unit_id',Auth::user()->org_unit_id)
+    //            ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
             
            
 
-               ->paginate(10000000);
-            // }
+    //            ->paginate(10000000);
+    //         // }
 
           
 
-           $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
-           return response()
-               ->json(array(
-               'success' => true,
-               'html' => $rhtml
-           ));
-       }
+    //        $rhtml = view('auth.user')->with(['userList' => $userLists,'gradeId' => $gradeId,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
+    //        return response()
+    //            ->json(array(
+    //            'success' => true,
+    //            'html' => $rhtml
+    //        ));
+    //    }
        //end of employee List.
 
        //Pant report.
@@ -327,53 +301,7 @@ class FormsController extends Controller
             }
 
 
-       if ($request->v == "officeuniformReport")  
-       {
-
-        $data2 = DB::table('officeuniform') 
-        ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
-        ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
-                         
-           ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.S','officeuniform.M','officeuniform.L', 'officeuniform.XL','officeuniform.Size_2XL','officeuniform.Size_3XL','officeuniform.Size_4XL','officeuniform.Size_5XL','officeuniform.Size_6XL')
-           ->where('officeuniform.id',1) 
-           ->orwhere('officeuniform.id',2) 
-           ->orwhere('officeuniform.id',3) 
-           ->orwhere('officeuniform.id',6) 
-           ->paginate(10000);
-
-               $rhtml = view('uniform.officeUniformReport')->with(['data2' => $data2])->render();
-               return response()
-                   ->json(array(
-                   'success' => true,
-                   'html' => $rhtml
-               ));   
-        }
-        //end of uniform report for office wise
-
-        //View for Total shoe sizes
-        if ($request->v == "TotalShoeSizes")  
-        {
- 
-           $data2 = DB::table('officeuniform') 
-           ->join('orgunit', 'orgunit.id', '=', 'officeuniform.org_unit_id')
-           ->join('dzongkhags', 'dzongkhags.id', '=', 'officeuniform.dzongkhag')
-           
-                    
-              ->select('officeuniform.id','officeuniform.org_unit_id','dzongkhags.Dzongkhag_Name', 'orgunit.description','officeuniform.uniform_id','officeuniform.shoe_3','officeuniform.shoe_4','officeuniform.shoe_5', 'officeuniform.shoe_6','officeuniform.shoe_7','officeuniform.shoe_8','officeuniform.shoe_9','officeuniform.shoe_10','officeuniform.shoe_11','officeuniform.shoe_12','officeuniform.shoe_13','officeuniform.shoe_14','officeuniform.shoe_15','dzongkhag')
-              ->where('officeuniform.id',4) 
-              ->orwhere('officeuniform.id',5) 
-              ->paginate(10000);
-   
-                  $rhtml = view('uniform.totalShoes')->with(['data2' => $data2])->render();
-                  return response()
-                      ->json(array(
-                      'success' => true,
-                      'html' => $rhtml
-                  ));   
-           }
- 
- //end for total shoe sizes;
-
+      
 //uniform shoes report
 if ($request->v == "shoesReport")  //form.csv
 {   $shoerepo = Officedetails::all();   
@@ -495,25 +423,6 @@ if ($request->v == "knowledgeRepository")
 }
 //end of KnowledgeRepository.
 
-
-//Conference Report
-if ($request->v == "cReports")
-
-         {            
-            $review = DB::table('conferencerequest')
-     
-       ->select('*')
-       ->get();
-      
-
-         $rhtml = view('conference.conferenceReport')->with(['review' => $review])->render();
-         return response()
-             ->json(array(
-             'success' => true,
-             'html' => $rhtml
-         ));
-         }
-
 //end of CReports
 
 
@@ -604,43 +513,6 @@ return response()
 }
 
 //new list hr 
-
-       
-       if ($request->v == "suit")
-       {
-        //  dd($request);
-               $roles = Roles::all();
-               $OrgUnit = OrgUnit::all();
-               $grade = Grade::all();
-               $dzongkhag = Dzongkhags::all();
-
-       
-
-        // if() {
-           $userLists = DB::table('users')->join('userrolemapping', 'users.id', '=', 'userrolemapping.user_id')
-               ->join('roles', 'users.role_id', '=', 'roles.id')
-               ->join('orgunit', 'orgunit.id', '=', 'users.org_unit_id')
-               ->join('guesthouserate', 'users.grade', '=', 'guesthouserate.id')
-               ->join('dzongkhags', 'dzongkhags.id', '=', 'users.dzongkhag')
-
-               ->select('orgunit.parent_id','dzongkhags.Dzongkhag_Name','users.email','users.gender','guesthouserate.grade','roles.id as rid','users.org_unit_id as oid','users.id as uid','users.emp_id', 'users.contact_number', 'users.designation', 'orgunit.description', 'users.name as uname', 'roles.name')
-               ->latest('users.id') //similar to orderby('id','desc')
-               ->where('users.org_unit_id',Auth::user()->org_unit_id)
-               ->orWhere('orgunit.parent_id',Auth::user()->org_unit_id)
-
-
-               ->paginate(10000000);
-            // }
-
-           
-           $rhtml = view('auth.user')->with(['userList' => $userLists,'roles' => $roles, 'OrgUnit' => $OrgUnit,'grade' => $grade,'dzongkhag' => $dzongkhag])->render();
-           return response()
-               ->json(array(
-               'success' => true,
-               'html' => $rhtml
-           ));
-       }
-       //end of User List.
 
 
        if ($request->v == "employeeList")
@@ -762,45 +634,25 @@ return response()
         }
         
         //Free_vehicle end
+
         //Request_vehicle
         if ($request->v == "Request_vehicle")
-        {
+        {      
+        $officenameAuthUser = DB::table('officedetails')
+                ->where('id',Auth::user()->office)
+                ->select('officeDetails')
+                ->first();
 
-            $id = vehiclerequest::all();// added new
+            $rhtml = view('vehicle.Request_vehicle')
+            ->with(['officenameAuthUser'=>$officenameAuthUser])
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
 
-            $dzongkhags = Dzongkhags::all();
-	    $vehicles = Vehicles::all()
-	    ->where('status',0)	    ;
-            $user = Auth::id();
-
-            
-
-$vehicle_name = DB::table('vehiclerequest')->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-    ->select('vehicle_name', 'vehicle_number')
-    ->get();
-
-
-$bookedv = DB::table('vehiclerequest')
-->join('vehicledetails', 'vehiclerequest.vehicleId', '=', 'vehicledetails.id')
- 
-    ->where('vehiclerequest.status', 4)
-    ->select( 'vehiclerequest.id','vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehicledetails.vehicle_name','vehicledetails.vehicle_number')
-    
-    ->latest('vehiclerequest.id') //similar to orderby('vehiclerequest.id','desc')
-
-    ->paginate(10000000);
-
-
-
-        
-    $rhtml = view('Tracking_Vehicle.Request_vehicle')->with(['dzongkhags' => $dzongkhags, 'vehicles' => $vehicles, 'user' => $user, 'bookedv'=> $bookedv])->render();
-    return response()
-        ->json(array(
-        'success' => true,
-        'html' => $rhtml
-    ));
-
-}
+        }
 //Request_vehicle end
      
  //final GM AFTER MTO
@@ -866,570 +718,89 @@ $bookedv = DB::table('vehiclerequest')
  //END return  mto GM
 
           
-      //ICD REview
-        if ($request->v == "ICD_Review")
-        
+      //1. General manager vehicle review 
+        if ($request->v == "GM_Vehicle_Review")        
         {
 
-            $IcdReview = DB::table('vehiclerequest')
-                ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-            // ->join('users','users.id','=','vehiclerequest.supervisor')//pull users designation
-            
-
-                ->where('vehiclerequest.org_unit_id', 44) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 45)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 46)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 61)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.designationVf','vehiclerequest.vname', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'vehiclerequest.personalvehicle')
-
-                ->latest('vehiclerequest.id') //similar to orderby('vehiclerequest.id','desc')
+            $GM_Vehicle_Review = DB::table('vehiclerequest')
+                ->join('officedetails', 'officedetails.id', '=', 'vehiclerequest.office_id')    
+                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'officedetails.officeDetails','vehiclerequest.vname', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'vehiclerequest.personalvehicle')
+                ->where('vehiclerequest.status','=', 'Processing')
+                ->latest('vehiclerequest.id') 
             
                 ->paginate(10000000);
 
-            $rhtml = view('vehicle.ICD_Review')->with(['IcdReview' => $IcdReview])->render();
+            $rhtml = view('vehicle.GM_Vehicle_Review')->with(['GM_Vehicle_Review' => $GM_Vehicle_Review])->render();
             return response()
                 ->json(array(
                 'success' => true,
                 'html' => $rhtml
             ));
-        } //end of ICD Review
+        } //end of GM_Vehicle_Review
 
-
-        //TD REview
-        if ($request->v == "TD_Review")
+        //2. Director vehicle review 
+        if ($request->v == "Director_Vehicle_Review")        
         {
 
-            $TdReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 19) //field id
+            $Director_Vehicle_Review = DB::table('vehiclerequest')
+                ->join('officedetails', 'officedetails.id', '=', 'vehiclerequest.office_id')    
+                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'officedetails.officeDetails','vehiclerequest.vname', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'vehiclerequest.personalvehicle')
+                ->where('vehiclerequest.status','=', 'GMProcessing')
+                ->latest('vehiclerequest.id') 
             
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 20)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 21)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 22)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 23)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 53)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
                 ->paginate(10000000);
 
-            $rhtml = view('vehicle.TD_Review')->with(['TdReview' => $TdReview])->render();
+            $rhtml = view('vehicle.Director_Vehicle_Review')->with(['Director_Vehicle_Review' => $Director_Vehicle_Review])->render();
             return response()
                 ->json(array(
                 'success' => true,
                 'html' => $rhtml
             ));
-        } //end of TD Review
-        
+        } //end of Director_Vehicle_Review
 
-        //TCD Review
-        if ($request->v == "TCD_Review")
+         //3. CEO vehicle review 
+        if ($request->v == "CEO_Vehicle_Review")        
         {
 
-            $TcdReview = DB::table('vehiclerequest')                
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 54) //field i
+            $CEO_Vehicle_Review = DB::table('vehiclerequest')
+                ->join('officedetails', 'officedetails.id', '=', 'vehiclerequest.office_id')    
+                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'officedetails.officeDetails','vehiclerequest.vname', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'vehiclerequest.personalvehicle')
+                ->where('vehiclerequest.status','=', 'DirectorProcessing')
+                ->latest('vehiclerequest.id') 
             
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date','vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
                 ->paginate(10000000);
 
-            $rhtml = view('vehicle.TCD_Review')->with(['TcdReview' => $TcdReview])->render();
+            $rhtml = view('vehicle.CEO_Vehicle_Review')->with(['CEO_Vehicle_Review' => $CEO_Vehicle_Review])->render();
             return response()
                 ->json(array(
                 'success' => true,
                 'html' => $rhtml
             ));
-        } //end of TCD Review
-        
-
-        //DCD REview
-        if ($request->v == "DCD_Review")
-        {
-
-            $DcdReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 24) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 25)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 26)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 27)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 55)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date',  'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.DCD_Review')->with(['DcdReview' => $DcdReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of DCD Review
-        //DCSD REview
-        if ($request->v == "DCSD_Review")
-        {
-
-            $DcsdReview = DB::table('vehiclerequest')                
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 28) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 29)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 30)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 31)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 32)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 56)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.DCSD_Review')->with(['DcsdReview' => $DcsdReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of DCSD Review
-        //HRAD REview
-        if ($request->v == "HRAD_Review")
-        {
-
-            $HradReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 33) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 34)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 35)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 57)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date',  'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.HRAD_Review')->with(['HradReview' => $HradReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of HRAD Review
-        
-
-        // For sbsf Review
-        if ($request->v == "SFSB_Review")
-        {
-
-            $sfsbReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                // ->where('vehiclerequest.org_unit_id', 36) //field id
-            
-                // ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 59)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date','vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.SFSB_Review')->with(['sfsbReview' => $sfsbReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } ///end of sbsf view
-
-        // for PSD Review
-        if ($request->v == "PSD_Review")
-        {
-
-            $psdReview = DB::table('vehiclerequest')
-
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 37) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 38)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 39)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 58)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.PSD_Review')->with(['psdReview' => $psdReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
-        //end of PSD Review
-        
-
-        //  For ERD Review
-        if ($request->v == "ERD_Review")
-        {
-
-            $erdReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 41) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 42)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 43)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 60)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.ERD_Review')->with(['erdReview' => $erdReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } // end of ERD Review
-        
-
-        //  For SPBD Review
-        if ($request->v == "SPBD_Review")
-        {
-
-            $spbdReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 47) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 48)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 62)
-                ->where('vehiclerequest.status', 0)
-            //  ->orwhere('org_unit_id',43)
-            
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.SPBD_Review')->with(['spbdReview' => $spbdReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } // end of SPBD Review
-        
-
-        //Transmission services REview
-        if ($request->v == "TS_Review")
-        {
-
-            $tsReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 10) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 11)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 63)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date','vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.TS_Review')->with(['tsReview' => $tsReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of Transmission service
-        
-
-        //Distribution services REview
-        if ($request->v == "DS_Review")
-        {
-
-            $dsReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 12) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 13)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 64)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.DS_Review')->with(['dsReview' => $dsReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of d service
-        
-
-        //HRCS services REview
-        if ($request->v == "HRCS_Review")
-        {
-
-            $hrcsReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 14) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 15)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 16)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 65)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 36)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 40)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.HRCS_Review')->with(['hrcsReview' => $hrcsReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of HRCS service
-        //Finance A services REview
-        if ($request->v == "FAS_Review")
-        {
-
-            $fasReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 49) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 50)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 51)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 66)
-                ->where('vehiclerequest.status', 0)
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date',  'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.FAS_Review')->with(['fasReview' => $fasReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of Finance A services REview
-        
-
-        //STS REview
-        if ($request->v == "STS_Review")
-        {
-
-            $stsReview = DB::table('vehiclerequest')
-
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 17) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 18)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 9)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 67)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 72)
-                ->where('vehiclerequest.status', 0)
-        
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.STS_Review')->with(['stsReview' => $stsReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end STS
-        //BPSO REview
-        if ($request->v == "BPSO_Review")
-        {
-
-            $bpsoReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-                ->where('vehiclerequest.org_unit_id', 68) //field id
-            
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.BPSO_Review')->with(['bpsoReview' => $bpsoReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of BPSO
-        
-
-        //INTERNAL AUDIT REview
-        if ($request->v == "IAD_Review")
-        {
-
-            $iadReview = DB::table('vehiclerequest')
-
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 69) //field id
-            
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.IAD_Review')->with(['iadReview' => $iadReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of IAD
-        
-
-        //CEO Review
-        if ($request->v == "DIR_Review")
-        {
-
-            $dirReview = DB::table('vehiclerequest')
-            ->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-
-
-                ->where('vehiclerequest.org_unit_id', 3) //field id
-            
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 4)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 5)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 6)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 7)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 8)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 70)
-                ->where('vehiclerequest.status', 0)
-                ->orwhere('vehiclerequest.org_unit_id', 52)
-                ->where('vehiclerequest.status', 0)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.designationVf', 'vehiclerequest.dateOfRequisition', 'vehiclerequest.start_date', 'vehiclerequest.end_date','vehiclerequest.purpose', 'vehiclerequest.placesToVisit')
-                ->latest('vehiclerequest.id')
-                ->paginate(10000000);
-
-            $rhtml = view('vehicle.DIR_Review')->with(['dirReview' => $dirReview])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        } //end of DIR REview
-        
-
+        } //end of CEO_Vehicle_Review      
+       
+      
         //MTO review
         if ($request->v == "MTO_Review")
         {
-            try{
-
+           
             $id = vehiclerequest::all();
 
-            $mtoReview = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-            //  ->join('users','users.id','=','vehiclerequest.supervisor')
-            
+            $mtoReview = DB::table('vehiclerequest')
+              ->join('officedetails', 'officedetails.id', '=', 'vehiclerequest.office_id')               
                 ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-            
-                ->where('vehiclerequest.status', 2)
+                ->join('designationmaster','designationmaster.id','=','users.designationId')
+               //for mobile number
+	            ->join('users as employee', 'employee.empId', '=', 'vehiclerequest.emp_id')            
+                            
+                ->where('vehiclerequest.status','=', 'Supervisor Approved')
 
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation','vehiclerequest.personalvehicle')
+                ->select('vehiclerequest.id','employee.mobileNo','vehiclerequest.emp_id', 'officeDetails', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.empName', 'desisNameLong','vehiclerequest.personalvehicle')
                 ->orderBy('vehiclerequest.id', 'desc')
                 ->paginate(10000000);
 
             $details = Vehicles::all()
-            ->where('status',0); 
-            // show only vehicle with status 0 which is available ,1 is deleted vehicle status
-
-
+            ->where('status','Active'); 
+            // show only vehicle with status Active
 
             $rhtml = view('vehicle.MTO_Review')->with(['mtoReview' => $mtoReview, 'id' => $id, 'details' => $details])->render();
             return response()
@@ -1438,151 +809,59 @@ $bookedv = DB::table('vehiclerequest')
                 'html' => $rhtml
             ));
         } 
-        //end of DIR REview
-        catch(\Facade\Ignition\Exceptions\ViewException $e)
-        {
-
-            $id = vehiclerequest::all();
-
-            $mtoReview = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-            //  ->join('users','users.id','=','vehiclerequest.supervisor')
-            
-                // ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-                ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-            
-                ->where('vehiclerequest.status', 2)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation','vehiclerequest.personalvehicle')
-                ->orderBy('vehiclerequest.id', 'desc')
-                ->paginate(10000000);
-
-            $details = Vehicles::all();
-
-            $rhtml = view('vehicle.vehicle_reviewe')->with(['mtoReview' => $mtoReview, 'id' => $id, 'details' => $details])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
-    }
+    
 //mto review end
 
         //MTO edit review
         if ($request->v == "MTO_EditReview")
         {
-            try{
-
+           
             $id = vehiclerequest::all();
 
-            $mtoEditReview = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-            //  ->join('users','users.id','=','vehiclerequest.supervisor')
-            
+            $mtoEditReview = DB::table('vehiclerequest')
+              ->join('officedetails', 'officedetails.id', '=', 'vehiclerequest.office_id') 
+                        
                 ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
+                ->join('designationmaster','designationmaster.id','=','users.designationId')
             
-                ->where('vehiclerequest.status', 4)
+                ->where('vehiclerequest.status', '=','MTO Approved')
 
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation','vehiclerequest.personalvehicle')
+                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'officeDetails', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.empName', 'desisNameLong','vehiclerequest.personalvehicle')
                 ->orderBy('vehiclerequest.id', 'desc')
                 ->paginate(10000000);
 
             $details = Vehicles::all();
 
-            $rhtml = view('vehicle.MTO Edit View')->with(['mtoEditReview' => $mtoEditReview, 'id' => $id, 'details' => $details])->render();
+            $rhtml = view('vehicle.MTO_Edit')->with(['mtoEditReview' => $mtoEditReview, 'id' => $id, 'details' => $details])->render();
             return response()
                 ->json(array(
                 'success' => true,
                 'html' => $rhtml
             ));
         } 
-        
-        catch(\Facade\Ignition\Exceptions\ViewException $e)
-        {
-
-            $id = vehiclerequest::all();
-
-            $mtoEditReview = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-            //  ->join('users','users.id','=','vehiclerequest.supervisor')
-            
-                // ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-                ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-            
-                ->where('vehiclerequest.status', 4)
-
-                ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition','vehiclerequest.purpose', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation','vehiclerequest.personalvehicle')
-                ->orderBy('vehiclerequest.id', 'desc')
-                ->paginate(10000000);
-
-            $details = Vehicles::all();
-
-            $rhtml = view('vehicle.vehicle_reviewe')->with(['mtoEditReview' => $mtoEditReview, 'id' => $id, 'details' => $details])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
-    }
-//mto edit review end
-
-
-        //view for manage conference
-        if ($request->v == "manage_conference")
-        {
-
-            $conference = conference::all();
-            $review = DB::table('conference')
-                ->where('status_c','0')
-                ->paginate();
-
-            $rhtml = view('conference.manage_conference')->with(['review' => $review,
-            
-            'conference' => $conference])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-        }
 
         //end for view  manage conference
 
 // view for Reports
 
-if ($request->v == "vehicleReport")
-{
-    $id = vehiclerequest::all();
+  //vehicle report List.
+         if ($request->v == "reportVehicle")
+         {          
+           
+         $rhtml = view('vehicle.reportsbak') ->render();      
+        
+         return response()
+             ->json(array(
+             'success' => true,
+             'html' => $rhtml
+         ));
+         }
 
-    $reports = DB::table('vehiclerequest')->join('orgunit', 'orgunit.id', '=', 'vehiclerequest.org_unit_id')
-    //  ->join('users','users.id','=','vehiclerequest.supervisor')
-    
-        ->join('vehicledetails', 'vehicledetails.id', '=', 'vehiclerequest.vehicleId')
-        ->join('users', 'users.id', '=', 'vehiclerequest.supervisor') //pull gm's name
-    
-        // ->where('vehiclerequest.status', 0)
-
-        ->select('vehiclerequest.id', 'vehiclerequest.emp_id', 'orgunit.description', 'vehiclerequest.vname', 'vehiclerequest.start_date', 'vehiclerequest.end_date', 'vehiclerequest.dateOfRequisition', 'vehicledetails.vehicle_name', 'vehiclerequest.purpose', 'vehiclerequest.status', 'vehiclerequest.placesToVisit', 'users.name', 'users.designation')
-        ->orderBy('vehiclerequest.id', 'desc')
-        ->paginate(10000000);
-
-    $details = Vehicles::all();
-
-    $rhtml = view('vehicle.reports')->with(['reports' => $reports, 'id' => $id, 'details' => $details])->render();
-    return response()
-        ->json(array(
-        'success' => true,
-        'html' => $rhtml
-    ));
-} 
-    //end of IAD      
+   
 
 //view for manage vehicle
   if ($request->v == "manage_vehicle")
  {
-
-
      $rhtml = view('vehicle.manage_vehicle')->render();
      return response()
          ->json(array(
@@ -1672,139 +951,49 @@ if ($request->v == "vehicleReport")
 
  //view for manage department
 
- if ($request->v == "departmentmaster")
- {
-    $employeen = User::all();
-    $servicen = ServiceMaster::all();  
-    $companyn = Company::all();         
+//  if ($request->v == "departmentmaster")
+//  {
+//     $employeen = User::all();
+//     $servicen = ServiceMaster::all();  
+//     $companyn = Company::all();         
    
 
-    $name = DB::table('departmentmaster')
-    ->join('users', 'users.id', '=', 'departmentmaster.deptHead')
-    ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
-    ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
-    ->select('users.empId','servicemaster.serNameLong','companymaster.comNameLong')
+//     $name = DB::table('departmentmaster')
+//     ->join('users', 'users.id', '=', 'departmentmaster.deptHead')
+//     ->join('servicemaster', 'servicemaster.id', '=', 'departmentmaster.deptReportsToService')
+//     ->join('companymaster', 'companymaster.id', '=', 'departmentmaster.deptReportsToCompany')
+//     ->select('users.empId','servicemaster.serNameLong','companymaster.comNameLong')
 
-    ->where('departmentmaster.status',0);
+//     ->where('departmentmaster.status',0);
 
-     $rhtml = view('masterData.departmentMaster')->with(['employeen'=>$employeen,'servicen'=>$servicen, 'companyn'=>$companyn])->render();
-     return response()
-         ->json(array(
-         'success' => true,
-         'html' => $rhtml
-     ));
- }
-
-//manage guesthouse
-if ($request->v == "manage_guesthouse")
- {
-
-     $conference = guesthouse::all();
-     $dzongkhags = Dzongkhags::all();
-     $review = DB::table('guesthousename')->select('*')
-         ->paginate();
-
-     $rhtml = view('guesthouse.manage_guesthouse')->with(['review' => $review,'dzongkhags'=>$dzongkhags])->render();
-     return response()
-         ->json(array(
-         'success' => true,
-         'html' => $rhtml
-     ));
- }
-
- //manage guesthouse room details
-if ($request->v == "room_details")
-{
-
-    $dzongkhags = Dzongkhags::all();
-    $review = DB::table('guesthouseroom')->select('*')
-        ->paginate();
-
-    $rhtml = view('guesthouse.room_details')->with(['review' => $review,'dzongkhags'=>$dzongkhags])->render();
-    return response()
-        ->json(array(
-        'success' => true,
-        'html' => $rhtml
-    ));
-}
- //conference reprts
- if ($request->v == "cReports")
-       {
-                $conference = conference::all();
-
-                $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-                
-                   
-                     
-                    ->join('conference', 'conference.id', '=', 'conferencerequest.conference_id')
-                    ->where('status', 1)
-                    ->where('conference_id', '1')
-                   
-                    ->orwhere('conference_id', '1')
-                    ->where('status', 2) 
-                    ->where('default',)                   
-
-                    ->orwhere("conference_id", "2")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "3")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "4")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere('conference_id', "5")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "6")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "7")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->select('conferencerequest.id', 'emp_id', 'name','contact_number','conferencerequest.conference_id', 'orgunit.description', 'conference.Conference_Name', 'meeting_name', 'conference_id', 'start_date', 'end_date','status')
-
-                    ->latest('id') //similar to orderby('id','desc')
-                
-                
-                    ->paginate(50);
-
-                $rhtml = view('conference.conferenceReport')->with(['review' => $review, 'conference' => $conference])->render();
-                return response()
-                    ->json(array(
-                    'success' => true,
-                    'html' => $rhtml
-                ));
-            }
-            //end report confrerences
+//      $rhtml = view('masterData.departmentMaster')->with(['employeen'=>$employeen,'servicen'=>$servicen, 'companyn'=>$companyn])->render();
+//      return response()
+//          ->json(array(
+//          'success' => true,
+//          'html' => $rhtml
+//      ));
+//  }
 
 
-        //view board room
+
+ 
+         //view 1. board room from booking 
         if ($request->v == "boardroom_review")
         {
 
             $conference = conference::all();
-            $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-          
+            $review = DB::table('conferencerequest')
+                ->join('officedetails', 'officedetails.id', '=', 'conferencerequest.office_Id')          
                 ->join('conference', 'conference.id', '=', 'conferencerequest.conference_id')
 
                 ->where('status', 0)
                 ->where('conference_id', '1')
-                ->where('default',)
-
-            // ->orWhere('conference_id','=','5')
-            // ->Where('status','=','0')
+                ->where('default',)          
             
-                ->select('conferencerequest.id', 'emp_id', 'name','contact_number', 'conference.Conference_Name','conferencerequest.conference_id', 'orgunit.description', 'meeting_name', 'start_date', 'end_date')
+                ->select('conferencerequest.id', 'emp_id', 'name','contact_number', 'conference.Conference_Name','conferencerequest.conference_id', 'officeDetails', 'meeting_name', 'start_date', 'end_date')
                 ->latest('id')
 
-                ->paginate(50);
+                ->paginate(10000);
 
             $rhtml = view('conference.boardroom_review')->with(['review' => $review, 'conference' => $conference])->render();
             return response()
@@ -1813,116 +1002,60 @@ if ($request->v == "room_details")
                 'html' => $rhtml
             ));
         }
-        //view status in admin(frontdesk)
+
+        //view 2. status in admin(frontdesk)
         if ($request->v == "booking_review")
         {
+        
+            $conference = conference::all();
 
-            try
-            {
-
-                $conference = conference::all();
-
-                $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-                // ->join('rangeofpeople', 'rangeofpeople.id', '=', 'conferencerequest.no_of_people') 
+                $review = DB::table('conferencerequest')
+                    ->join('officedetails', 'officedetails.id', '=', 'conferencerequest.office_Id')  
                     ->join('conference', 'conference.id', '=', 'conferencerequest.conference_id')
-                    ->where('status', 1)
-                    ->where('conference_id', '1')
+                    
+                    ->where(function ($query) {
+                        $query->where('status', 1)
+                              ->where('conference_id', '1')
+                            ->orWhere(function ($q) {
+                                $q->whereIn('conference_id', ['2', '3', '4', '5', '6', '7'])
+                                  ->where('status', 0);                                 
+                            })
+                            ->where("conferencerequest.id",'>=',900);
+                    })                 
+                                     
 
-                    ->orwhere("conference_id", "2")
-                    ->where('status', 0)
-                    ->where('default',)
+                    ->select('conferencerequest.id', 'emp_id', 'name','contact_number','conferencerequest.conference_id', 'officeDetails', 'conference.Conference_Name', 'meeting_name', 'conference_id', 'start_date', 'end_date')
 
-                    ->orwhere("conference_id", "3")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "4")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere('conference_id', "5")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "6")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "7")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->select('conferencerequest.id', 'emp_id', 'name','contact_number','conferencerequest.conference_id', 'orgunit.description', 'conference.Conference_Name', 'meeting_name', 'conference_id', 'start_date', 'end_date')
-
-                    ->latest('id') //similar to orderby('id','desc')
+                    ->latest('id') //similar to orderby('id','desc')               
                 
-
-                
-                    ->paginate(50);
+                    ->paginate(10000000);
 
                 $rhtml = view('conference.booking_review')->with(['review' => $review, 'conference' => $conference])->render();
                 return response()
                     ->json(array(
                     'success' => true,
                     'html' => $rhtml
-                ));
-
-                
+                ));                
             }
+          
+        
 
-            catch(\Facade\Ignition\Exceptions\ViewException $e)
-            {  
+        //3 view Conference Report
+            if ($request->v == "cReports")
 
-                $conference = conference::all();
-
-                $review = DB::table('conferencerequest')->join('orgunit', 'orgunit.id', '=', 'conferencerequest.org_unit_id')
-                // ->join('rangeofpeople', 'rangeofpeople.id', '=', 'conferencerequest.no_of_people') 
-                    ->join('conference', 'conference.id', '=', 'conferencerequest.conference_id')
-                    ->where('status', 1)
-                    ->where('conference_id', '1')
-
-                    ->orwhere("conference_id", "2")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "3")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "4")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere('conference_id', "5")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "6")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->orwhere("conference_id", "7")
-                    ->where('status', 0)
-                    ->where('default',)
-
-                    ->select('conferencerequest.id', 'emp_id', 'name','contact_number','conferencerequest.conference_id', 'orgunit.description', 'conference.Conference_Name', 'meeting_name', 'conference_id', 'start_date', 'end_date')
-
-                    ->latest('id') //similar to orderby('id','desc')
-                
-
-                
-                    ->paginate(50);
-
-                $rhtml = view('conference.booking_reviewe')->with(['review' => $review, 'conference' => $conference])->render();
-                return response()
-                    ->json(array(
-                    'success' => true,
-                    'html' => $rhtml
-                ));
-                
-
+            {            
+          
+            $rhtml = view('conference.conferenceReport')
+            //->with(['review' => $review])
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
             }
-        }
+            //end
+            
         //change password for frontdesk and secretary
         if ($request->v == "changepassword")
         {
@@ -1948,28 +1081,7 @@ if ($request->v == "room_details")
         }
 
         //user add for login
-        if ($request->v == "user")
-        {
-
-            $user = Auth::user();
-            $grade = Grade::all();
-            $dzongkhag = Dzongkhags::all();
-            $OrgUnit = OrgUnit::all();
-            $roles = roles::all();
-
-
-
-          
-            $rhtml = view('super admin.user')->with(['roles' => $roles, 'OrgUnit' => $OrgUnit,'dzongkhag' => $dzongkhag,'grade' => $grade])->render();
-            return response()
-                ->json(array(
-                'success' => true,
-                'html' => $rhtml
-            ));
-
-        }
-
-
+   
            //role add from admin
            if ($request->v == "roleAdd")
            {
@@ -2331,30 +1443,30 @@ if ($request->v == "room_details")
         //endcontractdetailmaster
 
         //service master
-         if ($request->v == "servicemaster")
-         {
-            $services = EmployeeMaster::all()
-            ->where('status',0);
+        //  if ($request->v == "servicemaster")
+        //  {
+        //     $services = EmployeeMaster::all()
+        //     ->where('status',0);
 
-            $companym = Company::all()
-            ->where('status',0);
+        //     $companym = Company::all()
+        //     ->where('status',0);
 
-            $service = DB::table('servicemaster')
-            ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
-            ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
-            ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empId','companymaster.comNameLong')
-            ->where('servicemaster.status','0');
+        //     $service = DB::table('servicemaster')
+        //     ->join('employeemaster', 'employeemaster.id', '=', 'servicemaster.serviceHead')
+        //     ->join('companymaster', 'companymaster.id', '=', 'servicemaster.company')
+        //     ->select('servicemaster.id','serNameShort','serNameLong','employeemaster.empId','companymaster.comNameLong')
+        //     ->where('servicemaster.status','0');
 
  
     
-             $rhtml = view('masterData.serviceMaster')->with([ 'services' => $services,'companym' => $companym])->render();
-             return response()
-                 ->json(array(
-                 'success' => true,
-                 'html' => $rhtml
-             ));
+        //      $rhtml = view('masterData.serviceMaster')->with([ 'services' => $services,'companym' => $companym])->render();
+        //      return response()
+        //          ->json(array(
+        //          'success' => true,
+        //          'html' => $rhtml
+        //      ));
  
-         }
+        //  }
         //endservicemaster
 
          //substation
@@ -2391,34 +1503,34 @@ if ($request->v == "room_details")
 
 
          //subdivision
-         if ($request->v == "subdivisionmaster")
-         {
+        //  if ($request->v == "subdivisionmaster")
+        //  {
              
-             $subdiv = DivisionMaster::all()
-             ->where('status',0);
+        //      $subdiv = DivisionMaster::all()
+        //      ->where('status',0);
 
-             $employeemas = User::all()
-             ->where('status',0);
+        //      $employeemas = User::all()
+        //      ->where('status',0);
  
  
-             $subdivisions = DB::table('subdivisionmaster')
-             ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivnameLong')
-             ->join('users', 'users.id', '=', 'subdivisionmaster.subDivhead')
+        //      $subdivisions = DB::table('subdivisionmaster')
+        //      ->join('divisionmaster', 'divisionmaster.id', '=', 'subdivisionmaster.subDivnameLong')
+        //      ->join('users', 'users.id', '=', 'subdivisionmaster.subDivhead')
  
-             ->select('divisionmaster.divNameLong','users.empName')
+        //      ->select('divisionmaster.divNameLong','users.empName')
           
-             ->where('subdivisionmaster.status',0);   
+        //      ->where('subdivisionmaster.status',0);   
  
  
  
-             $rhtml = view('masterData.subDivisionMaster')->with(['subdiv' => $subdiv, 'employeemas' => $employeemas])->render();
-             return response()
-                 ->json(array(
-                 'success' => true,
-                 'html' => $rhtml
-             ));
+        //      $rhtml = view('masterData.subDivisionMaster')->with(['subdiv' => $subdiv, 'employeemas' => $employeemas])->render();
+        //      return response()
+        //          ->json(array(
+        //          'success' => true,
+        //          'html' => $rhtml
+        //      ));
  
-         }
+        //  }
          //end of sub division
 
 //payscale
@@ -4039,7 +3151,8 @@ if ($request->v == "attendanceReview")
                     'data' => []
                 ]);
             }
-            $offices = DB::connection('mysql')->table('officedetails')
+            $offices = DB::connection('mysql')
+            ->table('officedetails')
             ->whereIn('id', $officeHead)
             ->select('id', 'officeDetails')
             ->get();                    

@@ -53,6 +53,7 @@ class AttendanceController extends Controller
                     $records = DB::connection('mysql2')
                         ->table($tableName . ' as a')
                         ->whereIn('a.office_id', $officeHead)
+                        ->where('a.user_id', '!=', Auth::user()->empId) // 👈 Exclude self
                         // ->where('a.status', '=', 'NULL')                        
                         //  ->where('a.checkin_status', '=', 'Late')
                         //  ->orWhere('a.checkout_status', '=', 'Early')
@@ -137,20 +138,27 @@ class AttendanceController extends Controller
                    }
     // ✅ Case 3: The logged-in user is one of the heads of the item's office, and that office reports to the logged-in user's office
                    
-                    elseif (
-                        isset($officeHeadMapping[$item->office_id]) &&
-                        in_array($authUserId, $officeHeadMapping[$item->office_id]) &&
-                        $reportToOffice == $authOfficeId)
-                        {
+                //     elseif (
+                //         isset($officeHeadMapping[$item->office_id]) &&
+                //         in_array($authUserId, $officeHeadMapping[$item->office_id]) &&
+                //         $reportToOffice == $authOfficeId)
+                        
+                //         {
 
-                        $item->canApproveReject = true;
-                   }
+                //         $item->canApproveReject = true;
+                //    }
                     else {
                           $item->canApproveReject = false;
                     }
               
                 return $item;
             });
+
+
+            // ✅ Only keep records the user is allowed to review
+            $attendance = $attendance->filter(function ($item) {
+                return $item->canApproveReject === true;
+            })->values(); // 👈 Reindex collection
 
             // Apply filters for start and end date if provided
             if (!empty($request->filter_startdate) && !empty($request->filter_enddate)) {

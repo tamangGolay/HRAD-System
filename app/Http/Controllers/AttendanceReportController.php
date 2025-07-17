@@ -39,7 +39,9 @@ class AttendanceReportController extends Controller
                 // Apply office name filter if provided
                 if (!empty($request->office_name)) {
                     $attendance = $attendance->filter(function ($item) use ($request) {
-                        return stripos($item->officeDetails, $request->office_name) !== false;
+                        // return stripos($item->officeDetails, $request->office_name) !== false;
+                        return trim($item->officeDetails) === trim($request->office_name);
+
                     })->values(); // reindex
                 }
 

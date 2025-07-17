@@ -70,7 +70,7 @@
         <div class="attendanceTitle card-header bg-green">
             <div class="col text-center">
                 <h5>
-                    <b>Attendence Review</b>
+                    <b>Attendance Review</b>
                 </h5>
             </div>
         </div>

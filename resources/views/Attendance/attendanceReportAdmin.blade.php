@@ -98,6 +98,7 @@
                     [20, 40, 60, 100, -1],
                     [20, 40, 60, 100, "All"]
                 ],
+                dom: 'Bfrtip',
                 buttons: [
                     'copy',
                     'excel',

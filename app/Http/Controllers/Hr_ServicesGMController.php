@@ -26,8 +26,7 @@ class Hr_ServicesGMController extends Controller
           ->where('hrservice.status','=','Recommended')
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
-          
-            //   $typesToHideRecomButton = ['Unit', 'Sub Division', 'Team', 'Substation'];         
+                   
   
           if (!empty($request->serviceType)) {
               $query->where('serviceType', $request->serviceType);
@@ -35,16 +34,7 @@ class Hr_ServicesGMController extends Controller
   
           $review = $query->get();
 
-             // Add `recommendButton` flag based on officeType
-            //         $review->transform(function ($item) use ($typesToHideRecomButton) {
-            //             $item->recommendButton = !in_array($item->officeType, $typesToHideRecomButton);
-            //             return $item;
-            //         });
-            
-            //           return datatables()->of($review)->make(true);
-            //       }        
-            //   }
-            
+                      
         $review->transform(function ($item) {
             $isAlsoOfficeHead = DB::table('officeunder')
             ->where('head', $item->createdBy)
@@ -53,10 +43,10 @@ class Hr_ServicesGMController extends Controller
         $item->recommendButton = ($isAlsoOfficeHead && $item->officeType == 'Section');
         
         return $item;
-    });
+        });
   
           return datatables()->of($review)->make(true);
-      }        
+       }        
   }
 
   
@@ -145,8 +135,7 @@ class Hr_ServicesGMController extends Controller
             return response()->json(['success' => true]);
 
             }
-}
-
+    }
      
 }
 

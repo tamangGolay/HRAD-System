@@ -54,17 +54,24 @@
 
 				
 					 
-					<div class="form-group row">
+					<div class="form-group row" id="purposeField">
 							<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Purpose:
 								<span style="color: red;">*</span>
 							</label>
 							<div class="col-md-8 ">
 							<textarea class="form-control preserveLines" name="justification" placeholder="Type here..." id="justification" required>{{ old('body') }}</textarea>
 						</div>
-					</div>     
+					</div>   
 					
-					
-				
+					<div class="form-group row" id="amountField" style="display: none;">
+						<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Amount:
+							<span style="color: red;">*</span>
+						</label>
+						<div class="col-md-8">
+							<input type="number" class="form-control" name="justification" placeholder="Enter amount..." id="amountInput" min="0" required>
+						</div>
+					</div>				
+									
 
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
@@ -158,4 +165,39 @@ document.getElementById('justification').addEventListener('keyup', function () {
 
 
 </script>
+
+
+<script>
+  document.getElementById('serviceType').addEventListener('change', function () {
+    const purposeField = document.getElementById('purposeField');
+    const amountField = document.getElementById('amountField');
+    const justification = document.getElementById('justification');
+    const amountInput = document.getElementById('amountInput');
+
+ if (this.value === 'salary advance') {
+        // Hide and disable justification
+        purposeField.style.display = 'none';
+        justification.removeAttribute('required');
+        justification.disabled = true;
+
+        // Show and require amount
+        amountField.style.display = 'flex';
+        amountInput.setAttribute('required', true);
+        amountInput.disabled = false;
+    } else {
+        // Show and require justification
+        purposeField.style.display = 'flex';
+        justification.setAttribute('required', true);
+        justification.disabled = false;
+
+        // Hide and disable amount
+        amountField.style.display = 'none';
+        amountInput.removeAttribute('required');
+        amountInput.disabled = true;
+    }
+});
+</script>
+
+
+   
 

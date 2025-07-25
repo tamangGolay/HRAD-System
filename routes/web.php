@@ -801,3 +801,7 @@ Route::post('/HR_Services_CEO/CEO_hrservice', [Hr_ServicesCEOController::class, 
 Route::resource('HR_Services_HR', 'HR_ServiceController');
 Route::post('/HR_Services_HR/HR_hrservice', [HR_ServiceController::class, 'HR_hrservice'])->name('HR_Services_HR.HR_hrservice');
 
+
+//final hr service report
+Route::resource('HR_Services_Report', 'HR_Service_ReportController');
+// Route::post('/HR_Services_Report/HR_hrservice', [HR_ServiceController::class, 'HR_hrservice'])->name('HR_Services_Report.HR_hrservice');

@@ -3335,6 +3335,19 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //end
+
+             if ($request->v == "ReportHrService")  //form.csv
+             {                  
+ 
+             $rhtml = view('HRServices.ReportHrService')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end of Report hRservice
+             
              if ($request->v == "deviceReset")  //form.csv
              {                  
  

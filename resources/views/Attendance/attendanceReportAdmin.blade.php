@@ -95,10 +95,10 @@
         function loadDataTable(month = '', office = '') {
             $('#report_data').DataTable({
                 "aLengthMenu": [
-                    [20, 40, 60, 100, -1],
-                    [20, 40, 60, 100, "All"]
+                     [50, 100, 250, 1000, -1],
+                    [50, 100, 250, 1000, "All"]
                 ],
-                dom: 'Bfrtip',
+                dom: 'Blfrtip',
                 buttons: [
                     'copy',
                     'excel',
@@ -209,4 +209,3 @@
         });
     });
 </script>
-

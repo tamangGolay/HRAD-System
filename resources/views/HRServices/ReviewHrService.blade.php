@@ -63,7 +63,7 @@
             </div>
         </div>
         <!-- Hidden Emp ID -->
-<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId">
+        <input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="empId" id="empId">
 
         <div class="reviewTitle card-header bg-green text-center">
             <h5><b>Review HR Services by HR</b></h5>
@@ -97,6 +97,18 @@
                 </button>
             </div>
             <div class="modal-body">
+                 <div class="form-group">
+                    <label for="assignedTo">Assigned work to:</label>
+                    <select id="assignedTo" name="assignedTo" class="form-control" required>
+                        <option value="">-- Select email --</option>
+                        <option value="sonamtshomo@bpc.bt">sonamtshomo@bpc.bt</option>
+                        <option value="tshedupzangpo2013@bpc.bt">tshedupzangpo2013@bpc.bt</option>
+                         <option value="tshewangjigme2013@bpc.bt">tshewangjigme2013@bpc.bt</option>
+                        <option value="karmajamphel@bpc.bt">karmajamphel@bpc.bt</option>
+                    </select>
+                </div>
+
+            <div class="form-group">
                 <label for="remarks">Enter your Remarks:</label>
                 <textarea  id="approvalRemarks" name="approvalRemarks" class="form-control" rows="3"></textarea>
             </div>
@@ -119,10 +131,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            
+            <div class="modal-body">               
                 <label for="remarks">Enter your Remarks:</label>
                 <textarea id="rejectRemarks" name="rejectRemarks" class="form-control" rows="3"></textarea>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-success" id="confirmReject">Reject</button>
@@ -286,6 +300,19 @@
 
     $(`.approve-btn[data-id="${rowId}"]`).prop('disabled', true);
     $(this).prop('disabled', true).text('Processing...');
+
+    let table = $('#reviewPage').DataTable();
+    let rowData = table.rows().data().toArray().find(r => r.id == rowId);
+
+    if (!rowData) {
+        alert("Row data not found!");
+        return;
+    }
+
+    let assignedTo = $('#assignedTo').val();
+    let createdByEmpId = rowData.createdBy;
+    let createdByName = rowData.empName;
+
     
     $.ajax({
         url: "{{ route('HR_Services_HR.HR_hrservice') }}", 
@@ -294,7 +321,10 @@
             id: rowId,  
             empId: empId,          
             status: 'HRApproved',  
-            remarks: remarks,  
+            remarks: remarks, 
+            createdByEmpId,
+            createdByName,
+            assignedTo: assignedTo,  // assigned to particular person mail id is selected from the drop down
             _token: '{{ csrf_token() }}'  
         },
         // success: function(response) {

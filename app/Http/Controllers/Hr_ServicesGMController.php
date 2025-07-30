@@ -108,7 +108,7 @@ class Hr_ServicesGMController extends Controller
                 ->where('employee', $user->empId)
                 ->value('emailId');
 
-            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
+            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. Your request will now be reviewed by the next-in-line supervisor.";
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
 
             Mail::to($supervisorEmail)->cc($userEmail)->send(new MyTestMail($mailData));
@@ -116,10 +116,24 @@ class Hr_ServicesGMController extends Controller
            return response()->json(['success' => true]);
 
         case 'Approved':
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. Now the HR focal will review your request and will contact you soon.";
             $mailData['body5'] = 'Have a great day!';
 
             Mail::to($userEmail)->send(new MyTestMail($mailData));
+
+            // ✅ Email to Hr person for notification purpose (tsheringchoden@bpc.bt)
+            $HR_Focal_Email = 'tashidema@bpc.bt'; 
+            $HR_MailData['title'] = "Approval Notification for $noteTitle";
+            $HR_MailData['body'] = "Dear sir/madam,";            
+            $HR_MailData['body1'] = "The HR Services request titled <b>$noteTitle</b> submitted by {$userDetail->empName} has been <strong>approved</strong> by supervisor Mr/Mrs.{$userDetail->empName} ({$userDetail->empId}).";
+            $HR_MailData['body2'] = 'Please do necessary action.';
+            $HR_MailData['body3'] = '';
+            $HR_MailData['body4'] = '';
+            $HR_MailData['body5'] = 'Regards, HR System Notification';
+            $HR_MailData['body6'] = '';
+
+
+            Mail::to($HR_Focal_Email)->send(new MyTestMail($HR_MailData));
 
             return response()->json(['success' => true]);
 

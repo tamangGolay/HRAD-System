@@ -137,8 +137,10 @@ class HR_ServiceController extends Controller
 
     //HR Approved and Rejected function from here
 
-public function HR_hrservice(Request $request)
-  {
+    public function HR_hrservice(Request $request)
+  {    
+
+    // dd($request);
     $id = DB::table('hrservice')->where('id', $request->id)->value('id');
     if (!$id) return back()->with('error', 'Invalid HR Service ID');
 
@@ -189,12 +191,18 @@ public function HR_hrservice(Request $request)
         'body6' => '',
     ];
 
+    $assignedToEmail = $request->assignedTo;
+    $createdByName = $request->createdByName;
+    $createdByEmpId = $request->createdByEmpId;
+
+
     switch ($request->status) {        
         case 'HRApproved':
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the HR focal person {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. They will contact or mail you on your request.";
+            $mailData['body1'] = "A request for HR Services titled <b>$noteTitle</b> submitted by <b>$createdByName ($createdByEmpId)</b> has been approved by the AERS manager and you have been assigned to take action on this request. Please do necessary action.";
             $mailData['body5'] = 'Have a great day!';
 
-             Mail::to($userEmail)->send(new MyTestMail($mailData));
+            
+            Mail::to($assignedToEmail)->send(new MyTestMail($mailData));
 
             return response()->json(['success' => true]);
 

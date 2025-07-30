@@ -163,6 +163,7 @@
                     [20, 40, 60, 100, -1],
                     [20, 40, 60, 100, "All"]
                 ],
+                 dom: 'Blfrtip',
                 buttons: [
                     'copy',
                     'excel',
@@ -205,11 +206,13 @@
                     },
                     {
                         data: null, // We'll render the buttons here
+                        //   <button class="btn btn-outline-success btn-sm approve-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Approve</button>
+                               
                         render: function(data, type, row) {
 
                             return `
                             <div style="white-space: nowrap;">
-                                <button class="btn btn-outline-success btn-sm approve-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Approve</button>
+                              
                                 <button class="btn btn-outline-info btn-sm recommend-btn" data-id="${row.id}"   style="color: black;  margin-right: 10px;"> Recommend</button>                                
                                 <button class="btn btn-outline-danger btn-sm reject-btn"  data-id="${row.id}"  style="color: black;"> Reject</button>
                             </div>

@@ -926,7 +926,9 @@ return response()
     $reportto = Officedetails::all();
     $placemastern = place::all();  
     //$dzongkhag = Dzongkhags::all(); 
-    $offhead = User::all();
+    
+    $offhead = User::where('status', 0)->get();
+
     $offadd = OfficeAddress::all();   
 
    
@@ -2371,7 +2373,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
     ->join('users','users.empId','=','notesheet.createdBy')
-    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
+    ->select('officeunder.office','notesheet.id','notesheet.document','notesheet.approverLevel','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
     // 'notesheet.approverLevel'
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
@@ -2409,7 +2411,7 @@ if ($request->v == "employeeskillmap")  //form.csv
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
     ->join('users','users.empId','=','notesheet.createdBy')
-    ->select('officeunder.office','notesheet.id','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
+    ->select('officeunder.office','notesheet.id','notesheet.document','notesheet.approverLevel','officedetails.longOfficeName','notesheet.createdBy','topic','justification','notesheet.status','notesheet.officeId','officemaster.reportToOffice','users.empName')
 
     ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('notesheet.status','=','DirectorRecommended') //     
@@ -3272,6 +3274,19 @@ if ($request->v == "attendanceCount")
             'html' => $rhtml
             ));
         }  //end
+
+        
+            //head views on hr services
+            if ($request->v == "HeadReview")  //form.csv
+            {   
+
+            $rhtml = view('HRServices.HeadReview')->render(); 
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+                ));
+            } //end 
 
             //manager views on hr services
             if ($request->v == "ManagerReview")  //form.csv

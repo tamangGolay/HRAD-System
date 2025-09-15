@@ -11,7 +11,7 @@ use App\HR_Service;
 use App\HR_Service_Approval;
 // Add more models as needed
 
-class Hr_ServicesManagerController extends Controller
+class Hr_ServicesHeadController extends Controller
 {
   public function index(Request $request)
   {
@@ -21,17 +21,11 @@ class Hr_ServicesManagerController extends Controller
           ->join('users','users.empId','hrservice.createdBy')
           ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
-          ->select('hrservice.*','officeDetails','empName')
-
-          ->where(function ($query) {
-                $query->where('hrservice.status', '=', 'Processing')
-                    ->orWhere('hrservice.status', '=', 'Head_Recommended');
-            })
-            
+          ->select('hrservice.*','officeDetails','empName')          
+          ->where('hrservice.status','=','Applied')
           ->where('officeunder.head',Auth::user()->empId) 
-          ->where('cancelled','=','No');     
-               
-            
+          ->where('cancelled','=','No');                  
+          
           if (!empty($request->serviceType)) {
               $query->where('serviceType', $request->serviceType);
           }
@@ -43,23 +37,32 @@ class Hr_ServicesManagerController extends Controller
         
   }
 
-  //Manager or head
-  public function Manager_hrservice(Request $request)
+  // heads of substation, unit,sub division
+  public function Head_hrservice(Request $request)
   {
+
     $id = DB::table('hrservice')->where('id', $request->id)->value('id');
     if (!$id) return back()->with('error', 'Invalid HR Service ID');
 
-    if (!in_array($request->status, ['Recommended', 'Approved', 'Rejected']) || empty($request->remarks)) {
+    if (!in_array($request->status, ['Head_Recommended', 'Rejected']) || empty($request->remarks)) {
         return response()->json(['success' => false, 'message' => 'You cannot leave the remarks field empty!!']);
-        //return redirect('home')->with('page', 'ManagerReview')->with('error', 'You cannot leave the remarks field empty!!');
+        
     }
+
+    $statusType = null;    
+
+    if ($request->status === 'Head_Recommended') {
+            $statusType = 'Recommended';
+        } else {
+            $statusType = $request->status;
+        }
 
     // Save to approval table
     HR_Service_Approval::create([
         'noteId' => $id,
         'modifier' => $request->empId,
         'remarks' => $request->remarks,
-        'modiType' => $request->status,
+        'modiType' => $statusType,
         ]);
 
     // Update status
@@ -92,42 +95,23 @@ class Hr_ServicesManagerController extends Controller
     ];
 
     switch ($request->status) {
-        case 'Recommended':
+
+        case 'Head_Recommended':
             $supervisorEmail = DB::table('employeesupervisor')
                 ->where('employee', $user->empId)
                 ->value('emailId');
 
-            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. Your request will now be reviewed by the next-in-line supervisor.";
+            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the head {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
 
             Mail::to($supervisorEmail)->cc($userEmail)->send(new MyTestMail($mailData));
 
            return response()->json(['success' => true]);
-
-        case 'Approved':
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been approved by the manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. Now the HR focal will review your request and will contact you soon.";
-            $mailData['body5'] = 'Have a great day!';
-
-            Mail::to($userEmail)->send(new MyTestMail($mailData));
-
-            // ✅ Email to Hr person for notification purpose (tsheringchoden@bpc.bt)
-             $HR_Focal_Email = 'tashidema@bpc.bt'; 
-            $HR_MailData['title'] = "Approval Notification for $noteTitle";
-            $HR_MailData['body'] = "Dear sir/madam,";            
-            $HR_MailData['body1'] = "The HR Services request titled <b>$noteTitle</b> submitted by {$userDetail->empName} has been <strong>approved</strong> by supervisor Mr/Mrs. {$userDetail->empName} ({$userDetail->empId}).";
-            $HR_MailData['body2'] = 'Please do necessary action.';
-            $HR_MailData['body3'] = '';
-            $HR_MailData['body4'] = '';
-            $HR_MailData['body5'] = 'Regards, HR System Notification';
-            $HR_MailData['body6'] = '';
-
-            Mail::to($HR_Focal_Email)->send(new MyTestMail($HR_MailData));
-
-            return response()->json(['success' => true]);
+        
 
         case 'Rejected':
             $mailData['title'] = 'Mail From the HRIS System Reject';
-            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
+            $mailData['body1'] = "Your request for <b>$noteTitle</b> has been rejected by the head {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body3'] = 'Reason: ' . $request->remarks;
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
             $mailData['body5'] = 'Never give up. Great things take time';

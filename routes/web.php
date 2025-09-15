@@ -10,6 +10,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\GetMastersController;
 use App\Http\Controllers\Hr_ServicesManagerController;
+use App\Http\Controllers\Hr_ServicesHeadController;
 use App\Http\Controllers\Hr_ServicesGMController;
 use App\Http\Controllers\HR_ServiceController;
 use App\Http\Controllers\Hr_ServicesDirectorController;
@@ -781,6 +782,11 @@ Route::post('Request_HrServices','HR_ServiceController@Request_HrServices')->nam
 //manager review for hr service
 Route::resource('HR_Services', 'Hr_ServicesManagerController');
 Route::post('/HR_Services/Manager_hrservice', [Hr_ServicesManagerController::class, 'Manager_hrservice'])->name('HR_Services.Manager_hrservice');
+
+
+//head review for hr service
+Route::resource('HR_Services_Head', 'Hr_ServicesHeadController');
+Route::post('/HR_Services_Head/Head_hrservice', [Hr_ServicesHeadController::class, 'Head_hrservice'])->name('HR_Services_Head.Head_hrservice');
 
 
 //GM review for hr service

@@ -23,10 +23,20 @@ class Hr_ServicesGMController extends Controller
           
           ->select('hrservice.*','officedetails.officeDetails','empName','officeType')
 
-          ->where('hrservice.status','=','Recommended')
-          ->where('officeunder.head',Auth::user()->empId)
-          ->where('cancelled','=','No');
-                   
+          ->where('hrservice.status','=','Recommended')     
+          ->where('cancelled','=','No')
+
+          ->where(function($q) {
+                $q->where('officeunder.head', Auth::user()->empId)   // direct mapping
+                ->orWhereExists(function($sub) {                    // any mapping for same officeId like GM
+                    $sub->select(DB::raw(1))
+                        ->from('officeunder as ou2')
+                        ->whereColumn('ou2.office', 'hrservice.officeId')
+                        ->where('ou2.head', Auth::user()->empId);
+                });
+            })
+            ->distinct();   
+
   
           if (!empty($request->serviceType)) {
               $query->where('serviceType', $request->serviceType);
@@ -48,7 +58,6 @@ class Hr_ServicesGMController extends Controller
           return datatables()->of($review)->make(true);
        }        
   }
-
   
   public function GM_hrservice(Request $request)
   {
@@ -108,7 +117,7 @@ class Hr_ServicesGMController extends Controller
                 ->where('employee', $user->empId)
                 ->value('emailId');
 
-            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}. Your request will now be reviewed by the next-in-line supervisor.";
+            $mailData['body1'] = "You have a request for <b>$noteTitle</b> recommended by the general manager {$userDetail->empName} bearing employee Id {$userDetail->empId} of {$userDetail->officeDetails}.";
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
 
             Mail::to($supervisorEmail)->cc($userEmail)->send(new MyTestMail($mailData));

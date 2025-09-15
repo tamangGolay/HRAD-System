@@ -24,6 +24,7 @@ class HR_ServiceController extends Controller
           
           ->select('hrservice.*','officeDetails','empName')
           ->where('hrservice.status','=','Approved')
+          ->where('hrservice.createdOn','>=', '2025-08-01')
         //   ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
           
@@ -41,7 +42,7 @@ class HR_ServiceController extends Controller
 
     public function Request_HrServices(Request $request)
     {
-        //dd($request);
+        // dd($request);
 
         $empId = Auth::user()->empId;
         $officeId = Auth::user()->office;
@@ -63,7 +64,11 @@ class HR_ServiceController extends Controller
             'body1' => 'You have a request for ' . $request->serviceType . ' from ' . $userDetail->empName . 
                        ' bearing employee Id ' . $userDetail->empId . 
                        ' of ' . $userDetail->officeDetails . '.',
-            'body2' => '',
+
+           
+            'body2' => 'Justification/Amount/Purpose:-' . $request->justification . '.',
+
+
             'body3' => 'Please kindly do the necessary action.',
             'body4' => 'click here: http://hris.bpc.bt',
             'body5' => '',
@@ -77,6 +82,11 @@ class HR_ServiceController extends Controller
         $officeType = DB::table('officedetails')
             ->where('id', $officeId)
             ->value('officeType');
+
+        if (empty($request->emailId) || strlen($request->emailId) <= 8) {
+            
+            return redirect()->back()->with('error', 'Your email is missing in the HR system, so we cannot process your HR request. Please contact IT to update it.');
+        }
 
         // Determine status based on logic
         $status = $this->determineStatus($officeType, $isOfficeHead);
@@ -110,6 +120,7 @@ class HR_ServiceController extends Controller
     {
         if (!$isOfficeHead) {
             return match($officeType) {
+                'Unit', 'Sub Division', 'Team', 'Substation' => 'Applied',
                 'Section' => 'Processing',
                 'Division' => 'Recommended',
                 'Department' => 'GMRecommended',
@@ -141,6 +152,7 @@ class HR_ServiceController extends Controller
   {    
 
     // dd($request);
+
     $id = DB::table('hrservice')->where('id', $request->id)->value('id');
     if (!$id) return back()->with('error', 'Invalid HR Service ID');
 
@@ -194,11 +206,13 @@ class HR_ServiceController extends Controller
     $assignedToEmail = $request->assignedTo;
     $createdByName = $request->createdByName;
     $createdByEmpId = $request->createdByEmpId;
+    $justification_amount =  $request->justification_amount;
 
 
     switch ($request->status) {        
         case 'HRApproved':
             $mailData['body1'] = "A request for HR Services titled <b>$noteTitle</b> submitted by <b>$createdByName ($createdByEmpId)</b> has been approved by the AERS manager and you have been assigned to take action on this request. Please do necessary action.";
+            $mailData['body2'] = 'Justification/Amount:-'. $justification_amount;
             $mailData['body5'] = 'Have a great day!';
 
             

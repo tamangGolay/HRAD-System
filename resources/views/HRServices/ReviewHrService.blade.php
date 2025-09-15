@@ -75,7 +75,8 @@
                         <th>Sl.No</th>
                         <th>Service Id</th>
                         <th>Service Type</th>
-                        <th>Created By</th>                     
+                        <th>Created By</th>
+                        <th>Created On</th>                     
                         <th>Office Name</th>
                         <th>Justification</th>
                         <th>Remarks</th>
@@ -101,7 +102,7 @@
                     <label for="assignedTo">Assigned work to:</label>
                     <select id="assignedTo" name="assignedTo" class="form-control" required>
                         <option value="">-- Select email --</option>
-                        <option value="sonamtshomo@bpc.bt">sonamtshomo@bpc.bt</option>
+                        <option value="tashidema@bpc.bt">tdee@bpc.bt</option>
                         <option value="tshedupzangpo2013@bpc.bt">tshedupzangpo2013@bpc.bt</option>
                          <option value="tshewangjigme2013@bpc.bt">tshewangjigme2013@bpc.bt</option>
                         <option value="karmajamphel@bpc.bt">karmajamphel@bpc.bt</option>
@@ -118,8 +119,8 @@
             </div>
         </div>
     </div>
+ </div>
 </div>
-
 
 <!-- reject modal-->
 <div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
@@ -202,6 +203,7 @@
                 processing: true,
                 serverSide: true,
                 destroy: true,
+                order: [[1, 'desc']], // desc order by second coulmn that id id(Service id)
                 ajax: {
                     url: "{{ route('HR_Services_HR.index') }}",
                     data: {
@@ -230,6 +232,10 @@
                             return `${row.createdBy} (${row.empName})`;  
                         },
                        
+                    },
+                     {
+                        data: 'createdOn',
+                        name: 'createdOn'
                     },
 
                     { data: 'officeDetails', name: 'officeDetails' },                   
@@ -306,12 +312,15 @@
 
     if (!rowData) {
         alert("Row data not found!");
+        $('#confirmApproval').prop('disabled', false).text('Approve');
+        $(`.approve-btn[data-id="${rowId}"]`).prop('disabled', false);       
         return;
     }
 
     let assignedTo = $('#assignedTo').val();
     let createdByEmpId = rowData.createdBy;
     let createdByName = rowData.empName;
+    let justification_amount = rowData.justification;
 
     
     $.ajax({
@@ -324,6 +333,7 @@
             remarks: remarks, 
             createdByEmpId,
             createdByName,
+            justification_amount,
             assignedTo: assignedTo,  // assigned to particular person mail id is selected from the drop down
             _token: '{{ csrf_token() }}'  
         },
@@ -338,6 +348,10 @@
         //     }
         // }
         success: function(response) {
+            //next 2 line for to solve freezing Processing...
+            $('#confirmApproval').prop('disabled', false).text('Approve');
+            $(`.approve-btn[data-id="${rowId}"]`).prop('disabled', false);
+
             const msgBox = $('#statusMessage');
             if (response.success) {
                 msgBox.removeClass('alert-danger')
@@ -355,6 +369,10 @@
             }
         },
         error: function(xhr, status, error) {
+            //next 2 line for to solve freezing Processing...
+            $('#confirmApproval').prop('disabled', false).text('Approve');
+            $(`.approve-btn[data-id="${rowId}"]`).prop('disabled', false);
+
             $('#statusMessage')
                 .removeClass('alert-success')
                 .addClass('alert-danger')
@@ -408,6 +426,10 @@ $(document).on('click', '.reject-btn', function() {
         // }
 
         success: function(response) {
+            //next 2 line for to solve freezing Processing...
+            $('#confirmReject').prop('disabled', false).text('Reject');
+            $(`.reject-btn[data-id="${rowId}"]`).prop('disabled', false);
+
             const msgBox = $('#statusMessage');
             if (response.success) {
                 msgBox.removeClass('alert-danger')
@@ -425,6 +447,10 @@ $(document).on('click', '.reject-btn', function() {
             }
         },
         error: function(xhr, status, error) {
+            //next 2 line for to solve freezing Processing...
+            $('#confirmReject').prop('disabled', false).text('Reject');
+            $(`.reject-btn[data-id="${rowId}"]`).prop('disabled', false);
+
             $('#statusMessage')
                 .removeClass('alert-success')
                 .addClass('alert-danger')

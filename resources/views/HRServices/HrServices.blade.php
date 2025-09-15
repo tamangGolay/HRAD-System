@@ -50,9 +50,7 @@
 								<option value="salary advance">3. Salary Advance</option>
 							</select>												
 						</div>
-					</div>
-
-				
+					</div>				
 					 
 					<div class="form-group row" id="purposeField">
 							<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Purpose:
@@ -77,7 +75,18 @@
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
 							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
 						</div>
-					</div> 
+					</div>
+					
+					<br />
+
+				<div style="color:red; font-size: 12px;">
+					<p>
+						<span style="color:green;">*</span>
+					Once submitted, your supervisor will review your request, then it moves to the next supervisor until HR. Both you and your supervisor will be notified about the request and its status via email.
+						<span style="color:green;">*</span>
+					</p>
+				</div>
+				
 					</form>
    				 </div>
 

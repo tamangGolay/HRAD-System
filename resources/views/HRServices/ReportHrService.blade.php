@@ -75,7 +75,8 @@
                         <th>Sl.No</th>
                         <th>Service Id</th>
                         <th>Service Type</th>
-                        <th>Created By</th>                     
+                        <th>Created By</th> 
+                        <th>Created On</th>                     
                         <th>Office Name</th>
                         <!-- <th>Justification</th> -->
                         <th>Remarks</th>
@@ -135,7 +136,7 @@
                     [20, 40, 60, 100, -1],
                     [20, 40, 60, 100, "All"]
                 ],
-                dom: 'Bfrtip',
+                dom: 'Blfrtip',
                 buttons: [
                     'copy',
                     'excel',
@@ -145,6 +146,7 @@
                 processing: true,
                 serverSide: true,
                 destroy: true,
+                order: [[1, 'desc']],  // desc order by second coulmn that id id(Service id)
                 ajax: {
                     url: "{{ route('HR_Services_Report.index') }}",
                     data: {
@@ -169,6 +171,10 @@
                             return `${row.createdBy} (${row.empName})`;  
                         },
                        
+                    },
+                     {
+                        data: 'createdOn',
+                        name: 'createdOn'
                     },
 
                     { data: 'officeDetails', name: 'officeDetails' },                   

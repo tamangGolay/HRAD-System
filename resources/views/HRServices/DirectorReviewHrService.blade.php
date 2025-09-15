@@ -73,6 +73,7 @@
                         <th>Sl.No</th>
                         <th>Service Id</th>
                         <th>Service Type</th>
+                        <th>Created On</th> 
                         <th>Created By</th>                     
                         <th>Office Name</th>
                         <th>Justification</th>
@@ -208,6 +209,7 @@
                 processing: true,
                 serverSide: true,
                 destroy: true,
+                order: [[1, 'desc']],  // desc order by second coulmn that id id(Service id)
                 ajax: {
                     url: "{{ route('HR_Services_Director.index') }}",
                     data: {
@@ -224,6 +226,10 @@
                     {
                         data: 'serviceType',
                         name: 'serviceType'
+                    },
+                     {
+                        data: 'createdOn',
+                        name: 'createdOn'
                     },
                     // {
                     //     data: 'createdBy',

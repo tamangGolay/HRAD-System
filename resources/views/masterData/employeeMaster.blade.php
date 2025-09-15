@@ -86,7 +86,7 @@
 						<label class="col-sm-4 text-md-right" for="gender">{{ __('Select Gender:') }}</label>
 						<div class="col-sm-4">
 						<select name="gender" id="gender" class="form-control" required> 
-							<option value=" ">Select Gender</option> 
+							<option value="">Select Gender</option> 
 							<option value="Male">Male</option>
 							<option value="Female">Female</option> 
 							<option value="Other">Other</option> 

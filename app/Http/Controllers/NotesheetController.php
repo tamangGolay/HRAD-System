@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Google\Service\Drive as Google_Service_Drive;
 use Google\Service\Drive\DriveFile as Google_Service_Drive_DriveFile;
+use GuzzleHttp\Exception\ConnectException;
+use Illuminate\Support\Facades\Log; 
 
 
 class NotesheetController extends Controller
@@ -29,25 +31,18 @@ class NotesheetController extends Controller
 
     public function Request_notesheet(Request $request)
     {        
-         // Attachment in notsheet check   in local storage working         
-        //  if ($request->hasFile('document')) {
-        //     $file = $request->file('document');           
-        //     $originalFileName = $file->getClientOriginalName(); 
-        //     $originalFileName = str_replace(' ', '_', $originalFileName);          
-        //     $timestamp = time();            
-        //     $filename = pathinfo($originalFileName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . $file->getClientOriginalExtension();
-        //     $filePath = $file->storeAs('documents', $filename, 'public');          
-        //     $filePath = basename($filePath);
-        // } else {
-        //     $filePath = null;
-        // }  
-
-$filePath = NULL;      
+        
+    $filePath = NULL;      
 
 // Step 1: Handle the file upload from the request
-if ($request->hasFile('document')) {
-  
-    $file = $request->file('document');           
+if ($request->hasFile('document')) {  
+    $file = $request->file('document'); 
+    
+     // Optional: Set max file size in bytes (example: 10MB)
+    $maxFileSize = 1 * 1024 * 1024; // 1 MB
+    if ($file->getSize() > $maxFileSize) {
+        return back()->with('page','notesheet')->with('error', 'The file is too large. Maximum allowed size is 1 MB (1024 KB).');
+    }
 
     // Generate a unique filename with a timestamp
     $originalFileName = $file->getClientOriginalName();
@@ -55,6 +50,7 @@ if ($request->hasFile('document')) {
     $timestamp = time();
     $filePath = pathinfo($originalFileName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . $file->getClientOriginalExtension();
 
+    try{
       // Step 2: Initialize Google Client and Drive Service
       $client = new \Google_Client();
       $client->setClientId(env('GOOGLE_DRIVE_CLIENT_ID'));
@@ -72,18 +68,24 @@ if ($request->hasFile('document')) {
       // Step 4: Upload the file content to Google Drive
       $fileContent = file_get_contents($file->getRealPath()); // Read file content
 
-      // Upload file to Google Drive
-      try {
+       
         // Upload file to Google Drive
         $driveService->files->create($fileMetadata, [
             'data' => $fileContent,
             'mimeType' => $file->getMimeType(),
             'uploadType' => 'multipart'
         ]);
+
+         } catch (ConnectException $e) {             
+
+        return back()->with('page','notesheet')->with('error', 'Failed to connect to Google Drive. Please check your internet connection.');
     } catch (\Exception $e) {
-        
+          
+
+        return back()->with('page','notesheet')->with('error', 'File upload failed: ' . $e->getMessage());
     }
-}                 
+}
+            
         
 // try{  
 
@@ -139,7 +141,7 @@ if ($request->hasFile('document')) {
             $Request_notesheet->status = $status;
             }               
               
-          
+                   
             $Request_notesheet->emailId = $request->emailId;
             $Request_notesheet->officeId = $request->office;               
             $Request_notesheet->topic = $request->topic;            //database name n user input name
@@ -166,7 +168,7 @@ if ($request->hasFile('document')) {
             ->where( 'officedetails.id',Auth::user()->office)
             ->select('officeType')
             ->first();
-            //4th layer
+            //4th layer for heads
             if($officeType->officeType == 'Unit'|| $officeType->officeType == 'Sub Division' 
             || $officeType->officeType == 'Team'|| $officeType->officeType == 'Substation'){
                 $Supervisorstatus = 'Processing';
@@ -328,9 +330,7 @@ public function recommendnotesheet(Request $request)
         $supervisorEmail= DB::table('employeesupervisor') 
         ->select('employeesupervisor.emailId')
         ->where( 'employee',Auth::user()->empId)
-        ->first();
-
-    
+        ->first();    
        
         $userDetail= DB::table('users') 
         ->join('officedetails', 'officedetails.id', '=', 'users.office')
@@ -550,7 +550,7 @@ public function recommendnotesheet(Request $request)
        
   
         Mail::to($DirectorEmail->emailId) 
-                ->cc([$managerEmail->emailId,$userEmail->emailId])
+                // ->cc([$managerEmail->emailId,$userEmail->emailId])
                 ->send(new MyTestMail($supervisor)); 
                 
         return redirect('home')
@@ -637,9 +637,13 @@ public function recommendnotesheet(Request $request)
 
 
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled <b>' . $notetitle->topic . '</b> has been rejected by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:' . $request->remarks2 .'.', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
-                   
-                                  
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled <b>' . $notetitle->topic . '</b> has been rejected by the GM ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 
+                    'body2' => '', 
+                    'body3' => 'Reason:' . $request->remarks2 .'.', 
+                    'body4' => 'click here: http://hris.bpc.bt', 
+                    'body5' => 'Your patience is your power. Smile',
+                    'body6' => '', ];
+                                                    
            
             
                     Mail::to($userEmail->emailId) 
@@ -809,9 +813,10 @@ public function recommendnotesheet(Request $request)
                     ->where('notesheet.id',$id->id)
                     ->first();
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled <b> ' . $notetitle->topic . '</b> has been Rejected by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => 'Reason:'. $request->remarks2 .'.', 'body4' => '','body5' => 'Your patience is your power. Smile','body6' => '', ];
-                   
-                                  
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled <b> ' . $notetitle->topic . '</b> has been Rejected by the Director ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 
+                    'body3' => 'Reason:'. $request->remarks2 .'.', 
+                    'body4' => '','body5' => 'Your patience is your power. Smile','body6' => '', ];
+                                                    
               
 
                     Mail::to($userEmail->emailId) 
@@ -836,6 +841,7 @@ public function recommendnotesheet(Request $request)
   public function ceorecommendnotesheet(Request $request) 
  {
 
+    dd($request);
        
     $id = DB::table('notesheet')->select('id')
     ->where('id',$request->id)
@@ -954,7 +960,10 @@ public function recommendnotesheet(Request $request)
                     ->first();
 
 
-                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled  <b>' . $notetitle->topic . ' </b>  has been rejected by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 'body2' => '', 'body3' => '', 'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
+                    $reject = ['title' => 'Mail From the HRIS System Reject', 'body' => 'Dear sir/madam,', 'body1' => 'Your request for notesheet titled  <b>' . $notetitle->topic . ' </b>  has been rejected by CEO ' . $userDetail->empName . ' bearing employee Id ' . $userDetail->empId . ' of  ' .$userDetail->longOfficeName . '.', 
+                    'body2' => '',
+                    'body3' => 'Reason:'. $request->remarks2 .'.', 
+                    'body4' => 'click here: http://hris.bpc.bt', 'body5' => 'Your patience is your power. Smile','body6' => '', ];
                    
   
                     Mail::to($userEmail->emailId) 

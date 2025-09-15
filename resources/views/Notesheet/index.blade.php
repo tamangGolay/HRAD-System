@@ -86,6 +86,14 @@ div.notesheet {
         <br>
         <p>{!! nl2br ($notesheet-> justification) !!}</p>
 
+                <!-- Add View Document Button -->
+        <div class="text-center mb-3">
+            <a href="{{ route('documents.view', ['filename' => basename($rv->document)]) }}" target="_blank" class="btn btn-info btn-sm mt-2">
+              View Supporting Document
+          </a>
+
+        </div>
+
         <br> <br>
         
     </div>

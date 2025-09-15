@@ -63,8 +63,9 @@
 					<div class="col-md-4">
 						<input type="file" name="document" class="form-control-file" id="document" accept=".pdf,.doc,.docx">
 					</div>
-					<div class="col-md-4 align-self-center">
-						<small class="text-muted">(Optional: Attach only if required!)</small>
+					
+					<div class="col-md-6 align-self-center">
+						<small class="form-text text-primary">(Optional: Attach only if required! Max file size is 1MB (1024KB))</small>
 					</div>
 				</div>
 

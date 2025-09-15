@@ -40,6 +40,7 @@
                     <label for="office_name">Office Name</label>
                     <select name="office_name" id="office_name" class="form-control">
                         <option value="">Select Office</option>
+                         <option value="Direct Report">Direct Report</option>
                         @foreach($offices as $office)
                             <option value="{{ $office->officeDetails }}">{{ $office->officeDetails }}</option>
                         @endforeach
@@ -50,6 +51,16 @@
                 <button type="button" id="filter" class="btn btn-success">Filter</button>
                 <button type="button" id="reset" class="btn btn-warning">Reset</button>
             </div>
+
+            <div style="color:red;">
+                <p>
+                    <span style="color:green;">***</span>
+                    This shows the detailed attendance report of all employees under you. If any record is missing, it may be due to a mismatch in office address or missing data in the system. Please contact IT.  
+                    <span style="color:green;">***</span>
+                </p>
+            </div>
+
+
         </div>
     </div>
 
@@ -117,11 +128,19 @@
                 },
                 columns: [
                                   
-                    {
+                    // {
+                    //     data: null,
+                    //     name: 'sl_no',
+                    //     render: function(data, type, row, meta) {
+                    //         return meta.row + 1; // Start Sl No from 1
+                    //     }
+                    // },
+                     {
                         data: null,
-                        name: 'sl_no',
+                        orderable: false,   // prevents ORDER BY
+                        searchable: false,  // prevents WHERE on this col
                         render: function(data, type, row, meta) {
-                            return meta.row + 1; // Start Sl No from 1
+                            return meta.row + meta.settings._iDisplayStart + 1; 
                         }
                     },
                     {

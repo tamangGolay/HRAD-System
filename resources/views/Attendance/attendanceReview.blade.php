@@ -23,7 +23,8 @@
 <body>
 
 
-    <div class="container-fluid" style="margin-right:20%;width:95%;">
+    <div class="container-fluid">     
+
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12">
 
@@ -48,6 +49,7 @@
                         <label class="col-md-4 col-form-label text-md-left" for="office_name">Office Name</label>
                         <select name="office_name" id="office_name" class="form-control">
                             <option value="">Select Office</option>
+                            <option value="Direct Report">Direct Report</option>
                             @foreach($offices as $office)
                             <option value="{{ $office->officeDetails }}">{{ $office->officeDetails }}</option>
                             @endforeach
@@ -61,7 +63,26 @@
                     <button type="button" style="width:90px" name="filter" id="filter" class="btn btn-success">Filter</button>
 
                     <button type="button" style="width:90px" name="reset" id="reset" class="btn btn-warning">Reset</button>
+                 
+                      
                 </div>
+
+                 
+                <div class="col-md-12 col-lg-12 col-sm-12" style="margin-top: 15px; margin-bottom:15px; text-align: center">
+                    <a href="https://drive.google.com/file/d/1bCl0hakczJrTybDyWuIZlOnQLUz6DXsy/view?usp=sharing" target="_blank" style="color: blue;  font-size: 18px;">
+                                        📄 User Manual for Supervisors
+                    </a>
+                </div>             
+
+                <div style="color:red;">   
+                        <p>
+                            <span style="color:green;">***</span>
+                            Note: This review tab allows supervisors to view their employees' attendance from the previous day. Only records of employees who were <strong>absent</strong>, arrived <strong>late</strong>, or left <strong>early</strong> are shown here.
+                         <span style="color:green;">***</span>
+                        </p>
+                </div>
+
+
             </div>
 
         </div>

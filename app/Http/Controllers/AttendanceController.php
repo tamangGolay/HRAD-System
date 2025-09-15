@@ -60,7 +60,9 @@ class AttendanceController extends Controller
                         ->whereNull('a.status')
                         ->where(function ($query) {
                             $query->where('a.checkin_status', 'Late')
-                                ->orWhere('a.checkout_status', 'Early');
+                                ->orWhere('a.checkout_status', 'Early')
+                                ->orWhere('a.checkout_status', 'NA')
+                                ->orWhere('a.checkin_status', 'Absent');
                         })
 
                         ->select('a.*', 'a.office_id')
@@ -167,12 +169,39 @@ class AttendanceController extends Controller
                 });
             }
 
-            // Apply office name filter if provided
-            if (!empty($request->office_name)) {
-                $attendance = $attendance->filter(function ($item) use ($request) {
-                    return stripos($item->officeDetails, $request->office_name) !== false;
-                });
-            }
+            // Apply office name filter if provided with Direct report as new office list
+                if (!empty($request->office_name)) {
+                    if ($request->office_name === 'Direct Report') {
+                        $authOfficeId = Auth::user()->office;
+                        $authUserId = Auth::user()->empId;
+
+                        $attendance = $attendance->filter(function ($item) use ($authOfficeId, $authUserId, $officeUnderHeads, $reportToOffices) {
+                            // ✅ Condition 1: User is in the same office as logged in user                           
+                            if ($item->office_id == $authOfficeId && $item->user_id != $authUserId) {
+                                return true;
+                            }
+
+                            // ✅ Condition 2: User is a head, and their office reports to logged-in user’s office
+                            if ($officeUnderHeads->contains($item->user_id) && $item->reportToOffice == $authOfficeId) {
+                                return true;
+                            }
+
+                            return false;
+                        });
+                    } else {
+                        // Normal office name filter
+                        $attendance = $attendance->filter(function ($item) use ($request) {
+                            return stripos($item->officeDetails, $request->office_name) !== false;
+                        });
+                    }
+                }
+
+
+            // if (!empty($request->office_name)) {
+            //     $attendance = $attendance->filter(function ($item) use ($request) {
+            //         return stripos($item->officeDetails, $request->office_name) !== false;
+            //     });
+            // }
 
             // If no records found
             if ($attendance->isEmpty()) {
@@ -200,6 +229,9 @@ class AttendanceController extends Controller
         $date = $validated['date'];  
         $status = $validated['status'];
         $remark = $validated['remark']; // Get remark input
+        
+        //added on 8th september 2025
+        $authUserEmpId = Auth::user()->empId;
 
         $month = Carbon::parse($date)->format('F');
 
@@ -210,7 +242,8 @@ class AttendanceController extends Controller
         $query = $model->where('id', $request->id)
         ->update([
             'status' => $status,
-            'remarks_supervisor' => $remark // Save remark
+            'remarks_supervisor' => $remark, // Save remark
+            'modifiedBy' => $authUserEmpId,
         ]);
 
         return response()->json(['success' => true, 'message' => 'Status updated successfully']);
@@ -230,6 +263,9 @@ class AttendanceController extends Controller
         $status = $validated['status'];
         // $remark = $validated['remarkReject'];
 
+        //added on 15th september 2025
+        $authUserEmpId = Auth::user()->empId;
+
         $month = Carbon::parse($date)->format('F');
 
         $table_name = 'attendance_' . strtolower($month);
@@ -247,23 +283,25 @@ class AttendanceController extends Controller
             $GETemailID->emailID = $emailID ?? null;
         }  
 
-        $mailContent = ['title' => 'Mail From the Attendance System ( Office Attendance Notification )', 'body' => 'Dear sir/madam,', 
-                                                                                                    'body1' => 'This is to inform you that you reported late to the office on date <b>' . $request->date . '</b>',                                                                                                    
-                                                                                                    'body2' => '',
-                                                                                                    'body3' => '',
-                                                                                                    // 'body3' => 'Remarks: <b>' . $request->remarkReject . '</b>',
-                                                                                                    'body4' => '<b>Please be mindful of your check-in and check-out, as repeated offenses may result in complications.</b>', ];                                                                                                 
+        // $mailContent = ['title' => 'Mail From the Attendance System ( Office Attendance Notification )', 'body' => 'Dear sir/madam,', 
+        //                                                                                             'body1' => 'This is to inform you that you reported late to the office on date <b>' . $request->date . '</b>',                                                                                                    
+        //                                                                                             'body2' => '',
+        //                                                                                             'body3' => '',
+        //                                                                                             // 'body3' => 'Remarks: <b>' . $request->remarkReject . '</b>',
+        //                                                                                             'body4' => '<b>Please be mindful of your check-in and check-out, as repeated offenses may result in complications.</b>', ];                                                                                                 
                                                                                                     
 
 
-        Mail::to($GETemailID->emailID)              // send to this address:GETemailID
-        ->send(new AttendanceMail($mailContent));           //mail content 
+        // Mail::to($GETemailID->emailID)              // send to this address:GETemailID
+        // ->send(new AttendanceMail($mailContent));           //mail content 
         
       
                            
         $query = $model->where('id', $request->id)
         ->update([
             'status' => $status,
+            'modifiedBy' => $authUserEmpId,
+
             // 'remarks_supervisor' => $remark 
             // Save remark
         ]);

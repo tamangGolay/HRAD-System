@@ -164,12 +164,16 @@ class HR_ServiceController extends Controller
         return response()->json(['success' => false, 'message' => 'You cannot leave the remarks field empty!!']);
     }
 
-    // Save to approval table
+    // Save to approval table   
+
+    $assignedToWhom = $request->assignedTo ?? null;    
+
     HR_Service_Approval::create([
         'noteId' => $id,
         'modifier' => $request->empId,
         'remarks' => $request->remarks,
         'modiType' => $request->status,
+        'assignedTo' => $assignedToWhom,
         ]);
       
         HR_Service::updateOrCreate(
@@ -227,7 +231,7 @@ class HR_ServiceController extends Controller
             $mailData['body4'] = 'click here: http://hris.bpc.bt';
             $mailData['body5'] = 'Never give up. Great things take time';
 
-            // Mail::to($userEmail)->send(new MyTestMail($mailData));
+            Mail::to($userEmail)->send(new MyTestMail($mailData));
 
             return response()->json(['success' => true]);
 

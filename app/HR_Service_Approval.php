@@ -9,7 +9,7 @@ class HR_Service_Approval extends Model
     //
     protected $table = 'hrserviceapproval';
 
-    protected $fillable = ['remarks','noteId','modifier','modiType'];
+    protected $fillable = ['remarks','noteId','modifier','modiType','assignedTo'];
     
     public $timestamps = false;
 

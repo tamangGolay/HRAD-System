@@ -81,13 +81,14 @@ a {
                             <!-- <input type="text" id="officeType" name="officeType"   class="form-control" required> -->
                             <select class="form-control" id="officeType" name="officeType">
                                   <option>Select Your Office Type</option>
-                                  <option>Company</option>
-                                  <option>Services</option>
+                                   <option>Company</option>                                                                 
                                   <option>Department</option>
                                   <option>Division</option>
+                                  <option>Section</option>
                                   <option>Sub Division</option>
                                   <option>Unit</option>
                                   <option>Substation</option>
+                                  <option>Team</option>
                             
                                 </select>   
                         

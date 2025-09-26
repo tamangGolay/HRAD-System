@@ -3170,6 +3170,39 @@ if ($request->v == "attendanceReview")
             ));
         }
 //end 
+
+//attendance for many office under
+if ($request->v == "attendanceReviewForManyOffice")
+        {  
+            
+            $officeHead = DB::connection('mysql')->table('officeunder')
+                ->where('head', Auth::user()->empId)
+                ->pluck('office'); // This should return an array of office IDs
+
+            // If no offices are found, return this
+            if ($officeHead->isEmpty()) {
+                return response()->json([
+                    'message' => 'No offices found for the current user forms.',
+                    'data' => []
+                ]);
+            }
+            $offices = DB::connection('mysql')
+            ->table('officedetails')
+            ->whereIn('id', $officeHead)
+            ->select('id', 'officeDetails')
+            ->get();                    
+                     
+            $rhtml = view('Attendance.attendanceReviewForManyOffice')
+            ->with([               
+                'offices'=>$offices])
+            ->render();
+            return response()
+                ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+        }
+//end 
     
 //attendance
 if ($request->v == "attendanceCount")

@@ -762,6 +762,8 @@ Route::resource('laptopReleaseReport', 'LaptopReleaseReportController');//refund
 
 //attendence review
 Route::resource('attendanceReview', 'AttendanceController');
+// attendanceReviewForManyOffice
+Route::resource('attendanceReviewForManyOffice', 'AttendanceControllerReviewForManyOffice');
 Route::resource('attendanceCount', 'AttendanceCountController');
 Route::resource('attendanceReport', 'AttendanceReportController');
 

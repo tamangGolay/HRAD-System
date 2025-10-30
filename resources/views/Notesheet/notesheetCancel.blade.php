@@ -31,7 +31,23 @@ hr{
               <th>Note Id</th>         <td> {{($rv->id)}} </td>    </tr>
               <tr>  <th>Topic</th>     <td> {{$rv->topic}} </td>       </tr>
 			  <tr>   <th>Justification</th> <td> {!! nl2br($rv->justification) !!} </td>  </tr>                                  
-			  <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr>
+			  <!-- <tr>   <th>Status</th> <td> {{$rv->status}} </td>  </tr> -->
+
+        <tr>    <th>Status</th>
+          <td>
+              @if($rv->status == 'Recommended')
+                  <p class="btn-outline-success">Now in GM's page for review</p>
+              @elseif($rv->status == 'GMRecommended')
+                  <p class="btn-outline-success">Now in Director's page for review</p>
+              @elseif($rv->status == 'DirectorRecommended')
+                  <p class="btn-outline-success">Now in CEO's page for approval</p>
+              @else
+                  {{ $rv->status }}
+              @endif
+          </td>
+        </tr>
+
+
 			  <tr> <th style="border-bottom:4px solid black;">Action</th> <td  style="border-bottom:4px solid black;">
         <form method="POST" action="/cancelNotesheet" enctype="multipart/form-data" accept-charset="UTF-8"> @csrf         
         
@@ -41,12 +57,15 @@ hr{
 
         @if($rv->status == 'Processing')
         <button type="submit" name="id" id="id" onclick="return confirm('Do you want to cancel?');" value="{{$rv->id}}" class="btn btn-outline-danger text-dark" > 
-        Cancel </button>	
+        Cancel 
+      </button>	
         @elseif($rv->status == 'Recommended' || $rv->status == 'GMRecommended'|| $rv->status == 'DirectorRecommended')
-        <p class="btn-outline-success">Processing</p>
+        
+        <p class="btn-outline-success">In Progress</p>
         @endif
 		    
-      </form> </td> 	                 
+      </form> 
+    </td> 	                 
               </tr>
 		
             </thead>

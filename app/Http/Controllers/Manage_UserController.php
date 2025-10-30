@@ -7,7 +7,8 @@ use App\RoleUserMappings;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
         
 class Manage_UserController extends Controller
 {
@@ -64,6 +65,9 @@ class Manage_UserController extends Controller
      */
     public function store(Request $request)
     {
+        $LoggedInUser = Auth::user()->empId;  
+        $date = now(); 
+
             User::updateOrCreate(['id' => $request->id],
                 ['empName' => $request->empName,
                  'empId' => $request->empId,
@@ -83,8 +87,8 @@ class Manage_UserController extends Controller
                 'basicPay' => $request->basicPay,
                 'mobileNo' => $request->mobileNo,
                 'dob' => $request->dob,
-                'created_by' => Auth::id()
-
+                'modifiedBy'=> $LoggedInUser, 
+                'modifiedOn'=> $date,
                 ]); 
 
 

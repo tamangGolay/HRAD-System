@@ -69,7 +69,7 @@ a {
 		<div class="chgpsswd2 card-header bg-green text-center">
 				<div class="card-nima">
 					
-              <b>Employee List</b>
+              <b>Employee List helo there</b>
              </div>
 			</div>
 			<div class="card-body table-responsive">
@@ -130,7 +130,7 @@ a {
 								<div class="form-group ">
 									<label class="col-sm-4 col-lg-12 " for="empId">{{ __('Employee Number:') }}</label>
 									<div class="col-sm-4 col-lg-12">
-									<input class="form-control" type="text" value="<?php echo $userList[0]->empId; ?>" name="empId" id="empId" >
+									<input class="form-control" type="text" value="<?php echo $userList[0]->empId; ?>" name="empId" id="empId" readonly>
 
 									</div>
 								</div>
@@ -262,10 +262,11 @@ a {
 					<div class="form-group ">
 						<label class="col-sm-4 col-lg-12" for="role">{{ __('Role:') }}</label>
 						<div class="col-sm-6 col-lg-12">
-							<select class="form-control" name="role" id="role_id" required> @foreach($roles as $role)
+							<select class="form-control" name="role" id="role_id" disabled> @foreach($roles as $role)
 								<option value="{{$role->id}}">
 								{{$role->name}}</option> 
 								@endforeach </select>
+								<input type="hidden" name="role" id="role_hidden">
 						</div>
 					</div>
 
@@ -350,10 +351,6 @@ $(function() {
 	});
 });
 </script>
-
-
-
-
 			
 			<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
@@ -369,23 +366,6 @@ $(function() {
 					}
 				});
 
-		// 		$table->id();
-
-		// $table->integer('empId');
-		// $table->string('empName');
-		// $table->string('bloodGroup')->nullable();
-		// $table->bigInteger('cidNo');
-		// $table->string('cidOther')->nullable();
-		
-        
-
-		
-	
-	
-	
-		
-		
-
 	
 				$('body').on('click', '.edit', function() {
 					var guestHouse_id = $(this).data('id');
@@ -399,6 +379,7 @@ $(function() {
 						$('#empId').val(data.empId);
 						$('#incrementCycle').val(data.incrementCycle);
 						$('#role_id').val(data.role_id);//#input id and with data(DB field name)
+						$('#role_hidden').val(data.role_id);
 						$('#office').val(data.office);
 						$('#mobileNo').val(data.mobileNo);
 						$('#designation').val(data.designationId);
@@ -412,114 +393,37 @@ $(function() {
 
 					})
 				});
-				$('#saveBtn').click(function(e) {
-					e.preventDefault();
-					$(this).html('Save');
-					$.ajax({
-						data: $('#Form').serialize(),
-						url: "{{ route('g.store') }}",
-						type: "POST",
-						dataType: 'json',
-						success: function(data) {
-							$('#Form').trigger("reset");
-							$('#ajaxModel').modal('hide');
-							//   table.draw();
-							window.onload = callajaxOnPageLoad(page);
-							var alt = document.createElement("div");
-							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-							alt.innerHTML = "Data Updated Successfully! ";
-							setTimeout(function() {
-								alt.parentNode.removeChild(alt);
-							}, 4500);
-							document.body.appendChild(alt);
-							$.get('/getView?v=employeeList',function(data){
-        					$('#contentpage').empty();                          
-							$('#contentpage').append(data.html);
-							}); 
-							
-							// window.location.href = '/home';
-							table.draw();
-						},
-						error: function(data) {
-							console.log('Error:', data);
-							$('#saveBtn').html('Save Changes');
-						}
-					});
-				});
+	$('#saveBtn').click(function (e) {
+    e.preventDefault();
+    $(this).text('Saving...');
 
+    $.ajax({
+        data: $('#Form').serialize(),
+        url: "{{ route('g.store') }}",
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            $('#ajaxModel').modal('hide');
+            $('#Form')[0].reset();
 
-				$('body').on('click', '.delete', function() {
-					var guestHouse_id = $(this).data('id');
-					$.get("{{ route('g.store') }}" + '/' + guestHouse_id + '/edit', function(data) {
-						$('#modelUserHeading').html("Do you want to delete user?");
-						$('#saveUserBtn').val("edit-book");
-						$('#userModel').modal('show');
-						$('#id').val(data.id);//#id is from modal form and data.id is from modal(fillable) database
-					})
-				});
-				$('#saveUserBtn').click(function(e) {
-					e.preventDefault();
-					$(this).html('Yes');
-					$.ajax({
-						data: $('#Form').serialize(),
-						url: "{{ route('deleteuser') }}",
-						type: "POST",
-						dataType: 'json',
-						success: function(data) {
-							$('#Form').trigger("reset");
-							$('#userModel').modal('hide');
-							//   table.draw();
-							window.onload = callajaxOnPageLoad(page);
-							var alt = document.createElement("div");
-							alt.setAttribute("style", "position:absolute;top:20%;left:50%;background-color:#BFC9CA;border-color:#34495E;");
-							alt.innerHTML = "Data Updated Successfully! ";
-							setTimeout(function() {
-								alt.parentNode.removeChild(alt);
-							}, 4500);
-							document.body.appendChild(alt);
-							$.get('/getView?v=employeeList',function(data){
-        					$('#contentpage').empty();                          
-							$('#contentpage').append(data.html);
-							}); 
-							table.draw();
-						},
-						error: function(data) {
-							console.log('Error:', data);
-							$('#saveBtn').html('Save Changes');
-						}
-					});
-				});
+            // ✅ Reload the same table only
+            $.get('/getView?v=employeeList', function (response) {
+                $('#contentpage').empty();
+                $('#contentpage').append(response.html);
+                alert('Employee record updated successfully!');
+            });
+        },
+        error: function (data) {
+            console.log('Error:', data);
+            $('#saveBtn').text('Save changes');
+            alert('Something went wrong while saving.');
+        }
+    });
+});			
+				
 			});
 			</script>
-			<!-- jquery-validation -->
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/plugins/jquery-validation/additional-methods.min.js')}}"></script>
-			<!-- DataTables -->
-			<script src="{{URL::asset('/admin-lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-			<script src="{{URL::asset('/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-			<!-- Script for export file from datatable -->
-			<script src="{{asset('/admin-lte/datatables/nima.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jquery.dataTables.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/dataTables.buttons.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.html5.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/buttons.print.min.js')}}"></script>
-			<script src="{{asset('/admin-lte/datatables/jszip.min.js')}}"></script>
-			<!-- <script src="{{asset('/admin-lte/datatables/pdfmake.min.js')}}"></script> -->
-			<script src="{{asset('/admin-lte/datatables/vfs_fonts.js')}}"></script>
-			<!-- checkin form -->
-			<script>
-			$(document).ready(function() {
-				$('#myTable').DataTable({
-					dom: "Bfrtip",
-					"pagingType": "simple_numbers",
-					"Searching": true,
-					"ordering": false,
-					buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5']
-				});
-			});
-			</script>
+			
 			<script type="text/javascript">
 			$(document).ready(function() {
 				document.getElementById('contenthead').innerHTML = '<strong d-flex justify-content center><a href="/home"><i class="fa fa-home" aria-hidden="true">&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></i></a></strong>';

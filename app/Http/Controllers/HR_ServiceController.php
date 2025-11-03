@@ -210,12 +210,13 @@ class HR_ServiceController extends Controller
     $assignedToEmail = $request->assignedTo;
     $createdByName = $request->createdByName;
     $createdByEmpId = $request->createdByEmpId;
+    $createdByMail = $request->createdByMail;
     $justification_amount =  $request->justification_amount;
 
 
     switch ($request->status) {        
         case 'HRApproved':
-            $mailData['body1'] = "A request for HR Services titled <b>$noteTitle</b> submitted by <b>$createdByName ($createdByEmpId)</b> has been approved by the AERS manager and you have been assigned to take action on this request. Please do necessary action.";
+            $mailData['body1'] = "A request for HR Services titled <b>$noteTitle</b> submitted by <b>$createdByName ({$createdByEmpId}, {$createdByMail})</b> has been approved by the AERS manager and you have been assigned to take action on this request. Please do necessary action.";
             $mailData['body2'] = 'Justification/Amount:-'. $justification_amount;
             $mailData['body5'] = 'Have a great day!';
 

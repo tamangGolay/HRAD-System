@@ -76,6 +76,7 @@
                         <th>Service Id</th>
                         <th>Service Type</th>
                         <th>Created By</th>
+                        <th>Mail</th>
                         <th>Created On</th>                     
                         <th>Office Name</th>
                         <th>Justification</th>
@@ -234,6 +235,10 @@
                        
                     },
                      {
+                        data: 'emailId',
+                        name: 'emailId'
+                    },
+                     {
                         data: 'createdOn',
                         name: 'createdOn'
                     },
@@ -320,6 +325,7 @@
     let assignedTo = $('#assignedTo').val();
     let createdByEmpId = rowData.createdBy;
     let createdByName = rowData.empName;
+    let createdByMail = rowData.emailId;
     let justification_amount = rowData.justification;
 
     
@@ -333,6 +339,7 @@
             remarks: remarks, 
             createdByEmpId,
             createdByName,
+            createdByMail,
             justification_amount,
             assignedTo: assignedTo,  // assigned to particular person mail id is selected from the drop down
             _token: '{{ csrf_token() }}'  

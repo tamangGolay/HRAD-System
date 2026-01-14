@@ -50,6 +50,37 @@ class CertificateController extends Controller
     
         }
 
+        // Show public verification page
+    public function index()
+    {
+        return view('verifycertificate', [
+            'searched' => false,
+            'record' => null
+        ]);
+  
+    }
+
+    // Handle verification
+    public function verify(Request $request)
+    {
+        $request->validate([
+            'certificateId' => 'required'
+        ]);
+
+        $record = Certificate::where('certificateId', $request->certificateId)->first();
+
+          return view('verifycertificate', [
+            'searched' => true,
+             'record' => $record
+
+        
+        ]);
+
+    }
+
+
+
+
 
     }
           

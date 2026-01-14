@@ -821,3 +821,11 @@ Route::post('uploadCertificate','CertificateController@uploadCertificate')->name
 //check duplicate certificate
 
 Route::get('/check-certificate-id', [CertificateController::class, 'check'])->name('check.certificateId');
+
+// for verifying certificate
+Route::get('/verifycertificate', [CertificateController::class, 'index'])
+    ->name('verifycertificate.page');
+
+Route::post('/verifycertificate', [CertificateController::class, 'verify'])
+    ->name('verifycertificate.submit');
+

@@ -76,6 +76,7 @@
                         <th>Service Id</th>
                         <th>Service Type</th>
                         <th>Created By</th> 
+                        <th>Mail ID</th> 
                         <th>Created On</th>                     
                         <th>Office Name</th>
                         <!-- <th>Justification</th> -->
@@ -171,6 +172,10 @@
                             return `${row.createdBy} (${row.empName})`;  
                         },
                        
+                    },
+                     {
+                        data: 'emailId',
+                        name: 'emailId'
                     },
                      {
                         data: 'createdOn',

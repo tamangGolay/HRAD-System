@@ -530,13 +530,12 @@ return response()
                ->join('officedetails', 'officedetails.id', '=', 'users.office')
                ->join('officemaster','officemaster.id','=','users.office')
 
-            ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.officeDetails','officedetails.Address'
-               )
+            ->select('users.*','roles.name','officedetails.shortOfficeName','officedetails.officeDetails','officedetails.Address')
             ->where('users.status',0)
 
-               ->latest('users.id') //similar to orderby('id','desc')
-            //    ->where('users.office',Auth::user()->office)
-            //    ->orwhere('officemaster.reportToOffice',Auth::user()->office)
+            ->latest('users.id') 
+              
+               
             ->whereIn('users.office', function($query){
                 $query->from('officeunder')
                 ->select('officeunder.office')
@@ -548,6 +547,7 @@ return response()
                     });
                 })
                 ->paginate(10000000);
+
             $rhtml = view('auth.user')->with(['gg' => $gg,'designation' => $designation,'officedetails' => $officedetails,'userList' => $userLists,'roles' => $roles,'dzongkhag' => $dzongkhag])->render();
                  return response()
                ->json(array(
@@ -3400,6 +3400,20 @@ if ($request->v == "attendanceCount")
              {                  
  
              $rhtml = view('Attendance.deviceReset')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end
+
+
+             //certificate online verfiier
+             if ($request->v == "certificate")  //form.csv
+             {                  
+ 
+             $rhtml = view('Certificate.certificateverifier')                 
              ->render(); 
              return response()
                  ->json(array(

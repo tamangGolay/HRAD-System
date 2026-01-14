@@ -22,7 +22,16 @@ class Hr_ServicesCEOController extends Controller
           ->join('officeunder','officeunder.office','=','hrservice.officeId')
           
           ->select('hrservice.*','officeDetails','empName')
-          ->where('hrservice.status','=','DirectorRecommended')
+
+          ->where(function ($query) {
+            $query->where('hrservice.status', 'DirectorRecommended')
+            // below line only for 3 employee under ceo, added on 14/01/2026
+                ->orWhere(function ($q) {
+              $q->where('hrservice.status', 'Processing')
+                ->where('hrservice.officeId', 83);
+                    });
+            })
+
           ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
           

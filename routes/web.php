@@ -16,7 +16,7 @@ use App\Http\Controllers\HR_ServiceController;
 use App\Http\Controllers\Hr_ServicesDirectorController;
 use App\Http\Controllers\Hr_ServicesCEOController;
 use App\Http\Controllers\VehicleReportController;
-use App\Http\Controllers\Manage_VehicleController;
+use App\Http\Controllers\CertificateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -813,3 +813,11 @@ Route::post('/HR_Services_HR/HR_hrservice', [HR_ServiceController::class, 'HR_hr
 //final hr service report
 Route::resource('HR_Services_Report', 'HR_Service_ReportController');
 // Route::post('/HR_Services_Report/HR_hrservice', [HR_ServiceController::class, 'HR_hrservice'])->name('HR_Services_Report.HR_hrservice');
+
+
+// upload certificate added on 06/01/2026 by tashidee\
+Route::post('uploadCertificate','CertificateController@uploadCertificate')->name('uploadCertificate');
+
+//check duplicate certificate
+
+Route::get('/check-certificate-id', [CertificateController::class, 'check'])->name('check.certificateId');

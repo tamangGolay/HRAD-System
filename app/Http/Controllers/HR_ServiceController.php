@@ -24,7 +24,7 @@ class HR_ServiceController extends Controller
           
           ->select('hrservice.*','officeDetails','empName')
           ->where('hrservice.status','=','Approved')
-          ->where('hrservice.createdOn','>=', '2025-08-01')
+        //   ->where('hrservice.createdOn','>=', '2025-08-01')
         //   ->where('officeunder.head',Auth::user()->empId)
           ->where('cancelled','=','No');
           
@@ -218,6 +218,7 @@ class HR_ServiceController extends Controller
         case 'HRApproved':
             $mailData['body1'] = "A request for HR Services titled <b>$noteTitle</b> submitted by <b>$createdByName ({$createdByEmpId}, {$createdByMail})</b> has been approved by the AERS manager and you have been assigned to take action on this request. Please do necessary action.";
             $mailData['body2'] = 'Justification/Amount:-'. $justification_amount;
+            $mailData['body3'] = 'AERS Manager Remarks: ' . $request->remarks;         
             $mailData['body5'] = 'Have a great day!';
 
             

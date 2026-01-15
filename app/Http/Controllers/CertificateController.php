@@ -53,7 +53,7 @@ class CertificateController extends Controller
         // Show public verification page
     public function index()
     {
-        return view('verifycertificate', [
+        return view('Certificate.verifycertificate', [
             'searched' => false,
             'record' => null
         ]);
@@ -69,7 +69,7 @@ class CertificateController extends Controller
 
         $record = Certificate::where('certificateId', $request->certificateId)->first();
 
-          return view('verifycertificate', [
+          return view('Certificate.verifycertificate', [
             'searched' => true,
              'record' => $record
 

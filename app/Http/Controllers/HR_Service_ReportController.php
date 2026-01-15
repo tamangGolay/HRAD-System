@@ -22,7 +22,8 @@ class HR_Service_ReportController extends Controller
           ->where('hrservice.status','=','HRApproved')
           ->orWhere('hrservice.status','=','Rejected')
        
-          ->where('cancelled','=','No');
+          ->where('cancelled','=','No')
+          ->orderBy('hrservice.id', 'desc');
           
   
           if (!empty($request->serviceType)) {

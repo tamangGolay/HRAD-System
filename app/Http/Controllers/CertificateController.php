@@ -17,11 +17,12 @@ class CertificateController extends Controller
          'certificateId' => 'required|unique:certificateverifier,certificateId']);
 
 
-        // dd($request);
+        //  dd($request);
        
             $uploadCertificate = new Certificate;           //database name n user input name
               
-            $uploadCertificate->certificateId = $request->certificateId;                           
+            $uploadCertificate->certificateId = $request->certificateId;      
+            $uploadCertificate->certificatetypeid = $request->certificatetypeid;                            
             $uploadCertificate->issuedFor = $request->issuedFor;             
             $uploadCertificate->issueDate = $request->issueDate;   
             $uploadCertificate->issueTo = $request->issueTo;          //empId        
@@ -77,10 +78,6 @@ class CertificateController extends Controller
         ]);
 
     }
-
-
-
-
 
     }
           

@@ -77,8 +77,9 @@ use App\v4allocation;
 use App\welfarenoteapproval;
 use App\WelfareCommitte;
 use App\Models\Attendance;
-use App\conference;
-
+use App\conference; 
+use App\CertificateType;
+use App\Certificate;
 
 
 class FormsController extends Controller
@@ -3409,12 +3410,39 @@ if ($request->v == "attendanceCount")
              } //end
 
 
+             //added on 29/01/2026 Tashis
              //certificate online verfiier
              if ($request->v == "certificate")  //form.csv
-             {                  
- 
-             $rhtml = view('Certificate.uploadcertificate')                 
+             {  
+
+                $companyPrefix = 'BPC';
+
+                $year = now()->year;
+
+                $lastCert = Certificate::where('certificateId', 'like', $companyPrefix.'/'.$year.'/%')          
+                    ->orderBy('certificateId', 'desc')
+                    ->first();
+
+                $newNumber = 1;
+
+                if ($lastCert) {
+                    $parts = explode('/', $lastCert->certificateId);
+                    $newNumber = ((int) $parts[2]) + 1;
+                }
+                // generate new certificate ID
+                $certificateId = $companyPrefix . '/' . $year . '/' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+
+                //end here for autogerating certificateid
+                
+             $certificateTypes = CertificateType::orderBy('nameofcertificate')
+                    ->where('status', 'Active')
+                    ->get();
+
+
+             $rhtml = view('Certificate.uploadcertificate')  
+             ->with(['certificateTypes' => $certificateTypes,'certificateId' => $certificateId])               
              ->render(); 
+
              return response()
                  ->json(array(
                  'success' => true,
@@ -3423,4 +3451,4 @@ if ($request->v == "attendanceCount")
              } //end
 }
 } 
-
+ 

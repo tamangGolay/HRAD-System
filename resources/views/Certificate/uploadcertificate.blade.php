@@ -30,7 +30,7 @@
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
 					
 
-		<div class=" textfont form-group row"> 
+		    <!-- <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Certificate ID:</label>
                       <div class="col-md-9">
                         <input type="text" name="certificateId" class="form-control" id="certificateId" placeholder="Certificate Id" required>
@@ -40,7 +40,43 @@
                         </small>
 
                       </div>
-        </div>   
+        </div>  -->
+
+
+        <div class="textfont form-group row">
+                <label class="col-md-2 col-form-label text-md-right">
+                    &nbsp;&nbsp;&nbsp;Certificate ID:
+                </label>
+
+                <div class="col-md-9">
+                    <input type="text"
+                          name="certificateId"
+                          class="form-control"
+                          id="certificateId"
+                          value="{{ $certificateId ?? '' }}"
+                          readonly>
+
+                    <small class="text-muted">
+                        Auto-generated (Year / Serial)
+                    </small>
+                </div>
+            </div>
+
+        
+        
+         <div class=" textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Certificate Type:</label>
+                      <div class="col-md-9">
+                         <select name="certificatetypeid" class="form-control" required>
+                            <option value="">-- Select Certificate Type --</option>
+                            @foreach($certificateTypes as $type)
+                                <option value="{{ $type->id }}">
+                                    {{ $type->nameofcertificate }}
+                                </option>
+                            @endforeach
+                         </select>
+                      </div>
+        </div>  
         
         <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="empID">&nbsp;&nbsp;&nbsp;EmpId:</label>
@@ -69,7 +105,7 @@
 						<div class="col-md-9">
 						<textarea rows="5" class="form-control preserveLines" name="issuedFor" placeholder="Type here..." id="issuedFor" required>{{ old('body') }}</textarea>
 					</div>
-		</div>
+		  </div>
 
         <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Issued On:</label>
@@ -168,7 +204,7 @@ function empcheck()
 
 
 <!-- check certificateid if it exist -->
-<script>
+<!-- <script>
 $(function () {
 
   $('#certificateId').on('focusout', function () {
@@ -197,4 +233,4 @@ $(function () {
   });
 
 });
-</script>
+</script> -->

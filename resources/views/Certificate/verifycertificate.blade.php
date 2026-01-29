@@ -244,7 +244,7 @@
         }
 
         .cert-footer {
-            margin-top: 70px;
+            margin-top: 0px;
             text-align: center;
             font-size: clamp(12px, 1.8vw, 15px);
             color: #555;
@@ -338,6 +338,14 @@
     .pdf-mode .cert-logos img {
         width: 90px !important;
         height: 90px !important;
+    }
+
+    .cert-serial {
+        text-align: center;
+        margin-top: 40px;   /* space from content above */
+        margin-bottom: 6px; /* space before the line */
+        font-size: clamp(12px, 1.6vw, 15px);
+        font-style: italic;
     }
 
     </style>
@@ -439,20 +447,35 @@
             </div>
 
             <div class="cert-title">
-                Certificate of Completion
+                {{ $certificateTitle }}
             </div>
 
+
             <div class="cert-body">
-                This is to certify that <strong>{{ $record->receivedBy }}</strong>
+                This is to certify that 
+                <strong>{{ $record->receivedBy }}</strong> 
+                (<strong>{{ $record->issueTo }}</strong>)
                 bearing CID No. <strong>{{ $cidNo ?? 'N/A' }}</strong>
                 has successfully completed training on
                 <strong>{{ $record->issuedFor }}</strong>
-                held at <strong>{{ $record->issueTo }}</strong>.
-
+                from 
+                <strong>
+                    {{ \Carbon\Carbon::parse($record->startDate)->format('d') }}
+                    -
+                    {{ \Carbon\Carbon::parse($record->endDate)->format('d F, Y') }}
+                </strong>
+                held at 
+                <strong>{{ $record->venue }}</strong>.
             </div>
+
 
             <div class="cert-date">
                 ISSUED ON: {{ \Carbon\Carbon::parse($record->issueDate)->format('d/m/Y') }}
+            </div>
+
+            <div class="cert-serial">
+                Certificate Serial No: 
+                <strong>{{ $record->certificateId }}</strong>
             </div>
 
             <div class="cert-footer">

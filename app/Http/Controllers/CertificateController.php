@@ -83,6 +83,15 @@ class CertificateController extends Controller
 
         $record = Certificate::where('certificateId', $request->certificateId)->first();
 
+        //check if that certificate ID exist in DB
+
+        // Certificate not found
+        if (!$record) {
+            return back()->withErrors([
+                'certificateId' => 'Certificate ID not found.'
+            ])->withInput();
+        }
+
         // get CID number from USERS
         $CID_Users = User::where('empId', $record->issueTo)->first();
 

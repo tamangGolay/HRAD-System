@@ -28,21 +28,7 @@
 				
 					<input type="hidden" class="form-control" value="{{ Auth::user()->empId }}" name="authuser" id="empId" >					
 					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-					
-
-		    <!-- <div class=" textfont form-group row"> 
-                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Certificate ID:</label>
-                      <div class="col-md-9">
-                        <input type="text" name="certificateId" class="form-control" id="certificateId" placeholder="Certificate Id" required>
-
-                         <small id="certError" class="text-danger d-none">
-                            Certificate ID must be unique
-                        </small>
-
-                      </div>
-        </div>  -->
-
-
+				
         <div class="textfont form-group row">
                 <label class="col-md-2 col-form-label text-md-right">
                     &nbsp;&nbsp;&nbsp;Certificate ID:
@@ -62,12 +48,12 @@
                 </div>
             </div>
 
-        
+             
         
          <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Certificate Type:</label>
                       <div class="col-md-9">
-                         <select name="certificatetypeid" class="form-control" required>
+                         <select name="certificateTypeId" class="form-control" required>
                             <option value="">-- Select Certificate Type --</option>
                             @foreach($certificateTypes as $type)
                                 <option value="{{ $type->id }}">
@@ -77,9 +63,11 @@
                          </select>
                       </div>
         </div>  
+
+         
         
-        <div class=" textfont form-group row"> 
-                <label class="col-md-2 col-form-label text-md-right" for="empID">&nbsp;&nbsp;&nbsp;EmpId:</label>
+        <div class="textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="empID">&nbsp;&nbsp;&nbsp;Employee ID:</label>
                 <div class="col-md-3">                       
                 <input type="number" id="empID" class="form-control" placeholder="EmpId of the certificate holder" onKeyPress="if(this.value.length==8) return false;
 					       if( isNaN(String.fromCharCode(event.keyCode))) return false"; name="issueTo" value="{{ old('EmpId') }}"
@@ -98,26 +86,45 @@
                       </div>
         </div>
 
+
+        <div class=" textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Start Date:</label>
+                      <div class="col-md-3">
+                        <input type="date" name="startDate" class="form-control" id="startDate" placeholder="Start Date" required>
+                      </div>
+
+                      <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;End Date:</label>
+                      <div class="col-md-4">
+                        <input type="date" name="endDate" class="form-control" id="endDate" placeholder="End Date" required>
+                      </div>
+          </div>  
+        
+
               
 
         <div class="form-group row">
 						<label class="col-md-2 col-form-label text-md-right">&nbsp;&nbsp;&nbsp;Issued For/Purpose:</label>
 						<div class="col-md-9">
-						<textarea rows="5" class="form-control preserveLines" name="issuedFor" placeholder="Type here..." id="issuedFor" required>{{ old('body') }}</textarea>
+						<textarea rows="2" class="form-control preserveLines" name="issuedFor" placeholder="Type here..." id="issuedFor" required>{{ old('body') }}</textarea>
 					</div>
 		  </div>
 
+       <div class=" textfont form-group row"> 
+                <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Venue/Held at:</label>
+                      <div class="col-md-9">
+                        <input type="text" name="venue" class="form-control" id="venue" placeholder="Held at" required>
+                      </div>
+        </div>  
+
+      
+        
         <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Issued On:</label>
                       <div class="col-md-9">
                         <input type="date" name="issueDate" class="form-control" id="issueDate" placeholder="Certificate Id" required>
                       </div>
         </div>                   
-										
-
 				
-					
-
 					<div class="form-group row mb-0">
 						<div class="col text-right col-form-label col-md-right col-sm-4 col-md-6 col-lg-6 ">
 							<button type="submit"  id="notes" class="btn btn-success btn-lg">Submit</button>
@@ -125,8 +132,7 @@
 						</div> 
 					</form>
    				 </div>
-                   
-
+         
 					</div>
 			</div>
 		</div>
@@ -141,10 +147,8 @@
 		
 		});
 
-
-
-  function getEmployeeDetails(val)
-{
+    function getEmployeeDetails(val)
+    {
          var csrftoken = document.getElementById('tokenid').value;
 
           $.get('/getValues?source=getName&info='+val+'&token='+csrftoken,function(data){              

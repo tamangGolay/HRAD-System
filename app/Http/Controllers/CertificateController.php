@@ -1,32 +1,44 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use App\Certificate;
+use App\User;
 use DB;
 use Auth;
-use App\User;
-
 
 class CertificateController extends Controller
 {
     public function uploadCertificate(Request $request)
     {
 
-        $request->validate([
-         'certificateId' => 'required|unique:certificateverifier,certificateId']);
+       $request->validate([
+                    'certificateId'     => 'required|unique:certificateverifier,certificateId',
+                    'certificateTypeId' => 'required',
+                    'issuedFor'         => 'required',
+                    'issueDate'         => 'required|date',
+                    'issueTo'           => 'required',
+                    'venue'             => 'required',
+                    'startDate'         => 'required|date',
+                    'endDate'           => 'required|date|after_or_equal:startDate',
+                    'receivedBy'        => 'required',
+                    'authuser'          => 'required',
+                ]);
 
 
         //  dd($request);
        
-            $uploadCertificate = new Certificate;           //database name n user input name
-              
+            $uploadCertificate = new Certificate;           //database name n user input name              
             $uploadCertificate->certificateId = $request->certificateId;      
-            $uploadCertificate->certificatetypeid = $request->certificatetypeid;                            
+            $uploadCertificate->certificateTypeId = $request->certificateTypeId;                            
             $uploadCertificate->issuedFor = $request->issuedFor;             
             $uploadCertificate->issueDate = $request->issueDate;   
-            $uploadCertificate->issueTo = $request->issueTo;          //empId        
+            $uploadCertificate->issueTo = $request->issueTo;          //empId    
+            $uploadCertificate->venue = $request->venue;    
+            $uploadCertificate->startDate = $request->startDate;
+            $uploadCertificate->endDate = $request->endDate;      
             $uploadCertificate->receivedBy = $request->receivedBy;         //name              
              $uploadCertificate->createdBy = $request->authuser;              
              $uploadCertificate->save(); 

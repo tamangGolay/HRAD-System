@@ -9,10 +9,9 @@ class Certificate extends Model
     //
     protected $table = 'certificateverifier';
 
-    protected $fillable = ['id','certificatetypeid','certificateId','issuedFor','issueDate','receivedBy','cidNo','createdOn','createdBy','status'];
+    protected $fillable = ['id','certificateTypeId','certificateId','issuedFor','issueTo','issueDate','venue','startDate','endDate','receivedBy','createdOn','createdBy','status'];
 
     public $timestamps = false;
-
   
 }
 

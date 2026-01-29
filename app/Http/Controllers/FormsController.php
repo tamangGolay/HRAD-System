@@ -3413,7 +3413,7 @@ if ($request->v == "attendanceCount")
              if ($request->v == "certificate")  //form.csv
              {                  
  
-             $rhtml = view('Certificate.certificateverifier')                 
+             $rhtml = view('Certificate.uploadcertificate')                 
              ->render(); 
              return response()
                  ->json(array(

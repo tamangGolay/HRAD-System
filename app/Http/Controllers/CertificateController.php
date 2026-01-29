@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use App\Certificate;
 use DB;
 use Auth;
+use App\User;
+
 
 class CertificateController extends Controller
 {
@@ -70,10 +71,16 @@ class CertificateController extends Controller
 
         $record = Certificate::where('certificateId', $request->certificateId)->first();
 
+        // get CID number from USERS
+        $CID_Users = User::where('empId', $record->issueTo)->first();
+
+        // optional: get just the cidNo
+        $cidNo = $CID_Users ? $CID_Users->cidNo : null;  //db name cidNo
+       
           return view('Certificate.verifycertificate', [
             'searched' => true,
-             'record' => $record
-
+             'record' => $record,
+              'cidNo'    => $cidNo,
         
         ]);
 

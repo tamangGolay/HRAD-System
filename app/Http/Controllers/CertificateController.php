@@ -5,8 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MyTestMail;
 use App\Certificate;
-use App\CertificateType;
-
 use App\User;
 use DB;
 use Auth;
@@ -67,47 +65,60 @@ class CertificateController extends Controller
         }
 
         // Show public verification page
-        public function index()
-        {
-            return view('Certificate.verifycertificate', [
-                'searched' => false,
-                'record' => null
-            ]);
-    
+    public function index()
+    {
+        return view('Certificate.verifycertificate', [
+            'searched' => false,
+            'record' => null
+        ]);
+  
+    }
+
+    // Handle verification
+    public function verify(Request $request)
+    {
+        $request->validate([
+            'certificateId' => 'required'
+        ]);
+
+        $record = Certificate::where('certificateId', $request->certificateId)->first();
+
+        //check if that certificate ID exist in DB
+
+        // Certificate not found
+        if (!$record) {
+            return back()->withErrors([
+                'certificateId' => 'We couldn’t find a certificate with this ID. Please check and try again.'
+            ])->withInput();
         }
 
-        // Handle verification
-        public function verify(Request $request)
-        {
-            $request->validate([
-                'certificateId' => 'required'
-            ]);
+        // get CID number from USERS
+        $CID_Users = User::where('empId', $record->issueTo)->first();
 
-            $record = Certificate::where('certificateId', $request->certificateId)->first();
-            $cidNo = null;
-            $certificateTitle = null;
-
-            // ✅ ONLY fetch CID if certificate exists
-            if ($record) {
-                // get CID from users table
-                $user = User::where('empId', $record->issueTo)->first();
-                $cidNo = $user ? $user->cidNo : null;
-
-                  // ✅ get certificate title using ID
-                $certificateTitle = DB::table('certificatetype')
-                    ->where('id', $record->certificateTypeId)
-                    ->value('nameofcertificate');
-
-            }
-
-            return view('Certificate.verifycertificate', [
-                'searched' => true,
-                'record'   => $record,
-                'cidNo'    => $cidNo,
-                'certificateTitle' => $certificateTitle,
-            ]);
-        }
+        // optional: get just the cidNo
+        $cidNo = $CID_Users ? $CID_Users->cidNo : null;  //db name cidNo
 
 
-}
+          /* -----------------------------------------
+       Decide certificate view based on type
+    ------------------------------------------ */
+
+    $certificateView = match ($record->certificateTypeId) {
+        1 => 'certificate.types.Achievement',
+        2 => 'certificate.types.Appreciation',
+        3 => 'certificate.types.Completion',
+        4 => 'certificate.types.Participation',
+        default => 'certificate.types.Completion', // fallback
+    };
+
+    return view('Certificate.verifycertificate', [
+        'searched'        => true,
+        'record'          => $record,
+        'cidNo'           => $cidNo,
+        'certificateView' => $certificateView,
+    ]);
+                 
+    }
+
+    }
           

@@ -53,7 +53,7 @@
          <div class=" textfont form-group row"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Certificate Type:</label>
                       <div class="col-md-9">
-                         <select name="certificateTypeId" class="form-control" required>
+                         <select name="certificateTypeId" class="form-control" id="certificateTypeId" required>
                             <option value="">-- Select Certificate Type --</option>
                             @foreach($certificateTypes as $type)
                                 <option value="{{ $type->id }}">
@@ -87,11 +87,13 @@
         </div>
 
 
-        <div class=" textfont form-group row"> 
+        <div class=" textfont form-group row" id="dateRangeRow"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Start Date:</label>
                       <div class="col-md-3">
                         <input type="date" name="startDate" class="form-control" id="startDate" placeholder="Start Date" required>
                       </div>
+
+
 
                       <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;End Date:</label>
                       <div class="col-md-4">
@@ -109,7 +111,7 @@
 					</div>
 		  </div>
 
-       <div class=" textfont form-group row"> 
+       <div class=" textfont form-group row" id="venueRow"> 
                 <label class="col-md-2 col-form-label text-md-right" for="nameid">&nbsp;&nbsp;&nbsp;Venue/Held at:</label>
                       <div class="col-md-9">
                         <input type="text" name="venue" class="form-control" id="venue" placeholder="Held at" required>
@@ -206,35 +208,46 @@ function empcheck()
 
 </script>
 
+<script type="text/javascript">
+$(document).ready(function () {
 
-<!-- check certificateid if it exist -->
-<!-- <script>
-$(function () {
+  function toggleFieldsByCertificateType() {
+    var selectedType = $('#certificateTypeId').val();
 
-  $('#certificateId').on('focusout', function () {
+    // Certificate Types 1 and 2 → NO Start/End Date & Venue
+    if (selectedType === '1' || selectedType === '2') {
 
-    const certId = $(this).val().trim();
+      // Hide rows
+      $('#dateRangeRow').hide();
+      $('#venueRow').hide();
 
-    // reset state
-    $('#certError').addClass('d-none');
-    $(this).removeClass('is-invalid');
-    $('#notes').prop('disabled', false);
+      // Remove required + clear values
+      $('#startDate').prop('required', false).val('');
+      $('#endDate').prop('required', false).val('');
+      $('#venue').prop('required', false).val('');
 
-    if (!certId) return;
+    } else {
 
-    $.get("{{ route('check.certificateId') }}", { certificateId: certId })
-      .done(function (res) {
-        if (res.exists) {
-          $('#certError').removeClass('d-none');
-          $('#certificateId').addClass('is-invalid');
-          $('#notes').prop('disabled', true);
-        }
-      })
-      .fail(function () {
-        console.log('Certificate ID check failed');
-      });
+      // Show rows
+      $('#dateRangeRow').show();
+      $('#venueRow').show();
 
-  });
+      // Add required back
+      $('#startDate').prop('required', true);
+      $('#endDate').prop('required', true);
+      $('#venue').prop('required', true);
+    }
+  }
+
+  // Run once on page load
+  toggleFieldsByCertificateType();
+
+  // Run whenever certificate type changes
+  $('#certificateTypeId').on('change', toggleFieldsByCertificateType);
 
 });
-</script> -->
+</script>
+
+
+
+

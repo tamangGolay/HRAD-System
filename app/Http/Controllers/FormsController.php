@@ -3449,6 +3449,19 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //end
+
+           //add holidays
+             if ($request->v == "addholidays")  //form.csv
+             {                  
+ 
+             $rhtml = view('Attendance.addHolidays')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //e
 }
 } 
  

@@ -17,6 +17,7 @@ use App\Http\Controllers\Hr_ServicesDirectorController;
 use App\Http\Controllers\Hr_ServicesCEOController;
 use App\Http\Controllers\VehicleReportController;
 use App\Http\Controllers\CertificateController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -829,3 +830,6 @@ Route::get('/verifycertificate', [CertificateController::class, 'index'])
 Route::post('/verifycertificate', [CertificateController::class, 'verify'])
     ->name('verifycertificate.submit');
 
+
+    //manage holidays
+Route::resource('addholidays', AddHolidaysController::class);

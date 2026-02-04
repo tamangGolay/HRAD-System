@@ -192,12 +192,15 @@
             </div>
 
             <div class="cert-body">
-                This is to certify that <strong>{{ $record->receivedBy }}</strong>
+                This is to certify that Ms/Mrs/Mr.<strong>{{ $record->receivedBy }}</strong>
                 bearing CID No. <strong>{{ $cidNo ?? 'N/A' }}</strong>
-                has successfully completed training on
-                <strong>{{ $record->issuedFor }}</strong>
-                held at <strong>{{ $record->issueTo }}</strong>.
-
+                is sincerely appreciated for their valuable contribution and dedicated efforts in
+               <strong>{{ ucfirst(strtolower($record->issuedFor)) }}</strong>.
+                 <!-- make first letter capital and rest small. -->
+            <br>
+            <br>
+                 The organization extends its gratitude for the individual’s commitment and support.
+           
             </div>
 
             <div class="cert-date">

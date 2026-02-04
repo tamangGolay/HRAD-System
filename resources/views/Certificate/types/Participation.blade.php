@@ -193,11 +193,23 @@
             </div>
 
             <div class="cert-body">
-                This is to certify that <strong>{{ $record->receivedBy }}</strong>
+                This is to certify that Ms/Mrs/Mr. <strong>{{ $record->receivedBy }}</strong>
                 bearing CID No. <strong>{{ $cidNo ?? 'N/A' }}</strong>
-                has successfully completed training on
-                <strong>{{ $record->issuedFor }}</strong>
-                held at <strong>{{ $record->issueTo }}</strong>.
+                has successfully participated in
+                <strong>{{ ucfirst(strtolower($record->issuedFor)) }}</strong>
+                 <!-- make first letter capital and rest small. -->
+
+                from 
+                <strong>
+                    {{ \Carbon\Carbon::parse($record->startDate)->format('d') }}
+                    -
+                    {{ \Carbon\Carbon::parse($record->endDate)->format('d F, Y') }}
+                </strong>
+              
+                held at <strong>{{ $record->venue }}</strong>.
+<br>
+<br>
+                The organization appreciates the individual’s commitment and professional involvement.
 
             </div>
 

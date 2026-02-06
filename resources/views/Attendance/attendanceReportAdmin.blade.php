@@ -27,7 +27,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group row">
-                <div class="col-lg-6 col-md-6">
+
+                <div class="col-lg-4 col-md-4">
+                        <label for="filter_year">Select Year</label>
+                        <select name="filter_year" id="filter_year" class="form-control" required>
+                            <option value="">Select Year</option>
+                            @for($y = date('Y'); $y >= date('Y') - 1; $y--)
+                                <option value="{{ $y }}">{{ $y }}</option>
+                            @endfor
+                        </select>
+                </div>
+                <div class="col-lg-4 col-md-4">
                     <label for="filter_month">Select Month</label>
                     <select name="filter_month" id="filter_month" class="form-control" required>
                         <option value="">Select Month</option>
@@ -36,7 +46,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <label for="office_name">Office Name</label>
                     <select name="office_name" id="office_name" class="form-control">
                         <option value="">Select Office</option>
@@ -101,130 +111,81 @@
 
 </html>
 
-<script>
-    $(document).ready(function() {
-        function loadDataTable(month = '', office = '') {
-            $('#report_data').DataTable({
-                "aLengthMenu": [
-                     [50, 100, 250, 1000, -1],
-                    [50, 100, 250, 1000, "All"]
-                ],
-                dom: 'Blfrtip',
-                buttons: [
-                    'copy',
-                    'excel',
-                    'csv',
-                    'print'
-                ],
-                processing: true,
-                serverSide: true,
-                destroy: true,
-                ajax: {
-                    url: "{{ route('attendanceReport.index') }}",
-                    data: {
-                        filter_month: month,
-                        office_name: office
-                    }
-                },
-                columns: [
-                                  
-                    // {
-                    //     data: null,
-                    //     name: 'sl_no',
-                    //     render: function(data, type, row, meta) {
-                    //         return meta.row + 1; // Start Sl No from 1
-                    //     }
-                    // },
-                     {
-                        data: null,
-                        orderable: false,   // prevents ORDER BY
-                        searchable: false,  // prevents WHERE on this col
-                        render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1; 
-                        }
-                    },
-                    {
-                        data: 'user_id',
-                        name: 'user_id'
-                    },
-                    {
-                        data: 'empName',
-                        name: 'empName'
-                    },
-                   
-                    {
-                        data: 'officeDetails',
-                        name: 'officeDetails'
-                    },
-                    {
-                        data: 'date',
-                        name: 'date'
-                    },
-                    {
-                        data: 'check_in_address',
-                        name: 'check_in_address'
-                    },
-                    {
-                        data: 'check_in_time',
-                        name: 'check_in_time'
-                    },
-                    {
-                        data: 'checkin_remarks',
-                        name: 'checkin_remarks'
-                    },
-                    {
-                        data: 'checkin_status',
-                        name: 'checkin_status',
-                        render: function(data, type, row) {
-                            // Check if the status is "On Time" or "Delayed"
-                            if (data === 'On Time') {
-                                return '<span style="color: green;">' + data + '</span>';
-                            } else {
-                                return '<span style="color: red;">' + data + '</span>';
-                            }
-                        }
-                    },
-                    {
-                        data: 'check_out_address',
-                        name: 'check_out_address'
-                    },
-                    {
-                        data: 'check_out_time',
-                        name: 'check_out_time'
-                    },
-                    {
-                        data: 'checkout_remarks',
-                        name: 'checkout_remarks'
-                    },
-                    {
-                        data: 'checkout_status',
-                        name: 'checkout_status',
-                        render: function(data, type, row) {
-                            // Check if the status is "On Time" or "Early"
-                            if (data === 'On Time') {
-                                return '<span style="color: green;">' + data + '</span>';
-                            } else {
-                                return '<span style="color: red;">' + data + '</span>';
-                            }
-                        }
-                    },
 
-                    {
-                        data: 'status',
-                        name: 'status',
-                    },                   
-                    
-                ],
-        });
-    }
-        loadDataTable();
-        $('#filter').click(function() {
-            loadDataTable($('#filter_month').val(), $('#office_name').val());
-        });
-        $('#reset').click(function() {
-            $('#filter_month').val('');
-            $('#office_name').val('');
-            loadDataTable();
-        });
+<script>
+$(document).ready(function () {
+
+    let table = $('#report_data').DataTable({
+        aLengthMenu: [
+            [50, 100, 250, 1000, -1],
+            [50, 100, 250, 1000, "All"]
+        ],
+        dom: 'Blfrtip',
+        buttons: ['copy', 'excel', 'csv', 'print'],
+        processing: true,
+        serverSide: true,
+
+        ajax: {
+            url: "{{ route('attendanceReport.index') }}",
+            data: function (d) {
+                // ✅ ALWAYS pull fresh values
+                d.filter_year  = $('#filter_year').val();
+                d.filter_month = $('#filter_month').val();
+                d.office_name  = $('#office_name').val();
+            }
+        },
+
+        columns: [
+            {
+                data: null,
+                orderable: false,
+                searchable: false,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            { data: 'user_id', name: 'user_id' },
+            { data: 'empName', name: 'empName' },
+            { data: 'officeDetails', name: 'officeDetails' },
+            { data: 'date', name: 'date' },
+            { data: 'check_in_address', name: 'check_in_address' },
+            { data: 'check_in_time', name: 'check_in_time' },
+            { data: 'checkin_remarks', name: 'checkin_remarks' },
+            {
+                data: 'checkin_status',
+                name: 'checkin_status',
+                render: d =>
+                    d === 'On Time'
+                        ? `<span style="color:green">${d}</span>`
+                        : `<span style="color:red">${d}</span>`
+            },
+            { data: 'check_out_address', name: 'check_out_address' },
+            { data: 'check_out_time', name: 'check_out_time' },
+            { data: 'checkout_remarks', name: 'checkout_remarks' },
+            {
+                data: 'checkout_status',
+                name: 'checkout_status',
+                render: d =>
+                    d === 'On Time'
+                        ? `<span style="color:green">${d}</span>`
+                        : `<span style="color:red">${d}</span>`
+            },
+            { data: 'status', name: 'status' }
+        ]
     });
+
+    // ✅ Filter button → just reload
+    $('#filter').click(function () {
+        table.ajax.reload();
+    });
+
+    // ✅ Reset button
+    $('#reset').click(function () {
+        $('#filter_year').val('');
+        $('#filter_month').val('');
+        $('#office_name').val('');
+        table.ajax.reload();
+    });
+
+});
 </script>

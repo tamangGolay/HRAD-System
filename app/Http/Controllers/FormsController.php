@@ -3208,9 +3208,43 @@ if ($request->v == "attendanceReviewForManyOffice")
 //attendance
 if ($request->v == "attendanceCount")
         {               
-            $offices = DB::connection('mysql')->table('officedetails')         
-            ->select('id', 'officeDetails')
-            ->get();         
+    //role_id 1 is superadmin so show all office if it is superadmin
+       if (Auth::user()->role_id == 1) {
+    // Superadmin: get all offices
+    $offices = DB::connection('mysql')->table('officedetails')
+        // ->select('id', 'officeDetails')
+        ->orderBy('officeDetails', 'asc')
+        ->get();
+
+    $rhtml = view('Attendance.attendanceCount')
+        ->with(['offices' => $offices])
+        ->render();
+
+    return response()
+     ->json(array(
+                'success' => true,
+                'html' => $rhtml
+            ));
+
+} else {
+    // Normal user:show office under in list
+    $officeHead = DB::connection('mysql')->table('officeunder')
+        ->where('head', Auth::user()->empId)
+        ->pluck('office');
+
+    if ($officeHead->isEmpty()) {
+        return response()->json([
+            'message' => 'No offices found for the current user forms.',
+            'data' => []
+        ]);
+    }
+
+    $offices = DB::connection('mysql')->table('officedetails')
+        ->whereIn('id', $officeHead)
+        ->select('id', 'officeDetails')
+         ->orderBy('officeDetails', 'asc')
+        ->get();
+        
                    
             $rhtml = view('Attendance.attendanceCount')
             ->with(['offices'=>$offices])
@@ -3221,29 +3255,13 @@ if ($request->v == "attendanceCount")
                 'success' => true,
                 'html' => $rhtml
             ));
-        }
+        }}
         //end 
 
             //attendance Report
             if ($request->v == "attendanceReport")
             {               
-           
-            // $offices = DB::connection('mysql')->table('officedetails')
-         
-            // ->select('id', 'officeDetails')
-            // ->get();       
-                
-            // $rhtml = view('Attendance.attendanceReportAdmin')
-
-            // ->with([            
-            //     'offices'=>$offices])
-
-            // ->render();
-            // return response()
-            //     ->json(array(
-            //     'success' => true,
-            //     'html' => $rhtml
-            // ));
+          
  
     if (Auth::user()->role_id == 1) {
         //role_id 1 is superadmin so show all office if it is superadmin

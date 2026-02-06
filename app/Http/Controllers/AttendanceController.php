@@ -33,30 +33,17 @@ class AttendanceController extends Controller
                 ]);
             }
 
-            // Determine the range of months based on filter dates
-            $startDate = Carbon::parse($request->filter_startdate ?? now()->startOfMonth());
-            $endDate = Carbon::parse($request->filter_enddate ?? now());
-
-            $months = [];
-            while ($startDate->lessThanOrEqualTo($endDate)) {
-                $months[] = strtolower($startDate->format('F')); // Get full month name
-                $startDate->addMonth();
-            }
-
-            // Fetch attendance data from all relevant tables
+            
             $attendance = collect();
-            foreach ($months as $month) {
-                $tableName = "attendance_$month"; 
+            
+                $tableName = "attendance_record"; 
 
-                // Check if table exists to avoid errors
-                if (Schema::connection('mysql2')->hasTable($tableName)) {
+             
                     $records = DB::connection('mysql2')
                         ->table($tableName . ' as a')
                         ->whereIn('a.office_id', $officeHead)
                         ->where('a.user_id', '!=', Auth::user()->empId) // 👈 Exclude self
-                        // ->where('a.status', '=', 'NULL')                        
-                        //  ->where('a.checkin_status', '=', 'Late')
-                        //  ->orWhere('a.checkout_status', '=', 'Early')
+                        
                         ->whereNull('a.status')
                         ->where(function ($query) {
                             $query->where('a.checkin_status', 'Late')
@@ -69,8 +56,8 @@ class AttendanceController extends Controller
                         ->get();
 
                     $attendance = $attendance->merge($records);
-                }
-            }
+                // }
+            // }
 
             // Only apply "yesterday" filter if no date filter is provided
             if (empty($request->filter_startdate) && empty($request->filter_enddate)) {
@@ -233,9 +220,8 @@ class AttendanceController extends Controller
         //added on 8th september 2025
         $authUserEmpId = Auth::user()->empId;
 
-        $month = Carbon::parse($date)->format('F');
-
-        $table_name = 'attendance_' . strtolower($month);
+      
+        $table_name = 'attendance_record';
 
         $model = DB::connection('mysql2')->table($table_name);
 
@@ -266,9 +252,7 @@ class AttendanceController extends Controller
         //added on 15th september 2025
         $authUserEmpId = Auth::user()->empId;
 
-        $month = Carbon::parse($date)->format('F');
-
-        $table_name = 'attendance_' . strtolower($month);
+        $table_name = 'attendance_record';
 
         $model = DB::connection('mysql2')->table($table_name);
 

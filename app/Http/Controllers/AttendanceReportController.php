@@ -12,8 +12,8 @@ class AttendanceReportController extends Controller
     {
         if ($request->ajax()) {
 
-            $selectedMonth = strtolower($request->filter_month);
-            $tableName = "attendance_" . $selectedMonth;
+           
+            $tableName = "attendance_record";
 
             $tableExists = DB::connection('mysql2')->select("SHOW TABLES LIKE '$tableName' ");
 
@@ -52,6 +52,24 @@ class AttendanceReportController extends Controller
                     ->filter(function ($query) use ($request, $officeDetailsfull,$searchableColumns) {
                          $searchValue = trim($request->search['value'] ?? '');
                         $requestedOfficeName = trim($request->office_name);
+
+                        $selectedMonth  = trim($request->filter_month ?? '');
+                        $selectedYear  = trim($request->filter_year ?? '');
+                        
+                       
+                       // 🚫 Do NOT load anything until at least year + month is selected
+                        if (empty($selectedYear) || empty($selectedMonth)) {
+                            $query->whereRaw('1 = 0');
+                            return;
+                        }
+
+                        // ✅ Apply YEAR filter
+                        $query->whereYear('a.date', $selectedYear);
+
+                        // ✅ Apply MONTH filter ("February" → 02)
+                        $monthNumber = date('m', strtotime($selectedMonth));
+                        $query->whereMonth('a.date', $monthNumber);
+
 
 
                      // 1️⃣ Global search
@@ -121,7 +139,7 @@ class AttendanceReportController extends Controller
             }
 
             return response()->json([
-                'message' => 'No attendance table found for the selected month.',
+                'message' => 'No record found for the selected month.',
                 'data' => []
             ]);
         }

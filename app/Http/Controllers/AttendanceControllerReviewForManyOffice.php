@@ -33,23 +33,11 @@ class AttendanceControllerReviewForManyOffice extends Controller
                 ]);
             }
 
-            // Determine the range of months based on filter dates
-            $startDate = Carbon::parse($request->filter_startdate ?? now()->startOfMonth());
-            $endDate = Carbon::parse($request->filter_enddate ?? now());
-
-            $months = [];
-            while ($startDate->lessThanOrEqualTo($endDate)) {
-                $months[] = strtolower($startDate->format('F')); // Get full month name
-                $startDate->addMonth();
-            }
-
-            // Fetch attendance data from all relevant tables
             $attendance = collect();
-            foreach ($months as $month) {
-                $tableName = "attendance_$month"; 
+           
+                $tableName = "attendance_record"; 
 
-                // Check if table exists to avoid errors
-                if (Schema::connection('mysql2')->hasTable($tableName)) {
+            
                     $records = DB::connection('mysql2')
                         ->table($tableName . ' as a')
                         ->whereIn('a.office_id', $officeHead)
@@ -67,8 +55,7 @@ class AttendanceControllerReviewForManyOffice extends Controller
                         ->get();
 
                     $attendance = $attendance->merge($records);
-                }
-            }
+          
 
             // Only apply "yesterday" filter if no date filter is provided
             if (empty($request->filter_startdate) && empty($request->filter_enddate)) {

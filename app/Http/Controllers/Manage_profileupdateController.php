@@ -154,12 +154,15 @@ class Manage_profileupdateController extends Controller
 
     // If nothing was changed
     if (empty($data)) {
-        return back()->with('alert-message', 'No changes detected.');
+        return back()->with('message', 'No changes detected.');
     }
 
     EmployeeMaster::where('empId', $empId)->update($data);
 
-    return back()->with('alert-success', 'Details updated successfully.');
+     
+    return redirect('home')
+        ->with('page', 'user_profile')
+        ->with('success', 'Details updated successfully.!');
 }
 
 

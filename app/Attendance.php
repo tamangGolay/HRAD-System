@@ -8,7 +8,7 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $connection = 'mysql_store';
-    protected $table = 'attendance_january';
+    protected $table = 'attendance_record';
 
     // Specify the fields that are mass-assignable
     protected $fillable = [

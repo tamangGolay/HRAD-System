@@ -119,7 +119,7 @@
 
 
 
-      <form method="POST" action="/profileupdate" enctype="multipart/form-data" accept-charset="UTF-8" >
+      <form method="POST" action="/updateEmployee" enctype="multipart/form-data" accept-charset="UTF-8" >
             @csrf
 
         
@@ -277,6 +277,7 @@
                 <input type="text" class="form-control" name="place" id="place" placeholder="place" autocomplete="off" readonly required>                  
                 </div>
             </div> -->
+
             <div class="form-group row"> 
               <label class="col-md-4 col-form-label text-md-right" for="designation">&nbsp;&nbsp;&nbsp;Designation:</label>
                 <div class="col-sm-10 col-md-6 col-lg-4">

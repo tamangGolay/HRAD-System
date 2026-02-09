@@ -96,7 +96,11 @@ Route::post('destroypromotionhistory', 'Manage_promotionController@delete')->nam
 
 // Userprofile
 
-Route::post('/profileupdate','Manage_profileupdateController@store')->name('profileupdate');
+// Route::post('/profileupdate','Manage_profileupdateController@store')->name('profileupdate');
+//update user profile mail n phone number
+Route::post('/updateEmployee', 'Manage_profileupdateController@updateContact')
+    ->name('updateEmployee');
+
 
 Route::get('getValues','GetMastersController@getValues');
 Route::post('/conferencebook','ConferenceController@conference')->name('conferencebook');

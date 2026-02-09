@@ -31,13 +31,7 @@ class Manage_profileupdateController extends Controller
         )
       ->where('users.status','0');
   
-      	
-  
-      
-      
-      
-      	
-      	
+    
       
         if ($request->ajax()) {
             $data = $increment;
@@ -136,5 +130,37 @@ class Manage_profileupdateController extends Controller
 
         return redirect('home')->with('page', 'increment_history');
     }
+
+
+    // added this to update emial and phone number in user profile.
+    public function updateContact(Request $request)
+{
+    $request->validate([
+        'contact_number' => 'nullable',
+        'emailid'        => 'nullable|email',
+    ]);
+
+    $empId = auth()->user()->empId;
+
+    $data = [];
+
+    if ($request->filled('contact_number')) {
+        $data['mobileNo'] = $request->contact_number;
+    }
+
+    if ($request->filled('emailid')) {
+        $data['emailId'] = $request->emailid;
+    }
+
+    // If nothing was changed
+    if (empty($data)) {
+        return back()->with('alert-message', 'No changes detected.');
+    }
+
+    EmployeeMaster::where('empId', $empId)->update($data);
+
+    return back()->with('alert-success', 'Details updated successfully.');
+}
+
 
 }

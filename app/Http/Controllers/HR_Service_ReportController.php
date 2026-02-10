@@ -17,7 +17,8 @@ class HR_Service_ReportController extends Controller
           ->join('users','users.empId','hrservice.createdBy')
          ->join('hrserviceapproval','hrserviceapproval.noteId','=','hrservice.id')  
 
-        ->select('hrservice.id','hrservice.serviceType','hrservice.emailId','hrservice.createdOn','hrservice.justification','hrservice.status','hrservice.createdBy','officeDetails','empName','hrserviceapproval.assignedTo')
+        ->select('hrservice.id','hrservice.serviceType','hrservice.emailId','hrservice.createdOn','hrservice.justification','hrservice.status','hrservice.createdBy','officeDetails','empName','hrserviceapproval.assignedTo',
+        DB::raw("CONCAT(hrservice.createdBy, ' (', users.empName, ')') as createdByDisplay"))
       
          ->where(function($q) {
                 $q->where('hrservice.status', 'HRApproved')

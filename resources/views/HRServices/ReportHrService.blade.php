@@ -166,13 +166,18 @@
                         name: 'serviceType'
                     },
                     
-                    {
-                        data: null,  
-                        render: function(data, type, row) {
-                            return `${row.createdBy} (${row.empName})`;  
-                        },
+                    // {
+                    //     data: null,  
+                    //     render: function(data, type, row) {
+                    //         return `${row.createdBy} (${row.empName})`;  
+                    //     },
                        
+                    // },
+                    {
+                        data: 'createdByDisplay',
+                        name: 'createdByDisplay',  // searchable
                     },
+
                      {
                         data: 'emailId',
                         name: 'emailId'

@@ -64,10 +64,8 @@ class HR_ServiceController extends Controller
             'body1' => 'You have a request for ' . $request->serviceType . ' from ' . $userDetail->empName . 
                        ' bearing employee Id ' . $userDetail->empId . 
                        ' of ' . $userDetail->officeDetails . '.',
-
            
             'body2' => 'Justification/Amount/Purpose:-' . $request->justification . '.',
-
 
             'body3' => 'Please kindly do the necessary action.',
             'body4' => 'click here: http://hris.bpc.bt',
@@ -85,7 +83,7 @@ class HR_ServiceController extends Controller
 
         if (empty($request->emailId) || strlen($request->emailId) <= 8) {
             
-            return redirect()->back()->with('error', 'Your email is missing in the HR system, so we cannot process your HR request. Please contact IT to update it.');
+            return redirect()->back()->with('error', 'Your email is missing in the HR system, so we cannot process your HR request. Please update your email in Account → Profile to continue (personal Gmail is allowed).');
         }
 
         // Determine status based on logic
@@ -239,7 +237,5 @@ class HR_ServiceController extends Controller
 
     }
 }
-     
-
-    
+      
 }

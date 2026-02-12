@@ -326,6 +326,7 @@ a {
 		"searching": true,
 		"ordering": true,
 		"paging": true,
+		deferLoading: 0,   // table starts empty
         ajax: "{{ route('newHRList.index') }}",         // initial data in data table
         columns: [
             {data: 'empId', name: 'empId',orderable: true, searchable: true},

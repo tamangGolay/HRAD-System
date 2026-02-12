@@ -205,14 +205,19 @@
                 ],
                 processing: true,
                 serverSide: true,
+                scrollX:true,
                 ajax: {
                     url: "{{ route('attendanceReview.index') }}",
                     data: {
                         filter_startdate: filter_startdate,
                         filter_enddate: filter_enddate,
                         office_name: office_name
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Ajax error:', status, error);
+                        alert('Failed to load attendance data. Check to refresh your page and check your internet connection');
                     }
-                },
+                                },
                 columns: [
                                   
                     {

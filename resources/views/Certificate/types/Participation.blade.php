@@ -1,229 +1,194 @@
-  <style>
-/* ===== Participation Certificate Styles ===== */
+<style>
+/* ===== Certificate Layout ===== */
 
-.cert-dzongkha-text {
+  .certificate-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 800px;
+    /* height: 800px; */
+    margin: 0 auto;
+    /* padding: 20px 100px; */
+    
+    padding: 10px 90px; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical center only */
+
+    background: url("{{ asset('assets/images/background.png') }}") no-repeat center center;
+    background-size: contain;
+}
+
+
+/* ===== Header Section ===== */
+.cert-header {
     text-align: center;
-    font-size: clamp(36px, 8.5vw, 52px);
-    margin-bottom: 6px;
-    line-height: 1.3;
-    font-weight: 700;
-    letter-spacing: 0.05em;
 }
 
 .cert-main-title {
-    text-align: center;
-    font-size: clamp(18px, 3.2vw, 28px);
-    margin-bottom: 6px;
-    line-height: 1.3;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
 }
 
-.certificate-wrapper {
-    max-width: 1100px;
-    width: 100%;
-    margin: 40px auto;
-    padding: clamp(20px, 5vw, 60px);
-    background: #fff;
-    font-family: "Times New Roman", serif;
-    border: 6px solid #f1c232;
-    outline: 4px solid #e69138;
-    outline-offset: -12px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-.cert-logos img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
-
-.cert-logo-left {
-    position: absolute;
-    top: 60px;
-    left: 90px;
-}
-
-.cert-logo-right {
-    position: absolute;
-    top: 60px;
-    right: 90px;
-}
-
-.corner {
-    position: absolute;
-    width: 110px;
-    height: auto;
-    z-index: 5;
-}
-
-.corner-top-left {
-    top: 18px;
-    left: 18px;
-}
-
-.corner-top-right {
-    top: 18px;
-    right: 18px;
-}
-
-.corner-bottom-left {
-    bottom: 18px;
-    left: 18px;
-}
-
-.corner-bottom-right {
-    bottom: 18px;
-    right: 18px;
-}
-
-.cert-header {
-    text-align: center;
+.cert-sub-small {
+    font-size: 13px;
     line-height: 1.4;
-    font-size: clamp(14px, 2vw, 18px);
 }
 
+.cert-italic {
+    font-style: italic;
+}
+
+/* ===== Title ===== */
 .cert-title {
     text-align: center;
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: 30px;
     font-weight: bold;
     text-decoration: underline;
     margin: 20px 0;
 }
 
-.cert-sub-small {
-    font-size: clamp(10px, 1.4vw, 12px);
-    line-height: 1.3;
-    font-weight: bold;
-}
-
-.cert-italic {
-    font-style: italic;
-    letter-spacing: 0.3px;
-    font-weight: bold;
-}
-
+/* ===== Body ===== */
 .cert-body {
-    margin-top: 30px;
-    font-size: clamp(15px, 2.2vw, 20px);
     text-align: center;
-    line-height: 1.7;
+    font-size: 20px;
+    line-height: 1.8;
+    padding: 0 40px;
 }
 
+/* ===== Date ===== */
 .cert-date {
     text-align: center;
-    margin-top: 25px;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: 16px;
     font-weight: bold;
+    margin-top: 30px;
 }
 
-.cert-footer {
-    margin-top: 70px;
+/* ===== Signature Section ===== */
+.cert-signature-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 60px;
+}
+
+.cert-sign-box {
     text-align: center;
-    font-size: clamp(12px, 1.8vw, 15px);
-    color: #555;
-    border-top: 1px solid #ccc;
-    padding-top: 15px;
-    opacity: 0.8;
+    width: 250px;
 }
+
+.cert-sign-box img {
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+.cert-sign-name {
+    font-weight: bold;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.cert-sign-designation {
+    font-size: 14px;
+}
+
+/* ===== Serial ===== */
 .cert-serial {
-        text-align: center;  
-        margin-top: 40px;   /* space from content above */
-        margin-bottom: 6px; /* space before the line */      
-        font-size: clamp(12px, 1.6vw, 15px);
-        font-style: italic;
-    }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .cert-logo-left,
-    .cert-logo-right {
-        position: static;
-    }
-
-    .cert-logos {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-
-    .cert-logos img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .corner {
-        width: 70px;
-    }
-     
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
 }
+
+
+
 </style>
 
-  <div class="certificate-wrapper" id="certificateArea">
-            <div class="cert-logos">
-            <img src="{{ asset('assets/images/logo-1.png') }}" class="cert-logo-left" alt="Left Logo">
-            <img src="{{ asset('assets/images/logo-2.png') }}" class="cert-logo-right" alt="Right Logo">
+<div class="certificate-wrapper" id="certificateArea">
+
+    <div class="cert-header">
+        <div class="cert-main-title">
+            Bhutan Power Corporation Limited
+        </div>
+        <div class="cert-sub-small">
+            <span class="cert-italic">(An ISO 9001:2015, ISO 14001:2015 & ISO45001:2018 Certified Company)</span><br>
+            (Registered Office: Thimphu)<br>
+            Thimphu: Bhutan
+        </div>
+    </div>
+
+    <div class="cert-title">
+        Certificate of Participation
+    </div>
+
+    <div class="cert-body">
+        This is to certify that 
+        <strong>
+        {{ $trainingDetails->title }}{{ $trainingDetails->name }}
+        </strong>
+        bearing CID No. <strong>{{ $trainingDetails->CID }}</strong>
+        has successfully attended training on
+        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>
+        from 
+        <strong>
+            {{ \Carbon\Carbon::parse($trainingDetails->startDate)->format('d/m/Y') }}
+            -
+            {{ \Carbon\Carbon::parse($trainingDetails->endDate)->format('d/m/Y') }}
+        </strong>
+
+        held at 
+        <strong>{{ $trainingDetails->place }}</strong>.
+    </div>
+
+    <div class="cert-date">
+        ISSUED ON: {{ \Carbon\Carbon::parse($trainingDetails->issueDate)->format('d/m/Y') }}
+    </div>
+
+    <div class="cert-signature-section">
+
+    <!-- Left Signature -->
+            <div class="cert-sign-box">
+            @php
+                $signer1Name = $trainingDetails->signer1Name ?? '';
+                // Convert name to lowercase, remove spaces, and append 'sign.png'
+                $signer1Image = $signer1Name 
+                                ? 'assets/images/' . strtolower(str_replace(' ', '', $signer1Name)) . 'sign.png'
+                                : 'assets/images/default-sign.png'; // fallback
+            @endphp
+
+            <img src="{{ asset($signer1Image) }}" alt="Signature 1"> 
+            <div class="cert-sign-name">
+                {{ $signer1Name }}
+            </div>
+            <div class="cert-sign-designation">
+                {{ $trainingDetails->signer1Designation ?? '' }}
+            </div>
         </div>
 
-        <img src="{{ asset('assets/images/corner-1.png') }}" class="corner corner-top-left">
-        <img src="{{ asset('assets/images/corner-2.png') }}" class="corner corner-top-right">
-        <img src="{{ asset('assets/images/corner-3.png') }}" class="corner corner-bottom-left">
-        <img src="{{ asset('assets/images/corner-4.png') }}" class="corner corner-bottom-right">
+    <!-- Right Signature -->
+    <div class="cert-sign-box">
 
+        @php
+            $signer2Name = $trainingDetails->signer2Name ?? '';
+            $signer2Image = $signer2Name 
+                            ? 'assets/images/' . strtolower(str_replace(' ', '', $signer2Name)) . 'sign.png'
+                            : 'assets/images/default-sign.png'; // fallback
+        @endphp
 
-
-            <div class="cert-dzongkha-text"> 
-                ༄༅། །འབྲུག་གློག་མེ་ལས་འཛིན།།
-            </div>
-            <div class="cert-header">
-                <div class="cert-main-title">
-                    Bhutan Power Corporation Limited
-                </div>
-                <div class="cert-sub-small">
-                    <span class="cert-italic">  
-                        (An ISO 9001:2015, ISO 14001:2015 & ISO45001:2018 Certified Company)
-                    </span><br>
-                    (Registered Office: Thimphu)<br>
-                    Thimphu: Bhutan
-                </div>
-            </div>
-
-            <div class="cert-title">
-                Certificate of Participation
-            </div>
-
-            <div class="cert-body">
-                This is to certify that Ms/Mrs/Mr. <strong>{{ $record->receivedBy }}</strong>
-                bearing CID No. <strong>{{ $cidNo ?? 'N/A' }}</strong>
-                has successfully participated in
-                <strong>{{ ucfirst(strtolower($record->issuedFor)) }}</strong>
-                 <!-- make first letter capital and rest small. -->
-
-                from 
-                <strong>
-                    {{ \Carbon\Carbon::parse($record->startDate)->format('d') }}
-                    -
-                    {{ \Carbon\Carbon::parse($record->endDate)->format('d F, Y') }}
-                </strong>
-              
-                held at <strong>{{ $record->venue }}</strong>.
-<br>
-<br>
-                The organization appreciates the individual’s commitment and professional involvement.
-
-            </div>
-
-            <div class="cert-date">
-                ISSUED ON: {{ \Carbon\Carbon::parse($record->issueDate)->format('d/m/Y') }}
-            </div>
-
-            <div class="cert-serial">
-                Certificate Serial No: 
-                <strong>{{ $record->certificateId }}</strong>
-            </div>
-
-            <div class="cert-footer">
-                This is a system generated certificate and does not require a physical signature.
-            </div>
-
+        <img src="{{ asset($signer2Image) }}" alt="Signature 2">
+        <div class="cert-sign-name">
+            {{ $signer2Name }}
         </div>
+        <div class="cert-sign-designation">
+            {{ $trainingDetails->signer2Designation ?? '' }}
+        </div>
+    </div>
+
+</div>
+
+<div class="cert-serial">
+        Visit www.bpc.bt/verifycertificate to verify with certificate id as : <strong>{{ $trainingDetails->certificateId }}</strong>
+    </div>
+
+    
+</div>

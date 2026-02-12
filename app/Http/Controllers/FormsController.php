@@ -3426,48 +3426,7 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //end
-
-
-             //added on 29/01/2026 Tashis
-             //certificate online verfiier
-             if ($request->v == "certificate")  //form.csv
-             {  
-
-                $companyPrefix = 'BPC';
-
-                $year = now()->year;
-
-                $lastCert = Certificate::where('certificateId', 'like', $companyPrefix.'/'.$year.'/%')          
-                    ->orderBy('certificateId', 'desc')
-                    ->first();
-
-                $newNumber = 1;
-
-                if ($lastCert) {
-                    $parts = explode('/', $lastCert->certificateId);
-                    $newNumber = ((int) $parts[2]) + 1;
-                }
-                // generate new certificate ID
-                $certificateId = $companyPrefix . '/' . $year . '/' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
-
-                //end here for autogerating certificateid
-                
-             $certificateTypes = CertificateType::orderBy('nameofcertificate')
-                    ->where('status', 'Active')
-                    ->get();
-
-
-             $rhtml = view('Certificate.uploadcertificate')  
-             ->with(['certificateTypes' => $certificateTypes,'certificateId' => $certificateId])               
-             ->render(); 
-
-             return response()
-                 ->json(array(
-                 'success' => true,
-                 'html' => $rhtml
-                 ));
-             } //end
-
+            
            //add holidays
              if ($request->v == "addholidays")  //form.csv
              {                  
@@ -3480,6 +3439,20 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //e
+
+
+            //  added this on 12 feb 2026 for certificatedata
+             if ($request->v == "ReportcertificateData")  //form.csv
+             {                  
+ 
+             $rhtml = view('Certificate.CertificateReport')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //end of Report hRservice
 }
 } 
  

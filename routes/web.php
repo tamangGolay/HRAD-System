@@ -837,3 +837,6 @@ Route::post('/verifycertificate', [CertificateController::class, 'verify'])
 
     //manage holidays
 Route::resource('addholidays', AddHolidaysController::class);
+
+//get data for certifixate report
+Route::get('/certificate-data/get', [CertificateController::class, 'getData'])->name('CertificateData.getData');

@@ -113,17 +113,21 @@
             height: 100%;
         }
 
-        .page-wrapper {
-            min-height: calc(100vh - 220px); /* header + footer space */
-        }
+        /* .page-wrapper {
+            min-height: calc(100vh - 220px); 
+        } */
 
         @media (max-width: 576px) {
         .verify-card {
             margin: 20px 10px;
         }
 
-        .certificate-wrapper {
-            margin: 20px 10px;
+        
+            .certificate-wrapper {
+            min-height: 80vh;
+            margin-top: 20px;
+            margin-bottom: 40px;
+
         }
     }
 
@@ -171,21 +175,12 @@
 
     /* PDF mode (used only when downloading) */
     .pdf-mode {
-        width: 1100px !important;
-        max-width: 1100px !important;
-        padding: 60px !important;
-    }
-
-    .pdf-mode .corner {
-        width: 110px !important;
-    }
-
-    .pdf-mode .cert-logos img {
-        width: 90px !important;
-        height: 90px !important;
+    width: 1200px !important;
+    max-width: 1200px !important;
+    padding: 10px 90px !important; /* same as your on-screen padding */
     }
     
-
+    
     </style>
 
 </head>
@@ -211,7 +206,7 @@
                 <form method="POST"
                     action="{{ route('verifycertificate.submit') }}"
                     novalidate
-                    class="needs-validation">
+                    class="needs-validation" >
                     @csrf
 
                     <label class="form-label fw-semibold">Certificate ID</label>
@@ -251,23 +246,25 @@
     <!-- Result -->
         @if($searched)
 
-        @if($record)
+        @if($trainingDetails)
 
-        <div class="text-end mb-3" style="max-width:1100px;margin:auto;">
-            <button onclick="printCertificate()" class="btn btn-success me-2">
+         <div class="text-end mb-3" style="max-width:1100px;margin:auto;">
+            <!-- <button onclick="printCertificate()" class="btn btn-success me-2">
                 Print
-            </button>
+            </button> -->
             <button onclick="downloadCertificate()" class="btn btn-primary">
                 Download PDF
             </button>
         </div>
-        
 
-         <!-- Get view or certificate based on certificate type under types folder -->
-        @if($searched && $record)
-            @include($certificateView)
-        @endif
-
+       
+@if($searched && $trainingDetails)
+<div class="certificate-section" style="width: 100%;padding: 0; margin: 0;position: relative; z-index: 10;">
+    <div style="width: 100%; margin: 0 auto;">
+        @include($certificateView)
+    </div>
+</div>
+@endif
 
 
         @else
@@ -325,7 +322,12 @@ function printCertificate() {
 
 <script>
 function downloadCertificate() {
+    
     const element = document.getElementById("certificateArea");
+
+     console.log("Scroll Height:", element.scrollHeight);
+    console.log("Client Height:", element.clientHeight);
+    console.log("Offset Height:", element.offsetHeight);
 
     // Temporarily freeze layout
     element.classList.add("pdf-mode");
@@ -336,15 +338,17 @@ function downloadCertificate() {
         margin: 0,
         filename: 'certificate.pdf',
         html2canvas: {
-            scale: 3,
+            scale: 2,
             useCORS: true,
             scrollY: 0
-        },
-        jsPDF: {
+        },        
+           jsPDF: {
             unit: 'px',
-            format: [rect.width, rect.height],
+            format: [1200, 800], // exact width & height
             orientation: 'landscape'
-        }
+        },
+      pagebreak: { mode: [] } 
+
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
@@ -354,11 +358,7 @@ function downloadCertificate() {
 </script>
 
 
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-
 
 </body>
 </html>

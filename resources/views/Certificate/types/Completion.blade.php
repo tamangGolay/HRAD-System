@@ -128,15 +128,16 @@
         </strong>
         bearing CID No. <strong>{{ $trainingDetails->CID }}</strong>
         has successfully completed training on
-        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>
-        from 
+        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>.         
+        <br>
+            The training was conducted from
         <strong>
             {{ \Carbon\Carbon::parse($trainingDetails->startDate)->format('d/m/Y') }}
-            -
+             to 
             {{ \Carbon\Carbon::parse($trainingDetails->endDate)->format('d/m/Y') }}
         </strong>
-
-        held at 
+         <br>
+        at the         
         <strong>{{ $trainingDetails->place }}</strong>.
     </div>
 

@@ -229,26 +229,28 @@ a {
 								</div>
 
 								<div class="form-group ">
-									<label class="col-sm-4 col-lg-12 " for="incrementCycle">{{ __('incrementCycle:') }}</label>
+									<label class="col-sm-4 col-lg-12 " for="incrementCycle">{{ __('IncrementCycle:') }}</label>
 									<div class="col-sm-4 col-lg-12">
-									<input class="form-control" type="text" value="<?php echo $userList[0]->incrementCycle; ?>" name="incrementCycle" id="incrementCycle" >
-
+									<select class="form-control" name="incrementCycle" id="incrementCycle">
+										<option value="January" <?php echo ($userList[0]->incrementCycle == 'January') ? 'selected' : ''; ?>>January</option>
+										<option value="July" <?php echo ($userList[0]->incrementCycle == 'July') ? 'selected' : ''; ?>>July</option>
+									</select>
 									</div>
 								</div> 
 
 								<div class="form-group ">
-									<label class="col-sm-4 col-lg-12" for="incrementCycle">{{ __('Gender:') }}</label>
+									<label class="col-sm-4 col-lg-12" for="gender">{{ __('Gender:') }}</label>
 									<div class="col-sm-4 col-lg-12">
-									<input class="form-control" type="text" value="<?php echo $userList[0]->gender; ?>" name="gender" id="gender" >
-
+									<select class="form-control" name="gender" id="gender">
+										<option value="Male" <?php echo ($userList[0]->gender == 'Male') ? 'selected' : ''; ?>>Male</option>
+										<option value="Female" <?php echo ($userList[0]->gender == 'Female') ? 'selected' : ''; ?>>Female</option>
+										<option value="Other" <?php echo ($userList[0]->gender == 'Other') ? 'selected' : ''; ?>>Other</option>
+									</select>
 									</div>
 								</div>
 
 
-								
-
-
-								<div class="form-group ">
+						<div class="form-group ">
 						<label class="col-sm-4 col-lg-12" for="office">{{ __('Office:') }}</label>
 						<div class="col-sm-6 col-lg-12">
 

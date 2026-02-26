@@ -2,11 +2,10 @@
          
 namespace App\Http\Controllers;
           
-use App\Vehicles;
 use App\TrainingMaster;
 use Illuminate\Http\Request;
 use DataTables;
-use DB;
+use Illuminate\Support\Facades\DB;
         
 class TrainingMasterController extends Controller
 {

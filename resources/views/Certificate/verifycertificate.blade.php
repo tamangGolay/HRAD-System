@@ -174,11 +174,11 @@
 
 
     /* PDF mode (used only when downloading) */
-    .pdf-mode {
+    /* .pdf-mode {
     width: 1200px !important;
     max-width: 1200px !important;
-    padding: 10px 90px !important; /* same as your on-screen padding */
-    }
+    padding: 10px 90px !important; 
+    } */
     
     
     </style>
@@ -327,34 +327,61 @@ function printCertificate() {
 
 
 <script>
-function downloadCertificate() {
+// function downloadCertificate() {
     
+//     const element = document.getElementById("certificateArea");
+
+//      console.log("Scroll Height:", element.scrollHeight);
+//     console.log("Client Height:", element.clientHeight);
+//     console.log("Offset Height:", element.offsetHeight);
+
+//     // Temporarily freeze layout
+//     element.classList.add("pdf-mode");
+
+//     const rect = element.getBoundingClientRect();
+
+//     const opt = {
+//         margin: 0,
+//         filename: `BPC_Certificate_${certificateId}.pdf`,
+//         html2canvas: {
+//             scale: 2.5,
+//             useCORS: true,
+//             scrollY: 0
+//         },        
+//            jsPDF: {
+//             unit: 'px',
+//             // format: [1100, 700], // exact width & height
+//             orientation: 'landscape'
+//         },
+//       pagebreak: { mode: [] } 
+
+//     };
+
+//     html2pdf().set(opt).from(element).save().then(() => {
+//         element.classList.remove("pdf-mode");
+//     });
+// }
+function downloadCertificate() {
     const element = document.getElementById("certificateArea");
 
-     console.log("Scroll Height:", element.scrollHeight);
-    console.log("Client Height:", element.clientHeight);
-    console.log("Offset Height:", element.offsetHeight);
+    if (!element) return alert("Certificate area not found!");
 
-    // Temporarily freeze layout
+    // Temporarily add pdf-mode if you have special padding
     element.classList.add("pdf-mode");
-
-    const rect = element.getBoundingClientRect();
 
     const opt = {
         margin: 0,
         filename: `BPC_Certificate_${certificateId}.pdf`,
         html2canvas: {
-            scale: 2,
+            scale: 3,       // higher scale for sharpness
             useCORS: true,
             scrollY: 0
-        },        
-           jsPDF: {
-            unit: 'px',
-            format: [1200, 800], // exact width & height
-            orientation: 'landscape'
         },
-      pagebreak: { mode: [] } 
-
+        jsPDF: {
+            unit: 'px',
+            format: [element.offsetWidth, element.offsetHeight], // exact wrapper size
+            orientation: 'landscape'
+        }
     };
 
     html2pdf().set(opt).from(element).save().then(() => {

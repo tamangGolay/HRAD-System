@@ -2,13 +2,10 @@
 /* ===== Certificate Layout ===== */
 
   .certificate-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    min-height: 800px;
-    /* height: 800px; */
-    margin: 0 auto;
-    /* padding: 20px 100px; */
-    
+    /* width: 100%; */
+    width: 1200px;
+    height: 800px;   
+    margin: 0 auto; 
     padding: 10px 90px; 
     box-sizing: border-box;
     display: flex;

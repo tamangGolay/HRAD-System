@@ -3453,6 +3453,35 @@ if ($request->v == "attendanceCount")
                  'html' => $rhtml
                  ));
              } //end of Report hRservice
+
+         //certificate bulk upload
+             if ($request->v == "uploadbulkcertificate")  //form.csv
+             {                  
+ 
+             $rhtml = view('Certificate.uploadbulkcertificate')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //e
+
+
+           //add training
+             if ($request->v == "trainingmaster")  //form.csv
+             {                  
+ 
+             $rhtml = view('Certificate.trainingmaster')                 
+             ->render(); 
+             return response()
+                 ->json(array(
+                 'success' => true,
+                 'html' => $rhtml
+                 ));
+             } //e
+
+
 }
 } 
  

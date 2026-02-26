@@ -17,6 +17,7 @@ use App\Http\Controllers\Hr_ServicesDirectorController;
 use App\Http\Controllers\Hr_ServicesCEOController;
 use App\Http\Controllers\VehicleReportController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\CertificateBulkUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -840,3 +841,11 @@ Route::resource('addholidays', AddHolidaysController::class);
 
 //get data for certifixate report
 Route::get('/certificate-data/get', [CertificateController::class, 'getData'])->name('CertificateData.getData');
+
+
+// for certificate bulk upload
+Route::post('/certificate/bulk-upload', [CertificateBulkUploadController::class, 'bulkUpload'])
+    ->name('certificate.bulkUpload');
+
+//To manage Training master
+Route::resource('trainingmaster', TrainingMasterController::class);

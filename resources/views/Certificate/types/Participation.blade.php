@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;   /* vertical center only */
 
-    background: url("{{ asset('assets/images/background.png') }}") no-repeat center center;
+    background: url("{{ asset('assets/images/background3.png') }}") no-repeat center;
     background-size: contain;
 }
 

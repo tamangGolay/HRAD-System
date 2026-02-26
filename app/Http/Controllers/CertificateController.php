@@ -14,9 +14,11 @@ class CertificateController extends Controller
     {
         return view('Certificate.verifycertificate', [
             'searched' => false,
-            'record' => null
+            'trainingDetails' => null,
+            'certificateView' => null
         ]);
     }
+
 
     // Handle verification
     public function verify(Request $request)
@@ -26,28 +28,37 @@ class CertificateController extends Controller
         ]);
 
 
-        $CertificateData = Certificatedata::where('certificateId', $request->certificateId)->first();
+       $search = trim($request->certificateId);
+
+       $CertificateData = Certificatedata::where('certificateId', $search)
+            ->orWhere('eid', $search)   // ← use your real column name
+            ->orderBy('certificateId', 'desc')        // latest certificate first
+            ->first();
+
+
 
         //check if that certificate ID exist in DB
 
         // Certificate not found
         if (!$CertificateData) {
-            return back()->withErrors([
-                'certificateId' => 'We couldn’t find a certificate with this ID. Please check and try again.'
-            ])->withInput();
+            return view('Certificate.verifycertificate', [
+                'searched' => true,
+                'trainingDetails' => null,
+                'certificateView' => null
+            ]);
         }
+
 
         /* -----------------------------------------
        Decide certificate view based on type
     ------------------------------------------ */
 
-        $certificateView = match ($CertificateData->cerType) {
-            'Achievement' => 'certificate.types.Achievement',
+        $certificateView = match ($CertificateData->cerType ?? '') {
+            'Achievement'  => 'certificate.types.Achievement',
             'Appreciation' => 'certificate.types.Appreciation',
-            'Completion' => 'certificate.types.Completion',
+            'Completion'   => 'certificate.types.Completion',
+            default        => null,
         };
-
-
 
         return view('Certificate.verifycertificate', [
             'searched'        => true,

@@ -213,7 +213,7 @@
                     <input type="text"
                         name="certificateId"
                         class="form-control"
-                        placeholder="Enter Certificate ID"
+                        placeholder="Enter Certificate ID or Employee ID for verification"
                         required>
                       
                         @error('certificateId')
@@ -290,6 +290,12 @@
     </div>
 </footer>
 
+@if($trainingDetails)
+<script>
+    const certificateId = "{{ $trainingDetails->certificateId }}";
+</script>
+@endif
+
 
 <script>
 (() => {
@@ -336,7 +342,7 @@ function downloadCertificate() {
 
     const opt = {
         margin: 0,
-        filename: 'certificate.pdf',
+        filename: `BPC_Certificate_${certificateId}.pdf`,
         html2canvas: {
             scale: 2,
             useCORS: true,

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Trainingmaster extends Model
 {
     
-    protected $table = 'trainingmaster';
+    protected $table = 'TrainingMaster';
 
     protected $primaryKey = 'trainingId';
     public $incrementing = false;

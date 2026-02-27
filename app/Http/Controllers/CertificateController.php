@@ -54,9 +54,9 @@ class CertificateController extends Controller
     ------------------------------------------ */
 
         $certificateView = match ($CertificateData->cerType ?? '') {
-            'Achievement'  => 'certificate.types.Achievement',
-            'Appreciation' => 'certificate.types.Appreciation',
-            'Completion'   => 'certificate.types.Completion',
+             'Achievement'  => 'Certificate.types.Achievement',
+            'Appreciation' => 'Certificate.types.Appreciation',
+            'Completion'   => 'Certificate.types.Completion',
             default        => null,
         };
 

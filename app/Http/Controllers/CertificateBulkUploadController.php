@@ -22,7 +22,7 @@ class CertificateBulkUploadController extends Controller
         ]);
 
         // ✅ db table name
-        $tableName = 'certificatemaster';
+        $tableName = 'Certificatemaster';
 
         $file = $request->file('csv_upload');
 

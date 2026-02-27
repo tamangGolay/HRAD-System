@@ -2,7 +2,7 @@
          
 namespace App\Http\Controllers;
           
-use App\TrainingMaster;
+use App\Trainingmaster;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ class TrainingMasterController extends Controller
     public function index(Request $request)
     {
 
-        $b = DB::table('trainingmaster');
+        $b = DB::table('TrainingMaster');
         
         if ($request->ajax()) {
             $data = $b;
@@ -68,7 +68,7 @@ class TrainingMasterController extends Controller
         $year = (int) date('Y'); // 2026
 
         // Get max trainingId that starts with the current year
-        $maxId = DB::table('trainingmaster')
+        $maxId = DB::table('TrainingMaster')
             ->whereRaw("CAST(trainingId AS CHAR) LIKE ?", [$year . '%'])
             ->lockForUpdate()
             ->max('trainingId');
@@ -110,14 +110,7 @@ class TrainingMasterController extends Controller
      * @param  
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request)
-    {
-        $query = DB::table('designationmaster')->where('id', $request->id)
-            ->increment('status');
-
-        return response()
-            ->json(['success' => 'Deleted successfully.']);
-    }
+   
 
     //To redirect to the manage_vehicle page after the management of vehicle
     public function message(Request $request)

@@ -41,6 +41,7 @@
     font-size: 30px;
     font-weight: bold;
     text-decoration: underline;
+     text-underline-offset: 8px;
     margin: 20px 0;
 }
 
@@ -183,7 +184,7 @@
 </div>
 
 <div class="cert-serial">
-        Visit www.bpc.bt/verifycertificate to verify with certificate id as : <strong>{{ $trainingDetails->certificateId }}</strong>
+        Visit https://hris.bpc.bt/verifycertificate to verify with certificate id as : <strong>{{ $trainingDetails->certificateId }}</strong>
     </div>
 
     

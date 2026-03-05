@@ -294,7 +294,8 @@
                 @if($view)
                     <div class="certificate-slide content-frame"
                         data-cert-id="{{ $certId }}"
-                        style=<"{{ $index == 0 ? '' : 'display:none;' }}">
+                        data-certificate-id="{{ $certificate->certificateId }}"
+                        style="{{ $index == 0 ? '' : 'display:none;' }}">
 
                         <div id="{{ $certId }}">
                             @include($view, ['trainingDetails' => $certificate])
@@ -357,13 +358,18 @@
 
 <!-- Downloading PDF -->
 <script>
-function downloadSingleCertificate(elementId) {
+function downloadSingleCertificate(elementId, certificateId = null) {
 
     const element = document.getElementById(elementId);
 
     if (!element) {
         alert("Certificate not found!");
         return;
+    }
+
+    // If certificateId not provided (single certificate case)
+    if (!certificateId) {
+        certificateId = element.dataset.certificateId || "{{ $trainingDetails->certificateId ?? '' }}";
     }
 
     const opt = {
@@ -408,7 +414,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Update download button to current certificate
         const certId = slides[index].dataset.certId;
-        downloadBtn.onclick = () => downloadSingleCertificate(certId);
+        const certificateId = slides[index].dataset.certificateId;
+
+        downloadBtn.onclick = () => downloadSingleCertificate(certId, certificateId);
     }
 
     prevBtn.onclick = () => {

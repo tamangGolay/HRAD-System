@@ -10,6 +10,7 @@
     display: block;
     background: url("{{ asset('assets/images/background3.png') }}") no-repeat center center;
     background-size: 100% 100%;
+    zoom: var(--cert-zoom);
 }
 
 
@@ -110,13 +111,6 @@
     padding: 0;
     box-sizing: border-box;
     min-height: 800px;
-}
-
-.certificate-wrapper {
-    width: 1200px;
-    height: 800px;
-    margin: 0 auto;
-    zoom: var(--cert-zoom);
 }
 
 @supports not (zoom: 1) {
@@ -220,42 +214,3 @@
  
 </div>
 </div>
-
-<script>
-(() => {
-    if (window.__bpcCertificateScaleInit) return;
-    window.__bpcCertificateScaleInit = true;
-
-    const BASE_WIDTH = 1200;
-    const BASE_HEIGHT = 800;
-    const SAFETY_GAP = 0;
-
-    function resizeCertificates() {
-        document.querySelectorAll('.certificate-scale-wrapper').forEach((scaleWrapper) => {
-            const certificate = scaleWrapper.querySelector('.certificate-wrapper');
-            if (!certificate) return;
-
-            const availableWidth = scaleWrapper.clientWidth - SAFETY_GAP;
-            if (availableWidth <= 0) return;
-            const scale = Math.min(1, availableWidth / BASE_WIDTH);
-
-            scaleWrapper.style.setProperty('--cert-scale', scale.toString());
-            scaleWrapper.style.setProperty('--cert-zoom', scale.toString());
-            scaleWrapper.style.minHeight = `${BASE_HEIGHT * scale}px`;
-        });
-    }
-
-    if (window.ResizeObserver) {
-        const observer = new ResizeObserver(() => resizeCertificates());
-        document.querySelectorAll('.certificate-scale-wrapper').forEach((scaleWrapper) => {
-            observer.observe(scaleWrapper);
-        });
-    }
-
-    window.addEventListener('resize', resizeCertificates);
-    window.addEventListener('orientationchange', resizeCertificates);
-    window.addEventListener('load', resizeCertificates);
-    resizeCertificates();
-})();
-</script>
-

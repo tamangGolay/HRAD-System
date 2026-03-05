@@ -294,7 +294,7 @@
                 @if($view)
                     <div class="certificate-slide content-frame"
                         data-cert-id="{{ $certId }}"
-                        style="{{ $index == 0 ? '' : 'display:none;' }}">
+                        style=<"{{ $index == 0 ? '' : 'display:none;' }}">
 
                         <div id="{{ $certId }}">
                             @include($view, ['trainingDetails' => $certificate])

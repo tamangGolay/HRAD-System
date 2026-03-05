@@ -169,8 +169,12 @@
         <strong>{{ $trainingDetails->place }}</strong>.
     </div>
 
+    
+
     <div class="cert-date">
-        ISSUED ON: {{ \Carbon\Carbon::parse($trainingDetails->issueDate)->format('d/m/Y') }}
+    Issued on <strong>
+        {{ \Carbon\Carbon::parse($trainingDetails->issueDate)->format('jS \d\a\y \o\f \t\h\e \m\o\n\t\h \o\f F, Y') }}
+    </strong>
     </div>
 
     <div class="cert-signature-section">

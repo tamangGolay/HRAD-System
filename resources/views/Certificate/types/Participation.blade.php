@@ -158,20 +158,23 @@
         </strong>
         bearing CID No. <strong>{{ $trainingDetails->CID }}</strong>
         has successfully attended training on
-        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>
-        from 
+        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>.
+        <br>
+            The training was conducted from
         <strong>
             {{ \Carbon\Carbon::parse($trainingDetails->startDate)->format('d/m/Y') }}
-            -
+             to 
             {{ \Carbon\Carbon::parse($trainingDetails->endDate)->format('d/m/Y') }}
         </strong>
-
-        held at 
+         <br>
+        at the         
         <strong>{{ $trainingDetails->place }}</strong>.
     </div>
 
     <div class="cert-date">
-        ISSUED ON: {{ \Carbon\Carbon::parse($trainingDetails->issueDate)->format('d/m/Y') }}
+    Issued on <strong>
+        {{ \Carbon\Carbon::parse($trainingDetails->issueDate)->format('jS \d\a\y \o\f \t\h\e \m\o\n\t\h \o\f F, Y') }}
+    </strong>
     </div>
 
     <div class="cert-signature-section">

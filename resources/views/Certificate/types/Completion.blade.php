@@ -34,12 +34,18 @@
 }
 
 /* ===== Title ===== */
-.cert-title {
+
+.cert-title-wrapper {
     text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: underline;
     margin: 20px 0;
+}
+.cert-title {
+    /* text-align: center; */
+    font-size: 30px;
+    font-weight: bold;    
+    display: inline-block;
+    border-bottom: 2px solid black;
+    padding-bottom: 2px; 
 }
 
 /* ===== Body ===== */
@@ -137,8 +143,10 @@
         </div>
     </div>
 
-    <div class="cert-title">
-        Certificate of Completion
+    
+
+     <div class="cert-title-wrapper">
+         <span class="cert-title">Certificate of Completion</span>
     </div>
 
     <div class="cert-body">

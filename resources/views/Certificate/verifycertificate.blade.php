@@ -11,11 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
+
+        :root {
+            --certificate-frame-max: 1200px;
+        }
+
         body {
             background: #ffffff;
             font-family: 'Merriweather', serif;
             color: #212529;
         }
+
         /* Typography system */
         h1, h2, h3 {
             font-weight: 700;
@@ -50,7 +56,7 @@
         }
 
         .page-wrapper {
-            padding-top: 180px; /* adjust to header height */
+            padding-top: 150px; /* adjust to header height */
         }
 
         .bpc-header img {
@@ -59,10 +65,17 @@
         }
         
         .verify-card {
-            max-width: 1100px;   /* SAME as certificate-wrapper */
+            max-width: var(--certificate-frame-max);
             width: 100%;
-            margin: 40px auto;
+            margin: 25px auto;
         }
+
+        .content-frame {
+            max-width: var(--certificate-frame-max);
+            width: 100%;
+            margin: 0 auto;
+        }
+
        .alert-success {
             background-color: #e9f7ef;
             border-color: #b7dfc6;
@@ -113,26 +126,32 @@
             height: 100%;
         }
 
-        /* .page-wrapper {
-            min-height: calc(100vh - 220px); 
-        } */
-
         @media (max-width: 576px) {
         .verify-card {
             margin: 20px 10px;
         }
-
-        
             .certificate-wrapper {
             min-height: 80vh;
             margin-top: 20px;
             margin-bottom: 40px;
 
         }
-    }
 
+        @media (max-width: 768px) {
+
+            .verify-card {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+
+            .content-frame {
+                padding: 0 10px;
+            }
+
+        }
+    }
         .result-alert {
-        max-width: 1100px;   /* same as search + certificate */
+        max-width: var(--certificate-frame-max);
         width: 100%;
         margin: 20px auto;
     }
@@ -143,45 +162,15 @@
         }
     }
 
-    @media print {
-
-    body * {
-        visibility: hidden;
+    .pdf-mode {
+         width: 1200px !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;     /* ⭐ MUST be zero */
+        box-sizing: border-box !important;
     }
-
-    #certificateArea, #certificateArea * {
-        visibility: visible;
-    }
-
-    #certificateArea {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 40px;
-        transform: none !important;
-    }
-
-    .bpc-header,
-    .verify-card,
-    .btn,
-    footer {
-        display: none !important;
-    }
-}
-
-
-    /* PDF mode (used only when downloading) */
-    /* .pdf-mode {
-    width: 1200px !important;
-    max-width: 1200px !important;
-    padding: 10px 90px !important; 
-    } */
-    
-    
-    </style>
+  
+</style>
 
 </head>
 <body>
@@ -193,8 +182,6 @@
     </div>
 
     <div class="page-wrapper">
-    <div class="container">
-
         <!-- Title -->
         <div class="text-center my-4">
             <h3 class="fw-semibold text-success">Online Certificate Verifier</h3>
@@ -214,6 +201,7 @@
                         name="certificateId"
                         class="form-control"
                         placeholder="Enter Certificate ID or Employee ID for verification"
+                        value="{{ old('certificateId', $searchInput ?? '') }}"
                         required>
                       
                         @error('certificateId')
@@ -224,7 +212,7 @@
 
 
                     <div class="invalid-feedback">
-                        Certificate ID is required!
+                        Certificate or Employee ID is required!
                     </div>
 
                     <div class="d-flex gap-2 mt-3">
@@ -236,47 +224,93 @@
                         Reset
                     </a>
                 </div>
-
-
                 </form>
-            </div>
         </div>
     </div>
 
     <!-- Result -->
-        @if($searched)
-
-        @if($trainingDetails)
-
-         <div class="text-end mb-3" style="max-width:1100px;margin:auto;">
-            <!-- <button onclick="printCertificate()" class="btn btn-success me-2">
-                Print
-            </button> -->
-            <button onclick="downloadCertificate()" class="btn btn-primary">
-                Download PDF
-            </button>
-        </div>
-
-       
-@if($searched && $trainingDetails)
-<div class="certificate-section" style="width: 100%;padding: 0; margin: 0;position: relative; z-index: 10;">
-    <div style="width: 100%; margin: 0 auto;">
-        @include($certificateView)
-    </div>
-</div>
-@endif
-
-
-        @else
+    @if(isset($searched) && $searched)
+        @if(is_null($trainingDetails) && is_null($allCertificates))
             <div class="alert alert-warning text-center mt-3 result-alert">
-                No certificate record found for the entered Certificate ID.
+                No certificate record found for the entered Certificate or Employee ID.
+            </div>
+        @endif
+
+        {{-- SINGLE --}}
+        @if(!is_null($trainingDetails) && !is_null($certificateView))
+
+            <div class="content-frame d-flex justify-content-end mb-3">
+                <button onclick="downloadSingleCertificate('certificateArea')" class="btn btn-primary">
+                    Download PDF
+                </button>
+            </div>
+
+            <div id="certificateArea" class="content-frame">
+                @include($certificateView, ['trainingDetails' => $trainingDetails])
             </div>
 
         @endif
 
+
+        {{-- MULTIPLE PAGINATED --}}
+        @if(!is_null($allCertificates) && $allCertificates->count() > 0)
+
+        <div class="mt-4">
+
+            <!-- ⭐ SINGLE CONTROL BAR (ONLY ONCE) -->
+            <div class="d-flex justify-content-between align-items-center mb-3 content-frame">
+
+                <!-- LEFT: Pagination -->
+                <div class="d-flex align-items-center gap-2">
+                    <button id="prevCert" class="btn btn-danger btn-sm">Previous</button>
+
+                    <span id="certCounter">
+                        1 / {{ $allCertificates->count() }}
+                    </span>
+
+                    <button id="nextCert" class="btn btn-success btn-sm">Next</button>
+                </div>
+
+                <!-- RIGHT: Download -->
+                <button id="downloadBtn" class="btn btn-primary">
+                    Download PDF
+                </button>
+
+            </div>
+
+            <!-- ⭐ ALL CERTIFICATES -->
+            @foreach($allCertificates as $index => $certificate)
+
+                @php
+                    $view = match ($certificate->cerType ?? '') {
+                        'Appreciation' => 'certificate.types.Appreciation',
+                        'Completion'   => 'certificate.types.Completion',
+                        'Participation'  => 'certificate.types.Participation',
+                        default        => null,
+                    };
+                    $certId = 'certificateArea_' . $index;
+                @endphp
+
+                @if($view)
+                    <div class="certificate-slide content-frame"
+                        data-cert-id="{{ $certId }}"
+                        style="{{ $index == 0 ? '' : 'display:none;' }}">
+
+                        <div id="{{ $certId }}">
+                            @include($view, ['trainingDetails' => $certificate])
+                        </div>
+
+                    </div>
+                @endif
+
+            @endforeach
+
+        </div>
+
+        @endif
     @endif
 
-
+</div>
 </div>
 
 <footer class="bpc-footer">
@@ -296,7 +330,7 @@
 </script>
 @endif
 
-
+<!-- validation script -->
 <script>
 (() => {
     'use strict';
@@ -315,80 +349,83 @@
 })();
 </script>
 
+<!-- Auto Footer Year Script -->
 <script>
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 </script>
 
+
+<!-- Downloading PDF -->
 <script>
-function printCertificate() {
-    window.print();
-}
-</script>
+function downloadSingleCertificate(elementId) {
 
+    const element = document.getElementById(elementId);
 
-<script>
-// function downloadCertificate() {
-    
-//     const element = document.getElementById("certificateArea");
-
-//      console.log("Scroll Height:", element.scrollHeight);
-//     console.log("Client Height:", element.clientHeight);
-//     console.log("Offset Height:", element.offsetHeight);
-
-//     // Temporarily freeze layout
-//     element.classList.add("pdf-mode");
-
-//     const rect = element.getBoundingClientRect();
-
-//     const opt = {
-//         margin: 0,
-//         filename: `BPC_Certificate_${certificateId}.pdf`,
-//         html2canvas: {
-//             scale: 2.5,
-//             useCORS: true,
-//             scrollY: 0
-//         },        
-//            jsPDF: {
-//             unit: 'px',
-//             // format: [1100, 700], // exact width & height
-//             orientation: 'landscape'
-//         },
-//       pagebreak: { mode: [] } 
-
-//     };
-
-//     html2pdf().set(opt).from(element).save().then(() => {
-//         element.classList.remove("pdf-mode");
-//     });
-// }
-function downloadCertificate() {
-    const element = document.getElementById("certificateArea");
-
-    if (!element) return alert("Certificate area not found!");
-
-    // Temporarily add pdf-mode if you have special padding
-    element.classList.add("pdf-mode");
+    if (!element) {
+        alert("Certificate not found!");
+        return;
+    }
 
     const opt = {
         margin: 0,
         filename: `BPC_Certificate_${certificateId}.pdf`,
+        image: { type: 'jpeg', quality: 1 },
         html2canvas: {
-            scale: 3,       // higher scale for sharpness
+            scale: 3,
             useCORS: true,
             scrollY: 0
         },
         jsPDF: {
             unit: 'px',
-            format: [element.offsetWidth, element.offsetHeight], // exact wrapper size
+            format: [1200, 800],
             orientation: 'landscape'
         }
     };
 
-    html2pdf().set(opt).from(element).save().then(() => {
-        element.classList.remove("pdf-mode");
-    });
+    html2pdf().set(opt).from(element).save();
 }
 </script>
+
+<!-- Pagination Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const slides = document.querySelectorAll(".certificate-slide");
+    if (!slides.length) return;
+
+    let current = 0;
+
+    const prevBtn = document.getElementById("prevCert");
+    const nextBtn = document.getElementById("nextCert");
+    const counter = document.getElementById("certCounter");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    function showSlide(index) {
+        slides.forEach(s => s.style.display = "none");
+        slides[index].style.display = "block";
+
+        counter.textContent = (index + 1) + " / " + slides.length;
+
+        // Update download button to current certificate
+        const certId = slides[index].dataset.certId;
+        downloadBtn.onclick = () => downloadSingleCertificate(certId);
+    }
+
+    prevBtn.onclick = () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+    };
+
+    nextBtn.onclick = () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    };
+
+    // Initialize
+    showSlide(0);
+});
+</script>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>

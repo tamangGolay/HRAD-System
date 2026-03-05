@@ -2,16 +2,14 @@
 /* ===== Certificate Layout ===== */
 
  .certificate-wrapper {
-    /* width: 100%; */
     width: 1200px;
     height: 800px;   
     margin: 0 auto; 
     padding: 10px 90px; 
+    padding: 120px 90px 60px 90px; 
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* vertical center only */
-    background: url("{{ asset('assets/images/background3.png') }}") no-repeat center;
+    display: block;
+    background: url("{{ asset('assets/images/background3.png') }}") no-repeat center center;
     background-size: 1200px 800px;
 }
 
@@ -22,12 +20,13 @@
 }
 
 .cert-main-title {
-    font-size: 28px;
+    font-size: clamp(18px, 2.2vw, 28px);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .cert-sub-small {
-    font-size: 13px;
+    font-size: clamp(10px, 1.05vw, 13px);
     line-height: 1.4;
 }
 
@@ -41,7 +40,6 @@
     font-size: 30px;
     font-weight: bold;
     text-decoration: underline;
-     text-underline-offset: 8px;
     margin: 20px 0;
 }
 
@@ -97,11 +95,37 @@
     margin-top: 10px;
 }
 
+.certificate-scale-wrapper {
+    --cert-scale: 1;
+    --cert-zoom: 1;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 800px;
+}
 
+.certificate-wrapper {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    zoom: var(--cert-zoom);
+}
+
+@supports not (zoom: 1) {
+    .certificate-wrapper {
+        transform-origin: top center;
+        transform: scale(var(--cert-scale));
+    }
+}
 
 </style>
 
-<div class="certificate-wrapper" id="certificateArea">
+<div class="certificate-scale-wrapper">
+<div class="certificate-wrapper">
 
     <div class="cert-header">
         <div class="cert-main-title">
@@ -189,3 +213,41 @@
 
     
 </div>
+</div>
+<script>
+(() => {
+    if (window.__bpcCertificateScaleInit) return;
+    window.__bpcCertificateScaleInit = true;
+
+    const BASE_WIDTH = 1200;
+    const BASE_HEIGHT = 800;
+    const SAFETY_GAP = 0;
+
+    function resizeCertificates() {
+        document.querySelectorAll('.certificate-scale-wrapper').forEach((scaleWrapper) => {
+            const certificate = scaleWrapper.querySelector('.certificate-wrapper');
+            if (!certificate) return;
+
+            const availableWidth = scaleWrapper.clientWidth - SAFETY_GAP;
+            if (availableWidth <= 0) return;
+            const scale = Math.min(1, availableWidth / BASE_WIDTH);
+
+            scaleWrapper.style.setProperty('--cert-scale', scale.toString());
+            scaleWrapper.style.setProperty('--cert-zoom', scale.toString());
+            scaleWrapper.style.minHeight = `${BASE_HEIGHT * scale}px`;
+        });
+    }
+
+    if (window.ResizeObserver) {
+        const observer = new ResizeObserver(() => resizeCertificates());
+        document.querySelectorAll('.certificate-scale-wrapper').forEach((scaleWrapper) => {
+            observer.observe(scaleWrapper);
+        });
+    }
+
+    window.addEventListener('resize', resizeCertificates);
+    window.addEventListener('orientationchange', resizeCertificates);
+    window.addEventListener('load', resizeCertificates);
+    resizeCertificates();
+})();
+</script>

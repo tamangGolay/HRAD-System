@@ -151,7 +151,7 @@
         </strong>
         bearing CID No. <strong>{{ $trainingDetails->CID }}</strong>
         has successfully attended training on
-        <strong>{{ ucfirst(strtolower($trainingDetails->trainingName)) }}</strong>.
+        <strong>{{ $trainingDetails->trainingName }}</strong>.
         <br>
             The training was conducted from
         <strong>

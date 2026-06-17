@@ -39,6 +39,7 @@ class CertificateController extends Controller
             'Appreciation' => 'certificate.types.Appreciation',
             'Completion'   => 'certificate.types.Completion',
             'Participation'  => 'certificate.types.Participation',
+            'Resource'  => 'certificate.types.Resource',
             default        => null,
         };
 

@@ -1,111 +1,305 @@
 @extends('layout')
-  
+
 @section('content')
-<main class="login-form">
-  <div class="cotainer">
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header bg-success text-center text-white"><h5>Reset Password</h5></div>
-                  <div class="card-body">
-  
-                    @if (Session::has('message'))
-                         <div class="alert alert-success" role="alert">
-                            {{ Session::get('message') }}
-                        </div>
-                    @endif
-  
-                      <form action="{{ route('forget.password.post') }}" method="POST">
-                          @csrf
-                          <div class="form-group row">
-                          <input type="hidden" name="token" id="tokenid" value="{{ csrf_token()}}">
-                          <label for="email_address" class="col-md-4 col-form-label text-md-right">Employee Id</label>
-                              <div class="col-md-6 mb-3">
-                                  <!-- <input type="text" id="emp_id" class="form-control" name="emp_id" required autofocus> -->
-                                  <input type="number" class="form-control" onKeyPress="if(this.value.length==8) return false; 
-                
-                    
-                    if( isNaN(String.fromCharCode(event.keyCode))) return false;" name="empid" id="empid" placeholder="Employee Number" 
-					
-					onKeyup="
 
-				if(this.value.length==8)
-				getEmployeeDetails(this.value);"
-					required>
-                              </div>
+<style>
+	.forgot-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		padding: 2rem 1rem;
+		background: #f4f6f9;
+		perspective: 1000px;
+	}
 
-                              <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                              <div class="col-md-6 ">
-                                  <input type="text" id="email" class="form-control" name="email" readonly>
-                                  @if ($errors->has('email'))
-                                      <span class="text-danger">{{ $errors->first('email') }}</span>
-                                  @endif
-                              </div> 
-                            
-                          </div>
-                          <div class="col-md-6 offset-md-4">
-                              <button type="submit" class="btn btn-success" onClick="return empty()">
-                                  Reset Password
-                              </button>
-                          </div>
-                      </form>
-                        
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+	.forgot-wrapper {
+		width: 100%;
+		max-width: 430px;
+		animation: forgotCardEnter .45s ease-out both;
+	}
 
-</main>
+	.forgot-card {
+		background: #fff;
+		border-radius: 8px;
+		box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, .12);
+		overflow: hidden;
+		border: 0;
+		margin-bottom: 0;
+		transition: box-shadow .25s ease, transform .25s ease;
+	}
+
+	.forgot-card:hover {
+		box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, .16);
+		transform: translateY(-4px);
+	}
+
+	.forgot-card::before {
+		background: #28a745;
+		content: "";
+		display: block;
+		height: 4px;
+	}
+
+	.forgot-header {
+		color: #212529;
+		text-align: center;
+		padding: 2rem 2rem 1rem;
+		background: #fff;
+	}
+
+	.forgot-logo {
+		align-items: center;
+		background: #fff;
+		border-radius: 8px;
+		display: inline-flex;
+		min-height: 88px;
+		justify-content: center;
+		margin-bottom: 1rem;
+		padding: .55rem;
+		width: 88px;
+	}
+
+	.forgot-logo img {
+		border-radius: 0 !important;
+		display: block;
+		height: auto;
+		max-width: 66px;
+	}
+
+	.forgot-header h4 {
+		margin-bottom: .25rem;
+		font-weight: 600;
+	}
+
+	.forgot-header p {
+		margin-bottom: 0;
+		font-size: .92rem;
+		color: #6c757d;
+	}
+
+	.forgot-body {
+		padding: 0 2rem 2rem;
+	}
+
+	.forgot-info {
+		background: #fff;
+		border: 1px solid rgba(40, 167, 69, .18);
+		border-left: 5px solid #28a745;
+		border-radius: 8px;
+		padding: .9rem 1rem;
+		font-size: .9rem;
+		color: #2f5135;
+		margin-bottom: 1.4rem;
+		box-shadow: 0 .45rem 1rem rgba(0, 0, 0, .05);
+	}
+
+	.forgot-card .form-group {
+		margin-bottom: 1.1rem;
+	}
+
+	.forgot-card label {
+		font-weight: 600;
+		font-size: .92rem;
+	}
+
+	.forgot-card .form-control {
+		height: 46px;
+		border-radius: 8px;
+		transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+	}
+
+	.forgot-card .form-control:focus {
+		border-color: #28a745;
+		box-shadow: 0 .45rem 1rem rgba(0, 0, 0, .08);
+		transform: translateY(-1px);
+	}
+
+	#email[readonly] {
+		background-color: #fff !important;
+		opacity: 1;
+		color: #495057;
+	}
+
+	.forgot-actions {
+		display: flex;
+		flex-direction: column;
+		gap: .8rem;
+		margin-top: 1.25rem;
+	}
+
+	.forgot-actions .btn {
+		border-radius: 8px;
+		padding: .65rem;
+		font-weight: 600;
+		transition: box-shadow .2s ease, transform .2s ease;
+	}
+
+	.forgot-actions .btn:hover,
+	.forgot-actions .btn:focus {
+		box-shadow: 0 .55rem 1rem rgba(0, 0, 0, .12);
+		transform: translateY(-2px);
+	}
+
+	.back-login {
+		text-align: center;
+		font-size: .9rem;
+		font-weight: 500;
+		color: blue;
+		text-decoration: none;
+		display: inline-block;
+		margin-top: .25rem;
+	}
+
+	.back-login:hover {
+		text-decoration: none;
+		color: #0056b3;
+	}
+
+	.forgot-alert {
+		border-radius: 8px;
+		font-weight: 500;
+	}
+
+	@keyframes forgotCardEnter {
+		from {
+			opacity: 0;
+			transform: translateY(18px) scale(.98);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		.forgot-page {
+			align-items: flex-start;
+			padding-top: 3rem;
+		}
+
+		.forgot-header {
+			padding: 1.5rem 1.5rem 1rem;
+		}
+
+		.forgot-body {
+			padding: 0 1.5rem 1.5rem;
+		}
+	}
+</style>
+
+<div class="forgot-page">
+	<div class="forgot-wrapper">
+		<div class="forgot-card">
+
+			<div class="forgot-header">
+				<div class="forgot-logo">
+					<img src="{{ asset('assets/images/logo-1.png') }}" alt="BPC logo">
+				</div>
+				<h4>Reset Password</h4>
+				<p>Enter your employee number to receive password reset details.</p>
+			</div>
+
+			<div class="forgot-body">
+
+				@if (Session::has('message'))
+					<div class="alert alert-success forgot-alert" role="alert">
+						{{ Session::get('message') }}
+					</div>
+				@endif
+
+				<form action="{{ route('forget.password.post') }}" method="POST">
+					@csrf
+
+					<input type="hidden" name="token" id="tokenid" value="{{ csrf_token() }}">
+
+					<div class="forgot-info">
+						<i class="fas fa-info-circle"></i>
+						Your registered email will appear automatically after entering a valid Employee Number.
+					</div>
+
+					<div class="form-group">
+						<label for="empid">Employee Number</label>
+						<input
+							type="text"
+							inputmode="numeric"
+							class="form-control"
+							name="empid"
+							id="empid"
+							placeholder="Enter Employee Number"
+							required
+							autofocus
+							onKeyPress="if(this.value.length==8) return false; if(isNaN(String.fromCharCode(event.keyCode))) return false;"
+							onKeyup="if(this.value.length==8) getEmployeeDetails(this.value);"
+						>
+					</div>
+
+					<div class="form-group">
+						<label for="email">Registered Email Address</label>
+						<input
+							type="text"
+							id="email"
+							class="form-control"
+							name="email"
+							placeholder="Email will appear here"
+							readonly
+						>
+
+						@if ($errors->has('email'))
+							<span class="text-danger">
+								{{ $errors->first('email') }}
+							</span>
+						@endif
+					</div>
+
+					<div class="forgot-actions">
+						<button type="submit" class="btn btn-success" onClick="return empty()">
+							Reset Password
+						</button>
+
+						<a class="back-login" href="{{ route('login') }}">
+							Back to Login
+						</a>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
 @endsection
 
-
-
-<!-- jQuery -->
-<script src="{{asset('/admin-lte/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('/admin-lte/dist/js/adminlte.min.js')}}"></script> 
+<script src="{{ asset('/admin-lte/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/admin-lte/dist/js/adminlte.min.js') }}"></script>
 
 <script>
-function empty() {
-    var x;
-    x = document.getElementById("email").value;
-    if ((x == "" ) || (x =='e')){
-        alert("You are not a valid user");
-        return false;
-    };
-}
+	function empty() {
+		var email = document.getElementById("email").value;
 
-</script>
-<script>
+		if (email == "" || email == "e") {
+			alert("You are not a valid user");
+			return false;
+		}
+	}
 
-     function getEmployeeDetails(val)
-{
+	function getEmployeeDetails(val) {
+		var csrftoken = document.getElementById('tokenid').value;
 
-    //pulling records using cid from checkin table 
-      var csrftoken =document.getElementById('tokenid').value;
-          $.get('/getValues?source=forgetPassword&info='+val+'&token='+csrftoken,function(data){              
-                    console.log(data);
-                  
-                    document.getElementById('email').value = '';                      
-                    document.getElementById('empid').innerHTML = '';                        
-                    
-                $.each(data, function(index, Employee){
+		$.get('/getValues?source=forgetPassword&info=' + val + '&token=' + csrftoken, function(data) {
+			document.getElementById('email').value = '';
 
-
-                          if(Employee.emailId != null)
-                          {
-                              document.getElementById('email').value = Employee.emailId;                      
-                                document.getElementById('empid').innerHTML='';
-                          }
-                            else {
-                                document.getElementById('empid').innerHTML = 'Please check your Employee ID!!!';  
-								document.getElementById('emp_id').value='';
-                            }                       
-                                                         
-                });
-        });
-}
+			$.each(data, function(index, Employee) {
+				if (Employee.emailId != null) {
+					document.getElementById('email').value = Employee.emailId;
+				} else {
+					document.getElementById('email').value = '';
+					alert('Please check your Employee ID!');
+				}
+			});
+		});
+	}
 </script>

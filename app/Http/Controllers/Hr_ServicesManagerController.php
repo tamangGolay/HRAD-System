@@ -111,7 +111,7 @@ class Hr_ServicesManagerController extends Controller
             Mail::to($userEmail)->send(new MyTestMail($mailData));
 
             // ✅ Email to Hr person for notification purpose (tsheringchoden@bpc.bt)
-             $HR_Focal_Email = 'tashidema@bpc.bt'; 
+            $HR_Focal_Email = 'tashidema@bpc.bt'; 
             $HR_MailData['title'] = "Approval Notification for $noteTitle";
             $HR_MailData['body'] = "Dear sir/madam,";            
             $HR_MailData['body1'] = "The HR Services request titled <b>$noteTitle</b> submitted by {$userDetail->empName} has been <strong>approved</strong> by supervisor Mr/Mrs. {$userDetail->empName} ({$userDetail->empId}).";

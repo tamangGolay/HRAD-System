@@ -48,6 +48,7 @@ class AttendanceController extends Controller
                         ->where(function ($query) {
                             $query->where('a.checkin_status', 'Late')
                                 ->orWhere('a.checkout_status', 'Early')
+                                ->orWhere('a.checkout_status', 'Shift')
                                 ->orWhere('a.checkout_status', 'NA')
                                 ->orWhere('a.checkin_status', 'Absent');
                         })

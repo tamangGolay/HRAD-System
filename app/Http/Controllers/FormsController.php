@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Roles;
 use App\OrgUnit;
 use App\Dzongkhags;
@@ -68,7 +69,7 @@ use App\jobDescription;
 use App\transferProposal; 
 use App\EmployeeTwice; 
 use App\WfReleaseProcess;
-use App\WfBank;
+
 use App\WfRelatives;
 use App\transferHistory;
 use App\Balance;
@@ -76,10 +77,7 @@ use App\HR_Service_Approval;
 use App\v4allocation; 
 use App\welfarenoteapproval;
 use App\WelfareCommitte;
-use App\Models\Attendance;
 use App\conference; 
-use App\CertificateType;
-use App\Certificate;
 
 
 class FormsController extends Controller
@@ -2334,8 +2332,16 @@ if ($request->v == "employeeskillmap")  //form.csv
     
     $notesheetRemarks = notesheetapprove::all(); 
     $officedetails = Officedetails::all(); 
+
+
+     // ✅ Check if logged-in user is officeHead of office 88/FNS office they dont have GM, so manager have to take both roles. 
+    $isFNS_Manager = DB::table('officemaster')
+        ->where('id', 88)
+        ->where('officeHead', Auth::user()->empId)
+        ->exists()
+        && Auth::user()->office == 88;
      
-    $notesheetRequests = DB::table('notesheet')
+    $query = DB::table('notesheet')
     ->join('officedetails', 'officedetails.id', '=', 'notesheet.officeId')     
     ->join('officemaster','officemaster.id','=','notesheet.officeId')
     ->join('officeunder','officeunder.office','=','notesheet.officeId')
@@ -2345,11 +2351,22 @@ if ($request->v == "employeeskillmap")  //form.csv
     
     ->latest('notesheet.id') //similar to orderby('id','desc')
     ->where('officeunder.head',Auth::user()->empId) 
-    ->where('cancelled','=','No')   
-    ->where('notesheet.status','=','Recommended')
+    ->where('cancelled','=','No');   
+    // ->where('notesheet.status','=','Recommended')
 
-//    ->orWhere('orgunit.office',Auth::user()->office)
-    ->paginate(10000000);
+    //added for FNS manager/GM
+    if ($isFNS_Manager) {
+            $query->where(function ($q) {
+                $q->where('notesheet.status', 'Recommended')
+                ->orWhere('notesheet.status', 'Processing');
+            });
+        } else {
+            $query->where('notesheet.status', 'Recommended');
+        }
+    
+    $notesheetRequests = $query->paginate(10000000);
+
+   
   
   $rhtml = view('Notesheet.GMReviewnotesheet')
   ->with([ 'notesheetRequest' => $notesheetRequests,'notesheetRemarks' => $notesheetRemarks,'officedetails'=>$officedetails])
@@ -3444,6 +3461,23 @@ if ($request->v == "attendanceCount")
             //  added this on 12 feb 2026 for certificatedata
              if ($request->v == "ReportcertificateData")  //form.csv
              {                  
+
+                 $user = Auth::user();
+
+                // Condition 1: Admin role
+                $isAdmin = ($user->role_id == 1);
+
+                // Condition 2: Exists in certificateviewer table
+                $isAllowedUser = DB::table('certificateviewer')
+                                    ->where('empid', $user->empId)
+                                    ->exists();
+
+                if (!$isAdmin && !$isAllowedUser) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Unauthorized access'
+                    ], 403);
+                }
  
              $rhtml = view('Certificate.CertificateReport')                 
              ->render(); 

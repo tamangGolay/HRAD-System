@@ -199,7 +199,7 @@
 					<img src="{{ asset('assets/images/logo-1.png') }}" alt="BPC logo">
 				</div>
 				<h4>Reset Password</h4>
-				<p>Enter your employee number to receive password reset details.</p>
+				<p>Enter your employee ID to receive password reset link.</p>
 			</div>
 
 			<div class="forgot-body">
@@ -217,18 +217,18 @@
 
 					<div class="forgot-info">
 						<i class="fas fa-info-circle"></i>
-						Your registered email will appear automatically after entering a valid Employee Number.
+						Your registered email will appear automatically after entering a valid Employee ID.
 					</div>
 
 					<div class="form-group">
-						<label for="empid">Employee Number</label>
+						<label for="empid">Employee ID</label>
 						<input
 							type="text"
 							inputmode="numeric"
 							class="form-control"
 							name="empid"
 							id="empid"
-							placeholder="Enter Employee Number"
+							placeholder="Enter Employee ID"
 							required
 							autofocus
 							onKeyPress="if(this.value.length==8) return false; if(isNaN(String.fromCharCode(event.keyCode))) return false;"

@@ -115,7 +115,7 @@ class ForgotPasswordController extends Controller
         // DB::update('update users set password = ?  where emp_id = ?',[$user,$request->emp_id]);
 
  
-        return redirect()->to('/login')->send();
+        return back()->with('success', 'Password changed successfully.');
       }
       
 }
